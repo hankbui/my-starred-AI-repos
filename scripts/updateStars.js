@@ -1,5 +1,28 @@
 const fs = require("fs");
 
+const CATEGORIES = {
+  "AI Agents": {
+    topics: ["agent", "ai-agent", "agents", "autonomous-agent"],
+    keywords: ["agent", "multi-agent", "autonomous"]
+  },
+  "LLM / Models": {
+    topics: ["llm", "language-model", "transformer", "foundation-model"],
+    keywords: ["llm", "language model", "model", "inference"]
+  },
+  "Automation / Workflow": {
+    topics: ["automation", "workflow", "orchestration", "pipeline"],
+    keywords: ["automation", "workflow", "orchestrator", "scheduler"]
+  },
+  "Chinese / Language": {
+    topics: ["chinese", "zh", "nlp"],
+    keywords: ["chinese", "mandarin", "hsk", "pinyin"]
+  },
+  "Tools / Infra": {
+    topics: ["tooling", "infrastructure", "sdk", "framework"],
+    keywords: ["framework", "sdk", "infra", "tool"]
+  }
+};
+
 async function fetchAllStars(user) {
   let page = 1;
   let all = [];
@@ -15,9 +38,7 @@ async function fetchAllStars(user) {
       }
     );
 
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
 
     const data = await res.json();
     if (data.length === 0) break;
@@ -29,25 +50,57 @@ async function fetchAllStars(user) {
   return all;
 }
 
-async function run() {
-  const user = "hankbui"; 
+function classify(repo) {
+  const matches = [];
 
+  const topics = repo.topics || [];
+  const text = `${repo.name} ${repo.description || ""}`.toLowerCase();
+
+  for (const [category, rule] of Object.entries(CATEGORIES)) {
+    const topicHit = rule.topics.some(t => topics.includes(t));
+    const keywordHit = rule.keywords.some(k => text.includes(k));
+
+    if (topicHit || keywordHit) {
+      matches.push(category);
+    }
+  }
+
+  if (matches.length === 0) matches.push("Others");
+  return matches;
+}
+
+async function run() {
+  const user = "hankbui"; // ← đổi
   const repos = await fetchAllStars(user);
 
-  let md = `# ⭐ Repositories I Starred\n\n`;
-  md += `Total: **${repos.length} repositories**\n\n`;
-  md += `Auto-updated daily via GitHub Actions.\n\n`;
+  const grouped = {};
 
-  for (const r of repos) {
-    md += `- [${r.full_name}](${r.html_url})`;
-    if (r.description) md += ` — ${r.description}`;
+  for (const repo of repos) {
+    const cats = classify(repo);
+    for (const c of cats) {
+      if (!grouped[c]) grouped[c] = [];
+      grouped[c].push(repo);
+    }
+  }
+
+  let md = `# ⭐ Starred Repositories (Auto-Curated)\n\n`;
+  md += `Total: **${repos.length} repositories**\n\n`;
+  md += `Updated daily via GitHub Actions.\n\n`;
+
+  for (const [category, list] of Object.entries(grouped)) {
+    md += `## ${category}\n\n`;
+    for (const r of list) {
+      md += `- [${r.full_name}](${r.html_url})`;
+      if (r.description) md += ` — ${r.description}`;
+      md += `\n`;
+    }
     md += `\n`;
   }
 
   fs.writeFileSync("README.md", md);
 }
 
-run().catch((err) => {
+run().catch(err => {
   console.error(err);
   process.exit(1);
 });
