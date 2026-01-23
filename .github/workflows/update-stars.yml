@@ -16,9 +16,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit changes
+               - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git commit -am "chore: update starred repos" || exit 0
+          git add README.md
+          git commit -m "chore: update starred repos" || exit 0
           git push
