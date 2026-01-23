@@ -131,7 +131,7 @@ def render_table(repos):
 
     for r in repos:
         repo_cell = (
-            f"[{r['name']}]({r['url']})"
+            f"[{r['name']}]({r['url']})<br/>"
             f"⭐ {r['stars']:,} &nbsp;•&nbsp; 🕒 {r['last_updated']}"
         )
 
