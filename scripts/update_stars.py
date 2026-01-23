@@ -52,28 +52,64 @@ def fetch_starred():
 def infer_techstack(repo):
     tech = set()
 
+    # 1. Primary language
     if repo["language"]:
         tech.add(repo["language"])
 
-    text = (repo["name"] + " " + repo["description"]).lower()
+    text = f"{repo['name']} {repo['description']}".lower()
+    topics = [t.lower() for t in repo.get("topics", [])]
 
-    keywords = {
+    blob = " ".join([text] + topics)
+
+    rules = {
+        # LLM / AI
         "llm": "LLM",
-        "ai": "AI",
-        "ocr": "OCR",
-        "vision": "CV",
-        "agent": "Agent",
+        "gpt": "GPT",
         "transformer": "Transformer",
-        "speech": "Speech",
+        "diffusion": "Diffusion",
+        "agent": "Agent",
+        "rag": "RAG",
+
+        # CV / OCR / Speech
+        "ocr": "OCR",
+        "vision": "Computer Vision",
+        "cv": "Computer Vision",
         "asr": "ASR",
+        "speech": "Speech",
+        "tts": "TTS",
+
+        # Frameworks
+        "pytorch": "PyTorch",
+        "torch": "PyTorch",
+        "tensorflow": "TensorFlow",
+        "jax": "JAX",
+        "onnx": "ONNX",
+
+        # Infra / Dev
+        "docker": "Docker",
+        "kubernetes": "K8s",
+        "fastapi": "FastAPI",
+        "flask": "Flask",
+        "grpc": "gRPC",
+        "streamlit": "Streamlit",
+        "gradio": "Gradio",
+
+        # Data
+        "vector": "Vector DB",
+        "faiss": "FAISS",
+        "milvus": "Milvus",
+        "pinecone": "Pinecone",
     }
 
-    for k, v in keywords.items():
-        if k in text:
+    for k, v in rules.items():
+        if k in blob:
             tech.add(v)
 
-    return ", ".join(sorted(tech))
+    # fallback nếu quá nghèo
+    if len(tech) <= 1:
+        tech.add("Library")
 
+    return ", ".join(sorted(tech))
 # =====================
 # CATEGORIZATION
 # =====================
