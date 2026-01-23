@@ -1,27 +1,12 @@
 def render_table(repos):
     rows = []
-    for repo in repos:
-        rows.append(f"""
-<tr>
-  <td><a href="{repo['url']}">{repo['name']}</a></td>
-  <td>{repo['description'] or ''}</td>
-</tr>
-""")
+    rows.append("| Repo | Description | Tech Stack |")
+    rows.append("|------|-------------|------------|")
 
-    return f"""
-<table>
-  <colgroup>
-    <col style="width: 22%">
-    <col style="width: 78%">
-  </colgroup>
-  <thead>
-    <tr>
-      <th align="left">Repository</th>
-      <th align="left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    {''.join(rows)}
-  </tbody>
-</table>
-"""
+    for r in repos:
+        tech = " · ".join(r.get("techstack", []))
+        rows.append(
+            f"| [{r['name']}]({r['url']}) | {r['description']} | {tech} |"
+        )
+
+    return "\n".join(rows)
