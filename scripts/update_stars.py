@@ -11,14 +11,22 @@ PER_PAGE = 100
 # FETCH STARRED REPOS
 # =====================
 def fetch_starred():
-    repos = []
     page = 1
+    repos = []
+
+    headers = {
+        "Accept": "application/vnd.github.mercy-preview+json"
+    }
 
     while True:
         url = f"https://api.github.com/users/{GITHUB_USER}/starred"
-        resp = requests.get(url, params={"per_page": PER_PAGE, "page": page})
-        data = resp.json()
+        resp = requests.get(
+            url,
+            params={"per_page": PER_PAGE, "page": page},
+            headers=headers,
+        )
 
+        data = resp.json()
         if not data:
             break
 
@@ -27,8 +35,8 @@ def fetch_starred():
                 "name": r["full_name"],
                 "url": r["html_url"],
                 "description": r["description"] or "",
-                "topics": r.get("topics", []),
-                "language": r.get("language"),
+                "language": r["language"],
+                "topics": r.get("topics", [])
             })
 
         page += 1
