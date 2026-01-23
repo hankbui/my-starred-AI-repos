@@ -3,6 +3,8 @@ import requests
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 
+import json
+from pathlib import Path
 # =====================
 # CONFIG
 # =====================
@@ -354,6 +356,30 @@ def render_readme(categories):
 
     return "\n".join(md)
 
+
+
+def export_json(categories):
+    output = []
+
+    for cat, repos in categories.items():
+        for r in repos:
+            output.append({
+                "name": r["name"],
+                "url": r["url"],
+                "description": r["description"],
+                "stars": r["stars"],
+                "last_updated": r["updated_at"],
+                "techstack": r["techstack"],
+                "flags": r["flags"],
+                "category": r["category"],
+            })
+
+    Path("data").mkdir(exist_ok=True)
+
+    with open("data/starred_repos.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+    print(f"📦 Exported {len(output)} repos → data/starred_repos.json")
 # =====================
 # MAIN
 # =====================
