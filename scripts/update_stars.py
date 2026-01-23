@@ -1,3 +1,4 @@
+import os
 import requests
 from collections import defaultdict
 
@@ -7,6 +8,11 @@ from collections import defaultdict
 GITHUB_USER = "hankbui"
 PER_PAGE = 100
 
+HEADERS = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": f"Bearer {os.getenv('GITHUB_TOKEN')}",
+}
+
 # =====================
 # FETCH STARRED REPOS
 # =====================
@@ -14,64 +20,60 @@ def fetch_starred():
     repos = []
     page = 1
 
-   headers = {
-    "Authorization": f"Bearer {os.getenv('GITHUB_TOKEN')}"
-}
-requests.get(url, headers=headers)
-
     while True:
         url = f"https://api.github.com/users/{GITHUB_USER}/starred"
         resp = requests.get(
             url,
+            headers=HEADERS,
             params={"per_page": PER_PAGE, "page": page},
-            headers=headers,
             timeout=30,
         )
 
-        resp.raise_for_status()
-        data = resp.json()
+        if resp.status_code != 200:
+            print("❌ Failed to fetch starred repos:", resp.text)
+            break
 
+        data = resp.json()
         if not data:
             break
 
         for r in data:
             repos.append({
-    "name": r["full_name"],
-    "url": r["html_url"],
-    "description": r["description"] or "",
-    "topics": r.get("topics", []),
-    "language": r.get("language"),
-    "languages_url": r.get("languages_url"),
-})
-          
+                "name": r["full_name"],       # owner/repo
+                "url": r["html_url"],
+                "description": r["description"] or "",
+                "topics": r.get("topics", []),
+            })
 
         page += 1
 
+    print(f"✅ Fetched {len(repos)} starred repos")
     return repos
 
 # =====================
-# TECH STACK INFERENCE
+# FETCH LANGUAGES (REAL TECH STACK)
 # =====================
-def infer_techstack(repo):
-    if not repo.get("languages_url"):
-        return ""
+def fetch_languages(full_name):
+    url = f"https://api.github.com/repos/{full_name}/languages"
+    resp = requests.get(url, headers=HEADERS, timeout=30)
 
-    resp = requests.get(repo["languages_url"])
     if resp.status_code != 200:
+        return {}
+
+    return resp.json()
+
+def format_techstack(lang_dict, top_n=3):
+    if not lang_dict:
         return ""
 
-    data = resp.json()
-    if not data:
-        return ""
+    sorted_langs = sorted(
+        lang_dict.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )
 
-    total = sum(data.values())
-    stacks = []
+    return ", ".join(lang for lang, _ in sorted_langs[:top_n])
 
-    for lang, size in sorted(data.items(), key=lambda x: x[1], reverse=True):
-        percent = round(size / total * 100, 1)
-        stacks.append(f"{lang} {percent}%")
-
-    return ", ".join(stacks)
 # =====================
 # CATEGORIZATION
 # =====================
@@ -79,7 +81,8 @@ def categorize_repos(repos):
     categories = defaultdict(list)
 
     for repo in repos:
-        repo["techstack"] = infer_techstack(repo)
+        langs = fetch_languages(repo["name"])
+        repo["techstack"] = format_techstack(langs)
 
         text = (repo["name"] + " " + repo["description"]).lower()
         topics = [t.lower() for t in repo.get("topics", [])]
@@ -102,8 +105,8 @@ def categorize_repos(repos):
 # =====================
 def render_table(repos):
     lines = [
-        "| Repo | Description | Tech Stack |",
-        "|------|-------------|------------|",
+        "| Repository | Description | Tech Stack |",
+        "|-----------|-------------|------------|",
     ]
 
     for r in repos:
@@ -117,7 +120,7 @@ def render_readme(categories):
     md = [
         "# ⭐ Starred Repositories",
         "",
-        "_Auto-updated via GitHub Actions_",
+        "_Auto-updated daily via GitHub Actions._",
         "",
     ]
 
@@ -142,18 +145,16 @@ def render_readme(categories):
 # MAIN
 # =====================
 def main():
-    print(">>> FETCHING STARRED REPOS")
+    print("🚀 README generator started")
+
     repos = fetch_starred()
-
-    print(f">>> TOTAL REPOS: {len(repos)}")
     categories = categorize_repos(repos)
-
     markdown = render_readme(categories)
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(markdown)
 
-    print(">>> README.md GENERATED")
+    print("✅ README.md generated successfully")
 
 if __name__ == "__main__":
     main()
