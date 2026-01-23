@@ -11,8 +11,8 @@ PER_PAGE = 100
 # FETCH STARRED REPOS
 # =====================
 def fetch_starred():
-    page = 1
     repos = []
+    page = 1
 
     headers = {
         "Accept": "application/vnd.github.mercy-preview+json"
@@ -23,10 +23,10 @@ def fetch_starred():
         resp = requests.get(
             url,
             params={"per_page": PER_PAGE, "page": page},
-            headers=headers,
+            headers=headers
         )
-
         data = resp.json()
+
         if not data:
             break
 
@@ -35,14 +35,13 @@ def fetch_starred():
                 "name": r["full_name"],
                 "url": r["html_url"],
                 "description": r["description"] or "",
-                "language": r["language"],
-                "topics": r.get("topics", [])
+                "topics": r.get("topics", []),
+                "language": r.get("language"),
             })
 
         page += 1
 
     return repos
-
 
 # =====================
 # TECH STACK INFERENCE
@@ -70,24 +69,22 @@ def infer_techstack(repo):
 # CATEGORIZATION
 # =====================
 def categorize_repos(repos):
-    categories = {
-        "AI / LLM": [],
-        "Automation / Workflow": [],
-        "Chinese / Language": [],
-        "Other": [],
-    }
+    categories = defaultdict(list)
 
     for repo in repos:
-        text = (repo["name"] + repo["description"]).lower()
-
         repo["techstack"] = infer_techstack(repo)
 
-        if "chinese" in text or "zh" in text:
-            categories["Chinese / Language"].append(repo)
-        elif "llm" in text or "ai" in text:
+        text = (repo["name"] + " " + repo["description"]).lower()
+        topics = [t.lower() for t in repo.get("topics", [])]
+
+        if any(k in text or k in topics for k in ["llm", "ai", "agent", "gpt", "transformer"]):
             categories["AI / LLM"].append(repo)
-        elif "workflow" in text or "automation" in text:
+        elif any(k in text or k in topics for k in ["ocr", "vision", "cv"]):
+            categories["OCR / Vision"].append(repo)
+        elif any(k in text or k in topics for k in ["workflow", "automation", "pipeline"]):
             categories["Automation / Workflow"].append(repo)
+        elif any(k in text or k in topics for k in ["chinese", "mandarin", "zh"]):
+            categories["Chinese / Language"].append(repo)
         else:
             categories["Other"].append(repo)
 
