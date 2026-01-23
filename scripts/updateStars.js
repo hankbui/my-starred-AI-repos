@@ -22,7 +22,14 @@ const CATEGORIES = {
     keywords: ["framework", "sdk", "infra", "tool"]
   }
 };
-
+const CATEGORY_META = {
+  "AI Agents": "🤖 AI Agents",
+  "LLM / Models": "🧠 LLM / Models",
+  "Automation / Workflow": "⚙️ Automation / Workflow",
+  "Chinese / Language": "🀄 Chinese / Language",
+  "Tools / Infra": "🧰 Tools / Infra",
+  "Others": "📦 Others"
+};
 async function fetchAllStars(user) {
   let page = 1;
   let all = [];
@@ -87,15 +94,20 @@ async function run() {
   md += `Total: **${repos.length} repositories**\n\n`;
   md += `Updated daily via GitHub Actions.\n\n`;
 
-  for (const [category, list] of Object.entries(grouped)) {
-    md += `## ${category}\n\n`;
-    for (const r of list) {
-      md += `- [${r.full_name}](${r.html_url})`;
-      if (r.description) md += ` — ${r.description}`;
-      md += `\n`;
-    }
-    md += `\n`;
+for (const [category, list] of Object.entries(grouped)) {
+  const title = CATEGORY_META[category] || category;
+
+  md += `## ${title}\n\n`;
+  md += `| Repository | Description |\n`;
+  md += `|------------|-------------|\n`;
+
+  for (const r of list) {
+    const desc = (r.description || "").replace(/\|/g, "\\|");
+    md += `| [${r.full_name}](${r.html_url}) | ${desc} |\n`;
   }
+
+  md += `\n`;
+}
 
   fs.writeFileSync("README.md", md);
 }
