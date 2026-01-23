@@ -14,13 +14,14 @@ def fetch_starred():
 
         if not data:
             break
-
+from scripts.techstack import infer_techstack
         for r in data:
             repos.append({
                 "name": r["full_name"],
                 "url": r["html_url"],
                 "description": r["description"] or "",
                 "topics": r.get("topics", [])
+                "techstack": infer_techstack(r),
             })
 
         page += 1
