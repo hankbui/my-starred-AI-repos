@@ -75,6 +75,29 @@ def format_techstack(lang_dict, top_n=3):
 
     return ", ".join(lang for lang, _ in sorted_langs[:top_n])
 
+def fetch_languages(owner_repo: str):
+    url = f"https://api.github.com/repos/{owner_repo}/languages"
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+
+    if resp.status_code != 200:
+        return ""
+
+    data = resp.json()
+    if not data:
+        return ""
+
+    total = sum(data.values())
+    if total == 0:
+        return ""
+
+    parts = []
+    for lang, bytes_ in sorted(data.items(), key=lambda x: -x[1]):
+        pct = bytes_ * 100 / total
+        parts.append(f"{lang} {pct:.1f}%")
+
+    # chỉ lấy top 4 cho gọn
+    return ", ".join(parts[:4])
+
 # =====================
 # CATEGORIZATION
 # =====================
@@ -82,25 +105,21 @@ def categorize_repos(repos):
     categories = defaultdict(list)
 
     for repo in repos:
-        langs = fetch_languages(repo["name"])
-        repo["techstack"] = format_techstack(langs)
+        print(f"🔍 Fetching techstack for {repo['name']}")
+        repo["techstack"] = fetch_languages(repo["name"])
 
-        text = (repo["name"] + " " + repo["description"]).lower()
-        topics = [t.lower() for t in repo.get("topics", [])]
+        topics = repo.get("topics", [])
 
-        if any(k in text or k in topics for k in ["llm", "ai", "agent", "gpt", "transformer"]):
+        if any(t in topics for t in ["llm", "ai", "agent"]):
             categories["AI / LLM"].append(repo)
-        elif any(k in text or k in topics for k in ["ocr", "vision", "cv"]):
+        elif any(t in topics for t in ["ocr", "vision"]):
             categories["OCR / Vision"].append(repo)
-        elif any(k in text or k in topics for k in ["workflow", "automation", "pipeline"]):
+        elif any(t in topics for t in ["workflow", "automation"]):
             categories["Automation / Workflow"].append(repo)
-        elif any(k in text or k in topics for k in ["chinese", "mandarin", "zh"]):
-            categories["Chinese / Language"].append(repo)
         else:
             categories["Other"].append(repo)
 
     return categories
-
 # =====================
 # MARKDOWN RENDER
 # =====================
