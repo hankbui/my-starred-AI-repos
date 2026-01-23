@@ -7,6 +7,17 @@ from collections import defaultdict
 GITHUB_USER = "hankbui"  
 PER_PAGE = 100
 
+
+name: Update Starred Repos
+
+permissions:
+  contents: write   # <<< BẮT BUỘC
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
 # =====================
 # FETCH STARRED REPOS
 # =====================
