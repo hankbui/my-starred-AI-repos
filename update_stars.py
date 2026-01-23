@@ -4,7 +4,7 @@ from collections import defaultdict
 # =====================
 # CONFIG
 # =====================
-GITHUB_USER = "hankbui"   # đổi nếu cần
+GITHUB_USER = "hankbui"   
 PER_PAGE = 100
 
 # =====================
