@@ -4,7 +4,7 @@ Total: **995 repositories**
 
 Updated daily via GitHub Actions.
 
-## 🀄 Chinese / Language
+## Other
 
 <table>
   <colgroup>
@@ -17,9 +17,7 @@ Updated daily via GitHub Actions.
       <th align="left">Description</th>
     </tr>
   </thead>
-  <tbody>
-    ...
-  </tbody>
+
 </table>
 
 | Repository | Description |
