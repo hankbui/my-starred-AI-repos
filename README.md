@@ -1,0 +1,104 @@
+# ⭐ Repositories I Starred
+
+Auto-updated daily via GitHub Actions.
+
+- [accomplish-ai/openwork](https://github.com/accomplish-ai/openwork) — Openwork™ is the open source Al coworker that lives on your desktop
+- [eikek/docspell](https://github.com/eikek/docspell) — Assist in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort.
+- [ProtonMail/WebClients](https://github.com/ProtonMail/WebClients) — Monorepo hosting the proton web clients
+- [livekit/agents](https://github.com/livekit/agents) — A powerful framework for building realtime voice AI agents 🤖🎙️📹 
+- [AmberSahdev/Open-Interface](https://github.com/AmberSahdev/Open-Interface) — Control Any Computer Using LLMs.
+- [QwenLM/Qwen3](https://github.com/QwenLM/Qwen3) — Qwen3 is the large language model series developed by Qwen team, Alibaba Cloud.
+- [Liquid4All/liquid-audio](https://github.com/Liquid4All/liquid-audio) — Liquid Audio - Speech-to-Speech audio models by Liquid AI
+- [mantrakp04/manusmcp](https://github.com/mantrakp04/manusmcp) — ManusMCP is a project that implements AI agent workflows using Flowise. It features specialized AI agents with distinct roles (Planner, FileWizard, CommandRunner, WebNavigator) that can be used for task automation and complex problem-solving.
+- [LoredCast/filewizard](https://github.com/LoredCast/filewizard) — File Converter, OCR, Transcription & TTS WebUI
+- [nanobrowser/nanobrowser](https://github.com/nanobrowser/nanobrowser) — Open-Source Chrome extension for AI-powered web automation. Run multi-agent workflows using your own LLM API key. Alternative to OpenAI Operator.
+- [HKUDS/VideoAgent](https://github.com/HKUDS/VideoAgent) — "VideoAgent: All-in-One Agentic Framework for Video Understanding, Editing, and Remaking"
+- [YueFan1014/VideoAgent](https://github.com/YueFan1014/VideoAgent) — This is the official code of VideoAgent: A Memory-augmented Multimodal Agent for Video Understanding (ECCV 2024)
+- [Gentleflow/Airclap](https://github.com/Gentleflow/Airclap) — The best file transfer tool that is user-friendly, cross-platform, ultra-fast, and beautifully designed. 
+- [mozilla-ai/document-to-podcast](https://github.com/mozilla-ai/document-to-podcast) — Blueprint by Mozilla.ai for generating podcasts from documents using local AI
+- [neuml/txtchat](https://github.com/neuml/txtchat) — 💭 Build autonomous agents, retrieval augmented generation (RAG) processes and language model powered chat applications
+- [X-PLUG/mPLUG-DocOwl](https://github.com/X-PLUG/mPLUG-DocOwl) — mPLUG-DocOwl: Modularized Multimodal Large Language Model for Document Understanding
+- [itsOwen/CyberScraper-2077](https://github.com/itsOwen/CyberScraper-2077) — A Powerful web scraper powered by LLM | OpenAI, Gemini & Ollama
+- [pratik227/pdfwithlove](https://github.com/pratik227/pdfwithlove) — A deep dive into the $100M PDF tools industry, why cloud-based processing is a privacy risk, and how I’m building pdfwithlove - a free, local-first PDF tool that runs entirely on your device.
+- [zilliztech/deep-searcher](https://github.com/zilliztech/deep-searcher) — Open Source Deep Research Alternative to Reason and Search on Private Data. Written in Python.
+- [livekit/livekit](https://github.com/livekit/livekit) — End-to-end realtime stack for connecting humans and AI
+- [ozntel/file-tree-alternative](https://github.com/ozntel/file-tree-alternative) — This Obsidian Plugin allows users to have a different file explorer experience.
+- [alyssaxuu/screenity](https://github.com/alyssaxuu/screenity) — The free and privacy-friendly screen recorder with no limits 🎥
+- [tambo-ai/tambo](https://github.com/tambo-ai/tambo) — Generative UI SDK for React
+- [OpenBMB/VoxCPM](https://github.com/OpenBMB/VoxCPM) — VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning
+- [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)
+- [layercodedev/sled](https://github.com/layercodedev/sled) — Teleport Claude Code, Codex or Gemini CLI to your phone and work anywhere
+- [Universal-Commerce-Protocol/ucp](https://github.com/Universal-Commerce-Protocol/ucp) — Specification and documentation for the Universal Commerce Protocol (UCP)
+- [kanriapp/kanri](https://github.com/kanriapp/kanri) — 🪐 Modern offline Kanban board app for Windows, MacOS and Linux made with Tauri and Nuxt. Built with simplicity and user experience in mind.
+- [HKUDS/OpenPhone](https://github.com/HKUDS/OpenPhone) — "OpenPhone: Mobile Agentic Foundation Models for AI Phone"
+- [ARahim3/unsloth-mlx](https://github.com/ARahim3/unsloth-mlx) — Bringing the Unsloth experience to Mac users via Apple's MLX framework
+- [iOfficeAI/AionUi](https://github.com/iOfficeAI/AionUi) — Free, local, open-source Cowork for Gemini CLI, Claude Code, Codex, Opencode, Qwen Code, Goose Cli, Auggie, and more | 🌟 Star if you like it!
+- [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) — Complete Claude Code configuration collection - agents, skills, hooks, commands, rules, MCPs. Battle-tested configs from an Anthropic hackathon winner.
+- [lencx/Noi](https://github.com/lencx/Noi) — 🚀 Less chaos. More flow.
+- [jbhuang0604/awesome-computer-vision](https://github.com/jbhuang0604/awesome-computer-vision) — A curated list of awesome computer vision resources
+- [Br3n0k/transcriber](https://github.com/Br3n0k/transcriber) — AI-powered transcription for audio & video with Whisper — self-hosted, fast, and open-source.
+- [verygoodplugins/automem](https://github.com/verygoodplugins/automem) — AutoMem is a graph-vector memory service that gives AI assistants durable, relational memory:
+- [The-Pocket/PocketFlow-Tutorial-Codebase-Knowledge](https://github.com/The-Pocket/PocketFlow-Tutorial-Codebase-Knowledge) — Pocket Flow: Codebase to Tutorial
+- [astuto/astuto](https://github.com/astuto/astuto) — A free, open source, self-hosted customer feedback tool 🦊
+- [jaywcjlove/daybar](https://github.com/jaywcjlove/daybar) — DayBar is an app that displays local date, reminders, and events in the menu bar. By clicking on DayBar in the menu bar, you can view your calendar, events, and reminders, which can also be synchronized with Apple Calendar. The app is designed to consolidate calendar and reminder functions in the status bar menu for easy management and viewing.
+- [firecrawl/open-researcher](https://github.com/firecrawl/open-researcher) — 🔥 Visual AI research assistant that displays real-time thinking, provides split-view analysis, and automatic citations using Claude and Firecrawl
+- [bentoml/BentoVoiceAgent](https://github.com/bentoml/BentoVoiceAgent) — Build Phone Calling Voice Agent fully powered by open source models. 
+- [s0md3v/be-a-hacker](https://github.com/s0md3v/be-a-hacker) — roadmap for a self-taught hacker
+- [kyutai-labs/pocket-tts](https://github.com/kyutai-labs/pocket-tts) — A TTS that fits in your CPU (and pocket)
+- [apify/crawlee](https://github.com/apify/crawlee) — Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Puppeteer, Playwright, Cheerio, JSDOM, and raw HTTP. Both headful and headless mode. With proxy rotation.
+- [hyochan/expo-iap](https://github.com/hyochan/expo-iap) — In App Purchase module in Expo that confirms OpenIAP
+- [RevenueCat/react-native-purchases](https://github.com/RevenueCat/react-native-purchases) — React Native in-app purchases and subscriptions made easy. Support for iOS and Android.
+- [beshkenadze/arxiv-search](https://github.com/beshkenadze/arxiv-search) — Semantic search for 1M+ arXiv papers running entirely in your browser
+- [AojdevStudio/Finance-Guru](https://github.com/AojdevStudio/Finance-Guru) — Finance Guru™ - AI-powered family office system built on BMAD-CORE™ v6 architecture
+- [YouMind-OpenLab/awesome-nano-banana-pro-prompts](https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts) — 🍌 6000+ selected Nano Banana Pro prompts with images, multilingual support, and instant gallery preview. Open-source prompt engineering library
+- [pixlcore/xyops](https://github.com/pixlcore/xyops) — A complete workflow automation and server monitoring system.
+- [papra-hq/papra](https://github.com/papra-hq/papra) — The minimalistic document archiving platform.
+- [numman-ali/n-skills](https://github.com/numman-ali/n-skills) — Curated plugin marketplace for AI agents - works with Claude Code, Codex, and openskills
+- [ariya/phantomjs](https://github.com/ariya/phantomjs) — Scriptable Headless Browser
+- [wshobson/agents](https://github.com/wshobson/agents) — Intelligent automation and multi-agent orchestration for Claude Code
+- [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) — Browser automation CLI for AI agents
+- [browser-use/web-ui](https://github.com/browser-use/web-ui) — 🖥️ Run AI Agent in your browser.
+- [reworkd/AgentGPT](https://github.com/reworkd/AgentGPT) — 🤖 Assemble, configure, and deploy autonomous AI Agents in your browser.
+- [nimin1/system-design-vibecoding](https://github.com/nimin1/system-design-vibecoding) — System Design explained from first principles to senior engineer-level thinking, with a focus on AI-assisted (vibecoding) development. Learn how to reason about systems, understand trade-offs, and validate AI-generated designs beyond just working code.
+- [Ramakm/AI-ML-Book-References](https://github.com/Ramakm/AI-ML-Book-References) — This repository is for all those AI enthusiastics who actually loves to read books and learn.
+- [breezedeus/CnOCR](https://github.com/breezedeus/CnOCR) — CnOCR: Awesome Chinese/English OCR Python toolkits based on PyTorch. It comes with 20+ well-trained models for different application scenarios and can be used directly after installation. 【基于 PyTorch/MXNet 的中文/英文 OCR Python 包。】
+- [lss233/kirara-ai](https://github.com/lss233/kirara-ai) — 🤖 可 DIY 的 多模态 AI 聊天机器人 | 🚀 快速接入 微信、 QQ、Telegram、等聊天平台 | 🦈支持DeepSeek、Grok、Claude、Ollama、Gemini、OpenAI | 工作流系统、网页搜索、AI画图、人设调教、虚拟女仆、语音对话 | 
+- [czhou578/llm-god](https://github.com/czhou578/llm-god) — Desktop app to multi-prompt ChatGPT, Gemini and more at the same time!
+- [FunAudioLLM/CosyVoice](https://github.com/FunAudioLLM/CosyVoice) — Multi-lingual large voice generation model, providing inference, training and deployment full-stack ability.
+- [ItzCrazyKns/Perplexica](https://github.com/ItzCrazyKns/Perplexica) — Perplexica is an AI-powered answering engine.
+- [slopus/happy](https://github.com/slopus/happy) — Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured
+- [RevenueCat/purchases-ios](https://github.com/RevenueCat/purchases-ios) — In-app purchases and subscriptions made easy. Support for iOS, watchOS, tvOS, macOS, and visionOS.
+- [open-meteo/open-meteo](https://github.com/open-meteo/open-meteo) — Free Weather Forecast API for non-commercial use
+- [ckissi/Learn-by-projects](https://github.com/ckissi/Learn-by-projects) — Programming tutorials for C, C#, Python, Javascript, Typescript, React, Go, HTML/CSS, Java. PHP and more
+- [kimtaeyoon83/mcp-server-youtube-transcript](https://github.com/kimtaeyoon83/mcp-server-youtube-transcript) — This is an MCP server that allows you to directly download transcripts of YouTube videos.
+- [DayuanJiang/next-ai-draw-io](https://github.com/DayuanJiang/next-ai-draw-io) — A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.
+- [sherlock-project/sherlock](https://github.com/sherlock-project/sherlock) — Hunt down social media accounts by username across social networks
+- [oxylabs/ai-crawler-py](https://github.com/oxylabs/ai-crawler-py) — Crawl a website starting from a URL, find relevant pages, and extract data – all guided by your natural language prompt.
+- [ampache/ampache](https://github.com/ampache/ampache) — A web based audio/video streaming application and file manager allowing you to access your music & videos from anywhere, using almost any internet enabled device.
+- [cjpais/Handy](https://github.com/cjpais/Handy) — A free, open source, and extensible speech-to-text application that works completely offline.
+- [Gautham495/react-native-speech-recognition-kit](https://github.com/Gautham495/react-native-speech-recognition-kit) — React Native Turbo Module to access Speech Recognition in Android & iOS
+- [sufyan297/react-native-voice-to-text](https://github.com/sufyan297/react-native-voice-to-text) — This can use to convert voice to text real time in device
+- [MiroMindAI/MiroTrain](https://github.com/MiroMindAI/MiroTrain) — MiroTrain is an efficient and algorithm-first framework research agent.
+- [Liquid4All/cookbook](https://github.com/Liquid4All/cookbook) — Examples, end-2-end tutorials and apps built using Liquid AI Foundational Models (LFM) and the LEAP SDK
+- [remsky/Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI) — Dockerized FastAPI wrapper for Kokoro-82M text-to-speech model w/CPU ONNX and NVIDIA GPU PyTorch support, handling, and auto-stitching
+- [technomancer702/nodecast-tv](https://github.com/technomancer702/nodecast-tv) — A self-hosted web application that lets you stream Live TV, Movies, and Series from your Xtream Codes or M3U provider directly in your browser. It's built with performance in mind and handles large libraries smoothly.
+- [rberg27/doom-coding](https://github.com/rberg27/doom-coding) — A guide for how to use your smartphone to code anywhere at anytime. 
+- [MiroMindAI/MiroThinker](https://github.com/MiroMindAI/MiroThinker) — MiroThinker is an open source deep research agent optimized for research and prediction. It achieves a 80.8% Avg@8 score on the challenging GAIA benchmark.
+- [wojtekmaj/react-pdf](https://github.com/wojtekmaj/react-pdf) — Display PDFs in your React app as easily as if they were images.
+- [lbjlaq/Antigravity-Manager](https://github.com/lbjlaq/Antigravity-Manager) — Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。
+- [microsoft/Security-101](https://github.com/microsoft/Security-101) — 8 Lessons, Kick-start Your Cybersecurity Learning.
+- [chonkie-inc/chunk](https://github.com/chonkie-inc/chunk) — 🚀 The Fastest Chunker in the West 🇺🇸 Upto 1TB/s "semantic" chunking, quick and easy!
+- [videosdk-live/agents](https://github.com/videosdk-live/agents) — Open-source framework for developing real-time multimodal conversational AI agents.
+- [tw93/Mole](https://github.com/tw93/Mole) — 🐹 Deep clean and optimize your Mac.
+- [memvid/memvid](https://github.com/memvid/memvid) — Memory layer for AI Agents. Replace complex RAG pipelines with a serverless, single-file memory layer. Give your agents instant retrieval and long-term memory.
+- [xunbu/docutranslate](https://github.com/xunbu/docutranslate) — 文档（小说、论文、字幕）翻译工具（支持 pdf/word/excel/json/epub/srt...）Document (Novel, Thesis, Subtitle) Translation Tool (Supports pdf/word/excel/json/epub/srt...)
+- [Nutlope/notesGPT](https://github.com/Nutlope/notesGPT) — Record voice notes & transcribe, summarize, and get tasks
+- [kaitranntt/ccs](https://github.com/kaitranntt/ccs) — Switch between Claude accounts, Gemini, Copilot, OpenRouter (300+ models) via CLIProxyAPI OAuth proxy. Visual dashboard, remote proxy support, WebSearch fallback. Zero-config to production-ready.
+- [opendatalab/MinerU](https://github.com/opendatalab/MinerU) — Transforms complex documents like PDFs into LLM-ready markdown/JSON for your Agentic workflows.
+- [The-Pocket/PocketFlow](https://github.com/The-Pocket/PocketFlow) — Pocket Flow: 100-line LLM framework. Let Agents build Agents!
+- [ToolJet/ToolJet](https://github.com/ToolJet/ToolJet) — ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀
+- [QuivrHQ/quivr](https://github.com/QuivrHQ/quivr) — Opiniated RAG for integrating GenAI in your apps 🧠   Focus on your product rather than the RAG. Easy integration in existing products with customisation!  Any LLM: GPT4, Groq, Llama. Any Vectorstore: PGVector, Faiss. Any Files. Anyway you want. 
+- [nanobot-ai/nanobot](https://github.com/nanobot-ai/nanobot) — Build MCP Agents
+- [bytedance/UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop) — The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra
+- [frida/frida](https://github.com/frida/frida) — Clone this repo to build Frida
+- [anthropics/prompt-eng-interactive-tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) — Anthropic's Interactive Prompt Engineering Tutorial
