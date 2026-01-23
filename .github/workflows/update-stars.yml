@@ -1,0 +1,24 @@
+name: Update Starred Repos
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # mỗi ngày
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch stars & update README
+        run: node scripts/updateStars.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git commit -am "chore: update starred repos" || exit 0
+          git push
