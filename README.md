@@ -6,14 +6,7 @@ Updated daily via GitHub Actions.
 
 ## Other
 
-<table>
-  <colgroup>
-    <col style="width: 22%">
-    <col style="width: 78%">
-  </colgroup>
 
-
-</table>
 
 | Repository | Description |
 |------------|-------------|
