@@ -39,17 +39,18 @@ def fetch_starred():
 
         for r in data:
             repos.append({
-                "name": r["full_name"],       # owner/repo
+                "name": r["full_name"],        # owner/repo
                 "url": r["html_url"],
                 "description": r["description"] or "",
                 "topics": r.get("topics", []),
+                "stars": r["stargazers_count"],
+                "last_updated": r["updated_at"][:10],  # YYYY-MM-DD
             })
 
         page += 1
 
     print(f"✅ Fetched {len(repos)} starred repos")
     return repos
-
 # =====================
 # FETCH LANGUAGES (REAL TECH STACK)
 # =====================
