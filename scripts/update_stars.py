@@ -35,12 +35,14 @@ def fetch_starred():
 
         for r in data:
             repos.append({
-                "name": r["full_name"],
-                "url": r["html_url"],
-                "description": r["description"] or "",
-                "topics": r.get("topics", []),
-                "language": r.get("language"),
-            })
+    "name": r["full_name"],
+    "url": r["html_url"],
+    "description": r["description"] or "",
+    "topics": r.get("topics", []),
+    "language": r.get("language"),
+    "languages_url": r.get("languages_url"),
+})
+          
 
         page += 1
 
@@ -50,66 +52,25 @@ def fetch_starred():
 # TECH STACK INFERENCE
 # =====================
 def infer_techstack(repo):
-    tech = set()
+    if not repo.get("languages_url"):
+        return ""
 
-    # 1. Primary language
-    if repo["language"]:
-        tech.add(repo["language"])
+    resp = requests.get(repo["languages_url"])
+    if resp.status_code != 200:
+        return ""
 
-    text = f"{repo['name']} {repo['description']}".lower()
-    topics = [t.lower() for t in repo.get("topics", [])]
+    data = resp.json()
+    if not data:
+        return ""
 
-    blob = " ".join([text] + topics)
+    total = sum(data.values())
+    stacks = []
 
-    rules = {
-        # LLM / AI
-        "llm": "LLM",
-        "gpt": "GPT",
-        "transformer": "Transformer",
-        "diffusion": "Diffusion",
-        "agent": "Agent",
-        "rag": "RAG",
+    for lang, size in sorted(data.items(), key=lambda x: x[1], reverse=True):
+        percent = round(size / total * 100, 1)
+        stacks.append(f"{lang} {percent}%")
 
-        # CV / OCR / Speech
-        "ocr": "OCR",
-        "vision": "Computer Vision",
-        "cv": "Computer Vision",
-        "asr": "ASR",
-        "speech": "Speech",
-        "tts": "TTS",
-
-        # Frameworks
-        "pytorch": "PyTorch",
-        "torch": "PyTorch",
-        "tensorflow": "TensorFlow",
-        "jax": "JAX",
-        "onnx": "ONNX",
-
-        # Infra / Dev
-        "docker": "Docker",
-        "kubernetes": "K8s",
-        "fastapi": "FastAPI",
-        "flask": "Flask",
-        "grpc": "gRPC",
-        "streamlit": "Streamlit",
-        "gradio": "Gradio",
-
-        # Data
-        "vector": "Vector DB",
-        "faiss": "FAISS",
-        "milvus": "Milvus",
-        "pinecone": "Pinecone",
-    }
-
-    for k, v in rules.items():
-        if k in blob:
-            tech.add(v)
-
-    # fallback nếu quá nghèo
-    if len(tech) <= 1:
-        tech.add("Library")
-
-    return ", ".join(sorted(tech))
+    return ", ".join(stacks)
 # =====================
 # CATEGORIZATION
 # =====================
