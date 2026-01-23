@@ -53,30 +53,40 @@ def infer_techstack(repo):
     if repo["language"]:
         tech.add(repo["language"])
 
-    for t in repo.get("topics", []):
-        if t.lower() in ["llm", "ai", "ocr", "vision", "nlp", "agent"]:
-            tech.add(t.upper())
+    for t in repo["topics"]:
+        tech.add(t)
 
-    return sorted(tech)
+    name = repo["name"].lower()
+    desc = repo["description"].lower()
 
+    if "llm" in name or "llm" in desc:
+        tech.add("LLM")
+    if "ocr" in name or "ocr" in desc:
+        tech.add("OCR")
+
+    return ", ".join(sorted(tech))
 
 # =====================
 # CATEGORIZATION
 # =====================
 def categorize_repos(repos):
-    categories = defaultdict(list)
+    categories = {
+        "AI / LLM": [],
+        "Automation / Workflow": [],
+        "Chinese / Language": [],
+        "Other": [],
+    }
 
     for repo in repos:
+        text = (repo["name"] + repo["description"]).lower()
+
         repo["techstack"] = infer_techstack(repo)
 
-        topics = repo["topics"]
-        name = repo["name"].lower()
-
-        if any(t in topics for t in ["llm", "ai", "agent"]):
+        if "chinese" in text or "zh" in text:
+            categories["Chinese / Language"].append(repo)
+        elif "llm" in text or "ai" in text:
             categories["AI / LLM"].append(repo)
-        elif any(t in topics for t in ["ocr", "vision"]):
-            categories["OCR / Vision"].append(repo)
-        elif any(t in topics for t in ["workflow", "automation"]):
+        elif "workflow" in text or "automation" in text:
             categories["Automation / Workflow"].append(repo)
         else:
             categories["Other"].append(repo)
@@ -88,19 +98,17 @@ def categorize_repos(repos):
 # MARKDOWN RENDER
 # =====================
 def render_table(repos):
-    rows = []
+    lines = [
+        "| Repo | Description | Tech Stack |",
+        "|------|-------------|------------|",
+    ]
+
     for r in repos:
-        tech = ", ".join(r["techstack"])
-        rows.append(
-            f"| [{r['name']}]({r['url']}) | {r['description']} | {tech} |"
+        lines.append(
+            f"| [{r['name']}]({r['url']}) | {r['description']} | {r['techstack']} |"
         )
 
-    return (
-        "| Repo | Description | Tech Stack |\n"
-        "|------|-------------|------------|\n"
-        + "\n".join(rows)
-    )
-
+    return "\n".join(lines)
 
 def render_category(title, icon, repos):
     if not repos:
@@ -112,16 +120,29 @@ def render_category(title, icon, repos):
 """
 
 
-def render_readme(categorized):
-    md = "# ⭐ Starred Repositories\n\n"
-    md += "_Auto-updated daily via GitHub Actions._\n\n"
+def render_readme(categories):
+    md = [
+        "# ⭐ Starred Repositories",
+        "",
+        "_Auto-updated daily via GitHub Actions_",
+        "",
+    ]
 
-    md += render_category("AI / LLM", "🧠", categorized.get("AI / LLM", []))
-    md += render_category("OCR / Vision", "👁️", categorized.get("OCR / Vision", []))
-    md += render_category("Automation / Workflow", "⚙️", categorized.get("Automation / Workflow", []))
-    md += render_category("Other", "📦", categorized.get("Other", []))
+    icons = {
+        "AI / LLM": "🤖",
+        "Automation / Workflow": "⚙️",
+        "Chinese / Language": "🇨🇳",
+        "Other": "📦",
+    }
 
-    return md
+    for cat, repos in categories.items():
+        if not repos:
+            continue
+        md.append(f"## {icons.get(cat, '📁')} {cat}\n")
+        md.append(render_table(repos))
+        md.append("")
+
+    return "\n".join(md)
 
 
 # =====================
@@ -129,8 +150,8 @@ def render_readme(categorized):
 # =====================
 def main():
     repos = fetch_starred()
-    categorized = categorize_repos(repos)
-    markdown = render_readme(categorized)
+    categories = categorize_repos(repos)
+    markdown = render_readme(categories)
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(markdown)
