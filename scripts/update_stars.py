@@ -52,18 +52,22 @@ def infer_techstack(repo):
     if repo["language"]:
         tech.add(repo["language"])
 
-    for t in repo["topics"]:
-        tech.add(t)
+    text = (repo["name"] + " " + repo["description"]).lower()
 
-    name = repo["name"].lower()
-    desc = repo["description"].lower()
+    keywords = {
+        "llm": "LLM",
+        "ai": "AI",
+        "ocr": "OCR",
+        "vision": "CV",
+        "agent": "Agent",
+        "transformer": "Transformer",
+    }
 
-    if "llm" in name or "llm" in desc:
-        tech.add("LLM")
-    if "ocr" in name or "ocr" in desc:
-        tech.add("OCR")
+    for k, v in keywords.items():
+        if k in text:
+            tech.add(v)
 
-    return ", ".join(sorted(tech))
+    return sorted(tech)
 
 # =====================
 # CATEGORIZATION
