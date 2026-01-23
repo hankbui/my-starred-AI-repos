@@ -1,17 +1,19 @@
 name: Update Starred Repos
 
 permissions:
-  contents: write
+  contents: write   # BẮT BUỘC để push README
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repo
@@ -30,9 +32,8 @@ jobs:
 
       - name: Commit README
         run: |
-          git status
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add README.md
-          git commit -m "chore: auto-update starred repos" || echo "No changes"
+          git commit -m "chore: update starred repos" || exit 0
           git push
