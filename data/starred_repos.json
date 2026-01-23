@@ -1,0 +1,25 @@
+def categorize_repos(repos):
+    categories = defaultdict(list)
+
+    for repo in repos:
+        print(f"🔍 {repo['name']}")
+
+        repo["techstack"] = fetch_languages(repo["name"])
+        repo["flags"] = repo_flags(repo)
+
+        text = (repo["name"] + " " + repo["description"]).lower()
+        topics = [t.lower() for t in repo["topics"]]
+
+        if any(k in text or k in topics for k in ["llm", "ai", "agent", "gpt", "transformer"]):
+            cat = "AI / LLM"
+        elif any(k in text or k in topics for k in ["ocr", "vision"]):
+            cat = "OCR / Vision"
+        elif any(k in text or k in topics for k in ["workflow", "automation"]):
+            cat = "Automation / Workflow"
+        else:
+            cat = "Other"
+
+        repo["category"] = cat
+        categories[cat].append(repo)
+
+    return categories
