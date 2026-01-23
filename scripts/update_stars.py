@@ -14,9 +14,10 @@ def fetch_starred():
     repos = []
     page = 1
 
-    headers = {
-        "Accept": "application/vnd.github.mercy-preview+json"
-    }
+   headers = {
+    "Authorization": f"Bearer {os.getenv('GITHUB_TOKEN')}"
+}
+requests.get(url, headers=headers)
 
     while True:
         url = f"https://api.github.com/users/{GITHUB_USER}/starred"
