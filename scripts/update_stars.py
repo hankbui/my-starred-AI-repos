@@ -111,8 +111,13 @@ def render_table(repos):
     ]
 
     for r in repos:
+        repo_cell = (
+            f"[{r['name']}]({r['url']})"
+            f"⭐ {r['stars']:,} &nbsp;•&nbsp; 🕒 {r['last_updated']}"
+        )
+
         lines.append(
-            f"| [{r['name']}]({r['url']}) | {r['description']} | {r['techstack']} |"
+            f"| {repo_cell} | {r['description']} | {r['techstack']} |"
         )
 
     return "\n".join(lines)
