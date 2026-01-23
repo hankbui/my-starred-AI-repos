@@ -1,7 +1,7 @@
 from scripts.fetch_starred import fetch_starred
 from scripts.categorize import categorize_repos
 from scripts.render_readme import render_readme
-
+from scripts.techstack import infer_techstack
 
 def main():
     # 1. Fetch all starred repos
