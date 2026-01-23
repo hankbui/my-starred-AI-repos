@@ -359,11 +359,13 @@ def render_readme(categories):
 
 
 def export_json(categories):
-    output = []
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+
+    all_repos = []
 
     for cat, repos in categories.items():
         for r in repos:
-            output.append({
+            all_repos.append({
                 "name": r["name"],
                 "url": r["url"],
                 "description": r["description"],
@@ -372,14 +374,27 @@ def export_json(categories):
                 "techstack": r["techstack"],
                 "flags": r["flags"],
                 "category": r["category"],
+                "snapshot_date": today,
             })
 
+    # ensure dirs
     Path("data").mkdir(exist_ok=True)
+    Path("data/history").mkdir(exist_ok=True)
 
+    # 🔥 overwrite latest
     with open("data/starred_repos.json", "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+        json.dump(all_repos, f, indent=2, ensure_ascii=False)
 
-    print(f"📦 Exported {len(output)} repos → data/starred_repos.json")
+    # ❄️ immutable daily snapshot
+    history_file = f"data/history/{today}.json"
+    if not Path(history_file).exists():
+        with open(history_file, "w", encoding="utf-8") as f:
+            json.dump(all_repos, f, indent=2, ensure_ascii=False)
+        print(f"🗂 Snapshot saved → {history_file}")
+    else:
+        print(f"↩️ Snapshot exists → {history_file}")
+
+    print(f"📦 Latest JSON updated ({len(all_repos)} repos)")
 # =====================
 # MAIN
 # =====================
