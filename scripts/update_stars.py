@@ -384,16 +384,13 @@ def export_json(categories):
 # MAIN
 # =====================
 def main():
-    print("🚀 README generator started")
-
     repos = fetch_starred()
     categories = categorize_repos(repos)
-    markdown = render_readme(categories)
 
+    markdown = render_readme(categories)
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(markdown)
 
-    print("✅ README.md generated successfully")
+    export_json(categories)
 
-if __name__ == "__main__":
-    main()
+    print("✅ README.md + JSON exported")
