@@ -1,10 +1,35 @@
-- name: Generate README
-  run: python scripts/main.py
+name: Update Starred Repos README
 
-- name: Commit changes
-  run: |
-    git config user.name "github-actions"
-    git config user.email "actions@github.com"
-    git add README.md
-    git commit -m "chore: update starred repos" || echo "No changes"
-    git push
+on:
+  schedule:
+    - cron: "0 1 * * *"   # mỗi ngày 1 lần (UTC)
+  workflow_dispatch:      # cho phép bấm Run workflow tay
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Generate README
+        run: |
+          python scripts/main.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "chore: auto-update starred repos" || echo "No changes"
+          git push
