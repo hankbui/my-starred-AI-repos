@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,12 @@
                     <p class="subtitle">Curated AI/ML repositories - Trending & My Stars</p>
                 </div>
                 <div class="header-actions">
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg id="moon-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
                     <div class="last-updated-badge">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span id="last-updated-time">-</span>
                     </div>
                 </div>
@@ -26,28 +30,28 @@
                     <div class="stat-icon trending">🔥</div>
                     <div class="stat-info">
                         <span class="stat-value" id="trending-count">-</span>
-                        <span class="stat-label">Trending Repos</span>
+                        <span class="stat-label">Trending</span>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon starred">⭐</div>
                     <div class="stat-info">
                         <span class="stat-value" id="starred-count">-</span>
-                        <span class="stat-label">My Starred</span>
+                        <span class="stat-label">My Stars</span>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon total">📁</div>
                     <div class="stat-info">
                         <span class="stat-value" id="total-count">-</span>
-                        <span class="stat-label">Total Repos</span>
+                        <span class="stat-label">Total</span>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon stars">⭐</div>
                     <div class="stat-info">
                         <span class="stat-value" id="total-stars">-</span>
-                        <span class="stat-label">Total Stars</span>
+                        <span class="stat-label">Stars</span>
                     </div>
                 </div>
             </div>
@@ -56,11 +60,11 @@
         <div class="tabs-container">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="trending">
-                    🔥 Trending Repos
+                    🔥 Trending
                     <span class="count" id="trending-tab-count">-</span>
                 </button>
                 <button class="tab-btn" data-tab="starred">
-                    ⭐ My Starred Repos
+                    ⭐ My Stars
                     <span class="count" id="starred-tab-count">-</span>
                 </button>
             </div>
@@ -69,23 +73,22 @@
         <div id="trending-section" class="tab-content active">
             <div class="filters-section">
                 <div class="search-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                     <div class="search-box">
-                        <input type="text" id="trending-search" placeholder="Search trending repos...">
+                        <input type="text" id="trending-search" placeholder="Search repos...">
                     </div>
                 </div>
-                <div class="filter-tabs" id="trending-filters">
-                </div>
+                <div class="filter-tabs" id="trending-filters"></div>
                 <div class="filter-options">
                     <select id="trending-sort">
-                        <option value="stars">Sort by Stars</option>
-                        <option value="updated">Sort by Updated</option>
-                        <option value="name">Sort by Name</option>
+                        <option value="stars">Stars</option>
+                        <option value="updated">Updated</option>
+                        <option value="name">Name</option>
                     </select>
                     <select id="trending-per-page">
-                        <option value="25">25 per page</option>
-                        <option value="50" selected>50 per page</option>
-                        <option value="100">100 per page</option>
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
                     </select>
                 </div>
             </div>
@@ -103,50 +106,45 @@
                             <th class="col-updated">Updated</th>
                         </tr>
                     </thead>
-                    <tbody id="trending-tbody">
-                    </tbody>
+                    <tbody id="trending-tbody"></tbody>
                 </table>
             </div>
 
             <div class="pagination" id="trending-pagination">
                 <button class="page-btn" id="trending-prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                    Prev
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                 </button>
-                <span class="page-info" id="trending-page-info">Page 1 of 1</span>
+                <span class="page-info" id="trending-page-info">Page 1</span>
                 <button class="page-btn" id="trending-next">
-                    Next
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
             </div>
 
             <div class="category-summary">
-                <h3>📊 Category Distribution</h3>
-                <div class="category-bars" id="trending-bars">
-                </div>
+                <h3>📊 Distribution</h3>
+                <div class="category-bars" id="trending-bars"></div>
             </div>
         </div>
 
         <div id="starred-section" class="tab-content">
             <div class="filters-section">
                 <div class="search-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                     <div class="search-box">
-                        <input type="text" id="starred-search" placeholder="Search my starred repos...">
+                        <input type="text" id="starred-search" placeholder="Search repos...">
                     </div>
                 </div>
-                <div class="filter-tabs" id="starred-filters">
-                </div>
+                <div class="filter-tabs" id="starred-filters"></div>
                 <div class="filter-options">
                     <select id="starred-sort">
-                        <option value="stars">Sort by Stars</option>
-                        <option value="updated">Sort by Updated</option>
-                        <option value="name">Sort by Name</option>
+                        <option value="stars">Stars</option>
+                        <option value="updated">Updated</option>
+                        <option value="name">Name</option>
                     </select>
                     <select id="starred-per-page">
-                        <option value="25">25 per page</option>
-                        <option value="50" selected>50 per page</option>
-                        <option value="100">100 per page</option>
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
                     </select>
                 </div>
             </div>
@@ -164,32 +162,28 @@
                             <th class="col-updated">Updated</th>
                         </tr>
                     </thead>
-                    <tbody id="starred-tbody">
-                    </tbody>
+                    <tbody id="starred-tbody"></tbody>
                 </table>
             </div>
 
             <div class="pagination" id="starred-pagination">
                 <button class="page-btn" id="starred-prev">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                    Prev
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                 </button>
-                <span class="page-info" id="starred-page-info">Page 1 of 1</span>
+                <span class="page-info" id="starred-page-info">Page 1</span>
                 <button class="page-btn" id="starred-next">
-                    Next
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
             </div>
 
             <div class="category-summary">
-                <h3>📊 Category Distribution</h3>
-                <div class="category-bars" id="starred-bars">
-                </div>
+                <h3>📊 Distribution</h3>
+                <div class="category-bars" id="starred-bars"></div>
             </div>
         </div>
 
         <footer class="footer">
-            <p>🤖 Auto-updated daily via GitHub Actions • Made with ❤️ by <a href="https://github.com/hankbui" target="_blank">@hankbui</a></p>
+            <p>🤖 Auto-updated daily • Made with ❤️ by <a href="https://github.com/hankbui" target="_blank">@hankbui</a></p>
         </footer>
     </div>
 

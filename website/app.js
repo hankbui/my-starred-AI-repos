@@ -15,25 +15,55 @@ function getCategoryIcon(category) {
     return categoryIcons[category] || '📦';
 }
 
+const ThemeManager = {
+    init() {
+        const toggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        this.updateIcons(savedTheme, sunIcon, moonIcon);
+
+        toggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            this.updateIcons(newTheme, sunIcon, moonIcon);
+        });
+    },
+
+    updateIcons(theme, sunIcon, moonIcon) {
+        if (theme === 'dark') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        }
+    }
+};
+
 async function loadData() {
     try {
         const response = await fetch('data/repos.json');
         if (!response.ok) throw new Error('Failed to load data');
 
         const data = await response.json();
-
         starredRepos.length = 0;
         trendingRepos.length = 0;
         starredRepos.push(...(data.starred_repos || []));
         trendingRepos.push(...(data.trending_repos || []));
 
         document.getElementById('last-updated-time').textContent = data.updated_at;
-        document.getElementById('trending-count').textContent = trendingRepos.length.toLocaleString();
-        document.getElementById('starred-count').textContent = starredRepos.length.toLocaleString();
-        document.getElementById('total-count').textContent = (trendingRepos.length + starredRepos.length).toLocaleString();
+        document.getElementById('trending-count').textContent = trendingRepos.length;
+        document.getElementById('starred-count').textContent = starredRepos.length;
+        document.getElementById('total-count').textContent = trendingRepos.length + starredRepos.length;
 
         const totalStars = [...trendingRepos, ...starredRepos].reduce((sum, r) => sum + r.stars, 0);
-        document.getElementById('total-stars').textContent = totalStars.toLocaleString();
+        document.getElementById('total-stars').textContent = totalStars > 1000 ? (totalStars / 1000).toFixed(1) + 'k' : totalStars;
 
         document.getElementById('trending-tab-count').textContent = trendingRepos.length;
         document.getElementById('starred-tab-count').textContent = starredRepos.length;
@@ -83,8 +113,7 @@ function renderCategoryBars(name, repos) {
     });
 
     const total = repos.length;
-    const sortedCats = Object.entries(categoryCounts)
-        .sort((a, b) => b[1] - a[1]);
+    const sortedCats = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
 
     container.innerHTML = sortedCats.map(([cat, count]) => {
         const percentage = total > 0 ? (count / total) * 100 : 0;
@@ -221,13 +250,14 @@ const TableManager = {
         }
 
         const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
-        document.getElementById(name + '-page-info').textContent = `Page ${m.currentPage} of ${totalPages || 1}`;
+        document.getElementById(name + '-page-info').textContent = `Page ${m.currentPage}`;
         document.getElementById(name + '-prev').disabled = m.currentPage === 1;
         document.getElementById(name + '-next').disabled = m.currentPage >= totalPages;
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
     TabManager.init();
     loadData();
 });
