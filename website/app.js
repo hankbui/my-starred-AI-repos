@@ -1,11 +1,6 @@
-let allRepos = [];
-let filteredRepos = [];
-let currentPage = 1;
-let reposPerPage = 50;
-let currentFilter = 'all';
-let currentSort = 'stars';
-
-const repoIcons = {
+const starredRepos = [];
+const trendingRepos = [];
+const categoryIcons = {
     '🤖 AI / LLM': '🤖',
     '👁️ Vision / OCR': '👁️',
     '⚙️ Automation': '⚙️',
@@ -16,79 +11,87 @@ const repoIcons = {
     '📦 Other': '📦'
 };
 
-async function loadData() {
-    const loadingEl = document.getElementById('repos-tbody');
-    loadingEl.innerHTML = '<tr><td colspan="7" class="loading">Loading repositories...</td></tr>';
+function getCategoryIcon(category) {
+    return categoryIcons[category] || '📦';
+}
 
+async function loadData() {
     try {
         const response = await fetch('data/repos.json');
-        if (!response.ok) {
-            throw new Error('Failed to load data');
-        }
+        if (!response.ok) throw new Error('Failed to load data');
 
         const data = await response.json();
-        allRepos = data.repos;
-        filteredRepos = [...allRepos];
+
+        starredRepos.length = 0;
+        trendingRepos.length = 0;
+        starredRepos.push(...(data.starred_repos || []));
+        trendingRepos.push(...(data.trending_repos || []));
 
         document.getElementById('last-updated-time').textContent = data.updated_at;
-        document.getElementById('total-repos').textContent = data.total_count.toLocaleString();
+        document.getElementById('trending-count').textContent = trendingRepos.length.toLocaleString();
+        document.getElementById('starred-count').textContent = starredRepos.length.toLocaleString();
+        document.getElementById('total-count').textContent = (trendingRepos.length + starredRepos.length).toLocaleString();
 
-        const totalStars = allRepos.reduce((sum, r) => sum + r.stars, 0);
+        const totalStars = [...trendingRepos, ...starredRepos].reduce((sum, r) => sum + r.stars, 0);
         document.getElementById('total-stars').textContent = totalStars.toLocaleString();
 
-        initCategoryTabs();
-        initCategorySummary();
-        applyFiltersAndSort();
+        document.getElementById('trending-tab-count').textContent = trendingRepos.length;
+        document.getElementById('starred-tab-count').textContent = starredRepos.length;
+
+        initCategoryFilters('trending', trendingRepos);
+        initCategoryFilters('starred', starredRepos);
+
+        TableManager.init('trending', trendingRepos);
+        TableManager.init('starred', starredRepos);
+
     } catch (error) {
         console.error('Error loading data:', error);
-        loadingEl.innerHTML = '<tr><td colspan="7" class="no-results">Failed to load repositories. Please try again later.</td></tr>';
     }
 }
 
-function initCategoryTabs() {
-    const categories = [...new Set(allRepos.map(r => r.category))];
-    document.getElementById('total-categories').textContent = categories.length;
+function initCategoryFilters(name, repos) {
+    const container = document.getElementById(name + '-filters');
+    const categories = [...new Set(repos.map(r => r.category))];
+    const total = repos.length;
 
-    const tabsContainer = document.getElementById('category-tabs');
-    tabsContainer.innerHTML = '';
+    let html = `<button class="filter-tab active" data-filter="all">All (${total})</button>`;
 
     categories.sort().forEach(cat => {
-        const count = allRepos.filter(r => r.category === cat).length;
-        const tab = document.createElement('button');
-        tab.className = 'filter-tab';
-        tab.dataset.filter = cat;
-        tab.innerHTML = `${repoIcons[cat] || '📁'} ${cat.split(' ')[0]} (${count})`;
-        tabsContainer.appendChild(tab);
+        const count = repos.filter(r => r.category === cat).length;
+        const icon = getCategoryIcon(cat);
+        html += `<button class="filter-tab" data-filter="${cat}">${icon} ${cat.split(' ')[0]} (${count})</button>`;
     });
 
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            currentFilter = tab.dataset.filter;
-            currentPage = 1;
-            applyFiltersAndSort();
+    container.innerHTML = html;
+
+    container.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            container.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            e.target.classList.add('active');
+            TableManager.get(name).currentFilter = e.target.dataset.filter;
+            TableManager.get(name).currentPage = 1;
+            TableManager.get(name).filter();
         });
     });
 }
 
-function initCategorySummary() {
-    const barsContainer = document.getElementById('category-bars');
+function renderCategoryBars(name, repos) {
+    const container = document.getElementById(name + '-bars');
     const categoryCounts = {};
-
-    allRepos.forEach(repo => {
+    repos.forEach(repo => {
         categoryCounts[repo.category] = (categoryCounts[repo.category] || 0) + 1;
     });
 
-    const total = allRepos.length;
-    const sortedCategories = Object.entries(categoryCounts)
+    const total = repos.length;
+    const sortedCats = Object.entries(categoryCounts)
         .sort((a, b) => b[1] - a[1]);
 
-    barsContainer.innerHTML = sortedCategories.map(([cat, count]) => {
-        const percentage = (count / total) * 100;
+    container.innerHTML = sortedCats.map(([cat, count]) => {
+        const percentage = total > 0 ? (count / total) * 100 : 0;
+        const icon = getCategoryIcon(cat);
         return `
             <div class="category-bar-item">
-                <span class="category-bar-label">${repoIcons[cat] || '📁'} ${cat}</span>
+                <span class="category-bar-label">${icon} ${cat}</span>
                 <div class="category-bar-track">
                     <div class="category-bar-fill" style="width: ${percentage}%"></div>
                 </div>
@@ -98,123 +101,133 @@ function initCategorySummary() {
     }).join('');
 }
 
-function applyFiltersAndSort() {
-    filteredRepos = allRepos.filter(repo => {
-        if (currentFilter !== 'all' && repo.category !== currentFilter) {
-            return false;
-        }
-
-        const searchTerm = document.getElementById('search-input').value.toLowerCase();
-        if (searchTerm) {
-            const searchText = `${repo.name} ${repo.description}`.toLowerCase();
-            if (!searchText.includes(searchTerm)) {
-                return false;
-            }
-        }
-
-        return true;
-    });
-
-    filteredRepos.sort((a, b) => {
-        if (currentSort === 'stars') {
-            return b.stars - a.stars;
-        } else if (currentSort === 'updated') {
-            return new Date(b.updated_at) - new Date(a.updated_at);
-        } else if (currentSort === 'name') {
-            return a.name.localeCompare(b.name);
-        }
-        return 0;
-    });
-
-    renderTable();
-    updatePagination();
-}
-
-function renderTable() {
-    const tbody = document.getElementById('repos-tbody');
-    const start = (currentPage - 1) * reposPerPage;
-    const end = start + reposPerPage;
-    const pageRepos = filteredRepos.slice(start, end);
-
-    if (pageRepos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="no-results">No repositories found.</td></tr>';
-        return;
+const TabManager = {
+    init() {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                e.target.classList.add('active');
+                document.getElementById(e.target.dataset.tab + '-section').classList.add('active');
+            });
+        });
     }
+};
 
-    tbody.innerHTML = pageRepos.map((repo, index) => {
-        const globalIndex = start + index + 1;
-        const repoUrl = repo.url;
-        const repoName = repo.name;
-        const description = repo.description || 'No description';
-        const categoryIcon = repoIcons[repo.category] || '📁';
+const TableManager = {
+    managers: {},
 
-        return `
-            <tr>
-                <td class="col-num">${globalIndex}</td>
-                <td class="col-repo">
-                    <div class="repo-cell">
-                        <a href="${repoUrl}" target="_blank" class="repo-name">${repoName}</a>
-                        <div class="repo-meta">
-                            <span>⭐ ${repo.stars.toLocaleString()}</span>
-                            <span>🕒 ${repo.updated_at}</span>
-                            ${repo.flags && repo.flags.includes('trending') ? '<span>🔥 trending</span>' : ''}
-                        </div>
-                    </div>
-                </td>
-                <td class="col-stars">
-                    <div class="stars-cell">
-                        ⭐ ${repo.stars.toLocaleString()}
-                    </div>
-                </td>
-                <td class="col-forks">
-                    <div class="forks-cell">
-                        🔀 ${repo.forks.toLocaleString()}
-                    </div>
-                </td>
-                <td class="col-desc" title="${description}">${description}</td>
-                <td class="col-category">
-                    <span class="category-badge">${categoryIcon} ${repo.category.split(' ')[0]}</span>
-                </td>
-                <td class="col-updated">${repo.updated_at}</td>
-            </tr>
-        `;
-    }).join('');
-}
+    get(name) {
+        return this.managers[name];
+    },
 
-function updatePagination() {
-    const totalPages = Math.ceil(filteredRepos.length / reposPerPage);
+    init(name, repos) {
+        this.managers[name] = {
+            name,
+            repos,
+            filteredRepos: [...repos],
+            currentPage: 1,
+            reposPerPage: 50,
+            currentFilter: 'all',
+            currentSort: 'stars'
+        };
 
-    document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages || 1}`;
-    document.getElementById('prev-page').disabled = currentPage === 1;
-    document.getElementById('next-page').disabled = currentPage >= totalPages;
-}
+        const m = this.managers[name];
 
-function changePage(delta) {
-    const totalPages = Math.ceil(filtered.length / reposPerPage);
-    currentPage = Math.max(1, Math.min(currentPage + delta, totalPages));
-    renderTable();
-    updatePagination();
+        document.getElementById(name + '-search').addEventListener('input', () => this.filter(name));
+        document.getElementById(name + '-sort').addEventListener('change', (e) => {
+            m.currentSort = e.target.value;
+            this.filter(name);
+        });
+        document.getElementById(name + '-per-page').addEventListener('change', (e) => {
+            m.reposPerPage = parseInt(e.target.value);
+            m.currentPage = 1;
+            this.render(name);
+        });
+        document.getElementById(name + '-prev').addEventListener('click', () => this.changePage(name, -1));
+        document.getElementById(name + '-next').addEventListener('click', () => this.changePage(name, 1));
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+        renderCategoryBars(name, repos);
+        this.render(name);
+    },
 
-document.getElementById('search-input').addEventListener('input', () => {
-    currentPage = 1;
-    applyFiltersAndSort();
+    filter(name) {
+        const m = this.managers[name];
+        const searchTerm = document.getElementById(name + '-search').value.toLowerCase();
+
+        m.filteredRepos = m.repos.filter(repo => {
+            if (m.currentFilter !== 'all' && repo.category !== m.currentFilter) return false;
+            if (searchTerm) {
+                const searchText = (repo.name + ' ' + (repo.description || '')).toLowerCase();
+                if (!searchText.includes(searchTerm)) return false;
+            }
+            return true;
+        });
+
+        m.filteredRepos.sort((a, b) => {
+            if (m.currentSort === 'stars') return b.stars - a.stars;
+            if (m.currentSort === 'updated') return new Date(b.updated_at) - new Date(a.updated_at);
+            return a.name.localeCompare(b.name);
+        });
+
+        m.currentPage = 1;
+        this.render(name);
+    },
+
+    changePage(name, delta) {
+        const m = this.managers[name];
+        const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
+        m.currentPage = Math.max(1, Math.min(m.currentPage + delta, totalPages));
+        this.render(name);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+
+    render(name) {
+        const m = this.managers[name];
+        const tbody = document.getElementById(name + '-tbody');
+        const start = (m.currentPage - 1) * m.reposPerPage;
+        const end = start + m.reposPerPage;
+        const pageRepos = m.filteredRepos.slice(start, end);
+
+        if (pageRepos.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="no-results">No repositories found.</td></tr>';
+        } else {
+            tbody.innerHTML = pageRepos.map((repo, i) => {
+                const idx = start + i + 1;
+                const trending = repo.flags && repo.flags.includes('trending');
+                const catIcon = getCategoryIcon(repo.category);
+
+                return `
+                    <tr data-category="${repo.category}">
+                        <td class="col-num">${idx}</td>
+                        <td class="col-repo">
+                            <div class="repo-cell">
+                                <a href="${repo.url}" target="_blank" class="repo-name">${repo.name}</a>
+                                <div class="repo-meta">
+                                    <span>⭐ ${repo.stars.toLocaleString()}</span>
+                                    <span>🕒 ${repo.updated_at}</span>
+                                    ${trending ? '<span class="trending-badge">🔥 trending</span>' : ''}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-stars"><div class="stars-cell">⭐ ${repo.stars.toLocaleString()}</div></td>
+                        <td class="col-forks"><div class="forks-cell">🔀 ${repo.forks.toLocaleString()}</div></td>
+                        <td class="col-desc" title="${(repo.description || '').replace(/"/g, '&quot;')}">${repo.description || 'No description'}</td>
+                        <td class="col-category"><span class="category-badge ${trending ? 'trending' : ''}">${catIcon} ${repo.category.split(' ')[0]}</span></td>
+                        <td class="col-updated">${repo.updated_at}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
+        document.getElementById(name + '-page-info').textContent = `Page ${m.currentPage} of ${totalPages || 1}`;
+        document.getElementById(name + '-prev').disabled = m.currentPage === 1;
+        document.getElementById(name + '-next').disabled = m.currentPage >= totalPages;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    TabManager.init();
+    loadData();
 });
-
-document.getElementById('sort-select').addEventListener('change', (e) => {
-    currentSort = e.target.value;
-    applyFiltersAndSort();
-});
-
-document.getElementById('per-page-select').addEventListener('change', (e) => {
-    reposPerPage = parseInt(e.target.value);
-    currentPage = 1;
-    applyFiltersAndSort();
-});
-
-document.getElementById('prev-page').addEventListener('click', () => changePage(-1));
-document.getElementById('next-page').addEventListener('click', () => changePage(1));
-
-document.addEventListener('DOMContentLoaded', loadData);
