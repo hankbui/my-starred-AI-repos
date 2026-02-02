@@ -3,82 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⭐ AI Repositories</title>
+    <title>AI Repositories</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app">
         <header class="header">
-            <div class="header-top">
-                <div>
-                    <h1>AI Repositories</h1>
-                    <p class="subtitle">Trending & My Stars</p>
-                </div>
-                <div class="header-actions">
-                    <span class="last-updated-badge">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span id="last-updated-time">-</span>
-                    </span>
-                    <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
-                        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                        <svg id="moon-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    </button>
-                </div>
+            <h1>AI Repositories</h1>
+            <div class="header-right">
+                <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg id="moon-icon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
             </div>
         </header>
 
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-icon">🔥</div>
-                <div class="stat-info">
+        <div class="stats-bar">
+            <div class="stats-row">
+                <div class="stat-item">
                     <span class="stat-value" id="trending-count">-</span>
                     <span class="stat-label">Trending</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-info">
+                <div class="stat-item">
                     <span class="stat-value" id="starred-count">-</span>
                     <span class="stat-label">My Stars</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">📁</div>
-                <div class="stat-info">
+                <div class="stat-item">
                     <span class="stat-value" id="total-count">-</span>
                     <span class="stat-label">Total</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-info">
+                <div class="stat-item">
                     <span class="stat-value" id="total-stars">-</span>
                     <span class="stat-label">Stars</span>
                 </div>
             </div>
-        </div>
-
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="trending">
-                    <span>🔥 Trending</span>
-                    <span class="count" id="trending-tab-count">-</span>
-                </button>
-                <button class="tab-btn" data-tab="starred">
-                    <span>⭐ My Stars</span>
-                    <span class="count" id="starred-tab-count">-</span>
-                </button>
+            <div class="last-updated">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span id="last-updated-time">-</span>
             </div>
         </div>
 
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="trending">
+                <span>🔥 Trending</span>
+                <span class="count" id="trending-tab-count">-</span>
+            </button>
+            <button class="tab-btn" data-tab="starred">
+                <span>⭐ My Stars</span>
+                <span class="count" id="starred-tab-count">-</span>
+            </button>
+        </div>
+
         <div id="trending-section" class="tab-content active">
-            <div class="filters-section">
-                <div class="search-wrapper">
+            <div class="filters-bar">
+                <div class="search-box">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                     <input type="text" id="trending-search" placeholder="Search repos...">
                 </div>
                 <div class="filter-tabs" id="trending-filters"></div>
-                <div class="filter-options">
+                <div class="sort-box">
                     <select id="trending-sort">
                         <option value="stars">Stars</option>
                         <option value="updated">Updated</option>
@@ -103,7 +86,7 @@
                 </table>
             </div>
 
-            <div class="pagination" id="trending-pagination">
+            <div class="pagination">
                 <button class="page-btn" id="trending-prev">←</button>
                 <span class="page-info" id="trending-page-info">1</span>
                 <button class="page-btn" id="trending-next">→</button>
@@ -111,13 +94,13 @@
         </div>
 
         <div id="starred-section" class="tab-content">
-            <div class="filters-section">
-                <div class="search-wrapper">
+            <div class="filters-bar">
+                <div class="search-box">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                     <input type="text" id="starred-search" placeholder="Search repos...">
                 </div>
                 <div class="filter-tabs" id="starred-filters"></div>
-                <div class="filter-options">
+                <div class="sort-box">
                     <select id="starred-sort">
                         <option value="stars">Stars</option>
                         <option value="updated">Updated</option>
@@ -142,7 +125,7 @@
                 </table>
             </div>
 
-            <div class="pagination" id="starred-pagination">
+            <div class="pagination">
                 <button class="page-btn" id="starred-prev">←</button>
                 <span class="page-info" id="starred-page-info">1</span>
                 <button class="page-btn" id="starred-next">→</button>
