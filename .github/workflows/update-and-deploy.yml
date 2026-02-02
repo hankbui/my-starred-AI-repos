@@ -1,10 +1,5 @@
 name: Update Starred Repos
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 on:
   workflow_dispatch:
   schedule:
@@ -16,11 +11,17 @@ on:
       - 'scripts/**'
       - 'data/**'
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  update:
+  update-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -36,36 +37,9 @@ jobs:
         run: |
           pip install requests
 
-      - name: Run generator
+      - name: Generate data
         run: |
           python scripts/generate_data.py
-
-      - name: Commit data changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
-          git commit -m "data: update starred repos snapshot $(date +%Y-%m-%d)" || echo "No data changes"
-          git push
-
-  deploy:
-    needs: update
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Jinja2 for templating
-        run: |
-          pip install jinja2
 
       - name: Generate website
         run: |
@@ -74,7 +48,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
-          static_site_generator: false
+          static_site_generator: none
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
