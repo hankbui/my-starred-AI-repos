@@ -105,39 +105,14 @@ function initCategoryFilters(name, repos) {
     });
 }
 
-function renderCategoryBars(name, repos) {
-    const container = document.getElementById(name + '-bars');
-    const categoryCounts = {};
-    repos.forEach(repo => {
-        categoryCounts[repo.category] = (categoryCounts[repo.category] || 0) + 1;
-    });
-
-    const total = repos.length;
-    const sortedCats = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1]);
-
-    container.innerHTML = sortedCats.map(([cat, count]) => {
-        const percentage = total > 0 ? (count / total) * 100 : 0;
-        const icon = getCategoryIcon(cat);
-        return `
-            <div class="category-bar-item">
-                <span class="category-bar-label">${icon} ${cat}</span>
-                <div class="category-bar-track">
-                    <div class="category-bar-fill" style="width: ${percentage}%"></div>
-                </div>
-                <span class="category-bar-count">${count} (${percentage.toFixed(1)}%)</span>
-            </div>
-        `;
-    }).join('');
-}
-
 const TabManager = {
     init() {
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                e.target.classList.add('active');
-                document.getElementById(e.target.dataset.tab + '-section').classList.add('active');
+                e.target.closest('.tab-btn').classList.add('active');
+                document.getElementById(e.target.closest('.tab-btn').dataset.tab + '-section').classList.add('active');
             });
         });
     }
@@ -168,15 +143,9 @@ const TableManager = {
             m.currentSort = e.target.value;
             this.filter(name);
         });
-        document.getElementById(name + '-per-page').addEventListener('change', (e) => {
-            m.reposPerPage = parseInt(e.target.value);
-            m.currentPage = 1;
-            this.render(name);
-        });
         document.getElementById(name + '-prev').addEventListener('click', () => this.changePage(name, -1));
         document.getElementById(name + '-next').addEventListener('click', () => this.changePage(name, 1));
 
-        renderCategoryBars(name, repos);
         this.render(name);
     },
 
@@ -219,30 +188,20 @@ const TableManager = {
         const pageRepos = m.filteredRepos.slice(start, end);
 
         if (pageRepos.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="no-results">No repositories found.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="6" class="no-results">No repositories found.</td></tr>';
         } else {
             tbody.innerHTML = pageRepos.map((repo, i) => {
                 const idx = start + i + 1;
-                const trending = repo.flags && repo.flags.includes('trending');
                 const catIcon = getCategoryIcon(repo.category);
-
                 return `
-                    <tr data-category="${repo.category}">
+                    <tr>
                         <td class="col-num">${idx}</td>
                         <td class="col-repo">
-                            <div class="repo-cell">
-                                <a href="${repo.url}" target="_blank" class="repo-name">${repo.name}</a>
-                                <div class="repo-meta">
-                                    <span>⭐ ${repo.stars.toLocaleString()}</span>
-                                    <span>🕒 ${repo.updated_at}</span>
-                                    ${trending ? '<span class="trending-badge">🔥 trending</span>' : ''}
-                                </div>
-                            </div>
+                            <a href="${repo.url}" target="_blank" class="repo-name">${repo.name}</a>
                         </td>
-                        <td class="col-stars"><div class="stars-cell">⭐ ${repo.stars.toLocaleString()}</div></td>
-                        <td class="col-forks"><div class="forks-cell">🔀 ${repo.forks.toLocaleString()}</div></td>
-                        <td class="col-desc" title="${(repo.description || '').replace(/"/g, '&quot;')}">${repo.description || 'No description'}</td>
-                        <td class="col-category"><span class="category-badge ${trending ? 'trending' : ''}">${catIcon} ${repo.category.split(' ')[0]}</span></td>
+                        <td class="col-stars">${repo.stars.toLocaleString()}</td>
+                        <td class="col-forks">${repo.forks.toLocaleString()}</td>
+                        <td class="col-category"><span class="category-badge">${catIcon} ${repo.category.split(' ')[0]}</span></td>
                         <td class="col-updated">${repo.updated_at}</td>
                     </tr>
                 `;
@@ -250,7 +209,7 @@ const TableManager = {
         }
 
         const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
-        document.getElementById(name + '-page-info').textContent = `Page ${m.currentPage}`;
+        document.getElementById(name + '-page-info').textContent = m.currentPage;
         document.getElementById(name + '-prev').disabled = m.currentPage === 1;
         document.getElementById(name + '-next').disabled = m.currentPage >= totalPages;
     }
