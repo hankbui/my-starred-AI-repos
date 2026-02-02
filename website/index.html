@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⭐ My Starred AI Repos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-content">
+                <h1>⭐ My Starred AI Repos</h1>
+                <p class="subtitle">Curated collection of AI/ML repositories I love</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <span class="stat-value" id="total-repos">0</span>
+                    <span class="stat-label">Repos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="total-stars">0</span>
+                    <span class="stat-label">Total Stars</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="total-categories">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+            <div class="last-updated">
+                Updated: <span id="last-updated-time">-</span>
+            </div>
+        </header>
+
+        <div class="filters-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search repos...">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <div id="category-tabs"></div>
+            </div>
+            <div class="filter-options">
+                <select id="sort-select">
+                    <option value="stars">Sort by Stars</option>
+                    <option value="updated">Sort by Updated</option>
+                    <option value="name">Sort by Name</option>
+                </select>
+                <select id="per-page-select">
+                    <option value="25">25 per page</option>
+                    <option value="50" selected>50 per page</option>
+                    <option value="100">100 per page</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="repos-table">
+                <thead>
+                    <tr>
+                        <th class="col-num">#</th>
+                        <th class="col-repo">Repository</th>
+                        <th class="col-stars">Stars</th>
+                        <th class="col-forks">Forks</th>
+                        <th class="col-desc">Description</th>
+                        <th class="col-category">Category</th>
+                        <th class="col-updated">Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="repos-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn" id="prev-page" disabled>← Prev</button>
+            <span class="page-info" id="page-info">Page 1 of 1</span>
+            <button class="page-btn" id="next-page">Next →</button>
+        </div>
+
+        <div class="category-summary" id="category-summary">
+            <h3>📊 Category Distribution</h3>
+            <div class="category-bars" id="category-bars"></div>
+        </div>
+
+        <footer class="footer">
+            <p>🤖 Auto-updated daily via GitHub Actions</p>
+            <p>Made with ❤️ by <a href="https://github.com/hankbui" target="_blank">@hankbui</a></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
