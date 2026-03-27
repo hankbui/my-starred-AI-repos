@@ -1,61 +1,36 @@
-
-name: Update Starred Repos
+mkdir -p .github/workflows
+cat > .github/workflows/update-repos.yml << 'EOF'
+name: Update AI Repos Data
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
-  push:
-    branches:
-      - main
-    paths:
-      - 'scripts/**'
-      - 'data/**'
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
-  update-and-deploy:
+  update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          pip install requests
-
-      - name: Generate data
+          python-version: '3.10'
+      - run: pip install -r requirements.txt
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/generate_data.py
-
-      - name: Generate website
-        run: |
           python scripts/generate_website.py
+      - run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data/ website/
+          git commit -m "chore: update repos data" || true
+          git push
+EOF
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: none
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: website
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+git add .github/workflows/update-repos.yml
+git commit -m "Add GitHub Actions workflow"
+git push
