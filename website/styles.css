@@ -348,6 +348,71 @@ a {
     background: #0f141b;
 }
 
+.copy-toolbar {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: auto;
+}
+
+.copy-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.copy-toggle input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--accent-strong);
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(99, 207, 255, 0.08);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.copy-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.copy-btn:hover {
+    border-color: var(--border-strong);
+    background: rgba(99, 207, 255, 0.14);
+    color: #dff6ff;
+}
+
+.copy-btn:focus {
+    outline: none;
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 0 3px rgba(63, 167, 255, 0.16);
+}
+
 .pagination-bottom {
     margin-top: 14px;
     margin-bottom: 0;
@@ -740,9 +805,16 @@ a {
         justify-content: center;
     }
 
+    .copy-toolbar {
+        width: 100%;
+        justify-content: space-between;
+        margin-right: 0;
+    }
+
     .pager-btn,
     .pager-info,
-    .pager-size-wrap {
+    .pager-size-wrap,
+    .copy-btn {
         width: 100%;
     }
 

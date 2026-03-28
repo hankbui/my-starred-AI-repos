@@ -3,6 +3,7 @@ const state = {
     filteredRepos: [],
     currentPage: 1,
     perPage: 50,
+    copyCurrentPageOnly: false,
     category: 'all',
     minStars: 0,
     sort: 'stars_desc',
@@ -309,6 +310,7 @@ function renderPagination() {
     });
 
     document.getElementById('results-meta').textContent = `${totalItems.toLocaleString()} visible repos`;
+    renderCopyToolbar();
 }
 
 function changePage(delta) {
@@ -317,6 +319,88 @@ function changePage(delta) {
     renderTable();
     renderPagination();
     document.getElementById('repos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function getCurrentPageRepos() {
+    const start = (state.currentPage - 1) * state.perPage;
+    return state.filteredRepos.slice(start, start + state.perPage);
+}
+
+function getCopyRows() {
+    return state.copyCurrentPageOnly ? getCurrentPageRepos() : state.filteredRepos;
+}
+
+function buildCopyPayload(repos) {
+    const lines = ['repo\tgit_link'];
+
+    repos.forEach((repo) => {
+        lines.push(`${repo.name}\thttps://github.com/${repo.name}.git`);
+    });
+
+    return lines.join('\n');
+}
+
+async function copyText(text) {
+    if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
+
+function setCopyFeedback(label) {
+    document.querySelectorAll('.copy-btn span').forEach((element) => {
+        element.textContent = label;
+    });
+}
+
+function renderCopyToolbar() {
+    const rows = getCopyRows();
+    const label = state.copyCurrentPageOnly ? `Copy page (${rows.length})` : `Copy filtered (${rows.length})`;
+
+    document.querySelectorAll('.copy-btn span').forEach((element) => {
+        element.textContent = label;
+    });
+
+    document.querySelectorAll('.copy-toggle input').forEach((input) => {
+        input.checked = state.copyCurrentPageOnly;
+    });
+}
+
+function bindCopyToolbar(position) {
+    document.getElementById(`${position}-copy-scope`).addEventListener('change', (event) => {
+        state.copyCurrentPageOnly = event.target.checked;
+        renderCopyToolbar();
+    });
+
+    document.getElementById(`${position}-copy-button`).addEventListener('click', async () => {
+        const reposToCopy = getCopyRows();
+
+        if (reposToCopy.length === 0) {
+            setCopyFeedback('No rows to copy');
+            window.setTimeout(renderCopyToolbar, 1400);
+            return;
+        }
+
+        try {
+            await copyText(buildCopyPayload(reposToCopy));
+            setCopyFeedback(`Copied ${reposToCopy.length}`);
+        } catch (error) {
+            console.error(error);
+            setCopyFeedback('Copy failed');
+        }
+
+        window.setTimeout(renderCopyToolbar, 1400);
+    });
 }
 
 function bindPagination(position) {
@@ -406,6 +490,8 @@ async function loadData() {
 document.addEventListener('DOMContentLoaded', async () => {
     bindNav();
     bindFilters();
+    bindCopyToolbar('top');
+    bindCopyToolbar('bottom');
     bindPagination('top');
     bindPagination('bottom');
 
