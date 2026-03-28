@@ -912,6 +912,27 @@ function bindDrawer() {
     });
 }
 
+function updateBackToTopVisibility() {
+    const button = document.getElementById('back-to-top');
+    const shouldShow = window.scrollY > 640;
+    button.hidden = !shouldShow;
+    button.classList.toggle('visible', shouldShow);
+}
+
+function bindBackToTop() {
+    const button = document.getElementById('back-to-top');
+
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    });
+
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    updateBackToTopVisibility();
+}
+
 async function loadData() {
     const response = await fetch(DATA_URL);
     if (!response.ok) {
@@ -941,6 +962,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindPagination('bottom');
     bindTableInteractions();
     bindDrawer();
+    bindBackToTop();
     closeDrawer();
 
     try {

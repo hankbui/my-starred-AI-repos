@@ -922,6 +922,59 @@ a {
     transform: translateX(0);
 }
 
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 28;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid rgba(99, 207, 255, 0.26);
+    border-radius: 999px;
+    background: rgba(15, 20, 27, 0.9);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.back-to-top svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    border-color: var(--border-strong);
+    background: rgba(19, 27, 37, 0.96);
+}
+
+.back-to-top:focus {
+    outline: none;
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 0 3px rgba(63, 167, 255, 0.16), 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
 .drawer-header {
     display: flex;
     align-items: flex-start;
@@ -1250,6 +1303,11 @@ a {
     .repo-drawer {
         width: 100vw;
         padding: 18px;
+    }
+
+    .back-to-top {
+        right: 14px;
+        bottom: 14px;
     }
 
     .drawer-metric-grid {
