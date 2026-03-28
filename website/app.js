@@ -794,19 +794,33 @@ function buildMarkdownPayload(repos) {
     return lines.join('\n');
 }
 
-function buildExportFilename(extension) {
-    const scope = state.copyCurrentPageOnly ? `page-${state.currentPage}` : 'filtered';
-    const timestamp = (state.updatedAt || new Date().toISOString().slice(0, 10)).replaceAll('/', '-');
-    return `hankbui-${getActiveViewSlug()}-${scope}-${timestamp}.${extension}`;
+function normalizeExportExtension(extension) {
+    const normalized = String(extension || '').trim().toLowerCase().replace(/^\./, '');
+    return normalized === 'md' ? 'md' : 'csv';
 }
 
-function downloadTextFile(filename, content, mimeType) {
+function ensureFilenameExtension(filename, extension) {
+    const normalized = normalizeExportExtension(extension);
+    return filename.toLowerCase().endsWith(`.${normalized}`) ? filename : `${filename}.${normalized}`;
+}
+
+function buildExportFilename(extension, repoCount) {
+    const normalized = normalizeExportExtension(extension);
+    const scope = state.copyCurrentPageOnly ? `page-${state.currentPage}` : 'filtered';
+    const timestamp = (state.updatedAt || new Date().toISOString().slice(0, 10)).replaceAll('/', '-');
+    const count = Number(repoCount || 0).toLocaleString('en-US').replaceAll(',', '');
+    return ensureFilenameExtension(`hankbui-${getActiveViewSlug()}-export-${scope}-${count}-rows-${timestamp}`, normalized);
+}
+
+function downloadTextFile(filename, extension, content, mimeType) {
+    const safeFilename = ensureFilenameExtension(filename, extension);
     const blob = new Blob([content], { type: mimeType });
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
 
     link.href = blobUrl;
-    link.download = filename;
+    link.download = safeFilename;
+    link.setAttribute('download', safeFilename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1027,7 +1041,7 @@ function bindShareAndExport(position) {
         }
 
         try {
-            downloadTextFile(buildExportFilename('csv'), buildCsvPayload(repos), 'text/csv;charset=utf-8');
+            downloadTextFile(buildExportFilename('csv', repos.length), 'csv', buildCsvPayload(repos), 'application/octet-stream');
             setExportFeedback('csv', `CSV (${repos.length})`);
         } catch (error) {
             console.error(error);
@@ -1047,7 +1061,7 @@ function bindShareAndExport(position) {
         }
 
         try {
-            downloadTextFile(buildExportFilename('md'), buildMarkdownPayload(repos), 'text/markdown;charset=utf-8');
+            downloadTextFile(buildExportFilename('md', repos.length), 'md', buildMarkdownPayload(repos), 'application/octet-stream');
             setExportFeedback('md', `MD (${repos.length})`);
         } catch (error) {
             console.error(error);
