@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Repositories</title>
-    <link rel="stylesheet" href="styles.css?v=20260328-4">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260328-5">
 </head>
 <body>
     <div class="site-shell">
@@ -68,6 +69,33 @@
 
                 <div class="history-note" id="history-note" hidden></div>
 
+                <div class="dataset-bar">
+                    <div class="dataset-tabs" role="tablist" aria-label="Repository datasets">
+                        <button class="dataset-tab active" id="starred-tab" data-view="starred" type="button">
+                            <span class="dataset-tab-label">All Repos</span>
+                            <span class="dataset-tab-count" id="starred-tab-count">0</span>
+                        </button>
+                        <button class="dataset-tab" id="trending-tab" data-view="trending" type="button">
+                            <span class="dataset-tab-label">Trending</span>
+                            <span class="dataset-tab-count" id="trending-tab-count">0</span>
+                        </button>
+                    </div>
+                    <div class="dataset-caption" id="dataset-caption">All starred repos</div>
+                </div>
+
+                <div class="preset-strip">
+                    <span class="preset-label">Quick filters</span>
+                    <div class="preset-chips" id="preset-chips">
+                        <button class="preset-chip active" data-preset="all" type="button">All</button>
+                        <button class="preset-chip" data-preset="hot" type="button">Hot</button>
+                        <button class="preset-chip" data-preset="fast-growing" type="button">Fast-growing</button>
+                        <button class="preset-chip" data-preset="recently-updated" type="button">Recently updated</button>
+                        <button class="preset-chip" data-preset="10k-plus" type="button">10k+ stars</button>
+                        <button class="preset-chip" data-preset="agents" type="button">Agents</button>
+                        <button class="preset-chip" data-preset="infra" type="button">Infra</button>
+                    </div>
+                </div>
+
                 <div class="control-grid">
                     <label class="control search-control">
                         <span class="control-label">Search</span>
@@ -86,6 +114,26 @@
                                 <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
                             </span>
                             <select id="category-filter"></select>
+                        </span>
+                    </label>
+
+                    <label class="control">
+                        <span class="control-label">Topic</span>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M7 7h10"/><path d="M9 17h6"/></svg>
+                            </span>
+                            <select id="topic-filter"></select>
+                        </span>
+                    </label>
+
+                    <label class="control">
+                        <span class="control-label">Activity</span>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M4 14h4l2-5 4 10 2-5h4"/></svg>
+                            </span>
+                            <select id="activity-filter"></select>
                         </span>
                     </label>
 
@@ -115,6 +163,7 @@
                             </span>
                             <select id="sort-select">
                                 <option value="stars_desc">Stars</option>
+                                <option value="trend_desc">Trend score</option>
                                 <option value="growth_1d_desc">1d Growth</option>
                                 <option value="growth_7d_desc">7d Growth</option>
                                 <option value="forks_desc">Forks</option>
@@ -216,6 +265,20 @@
         </footer>
     </div>
 
-    <script src="app.js?v=20260328-4"></script>
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="repo-drawer" id="repo-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-overline">Repository Details</div>
+                <h3 class="drawer-title">Overview</h3>
+            </div>
+            <button class="drawer-close" id="drawer-close" type="button" aria-label="Close details">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+
+    <script src="app.js?v=20260328-5"></script>
 </body>
 </html>
