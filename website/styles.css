@@ -236,28 +236,39 @@ a {
     align-items: center;
 }
 
-.control-icon {
+.control-field > .control-icon {
     position: absolute;
     left: 12px;
     top: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
     transform: translateY(-50%);
     color: var(--text-muted);
     pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.control-icon svg {
-    width: 16px;
-    height: 16px;
+.control-field > .control-icon svg {
+    display: block;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    min-height: 18px;
+    flex: 0 0 18px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+.control-field > .control-icon svg * {
+    vector-effect: non-scaling-stroke;
 }
 
 .control input,
@@ -277,6 +288,7 @@ a {
 .control input,
 .control select {
     padding-left: 40px;
+    line-height: 1;
 }
 
 .control select {
