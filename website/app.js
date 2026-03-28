@@ -74,6 +74,10 @@ async function loadData() {
         TableManager.init('trending', trendingRepos);
         TableManager.init('starred', starredRepos);
 
+        if (trendingRepos.length === 0 && starredRepos.length > 0) {
+            TabManager.activate('starred');
+        }
+
     } catch (error) {
         console.error('Error loading data:', error);
     }
@@ -109,11 +113,17 @@ const TabManager = {
     init() {
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                e.target.closest('.tab-btn').classList.add('active');
-                document.getElementById(e.target.closest('.tab-btn').dataset.tab + '-section').classList.add('active');
+                this.activate(e.target.closest('.tab-btn').dataset.tab);
             });
+        });
+    },
+
+    activate(name) {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === name);
+        });
+        document.querySelectorAll('.tab-content').forEach(section => {
+            section.classList.toggle('active', section.id === name + '-section');
         });
     }
 };
