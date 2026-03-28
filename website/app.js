@@ -1,232 +1,337 @@
-const starredRepos = [];
-const trendingRepos = [];
-const categoryIcons = {
-    '🤖 AI / LLM': '🤖',
-    '👁️ Vision / OCR': '👁️',
-    '⚙️ Automation': '⚙️',
-    '📊 Data / ML': '📊',
-    '🔧 Dev Tools': '🔧',
-    '🌐 Web / Cloud': '🌐',
-    '🔐 Security': '🔐',
-    '📦 Other': '📦'
+const state = {
+    repos: [],
+    filteredRepos: [],
+    currentPage: 1,
+    perPage: 50,
+    category: 'all',
+    minStars: 0,
+    sort: 'stars_desc',
+    search: '',
+    updatedAt: '',
 };
 
-function getCategoryIcon(category) {
-    return categoryIcons[category] || '📦';
-}
-
-const ThemeManager = {
-    init() {
-        const toggle = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('sun-icon');
-        const moonIcon = document.getElementById('moon-icon');
-        const html = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        this.updateIcons(savedTheme, sunIcon, moonIcon);
-
-        toggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            this.updateIcons(newTheme, sunIcon, moonIcon);
-        });
-    },
-
-    updateIcons(theme, sunIcon, moonIcon) {
-        if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        }
-    }
+const categoryTones = {
+    'Applications': 'tone-applications',
+    'AI Engineering': 'tone-ai-engineering',
+    'Agents & Automation': 'tone-agents',
+    'Models & Inference': 'tone-models',
+    'Vision & Media': 'tone-vision',
+    'Data & Evaluation': 'tone-data',
+    'Developer Tools': 'tone-devtools',
+    'Infrastructure': 'tone-infra',
+    'Research & Knowledge': 'tone-research',
+    'Other': 'tone-other',
 };
 
-async function loadData() {
-    try {
-        const response = await fetch('data/repos.json');
-        if (!response.ok) throw new Error('Failed to load data');
-
-        const data = await response.json();
-        starredRepos.length = 0;
-        trendingRepos.length = 0;
-        starredRepos.push(...(data.starred_repos || []));
-        trendingRepos.push(...(data.trending_repos || []));
-
-        document.getElementById('last-updated-time').textContent = data.updated_at;
-        document.getElementById('trending-count').textContent = trendingRepos.length;
-        document.getElementById('starred-count').textContent = starredRepos.length;
-        document.getElementById('total-count').textContent = trendingRepos.length + starredRepos.length;
-
-        const totalStars = [...trendingRepos, ...starredRepos].reduce((sum, r) => sum + r.stars, 0);
-        document.getElementById('total-stars').textContent = totalStars > 1000 ? (totalStars / 1000).toFixed(1) + 'k' : totalStars;
-
-        document.getElementById('trending-tab-count').textContent = trendingRepos.length;
-        document.getElementById('starred-tab-count').textContent = starredRepos.length;
-
-        initCategoryFilters('trending', trendingRepos);
-        initCategoryFilters('starred', starredRepos);
-
-        TableManager.init('trending', trendingRepos);
-        TableManager.init('starred', starredRepos);
-
-        if (trendingRepos.length === 0 && starredRepos.length > 0) {
-            TabManager.activate('starred');
-        }
-
-    } catch (error) {
-        console.error('Error loading data:', error);
-    }
+function escapeHtml(value) {
+    return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
 }
 
-function initCategoryFilters(name, repos) {
-    const container = document.getElementById(name + '-filters');
-    const categories = [...new Set(repos.map(r => r.category))];
-    const total = repos.length;
-
-    let html = `<button class="filter-tab active" data-filter="all">All (${total})</button>`;
-
-    categories.sort().forEach(cat => {
-        const count = repos.filter(r => r.category === cat).length;
-        const icon = getCategoryIcon(cat);
-        html += `<button class="filter-tab" data-filter="${cat}">${icon} ${cat.split(' ')[0]} (${count})</button>`;
-    });
-
-    container.innerHTML = html;
-
-    container.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            container.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
-            TableManager.get(name).currentFilter = e.target.dataset.filter;
-            TableManager.get(name).currentPage = 1;
-            TableManager.get(name).filter();
-        });
-    });
+function formatCompactNumber(value) {
+    const number = Number(value || 0);
+    if (number >= 1_000_000) {
+        return `${(number / 1_000_000).toFixed(1)}M`;
+    }
+    if (number >= 1_000) {
+        return `${(number / 1_000).toFixed(1)}k`;
+    }
+    return number.toLocaleString();
 }
 
-const TabManager = {
-    init() {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                this.activate(e.target.closest('.tab-btn').dataset.tab);
-            });
-        });
-    },
+function normalizeRepo(repo) {
+    const name = repo.name || '';
+    const [ownerFromName, repoNameFromName] = name.split('/');
 
-    activate(name) {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.tab === name);
-        });
-        document.querySelectorAll('.tab-content').forEach(section => {
-            section.classList.toggle('active', section.id === name + '-section');
-        });
-    }
-};
+    return {
+        ...repo,
+        owner: repo.owner || ownerFromName || '',
+        repo_name: repo.repo_name || repoNameFromName || name,
+        category: repo.category || 'Other',
+        language: repo.language || 'Unknown',
+        description: repo.description || 'No description provided.',
+        created_at: repo.created_at || '-',
+        updated_at: repo.updated_at || '-',
+    };
+}
 
-const TableManager = {
-    managers: {},
+function getCategoryStats() {
+    const counts = new Map();
 
-    get(name) {
-        return this.managers[name];
-    },
-
-    init(name, repos) {
-        this.managers[name] = {
-            name,
-            repos,
-            filteredRepos: [...repos],
-            currentPage: 1,
-            reposPerPage: 50,
-            currentFilter: 'all',
-            currentSort: 'stars'
+    state.repos.forEach((repo) => {
+        const current = counts.get(repo.category) || {
+            name: repo.category,
+            count: 0,
+            stars: 0,
         };
 
-        const m = this.managers[name];
+        current.count += 1;
+        current.stars += repo.stars;
+        counts.set(repo.category, current);
+    });
 
-        document.getElementById(name + '-search').addEventListener('input', () => this.filter(name));
-        document.getElementById(name + '-sort').addEventListener('change', (e) => {
-            m.currentSort = e.target.value;
-            this.filter(name);
+    return [...counts.values()].sort((left, right) => right.count - left.count);
+}
+
+function populateCategoryFilter() {
+    const select = document.getElementById('category-filter');
+    const categoryStats = getCategoryStats();
+
+    select.innerHTML = [
+        `<option value="all">All categories (${state.repos.length.toLocaleString()})</option>`,
+        ...categoryStats.map(
+            (entry) => `<option value="${escapeHtml(entry.name)}">${escapeHtml(entry.name)} (${entry.count})</option>`,
+        ),
+    ].join('');
+
+    select.value = state.category;
+}
+
+function renderCategoryGrid() {
+    const grid = document.getElementById('category-grid');
+    const cards = getCategoryStats().map((entry) => {
+        const isActive = state.category === entry.name;
+        const tone = categoryTones[entry.name] || categoryTones.Other;
+
+        return `
+            <button class="category-card ${tone} ${isActive ? 'active' : ''}" data-category="${escapeHtml(entry.name)}">
+                <span class="category-card-name">${escapeHtml(entry.name)}</span>
+                <span class="category-card-meta">${entry.count.toLocaleString()} repos</span>
+                <span class="category-card-meta">${formatCompactNumber(entry.stars)} stars</span>
+            </button>
+        `;
+    });
+
+    grid.innerHTML = cards.join('');
+
+    grid.querySelectorAll('.category-card').forEach((button) => {
+        button.addEventListener('click', () => {
+            state.category = button.dataset.category;
+            state.currentPage = 1;
+            document.getElementById('category-filter').value = state.category;
+            applyFilters();
+            document.getElementById('repos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-        document.getElementById(name + '-prev').addEventListener('click', () => this.changePage(name, -1));
-        document.getElementById(name + '-next').addEventListener('click', () => this.changePage(name, 1));
+    });
+}
 
-        this.render(name);
-    },
+function renderStats() {
+    const totalStars = state.repos.reduce((sum, repo) => sum + repo.stars, 0);
 
-    filter(name) {
-        const m = this.managers[name];
-        const searchTerm = document.getElementById(name + '-search').value.toLowerCase();
+    document.getElementById('repo-count').textContent = state.repos.length.toLocaleString();
+    document.getElementById('category-count').textContent = getCategoryStats().length.toLocaleString();
+    document.getElementById('total-stars').textContent = `${formatCompactNumber(totalStars)} stars`;
+    document.getElementById('last-updated-time').textContent = state.updatedAt || '-';
+}
 
-        m.filteredRepos = m.repos.filter(repo => {
-            if (m.currentFilter !== 'all' && repo.category !== m.currentFilter) return false;
-            if (searchTerm) {
-                const searchText = (repo.name + ' ' + (repo.description || '')).toLowerCase();
-                if (!searchText.includes(searchTerm)) return false;
+function sortRepos(repos) {
+    const sorted = [...repos];
+
+    sorted.sort((left, right) => {
+        if (state.sort === 'stars_desc') return right.stars - left.stars;
+        if (state.sort === 'forks_desc') return right.forks - left.forks;
+        if (state.sort === 'updated_desc') return new Date(right.updated_at) - new Date(left.updated_at);
+        if (state.sort === 'created_desc') return new Date(right.created_at) - new Date(left.created_at);
+        return left.name.localeCompare(right.name);
+    });
+
+    return sorted;
+}
+
+function applyFilters() {
+    const query = state.search.trim().toLowerCase();
+
+    state.filteredRepos = sortRepos(
+        state.repos.filter((repo) => {
+            if (state.category !== 'all' && repo.category !== state.category) {
+                return false;
             }
-            return true;
-        });
 
-        m.filteredRepos.sort((a, b) => {
-            if (m.currentSort === 'stars') return b.stars - a.stars;
-            if (m.currentSort === 'updated') return new Date(b.updated_at) - new Date(a.updated_at);
-            return a.name.localeCompare(b.name);
-        });
+            if (repo.stars < state.minStars) {
+                return false;
+            }
 
-        m.currentPage = 1;
-        this.render(name);
-    },
+            if (!query) {
+                return true;
+            }
 
-    changePage(name, delta) {
-        const m = this.managers[name];
-        const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
-        m.currentPage = Math.max(1, Math.min(m.currentPage + delta, totalPages));
-        this.render(name);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
+            const haystack = [
+                repo.name,
+                repo.owner,
+                repo.repo_name,
+                repo.description,
+                repo.category,
+                repo.language,
+            ]
+                .join(' ')
+                .toLowerCase();
 
-    render(name) {
-        const m = this.managers[name];
-        const tbody = document.getElementById(name + '-tbody');
-        const start = (m.currentPage - 1) * m.reposPerPage;
-        const end = start + m.reposPerPage;
-        const pageRepos = m.filteredRepos.slice(start, end);
+            return haystack.includes(query);
+        }),
+    );
 
-        if (pageRepos.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="no-results">No repositories found.</td></tr>';
-        } else {
-            tbody.innerHTML = pageRepos.map((repo, i) => {
-                const idx = start + i + 1;
-                const catIcon = getCategoryIcon(repo.category);
-                return `
-                    <tr>
-                        <td class="col-num">${idx}</td>
-                        <td class="col-repo">
-                            <a href="${repo.url}" target="_blank" class="repo-name">${repo.name}</a>
-                        </td>
-                        <td class="col-stars">${repo.stars.toLocaleString()}</td>
-                        <td class="col-forks">${repo.forks.toLocaleString()}</td>
-                        <td class="col-category"><span class="category-badge">${catIcon} ${repo.category.split(' ')[0]}</span></td>
-                        <td class="col-updated">${repo.updated_at}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
+    const totalPages = Math.max(1, Math.ceil(state.filteredRepos.length / state.perPage));
+    state.currentPage = Math.min(state.currentPage, totalPages);
 
-        const totalPages = Math.ceil(m.filteredRepos.length / m.reposPerPage);
-        document.getElementById(name + '-page-info').textContent = m.currentPage;
-        document.getElementById(name + '-prev').disabled = m.currentPage === 1;
-        document.getElementById(name + '-next').disabled = m.currentPage >= totalPages;
+    renderCategoryGrid();
+    renderTable();
+    renderPagination();
+}
+
+function renderTable() {
+    const tbody = document.getElementById('repos-tbody');
+    const start = (state.currentPage - 1) * state.perPage;
+    const pageRepos = state.filteredRepos.slice(start, start + state.perPage);
+
+    if (pageRepos.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" class="empty-state">No repositories match the current filters.</td>
+            </tr>
+        `;
+        return;
     }
-};
 
-document.addEventListener('DOMContentLoaded', () => {
-    ThemeManager.init();
-    TabManager.init();
-    loadData();
+    tbody.innerHTML = pageRepos
+        .map((repo, index) => {
+            const tone = categoryTones[repo.category] || categoryTones.Other;
+            const rowNumber = start + index + 1;
+
+            return `
+                <tr>
+                    <td class="col-num">${rowNumber}</td>
+                    <td class="col-repo">
+                        <div class="repo-primary">${escapeHtml(repo.owner)}</div>
+                        <a class="repo-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noreferrer">${escapeHtml(repo.repo_name)}</a>
+                    </td>
+                    <td class="col-stars">${repo.stars.toLocaleString()}</td>
+                    <td class="col-forks">${repo.forks.toLocaleString()}</td>
+                    <td class="col-desc">
+                        <div class="desc-text" title="${escapeHtml(repo.description)}">${escapeHtml(repo.description)}</div>
+                    </td>
+                    <td class="col-category">
+                        <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
+                    </td>
+                    <td class="col-language">
+                        <span class="language-pill">${escapeHtml(repo.language)}</span>
+                    </td>
+                    <td class="col-date">${escapeHtml(repo.created_at)}</td>
+                    <td class="col-date">${escapeHtml(repo.updated_at)}</td>
+                </tr>
+            `;
+        })
+        .join('');
+}
+
+function renderPagination() {
+    const totalItems = state.filteredRepos.length;
+    const totalPages = Math.max(1, Math.ceil(totalItems / state.perPage));
+    const label = `${state.currentPage} / ${totalPages} (${totalItems.toLocaleString()} repos)`;
+
+    ['top', 'bottom'].forEach((position) => {
+        document.getElementById(`${position}-page-info`).textContent = label;
+        document.getElementById(`${position}-prev`).disabled = state.currentPage === 1;
+        document.getElementById(`${position}-next`).disabled = state.currentPage === totalPages;
+        document.getElementById(`${position}-per-page`).value = String(state.perPage);
+    });
+
+    document.getElementById('results-meta').textContent = `${totalItems.toLocaleString()} visible repos`;
+}
+
+function changePage(delta) {
+    const totalPages = Math.max(1, Math.ceil(state.filteredRepos.length / state.perPage));
+    state.currentPage = Math.max(1, Math.min(state.currentPage + delta, totalPages));
+    renderTable();
+    renderPagination();
+    document.getElementById('repos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function bindPagination(position) {
+    document.getElementById(`${position}-prev`).addEventListener('click', () => changePage(-1));
+    document.getElementById(`${position}-next`).addEventListener('click', () => changePage(1));
+    document.getElementById(`${position}-per-page`).addEventListener('change', (event) => {
+        state.perPage = Number(event.target.value);
+        state.currentPage = 1;
+        renderTable();
+        renderPagination();
+    });
+}
+
+function bindNav() {
+    document.querySelectorAll('.nav-link[data-section]').forEach((button) => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.nav-link[data-section]').forEach((item) => {
+                item.classList.toggle('active', item === button);
+            });
+            document.getElementById(`${button.dataset.section}-section`).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        });
+    });
+}
+
+function bindFilters() {
+    document.getElementById('repo-search').addEventListener('input', (event) => {
+        state.search = event.target.value;
+        state.currentPage = 1;
+        applyFilters();
+    });
+
+    document.getElementById('category-filter').addEventListener('change', (event) => {
+        state.category = event.target.value;
+        state.currentPage = 1;
+        applyFilters();
+    });
+
+    document.getElementById('stars-filter').addEventListener('change', (event) => {
+        state.minStars = Number(event.target.value);
+        state.currentPage = 1;
+        applyFilters();
+    });
+
+    document.getElementById('sort-select').addEventListener('change', (event) => {
+        state.sort = event.target.value;
+        state.currentPage = 1;
+        applyFilters();
+    });
+}
+
+async function loadData() {
+    const response = await fetch('data/repos.json');
+    if (!response.ok) {
+        throw new Error('Failed to load repository data');
+    }
+
+    const data = await response.json();
+    state.repos = (data.starred_repos || []).map(normalizeRepo);
+    state.updatedAt = data.updated_at || '';
+
+    renderStats();
+    populateCategoryFilter();
+    renderCategoryGrid();
+    applyFilters();
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    bindNav();
+    bindFilters();
+    bindPagination('top');
+    bindPagination('bottom');
+
+    try {
+        await loadData();
+    } catch (error) {
+        console.error(error);
+        document.getElementById('results-meta').textContent = 'Unable to load repository data';
+        document.getElementById('repos-tbody').innerHTML = `
+            <tr>
+                <td colspan="9" class="empty-state">Repository data could not be loaded.</td>
+            </tr>
+        `;
+    }
 });
