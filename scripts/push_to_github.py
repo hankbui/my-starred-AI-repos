@@ -66,6 +66,16 @@ def create_askpass_script():
     return script_path
 
 
+def commits_ahead(branch_name):
+    """Return how many commits the current branch is ahead of origin."""
+    try:
+        ahead_count = run_git(["rev-list", "--count", f"origin/{branch_name}..{branch_name}"])
+    except SystemExit:
+        return 0
+
+    return int(ahead_count or "0")
+
+
 def main():
     """Stage, commit, pull, and push changes."""
     print("=" * 60)
@@ -82,16 +92,19 @@ def main():
         run_git(["status", "--short"])
         run_git(["add", "-A"])
 
-        staged_changes = run_git(["diff", "--cached", "--name-only"])
-        if not staged_changes:
-            print("No changes to commit.")
-            return
-
         current_branch = run_git(["branch", "--show-current"])
         if not current_branch:
             raise SystemExit("Unable to determine the current branch.")
 
-        run_git(["commit", "-m", COMMIT_MESSAGE])
+        staged_changes = run_git(["diff", "--cached", "--name-only"])
+        if not staged_changes:
+            if commits_ahead(current_branch) == 0:
+                print("No changes to commit or push.")
+                return
+            print("No new changes to commit. Pushing existing local commits.")
+        else:
+            run_git(["commit", "-m", COMMIT_MESSAGE])
+
         run_git(["pull", "origin", current_branch, "--rebase"], env=git_env)
         run_git(["push", "origin", current_branch], env=git_env)
     finally:
