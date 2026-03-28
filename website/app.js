@@ -21,6 +21,124 @@ const state = {
 };
 
 const DATA_URL = 'data/repos.json?v=20260328-5';
+const DEFAULT_PER_PAGE = 50;
+const DEFAULT_VIEW = 'starred';
+
+function getDefaultSortForView(view = state.view) {
+    return view === 'trending' ? 'trend_desc' : 'stars_desc';
+}
+
+function hasCustomFilters() {
+    return state.search.trim() !== ''
+        || state.category !== 'all'
+        || state.topic !== 'all'
+        || state.activity !== 'all'
+        || state.minStars !== 0
+        || state.sort !== getDefaultSortForView(state.view);
+}
+
+function buildStateQueryParams() {
+    const params = new URLSearchParams();
+
+    if (state.view !== DEFAULT_VIEW) {
+        params.set('view', state.view);
+    }
+    if (state.search.trim()) {
+        params.set('q', state.search.trim());
+    }
+    if (state.category !== 'all') {
+        params.set('category', state.category);
+    }
+    if (state.topic !== 'all') {
+        params.set('topic', state.topic);
+    }
+    if (state.activity !== 'all') {
+        params.set('activity', state.activity);
+    }
+    if (state.minStars > 0) {
+        params.set('stars', String(state.minStars));
+    }
+    if (state.sort !== getDefaultSortForView(state.view)) {
+        params.set('sort', state.sort);
+    }
+    if (state.perPage !== DEFAULT_PER_PAGE) {
+        params.set('rows', String(state.perPage));
+    }
+    if (state.currentPage > 1) {
+        params.set('page', String(state.currentPage));
+    }
+    if (state.activePreset !== 'all' && state.activePreset !== 'custom') {
+        params.set('preset', state.activePreset);
+    }
+
+    return params;
+}
+
+function syncUrlState() {
+    const url = new URL(window.location.href);
+    const nextQuery = buildStateQueryParams().toString();
+    const currentQuery = url.search.startsWith('?') ? url.search.slice(1) : url.search;
+
+    if (nextQuery === currentQuery) {
+        return;
+    }
+
+    url.search = nextQuery;
+    window.history.replaceState({}, '', url);
+}
+
+function restoreStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const requestedView = params.get('view');
+    const requestedSort = params.get('sort');
+    const requestedPerPage = Number(params.get('rows'));
+    const requestedPage = Number(params.get('page'));
+    const requestedPreset = params.get('preset');
+    const allowedSorts = new Set([
+        'stars_desc',
+        'trend_desc',
+        'growth_1d_desc',
+        'growth_7d_desc',
+        'forks_desc',
+        'updated_desc',
+        'created_desc',
+        'name_asc',
+    ]);
+
+    if (requestedView === 'starred' || requestedView === 'trending') {
+        state.view = requestedView;
+    }
+
+    state.search = params.get('q') || '';
+    state.category = params.get('category') || 'all';
+    state.topic = params.get('topic') || 'all';
+    state.activity = params.get('activity') || 'all';
+
+    if (Number.isFinite(requestedPerPage) && [25, 50, 100].includes(requestedPerPage)) {
+        state.perPage = requestedPerPage;
+    }
+
+    if (Number.isFinite(requestedPage) && requestedPage >= 1) {
+        state.currentPage = Math.floor(requestedPage);
+    }
+
+    const requestedStars = Number(params.get('stars'));
+    if (Number.isFinite(requestedStars) && requestedStars >= 0) {
+        state.minStars = requestedStars;
+    }
+
+    if (requestedSort && allowedSorts.has(requestedSort)) {
+        state.sort = requestedSort;
+    } else {
+        state.sort = getDefaultSortForView(state.view);
+    }
+
+    if (requestedPreset && presetDefinitions[requestedPreset]) {
+        state.activePreset = requestedPreset;
+    } else {
+        state.activePreset = hasCustomFilters() ? 'custom' : 'all';
+    }
+}
 
 const categoryTones = {
     Applications: 'tone-applications',
@@ -153,6 +271,10 @@ function getActiveRepos() {
 
 function getActiveViewLabel() {
     return state.view === 'trending' ? 'trending repos' : 'repos';
+}
+
+function getActiveViewSlug() {
+    return state.view === 'trending' ? 'trending-repos' : 'repos';
 }
 
 function getRepoById(repoId) {
@@ -519,6 +641,7 @@ function renderPagination() {
 
     document.getElementById('results-meta').textContent = `${totalItems.toLocaleString()} visible ${getActiveViewLabel()}`;
     renderCopyToolbar();
+    syncUrlState();
 }
 
 function changePage(delta) {
@@ -534,8 +657,12 @@ function getCurrentPageRepos() {
     return state.filteredRepos.slice(start, start + state.perPage);
 }
 
-function getCopyRows() {
+function getScopedRows() {
     return state.copyCurrentPageOnly ? getCurrentPageRepos() : state.filteredRepos;
+}
+
+function getCopyRows() {
+    return getScopedRows();
 }
 
 function buildCopyPayload(repos) {
@@ -571,6 +698,138 @@ function setCopyFeedback(label) {
     });
 }
 
+function setShareFeedback(label) {
+    document.querySelectorAll('.share-btn span').forEach((element) => {
+        element.textContent = label;
+    });
+}
+
+function setExportFeedback(format, label) {
+    document.querySelectorAll(`.export-btn[data-format="${format}"] span`).forEach((element) => {
+        element.textContent = label;
+    });
+}
+
+function escapeCsvValue(value) {
+    const text = String(value ?? '');
+    if (!/[",\n]/.test(text)) {
+        return text;
+    }
+    return `"${text.replaceAll('"', '""')}"`;
+}
+
+function buildCsvPayload(repos) {
+    const header = [
+        'repo',
+        'github_url',
+        'git_link',
+        'stars',
+        'forks',
+        'category',
+        'activity',
+        'language',
+        'topics',
+        'created_at',
+        'updated_at',
+        'trend_score',
+        'growth_1d',
+        'growth_7d',
+    ];
+    const lines = [header.join(',')];
+
+    repos.forEach((repo) => {
+        lines.push([
+            repo.name,
+            repo.url,
+            `https://github.com/${repo.name}.git`,
+            repo.stars,
+            repo.forks,
+            repo.category,
+            repo.activity,
+            repo.language,
+            repo.topics.join('|'),
+            repo.created_at,
+            repo.updated_at,
+            repo.trend_score.toFixed(2),
+            repo.star_delta_1d ?? '',
+            repo.star_delta_7d ?? '',
+        ].map(escapeCsvValue).join(','));
+    });
+
+    return lines.join('\n');
+}
+
+function escapeMarkdownCell(value) {
+    return String(value ?? '')
+        .replaceAll('\n', ' ')
+        .replaceAll('|', '\\|');
+}
+
+function buildMarkdownPayload(repos) {
+    const filters = [
+        `View: ${state.view === 'trending' ? 'Trending' : 'All Repos'}`,
+        `Scope: ${state.copyCurrentPageOnly ? `Current page (${repos.length})` : `Filtered results (${repos.length})`}`,
+        `Search: ${state.search.trim() || 'None'}`,
+        `Category: ${state.category === 'all' ? 'All' : state.category}`,
+        `Topic: ${state.topic === 'all' ? 'All' : state.topic}`,
+        `Activity: ${state.activity === 'all' ? 'All' : state.activity}`,
+        `Min stars: ${state.minStars.toLocaleString()}`,
+        `Sort: ${state.sort}`,
+        `Exported at: ${new Date().toISOString()}`,
+    ];
+
+    const lines = [
+        '# Filtered Repository Export',
+        '',
+        ...filters.map((entry) => `- ${entry}`),
+        '',
+        '| Repo | Git Link | Stars | Forks | Category | Activity | Topics | Updated |',
+        '| --- | --- | ---: | ---: | --- | --- | --- | --- |',
+    ];
+
+    repos.forEach((repo) => {
+        lines.push(`| ${escapeMarkdownCell(repo.name)} | \`${escapeMarkdownCell(`https://github.com/${repo.name}.git`)}\` | ${repo.stars.toLocaleString()} | ${repo.forks.toLocaleString()} | ${escapeMarkdownCell(repo.category)} | ${escapeMarkdownCell(repo.activity)} | ${escapeMarkdownCell(repo.topics.join(', '))} | ${escapeMarkdownCell(repo.updated_at)} |`);
+    });
+
+    return lines.join('\n');
+}
+
+function buildExportFilename(extension) {
+    const scope = state.copyCurrentPageOnly ? `page-${state.currentPage}` : 'filtered';
+    const timestamp = (state.updatedAt || new Date().toISOString().slice(0, 10)).replaceAll('/', '-');
+    return `hankbui-${getActiveViewSlug()}-${scope}-${timestamp}.${extension}`;
+}
+
+function downloadTextFile(filename, content, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = blobUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    window.setTimeout(() => {
+        URL.revokeObjectURL(blobUrl);
+    }, 0);
+}
+
+function renderActionToolbar() {
+    document.querySelectorAll('.share-btn span').forEach((element) => {
+        element.textContent = 'Share URL';
+    });
+
+    document.querySelectorAll('.export-btn[data-format="csv"] span').forEach((element) => {
+        element.textContent = 'CSV';
+    });
+
+    document.querySelectorAll('.export-btn[data-format="md"] span').forEach((element) => {
+        element.textContent = 'MD';
+    });
+}
+
 function renderCopyToolbar() {
     const rows = getCopyRows();
     const label = state.copyCurrentPageOnly ? `Copy page (${rows.length})` : `Copy filtered (${rows.length})`;
@@ -582,6 +841,8 @@ function renderCopyToolbar() {
     document.querySelectorAll('.copy-toggle input').forEach((input) => {
         input.checked = state.copyCurrentPageOnly;
     });
+
+    renderActionToolbar();
 }
 
 function openDrawer(repo) {
@@ -740,6 +1001,60 @@ function bindCopyToolbar(position) {
         }
 
         window.setTimeout(renderCopyToolbar, 1400);
+    });
+}
+
+function bindShareAndExport(position) {
+    document.getElementById(`${position}-share-button`).addEventListener('click', async () => {
+        try {
+            await copyText(window.location.href);
+            setShareFeedback('Copied URL');
+        } catch (error) {
+            console.error(error);
+            setShareFeedback('Copy failed');
+        }
+
+        window.setTimeout(renderCopyToolbar, 1400);
+    });
+
+    document.getElementById(`${position}-export-csv`).addEventListener('click', () => {
+        const repos = getScopedRows();
+
+        if (repos.length === 0) {
+            setExportFeedback('csv', 'No rows');
+            window.setTimeout(renderCopyToolbar, 1400);
+            return;
+        }
+
+        try {
+            downloadTextFile(buildExportFilename('csv'), buildCsvPayload(repos), 'text/csv;charset=utf-8');
+            setExportFeedback('csv', `CSV (${repos.length})`);
+        } catch (error) {
+            console.error(error);
+            setExportFeedback('csv', 'Failed');
+        }
+
+        window.setTimeout(renderCopyToolbar, 1600);
+    });
+
+    document.getElementById(`${position}-export-md`).addEventListener('click', () => {
+        const repos = getScopedRows();
+
+        if (repos.length === 0) {
+            setExportFeedback('md', 'No rows');
+            window.setTimeout(renderCopyToolbar, 1400);
+            return;
+        }
+
+        try {
+            downloadTextFile(buildExportFilename('md'), buildMarkdownPayload(repos), 'text/markdown;charset=utf-8');
+            setExportFeedback('md', `MD (${repos.length})`);
+        } catch (error) {
+            console.error(error);
+            setExportFeedback('md', 'Failed');
+        }
+
+        window.setTimeout(renderCopyToolbar, 1600);
     });
 }
 
@@ -952,12 +1267,15 @@ async function loadData() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    restoreStateFromUrl();
     bindNav();
     bindFilters();
     bindDatasetTabs();
     bindPresets();
     bindCopyToolbar('top');
     bindCopyToolbar('bottom');
+    bindShareAndExport('top');
+    bindShareAndExport('bottom');
     bindPagination('top');
     bindPagination('bottom');
     bindTableInteractions();

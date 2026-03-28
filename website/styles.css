@@ -462,6 +462,7 @@ a {
 .copy-toolbar {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin-right: auto;
 }
@@ -522,6 +523,78 @@ a {
     outline: none;
     border-color: var(--accent-strong);
     box-shadow: 0 0 0 3px rgba(63, 167, 255, 0.16);
+}
+
+.export-toolbar {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    flex: 0 0 16px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.share-btn {
+    background: rgba(63, 167, 255, 0.08);
+}
+
+.share-btn:hover {
+    border-color: rgba(99, 207, 255, 0.36);
+    background: rgba(63, 167, 255, 0.14);
+    color: #dff6ff;
+}
+
+.export-btn {
+    background: rgba(106, 227, 168, 0.08);
+}
+
+.export-btn:hover {
+    border-color: rgba(106, 227, 168, 0.34);
+    background: rgba(106, 227, 168, 0.14);
+    color: #e9fff4;
+}
+
+.action-btn:focus {
+    outline: none;
+    border-color: var(--accent-strong);
+    box-shadow: 0 0 0 3px rgba(63, 167, 255, 0.16);
+}
+
+.action-btn:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
 }
 
 .pagination-bottom {
@@ -1275,8 +1348,12 @@ a {
 
     .copy-toolbar {
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin-right: 0;
+    }
+
+    .export-toolbar {
+        width: 100%;
     }
 
     .pager-btn,
@@ -1284,6 +1361,10 @@ a {
     .pager-size-wrap,
     .copy-btn {
         width: 100%;
+    }
+
+    .action-btn {
+        flex: 1 1 calc(33.333% - 7px);
     }
 
     .pager-info {
