@@ -8,9 +8,11 @@ const state = {
     sort: 'stars_desc',
     search: '',
     updatedAt: '',
+    historyStartAt: '',
+    historyPoints: 0,
 };
 
-const DATA_URL = 'data/repos.json?v=20260328-2';
+const DATA_URL = 'data/repos.json?v=20260328-3';
 
 const categoryTones = {
     'Applications': 'tone-applications',
@@ -56,9 +58,39 @@ function normalizeRepo(repo) {
         category: repo.category || 'Other',
         language: repo.language || 'Unknown',
         description: repo.description || 'No description provided.',
+        topics: Array.isArray(repo.topics) ? repo.topics : [],
         created_at: repo.created_at || '-',
         updated_at: repo.updated_at || '-',
+        activity: repo.activity || 'Steady',
+        star_delta_1d: typeof repo.star_delta_1d === 'number' ? repo.star_delta_1d : null,
+        star_delta_7d: typeof repo.star_delta_7d === 'number' ? repo.star_delta_7d : null,
+        star_delta_1d_pct: typeof repo.star_delta_1d_pct === 'number' ? repo.star_delta_1d_pct : null,
+        star_delta_7d_pct: typeof repo.star_delta_7d_pct === 'number' ? repo.star_delta_7d_pct : null,
     };
+}
+
+function formatPercent(value) {
+    if (typeof value !== 'number') {
+        return null;
+    }
+    return `${value >= 0 ? '+' : ''}${value.toFixed(2)}%`;
+}
+
+function formatGrowth(delta, pct) {
+    if (typeof delta !== 'number') {
+        return '<span class="growth-empty">warming up</span>';
+    }
+
+    const tone = delta >= 0 ? 'positive' : 'negative';
+    const signedDelta = `${delta >= 0 ? '+' : ''}${delta.toLocaleString()}`;
+    const percentText = formatPercent(pct);
+
+    return `
+        <div class="growth-stack ${tone}">
+            <span class="growth-main">${signedDelta}</span>
+            <span class="growth-sub">${percentText || 'tracked'}</span>
+        </div>
+    `;
 }
 
 function getCategoryStats() {
@@ -126,8 +158,34 @@ function renderStats() {
 
     document.getElementById('repo-count').textContent = state.repos.length.toLocaleString();
     document.getElementById('category-count').textContent = getCategoryStats().length.toLocaleString();
-    document.getElementById('total-stars').textContent = `${formatCompactNumber(totalStars)} stars`;
+    document.getElementById('total-stars').textContent = formatCompactNumber(totalStars);
     document.getElementById('last-updated-time').textContent = state.updatedAt || '-';
+}
+
+function renderHistoryNote() {
+    const note = document.getElementById('history-note');
+    const has1d = state.repos.some((repo) => typeof repo.star_delta_1d === 'number');
+    const has7d = state.repos.some((repo) => typeof repo.star_delta_7d === 'number');
+
+    if (has1d && has7d) {
+        note.hidden = true;
+        note.textContent = '';
+        return;
+    }
+
+    if (!state.historyStartAt) {
+        note.hidden = true;
+        note.textContent = '';
+        return;
+    }
+
+    if (!has1d) {
+        note.textContent = `Growth columns are warming up. Daily history started on ${state.historyStartAt} and there ${state.historyPoints === 1 ? 'is' : 'are'} ${state.historyPoints} snapshot${state.historyPoints === 1 ? '' : 's'} so far, so 1d and 7d star changes will fill in automatically after more daily runs.`;
+    } else {
+        note.textContent = `1d growth is available. 7d growth will appear automatically once at least 7 daily snapshots have been collected.`;
+    }
+
+    note.hidden = false;
 }
 
 function sortRepos(repos) {
@@ -135,6 +193,8 @@ function sortRepos(repos) {
 
     sorted.sort((left, right) => {
         if (state.sort === 'stars_desc') return right.stars - left.stars;
+        if (state.sort === 'growth_1d_desc') return (right.star_delta_1d ?? Number.NEGATIVE_INFINITY) - (left.star_delta_1d ?? Number.NEGATIVE_INFINITY);
+        if (state.sort === 'growth_7d_desc') return (right.star_delta_7d ?? Number.NEGATIVE_INFINITY) - (left.star_delta_7d ?? Number.NEGATIVE_INFINITY);
         if (state.sort === 'forks_desc') return right.forks - left.forks;
         if (state.sort === 'updated_desc') return new Date(right.updated_at) - new Date(left.updated_at);
         if (state.sort === 'created_desc') return new Date(right.created_at) - new Date(left.created_at);
@@ -168,6 +228,8 @@ function applyFilters() {
                 repo.description,
                 repo.category,
                 repo.language,
+                repo.activity,
+                repo.topics.join(' '),
             ]
                 .join(' ')
                 .toLowerCase();
@@ -180,6 +242,7 @@ function applyFilters() {
     state.currentPage = Math.min(state.currentPage, totalPages);
 
     renderCategoryGrid();
+    renderHistoryNote();
     renderTable();
     renderPagination();
 }
@@ -192,7 +255,7 @@ function renderTable() {
     if (pageRepos.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="9" class="empty-state">No repositories match the current filters.</td>
+                <td colspan="10" class="empty-state">No repositories match the current filters.</td>
             </tr>
         `;
         return;
@@ -209,17 +272,21 @@ function renderTable() {
                     <td class="col-repo">
                         <div class="repo-primary">${escapeHtml(repo.owner)}</div>
                         <a class="repo-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noreferrer">${escapeHtml(repo.repo_name)}</a>
+                        <div class="repo-meta-row">
+                            <span class="language-pill">${escapeHtml(repo.language)}</span>
+                            <span class="activity-pill activity-${repo.activity.toLowerCase()}">${escapeHtml(repo.activity)}</span>
+                            ${repo.topics.slice(0, 2).map((topic) => `<span class="topic-pill">${escapeHtml(topic)}</span>`).join('')}
+                        </div>
                     </td>
                     <td class="col-stars">${repo.stars.toLocaleString()}</td>
+                    <td class="col-growth">${formatGrowth(repo.star_delta_1d, repo.star_delta_1d_pct)}</td>
+                    <td class="col-growth">${formatGrowth(repo.star_delta_7d, repo.star_delta_7d_pct)}</td>
                     <td class="col-forks">${repo.forks.toLocaleString()}</td>
                     <td class="col-desc">
                         <div class="desc-text" title="${escapeHtml(repo.description)}">${escapeHtml(repo.description)}</div>
                     </td>
                     <td class="col-category">
                         <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
-                    </td>
-                    <td class="col-language">
-                        <span class="language-pill">${escapeHtml(repo.language)}</span>
                     </td>
                     <td class="col-date">${escapeHtml(repo.created_at)}</td>
                     <td class="col-date">${escapeHtml(repo.updated_at)}</td>
@@ -301,6 +368,21 @@ function bindFilters() {
         state.currentPage = 1;
         applyFilters();
     });
+
+    document.getElementById('reset-filters').addEventListener('click', () => {
+        state.search = '';
+        state.category = 'all';
+        state.minStars = 0;
+        state.sort = 'stars_desc';
+        state.currentPage = 1;
+
+        document.getElementById('repo-search').value = '';
+        document.getElementById('category-filter').value = 'all';
+        document.getElementById('stars-filter').value = '0';
+        document.getElementById('sort-select').value = 'stars_desc';
+
+        applyFilters();
+    });
 }
 
 async function loadData() {
@@ -312,6 +394,8 @@ async function loadData() {
     const data = await response.json();
     state.repos = (data.starred_repos || []).map(normalizeRepo);
     state.updatedAt = data.updated_at || '';
+    state.historyStartAt = data.history_start_at || '';
+    state.historyPoints = data.history_points || 0;
 
     renderStats();
     populateCategoryFilter();
@@ -332,7 +416,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('results-meta').textContent = 'Unable to load repository data';
         document.getElementById('repos-tbody').innerHTML = `
             <tr>
-                <td colspan="9" class="empty-state">Repository data could not be loaded.</td>
+                <td colspan="10" class="empty-state">Repository data could not be loaded.</td>
             </tr>
         `;
     }

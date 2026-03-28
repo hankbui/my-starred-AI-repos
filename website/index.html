@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Repositories</title>
-    <link rel="stylesheet" href="styles.css?v=20260328-2">
+    <link rel="stylesheet" href="styles.css?v=20260328-3">
 </head>
 <body>
     <div class="site-shell">
@@ -20,20 +20,32 @@
 
             <div class="hero-stats">
                 <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/><circle cx="7" cy="6.5" r="1.25"/><circle cx="7" cy="12" r="1.25"/><circle cx="7" cy="17.5" r="1.25"/></svg>
+                    </span>
                     <span class="pill-value" id="repo-count">-</span>
-                    <span class="pill-label">repos</span>
+                    <span class="pill-label">repos tracked</span>
                 </div>
                 <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v5h-7zM13 11h7v9h-7zM4 13h7v7H4z"/></svg>
+                    </span>
                     <span class="pill-value" id="category-count">-</span>
                     <span class="pill-label">categories</span>
                 </div>
                 <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                    </span>
                     <span class="pill-value" id="total-stars">-</span>
-                    <span class="pill-label">stars</span>
+                    <span class="pill-label">total stars</span>
                 </div>
                 <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>
+                    </span>
                     <span class="pill-value" id="last-updated-time">-</span>
-                    <span class="pill-label">updated</span>
+                    <span class="pill-label">last update</span>
                 </div>
             </div>
         </header>
@@ -49,45 +61,74 @@
                 <div class="section-heading">
                     <div>
                         <h2>Repository List</h2>
-                        <p>Search, filter by category, and narrow the list by star count.</p>
+                        <p>Search, filter by category, and narrow the list by stars or momentum.</p>
                     </div>
                     <div class="results-meta" id="results-meta">-</div>
                 </div>
 
+                <div class="history-note" id="history-note" hidden></div>
+
                 <div class="control-grid">
                     <label class="control search-control">
                         <span class="control-label">Search</span>
-                        <input type="search" id="repo-search" placeholder="Search repos, descriptions, categories...">
+                        <span class="control-field control-search">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                            </span>
+                            <input type="search" id="repo-search" placeholder="Search repos, descriptions, categories...">
+                        </span>
                     </label>
 
                     <label class="control">
                         <span class="control-label">Category</span>
-                        <select id="category-filter"></select>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+                            </span>
+                            <select id="category-filter"></select>
+                        </span>
                     </label>
 
                     <label class="control">
                         <span class="control-label">Min Stars</span>
-                        <select id="stars-filter">
-                            <option value="0">All stars</option>
-                            <option value="100">100+</option>
-                            <option value="500">500+</option>
-                            <option value="1000">1k+</option>
-                            <option value="5000">5k+</option>
-                            <option value="10000">10k+</option>
-                            <option value="50000">50k+</option>
-                        </select>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                            </span>
+                            <select id="stars-filter">
+                                <option value="0">All stars</option>
+                                <option value="100">100+</option>
+                                <option value="500">500+</option>
+                                <option value="1000">1k+</option>
+                                <option value="5000">5k+</option>
+                                <option value="10000">10k+</option>
+                                <option value="50000">50k+</option>
+                            </select>
+                        </span>
                     </label>
 
                     <label class="control">
                         <span class="control-label">Sort</span>
-                        <select id="sort-select">
-                            <option value="stars_desc">Stars</option>
-                            <option value="forks_desc">Forks</option>
-                            <option value="updated_desc">Updated</option>
-                            <option value="created_desc">Created</option>
-                            <option value="name_asc">Name</option>
-                        </select>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M7 6h10M7 12h7M7 18h4"/></svg>
+                            </span>
+                            <select id="sort-select">
+                                <option value="stars_desc">Stars</option>
+                                <option value="growth_1d_desc">1d Growth</option>
+                                <option value="growth_7d_desc">7d Growth</option>
+                                <option value="forks_desc">Forks</option>
+                                <option value="updated_desc">Updated</option>
+                                <option value="created_desc">Created</option>
+                                <option value="name_asc">Name</option>
+                            </select>
+                        </span>
                     </label>
+
+                    <button class="control-reset" id="reset-filters" type="button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 1-2.34-5.66"/><path d="M20 4v7h-7"/></svg>
+                        <span>Reset</span>
+                    </button>
                 </div>
 
                 <div class="pagination-bar">
@@ -111,10 +152,11 @@
                                 <th class="col-num">#</th>
                                 <th class="col-repo">Repo</th>
                                 <th class="col-stars">Stars</th>
+                                <th class="col-growth">1d</th>
+                                <th class="col-growth">7d</th>
                                 <th class="col-forks">Forks</th>
                                 <th class="col-desc">Description</th>
                                 <th class="col-category">Category</th>
-                                <th class="col-language">Language</th>
                                 <th class="col-date">Created</th>
                                 <th class="col-date">Updated</th>
                             </tr>
@@ -154,6 +196,6 @@
         </footer>
     </div>
 
-    <script src="app.js?v=20260328-2"></script>
+    <script src="app.js?v=20260328-3"></script>
 </body>
 </html>

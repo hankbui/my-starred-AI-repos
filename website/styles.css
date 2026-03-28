@@ -106,10 +106,33 @@ a {
 }
 
 .stat-pill {
+    position: relative;
     padding: 18px 20px;
     border: 1px solid var(--border);
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.03);
+}
+
+.stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: rgba(99, 207, 255, 0.08);
+    color: var(--accent);
+}
+
+.stat-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .pill-value {
@@ -189,8 +212,8 @@ a {
 
 .control-grid {
     display: grid;
-    grid-template-columns: minmax(260px, 2fr) repeat(3, minmax(180px, 1fr));
-    gap: 14px;
+    grid-template-columns: minmax(240px, 2fr) repeat(3, minmax(168px, 1fr)) 112px;
+    gap: 12px;
     margin-bottom: 18px;
 }
 
@@ -207,17 +230,57 @@ a {
     text-transform: uppercase;
 }
 
+.control-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.control-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.control-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .control input,
 .control select,
-.pager-size {
+.pager-size,
+.control-reset {
     width: 100%;
-    min-height: 52px;
-    padding: 0 16px;
+    min-height: 42px;
+    padding: 0 14px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+    border-radius: 10px;
     background: var(--bg-soft);
     color: var(--text-primary);
     font: inherit;
+}
+
+.control input,
+.control select {
+    padding-left: 40px;
+}
+
+.control select {
+    padding-right: 34px;
 }
 
 .control input::placeholder {
@@ -226,10 +289,50 @@ a {
 
 .control input:focus,
 .control select:focus,
-.pager-size:focus {
+.pager-size:focus,
+.control-reset:focus {
     outline: none;
     border-color: var(--accent-strong);
     box-shadow: 0 0 0 3px rgba(63, 167, 255, 0.16);
+}
+
+.control-reset {
+    align-self: end;
+    background: transparent;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.control-reset svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.control-reset:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
+.history-note {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 184, 87, 0.22);
+    border-radius: 12px;
+    background: rgba(255, 184, 87, 0.08);
+    color: #ffd79a;
+    font-size: 0.92rem;
+    line-height: 1.5;
 }
 
 .pagination-bar {
@@ -238,7 +341,7 @@ a {
     align-items: center;
     justify-content: flex-end;
     gap: 14px;
-    padding: 14px 18px;
+    padding: 12px 16px;
     margin-bottom: 14px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -252,14 +355,14 @@ a {
 
 .pager-btn {
     min-width: 132px;
-    min-height: 54px;
+    min-height: 46px;
     padding: 0 20px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+    border-radius: 10px;
     background: transparent;
     color: var(--text-primary);
     font: inherit;
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 700;
     cursor: pointer;
     transition: 160ms ease;
@@ -279,7 +382,7 @@ a {
     min-width: 220px;
     text-align: center;
     font-family: "Space Grotesk", sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -304,7 +407,7 @@ a {
 
 .repos-table {
     width: 100%;
-    min-width: 1220px;
+    min-width: 1380px;
     border-collapse: collapse;
     background: rgba(255, 255, 255, 0.01);
 }
@@ -351,8 +454,11 @@ a {
     white-space: nowrap;
 }
 
-.col-category,
-.col-language {
+.col-growth {
+    width: 116px;
+}
+
+.col-category {
     width: 170px;
 }
 
@@ -386,6 +492,13 @@ a {
     color: var(--accent);
 }
 
+.repo-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
 .desc-text {
     max-width: 480px;
     color: var(--text-secondary);
@@ -393,13 +506,15 @@ a {
 }
 
 .badge,
-.language-pill {
+.language-pill,
+.topic-pill,
+.activity-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 999px;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     font-weight: 700;
     white-space: nowrap;
 }
@@ -407,6 +522,65 @@ a {
 .language-pill {
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
+}
+
+.topic-pill {
+    background: rgba(99, 207, 255, 0.08);
+    color: #a4e5ff;
+}
+
+.activity-pill {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+}
+
+.activity-hot {
+    background: rgba(77, 224, 168, 0.18);
+    color: #a4f2d0;
+}
+
+.activity-active {
+    background: rgba(99, 207, 255, 0.14);
+    color: #bae9ff;
+}
+
+.activity-steady {
+    background: rgba(255, 184, 87, 0.14);
+    color: #ffd9a2;
+}
+
+.activity-quiet {
+    background: rgba(255, 255, 255, 0.06);
+    color: #b9c4d0;
+}
+
+.growth-stack {
+    display: grid;
+    gap: 4px;
+}
+
+.growth-main {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.growth-sub {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+.growth-stack.positive .growth-main {
+    color: var(--success);
+}
+
+.growth-stack.negative .growth-main {
+    color: #ff8799;
+}
+
+.growth-empty {
+    color: var(--text-muted);
+    font-size: 0.82rem;
 }
 
 .tone-applications {
@@ -475,7 +649,7 @@ a {
     display: grid;
     gap: 8px;
     width: 100%;
-    padding: 18px;
+    padding: 16px;
     border: 1px solid var(--border);
     border-radius: 18px;
     background: #10151d;

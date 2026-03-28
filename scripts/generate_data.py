@@ -5,7 +5,7 @@ Generate repository data from the GitHub API for the website.
 
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "data"
 WEBSITE_DATA_DIR = REPO_ROOT / "website" / "data"
+STAR_HISTORY_FILE = DATA_DIR / "star_history.json"
 ENV_FILE = REPO_ROOT / ".env"
 
 load_dotenv(ENV_FILE)
@@ -23,6 +24,7 @@ GITHUB_USERNAME = os.getenv("GITHUB_USERNAME", "hankbui")
 GITHUB_API_URL = "https://api.github.com"
 MAX_PAGES = 10
 PER_PAGE = 100
+MAX_HISTORY_DAYS = 30
 
 if not GITHUB_TOKEN:
     raise SystemExit("ERROR: GITHUB_TOKEN not found in .env file")
@@ -207,10 +209,106 @@ def normalize_repo(repo):
         "stars": repo["stargazers_count"],
         "forks": repo["forks_count"],
         "language": repo.get("language") or "",
+        "topics": (repo.get("topics") or [])[:3],
         "created_at": repo["created_at"][:10],
         "updated_at": repo["updated_at"][:10],
         "category": category_for_repo(repo),
     }
+
+
+def load_star_history():
+    """Load compact per-day star history for tracked repositories."""
+    if not STAR_HISTORY_FILE.exists():
+        return {}
+
+    try:
+        data = json.loads(STAR_HISTORY_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+    if not isinstance(data, dict):
+        return {}
+
+    return data
+
+
+def save_star_history(history):
+    """Persist compact star history to disk."""
+    pruned_dates = sorted(history.keys())[-MAX_HISTORY_DAYS:]
+    pruned_history = {date_key: history[date_key] for date_key in pruned_dates}
+
+    STAR_HISTORY_FILE.write_text(
+        json.dumps(pruned_history, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+    return pruned_history
+
+
+def get_snapshot_for_date(history, target_date):
+    """Return the nearest snapshot on or before the requested date."""
+    candidates = [date_key for date_key in history.keys() if date_key <= target_date]
+    if not candidates:
+        return None, None
+
+    snapshot_date = max(candidates)
+    return history[snapshot_date], snapshot_date
+
+
+def compute_growth_value(current_stars, snapshot, repo_name):
+    """Compute star delta and percentage from a historical snapshot."""
+    if not snapshot or repo_name not in snapshot:
+        return None, None
+
+    previous_stars = snapshot[repo_name]
+    delta = current_stars - previous_stars
+    pct = None if previous_stars <= 0 else round((delta / previous_stars) * 100, 2)
+    return delta, pct
+
+
+def attach_growth_metrics(repos, history, today):
+    """Attach daily and weekly star growth from stored snapshots."""
+    snapshot_1d, snapshot_1d_date = get_snapshot_for_date(
+        history,
+        (today - timedelta(days=1)).isoformat(),
+    )
+    snapshot_7d, snapshot_7d_date = get_snapshot_for_date(
+        history,
+        (today - timedelta(days=7)).isoformat(),
+    )
+
+    for repo in repos:
+        growth_1d, growth_1d_pct = compute_growth_value(
+            repo["stars"],
+            snapshot_1d,
+            repo["name"],
+        )
+        growth_7d, growth_7d_pct = compute_growth_value(
+            repo["stars"],
+            snapshot_7d,
+            repo["name"],
+        )
+
+        updated_days_ago = (today - datetime.fromisoformat(repo["updated_at"]).date()).days
+
+        if updated_days_ago <= 3:
+            activity = "Hot"
+        elif updated_days_ago <= 14:
+            activity = "Active"
+        elif updated_days_ago <= 45:
+            activity = "Steady"
+        else:
+            activity = "Quiet"
+
+        repo["star_delta_1d"] = growth_1d
+        repo["star_delta_1d_pct"] = growth_1d_pct
+        repo["star_delta_7d"] = growth_7d
+        repo["star_delta_7d_pct"] = growth_7d_pct
+        repo["activity"] = activity
+        repo["history_1d_date"] = snapshot_1d_date
+        repo["history_7d_date"] = snapshot_7d_date
+
+    return repos
 
 
 def fetch_starred_repos():
@@ -252,9 +350,18 @@ def save_data(starred_repos):
     """Save repos to JSON files for both data and website/data."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     WEBSITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    today = datetime.now(timezone.utc).date()
+    today_key = today.isoformat()
+    history = load_star_history()
+
+    starred_repos = attach_growth_metrics(starred_repos, history, today)
+    history[today_key] = {repo["name"]: repo["stars"] for repo in starred_repos}
+    history = save_star_history(history)
 
     payload = {
-        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "updated_at": today_key,
+        "history_start_at": min(history.keys()) if history else today_key,
+        "history_points": len(history),
         "starred_repos": starred_repos,
         "trending_repos": [],
     }
