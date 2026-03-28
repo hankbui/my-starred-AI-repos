@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "data"
+WEBSITE_DATA_DIR = REPO_ROOT / "website" / "data"
 ENV_FILE = REPO_ROOT / ".env"
 
 load_dotenv(ENV_FILE)
@@ -76,6 +77,7 @@ def fetch_starred_repos():
 def save_data(starred_repos):
     """Save repos to JSON file."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    WEBSITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     payload = {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
@@ -83,11 +85,17 @@ def save_data(starred_repos):
         "trending_repos": [],
     }
 
-    with (DATA_DIR / "repos.json").open("w", encoding="utf-8") as file_handle:
-        json.dump(payload, file_handle, indent=2, ensure_ascii=False)
-        file_handle.write("\n")
+    output_paths = [
+        DATA_DIR / "repos.json",
+        WEBSITE_DATA_DIR / "repos.json",
+    ]
 
-    print("Data saved to data/repos.json")
+    for output_path in output_paths:
+        with output_path.open("w", encoding="utf-8") as file_handle:
+            json.dump(payload, file_handle, indent=2, ensure_ascii=False)
+            file_handle.write("\n")
+
+    print("Data saved to data/repos.json and website/data/repos.json")
     print(f"Starred repos: {len(starred_repos)}")
 
 
