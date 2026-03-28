@@ -10,6 +10,8 @@ const state = {
     updatedAt: '',
 };
 
+const DATA_URL = 'data/repos.json?v=20260328-2';
+
 const categoryTones = {
     'Applications': 'tone-applications',
     'AI Engineering': 'tone-ai-engineering',
@@ -302,7 +304,7 @@ function bindFilters() {
 }
 
 async function loadData() {
-    const response = await fetch('data/repos.json');
+    const response = await fetch(DATA_URL);
     if (!response.ok) {
         throw new Error('Failed to load repository data');
     }
