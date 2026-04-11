@@ -1,3 +1,16 @@
+
+https://getdesign.md
+
+
+Now you can find the design systems of top brands using a single DESIGN-md file.
+
+If you don’t know, DESIGN-md is a simple Markdown file used in Google Stitch and AI coding tools to define how your UI should look, like colors, typography, and spacing.
+
+Then you can use this file inside tools like Claude, Cursor, or other AI coding agents to generate UI that follows the same design style :)
+
+
+
+
 # ⭐ My Starred AI Repositories
 
 Auto-updated daily via GitHub Actions.
