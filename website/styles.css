@@ -2030,3 +2030,64 @@ a {
         justify-content: center;
     }
 }
+
+/* ── Prompt Templates ── */
+.ai-ask-label-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.ai-ask-prompts-wrapper { position: relative; }
+.ai-ask-prompts-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 8px;
+    border: 1px solid var(--border); background: rgba(99,207,255,0.06);
+    color: var(--accent); font: inherit; font-size: 0.78rem; font-weight: 700;
+    cursor: pointer; transition: 120ms ease; white-space: nowrap;
+}
+.ai-ask-prompts-btn:hover { background: rgba(99,207,255,0.14); border-color: var(--accent); }
+.ai-ask-prompts-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ai-ask-prompts-btn .prompts-chevron { width: 11px; height: 11px; transition: transform 160ms ease; }
+.ai-ask-prompts-btn.open .prompts-chevron { transform: rotate(180deg); }
+
+.ai-ask-prompts-menu {
+    position: absolute; top: calc(100% + 4px); right: 0; z-index: 100;
+    min-width: 320px; max-width: min(400px, 90vw); max-height: 420px; overflow-y: auto;
+    padding: 8px; border: 1px solid var(--border); border-radius: 12px;
+    background: #1a1f26; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.prompts-group { margin-bottom: 6px; }
+.prompts-group-title {
+    padding: 6px 8px 4px; font-size: 0.72rem; font-weight: 700;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;
+}
+.prompts-item {
+    display: block; width: 100%; text-align: left;
+    padding: 7px 10px; border-radius: 8px; border: none;
+    background: transparent; color: var(--text-secondary); font: inherit;
+    font-size: 0.82rem; line-height: 1.4; cursor: pointer; transition: 100ms ease;
+}
+.prompts-item:hover { background: rgba(99,207,255,0.08); color: var(--text-primary); }
+.prompts-divider { height: 1px; background: var(--border); margin: 6px 0; }
+.prompts-add-btn {
+    display: block; width: 100%; text-align: center;
+    padding: 8px; border-radius: 8px; border: 1px dashed var(--border);
+    background: transparent; color: var(--text-secondary); font: inherit;
+    font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: 120ms ease;
+}
+.prompts-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,207,255,0.06); }
+.prompts-custom-item {
+    display: flex; align-items: center; gap: 4px;
+    padding: 6px 8px; border-radius: 8px; border: none;
+    background: transparent; width: 100%; text-align: left;
+    color: var(--text-secondary); font: inherit; font-size: 0.82rem; cursor: pointer; transition: 100ms ease;
+}
+.prompts-custom-item:hover { background: rgba(99,207,255,0.08); color: var(--text-primary); }
+.prompts-custom-item .prompts-del {
+    margin-left: auto; flex-shrink: 0; opacity: 0.4; cursor: pointer; transition: opacity 120ms ease;
+    width: 18px; height: 18px; border-radius: 4px; border: none;
+    background: transparent; color: #ff6666; font-size: 14px; line-height: 1; display: flex; align-items: center; justify-content: center;
+}
+.prompts-custom-item .prompts-del:hover { opacity: 1; background: rgba(255,100,100,0.15); }
+
+@media (max-width: 720px) {
+    .ai-ask-prompts-menu { min-width: 260px; right: -40px; }
+}

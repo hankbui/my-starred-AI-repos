@@ -348,7 +348,46 @@
             <p class="ai-ask-context" id="ai-ask-context">-</p>
 
             <label class="ai-ask-field">
-                <span class="ai-ask-label">Your question</span>
+                <div class="ai-ask-label-row">
+                    <span class="ai-ask-label">Your question</span>
+                    <div class="ai-ask-prompts-wrapper">
+                        <button class="ai-ask-prompts-btn" id="ask-prompts-btn" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            <span>Prompts</span>
+                            <svg class="prompts-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="ai-ask-prompts-menu" id="ask-prompts-menu" hidden>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">🔥 Discovery & Validation</div>
+                                <button class="prompts-item" data-prompt="Which of these AI tools solve real problems developers face? Look beyond hype — identify pain points, practical utility, and signs of real adoption (stars, forks, recent commits).">Real problems solved</button>
+                                <button class="prompts-item" data-prompt="Which repositories are in the fastest-growing AI categories? Identify: (1) category trend direction, (2) whether adoption is accelerating, (3) which specific repos benefit from market timing.">Trending categories + timing</button>
+                                <button class="prompts-item" data-prompt="Which repos have strongest community validation? Compare: star growth rate, contributor count, fork activity, recent releases. Highlight the top 3 with proven traction.">Strongest validation</button>
+                            </div>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">💰 Build & Ship</div>
+                                <button class="prompts-item" data-prompt="Which of these could be combined to build a practical AI application? Suggest 3 specific combinations of repos (e.g. LLM + vector DB + UI framework) with a use case for each.">Combine to build an app</button>
+                                <button class="prompts-item" data-prompt="Rank these repos by how quickly a solo developer could integrate them into a working MVP. Prioritize: good docs, active maintenance, simple APIs, minimal dependencies.">Fastest to MVP</button>
+                                <button class="prompts-item" data-prompt="Which repos are essential for building an AI coding assistant? Consider: LLM access, code analysis, RAG, agent framework, and IDE integration pieces.">Build an AI coding assistant</button>
+                            </div>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">📊 Market Intelligence</div>
+                                <button class="prompts-item" data-prompt="Group these repos by category. For each group, analyze: (1) is the space growing or saturating? (2) who are the key players? (3) what's missing? Identify gaps worth building in.">Category gaps analysis</button>
+                                <button class="prompts-item" data-prompt="Which repos are in declining or over-saturated categories? Highlight repos to deprioritize and explain why (e.g. better alternatives exist, tech shift, stalled development).">Declining/saturated to skip</button>
+                            </div>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">🤖 Tech Stack</div>
+                                <button class="prompts-item" data-prompt="From this list, recommend a complete AI stack for: (A) a RAG chatbot, (B) an agent automation tool, (C) a code generation app. For each, pick embedding model, vector DB, LLM framework, and orchestration layer.">Pick a stack (RAG/Agent/Code)</button>
+                                <button class="prompts-item" data-prompt="Which repos pair well together? Suggest 3 complementary pairs where two repos cover adjacent parts of the same problem (e.g. LangChain + Chroma, Whisper + pyannote).">Complementary pairs</button>
+                            </div>
+                            <div class="prompts-divider"></div>
+                            <div class="prompts-group" id="prompts-custom-group" hidden>
+                                <div class="prompts-group-title">📝 Your Prompts</div>
+                                <div id="prompts-custom-list"></div>
+                            </div>
+                            <button class="prompts-add-btn" id="ask-prompts-add" type="button">➕ Add your own prompt</button>
+                        </div>
+                    </div>
+                </div>
                 <textarea id="ai-ask-question" class="ai-ask-question" rows="3" spellcheck="false"></textarea>
             </label>
 

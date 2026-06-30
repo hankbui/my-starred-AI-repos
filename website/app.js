@@ -696,6 +696,69 @@ function buildCopyPayload(repos) {
 }
 
 // ---- Ask AI (Google AI Mode) ----
+const PROMPTS_STORAGE_KEY = 'starred-repo-custom-prompts';
+
+function loadCustomPrompts() {
+    try { return JSON.parse(localStorage.getItem(PROMPTS_STORAGE_KEY)) || []; }
+    catch { return []; }
+}
+function saveCustomPrompts(prompts) {
+    localStorage.setItem(PROMPTS_STORAGE_KEY, JSON.stringify(prompts));
+}
+function renderCustomPrompts() {
+    const list = document.getElementById('prompts-custom-list');
+    const group = document.getElementById('prompts-custom-group');
+    const prompts = loadCustomPrompts();
+    if (!prompts.length) { group.hidden = true; return; }
+    group.hidden = false;
+    list.innerHTML = prompts.map((p, i) =>
+        `<div class="prompts-custom-item" data-index="${i}">
+            <span class="prompts-custom-text">${escapeHtml(p)}</span>
+            <button class="prompts-del" data-index="${i}" type="button" aria-label="Delete prompt">✕</button>
+        </div>`
+    ).join('');
+    list.querySelectorAll('.prompts-custom-item').forEach(el => {
+        el.addEventListener('click', (e) => {
+            if (e.target.closest('.prompts-del')) return;
+            const idx = Number(el.dataset.index);
+            const prompts = loadCustomPrompts();
+            if (prompts[idx]) injectPrompt(prompts[idx]);
+        });
+    });
+    list.querySelectorAll('.prompts-del').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const idx = Number(btn.dataset.index);
+            let prompts = loadCustomPrompts();
+            prompts.splice(idx, 1);
+            saveCustomPrompts(prompts);
+            renderCustomPrompts();
+        });
+    });
+}
+function injectPrompt(text) {
+    const ta = document.getElementById('ai-ask-question');
+    if (!ta) return;
+    ta.value = text;
+    ta.dispatchEvent(new Event('input'));
+    closePromptsMenu();
+}
+function closePromptsMenu() {
+    const menu = document.getElementById('ask-prompts-menu');
+    const btn = document.getElementById('ask-prompts-btn');
+    if (menu) menu.hidden = true;
+    if (btn) btn.classList.remove('open');
+}
+function togglePromptsMenu() {
+    const menu = document.getElementById('ask-prompts-menu');
+    const btn = document.getElementById('ask-prompts-btn');
+    if (!menu) return;
+    const isOpen = !menu.hidden;
+    menu.hidden = isOpen;
+    btn.classList.toggle('open', !isOpen);
+    if (!isOpen) renderCustomPrompts();
+}
+
 const AI_ASK_DEFAULT_QUESTION =
     'I have a curated list of GitHub AI repositories below. Give me a concise overview of what each one does, group them by purpose, highlight the strongest options, and recommend which to try first for building an AI app.';
 const AI_ASK_DESC_LIMIT = 140;
@@ -781,6 +844,7 @@ function openAiAskModal() {
     if (state.filteredRepos.length === 0) {
         return;
     }
+    closePromptsMenu();
     const questionEl = document.getElementById('ai-ask-question');
     if (questionEl && !questionEl.value.trim()) {
         questionEl.value = AI_ASK_DEFAULT_QUESTION;
@@ -794,6 +858,7 @@ function openAiAskModal() {
 }
 
 function closeAiAskModal() {
+    closePromptsMenu();
     document.getElementById('ai-ask-backdrop').hidden = true;
     const modal = document.getElementById('ai-ask-modal');
     modal.classList.remove('open');
@@ -834,6 +899,29 @@ function bindAiAsk() {
     document.getElementById('ai-ask-include-desc')?.addEventListener('change', renderAiAskPreview);
     document.getElementById('ai-ask-question')?.addEventListener('input', renderAiAskPreview);
     document.getElementById('ai-ask-open')?.addEventListener('click', launchAiAsk);
+
+    // Prompt templates
+    document.getElementById('ask-prompts-btn')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePromptsMenu();
+    });
+    document.getElementById('ask-prompts-add')?.addEventListener('click', () => {
+        const text = window.prompt('Enter your custom prompt:');
+        if (text && text.trim()) {
+            const prompts = loadCustomPrompts();
+            prompts.push(text.trim());
+            saveCustomPrompts(prompts);
+            renderCustomPrompts();
+            injectPrompt(text.trim());
+        }
+    });
+    document.querySelectorAll('.prompts-item[data-prompt]').forEach(el => {
+        el.addEventListener('click', () => injectPrompt(el.dataset.prompt));
+    });
+    document.addEventListener('click', (e) => {
+        const wrapper = document.querySelector('.ai-ask-prompts-wrapper');
+        if (wrapper && !wrapper.contains(e.target)) closePromptsMenu();
+    });
 
     const copyBtn = document.getElementById('ai-ask-copy');
     copyBtn?.addEventListener('click', async () => {
