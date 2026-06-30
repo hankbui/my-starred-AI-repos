@@ -1351,10 +1351,10 @@ function bindViewToggle() {
         const label = document.getElementById('view-toggle-label');
         if (state.mobileView) {
             icon.textContent = '💻';
-            label.textContent = 'Desktop';
+            label.textContent = 'Desktop View';
         } else {
             icon.textContent = '📱';
-            label.textContent = 'Mobile';
+            label.textContent = 'Mobile View';
         }
         renderTable();
         renderPagination();
