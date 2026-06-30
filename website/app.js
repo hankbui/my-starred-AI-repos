@@ -18,6 +18,7 @@ const state = {
     historyPoints: 0,
     trendingMode: 'bootstrap',
     selectedRepoId: null,
+    mobileView: false,
 };
 
 const DATA_URL = 'data/repos.json?v=20260328-5';
@@ -555,7 +556,8 @@ function applyFilters() {
                 .join(' ')
                 .toLowerCase();
 
-            return haystack.includes(query);
+            const terms = query.split(',').map(t => t.trim()).filter(t => t.length > 0);
+            return terms.length === 0 || terms.every(term => haystack.includes(term));
         }),
     );
 
@@ -569,6 +571,18 @@ function applyFilters() {
 }
 
 function renderTable() {
+    const isMobile = state.mobileView;
+    const tableShell = document.querySelector('.table-shell');
+    const mobileList = document.getElementById('mobile-repos-list');
+
+    if (tableShell) tableShell.style.display = isMobile ? 'none' : 'block';
+    if (mobileList) mobileList.style.display = isMobile ? 'block' : 'none';
+
+    if (isMobile) {
+        renderMobileList();
+        return;
+    }
+
     const tbody = document.getElementById('repos-tbody');
     const start = (state.currentPage - 1) * state.perPage;
     const pageRepos = state.filteredRepos.slice(start, start + state.perPage);
@@ -594,8 +608,8 @@ function renderTable() {
 
             return `
                 <tr class="repo-row" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
-                    <td class="col-num">${repoNumberLabel}</td>
-                    <td class="col-repo">
+                    <td class="col-num" data-label="#">${repoNumberLabel}</td>
+                    <td class="col-repo" data-label="Repo">
                         <div class="repo-primary">${escapeHtml(repo.owner)}</div>
                         <div class="repo-title-row">
                             <span class="repo-link">${escapeHtml(repo.repo_name)}</span>
@@ -609,18 +623,18 @@ function renderTable() {
                             ${metaTopics}
                         </div>
                     </td>
-                    <td class="col-stars">${repo.stars.toLocaleString()}</td>
-                    <td class="col-growth">${formatGrowth(repo.star_delta_1d, repo.star_delta_1d_pct)}</td>
-                    <td class="col-growth">${formatGrowth(repo.star_delta_7d, repo.star_delta_7d_pct)}</td>
-                    <td class="col-forks">${repo.forks.toLocaleString()}</td>
-                    <td class="col-desc">
+                    <td class="col-stars" data-label="Stars">${repo.stars.toLocaleString()}</td>
+                    <td class="col-growth" data-label="1d">${formatGrowth(repo.star_delta_1d, repo.star_delta_1d_pct)}</td>
+                    <td class="col-growth" data-label="7d">${formatGrowth(repo.star_delta_7d, repo.star_delta_7d_pct)}</td>
+                    <td class="col-forks" data-label="Forks">${repo.forks.toLocaleString()}</td>
+                    <td class="col-desc" data-label="Description">
                         <div class="desc-text" title="${escapeHtml(repo.description)}">${escapeHtml(repo.description)}</div>
                     </td>
-                    <td class="col-category">
+                    <td class="col-category" data-label="Category">
                         <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
                     </td>
-                    <td class="col-date">${escapeHtml(repo.created_at)}</td>
-                    <td class="col-date">${escapeHtml(repo.updated_at)}</td>
+                    <td class="col-date" data-label="Created">${escapeHtml(repo.created_at)}</td>
+                    <td class="col-date" data-label="Updated">${escapeHtml(repo.updated_at)}</td>
                 </tr>
             `;
         })
@@ -630,17 +644,23 @@ function renderTable() {
 function renderPagination() {
     const totalItems = state.filteredRepos.length;
     const totalPages = Math.max(1, Math.ceil(totalItems / state.perPage));
-    const label = `${state.currentPage} / ${totalPages} (${totalItems.toLocaleString()} ${getActiveViewLabel()})`;
+    const label = `${state.currentPage} / ${totalPages}`;
 
     ['top', 'bottom'].forEach((position) => {
-        document.getElementById(`${position}-page-info`).textContent = label;
-        document.getElementById(`${position}-prev`).disabled = state.currentPage === 1;
-        document.getElementById(`${position}-next`).disabled = state.currentPage === totalPages;
-        document.getElementById(`${position}-per-page`).value = String(state.perPage);
+        const infoEl = document.getElementById(`${position}-page-info`);
+        if (infoEl) infoEl.textContent = label;
+        
+        const prevEl = document.getElementById(`${position}-prev`);
+        if (prevEl) prevEl.disabled = state.currentPage === 1;
+        
+        const nextEl = document.getElementById(`${position}-next`);
+        if (nextEl) nextEl.disabled = state.currentPage === totalPages;
+        
+        const perPageEl = document.getElementById(`${position}-per-page`);
+        if (perPageEl) perPageEl.value = String(state.perPage);
     });
 
-    document.getElementById('results-meta').textContent = `${totalItems.toLocaleString()} visible ${getActiveViewLabel()}`;
-    renderCopyToolbar();
+    document.getElementById('results-meta').textContent = `${totalItems.toLocaleString()} items`;
     syncUrlState();
 }
 
@@ -658,11 +678,11 @@ function getCurrentPageRepos() {
 }
 
 function getScopedRows() {
-    return state.copyCurrentPageOnly ? getCurrentPageRepos() : state.filteredRepos;
+    return state.filteredRepos;
 }
 
 function getCopyRows() {
-    return getScopedRows();
+    return state.filteredRepos;
 }
 
 function buildCopyPayload(repos) {
@@ -992,84 +1012,92 @@ function applyPreset(presetId) {
 }
 
 function bindCopyToolbar(position) {
-    document.getElementById(`${position}-copy-scope`).addEventListener('change', (event) => {
-        state.copyCurrentPageOnly = event.target.checked;
-        renderCopyToolbar();
-    });
+    const scopeEl = document.getElementById(`${position}-copy-scope`);
+    if (scopeEl) {
+        scopeEl.addEventListener('change', (event) => {
+            state.copyCurrentPageOnly = event.target.checked;
+            renderCopyToolbar();
+        });
+    }
 
-    document.getElementById(`${position}-copy-button`).addEventListener('click', async () => {
-        const reposToCopy = getCopyRows();
+    const btnEl = document.getElementById(`${position}-copy-button`);
+    if (btnEl) {
+        btnEl.addEventListener('click', async () => {
+            const reposToCopy = getCopyRows();
 
-        if (reposToCopy.length === 0) {
-            setCopyFeedback('No rows to copy');
+            if (reposToCopy.length === 0) {
+                setCopyFeedback('No rows');
+                window.setTimeout(renderCopyToolbar, 1400);
+                return;
+            }
+
+            try {
+                await copyText(buildCopyPayload(reposToCopy));
+                setCopyFeedback(`Copied ${reposToCopy.length}`);
+            } catch (error) {
+                console.error(error);
+                setCopyFeedback('Failed');
+            }
+
             window.setTimeout(renderCopyToolbar, 1400);
-            return;
-        }
-
-        try {
-            await copyText(buildCopyPayload(reposToCopy));
-            setCopyFeedback(`Copied ${reposToCopy.length}`);
-        } catch (error) {
-            console.error(error);
-            setCopyFeedback('Copy failed');
-        }
-
-        window.setTimeout(renderCopyToolbar, 1400);
-    });
+        });
+    }
 }
 
 function bindShareAndExport(position) {
-    document.getElementById(`${position}-share-button`).addEventListener('click', async () => {
-        try {
-            await copyText(window.location.href);
-            setShareFeedback('Copied URL');
-        } catch (error) {
-            console.error(error);
-            setShareFeedback('Copy failed');
-        }
-
-        window.setTimeout(renderCopyToolbar, 1400);
-    });
-
-    document.getElementById(`${position}-export-csv`).addEventListener('click', () => {
-        const repos = getScopedRows();
-
-        if (repos.length === 0) {
-            setExportFeedback('csv', 'No rows');
+    const shareEl = document.getElementById(`${position}-share-button`);
+    if (shareEl) {
+        shareEl.addEventListener('click', async () => {
+            try {
+                await copyText(window.location.href);
+                setShareFeedback('Copied URL');
+            } catch (error) {
+                console.error(error);
+                setShareFeedback('Copy failed');
+            }
             window.setTimeout(renderCopyToolbar, 1400);
-            return;
-        }
+        });
+    }
 
-        try {
-            downloadTextFile(buildExportFilename('csv', repos.length), 'csv', buildCsvPayload(repos), 'application/octet-stream');
-            setExportFeedback('csv', `CSV (${repos.length})`);
-        } catch (error) {
-            console.error(error);
-            setExportFeedback('csv', 'Failed');
-        }
+    const csvEl = document.getElementById(`${position}-export-csv`);
+    if (csvEl) {
+        csvEl.addEventListener('click', () => {
+            const repos = getScopedRows();
+            if (repos.length === 0) {
+                setExportFeedback('csv', 'No rows');
+                window.setTimeout(renderCopyToolbar, 1400);
+                return;
+            }
+            try {
+                downloadTextFile(buildExportFilename('csv', repos.length), 'csv', buildCsvPayload(repos), 'application/octet-stream');
+                setExportFeedback('csv', 'Done');
+            } catch (error) {
+                console.error(error);
+                setExportFeedback('csv', 'Failed');
+            }
+            window.setTimeout(renderCopyToolbar, 1600);
+        });
+    }
 
-        window.setTimeout(renderCopyToolbar, 1600);
-    });
-
-    document.getElementById(`${position}-export-md`).addEventListener('click', () => {
-        const repos = getScopedRows();
-
-        if (repos.length === 0) {
-            setExportFeedback('md', 'No rows');
-            window.setTimeout(renderCopyToolbar, 1400);
-            return;
-        }
-
-        try {
-            downloadTextFile(buildExportFilename('md', repos.length), 'md', buildMarkdownPayload(repos), 'application/octet-stream');
-            setExportFeedback('md', `MD (${repos.length})`);
-        } catch (error) {
-            console.error(error);
-            setExportFeedback('md', 'Failed');
-        }
-
-        window.setTimeout(renderCopyToolbar, 1600);
-    });
+    const mdEl = document.getElementById(`${position}-export-md`);
+    if (mdEl) {
+        mdEl.addEventListener('click', () => {
+            const repos = getScopedRows();
+            if (repos.length === 0) {
+                setExportFeedback('md', 'No rows');
+                window.setTimeout(renderCopyToolbar, 1400);
+                return;
+            }
+            try {
+                downloadTextFile(buildExportFilename('md', repos.length), 'md', buildMarkdownPayload(repos), 'application/octet-stream');
+                setExportFeedback('md', 'Done');
+            } catch (error) {
+                console.error(error);
+                setExportFeedback('md', 'Failed');
+            }
+            window.setTimeout(renderCopyToolbar, 1600);
+        });
+    }
 }
 
 function bindPagination(position) {
@@ -1262,6 +1290,77 @@ function bindBackToTop() {
     updateBackToTopVisibility();
 }
 
+function renderMobileList() {
+    const list = document.getElementById('mobile-repos-list');
+    const start = (state.currentPage - 1) * state.perPage;
+    const pageRepos = state.filteredRepos.slice(start, start + state.perPage);
+
+    if (pageRepos.length === 0) {
+        list.innerHTML = '<div class="mobile-empty">No repositories match the current filters.</div>';
+        return;
+    }
+
+    list.innerHTML = pageRepos
+        .map((repo, index) => {
+            const rowNumber = start + index + 1;
+            const tone = categoryTones[repo.category] || categoryTones.Other;
+
+            return `
+                <div class="mobile-card" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
+                    <div class="mobile-card-num">${rowNumber}</div>
+                    <div class="mobile-card-body">
+                        <div class="mobile-card-name">
+                            <span class="repo-link">${escapeHtml(repo.repo_name)}</span>
+                            <span class="mobile-card-owner">${escapeHtml(repo.owner)}</span>
+                        </div>
+                        <div class="mobile-card-desc">${escapeHtml(repo.description)}</div>
+                        <div class="mobile-card-meta">
+                            <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
+                            <span class="language-pill">${escapeHtml(repo.language)}</span>
+                        </div>
+                    </div>
+                    <div class="mobile-card-stars">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                        <span>${repo.stars.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+        })
+        .join('');
+
+    list.querySelectorAll('.mobile-card').forEach((card) => {
+        card.addEventListener('click', (event) => {
+            openDrawer(getRepoById(card.dataset.repoId));
+        });
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openDrawer(getRepoById(card.dataset.repoId));
+            }
+        });
+    });
+}
+
+function bindViewToggle() {
+    const toggle = document.getElementById('view-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', () => {
+        state.mobileView = !state.mobileView;
+        const icon = document.getElementById('view-toggle-icon');
+        const label = document.getElementById('view-toggle-label');
+        if (state.mobileView) {
+            icon.textContent = '💻';
+            label.textContent = 'Desktop';
+        } else {
+            icon.textContent = '📱';
+            label.textContent = 'Mobile';
+        }
+        renderTable();
+        renderPagination();
+    });
+}
+
 async function loadData() {
     const response = await fetch(DATA_URL);
     if (!response.ok) {
@@ -1295,6 +1394,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindTableInteractions();
     bindDrawer();
     bindBackToTop();
+    bindViewToggle();
     closeDrawer();
 
     try {
