@@ -87,10 +87,12 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
 
     # Enrich all ideas
     print(f"\n{'='*50}")
-    print("Enriching ideas (revenue, business model, AI potential)...")
+    print("Enriching ideas (revenue, business model, AI potential, trends)...")
     ideas_list = enrich_all(ideas_list)
     enriched = sum(1 for i in ideas_list if i.get("business_model") or i.get("ai_potential"))
-    print(f"  Enriched {enriched} ideas")
+    trended = sum(1 for i in ideas_list if i.get("trend_direction") and i.get("trend_direction") != "stable")
+    print(f"  Enriched: {enriched} with BM/AI | {trended} with trend signals")
+    print(f"  Trends API calls: {len(ideas_list)} ideas scanned")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),

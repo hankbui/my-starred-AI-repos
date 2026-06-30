@@ -65,8 +65,6 @@
         }
         .source-filter:hover { border-color: var(--border-strong); }
         .source-filter.active { border-color: var(--accent); color: var(--accent); background: rgba(99,207,255,0.08); }
-        .source-filter input { display: none; }
-
         .find-results { display: grid; gap: 14px; margin-top: 18px; }
 
         .idea-card {
@@ -319,7 +317,7 @@
             minScore: 0,
             sortBy: 'score',
             liveMode: false,
-            activeSources: new Set(['hackernews', 'producthunt', 'reddit', 'indiehackers', 'appstore', 'playstore', 'githubtrending', 'v2ex', 'thirtysixkr', 'youtube']),
+            activeTab: 'all',
             updatedAt: '',
         };
 
@@ -465,20 +463,18 @@
         function renderSourceFilters() {
             const container = document.getElementById('source-filters');
             const sources = [...new Set(state.allIdeas.map(i=>i.source))].sort();
-            container.innerHTML = sources.map(s => `
-                <label class="source-filter active" data-source="${s}">
-                    <input type="checkbox" checked>
-                    ${SOURCE_NAMES[s]||s}
-                </label>
+            const tabs = ['all', ...sources];
+            container.innerHTML = tabs.map(s => `
+                <button class="source-filter${state.activeTab===s?' active':''}" data-source="${s}">
+                    ${s==='all'?'ALL':(SOURCE_NAMES[s]||s)}
+                </button>
             `).join('');
             container.querySelectorAll('.source-filter').forEach(el => {
                 el.addEventListener('click', () => {
-                    el.classList.toggle('active');
-                    const cb = el.querySelector('input');
-                    cb.checked = !cb.checked;
                     const src = el.dataset.source;
-                    if(cb.checked) state.activeSources.add(src);
-                    else state.activeSources.delete(src);
+                    if(src === state.activeTab) return;
+                    state.activeTab = src;
+                    container.querySelectorAll('.source-filter').forEach(b => b.classList.toggle('active', b.dataset.source===src));
                     applyFilters();
                 });
             });
@@ -489,7 +485,9 @@
             const minScore = state.minScore;
             const sortBy = state.sortBy;
 
-            let filtered = state.allIdeas.filter(i => state.activeSources.has(i.source));
+            let filtered = state.activeTab === 'all'
+                ? state.allIdeas
+                : state.allIdeas.filter(i => i.source === state.activeTab);
 
             if(query) {
                 const terms = query.split(',').map(t=>t.trim()).filter(t=>t.length>0);
@@ -597,8 +595,8 @@
                 state.liveMode = !state.liveMode;
                 btn.classList.toggle('active', state.liveMode);
                 btn.querySelector('span:last-child').textContent = state.liveMode ? 'HN Live (ON)' : 'HN Live';
-                if(state.liveMode) state.activeSources = new Set(['hackernews']);
-                else state.activeSources = new Set(['hackernews','producthunt','reddit','indiehackers','appstore','playstore']);
+                if(state.liveMode) state.activeTab = 'all';
+                else state.activeTab = 'all';
                 await loadIdeas();
             });
         }
@@ -628,8 +626,7 @@
             const bits = [];
             if (state.search.trim()) bits.push('Search: ' + state.search.trim());
             if (state.minScore > 0) bits.push('Min votes: ' + state.minScore);
-            const srcs = [...state.activeSources].map(s => SOURCE_NAMES[s] || s);
-            bits.push('Sources: ' + (srcs.length ? srcs.join(', ') : 'none'));
+            bits.push('Source: ' + (state.activeTab === 'all' ? 'ALL' : (SOURCE_NAMES[state.activeTab] || state.activeTab)));
             return bits.join(' • ');
         }
 

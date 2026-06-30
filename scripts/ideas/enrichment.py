@@ -99,6 +99,127 @@ def compute_ai_potential(title: str, description: str, category: str, business_m
     return max(0, min(100, score))
 
 
+# ── Google Trends scoring ──
+
+_CATEGORY_TRENDS_MAP: dict[str, str] = {
+    "ai": "artificial intelligence",
+    "llm": "large language model",
+    "gpt": "chatgpt",
+    "machine learning": "machine learning",
+    "education": "online learning",
+    "productivity": "productivity tools",
+    "saas": "saas",
+    "dev tool": "developer tools",
+    "mobile": "mobile app development",
+    "python": "python programming",
+    "javascript": "javascript",
+    "typescript": "typescript",
+    "rust": "rust programming",
+    "go": "golang",
+    "api": "api development",
+    "open source": "open source software",
+    "nocode": "no code",
+    "marketplace": "online marketplace",
+    "ecommerce": "ecommerce",
+    "health": "health tech",
+    "finance": "fintech",
+    "crypto": "cryptocurrency",
+    "gaming": "game development",
+    "social": "social media app",
+    "video": "video streaming",
+    "design": "ui design",
+    "data": "data science",
+    "security": "cybersecurity",
+    "cloud": "cloud computing",
+    "database": "database",
+}
+
+_TRENDS_CACHE: dict[str, tuple[int, str]] = {}
+
+
+def _extract_trends_keywords(idea: dict) -> list[str]:
+    keywords = set()
+    cat = (idea.get("category") or "").lower().strip()
+    if cat and cat in _CATEGORY_TRENDS_MAP:
+        keywords.add(_CATEGORY_TRENDS_MAP[cat])
+    for tag in (idea.get("tags") or []):
+        tag_lower = str(tag).lower().strip()
+        if tag_lower in _CATEGORY_TRENDS_MAP:
+            keywords.add(_CATEGORY_TRENDS_MAP[tag_lower])
+    text = ((idea.get("title") or "") + " " + (idea.get("description") or "")).lower()
+    for key, mapped in _CATEGORY_TRENDS_MAP.items():
+        if key in text:
+            keywords.add(mapped)
+    return list(keywords)[:2]
+
+
+def fetch_trend(keyword: str) -> tuple[int, str] | None:
+    if keyword in _TRENDS_CACHE:
+        return _TRENDS_CACHE[keyword]
+    try:
+        from pytrends.request import TrendReq
+        import time
+        pytrends = TrendReq(hl="en-US", tz=360, timeout=10)
+        pytrends.build_payload([keyword], cat=0, timeframe="today 12-m", geo="")
+        df = pytrends.interest_over_time()
+        time.sleep(1)
+        if df is None or df.empty or keyword not in df.columns:
+            _TRENDS_CACHE[keyword] = (0, "stable")
+            return _TRENDS_CACHE[keyword]
+        values = df[keyword].tolist()
+        if not values:
+            _TRENDS_CACHE[keyword] = (0, "stable")
+            return _TRENDS_CACHE[keyword]
+        recent = sum(values[-min(4, len(values)):]) / min(4, len(values))
+        overall = sum(values) / len(values)
+        score = min(100, int((recent / max(overall, 1)) * 50))
+        half = len(values) // 2
+        first_half = sum(values[:half]) / max(half, 1)
+        second_half = sum(values[half:]) / max(len(values) - half, 1)
+        if second_half > first_half * 1.15:
+            direction = "rising"
+        elif second_half < first_half * 0.85:
+            direction = "declining"
+        else:
+            direction = "stable"
+        _TRENDS_CACHE[keyword] = (score, direction)
+        return _TRENDS_CACHE[keyword]
+    except Exception:
+        _TRENDS_CACHE[keyword] = (0, "stable")
+        return None
+
+
+def score_trends(ideas: list[dict]) -> list[dict]:
+    seen_keywords: set[str] = set()
+    for idea in ideas:
+        if idea.get("_trend_scored"):
+            continue
+        kws = _extract_trends_keywords(idea)
+        for kw in kws:
+            if kw in seen_keywords:
+                continue
+            seen_keywords.add(kw)
+            result = fetch_trend(kw)
+            if result:
+                _TRENDS_CACHE[kw] = result
+    for idea in ideas:
+        if idea.get("_trend_scored"):
+            continue
+        kws = _extract_trends_keywords(idea)
+        score = 0
+        direction = "stable"
+        for kw in kws:
+            if kw in _TRENDS_CACHE:
+                s, d = _TRENDS_CACHE[kw]
+                if s > score:
+                    score = s
+                    direction = d
+        idea["trend_score"] = score
+        idea["trend_direction"] = direction
+        idea["_trend_scored"] = True
+    return ideas
+
+
 # ── Enrichment runner ──
 
 def enrich(idea: dict) -> dict:
@@ -129,4 +250,6 @@ def enrich(idea: dict) -> dict:
 
 
 def enrich_all(ideas: list[dict]) -> list[dict]:
-    return [enrich(idea) for idea in ideas]
+    ideas = [enrich(idea) for idea in ideas]
+    ideas = score_trends(ideas)
+    return ideas
