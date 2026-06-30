@@ -1,77 +1,127 @@
-"""GitHub Trending — repos with high recent star growth via GitHub Search API
+"""GitHub Trending — trending repos via Search API + HTML fallback
 
-No API key required for unauthenticated access (60 req/hr).
-Uses GITHUB_TOKEN env var when available (5,000 req/hr in CI).
+Prefers GitHub Search API (with GITHUB_TOKEN if available).
+Falls back to scraping github.com/trending HTML when API is rate-limited.
 """
 
 import hashlib
 import os
+import re
+import urllib.request
 from datetime import datetime, timedelta, timezone
 
 try:
     import requests
 except ImportError:
-    requests = None  # fallback to urllib
+    requests = None
 
 GITHUB_API = "https://api.github.com"
 
 
-def _fetch(url: str, token: str | None = None) -> dict | list:
+def _fetch_json(url: str, token: str | None = None) -> dict | list:
     headers = {
         "User-Agent": "idea-scraper/1.0",
         "Accept": "application/vnd.github.v3+json",
     }
     if token:
         headers["Authorization"] = f"Bearer {token}"
-
     if requests:
         resp = requests.get(url, headers=headers, timeout=30)
         resp.raise_for_status()
         return resp.json()
-
-    import urllib.request
-
     req = urllib.request.Request(url, headers=headers)
     r = urllib.request.urlopen(req, timeout=30)
     return __import__("json").loads(r.read().decode())
 
 
-def _parse_stars(stars_str: str) -> int:
-    try:
-        return int(stars_str)
-    except (ValueError, TypeError):
-        return 0
+def _fetch_html(url: str) -> str:
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Accept": "text/html",
+    }
+    req = urllib.request.Request(url, headers=headers)
+    r = urllib.request.urlopen(req, timeout=30)
+    return r.read().decode("utf-8", errors="replace")
 
 
-def scrape_trending(
-    limit: int = 25, min_stars: int = 100, token: str | None = None
-) -> list[dict]:
-    """Fetch trending repos — high star growth in the last 30 days."""
+def scrape_api(token: str | None) -> list[dict] | None:
     now = datetime.now(timezone.utc)
-    created_after = (now - timedelta(days=60)).strftime("%Y-%m-%d")
     pushed_after = (now - timedelta(days=7)).strftime("%Y-%m-%d")
 
-    # Primary: repos created in last 60 days, pushed recently, sorted by stars
-    query = f"created:>{created_after}+pushed:>{pushed_after}"
-    url = (
-        f"{GITHUB_API}/search/repositories"
-        f"?q={query}&sort=stars&order=desc&per_page={min(limit, 100)}"
-    )
+    query = f"stars:>100+pushed:>{pushed_after}"
+    url = f"{GITHUB_API}/search/repositories?q={query}&sort=stars&order=desc&per_page=25"
 
-    data = _fetch(url, token)
-    items = data.get("items", [])
-
-    if len(items) < limit:
-        # Fallback: just high stars recently pushed
-        query = f"stars:>{min_stars}+pushed:>{pushed_after}"
-        url = (
-            f"{GITHUB_API}/search/repositories"
-            f"?q={query}&sort=stars&order=desc&per_page={min(limit, 100)}"
-        )
-        data = _fetch(url, token)
+    try:
+        data = _fetch_json(url, token)
         items = data.get("items", [])
+        if items:
+            return items
+    except Exception:
+        return None
+    return None
 
-    return items[:limit]
+
+def scrape_html() -> list[dict] | None:
+    try:
+        html = _fetch_html("https://github.com/trending?since=weekly")
+        articles = re.findall(
+            r'<article class="Box-row"[^>]*>(.*?)</article>', html, re.DOTALL
+        )
+        if not articles:
+            return None
+
+        repos = []
+        for article in articles:
+            # Repo name — h2 with class, link inside
+            name_match = re.search(
+                r'<h2[^>]*>\s*<a[^>]*href="/([^"]+)"[^>]*>', article, re.DOTALL
+            )
+            if not name_match:
+                continue
+            full_name = name_match.group(1).strip()
+            # Description
+            desc_match = re.search(
+                r'<p class="col-9[^"]*"[^>]*>(.*?)</p>', article, re.DOTALL
+            )
+            description = ""
+            if desc_match:
+                description = re.sub(r"<[^>]+>", "", desc_match.group(1)).strip()
+            # Stars
+            stars_match = re.findall(r'octicon-star[^>]*>.*?</svg>\s*([\d,]+)', article, re.DOTALL)
+            stars = int(stars_match[0].replace(",", "")) if stars_match else 0
+            # Language
+            lang_match = re.search(
+                r'<span itemprop="programmingLanguage">([^<]+)</span>', article
+            )
+            language = lang_match.group(1).strip() if lang_match else ""
+
+            repos.append(
+                {
+                    "full_name": full_name,
+                    "description": description,
+                    "stargazers_count": stars,
+                    "language": language,
+                    "html_url": f"https://github.com/{full_name}",
+                    "created_at": "",
+                    "topics": [],
+                    "forks_count": 0,
+                }
+            )
+        return repos
+    except Exception:
+        return None
+
+
+def scrape_trending(limit: int = 25, token: str | None = None) -> list[dict]:
+    items = scrape_api(token)
+    if items:
+        return items[:limit]
+
+    items = scrape_html()
+    if items:
+        return items[:limit]
+
+    return []
 
 
 def parse_trending(items: list[dict]) -> list[dict]:
@@ -119,9 +169,9 @@ def parse_trending(items: list[dict]) -> list[dict]:
 
 def run() -> list[dict]:
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    print("  Fetching GitHub Trending via API...")
+    print("  Fetching GitHub Trending...")
     try:
-        items = scrape_trending(limit=25, min_stars=100, token=token)
+        items = scrape_trending(limit=25, token=token)
         if not items:
             print("  [SKIP] No trending repos found")
             return []

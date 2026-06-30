@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import db
+from .enrichment import enrich_all
 from .sources import (
     hn,
     producthunt,
@@ -81,6 +82,13 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
         if not idea.get("tags"):
             idea["tags"] = []
         ideas_list.append(idea)
+
+    # Enrich all ideas
+    print(f"\n{'='*50}")
+    print("Enriching ideas (revenue, business model, AI potential)...")
+    ideas_list = enrich_all(ideas_list)
+    enriched = sum(1 for i in ideas_list if i.get("business_model") or i.get("ai_potential"))
+    print(f"  Enriched {enriched} ideas")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),

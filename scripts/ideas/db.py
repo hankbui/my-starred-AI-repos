@@ -23,6 +23,10 @@ CREATE TABLE IF NOT EXISTS ideas (
     date_collected TEXT NOT NULL,
     raw_snippet TEXT,
     summary TEXT,
+    business_model TEXT,
+    trend_score INTEGER DEFAULT 0,
+    trend_direction TEXT,
+    ai_potential INTEGER DEFAULT 0,
     created_at TEXT DEFAULT (datetime('now'))
 );
 
@@ -52,8 +56,8 @@ class IdeasDB:
             """INSERT OR REPLACE INTO ideas
                (id, source, title, url, description, revenue_signal, category, tags,
                 score, num_comments, comments_url, date_published, date_collected,
-                raw_snippet, summary)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                raw_snippet, summary, business_model, trend_score, trend_direction, ai_potential)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 idea["id"],
                 idea["source"],
@@ -70,6 +74,10 @@ class IdeasDB:
                 idea["date_collected"],
                 idea.get("raw_snippet"),
                 idea.get("summary"),
+                idea.get("business_model"),
+                idea.get("trend_score", 0),
+                idea.get("trend_direction"),
+                idea.get("ai_potential", 0),
             ),
         )
         return self.conn.total_changes > 0
