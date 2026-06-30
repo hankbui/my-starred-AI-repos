@@ -17,393 +17,143 @@
             background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)), var(--bg-elevated);
             box-shadow: var(--shadow);
         }
-
-        .find-hero-copy {
-            max-width: 760px;
-        }
-
+        .find-hero-copy { max-width: 760px; }
         .find-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 160ms ease;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px; border-radius: 999px;
+            border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+            color: var(--text-secondary); font-size: 0.88rem; font-weight: 600;
+            text-decoration: none; transition: 160ms ease;
         }
-
-        .find-back:hover {
-            border-color: var(--border-strong);
-            color: var(--text-primary);
-        }
-
-        .find-back svg {
-            width: 14px;
-            height: 14px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .find-hero h1 {
-            margin: 16px 0 0;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(2rem, 3.5vw, 3.2rem);
-            line-height: 0.98;
-            letter-spacing: -0.04em;
-        }
-
-        .find-hero p {
-            margin: 14px 0 0;
-            max-width: 620px;
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
+        .find-back:hover { border-color: var(--border-strong); color: var(--text-primary); }
+        .find-back svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .find-hero h1 { margin: 16px 0 0; font-family: "Space Grotesk", sans-serif; font-size: clamp(2rem,3.5vw,3.2rem); line-height: 0.98; letter-spacing: -0.04em; }
+        .find-hero p { margin: 14px 0 0; max-width: 620px; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
         .find-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: end;
-            margin-top: 18px;
+            display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-top: 18px;
         }
-
-        .find-controls .control {
-            flex: 1 1 200px;
-            min-width: 160px;
+        .find-controls .control { flex: 1 1 200px; min-width: 160px; }
+        .find-controls .control.search-control { flex: 2 1 300px; }
+        .find-controls .control input, .find-controls .control select {
+            width: 100%; min-height: 42px; padding: 0 14px;
+            border: 1px solid var(--border); border-radius: 10px;
+            background: var(--bg-soft); color: var(--text-primary);
+            font: inherit; font-size: 0.92rem;
         }
-
-        .find-controls .control.search-control {
-            flex: 2 1 300px;
-        }
-
-        .find-controls .control input,
-        .find-controls .control select {
-            width: 100%;
-            min-height: 42px;
-            padding: 0 14px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--bg-soft);
-            color: var(--text-primary);
-            font: inherit;
-            font-size: 0.92rem;
-        }
-
-        .find-controls .control input:focus,
-        .find-controls .control select:focus {
-            outline: none;
-            border-color: var(--accent-strong);
+        .find-controls .control input:focus, .find-controls .control select:focus {
+            outline: none; border-color: var(--accent-strong);
             box-shadow: 0 0 0 3px rgba(63,167,255,0.16);
         }
-
         .find-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 18px;
-            padding: 14px 18px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background: #0f141b;
+            display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+            justify-content: space-between; margin-top: 18px;
+            padding: 14px 18px; border: 1px solid var(--border);
+            border-radius: var(--radius-md); background: #0f141b;
         }
+        .find-stat-label { color: var(--text-secondary); font-size: 0.9rem; }
+        .find-stat-value { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
 
-        .find-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .source-filters {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;
         }
+        .source-filter {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 999px;
+            border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+            color: var(--text-secondary); font-size: 0.84rem; font-weight: 600;
+            cursor: pointer; transition: 160ms ease; user-select: none;
+        }
+        .source-filter:hover { border-color: var(--border-strong); }
+        .source-filter.active { border-color: var(--accent); color: var(--accent); background: rgba(99,207,255,0.08); }
+        .source-filter input { display: none; }
 
-        .find-stat-value {
-            font-family: "Space Grotesk", sans-serif;
-            font-weight: 700;
-        }
-
-        .find-results {
-            display: grid;
-            gap: 14px;
-            margin-top: 18px;
-        }
+        .find-results { display: grid; gap: 14px; margin-top: 18px; }
 
         .idea-card {
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background: rgba(255,255,255,0.02);
+            padding: 20px; border: 1px solid var(--border);
+            border-radius: var(--radius-md); background: rgba(255,255,255,0.02);
             transition: border-color 160ms ease, background 160ms ease;
         }
-
-        .idea-card:hover {
-            border-color: var(--border-strong);
-            background: rgba(99,207,255,0.03);
-        }
-
+        .idea-card:hover { border-color: var(--border-strong); background: rgba(99,207,255,0.03); }
         .idea-title {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
+            display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
         }
-
         .idea-title a {
-            color: var(--text-primary);
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            text-decoration: none;
-            line-height: 1.3;
+            color: var(--text-primary); font-family: "Space Grotesk", sans-serif;
+            font-size: 1.15rem; font-weight: 700; text-decoration: none; line-height: 1.3;
         }
+        .idea-title a:hover { color: var(--accent); }
+        .idea-title .idea-domain { color: var(--text-muted); font-size: 0.78rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+        .idea-desc { margin-top: 8px; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .idea-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; align-items: center; }
+        .idea-meta-item { display: inline-flex; align-items: center; gap: 5px; color: var(--text-secondary); font-size: 0.84rem; font-weight: 600; }
+        .idea-meta-item svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .idea-meta-item .num { font-family: "Space Grotesk", sans-serif; }
+        .idea-meta-item.high-points { color: var(--success); }
+        .idea-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .idea-tag { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: rgba(99,207,255,0.08); color: #a4e5ff; font-size: 0.74rem; font-weight: 700; }
+        .idea-tag.revenue { background: rgba(77,224,168,0.15); color: #a4f2d0; }
 
-        .idea-title a:hover {
-            color: var(--accent);
+        .source-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 4px 10px; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; text-decoration: none;
         }
+        .source-badge.hn { background: rgba(255,102,0,0.12); color: #ffb066; }
+        .source-badge.ph { background: rgba(255,86,33,0.12); color: #ff7f5e; }
+        .source-badge.reddit { background: rgba(255,86,0,0.12); color: #ff7845; }
+        .source-badge.ih { background: rgba(255,200,50,0.12); color: #ffda66; }
+        .source-badge.as { background: rgba(0,122,255,0.12); color: #66b5ff; }
+        .source-badge.gp { background: rgba(52,168,83,0.12); color: #7ed99a; }
 
-        .idea-title .idea-domain {
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 600;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 200px;
-        }
-
-        .idea-desc {
-            margin-top: 8px;
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .idea-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 12px;
-            align-items: center;
-        }
-
-        .idea-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--text-secondary);
-            font-size: 0.84rem;
-            font-weight: 600;
-        }
-
-        .idea-meta-item svg {
-            width: 14px;
-            height: 14px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .idea-meta-item .num {
-            font-family: "Space Grotesk", sans-serif;
-        }
-
-        .idea-meta-item.high-points {
-            color: var(--success);
-        }
-
-        .idea-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .idea-tag {
-            display: inline-flex;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(99,207,255,0.08);
-            color: #a4e5ff;
-            font-size: 0.74rem;
-            font-weight: 700;
-        }
-
-        .idea-tag.revenue {
-            background: rgba(77,224,168,0.15);
-            color: #a4f2d0;
-        }
-
-        .find-empty {
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .find-loading {
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        .find-loading .spinner {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        .find-empty { padding: 60px 20px; text-align: center; color: var(--text-secondary); font-size: 1rem; }
+        .find-loading { padding: 60px 20px; text-align: center; color: var(--text-secondary); }
+        .find-loading .spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .find-pagination {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 18px;
-            padding: 14px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background: #0f141b;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 12px; margin-top: 18px; padding: 14px;
+            border: 1px solid var(--border); border-radius: var(--radius-md); background: #0f141b;
         }
-
         .find-pagination .pager-btn {
-            min-width: 100px;
-            min-height: 40px;
-            padding: 0 16px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: transparent;
-            color: var(--text-primary);
-            font: inherit;
-            font-size: 0.92rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 160ms ease;
+            min-width: 100px; min-height: 40px; padding: 0 16px;
+            border: 1px solid var(--border); border-radius: 10px; background: transparent;
+            color: var(--text-primary); font: inherit; font-size: 0.92rem; font-weight: 700;
+            cursor: pointer; transition: 160ms ease;
         }
+        .find-pagination .pager-btn:hover:not(:disabled) { border-color: var(--border-strong); color: var(--accent); }
+        .find-pagination .pager-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+        .find-pagination .pager-info { font-family: "Space Grotesk", sans-serif; font-size: 0.96rem; font-weight: 600; color: var(--text-primary); }
 
-        .find-pagination .pager-btn:hover:not(:disabled) {
-            border-color: var(--border-strong);
-            color: var(--accent);
-        }
+        .find-error { padding: 40px 20px; text-align: center; color: #ff8799; font-size: 0.96rem; }
+        .find-error button { display: inline-block; margin-top: 12px; padding: 10px 22px; border-radius: 999px; border: 1px solid rgba(99,207,255,0.18); background: rgba(99,207,255,0.08); color: var(--accent); font: inherit; font-size: 0.93rem; font-weight: 700; cursor: pointer; transition: 160ms ease; }
+        .find-error button:hover { border-color: rgba(99,207,255,0.4); background: rgba(99,207,255,0.14); }
 
-        .find-pagination .pager-btn:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
+        .live-toggle {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 18px; border-radius: 999px;
+            border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+            color: var(--text-secondary); font-size: 0.88rem; font-weight: 700;
+            cursor: pointer; transition: 160ms ease;
         }
-
-        .find-pagination .pager-info {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 0.96rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .find-error {
-            padding: 40px 20px;
-            text-align: center;
-            color: #ff8799;
-            font-size: 0.96rem;
-        }
-
-        .find-error button {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 22px;
-            border-radius: 999px;
-            border: 1px solid rgba(99,207,255,0.18);
-            background: rgba(99,207,255,0.08);
-            color: var(--accent);
-            font: inherit;
-            font-size: 0.93rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 160ms ease;
-        }
-
-        .find-error button:hover {
-            border-color: rgba(99,207,255,0.4);
-            background: rgba(99,207,255,0.14);
-        }
-
-        .hn-source-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: auto;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(255,102,0,0.12);
-            color: #ffb066;
-            font-size: 0.74rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .hn-source-badge:hover {
-            background: rgba(255,102,0,0.2);
-            color: #ffc88a;
-        }
-
-        .idea-url {
-            color: var(--accent);
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-decoration: none;
-            word-break: break-all;
-        }
-
-        .idea-url:hover {
-            text-decoration: underline;
-        }
+        .live-toggle:hover { border-color: var(--border-strong); color: var(--text-primary); }
+        .live-toggle.active { border-color: rgba(77,224,168,0.3); background: rgba(77,224,168,0.08); color: var(--success); }
+        .live-toggle .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); }
+        .live-toggle.active .live-dot { background: var(--success); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
         @media (max-width: 720px) {
-            .find-hero {
-                flex-direction: column;
-                padding: 20px;
-            }
-            .find-controls {
-                flex-direction: column;
-            }
-            .find-controls .control {
-                min-width: 0;
-                flex: 1 1 auto;
-            }
-            .find-controls .control.search-control {
-                flex: 1 1 auto;
-            }
-            .idea-title {
-                flex-direction: column;
-                gap: 4px;
-            }
-            .idea-title .idea-domain {
-                max-width: none;
-            }
-            .find-stats {
-                flex-direction: column;
-                gap: 8px;
-                align-items: flex-start;
-            }
-            .idea-meta {
-                gap: 10px;
-            }
+            .find-hero { flex-direction: column; padding: 20px; }
+            .find-controls { flex-direction: column; }
+            .find-controls .control { min-width: 0; flex: 1 1 auto; }
+            .find-controls .control.search-control { flex: 1 1 auto; }
+            .idea-title { flex-direction: column; gap: 4px; }
+            .idea-title .idea-domain { max-width: none; }
+            .find-stats { flex-direction: column; gap: 8px; align-items: flex-start; }
+            .idea-meta { gap: 10px; }
+            .source-filters { gap: 6px; }
+            .source-filter { font-size: 0.78rem; padding: 4px 10px; }
         }
     </style>
 </head>
@@ -417,13 +167,16 @@
                 </a>
                 <h1>Find Ideas</h1>
                 <p>
-                    Browse startup and app ideas from <strong>Show HN</strong> — the best place to see what makers are building.
-                    Pulled live from the HN Algolia API. No API key needed.
+                    Startup and app ideas aggregated daily from <strong>Show HN</strong>,
+                    <strong>Product Hunt</strong>, <strong>Reddit</strong>,
+                    <strong>IndieHackers</strong>, and app stores.
+                    Updated every 24h via automated pipeline —
+                    like <a href="https://starterstory.com" target="_blank" rel="noreferrer" style="color:var(--accent)">Starter Story</a>, but free and yours.
                 </p>
                 <div class="find-controls">
                     <label class="control search-control">
                         <span class="control-label">Search</span>
-                        <input type="search" id="idea-search" placeholder="Filter ideas by keyword..." spellcheck="false">
+                        <input type="search" id="idea-search" placeholder="Filter ideas by keyword (comma = AND)..." spellcheck="false">
                     </label>
                     <label class="control">
                         <span class="control-label">Min votes</span>
@@ -438,15 +191,21 @@
                     <label class="control">
                         <span class="control-label">Sort</span>
                         <select id="sort-by">
-                            <option value="points">Most votes</option>
+                            <option value="score">Most votes</option>
                             <option value="date">Newest</option>
                             <option value="comments">Most comments</option>
                         </select>
                     </label>
+                    <button class="live-toggle" id="live-toggle" type="button">
+                        <span class="live-dot"></span>
+                        <span>HN Live</span>
+                    </button>
                 </div>
+                <div class="source-filters" id="source-filters"></div>
                 <div class="find-stats" id="find-stats">
                     <span class="find-stat-label">Loaded <strong class="find-stat-value" id="loaded-count">0</strong> ideas</span>
                     <span class="find-stat-label">Page <strong class="find-stat-value" id="page-info">1 / 1</strong></span>
+                    <span class="find-stat-label">Updated <strong class="find-stat-value" id="updated-at">-</strong></span>
                 </div>
             </div>
         </header>
@@ -456,10 +215,9 @@
                 <div class="find-results" id="find-results">
                     <div class="find-loading">
                         <div class="spinner"></div>
-                        <p style="margin-top:12px">Loading ideas from Hacker News...</p>
+                        <p style="margin-top:12px">Loading ideas...</p>
                     </div>
                 </div>
-
                 <div class="find-pagination" id="find-pagination">
                     <button class="pager-btn" id="prev-page" disabled>« Prev</button>
                     <span class="pager-info" id="pagination-info">1 / 1</span>
@@ -469,168 +227,190 @@
         </main>
 
         <footer class="footer">
-            Powered by <a href="https://hn.algolia.com/api" target="_blank" rel="noreferrer">HN Algolia API</a> •
-            Inspired by <a href="https://starterstory.com" target="_blank" rel="noreferrer">Starter Story</a>
+            Powered by HN Algolia API, Product Hunt API, Reddit API &amp; RSS feeds —
+            <a href="https://github.com/hankbui/my-starred-AI-repos" target="_blank" rel="noreferrer">View on GitHub</a>
         </footer>
     </div>
 
     <script>
         const state = {
-            allHits: [],
-            filteredHits: [],
+            allIdeas: [],
+            filteredIdeas: [],
             currentPage: 1,
             perPage: 25,
             search: '',
-            minPoints: 0,
-            sortBy: 'points',
+            minScore: 0,
+            sortBy: 'score',
+            liveMode: false,
+            activeSources: new Set(['hackernews', 'producthunt', 'reddit', 'indiehackers', 'appstore', 'playstore']),
+            updatedAt: '',
         };
 
-        let isLoading = false;
+        const SOURCE_NAMES = {
+            hackernews: 'Show HN',
+            producthunt: 'Product Hunt',
+            reddit: 'Reddit',
+            indiehackers: 'IndieHackers',
+            appstore: 'App Store',
+            playstore: 'Play Store',
+        };
 
-        function escapeHtml(value) {
-            return String(value ?? '')
-                .replaceAll('&', '&amp;')
-                .replaceAll('<', '&lt;')
-                .replaceAll('>', '&gt;')
-                .replaceAll('"', '&quot;')
-                .replaceAll("'", '&#39;');
-        }
+        const SOURCE_CLASSES = {
+            hackernews: 'hn', producthunt: 'ph', reddit: 'reddit',
+            indiehackers: 'ih', appstore: 'as', playstore: 'gp',
+        };
 
-        function formatNumber(value) {
-            if (value >= 1000) return (value / 1000).toFixed(1) + 'k';
-            return value.toLocaleString();
-        }
+        function escapeHtml(v) { return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;'); }
 
-        function formatDate(dateStr) {
-            try {
-                const d = new Date(dateStr);
-                return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            } catch {
-                return dateStr;
-            }
-        }
+        function formatNumber(v) { if(v>=1000) return (v/1000).toFixed(1)+'k'; return v.toLocaleString(); }
 
         function timeAgo(dateStr) {
             try {
                 const diff = Date.now() - new Date(dateStr).getTime();
-                const hours = Math.floor(diff / 3600000);
-                if (hours < 1) return 'just now';
-                if (hours < 24) return hours + 'h ago';
-                const days = Math.floor(hours / 24);
-                if (days < 30) return days + 'd ago';
-                return Math.floor(days / 30) + 'mo ago';
-            } catch {
-                return dateStr;
-            }
+                const h = Math.floor(diff/3600000);
+                if(h<1) return 'just now';
+                if(h<24) return h+'h ago';
+                const d = Math.floor(h/24);
+                if(d<30) return d+'d ago';
+                return Math.floor(d/30)+'mo ago';
+            } catch { return dateStr; }
         }
 
         function extractDomain(url) {
-            if (!url) return null;
-            try {
-                const u = new URL(url);
-                return u.hostname.replace(/^www\./, '');
-            } catch {
-                return null;
-            }
+            if(!url) return null;
+            try { return new URL(url).hostname.replace(/^www\./,''); } catch { return null; }
         }
 
-        function extractTags(hit) {
+        function extractTags(idea) {
             const tags = [];
-            const title = (hit.title || '') + ' ' + (hit.story_text || '');
-
-            if (/\$\d[\d,]*[kKmM]?\s*(MRR|ARR|month|revenue)/i.test(title)) {
-                tags.push({ label: 'Revenue Signal', cls: 'revenue' });
-            }
-            if (/\b(ai|llm|gpt|chatgpt|claude|openai|machine learning)\b/i.test(title)) {
-                tags.push({ label: 'AI', cls: '' });
-            }
-            if (/\b(saas|web app|mobile app|ios|android|app)\b/i.test(title)) {
-                tags.push({ label: 'App', cls: '' });
-            }
-            if (/\b(open.?source|github|repo)\b/i.test(title)) {
-                tags.push({ label: 'Open Source', cls: '' });
-            }
-            if (/\b(education|learn|course|tutorial|teach)\b/i.test(title)) {
-                tags.push({ label: 'Education', cls: '' });
-            }
-            if (/\b(productivity|todo|note|calendar|organize)\b/i.test(title)) {
-                tags.push({ label: 'Productivity', cls: '' });
-            }
-            if (/\b(dev.?tool|developer|cli|api|sdk|library)\b/i.test(title)) {
-                tags.push({ label: 'Dev Tool', cls: '' });
-            }
-
-            return tags.slice(0, 4);
+            const text = (idea.title||'')+' '+(idea.description||'')+' '+(idea.revenue_signal||'');
+            if(idea.revenue_signal || /\$\d[\d,]*[kKmM]?\s*(MRR|ARR|month|revenue)/i.test(text)) tags.push({label:'Revenue',cls:'revenue'});
+            if(/\b(ai|llm|gpt|machine learning|chatgpt|claude)\b/i.test(text)) tags.push({label:'AI',cls:''});
+            if(/\b(education|learn|course|teach|language)\b/i.test(text)) tags.push({label:'Education',cls:''});
+            if(/\b(productivity|todo|note|organize)\b/i.test(text)) tags.push({label:'Productivity',cls:''});
+            if(/\b(open.?source|github)\b/i.test(text)) tags.push({label:'Open Source',cls:''});
+            if(/\b(dev.?tool|cli|api|sdk)\b/i.test(text)) tags.push({label:'Dev Tool',cls:''});
+            if(/\b(saas|mobile|ios|android)\b/i.test(text)) tags.push({label:'App',cls:''});
+            return tags.slice(0,5);
         }
 
-        async function fetchIdeas(page = 0) {
-            const url = `https://hn.algolia.com/api/v1/search?tags=show_hn&hitsPerPage=50&page=${page}`;
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Failed to fetch from HN Algolia API');
-            const data = await response.json();
-            return data;
+        // ── HN Live (fallback) ──
+
+        let hnLiveHits = [];
+
+        async function fetchHNLive(pages=5) {
+            const all = [];
+            for(let p=0;p<pages;p++){
+                const url = `https://hn.algolia.com/api/v1/search?tags=show_hn&hitsPerPage=50&page=${p}`;
+                const r = await fetch(url);
+                const d = await r.json();
+                const hits = d.hits||[];
+                all.push(...hits);
+                if(hits.length<50) break;
+            }
+            return all.map(h=>({
+                id: 'hn-live-'+h.objectID,
+                source: 'hackernews',
+                title: h.title||'',
+                url: h.url||'',
+                description: (h.story_text||'').replace(/<[^>]+>/g,'').slice(0,1000),
+                revenue_signal: null,
+                category: '',
+                tags: [],
+                score: h.points||0,
+                num_comments: h.num_comments||0,
+                comments_url: `https://news.ycombinator.com/item?id=${h.objectID}`,
+                date_published: h.created_at||'',
+                date_collected: new Date().toISOString(),
+                raw_snippet: '',
+                summary: '',
+            }));
         }
 
-        async function loadAllIdeas() {
+        // ── Data loading ──
+
+        async function loadIdeas() {
             const container = document.getElementById('find-results');
-            container.innerHTML = '<div class="find-loading"><div class="spinner"></div><p style="margin-top:12px">Loading ideas from Hacker News...</p></div>';
+            container.innerHTML = '<div class="find-loading"><div class="spinner"></div><p style="margin-top:12px">Loading ideas...</p></div>';
 
-            isLoading = true;
             try {
-                // Fetch first 5 pages (250 hits)
-                let allHits = [];
-                for (let p = 0; p < 5; p++) {
-                    const data = await fetchIdeas(p);
-                    allHits = allHits.concat(data.hits || []);
-                    if ((data.hits || []).length < 50) break;
+                if(state.liveMode) {
+                    hnLiveHits = await fetchHNLive();
+                    state.allIdeas = hnLiveHits;
+                    state.updatedAt = new Date().toISOString();
+                } else {
+                    const r = await fetch('data/ideas.json?v='+Date.now());
+                    if(!r.ok) throw new Error('ideas.json not found (HTTP '+r.status+')');
+                    const data = await r.json();
+                    state.allIdeas = data.ideas||[];
+                    state.updatedAt = data.updated_at||'';
                 }
-
-                state.allHits = allHits;
+                renderSourceFilters();
                 applyFilters();
-            } catch (error) {
-                console.error(error);
+            } catch(e) {
+                // Fallback to HN live
+                if(!state.liveMode) {
+                    console.warn('ideas.json not available, falling back to HN Live:', e.message);
+                    state.liveMode = true;
+                    document.getElementById('live-toggle').classList.add('active');
+                    document.getElementById('live-toggle').querySelector('span:last-child').textContent = 'HN Live (ON)';
+                    return loadIdeas();
+                }
                 container.innerHTML = `
                     <div class="find-error">
-                        <p>Failed to load ideas from Hacker News.</p>
-                        <p style="margin-top:6px;font-size:0.84rem;color:var(--text-muted)">${escapeHtml(error.message)}</p>
-                        <button onclick="loadAllIdeas()">Retry</button>
+                        <p>Failed to load ideas.</p>
+                        <p style="margin-top:6px;font-size:0.84rem;color:var(--text-muted)">${escapeHtml(e.message)}</p>
+                        <button onclick="loadIdeas()">Retry</button>
                     </div>
                 `;
-            } finally {
-                isLoading = false;
             }
+        }
+
+        function renderSourceFilters() {
+            const container = document.getElementById('source-filters');
+            const sources = [...new Set(state.allIdeas.map(i=>i.source))].sort();
+            container.innerHTML = sources.map(s => `
+                <label class="source-filter active" data-source="${s}">
+                    <input type="checkbox" checked>
+                    ${SOURCE_NAMES[s]||s}
+                </label>
+            `).join('');
+            container.querySelectorAll('.source-filter').forEach(el => {
+                el.addEventListener('click', () => {
+                    el.classList.toggle('active');
+                    const cb = el.querySelector('input');
+                    cb.checked = !cb.checked;
+                    const src = el.dataset.source;
+                    if(cb.checked) state.activeSources.add(src);
+                    else state.activeSources.delete(src);
+                    applyFilters();
+                });
+            });
         }
 
         function applyFilters() {
             const query = state.search.trim().toLowerCase();
-            const minPts = state.minPoints;
+            const minScore = state.minScore;
             const sortBy = state.sortBy;
 
-            let filtered = [...state.allHits];
+            let filtered = state.allIdeas.filter(i => state.activeSources.has(i.source));
 
-            if (query) {
-                const terms = query.split(',').map(t => t.trim()).filter(t => t.length > 0);
-                if (terms.length > 0) {
-                    filtered = filtered.filter(hit => {
-                        const haystack = ((hit.title || '') + ' ' + (hit.story_text || '') + ' ' + (hit.url || '')).toLowerCase();
-                        return terms.every(term => haystack.includes(term));
+            if(query) {
+                const terms = query.split(',').map(t=>t.trim()).filter(t=>t.length>0);
+                if(terms.length>0) {
+                    filtered = filtered.filter(i => {
+                        const haystack = ((i.title||'')+' '+(i.description||'')+' '+(i.tags||[]).join(' ')).toLowerCase();
+                        return terms.every(t => haystack.includes(t));
                     });
                 }
             }
+            if(minScore>0) filtered = filtered.filter(i => (i.score||0) >= minScore);
 
-            if (minPts > 0) {
-                filtered = filtered.filter(hit => (hit.points || 0) >= minPts);
-            }
+            if(sortBy==='score') filtered.sort((a,b)=>(b.score||0)-(a.score||0));
+            else if(sortBy==='date') filtered.sort((a,b)=>new Date(b.date_published||b.date_collected)-new Date(a.date_published||a.date_collected));
+            else if(sortBy==='comments') filtered.sort((a,b)=>(b.num_comments||0)-(a.num_comments||0));
 
-            if (sortBy === 'points') {
-                filtered.sort((a, b) => (b.points || 0) - (a.points || 0));
-            } else if (sortBy === 'date') {
-                filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-            } else if (sortBy === 'comments') {
-                filtered.sort((a, b) => (b.num_comments || 0) - (a.num_comments || 0));
-            }
-
-            state.filteredHits = filtered;
+            state.filteredIdeas = filtered;
             state.currentPage = 1;
             renderResults();
             renderPagination();
@@ -639,45 +419,43 @@
 
         function renderResults() {
             const container = document.getElementById('find-results');
-            const start = (state.currentPage - 1) * state.perPage;
-            const pageItems = state.filteredHits.slice(start, start + state.perPage);
+            const start = (state.currentPage-1)*state.perPage;
+            const page = state.filteredIdeas.slice(start, start+state.perPage);
 
-            if (pageItems.length === 0) {
-                container.innerHTML = '<div class="find-empty">No ideas match your filters. Try a different search or lower the vote threshold.</div>';
+            if(!page.length) {
+                container.innerHTML = '<div class="find-empty">No ideas match your filters. Try broader keywords or lower the vote threshold.</div>';
                 return;
             }
 
-            container.innerHTML = pageItems.map(hit => {
-                const hnUrl = `https://news.ycombinator.com/item?id=${hit.objectID}`;
-                const domain = extractDomain(hit.url);
-                const tags = extractTags(hit);
-                const desc = hit.story_text
-                    ? hit.story_text.replace(/<[^>]+>/g, '').slice(0, 400)
-                    : '';
-
+            container.innerHTML = page.map(i => {
+                const domain = extractDomain(i.url);
+                const tags = extractTags(i);
+                const srcClass = SOURCE_CLASSES[i.source]||'hn';
+                const srcName = SOURCE_NAMES[i.source]||i.source;
+                const desc = i.description||'';
                 return `
                     <div class="idea-card">
                         <div class="idea-title">
-                            <a href="${hit.url || hnUrl}" target="_blank" rel="noreferrer">${escapeHtml(hit.title)}</a>
-                            ${domain ? `<span class="idea-domain">${escapeHtml(domain)}</span>` : ''}
-                            <a class="hn-source-badge" href="${hnUrl}" target="_blank" rel="noreferrer">HN</a>
+                            <a href="${escapeHtml(i.url)}" target="_blank" rel="noreferrer">${escapeHtml(i.title)}</a>
+                            ${domain?`<span class="idea-domain">${escapeHtml(domain)}</span>`:''}
+                            <span class="source-badge ${srcClass}">${srcName}</span>
                         </div>
-                        ${desc ? `<div class="idea-desc">${escapeHtml(desc)}</div>` : ''}
-                        ${tags.length > 0 ? `<div class="idea-tags">${tags.map(t => `<span class="idea-tag${t.cls ? ' ' + t.cls : ''}">${escapeHtml(t.label)}</span>`).join('')}</div>` : ''}
+                        ${desc?`<div class="idea-desc">${escapeHtml(desc)}</div>`:''}
+                        ${tags.length?`<div class="idea-tags">${tags.map(t=>`<span class="idea-tag${t.cls?' '+t.cls:''}">${escapeHtml(t.label)}</span>`).join('')}</div>`:''}
                         <div class="idea-meta">
-                            <span class="idea-meta-item ${(hit.points || 0) >= 50 ? 'high-points' : ''}">
-                                <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 9l4-4 4 4"/><path d="M8 15l4 4 4-4"/></svg>
-                                <span class="num">${(hit.points || 0).toLocaleString()}</span> votes
+                            <span class="idea-meta-item ${(i.score||0)>=50?'high-points':''}">
+                                <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M8 9l4-4 4 4"/></svg>
+                                <span class="num">${(i.score||0).toLocaleString()}</span>
                             </span>
                             <span class="idea-meta-item">
                                 <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>
-                                <span class="num">${(hit.num_comments || 0).toLocaleString()}</span> comments
+                                <span class="num">${(i.num_comments||0).toLocaleString()}</span>
                             </span>
                             <span class="idea-meta-item">
                                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg>
-                                ${timeAgo(hit.created_at)}
+                                ${timeAgo(i.date_published||i.date_collected)}
                             </span>
-                            ${hit.url ? `<a class="idea-url" href="${escapeHtml(hit.url)}" target="_blank" rel="noreferrer">${escapeHtml(domain || hit.url)}</a>` : ''}
+                            ${i.comments_url?`<a class="source-badge ${srcClass}" href="${escapeHtml(i.comments_url)}" target="_blank" rel="noreferrer" style="margin-left:auto">Discuss</a>`:''}
                         </div>
                     </div>
                 `;
@@ -685,55 +463,51 @@
         }
 
         function renderPagination() {
-            const totalPages = Math.max(1, Math.ceil(state.filteredHits.length / state.perPage));
-            state.currentPage = Math.min(state.currentPage, totalPages);
-
-            document.getElementById('pagination-info').textContent = `${state.currentPage} / ${totalPages}`;
-            document.getElementById('page-info').textContent = `${state.currentPage} / ${totalPages}`;
-            document.getElementById('prev-page').disabled = state.currentPage <= 1;
-            document.getElementById('next-page').disabled = state.currentPage >= totalPages;
+            const total = Math.max(1, Math.ceil(state.filteredIdeas.length/state.perPage));
+            state.currentPage = Math.min(state.currentPage, total);
+            document.getElementById('pagination-info').textContent = state.currentPage+' / '+total;
+            document.getElementById('page-info').textContent = state.currentPage+' / '+total;
+            document.getElementById('prev-page').disabled = state.currentPage<=1;
+            document.getElementById('next-page').disabled = state.currentPage>=total;
         }
 
         function renderStats() {
-            document.getElementById('loaded-count').textContent = state.filteredHits.length.toLocaleString();
+            document.getElementById('loaded-count').textContent = state.filteredIdeas.length.toLocaleString();
+            if(state.updatedAt) {
+                const d = new Date(state.updatedAt);
+                document.getElementById('updated-at').textContent = d.toLocaleDateString()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+            }
         }
 
         function changePage(delta) {
-            const totalPages = Math.max(1, Math.ceil(state.filteredHits.length / state.perPage));
-            state.currentPage = Math.max(1, Math.min(state.currentPage + delta, totalPages));
-            renderResults();
-            renderPagination();
-            document.querySelector('.content-stack').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const total = Math.max(1, Math.ceil(state.filteredIdeas.length/state.perPage));
+            state.currentPage = Math.max(1, Math.min(state.currentPage+delta, total));
+            renderResults(); renderPagination();
+            document.querySelector('.content-stack').scrollIntoView({behavior:'smooth',block:'start'});
         }
 
         function bindControls() {
-            let searchTimer;
-            document.getElementById('idea-search').addEventListener('input', (e) => {
-                clearTimeout(searchTimer);
-                searchTimer = setTimeout(() => {
-                    state.search = e.target.value;
-                    applyFilters();
-                }, 300);
+            let timer;
+            document.getElementById('idea-search').addEventListener('input', e => {
+                clearTimeout(timer);
+                timer = setTimeout(()=>{ state.search=e.target.value; applyFilters(); }, 300);
             });
-
-            document.getElementById('min-points').addEventListener('change', (e) => {
-                state.minPoints = Number(e.target.value);
-                applyFilters();
+            document.getElementById('min-points').addEventListener('change', e => { state.minScore=Number(e.target.value); applyFilters(); });
+            document.getElementById('sort-by').addEventListener('change', e => { state.sortBy=e.target.value; applyFilters(); });
+            document.getElementById('prev-page').addEventListener('click', ()=>changePage(-1));
+            document.getElementById('next-page').addEventListener('click', ()=>changePage(1));
+            document.getElementById('live-toggle').addEventListener('click', async () => {
+                const btn = document.getElementById('live-toggle');
+                state.liveMode = !state.liveMode;
+                btn.classList.toggle('active', state.liveMode);
+                btn.querySelector('span:last-child').textContent = state.liveMode ? 'HN Live (ON)' : 'HN Live';
+                if(state.liveMode) state.activeSources = new Set(['hackernews']);
+                else state.activeSources = new Set(['hackernews','producthunt','reddit','indiehackers','appstore','playstore']);
+                await loadIdeas();
             });
-
-            document.getElementById('sort-by').addEventListener('change', (e) => {
-                state.sortBy = e.target.value;
-                applyFilters();
-            });
-
-            document.getElementById('prev-page').addEventListener('click', () => changePage(-1));
-            document.getElementById('next-page').addEventListener('click', () => changePage(1));
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            bindControls();
-            loadAllIdeas();
-        });
+        document.addEventListener('DOMContentLoaded', () => { bindControls(); loadIdeas(); });
     </script>
 </body>
 </html>
