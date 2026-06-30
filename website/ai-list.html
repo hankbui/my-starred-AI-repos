@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Landscape — Repos, Devs &amp; Bots</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260701-5">
+    <style>
+        .ail-hero { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+        .ail-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .ail-back:hover { color:var(--accent); }
+        .ail-tabs { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0; }
+        .ail-tab { display:inline-flex; align-items:center; gap:8px; min-height:42px; padding:0 18px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,0.02); color:var(--text-secondary); font:inherit; font-weight:700; cursor:pointer; transition:160ms ease; }
+        .ail-tab .ail-tab-count { padding:3px 8px; border-radius:999px; background:rgba(255,255,255,0.06); font-size:0.78rem; }
+        .ail-tab.active, .ail-tab:hover { border-color:var(--border-strong); background:rgba(99,207,255,0.1); color:var(--text-primary); }
+        .ail-table { width:100%; border-collapse:collapse; }
+        .ail-table th { text-align:left; padding:10px 12px; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); border-bottom:1px solid var(--border); white-space:nowrap; }
+        .ail-table td { padding:12px; border-bottom:1px solid var(--border); vertical-align:top; font-size:0.9rem; }
+        .ail-table tr:hover td { background:rgba(255,255,255,0.02); }
+        .ail-num { color:var(--text-muted); width:42px; }
+        .ail-right { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+        .ail-repo-name { font-weight:700; color:var(--text-primary); text-decoration:none; }
+        .ail-repo-name:hover { color:var(--accent); }
+        .ail-owner { color:var(--text-secondary); }
+        .ail-desc { color:var(--text-secondary); max-width:520px; }
+        .ail-acct { display:flex; align-items:center; gap:10px; }
+        .ail-avatar { width:34px; height:34px; border-radius:999px; background:var(--bg-soft); flex-shrink:0; }
+        .ail-acct-name { font-weight:700; color:var(--text-primary); text-decoration:none; }
+        .ail-acct-name:hover { color:var(--accent); }
+        .ail-toprepos { display:flex; flex-wrap:wrap; gap:6px; max-width:360px; }
+        .ail-pill { display:inline-block; padding:3px 9px; border-radius:999px; background:rgba(99,207,255,0.08); border:1px solid rgba(99,207,255,0.16); color:var(--accent); font-size:0.76rem; text-decoration:none; }
+        .ail-pill:hover { background:rgba(99,207,255,0.16); }
+        .ail-empty { padding:40px; text-align:center; color:var(--text-secondary); }
+        .ail-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; margin-bottom:14px; }
+        .ail-controls .control { min-width:160px; }
+        .ail-controls .search-control { flex:1 1 280px; }
+        @media (max-width:720px) {
+            .ail-desc, .ail-toprepos { max-width:none; }
+            .ail-hide-sm { display:none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="ail-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to my starred repos
+                </a>
+                <span class="eyebrow">Auto-discovered • daily</span>
+                <h1>AI Landscape</h1>
+                <p class="hero-subtitle">
+                    The open-source AI world, pulled automatically from GitHub — top repositories,
+                    the developers building them, and the bots maintaining them. No manual curation.
+                </p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-pill"><span class="pill-value" id="stat-repos">-</span><span class="pill-label">AI repos</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-devs">-</span><span class="pill-label">developers</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-bots">-</span><span class="pill-label">bots</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-updated">-</span><span class="pill-label">last update</span></div>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <div class="ail-tabs" role="tablist">
+                    <button class="ail-tab active" data-tab="repos" type="button">Repos <span class="ail-tab-count" id="count-repos">0</span></button>
+                    <button class="ail-tab" data-tab="devs" type="button">Devs <span class="ail-tab-count" id="count-devs">0</span></button>
+                    <button class="ail-tab" data-tab="bots" type="button">Bots <span class="ail-tab-count" id="count-bots">0</span></button>
+                </div>
+
+                <div class="ail-controls">
+                    <label class="control search-control">
+                        <span class="control-label">Search</span>
+                        <span class="control-field control-search">
+                            <span class="control-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+                            <input type="search" id="ail-search" placeholder="Search...">
+                        </span>
+                    </label>
+                    <label class="control" id="category-wrap">
+                        <span class="control-label">Category</span>
+                        <span class="control-field"><select id="ail-category"></select></span>
+                    </label>
+                    <label class="control">
+                        <span class="control-label">Sort</span>
+                        <span class="control-field"><select id="ail-sort"></select></span>
+                    </label>
+                </div>
+
+                <div class="pagination-bar">
+                    <div class="copy-toolbar">
+                        <button class="copy-btn" id="ail-copy" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copy filtered</span>
+                        </button>
+                        <div class="export-toolbar">
+                            <button class="action-btn share-btn" id="ail-share" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8"/><path d="M13 7l5 5-5 5"/><path d="M6 20h12a2 2 0 0 0 2-2v-3"/><path d="M18 4H6a2 2 0 0 0-2 2v3"/></svg><span>Share URL</span></button>
+                            <button class="action-btn export-btn" data-format="csv" id="ail-csv" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span>CSV</span></button>
+                            <button class="action-btn export-btn" data-format="md" id="ail-md" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V6h3l3 6 3-6h3v12"/><path d="M19 18V6"/><path d="M16 18h6"/></svg><span>MD</span></button>
+                            <button class="action-btn ask-ai-btn" id="ail-ask-ai" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg><span>Ask AI</span></button>
+                        </div>
+                    </div>
+                    <button class="pager-btn" id="ail-prev">« Prev</button>
+                    <span class="pager-info" id="ail-page-info">1 / 1</span>
+                    <button class="pager-btn" id="ail-next">Next »</button>
+                    <span class="results-meta" id="ail-meta">-</span>
+                </div>
+
+                <div class="table-shell">
+                    <table class="ail-table">
+                        <thead id="ail-thead"></thead>
+                        <tbody id="ail-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            Auto-discovered from the GitHub API • Updated daily • Made with ❤️ by <a href="https://github.com/hankbui" target="_blank" rel="noreferrer">@hankbui</a>
+        </footer>
+    </div>
+
+    <div class="ai-ask-backdrop" id="ail-ask-backdrop" hidden></div>
+    <div class="ai-ask-modal" id="ail-ask-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="ai-ask-header">
+            <div><div class="ai-ask-overline">Ask Google AI Mode</div><h3 class="ai-ask-title" id="ail-ask-title">Ask AI</h3></div>
+            <button class="ai-ask-close" id="ail-ask-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg></button>
+        </div>
+        <div class="ai-ask-body">
+            <p class="ai-ask-context" id="ail-ask-context">-</p>
+            <label class="ai-ask-field">
+                <div class="ai-ask-label-row">
+                    <span class="ai-ask-label">Your question</span>
+                    <div class="ai-ask-prompts-wrapper">
+                        <button class="ai-ask-prompts-btn" id="ail-prompts-btn" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            <span>Prompts</span>
+                            <svg class="prompts-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="ai-ask-prompts-menu" id="ail-prompts-menu" hidden></div>
+                    </div>
+                </div>
+                <textarea id="ail-ask-question" class="ai-ask-question" rows="3" spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-controls">
+                <label class="ai-ask-field ai-ask-field-inline">
+                    <span class="ai-ask-label">Rows to include</span>
+                    <select id="ail-ask-count" class="ai-ask-select">
+                        <option value="10">Top 10</option>
+                        <option value="25" selected>Top 25</option>
+                        <option value="50">Top 50</option>
+                        <option value="0">All filtered</option>
+                    </select>
+                </label>
+            </div>
+            <label class="ai-ask-field">
+                <span class="ai-ask-label">Prompt preview</span>
+                <textarea id="ail-ask-preview" class="ai-ask-preview" rows="9" readonly spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-meta"><span class="ai-ask-meter" id="ail-ask-meter">-</span><span class="ai-ask-warning" id="ail-ask-warning" hidden></span></div>
+        </div>
+        <div class="ai-ask-footer">
+            <button class="ai-ask-secondary" id="ail-ask-copy" type="button">Copy prompt</button>
+            <button class="ai-ask-primary" id="ail-ask-open" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg><span>Open in Google AI Mode</span></button>
+        </div>
+    </div>
+
+    <script src="ai-list.js?v=20260701-5"></script>
+</body>
+</html>

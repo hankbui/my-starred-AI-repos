@@ -38,6 +38,13 @@ jobs:
         run: |
           python scripts/generate_ideas.py || echo "Ideas scraper completed (some sources may have been skipped)"
 
+      - name: Generate AI landscape data (repos / devs / bots)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AILIST_CONTRIB_REPOS: '300'
+        run: |
+          python scripts/generate_ailist.py || echo "AI landscape generation skipped/partial"
+
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
