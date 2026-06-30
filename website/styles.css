@@ -207,11 +207,24 @@ a {
     font-size: 2rem;
 }
 
-.section-heading p,
+.section-heading p {
+    margin: 10px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.96rem;
+}
+
+.section-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
 .results-meta {
     margin: 10px 0 0;
     color: var(--text-secondary);
     font-size: 0.96rem;
+    white-space: nowrap;
 }
 
 .dataset-bar {
@@ -1399,6 +1412,15 @@ a {
         grid-template-columns: 1fr;
         gap: 4px;
     }
+
+    .section-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .view-toggle {
+        width: auto;
+    }
 }
 
 .view-toggle {
@@ -1551,10 +1573,6 @@ a {
 }
 
 @media (max-width: 720px) {
-    .view-toggle {
-        width: 100%;
-    }
-
     .mobile-card {
         padding: 14px 10px;
     }
