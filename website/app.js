@@ -825,6 +825,7 @@ async function launchAiAsk() {
 
 function bindAiAsk() {
     const openModal = () => openAiAskModal();
+    document.getElementById('hero-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('top-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('bottom-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('ai-ask-close')?.addEventListener('click', closeAiAskModal);
