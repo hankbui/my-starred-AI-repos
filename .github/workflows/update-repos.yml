@@ -45,6 +45,13 @@ jobs:
         run: |
           python scripts/generate_ailist.py || echo "AI landscape generation skipped/partial"
 
+      - name: Generate AI opportunity report (LLM distillation)
+        env:
+          LLM7_TOKEN: ${{ secrets.LLM7_TOKEN }}
+          REPORT_TOP_N: '25'
+        run: |
+          python scripts/generate_report.py || echo "Report generation skipped (LLM unavailable)"
+
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
