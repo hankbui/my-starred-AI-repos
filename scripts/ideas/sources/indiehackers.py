@@ -1,104 +1,101 @@
-"""IndieHackers — scrape public stories (no API, careful rate limiting)"""
+"""IndieHackers — fetch stories via RSS feed (no API key needed)"""
 
 import hashlib
 import re
-import time
+import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
+from html import unescape
 
-import requests
+RSS_FEED_URL = "https://feed.indiehackers.world/posts.rss"
 
 
-BASE_URL = "https://www.indiehackers.com"
+def strip_html(text: str) -> str:
+    clean = re.sub(r"<[^>]+>", " ", text)
+    clean = re.sub(r"\s+", " ", clean).strip()
+    return unescape(clean)
 
 
-def scrape_stories(max_pages: int = 3) -> list[dict]:
-    stories = []
-    session = requests.Session()
-    session.headers.update(
-        {
-            "User-Agent": (
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/120.0.0.0 Safari/537.36"
-            ),
-            "Accept": "text/html,application/xhtml+xml",
-        }
+def fetch_rss() -> list[dict]:
+    req = urllib.request.Request(
+        RSS_FEED_URL, headers={"User-Agent": "Mozilla/5.0"}
     )
+    r = urllib.request.urlopen(req, timeout=30)
+    body = r.read().decode("utf-8", errors="replace")
 
-    for page in range(1, max_pages + 1):
-        try:
-            url = f"{BASE_URL}/stories?page={page}" if page > 1 else f"{BASE_URL}/stories"
-            resp = session.get(url, timeout=30)
-            resp.raise_for_status()
-            html = resp.text
+    root = ET.fromstring(body)
+    items = []
 
-            # Extract story cards — IndieHackers uses predictable structure
-            # Pattern: find story links in the page
-            story_links = re.findall(
-                r'href="(/story/[^"]+)"[^>]*>([^<]+)', html
-            )
+    for item in root.findall(".//item"):
+        title = item.findtext("title", "") or ""
+        link = item.findtext("link", "") or ""
+        pub_date = item.findtext("pubDate", "") or ""
+        category = item.findtext("category", "") or ""
 
-            # Also try to get the JSON-embedded data
-            json_matches = re.findall(
-                r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>',
-                html, re.DOTALL,
-            )
+        content_ns = item.find(
+            "{http://purl.org/rss/1.0/modules/content/}encoded"
+        )
+        description = (
+            strip_html(content_ns.text)
+            if content_ns is not None and content_ns.text
+            else ""
+        )
 
-            if json_matches:
-                import json as j
-                try:
-                    data = j.loads(json_matches[0])
-                    # Navigate through the Next.js data structure
-                    props = (
-                        data.get("props", {})
-                        .get("pageProps", {})
-                    )
-                    stories_list = (
-                        props.get("stories") or props.get("posts") or []
-                    )
-                    for s in stories_list:
-                        stories.append(s)
-                except (j.JSONDecodeError, KeyError, TypeError):
-                    pass
+        items.append(
+            {
+                "title": title.strip(),
+                "link": link.strip(),
+                "description": description[:1000],
+                "pubDate": pub_date,
+                "category": category.strip(),
+            }
+        )
 
-            time.sleep(2.0)  # Be polite
-
-        except requests.RequestException as e:
-            print(f"  [WARN] IndieHackers page {page}: {e}")
-            break
-
-    return stories
+    return items
 
 
-def parse_indiehackers(stories: list[dict]) -> list[dict]:
+def extract_revenue(text: str) -> str | None:
+    for pat in [
+        r"\$\d[\d,]*[kKmM]?\s*(MRR|ARR|mo|month|revenue|year|profit)",
+        r"(MRR|ARR|revenue|profit)\s*[:\s]+\$?\d[\d,]*[kKmM]?",
+        r"(made|earned|generating)\s+\$?\d[\d,]*[kKmM]?",
+    ]:
+        m = re.search(pat, text, re.IGNORECASE)
+        if m:
+            return m.group(0)
+    return None
+
+
+def parse_date(date_str: str) -> str:
+    if not date_str:
+        return ""
+    try:
+        dt = parsedate_to_datetime(date_str)
+        return dt.isoformat()
+    except Exception:
+        return date_str
+
+
+def parse_indiehackers(feed_items: list[dict]) -> list[dict]:
     ideas = []
     seen = set()
 
-    for story in stories:
-        title = story.get("title") or ""
+    for item in feed_items:
+        title = item["title"]
         if not title:
             continue
 
-        slug = story.get("slug") or ""
-        unique_key = slug or title[:40]
+        unique_key = item["link"] or title[:40]
         if unique_key in seen:
             continue
         seen.add(unique_key)
 
-        body = (story.get("description") or story.get("excerpt") or "")[:1000]
+        body = item["description"][:1000]
         raw = title + " " + body
-        revenue = None
-        for pat in [
-            r"\$\d[\d,]*[kKmM]?\s*(MRR|ARR|mo|month|revenue|year|profit)",
-            r"(MRR|ARR|revenue|profit)\s*[:\s]+\$?\d[\d,]*[kKmM]?",
-            r"(made|earned|generating)\s+\$?\d[\d,]*[kKmM]?",
-        ]:
-            m = re.search(pat, raw, re.IGNORECASE)
-            if m:
-                revenue = m.group(0)
-                break
-
-        unique = f"ih-{slug or unique_key}".replace("/", "-")
+        revenue = extract_revenue(raw)
+        slug = unique_key.rstrip("/").split("/")[-1]
+        unique = f"ih-{slug}"
         idea_id = hashlib.sha256(unique.encode()).hexdigest()[:16]
 
         ideas.append(
@@ -106,27 +103,33 @@ def parse_indiehackers(stories: list[dict]) -> list[dict]:
                 "id": idea_id,
                 "source": "indiehackers",
                 "title": title,
-                "url": f"{BASE_URL}/story/{slug}" if slug else "",
+                "url": item["link"],
                 "description": body,
                 "revenue_signal": revenue,
-                "category": "",
-                "tags": story.get("tags", []),
-                "score": story.get("upvotes", 0),
-                "num_comments": story.get("commentsCount", 0),
-                "comments_url": f"{BASE_URL}/story/{slug}#comments" if slug else "",
-                "date_published": story.get("createdAt", ""),
+                "category": item["category"],
+                "tags": [item["category"]] if item["category"] else [],
+                "score": 0,
+                "num_comments": 0,
+                "comments_url": "",
+                "date_published": parse_date(item["pubDate"]),
                 "date_collected": datetime.now(timezone.utc).isoformat(),
                 "raw_snippet": raw[:2000],
                 "summary": "",
             }
         )
+
     return ideas
 
 
 def run(max_pages: int = 3) -> list[dict]:
-    print("  Scraping IndieHackers (rate-limited to 2s/page)...")
-    stories = scrape_stories(max_pages)
-    if not stories:
-        print("  [SKIP] Could not extract IndieHackers data (page structure may have changed)")
+    print("  Fetching IndieHackers from RSS feed (feed.indiehackers.world)...")
+    try:
+        feed_items = fetch_rss()
+        if not feed_items:
+            print("  [SKIP] No items from IndieHackers RSS feed")
+            return []
+        print(f"  Got {len(feed_items)} items from RSS feed")
+        return parse_indiehackers(feed_items)
+    except Exception as e:
+        print(f"  [WARN] IndieHackers RSS failed: {e}")
         return []
-    return parse_indiehackers(stories)
