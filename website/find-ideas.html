@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Ideas — AI Repositories</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260701-2">
+    <link rel="stylesheet" href="styles.css?v=20260701-3">
     <style>
         .find-hero {
             display: flex;
@@ -150,6 +150,62 @@
         .live-toggle.active .live-dot { background: var(--success); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+        .ai-ask-label-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
+        }
+        .ai-ask-prompts-wrapper { position: relative; }
+        .ai-ask-prompts-btn {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 4px 10px; border-radius: 8px;
+            border: 1px solid var(--border); background: rgba(99,207,255,0.06);
+            color: var(--accent); font: inherit; font-size: 0.78rem; font-weight: 700;
+            cursor: pointer; transition: 120ms ease; white-space: nowrap;
+        }
+        .ai-ask-prompts-btn:hover { background: rgba(99,207,255,0.14); border-color: var(--accent); }
+        .ai-ask-prompts-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .ai-ask-prompts-btn .prompts-chevron { width: 11px; height: 11px; transition: transform 160ms ease; }
+        .ai-ask-prompts-btn.open .prompts-chevron { transform: rotate(180deg); }
+
+        .ai-ask-prompts-menu {
+            position: absolute; top: calc(100% + 4px); right: 0; z-index: 100;
+            min-width: 320px; max-width: min(400px, 90vw); max-height: 420px; overflow-y: auto;
+            padding: 8px; border: 1px solid var(--border); border-radius: 12px;
+            background: #1a1f26; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .prompts-group { margin-bottom: 6px; }
+        .prompts-group-title {
+            padding: 6px 8px 4px; font-size: 0.72rem; font-weight: 700;
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .prompts-item {
+            display: block; width: 100%; text-align: left;
+            padding: 7px 10px; border-radius: 8px; border: none;
+            background: transparent; color: var(--text-secondary); font: inherit;
+            font-size: 0.82rem; line-height: 1.4; cursor: pointer; transition: 100ms ease;
+        }
+        .prompts-item:hover { background: rgba(99,207,255,0.08); color: var(--text-primary); }
+        .prompts-divider { height: 1px; background: var(--border); margin: 6px 0; }
+        .prompts-add-btn {
+            display: block; width: 100%; text-align: center;
+            padding: 8px; border-radius: 8px; border: 1px dashed var(--border);
+            background: transparent; color: var(--text-secondary); font: inherit;
+            font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: 120ms ease;
+        }
+        .prompts-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,207,255,0.06); }
+        .prompts-custom-item {
+            display: flex; align-items: center; gap: 4px;
+            padding: 6px 8px; border-radius: 8px; border: none;
+            background: transparent; width: 100%; text-align: left;
+            color: var(--text-secondary); font: inherit; font-size: 0.82rem; cursor: pointer; transition: 100ms ease;
+        }
+        .prompts-custom-item:hover { background: rgba(99,207,255,0.08); color: var(--text-primary); }
+        .prompts-custom-item .prompts-del {
+            margin-left: auto; flex-shrink: 0; opacity: 0.4; cursor: pointer; transition: opacity 120ms ease;
+            width: 18px; height: 18px; border-radius: 4px; border: none;
+            background: transparent; color: #ff6666; font-size: 14px; line-height: 1; display: flex; align-items: center; justify-content: center;
+        }
+        .prompts-custom-item .prompts-del:hover { opacity: 1; background: rgba(255,100,100,0.15); }
+
         @media (max-width: 720px) {
             .find-stats { flex-wrap: wrap; gap: 10px; }
             .find-stats .ai-ask-toggle { margin-left: 0; }
@@ -163,6 +219,7 @@
             .idea-meta { gap: 10px; }
             .source-filters { gap: 6px; }
             .source-filter { font-size: 0.78rem; padding: 4px 10px; }
+            .ai-ask-prompts-menu { min-width: 260px; right: -40px; }
         }
     </style>
 </head>
@@ -261,7 +318,47 @@
                 <p class="ai-ask-context" id="find-ai-ask-context">-</p>
 
                 <label class="ai-ask-field">
-                    <span class="ai-ask-label">Your question</span>
+                    <div class="ai-ask-label-row">
+                        <span class="ai-ask-label">Your question</span>
+                        <div class="ai-ask-prompts-wrapper">
+                            <button class="ai-ask-prompts-btn" id="find-ask-prompts-btn" type="button">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                <span>Prompts</span>
+                                <svg class="prompts-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="ai-ask-prompts-menu" id="find-ask-prompts-menu" hidden>
+                                <div class="prompts-group">
+                                    <div class="prompts-group-title">🔥 Discovery & Validation</div>
+                                    <button class="prompts-item" data-prompt="Which ideas have the highest revenue potential and are trending up? Prioritize by combining revenue signals (subscription/SaaS models) with rising trend categories. List the top 5 with reasoning.">Revenue potential + trending up</button>
+                                    <button class="prompts-item" data-prompt="Which of these ideas solve real problems people would pay for? Look beyond feature ideas — identify pain points, urgency signals (regulatory, cost savings, compliance), and willingness-to-pay cues in descriptions.">Real problems people pay for</button>
+                                    <button class="prompts-item" data-prompt="Identify blue ocean opportunities — ideas that target growing, under-served markets with few dominant competitors. Exclude saturated categories (e.g. yet another to-do app, AI wrapper).">Blue ocean opportunities</button>
+                                    <button class="prompts-item" data-prompt="Which ideas have the strongest validation signals? Look for: existing revenue, funding raised, user traction, waitlist demand, or proven相似的 competitors making money. Rank by validation strength.">Strongest validation signals</button>
+                                </div>
+                                <div class="prompts-group">
+                                    <div class="prompts-group-title">💰 Monetization</div>
+                                    <button class="prompts-item" data-prompt="Rank these ideas by how quickly a solo founder could reach $1k MRR. Consider: low upfront cost, subscription business model, clear target audience, no hardware/physical barriers. Justify the top 3.">Fastest to $1k MRR (solo)</button>
+                                    <button class="prompts-item" data-prompt="Which of these can be turned into a profitable micro-SaaS in under 3 months? Prioritize ideas with API/software models, existing demand, and low customer acquisition cost.">Micro-SaaS in 3 months</button>
+                                    <button class="prompts-item" data-prompt="Identify which ideas already have proven competitors making money. What differentiated angle could win against them? Think: cheaper, simpler, AI-native, or niche-first.">Competitor + differentiation</button>
+                                </div>
+                                <div class="prompts-group">
+                                    <div class="prompts-group-title">📈 Market Timing</div>
+                                    <button class="prompts-item" data-prompt="Group these ideas by category. For each group, tell me: (1) is the market growing or shrinking? (2) what's the revenue model? (3) how hard is it to enter? Focus on groups with rising trends + clear monetization.">Category analysis + trends</button>
+                                    <button class="prompts-item" data-prompt="Which of these are in declining trend categories? Exclude them and explain why they're declining (tech shift, saturation, changing user behavior).">Declining markets to avoid</button>
+                                </div>
+                                <div class="prompts-group">
+                                    <div class="prompts-group-title">🤖 Tech Feasibility</div>
+                                    <button class="prompts-item" data-prompt="Which ideas can be built quickly (weeks, not months) using AI tools and minimal coding? Focus on: AI-assisted development, no-code viable, existing APIs, or GPT wrappers with unique data/UX.">Quick to build with AI</button>
+                                    <button class="prompts-item" data-prompt="For the top 3 AI-feasible ideas, outline a 4-week MVP plan: week 1 core feature, week 2 AI integration, week 3 polish + landing page, week 4 launch to one channel.">4-week MVP plan (top 3)</button>
+                                </div>
+                                <div class="prompts-divider"></div>
+                                <div class="prompts-group" id="prompts-custom-group" hidden>
+                                    <div class="prompts-group-title">📝 Your Prompts</div>
+                                    <div id="prompts-custom-list"></div>
+                                </div>
+                                <button class="prompts-add-btn" id="find-ask-prompts-add" type="button">➕ Add your own prompt</button>
+                            </div>
+                        </div>
+                    </div>
                     <textarea id="find-ai-ask-question" class="ai-ask-question" rows="3" spellcheck="false"></textarea>
                 </label>
 
@@ -677,6 +774,7 @@
 
         function openAiAskModal() {
             if (state.filteredIdeas.length === 0) return;
+            closePromptsMenu();
             // Sync modal checkbox with stat-bar toggle
             const statToggle = document.getElementById('find-ask-include-desc');
             const modalCheck = document.getElementById('find-ai-ask-include-desc-modal');
@@ -694,6 +792,7 @@
         }
 
         function closeAiAskModal() {
+            closePromptsMenu();
             document.getElementById('find-ai-ask-backdrop').hidden = true;
             const modal = document.getElementById('find-ai-ask-modal');
             modal.classList.remove('open');
@@ -714,6 +813,76 @@
                 span.textContent = 'Opened ✓ (prompt copied)';
                 setTimeout(() => { span.textContent = 'Open in Google AI Mode'; }, 1800);
             }
+        }
+
+        // ── Prompt Templates ──
+
+        const PROMPTS_STORAGE_KEY = 'find-ideas-custom-prompts';
+
+        function loadCustomPrompts() {
+            try { return JSON.parse(localStorage.getItem(PROMPTS_STORAGE_KEY)) || []; }
+            catch { return []; }
+        }
+
+        function saveCustomPrompts(prompts) {
+            localStorage.setItem(PROMPTS_STORAGE_KEY, JSON.stringify(prompts));
+        }
+
+        function renderCustomPrompts() {
+            const list = document.getElementById('prompts-custom-list');
+            const group = document.getElementById('prompts-custom-group');
+            const prompts = loadCustomPrompts();
+            if (!prompts.length) { group.hidden = true; return; }
+            group.hidden = false;
+            list.innerHTML = prompts.map((p, i) =>
+                `<div class="prompts-custom-item" data-index="${i}">
+                    <span class="prompts-custom-text">${escapeHtml(p)}</span>
+                    <button class="prompts-del" data-index="${i}" type="button" aria-label="Delete prompt">✕</button>
+                </div>`
+            ).join('');
+            list.querySelectorAll('.prompts-custom-item').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    if (e.target.closest('.prompts-del')) return;
+                    const idx = Number(el.dataset.index);
+                    const prompts = loadCustomPrompts();
+                    if (prompts[idx]) injectPrompt(prompts[idx]);
+                });
+            });
+            list.querySelectorAll('.prompts-del').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const idx = Number(btn.dataset.index);
+                    let prompts = loadCustomPrompts();
+                    prompts.splice(idx, 1);
+                    saveCustomPrompts(prompts);
+                    renderCustomPrompts();
+                });
+            });
+        }
+
+        function injectPrompt(text) {
+            const ta = document.getElementById('find-ai-ask-question');
+            if (!ta) return;
+            ta.value = text;
+            ta.dispatchEvent(new Event('input'));
+            closePromptsMenu();
+        }
+
+        function closePromptsMenu() {
+            const menu = document.getElementById('find-ask-prompts-menu');
+            const btn = document.getElementById('find-ask-prompts-btn');
+            if (menu) menu.hidden = true;
+            if (btn) btn.classList.remove('open');
+        }
+
+        function togglePromptsMenu() {
+            const menu = document.getElementById('find-ask-prompts-menu');
+            const btn = document.getElementById('find-ask-prompts-btn');
+            if (!menu) return;
+            const isOpen = !menu.hidden;
+            menu.hidden = isOpen;
+            btn.classList.toggle('open', !isOpen);
+            if (!isOpen) renderCustomPrompts();
         }
 
         function bindAiAsk() {
@@ -741,6 +910,29 @@
                 if (event.key === 'Escape' && document.getElementById('find-ai-ask-modal').classList.contains('open')) {
                     closeAiAskModal();
                 }
+            });
+
+            // Prompts
+            document.getElementById('find-ask-prompts-btn')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePromptsMenu();
+            });
+            document.getElementById('find-ask-prompts-add')?.addEventListener('click', () => {
+                const text = window.prompt('Enter your custom prompt:');
+                if (text && text.trim()) {
+                    const prompts = loadCustomPrompts();
+                    prompts.push(text.trim());
+                    saveCustomPrompts(prompts);
+                    renderCustomPrompts();
+                    injectPrompt(text.trim());
+                }
+            });
+            document.querySelectorAll('.prompts-item[data-prompt]').forEach(el => {
+                el.addEventListener('click', () => injectPrompt(el.dataset.prompt));
+            });
+            document.addEventListener('click', (e) => {
+                const wrapper = document.querySelector('.ai-ask-prompts-wrapper');
+                if (wrapper && !wrapper.contains(e.target)) closePromptsMenu();
             });
         }
 
