@@ -695,6 +695,166 @@ function buildCopyPayload(repos) {
     return lines.join('\n');
 }
 
+// ---- Ask AI (Google AI Mode) ----
+const AI_ASK_DEFAULT_QUESTION =
+    'I have a curated list of GitHub AI repositories below. Give me a concise overview of what each one does, group them by purpose, highlight the strongest options, and recommend which to try first for building an AI app.';
+const AI_ASK_DESC_LIMIT = 140;
+const AI_ASK_URL_SOFT_LIMIT = 7500;
+
+function getAiAskRepos() {
+    const limitRaw = Number(document.getElementById('ai-ask-count')?.value ?? 25);
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? limitRaw : state.filteredRepos.length;
+    return state.filteredRepos.slice(0, limit);
+}
+
+function buildAiRepoList(repos, includeDesc) {
+    return repos
+        .map((repo, index) => {
+            const stars = `${repo.stars.toLocaleString()}★`;
+            const url = `https://github.com/${repo.name}`;
+            if (!includeDesc) {
+                return `${index + 1}. ${repo.name} (${stars}) — ${url}`;
+            }
+            const desc = String(repo.description || '').replace(/\s+/g, ' ').trim();
+            const shortDesc = desc.length > AI_ASK_DESC_LIMIT ? `${desc.slice(0, AI_ASK_DESC_LIMIT - 1)}…` : desc;
+            return `${index + 1}. ${repo.name} (${stars}) — ${url}${shortDesc ? ` — ${shortDesc}` : ''}`;
+        })
+        .join('\n');
+}
+
+function buildAiAskFilterContext() {
+    const bits = [`View: ${state.view === 'trending' ? 'Trending' : 'All Repos'}`];
+    if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+    if (state.category !== 'all') bits.push(`Category: ${state.category}`);
+    if (state.topic !== 'all') bits.push(`Topic: ${state.topic}`);
+    if (state.activity !== 'all') bits.push(`Activity: ${state.activity}`);
+    if (state.minStars > 0) bits.push(`Min stars: ${state.minStars.toLocaleString()}`);
+    return bits.join(' • ');
+}
+
+function buildAiAskPrompt() {
+    const questionEl = document.getElementById('ai-ask-question');
+    const question = (questionEl?.value || AI_ASK_DEFAULT_QUESTION).trim();
+    const includeDesc = document.getElementById('ai-ask-include-desc')?.checked ?? true;
+    const repos = getAiAskRepos();
+    const list = buildAiRepoList(repos, includeDesc);
+    return `${question}\n\nFilter context: ${buildAiAskFilterContext()}\nRepositories (${repos.length}):\n${list}`;
+}
+
+function buildGoogleAiModeUrl(query) {
+    return `https://www.google.com/search?q=${encodeURIComponent(query.trim())}&udm=50`;
+}
+
+function renderAiAskPreview() {
+    const prompt = buildAiAskPrompt();
+    const repos = getAiAskRepos();
+    const preview = document.getElementById('ai-ask-preview');
+    const meter = document.getElementById('ai-ask-meter');
+    const warning = document.getElementById('ai-ask-warning');
+    const context = document.getElementById('ai-ask-context');
+
+    if (preview) preview.value = prompt;
+
+    const urlLength = buildGoogleAiModeUrl(prompt).length;
+    if (meter) {
+        meter.textContent = `${repos.length} repos • ${prompt.length.toLocaleString()} chars • URL ~${urlLength.toLocaleString()}`;
+    }
+
+    if (context) {
+        context.textContent = state.filteredRepos.length === repos.length
+            ? `Asking about all ${repos.length} filtered repo${repos.length === 1 ? '' : 's'}.`
+            : `Asking about the top ${repos.length} of ${state.filteredRepos.length} filtered repos.`;
+    }
+
+    if (warning) {
+        if (urlLength > AI_ASK_URL_SOFT_LIMIT) {
+            warning.hidden = false;
+            warning.textContent = 'Long prompt — Google may trim it in the URL. It is copied to your clipboard as a backup so you can paste it into AI Mode.';
+        } else {
+            warning.hidden = true;
+            warning.textContent = '';
+        }
+    }
+}
+
+function openAiAskModal() {
+    if (state.filteredRepos.length === 0) {
+        return;
+    }
+    const questionEl = document.getElementById('ai-ask-question');
+    if (questionEl && !questionEl.value.trim()) {
+        questionEl.value = AI_ASK_DEFAULT_QUESTION;
+    }
+    renderAiAskPreview();
+    document.getElementById('ai-ask-backdrop').hidden = false;
+    const modal = document.getElementById('ai-ask-modal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drawer-open');
+}
+
+function closeAiAskModal() {
+    document.getElementById('ai-ask-backdrop').hidden = true;
+    const modal = document.getElementById('ai-ask-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (!document.getElementById('repo-drawer').classList.contains('open')) {
+        document.body.classList.remove('drawer-open');
+    }
+}
+
+function setAiAskOpenFeedback(label) {
+    const span = document.querySelector('#ai-ask-open span');
+    if (span) span.textContent = label;
+}
+
+async function launchAiAsk() {
+    const prompt = buildAiAskPrompt();
+
+    // Always copy as a backup in case Google trims a long prompt from the URL.
+    try {
+        await copyText(prompt);
+    } catch (error) {
+        console.error(error);
+    }
+
+    window.open(buildGoogleAiModeUrl(prompt), '_blank', 'noopener');
+    setAiAskOpenFeedback('Opened ✓ (prompt copied)');
+    window.setTimeout(() => setAiAskOpenFeedback('Open in Google AI Mode'), 1800);
+}
+
+function bindAiAsk() {
+    const openModal = () => openAiAskModal();
+    document.getElementById('top-ask-ai')?.addEventListener('click', openModal);
+    document.getElementById('bottom-ask-ai')?.addEventListener('click', openModal);
+    document.getElementById('ai-ask-close')?.addEventListener('click', closeAiAskModal);
+    document.getElementById('ai-ask-backdrop')?.addEventListener('click', closeAiAskModal);
+    document.getElementById('ai-ask-count')?.addEventListener('change', renderAiAskPreview);
+    document.getElementById('ai-ask-include-desc')?.addEventListener('change', renderAiAskPreview);
+    document.getElementById('ai-ask-question')?.addEventListener('input', renderAiAskPreview);
+    document.getElementById('ai-ask-open')?.addEventListener('click', launchAiAsk);
+
+    const copyBtn = document.getElementById('ai-ask-copy');
+    copyBtn?.addEventListener('click', async () => {
+        try {
+            await copyText(buildAiAskPrompt());
+            copyBtn.textContent = 'Copied ✓';
+        } catch (error) {
+            console.error(error);
+            copyBtn.textContent = 'Copy failed';
+        }
+        window.setTimeout(() => {
+            copyBtn.textContent = 'Copy prompt';
+        }, 1500);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && document.getElementById('ai-ask-modal').classList.contains('open')) {
+            closeAiAskModal();
+        }
+    });
+}
+
 async function copyText(text) {
     if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
@@ -1398,6 +1558,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindDrawer();
     bindBackToTop();
     bindViewToggle();
+    bindAiAsk();
 
     if (state.mobileView) {
         const icon = document.getElementById('view-toggle-icon');
