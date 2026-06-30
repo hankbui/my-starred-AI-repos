@@ -1,0 +1,78 @@
+name: Publish site to public repo
+
+# Mirrors the static site in website/ to a SEPARATE PUBLIC repo, so the source
+# (scraper code, data, history) can stay PRIVATE while the HTML stays public.
+#
+# ── One-time setup ────────────────────────────────────────────────────────────
+#   1. Create the public repo named in `PUBLIC_REPO` below (empty, public).
+#   2. Create a token with write access to that repo:
+#        - Fine-grained PAT: Repository access = the public repo,
+#          Permissions = Contents: Read and write  (recommended), OR
+#        - Classic PAT with the `repo` scope.
+#   3. In THIS (private) repo: Settings → Secrets and variables → Actions →
+#        New repository secret → name: SITE_DEPLOY_TOKEN, value: <the PAT>.
+#   4. In the PUBLIC repo: Settings → Pages → Build and deployment →
+#        Source: "Deploy from a branch" → Branch: main → /(root) → Save.
+#
+# Until SITE_DEPLOY_TOKEN exists this workflow is a green no-op, so it is safe to
+# merge now while the source repo is still public.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/**'
+      - '.github/workflows/publish-site.yml'
+  workflow_run:
+    # Re-publish after the daily data refresh finishes (its commit uses
+    # [skip ci], which push triggers honour but workflow_run does not).
+    workflows: ['Update AI Repos Data']
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      DEPLOY_TOKEN: ${{ secrets.SITE_DEPLOY_TOKEN }}
+      # ── Change this if you want a different public repo / URL ──
+      # Site will be served at: https://<owner>.github.io/<repo>/
+      PUBLIC_REPO: hankbui/my-starred-AI-repos-site
+    steps:
+      - name: Checkout source (private)
+        uses: actions/checkout@v4
+
+      - name: Sync website/ to the public repo
+        run: |
+          set -euo pipefail
+
+          if [ -z "${DEPLOY_TOKEN}" ]; then
+            echo "SITE_DEPLOY_TOKEN not set yet — skipping publish (no-op)."
+            exit 0
+          fi
+
+          SRC="${GITHUB_WORKSPACE}/website"
+          WORK="$(mktemp -d)"
+          AUTH_URL="https://x-access-token:${DEPLOY_TOKEN}@github.com/${PUBLIC_REPO}.git"
+
+          # Build a fresh single-commit tree from website/ and force-push it.
+          # (Single commit keeps the public mirror tiny; history lives in the
+          # private source repo.)
+          cd "${WORK}"
+          git init -q
+          git checkout -q -b main
+          rsync -a --delete --exclude='.git' "${SRC}/" ./
+          touch .nojekyll
+          git add -A
+          git -c user.name="github-actions[bot]" \
+              -c user.email="github-actions[bot]@users.noreply.github.com" \
+              commit -qm "site: sync from source @ ${GITHUB_SHA::7}"
+          git push -f "${AUTH_URL}" main
+
+          echo "Published website/ → ${PUBLIC_REPO} (branch main)."
