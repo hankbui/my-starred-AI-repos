@@ -94,6 +94,20 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
     print(f"  Enriched: {enriched} with BM/AI | {trended} with trend signals")
     print(f"  Trends API calls: {len(ideas_list)} ideas scanned")
 
+    # Carry forward Reddit ideas when this run couldn't collect any (e.g. GitHub
+    # Actions' datacenter IP is blocked from Reddit's public RSS). This keeps the
+    # Reddit tab alive between local refreshes instead of wiping it every daily run.
+    if not any(i.get("source") == "reddit" for i in ideas_list):
+        try:
+            previous = json.loads(Path(output_path).read_text())
+            prev_reddit = [i for i in previous.get("ideas", []) if i.get("source") == "reddit"]
+            if prev_reddit:
+                ideas_list.extend(prev_reddit)
+                stats["sources"]["reddit"] = len(prev_reddit)
+                print(f"  Carried forward {len(prev_reddit)} Reddit ideas from previous export")
+        except (FileNotFoundError, json.JSONDecodeError):
+            pass
+
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "stats": stats,
