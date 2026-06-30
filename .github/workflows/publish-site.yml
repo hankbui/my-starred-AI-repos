@@ -67,7 +67,7 @@ jobs:
           cd "${WORK}"
           git init -q
           git checkout -q -b main
-          rsync -a --delete --exclude='.git' "${SRC}/" ./
+          rsync -a --delete --exclude='.git' --exclude='.DS_Store' "${SRC}/" ./
           touch .nojekyll
           git add -A
           git -c user.name="github-actions[bot]" \
