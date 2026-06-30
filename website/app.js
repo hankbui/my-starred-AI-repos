@@ -18,7 +18,7 @@ const state = {
     historyPoints: 0,
     trendingMode: 'bootstrap',
     selectedRepoId: null,
-    mobileView: false,
+    mobileView: localStorage.getItem('mobileView') === 'true',
 };
 
 const DATA_URL = 'data/repos.json?v=20260328-5';
@@ -1349,6 +1349,7 @@ function bindViewToggle() {
 
     toggle.addEventListener('click', () => {
         state.mobileView = !state.mobileView;
+        localStorage.setItem('mobileView', state.mobileView);
         const icon = document.getElementById('view-toggle-icon');
         const label = document.getElementById('view-toggle-label');
         if (state.mobileView) {
@@ -1397,6 +1398,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindDrawer();
     bindBackToTop();
     bindViewToggle();
+
+    if (state.mobileView) {
+        const icon = document.getElementById('view-toggle-icon');
+        const label = document.getElementById('view-toggle-label');
+        if (icon) icon.textContent = '💻';
+        if (label) label.textContent = 'Desktop View';
+    }
     closeDrawer();
 
     try {
