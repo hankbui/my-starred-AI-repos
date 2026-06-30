@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_run:
+    # Deploy after the daily data refresh finishes (its commit uses [skip ci],
+    # which push triggers honour but workflow_run does not).
+    workflows: ["Update AI Repos Data"]
+    types: [completed]
   workflow_dispatch:
 
 jobs:
