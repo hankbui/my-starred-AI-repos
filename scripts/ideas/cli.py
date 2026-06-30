@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import db
-from .sources import hn, producthunt, reddit, indiehackers, appstore
+from .sources import hn, producthunt, reddit, indiehackers, appstore, github_trending, v2ex
 
 
 SOURCE_MODULES = {
@@ -15,6 +15,8 @@ SOURCE_MODULES = {
     "reddit": reddit,
     "indiehackers": indiehackers,
     "appstore": appstore,
+    "githubtrending": github_trending,
+    "v2ex": v2ex,
 }
 
 
