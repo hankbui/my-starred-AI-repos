@@ -1,70 +1,94 @@
+<div align="center">
 
-search Repos, get list to ask AI, find app ideas,..
-# ⭐ My Starred AI Repositories
+# ⭐ AI Repositories
 
-Auto-updated daily via GitHub Actions.
+### A curated, auto-updated directory of the best open-source AI &amp; LLM projects on GitHub — with powerful filtering, trend tracking, and one-click "Ask AI" analysis.
 
-## 🌐 Website
+<p>
+  <a href="https://hankbui.github.io/my-starred-AI-repos/">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-Open-3fa7ff?style=for-the-badge" alt="Live Demo">
+  </a>
+  <img src="https://img.shields.io/badge/Repos_tracked-1%2C000%2B-63cfff?style=for-the-badge" alt="Repos tracked">
+  <img src="https://img.shields.io/badge/Updated-Daily-4de0a8?style=for-the-badge" alt="Auto-updated daily">
+  <img src="https://img.shields.io/github/stars/hankbui/my-starred-AI-repos?style=for-the-badge&color=ffb857" alt="Stars">
+</p>
 
-View the full list with search, filtering, and categorization:
-**[https://hankbui.github.io/my-starred-AI-repos/](https://hankbui.github.io/my-starred-AI-repos/)**
+<h3>
+  <a href="https://hankbui.github.io/my-starred-AI-repos/">→ Browse the directory live</a>
+</h3>
 
+<img src="website/assets/screenshot-repos.png" alt="AI Repositories — directory view" width="100%">
 
+</div>
 
-https://getdesign.md
-https://huyenchip.com/blog/
+---
 
+## ✨ What is this?
 
-## 📁 Project Structure
+**AI Repositories** is a fast, dark-themed web directory that indexes **1,000+ open-source AI/LLM repositories** and keeps them fresh **automatically, every day**. Instead of losing great projects in an endless list of GitHub stars, you get a clean, searchable, sortable catalogue with growth signals and built-in AI analysis — so you can find the right tool for your next idea in seconds.
 
-```
-my-starred-AI-repos/
-├── .github/workflows/
-│   └── update-and-deploy.yml  # GitHub Actions workflow
-├── scripts/
-│   ├── generate_data.py       # Fetch repos from GitHub API
-│   └── generate_website.py    # Generate static HTML website
-├── website/
-│   ├── index.html             # Main website
-│   ├── styles.css             # Dark theme styles
-│   └── app.js                 # Client-side filtering/sorting
-├── data/
-│   ├── repos.json             # Repository data
-│   └── stats.json             # Statistics summary
-└── requirements.txt           # Python dependencies
-```
+> No sign-up. No tracking. Just a fast static site.
 
-## 🔄 How It Works
+---
 
-1. **GitHub Actions** runs daily at midnight (UTC)
-2. **generate_data.py** fetches your starred repos from GitHub API
-3. **generate_website.py** creates the static HTML page
-4. **GitHub Pages** deploys the website automatically
+## 🚀 Features
 
-## 🚀 Manual Trigger
+### 📚 A directory built for discovery
+- **1,000+ AI/LLM repos**, organised into **10 categories** (Agents, Models &amp; Inference, Developer Tools, Vision &amp; Media, Infrastructure, and more).
+- **Powerful filtering** — full-text search, category, topic, activity, minimum stars, and 8 sort modes.
+- **One-tap quick filters** — `Hot` · `Fast-growing` · `Recently updated` · `10k+ stars` · `Agents` · `Infra`.
+- **Repo detail drawer** — stars, forks, growth, license, homepage, and a cached README preview.
 
-You can manually trigger the workflow from the GitHub Actions tab.
+### 📈 Trend tracking
+- A dedicated **Trending** view ranks repos by momentum, not just raw stars.
+- **1-day &amp; 7-day star growth** columns and a blended **trend score** highlight what's heating up *right now*.
 
-## 📊 Categories
+### 🤖 Ask AI — analyse repos in one click
+- Filter the list, hit **Ask AI**, and the current selection is packaged into a ready-to-send prompt for **Google AI Mode**.
+- **12 built-in prompt templates** across 4 categories (Discovery, Build &amp; Ship, Market Intelligence, Tech Stack) — plus your own **custom prompts**, saved locally.
 
-- 🤖 AI / LLM
-- 👁️ Vision / OCR
-- ⚙️ Automation
-- 📊 Data / ML
-- 🔧 Dev Tools
-- 🌐 Web / Cloud
-- 🔐 Security
-- 📦 Other
+<div align="center">
+  <img src="website/assets/screenshot-askai.png" alt="Ask AI — prompt templates" width="78%">
+</div>
 
-## 🛠️ Development
+### 💡 Find Ideas — bonus startup-idea radar
+- A companion page that aggregates **startup &amp; app ideas** from **Show HN, Product Hunt, IndieHackers, Reddit, App Store, Play Store, GitHub Trending, V2EX, 36Kr &amp; YouTube**.
+- Each idea is enriched with **revenue signals, business model, AI-potential score, and trend direction** — filterable by source, score, and keyword.
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+<div align="center">
+  <img src="website/assets/screenshot-ideas.png" alt="Find Ideas page" width="100%">
+</div>
 
-# Generate data
-python scripts/generate_data.py
+### 🛠️ Built-in exports
+- **Copy filtered**, **CSV**, **Markdown**, and a shareable **URL** that preserves your exact filters.
 
-# Generate website
-python scripts/generate_website.py
-```
+### 📱 Polished everywhere
+- Responsive **desktop &amp; mobile** layouts, smooth dark UI, and a lightweight static build that loads instantly.
+
+---
+
+## 🔄 How it stays fresh
+
+The directory is regenerated **automatically every day** by a GitHub Actions pipeline that pulls the latest stats and ideas, then publishes the static site to GitHub Pages. Open the site any day and the data is current — no manual updates needed.
+
+---
+
+## 🧱 Built with
+
+`Vanilla JS` · `HTML` · `CSS` — zero frameworks, zero build step. Data served as static JSON. Hosted on **GitHub Pages**.
+
+---
+
+<div align="center">
+
+### ⭐ Find this useful?
+
+If this directory helps you discover a great project, **a star is hugely appreciated** — it helps others find it too.
+
+<a href="https://hankbui.github.io/my-starred-AI-repos/">
+  <img src="https://img.shields.io/badge/🌐_Open_the_directory-3fa7ff?style=for-the-badge" alt="Open the directory">
+</a>
+
+<sub>Built with ❤️ by <a href="https://github.com/hankbui">@hankbui</a> · Auto-updated daily</sub>
+
+</div>
