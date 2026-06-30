@@ -16,6 +16,7 @@ from .sources import (
     github_trending,
     v2ex,
     thirtysixkr,
+    youtube,
 )
 
 
@@ -28,6 +29,7 @@ SOURCE_MODULES = {
     "githubtrending": github_trending,
     "v2ex": v2ex,
     "thirtysixkr": thirtysixkr,
+    "youtube": youtube,
 }
 
 
