@@ -115,57 +115,42 @@ def parse_appstore(entries: list[dict], category: str) -> list[dict]:
 
 
 def fetch_playstore(category_code: str, country: str = "us", limit: int = 50) -> list[dict]:
-    """
-    Uses google-play-scraper if available, otherwise falls back to
-    the unofficial Play Store frontend API.
-    """
     try:
-        from google_play_scraper import Sort, reviews  # type: ignore
+        from google_play_scraper import search  # type: ignore
 
-        result, _ = reviews(
-            "com.example",  # dummy, we'll use list instead
-            lang="en",
-            country=country,
-            sort=Sort.NEWEST,
-            count=1,  # minimal
-        )
-        # If import works, use the list API
-        from google_play_scraper import app as gp_app
+        # Search queries for each category
+        queries = {
+            "EDUCATION": ["education", "learn language", "coding app"],
+            "PRODUCTIVITY": ["productivity", "task manager", "note taking"],
+        }
 
+        query_list = queries.get(category_code, ["education"])
+        seen_ids = set()
         apps = []
-        for letter in "abcdefghijklmnopqrstuvwxyz":
-            try:
-                from google_play_scraper import search
 
-                results = search(
-                    letter,
-                    lang="en",
-                    country=country,
-                    n=5,
-                )
-                apps.extend(results)
-                if len(apps) >= limit:
-                    break
-            except Exception:
-                continue
+        for query in query_list:
+            results = search(
+                query,
+                n_hits=min(limit, 50),
+                lang="en",
+                country=country,
+            )
+            for app in results if isinstance(results, list) else []:
+                app_id = app.get("appId", "")
+                if app_id and app_id not in seen_ids:
+                    seen_ids.add(app_id)
+                    apps.append(app)
+            if len(apps) >= limit:
+                break
+
         return apps[:limit]
-    except ImportError:
-        pass
 
-    # Fallback: use the unofficial Play Store API
-    url = (
-        f"https://play.google.com/store/apps/category/{category_code}"
-        f"/collection/topfree?hl=en"
-    )
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0"
-        )
-    }
-    # Note: This doesn't return structured data easily.
-    # For a production version, use proper scraping.
-    return []
+    except ImportError:
+        print("  [WARN] google-play-scraper not installed, skipping Play Store")
+        return []
+    except Exception as e:
+        print(f"  [WARN] Play Store scrape failed: {e}")
+        return []
 
 
 def parse_playstore(apps: list[dict], category: str) -> list[dict]:
