@@ -1314,14 +1314,16 @@ function renderMobileList() {
                             <span class="mobile-card-owner">${escapeHtml(repo.owner)}</span>
                         </div>
                         <div class="mobile-card-desc">${escapeHtml(repo.description)}</div>
-                        <div class="mobile-card-meta">
-                            <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
-                            <span class="language-pill">${escapeHtml(repo.language)}</span>
+                        <div class="mobile-card-footer">
+                            <div class="mobile-card-meta">
+                                <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
+                                <span class="language-pill">${escapeHtml(repo.language)}</span>
+                            </div>
+                            <div class="mobile-card-stars">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                                <span>${repo.stars.toLocaleString()}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mobile-card-stars">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
-                        <span>${repo.stars.toLocaleString()}</span>
                     </div>
                 </div>
             `;
