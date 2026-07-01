@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Opportunity Report — daily distilled insights</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260701-6">
+    <link rel="stylesheet" href="styles.css?v=20260701-7">
     <style>
         .rep-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
         .rep-back:hover { color:var(--accent); }
@@ -43,6 +43,36 @@
         .rep-ideas { margin:0; padding-left:18px; display:grid; gap:4px; }
         .rep-ideas li { font-size:0.88rem; line-height:1.45; color:var(--text-secondary); }
         .rep-empty { padding:50px; text-align:center; color:var(--text-secondary); }
+        .rep-signals { display:flex; flex-wrap:wrap; gap:6px; }
+        .rep-sig { padding:2px 8px; border-radius:999px; font-size:0.7rem; font-weight:700; background:rgba(140,111,255,0.12); color:#c4b5fd; }
+        .rep-sig.whitespace { background:rgba(77,224,168,0.16); color:#5be0a8; }
+        /* date bar */
+        .rep-datebar { display:flex; align-items:center; gap:10px; margin:4px 0 14px; }
+        .rep-datebar label { font-size:0.82rem; font-weight:700; color:var(--text-secondary); }
+        .rep-datesel { min-height:36px; padding:0 30px 0 12px; border:1px solid var(--border-strong); border-radius:10px;
+            background:#0a0e13 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca9b8' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+            color:var(--text-primary); font:inherit; font-weight:600; -webkit-appearance:none; appearance:none; cursor:pointer; }
+        /* analyze */
+        .rep-analyze { margin:0 0 22px; padding:20px 22px; border:1px solid var(--border-strong); border-radius:var(--radius-lg);
+            background:linear-gradient(180deg, rgba(255,184,87,0.06), rgba(255,184,87,0.02)); }
+        .rep-analyze h2 { margin:0 0 4px; font-size:1.02rem; color:var(--text-primary); display:flex; align-items:center; gap:8px; }
+        .rep-analyze-sub { margin:0 0 14px; font-size:0.86rem; color:var(--text-secondary); }
+        .rep-analyze-row { display:flex; gap:10px; flex-wrap:wrap; }
+        .rep-analyze-input { flex:1 1 300px; min-height:44px; padding:0 16px; border:1px solid var(--border); border-radius:12px; background:#0a0e13; color:var(--text-primary); font:inherit; }
+        .rep-analyze-input:focus { outline:none; border-color:rgba(255,184,87,0.5); }
+        .rep-analyze-btn { min-height:44px; padding:0 24px; border:none; border-radius:12px; background:linear-gradient(135deg,#ffb857,#ff8a5e); color:#1a1205; font:inherit; font-weight:800; cursor:pointer; transition:140ms ease; }
+        .rep-analyze-btn:hover { filter:brightness(1.06); transform:translateY(-1px); }
+        .rep-analyze-btn:disabled { opacity:0.6; cursor:progress; transform:none; }
+        .rep-analyze-result { margin-top:16px; }
+        .rep-ares { display:flex; flex-direction:column; gap:12px; padding:18px; border:1px solid var(--border-strong); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .rep-ares-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+        .rep-ares-title { font-weight:800; font-size:1.1rem; color:var(--text-primary); }
+        .rep-ares-title small { display:block; font-weight:600; font-size:0.85rem; color:var(--text-secondary); margin-top:3px; }
+        .rep-ares-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:14px; }
+        .rep-ares-block b { display:block; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin-bottom:4px; }
+        .rep-ares-block div, .rep-ares-block li { font-size:0.9rem; line-height:1.5; color:var(--text-secondary); }
+        .rep-ares-block ul { margin:0; padding-left:16px; display:grid; gap:3px; }
+        .rep-note { font-size:0.82rem; color:var(--text-muted); }
         @media (max-width:640px) { .rep-grid { grid-template-columns:1fr; } }
     </style>
 </head>
@@ -70,9 +100,26 @@
 
         <main class="content-stack">
             <section class="panel">
+                <div class="rep-datebar">
+                    <label for="rep-datesel">📅 Report date</label>
+                    <select id="rep-datesel" class="rep-datesel" aria-label="Choose report date"></select>
+                </div>
+
                 <div class="rep-brief" id="rep-brief" hidden>
                     <h2>⚡ Today's brief</h2>
                     <ul id="rep-brief-list"></ul>
+                </div>
+
+                <div class="rep-analyze">
+                    <h2>🔍 Analyze any repo or idea</h2>
+                    <p class="rep-analyze-sub">Paste a GitHub repo (<code>owner/name</code>), a product URL, or describe an idea — get an instant AI-distilled opportunity breakdown. Free, runs in your browser.</p>
+                    <div class="rep-analyze-row">
+                        <input id="rep-analyze-input" class="rep-analyze-input" type="text"
+                            placeholder="e.g. langchain-ai/langchain   or   an AI app that turns PDFs into flashcards"
+                            autocomplete="off" spellcheck="false">
+                        <button id="rep-analyze-btn" class="rep-analyze-btn" type="button">Analyze</button>
+                    </div>
+                    <div id="rep-analyze-result" class="rep-analyze-result" hidden></div>
                 </div>
 
                 <div class="rep-toolbar">
@@ -96,6 +143,6 @@
         </footer>
     </div>
 
-    <script src="report.js?v=20260701-6"></script>
+    <script src="report.js?v=20260701-7"></script>
 </body>
 </html>

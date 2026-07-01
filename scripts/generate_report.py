@@ -139,17 +139,52 @@ def load_candidates():
     return out
 
 
-def cross_signal_index():
-    """Lowercased blob of idea titles → to flag repos with launch activity."""
+def cross_source_index():
+    """Per-source lowercased title blobs from the ideas feed for cross-referencing."""
+    idx = {"showhn": "", "producthunt": "", "appstore": ""}
     if not IDEAS_FILE.exists():
-        return ""
+        return idx
     ideas = json.loads(IDEAS_FILE.read_text()).get("ideas", [])
-    return " ".join((i.get("title") or "") for i in ideas).lower()
+    buckets = {"showhn": [], "producthunt": [], "appstore": []}
+    for i in ideas:
+        title = (i.get("title") or "").lower()
+        src = i.get("source")
+        if src == "hackernews":
+            buckets["showhn"].append(title)
+        elif src == "producthunt":
+            buckets["producthunt"].append(title)
+        elif src in ("appstore", "playstore"):
+            buckets["appstore"].append(title)
+    return {k: " ".join(v) for k, v in buckets.items()}
 
 
-def has_cross_signal(repo, idea_blob):
+def cross_signals(repo, idx):
+    """Matched launch signals + an opportunity boost.
+
+    Strongest signal = people are launching (Show HN / Product Hunt) but the app
+    stores are NOT yet saturated → open whitespace → highest priority.
+    """
     name = (repo.get("repo_name") or repo["name"].split("/")[-1]).lower()
-    return len(name) >= 4 and name in idea_blob
+    if len(name) < 4:
+        return [], 0, False
+    on_hn = name in idx["showhn"]
+    on_ph = name in idx["producthunt"]
+    on_store = name in idx["appstore"]
+    signals = []
+    if on_hn:
+        signals.append("Show HN launch")
+    if on_ph:
+        signals.append("Product Hunt")
+    if on_store:
+        signals.append("App Store presence")
+
+    launch = on_hn or on_ph
+    if launch and not on_store:
+        signals.append("Open whitespace")
+        return signals, 2, True
+    if launch:
+        return signals, 1, False
+    return signals, 0, False
 
 
 # ── LLM prompts ───────────────────────────────────────────────────────────────
@@ -174,12 +209,16 @@ def item_prompt(repo):
     )
 
 
-def generate_item(backend, repo, idea_blob):
+def generate_item(backend, repo, cross_idx):
     raw = chat(backend, [{"role": "system", "content": ITEM_SYS}, {"role": "user", "content": item_prompt(repo)}])
     data = parse_json(raw) or {}
     ideas = data.get("app_ideas") or []
     if isinstance(ideas, str):
         ideas = [ideas]
+
+    base_opp = int(data["opportunity"]) if str(data.get("opportunity", "")).strip().lstrip("-").isdigit() else 5
+    signals, boost, whitespace = cross_signals(repo, cross_idx)
+
     return {
         "name": repo["name"],
         "url": repo.get("url") or f"https://github.com/{repo['name']}",
@@ -188,12 +227,13 @@ def generate_item(backend, repo, idea_blob):
         "delta_7d": repo.get("star_delta_7d"),
         "delta_7d_pct": repo.get("star_delta_7d_pct"),
         "timing": timing_badge(repo.get("star_delta_7d_pct"), repo.get("star_delta_7d")),
-        "cross_signal": has_cross_signal(repo, idea_blob),
+        "signals": signals,
+        "cross_signal": whitespace,
         "one_liner": str(data.get("one_liner", "")).strip(),
         "pain_point": str(data.get("pain_point", "")).strip(),
         "app_ideas": [str(x).strip() for x in ideas][:3],
         "monetization": str(data.get("monetization", "")).strip(),
-        "opportunity": int(data["opportunity"]) if str(data.get("opportunity", "")).strip().lstrip("-").isdigit() else 5,
+        "opportunity": max(1, min(10, base_opp + boost)),
         "why_now": str(data.get("why_now", "")).strip(),
     }
 
@@ -219,13 +259,13 @@ def main():
 
     backend = pick_backend()
     candidates = load_candidates()
-    idea_blob = cross_signal_index()
+    cross_idx = cross_source_index()
     print(f"  candidates: {len(candidates)} repos")
 
     items = []
     for index, repo in enumerate(candidates, start=1):
         try:
-            items.append(generate_item(backend, repo, idea_blob))
+            items.append(generate_item(backend, repo, cross_idx))
             print(f"  [{index}/{len(candidates)}] {repo['name']}")
         except Exception as exc:
             print(f"  [{index}/{len(candidates)}] {repo['name']} — FAILED: {exc}")
@@ -254,7 +294,25 @@ def main():
     }
     WEBSITE_DATA.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # ── Daily history archive + index ──
+    reports_dir = WEBSITE_DATA / "reports"
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    (reports_dir / f"{payload['date']}.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    index_file = reports_dir / "index.json"
+    dates = []
+    if index_file.exists():
+        try:
+            dates = json.loads(index_file.read_text()).get("dates", [])
+        except json.JSONDecodeError:
+            dates = []
+    dates = sorted(set(dates) | {payload["date"]}, reverse=True)[:60]
+    index_file.write_text(json.dumps({"dates": dates}, indent=2), encoding="utf-8")
+
     print(f"\nSaved → {OUTPUT_FILE}  ({len(items)} items, {len(brief)} brief bullets)")
+    print(f"Archived → reports/{payload['date']}.json  (history: {len(dates)} days)")
 
 
 if __name__ == "__main__":
