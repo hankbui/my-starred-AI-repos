@@ -2,24 +2,44 @@
   "meta": {
     "date": "2026-07-06",
     "papers_tracked": 15,
-    "technologies_discovered": 64,
+    "technologies_discovered": 66,
     "opportunities_identified": 1,
-    "last_update": "2026-07-06 18:07 UTC",
+    "last_update": "2026-07-06 18:12 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Step-Aware Reinforcement Learning in multimodal medical reasoning is advancing rapidly, enabling more accurate and context-aware diagnostic tools. This matters for product builders in healthcare as it can lead to more reliable AI-assisted diagnostics. The opportunity lies in developing AI-driven clinical decision support systems that integrate multimodal data (e.g., imaging, text) for real-time reasoning.",
-    "Recursive Evidence Replay (RECONTEXT) for long-context reasoning in LLMs is improving, allowing models to handle complex, multi-step reasoning tasks. This is critical for enterprise applications requiring deep contextual understanding. The opportunity is to build next-gen AI assistants or analytics tools that can process and reason over long documents or multi-source data without losing coherence.",
-    "Cross-modal Feature Alignment Distillation (CFAD) in fashion detail generation is enabling high-fidelity, context-aware image synthesis. This matters for e-commerce and creative industries where personalized visual content is key. The opportunity is to create AI-powered design tools that generate hyper-realistic fashion details from text or sketch inputs, reducing manual design time.",
-    "Program-as-Weights (PAW) and fuzzy-function programming are emerging as a novel paradigm for integrating symbolic logic with neural networks. This matters for robotics and enterprise automation, where interpretability and adaptability are crucial. The opportunity is to develop lightweight, interpretable AI systems for edge devices or industrial automation that can be dynamically reprogrammed without retraining.",
-    "Active Perception for Panoramic Referring Segmentation (APRS) is advancing spatial AI, enabling robots or AR systems to understand and interact with 360° environments. This is transformative for accessibility and robotics. The opportunity is to build assistive technologies (e.g., smart glasses for the visually impaired) or robotic systems that can navigate and manipulate objects in complex, real-world spaces using natural language commands."
+    {
+      "technology": "Step-Aware Reinforcement Learning",
+      "why_it_matters": "This technology can improve decision-making processes in complex environments, such as healthcare and education, by enabling agents to learn from sequential actions and adapt to dynamic conditions.",
+      "opportunity": "Product builders can develop AI-driven tools for medical diagnosis, personalized learning, and other domains requiring sequential decision-making."
+    },
+    {
+      "technology": "Recursive Evidence Replay as LLM Harness for Long-Context Reasoning (RECONTEXT)",
+      "why_it_matters": "This technology can enhance the ability of language models to process and reason over long sequences of information, which is crucial for applications like document analysis, legal research, and historical studies.",
+      "opportunity": "Product builders can create AI-powered tools for long-document analysis, research assistance, and content summarization."
+    },
+    {
+      "technology": "Cross-modal Feature Alignment Distillation (CFAD)",
+      "why_it_matters": "This technology can improve the performance of multimodal systems by aligning features from different modalities, which is essential for applications like fashion design, virtual try-ons, and augmented reality.",
+      "opportunity": "Product builders can develop AI-driven fashion tools, virtual try-on applications, and augmented reality experiences."
+    },
+    {
+      "technology": "Program-as-Weights (PAW)",
+      "why_it_matters": "This technology can enable more flexible and efficient programming paradigms, particularly for fuzzy functions, which are common in domains like robotics, creative applications, and enterprise solutions.",
+      "opportunity": "Product builders can create AI-driven programming tools, fuzzy-function applications, and lightweight interpreters for various domains."
+    },
+    {
+      "technology": "Offline-first multimodal Android assistant",
+      "why_it_matters": "This technology can provide accessible and efficient AI assistance for users with visual impairments, enabling them to perform tasks independently and securely.",
+      "opportunity": "Product builders can develop AI-powered Android assistants for people with visual impairments, featuring personalized object retrieval, multimodal feedback, and augmented reality markers."
+    }
   ],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "64",
+      "value": "66",
       "label": "discovered this scan",
       "detail": "Step-Aware Reinforcement Learning, Multimodal Learning, Medical Visual Question Answering, Reinforcement Learning from Human Feedback, Recursive Evidence Replay as LLM Harness for Long-Context Reasoning (RECONTEXT), Cross-modal Feature Alignment Distillation (CFAD), Consistency Reward Model, Multimodal Diffusion Transformer",
       "color": "accent"
@@ -27,9 +47,9 @@
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "64",
+      "value": "66",
       "label": "active trend clusters",
-      "detail": "Step-Aware Reinforcement Learning, Multimodal Learning, Medical Visual Question Answering, Reinforcement Learning from Human Feedback, Recursive Evidence Replay as LLM Harness for Long-Context Reasoning (RECONTEXT)",
+      "detail": "Multimodal Learning, RoPE Rolling, Group Relative Policy Optimization, Step-Aware Reinforcement Learning, Medical Visual Question Answering",
       "color": "green"
     },
     {
@@ -59,7 +79,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "64",
+      "value": "63",
       "label": "early-stage technologies",
       "detail": "VisionAId: An Offline-First Multimodal Android Assistant for People with Visual ",
       "color": "blue"
@@ -205,12 +225,24 @@
       "summary": "While Multimodal Large Language Models (MLLMs) have demonstrated exceptional capabilities in standard visual understanding, adapting them for active visual search in 360$^\\circ$ panoramic environments exposes fundamental limitations. Specifically, standard MLLMs struggle to effectively model inherent panoramic properties, such as severe polar distortion and continuous cylindrical topologies, which significantly degrades target detection accuracy. Consequently, existing panoramic search methods attempt to compensate by relying heavily on fragmented local viewpoints. Burdened by rigid initialization and a lack of global panoramic priors, these approaches suffer from myopic, inefficient exploration and struggle with robust error recovery when targets are out of view. To overcome these challenges, we propose EAGLE-360, a novel Embodied Active Global-to-Local Exploration framework. Rather than performing exhaustive local searches, EAGLE-360 leverages global priors to establish an initial holistic perspective, iteratively reasoning and progressively narrowing the search space. Architecturally, we adapt RoPE Rolling, a coordinate-shifting positional encoding mechanism, to seamlessly model the continuous topologies of panoramas. To facilitate this paradigm, we construct the large-scale EAGLE-360 dataset, comprising 14,000+ 4K panoramas and 70,000+ rounds of high-quality VQA dialogues. By employing a training pipeline that integrates Supervised Fine-Tuning (SFT) with Group Relative Policy Optimization (GRPO), we effectively elicit complex spatial reasoning and tool-calling capabilities. Extensive experiments demonstrate that EAGLE-360 establishes a new state-of-the-art for 360$^\\circ$ visual search, achieving nearly an 8-fold increase in accuracy over the base model while significantly enhancing exploration efficiency.",
       "pdf_url": "https://arxiv.org/pdf/2607.02479v1",
       "comment": "Preprint",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "RoPE Rolling",
+        "Group Relative Policy Optimization",
+        "Multimodal Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 4.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Enhanced panoramic visual search for augmented reality applications",
+        "Improved robotic navigation and exploration in 360° environments",
+        "Advanced spatial reasoning for virtual reality and gaming"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "other"
+      ]
     },
     {
       "id": "2607.02512",
@@ -665,24 +697,24 @@
       "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Multimodal Learning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
       "applications": [
-        "education",
-        "other",
         "healthcare",
-        "science",
+        "creative",
         "enterprise",
         "robotics",
-        "creative"
+        "science",
+        "other",
+        "education"
       ]
     },
     {
@@ -692,8 +724,8 @@
       "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
@@ -703,8 +735,8 @@
       "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
@@ -755,6 +787,30 @@
       "trend": "emerging",
       "applications": [
         "general AI"
+      ]
+    },
+    {
+      "name": "RoPE Rolling",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "other",
+        "creative"
+      ]
+    },
+    {
+      "name": "Group Relative Policy Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "other",
+        "creative"
       ]
     },
     {
@@ -984,8 +1040,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "accessibility",
         "robotics",
+        "accessibility",
         "enterprise"
       ]
     },
@@ -996,12 +1052,12 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
+        "creative",
         "education",
-        "science",
         "enterprise",
-        "accessibility",
         "robotics",
-        "creative"
+        "accessibility",
+        "science"
       ]
     },
     {
@@ -1011,8 +1067,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "accessibility",
         "robotics",
+        "accessibility",
         "enterprise"
       ]
     },
@@ -1023,8 +1079,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "accessibility",
         "robotics",
+        "accessibility",
         "enterprise"
       ]
     },
@@ -1035,8 +1091,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "accessibility",
         "robotics",
+        "accessibility",
         "enterprise"
       ]
     },
@@ -1047,8 +1103,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
         "other",
+        "education",
         "enterprise"
       ]
     },
@@ -1059,8 +1115,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
         "other",
+        "education",
         "enterprise"
       ]
     },
@@ -1071,8 +1127,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
         "other",
+        "education",
         "enterprise"
       ]
     },
@@ -1083,8 +1139,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
         "other",
+        "education",
         "enterprise"
       ]
     },
@@ -1095,8 +1151,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative"
+        "creative",
+        "education"
       ]
     },
     {
@@ -1106,8 +1162,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative"
+        "creative",
+        "education"
       ]
     },
     {
@@ -1117,8 +1173,8 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative"
+        "creative",
+        "education"
       ]
     },
     {
@@ -1128,11 +1184,11 @@
       "confidence": 0.44000000000000006,
       "trend": "emerging",
       "applications": [
+        "enterprise",
+        "robotics",
         "finance",
         "other",
-        "science",
-        "enterprise",
-        "robotics"
+        "science"
       ]
     },
     {
@@ -1234,9 +1290,9 @@
       "confidence": 0.43,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative",
         "science",
+        "creative",
+        "education",
         "enterprise"
       ]
     },
@@ -1247,9 +1303,9 @@
       "confidence": 0.43,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative",
         "science",
+        "creative",
+        "education",
         "enterprise"
       ]
     },
@@ -1260,9 +1316,9 @@
       "confidence": 0.43,
       "trend": "emerging",
       "applications": [
-        "education",
-        "creative",
         "science",
+        "creative",
+        "education",
         "enterprise"
       ]
     },
@@ -1380,10 +1436,10 @@
   ],
   "product_opportunities": [
     {
-      "technology": "Step-Aware Reinforcement Learning",
-      "idea": "AdaptiveLearn: Personalized learning platform that adjusts educational content difficulty in real-time based on student performance and confidence levels.",
-      "business_value": 8,
-      "engineering_difficulty": 7,
+      "technology": "Multimodal Learning",
+      "idea": "MedScribe: AI-powered medical note generator that combines voice, text, and imaging inputs to create comprehensive patient records",
+      "business_value": 9,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
       "development_time": "3-6 months"
     }
