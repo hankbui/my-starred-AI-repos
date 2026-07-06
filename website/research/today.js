@@ -163,6 +163,6 @@
 
   window.buildPrompt = buildPrompt
   window.buildContextText = buildContextText
-  document.addEventListener('DOMContentLoaded', init)
-  if (document.readyState === 'complete' || document.readyState === 'interactive') init()
+  document.addEventListener('DOMContentLoaded', () => { init(); bindAskAi(); })
+  if (document.readyState === 'complete' || document.readyState === 'interactive') { init(); bindAskAi(); }
 })()
