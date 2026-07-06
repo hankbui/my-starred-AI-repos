@@ -252,7 +252,7 @@ def main():
     # 6b. Generate opportunities from FULL technology list (after curator fallbacks)
     print('  Generating product opportunities from final technology list...')
     tech_opp_lines = []
-    for t in sorted(report.technologies, key=lambda x: x.confidence or 0, reverse=True)[:15]:
+    for t in sorted(report.technologies, key=lambda x: x.confidence or 0, reverse=True):
         apps = ', '.join(t.applications[:3]) or 'general AI'
         tech_opp_lines.append(f'- {t.name} (confidence: {t.confidence:.2f}, maturity: {t.maturity}, applications: {apps})')
     papers_for_opp = '\n'.join(tech_opp_lines)

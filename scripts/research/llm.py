@@ -84,21 +84,19 @@ Return STRICT JSON array:
 Technologies found across papers (with paper context):
 {technologies_list}"""
 
-OPPORTUNITY_PROMPT = """You are a startup founder. Generate concrete product opportunities from these AI technologies.
+OPPORTUNITY_PROMPT = """Generate ONE concrete product opportunity for EVERY technology listed below. You CAN do this.
 
-For EACH technology below, produce ONE opportunity entry with:
-- technology: exact name from input
-- idea: specific product idea with a name (e.g. "AutoSlide: AI presentation generator from meeting notes")
+For each technology, produce exactly one entry:
+- technology: exact name
+- idea: a short product name + brief description (e.g. "AutoSlide: AI presentation generator from meeting notes")
 - business_value: 1-10
 - engineering_difficulty: 1-10
 - competitive_advantage: "low" | "medium" | "high" | "very high"
 - development_time: e.g. "2-4 weeks" or "1-3 months"
 
-CRITICAL: Return a JSON array. If there are N technologies, return N entries. Never return an empty array.
+IMPORTANT: Return a JSON array with EXACTLY {count} entries, one per technology. Do not skip any.
 
-[{{"technology": "...", "idea": "...", "business_value": <int>, "engineering_difficulty": <int>, "competitive_advantage": "...", "development_time": "..."}}]
-
-Technologies with context:
+Technologies:
 {papers}"""
 
 
@@ -230,13 +228,16 @@ def extract_technologies(tech_summary: str, backend: dict) -> Optional[list[dict
 
 
 def generate_opportunities(papers_data: str, backend: dict) -> Optional[list[dict]]:
-    # truncate if too long (keep ~10 papers max)
-    lines = papers_data.strip().split('\n\n')
-    if len(lines) > 10:
-        papers_data = '\n\n'.join(lines[:10])
-        print(f'    [truncated to {len(lines[:10])} papers for opportunities prompt]')
+    # count technologies (one per line)
+    lines = [l for l in papers_data.strip().split('\n') if l.strip()]
+    count = len(lines)
+    if count > 15:
+        lines = lines[:15]
+        count = len(lines)
+        print(f'    [truncated to {count} technologies for opportunities prompt]')
 
-    prompt = OPPORTUNITY_PROMPT.format(papers=papers_data)
+    papers_data = '\n'.join(lines)
+    prompt = OPPORTUNITY_PROMPT.format(papers=papers_data, count=count)
     messages = [
         {'role': 'system', 'content': OPPORTUNITY_SYS},
         {'role': 'user', 'content': prompt},
