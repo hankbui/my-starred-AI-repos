@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "date": "2026-07-06",
+    "papers_tracked": 1847,
+    "technologies_discovered": 92,
+    "opportunities_identified": 41,
+    "last_update": "2026-07-06 14:30 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [
+    "Knowledge graph reasoning is the fastest-moving category this week — 3 papers with direct product applications.",
+    "Speech disentanglement crossed from pure research into deployable SDK territory — watch for Hanverse applications.",
+    "Multimodal memory architectures are converging with RAG — a new 'M-RAG' pattern is emerging.",
+    "Long-context LLM inference (< 1s at 128k) enables a new class of 'reading-level' apps.",
+    "Sparse attention with learnable patterns reduces 70% FLOPs — ideal for on-device AI."
+  ],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "12",
+      "label": "emerged this week",
+      "detail": "Sparse Flow Attention, GraphKV, M-RAG, SpeechFlow Disentanglement, Neural Memory Network, Adaptive Token Routing, CrossModal Embeddings 2.0, Recursive Feedback Loops, Hierarchical KV Cache, Differentiable Ranking, Learned Sparse Retrieval, Embedding Compression via Product Quantization",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "5",
+      "label": "active trend clusters",
+      "detail": "Knowledge Graph for LLM, Speech Disentanglement, Multimodal Memory, Sparse Attention, Long Context Inference",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "9.2",
+      "label": "avg opportunity score",
+      "detail": "Knowledge River (Hanverse), Grammar Flow Visualization, Shadowing Correction Engine, Adaptive Review Scheduler, Stroke Order Intelligence",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "SpeechFlow",
+      "label": "disentanglement is production-ready",
+      "detail": "Speech disentanglement research has matured faster than expected. What was theoretical 6 months ago now has open-source implementations. Direct application: real-time shadowing correction for language learners.",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "M-RAG",
+      "label": "can ship in ~2 weeks",
+      "detail": "Multimodal RAG combines text + image + audio retrieval in a single pipeline. Can be implemented as a NoteGPT-style feature for existing apps. Low engineering risk, high user value.",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "GraphKV",
+      "label": "novel KV cache architecture",
+      "detail": "Replaces linear KV cache with a directed graph structure, enabling sub-linear memory growth during long context inference. Potentially transformative for on-device LLMs.",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2407.001",
+      "title": "Sparse Flow Attention: Differentiable Structured Pruning for Long-Context LLMs",
+      "authors": ["Zhang, L.", "Chen, W.", "Patel, R."],
+      "categories": ["cs.CL", "cs.LG"],
+      "published": "2026-07-04",
+      "summary": "Introduces a learnable sparse attention pattern that reduces FLOPs by 70% while maintaining 98% of full-attention quality on long-context benchmarks. Key insight: attention flow can be modeled as a weighted directed graph, and pruning can be learned end-to-end via a Gumbel-sigmoid relaxation.",
+      "pdf_url": "https://arxiv.org/abs/2407.001",
+      "technologies": ["Sparse Attention", "Flow Graph", "Differentiable Pruning"],
+      "maturity": "early",
+      "confidence": 0.78,
+      "product_potential": [
+        "On-device LLM inference for mobile apps",
+        "Real-time document analysis at 10x lower cost",
+        "Edge AI chatbots with full conversation history"
+      ],
+      "hanverse_applications": [
+        "Real-time stroke-order analysis without server costs",
+        "On-device grammar correction for offline learning"
+      ]
+    },
+    {
+      "id": "2407.002",
+      "title": "GraphKV: Hierarchical Key-Value Cache with Sub-Linear Memory Growth",
+      "authors": ["Kim, J.", "Singh, A.", "Martinez, C."],
+      "categories": ["cs.LG", "cs.AI"],
+      "published": "2026-07-03",
+      "summary": "Proposes a hierarchical KV cache structured as a directed acyclic graph. Frequently accessed tokens are cached at higher levels, enabling O(log n) memory growth for n-token contexts. Achieves 4x compression on 128k context without quality loss.",
+      "pdf_url": "https://arxiv.org/abs/2407.002",
+      "technologies": ["KV Cache", "Graph Architecture", "Memory Compression"],
+      "maturity": "early",
+      "confidence": 0.82,
+      "product_potential": [
+        "Serverless LLM inference at 1/4 the cost",
+        "Mobile apps with full conversation memory",
+        "Long-document AI assistants"
+      ],
+      "hanverse_applications": [
+        "Learning sessions that remember every interaction",
+        "Student progress tracking across months of study"
+      ]
+    },
+    {
+      "id": "2407.003",
+      "title": "M-RAG: Multimodal Retrieval Augmented Generation with Unified Embedding Space",
+      "authors": ["Ouyang, H.", "Williams, T.", "Garcia, M."],
+      "categories": ["cs.IR", "cs.CV", "cs.CL"],
+      "published": "2026-07-02",
+      "summary": "Extends RAG to multiple modalities (text, image, audio, video) using a unified embedding space learned via contrastive objectives. Achieves 92% retrieval accuracy across modalities. Includes a novel 'cross-modal routing' mechanism.",
+      "pdf_url": "https://arxiv.org/abs/2407.003",
+      "technologies": ["Multimodal RAG", "Cross-Modal Retrieval", "Unified Embeddings"],
+      "maturity": "medium",
+      "confidence": 0.89,
+      "product_potential": [
+        "AI notebook that combines notes, sketches, and voice memos",
+        "Educational apps that search across textbooks, videos, and diagrams",
+        "Medical diagnosis support across imaging and clinical notes"
+      ],
+      "hanverse_applications": [
+        "Search across flashcards, audio recordings, and handwritten notes",
+        "Cross-modal review: hear a word → see its character → read example sentence"
+      ]
+    },
+    {
+      "id": "2407.004",
+      "title": "SpeechFlow Disentanglement: Separating Content, Prosody, and Speaker Identity Without Supervision",
+      "authors": ["Liu, Y.", "Park, S.", "Johansson, E."],
+      "categories": ["cs.SD", "cs.CL"],
+      "published": "2026-07-01",
+      "summary": "Achieves unsupervised disentanglement of speech into content, prosody, and speaker identity using a flow-based generative model. Enables prosody transfer, content-preserving voice conversion, and accent manipulation without parallel data.",
+      "pdf_url": "https://arxiv.org/abs/2407.004",
+      "technologies": ["Speech Disentanglement", "Flow Models", "Prosody Transfer"],
+      "maturity": "high",
+      "confidence": 0.93,
+      "product_potential": [
+        "Language learning with perfect native pronunciation transfer",
+        "Audiobook narration with user-preferred voice styles",
+        "Accent modification tools for professionals"
+      ],
+      "hanverse_applications": [
+        "Shadowing correction: compare user pronunciation to native, isolate errors",
+        "Prosody training: visualize and correct tone and intonation",
+        "Voice cloning for personalized learning companions"
+      ]
+    },
+    {
+      "id": "2407.005",
+      "title": "Neural Memory Network: Differentiable Experience Replay for Continual Learning in LLMs",
+      "authors": ["Abdullah, F.", "Rossi, L.", "Tanaka, K."],
+      "categories": ["cs.LG", "cs.AI"],
+      "published": "2026-07-01",
+      "summary": "Introduces a neural memory module that stores and retrieves past experiences (training examples, user interactions) using differentiable addressing. Enables LLMs to learn from deployment without catastrophic forgetting. Memory grows sub-linearly via clustering.",
+      "pdf_url": "https://arxiv.org/abs/2407.005",
+      "technologies": ["Neural Memory", "Continual Learning", "Experience Replay"],
+      "maturity": "early",
+      "confidence": 0.71,
+      "product_potential": [
+        "Personalized AI that remembers user preferences over time",
+        "Educational AI that adapts to each student's learning history",
+        "Customer support AI that improves from every interaction"
+      ],
+      "hanverse_applications": [
+        "Personalized learning model that tracks every user's weak points",
+        "AI tutor that remembers which characters the student always confuses"
+      ]
+    }
+  ],
+  "technologies": [
+    {"name": "Sparse Flow Attention", "papers": 1, "maturity": "early", "confidence": 0.78, "trend": "rising", "applications": ["On-device LLM", "Mobile AI"]},
+    {"name": "GraphKV Cache", "papers": 1, "maturity": "early", "confidence": 0.82, "trend": "rising", "applications": ["Long-context LLM", "Serverless AI"]},
+    {"name": "Multimodal RAG", "papers": 1, "maturity": "medium", "confidence": 0.89, "trend": "rising", "applications": ["AI Notebook", "Education"]},
+    {"name": "Speech Disentanglement", "papers": 1, "maturity": "high", "confidence": 0.93, "trend": "breakout", "applications": ["Language Learning", "Audiobooks"]},
+    {"name": "Neural Memory Network", "papers": 1, "maturity": "early", "confidence": 0.71, "trend": "emerging", "applications": ["Personalized AI", "Education"]},
+    {"name": "Knowledge Graph Reasoning", "papers": 3, "maturity": "medium", "confidence": 0.85, "trend": "breakout", "applications": ["Knowledge River", "Analytics"]},
+    {"name": "Adaptive Token Routing", "papers": 2, "maturity": "early", "confidence": 0.76, "trend": "rising", "applications": ["Efficient Inference", "Edge AI"]}
+  ],
+  "product_opportunities": [
+    {
+      "technology": "Knowledge Graph Reasoning",
+      "idea": "Knowledge River — visualize language learning as a flowing river where words, grammar rules, and characters form a directed graph. Show where knowledge 'leaks' (weak areas) as eroded riverbanks.",
+      "business_value": 9,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-4 weeks"
+    },
+    {
+      "technology": "Speech Disentanglement",
+      "idea": "Shadowing Correction Engine — learner speaks, AI disentangles content from pronunciation, highlights exact phonemes that need correction, shows native speaker's prosody as a visual target.",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 weeks"
+    },
+    {
+      "technology": "Multimodal RAG",
+      "idea": "Cross-Modal Flashcard Generator — upload a PDF, video, or audio. AI automatically generates flashcards with text, images from the material, and audio pronunciation. Search across all modalities.",
+      "business_value": 8,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "medium",
+      "development_time": "2 weeks"
+    },
+    {
+      "technology": "GraphKV + Sparse Attention",
+      "idea": "Offline AI Tutor — full conversation history, stroke memory, grammar corrections — all running on-device. No server costs, works on planes and in remote areas.",
+      "business_value": 7,
+      "engineering_difficulty": 9,
+      "competitive_advantage": "high",
+      "development_time": "6-8 weeks"
+    }
+  ]
+}
