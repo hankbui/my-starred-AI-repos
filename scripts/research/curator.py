@@ -154,6 +154,16 @@ def classify_maturity(confidence: float, technologies: list[str]) -> str:
     return 'early'
 
 
+def infer_trend_from_score(curator_score: float, confidence: float) -> str:
+    if confidence >= 0.8 and curator_score >= 7:
+        return 'breakout'
+    elif confidence >= 0.6 and curator_score >= 5:
+        return 'rising'
+    elif curator_score >= 4:
+        return 'emerging'
+    return 'emerging'
+
+
 def build_report(
     all_papers: list[Paper],
     analyzed: list[dict],
@@ -187,8 +197,39 @@ def build_report(
                 if tech not in tech_map:
                     tech_map[tech] = Technology(name=tech)
 
+    # FIX: override empty fields with inferred values
+    for t in tech_map.values():
+        if not t.confidence or t.confidence == 0.0:
+            # infer from curator score of the highest-scoring paper using this tech
+            max_score = 0.0
+            for paper_data in analyzed:
+                if not paper_data:
+                    continue
+                if t.name in paper_data.get('technologies', []):
+                    cs = paper_data.get('curator_score', 5)
+                    max_score = max(max_score, cs)
+            t.confidence = min(max_score / 10.0, 0.95) if max_score else 0.5
+        if t.trend == 'emerging' and t.confidence >= 0.6:
+            t.trend = 'rising'
+        if t.trend == 'emerging' and t.confidence >= 0.8:
+            t.trend = 'breakout'
+        if not t.applications:
+            # collect from paper domain_applications
+            domains = set()
+            for paper_data in analyzed:
+                if not paper_data:
+                    continue
+                if t.name in paper_data.get('technologies', []):
+                    for d in paper_data.get('domain_applications', []):
+                        domains.add(d)
+            t.applications = list(domains) if domains else ['general AI']
+        if t.maturity == 'early' and t.confidence >= 0.7:
+            t.maturity = 'medium'
+        if t.maturity == 'medium' and t.confidence >= 0.9:
+            t.maturity = 'high'
+
     # count technologies by trend
-    trend_counts = {'breakout': 0, 'rising': 0, 'emerging': 0, 'peak': 0}
+    trend_counts = {'breakout': 0, 'rising': 0, 'emerging': 0, 'peak': 0, 'maturing': 0}
     for t in tech_map.values():
         trend_counts[t.trend] = trend_counts.get(t.trend, 0) + 1
 

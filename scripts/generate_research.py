@@ -184,33 +184,49 @@ def main():
         if i < len(top_papers) - 1:
             time.sleep(3.0)  # be kind to the API
 
-    # 5b. Generate brief
-    print('\n  Generating intelligence brief...')
-    papers_text = '\n\n'.join(
-        f'- {p.title} ({", ".join(p.categories)})' for p in top_papers[:10]
-    )
-    brief = llm.generate_brief(papers_text, len(top_papers), backend)
-
-    # 5c. Extract technologies
-    print('  Extracting technologies...')
+    # 5b. Filter valid analyses
     valid_analyzed = [a for a in analyzed if a]
-    if valid_analyzed:
-        tech_summary = '\n'.join(
-            f'{a.get("title", "?")[:60]}: {", ".join(a.get("technologies", ["?"]))}'
-            for a in valid_analyzed
+
+    # 5c. Generate brief
+    print('\n  Generating intelligence brief...')
+    papers_text_parts = []
+    for i, p in enumerate(top_papers[:10]):
+        enriched = valid_analyzed[i] if i < len(valid_analyzed) and valid_analyzed[i] else {}
+        techs = ', '.join(enriched.get('technologies', [])[:5]) if enriched else ''
+        apps = ', '.join(enriched.get('domain_applications', [])[:3]) if enriched else ''
+        papers_text_parts.append(
+            f'- {p.title} ({", ".join(p.categories)})\n'
+            f'  Technologies: {techs or "—"}\n'
+            f'  Domains: {apps or "—"}'
         )
+    papers_text = '\n\n'.join(papers_text_parts)
+    brief = llm.generate_brief(papers_text, len(top_papers[:10]), backend)
+
+    # 5d. Extract technologies
+    print('  Extracting technologies...')
+    if valid_analyzed:
+        tech_summary_lines = []
+        for i, a in enumerate(valid_analyzed):
+            paper_cats = ', '.join(top_papers[i].categories) if i < len(top_papers) else ''
+            tech_summary_lines.append(
+                f'Title: {a.get("title", "?")[:80]}\n'
+                f'Categories: {paper_cats}\n'
+                f'Technologies: {", ".join(a.get("technologies", ["?"]))}\n'
+                f'Maturity: {a.get("maturity", "?")} | Confidence: {a.get("confidence", 0)}\n'
+                f'Domain applications: {", ".join(a.get("domain_applications", ["?"]))}'
+            )
+        tech_summary = '\n\n'.join(tech_summary_lines)
         tech_data = llm.extract_technologies(tech_summary, backend)
     else:
         tech_summary = ''
         tech_data = None
 
-    # 5d. Generate product opportunities
+    # 5e. Generate product opportunities — per technology, not per paper
     print('  Generating product opportunities...')
-    top_opp_papers = valid_analyzed[:8] if valid_analyzed else []
-    papers_for_opp = '\n\n'.join(
-        f'Paper: {top_papers[i].title[:80]}\nTechnologies: {", ".join(a.get("technologies", ["n/a"]))}\nProduct potential: {"; ".join(a.get("product_potential", ["n/a"]))}'
-        for i, a in enumerate(valid_analyzed) if a and a.get('technologies')
-    )[:4000] if top_opp_papers else ''
+    all_tech_names = list(set(
+        t.get('name', '') for t in (tech_data or []) if t.get('name')
+    )) if tech_data else []
+    papers_for_opp = '\n'.join(f'- {t}' for t in all_tech_names[:15]) if all_tech_names else ''
     opp_data = llm.generate_opportunities(papers_for_opp, backend) if papers_for_opp else None
 
     # 6. Build report

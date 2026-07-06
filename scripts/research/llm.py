@@ -14,18 +14,30 @@ LLM7_TOKEN = os.getenv('LLM7_TOKEN', 'unused')
 CURATOR_SYS = (
     'You are a Staff AI Research Engineer and Product Strategist. '
     'Your job is to read research papers and extract technologies and product opportunities. '
-    'Reply with STRICT JSON only, no prose, no markdown.'
+    'Reply with STRICT JSON only, no prose, no markdown. '
+    'Technology names MUST be standard research terms, NOT product descriptions.'
 )
 
 PAPER_ANALYSIS_PROMPT = """Analyze this AI research paper for product potential. Return JSON with EXACTLY these keys:
 {{
   "title": "{title}",
-  "technologies": ["list of specific technology names this paper introduces or advances"],
+  "technologies": ["list of specific STANDARD technology names this paper introduces or advances"],
   "maturity": "early" | "medium" | "high",
   "confidence": <0.0-1.0>,
   "curator_score": <1-10>,
-  "product_potential": ["2-3 concrete product ideas this enables"]
+  "product_potential": ["2-3 concrete product ideas this enables"],
+  "domain_applications": ["healthcare" | "education" | "robotics" | "creative" | "enterprise" | "accessibility" | "science" | "climate" | "finance" | "other"]
 }}
+
+CRITICAL: Technology names must be STANDARD research terms like:
+"Mixture of Experts", "Knowledge Distillation", "KV Cache Optimization", "Sparse Attention",
+"Retrieval Augmented Generation", "Reinforcement Learning from Human Feedback",
+"Diffusion Models", "Vision Transformer", "Gaussian Splatting", "Chain-of-Thought Prompting",
+"Speculative Decoding", "Low-Rank Adaptation", "Direct Preference Optimization",
+"Multimodal Learning", "On-device AI", "Depth Estimation", "Object Detection"
+
+NOT allowed: product descriptions like "Offline-first multimodal Android assistant",
+"Custom banknote detector", "Multimodal feedback (speech, voice commands, vibration)"
 
 Paper title: {title}
 Authors: {authors}
@@ -33,44 +45,56 @@ Categories: {categories}
 Published: {published}
 Summary: {summary}"""
 
-BRIEF_PROMPT = """You are an AI CTO reading today's research scan. Based on these {count} papers, write a brief with exactly 5 key intelligence signals.
+BRIEF_PROMPT = """You are an AI CTO reading today's research scan. Based on these {count} papers, write a brief with up to 5 key intelligence signals (fewer is OK if papers are few).
 
-For each signal, focus on:
-1. What technology is moving fast
-2. Why it matters for product builders
-3. What concrete opportunity it creates
+For each signal, focus on: what technology is moving fast, why it matters for product builders, and what concrete opportunity it creates.
 
-Return STRICT JSON: {{"brief": ["signal 1", "signal 2", "signal 3", "signal 4", "signal 5"]}}
+Return STRICT JSON: {{"brief": ["signal 1", "signal 2", ...]}}
+
+Even if there's only 1-2 papers, still write the best signals you can from the data.
 
 Papers:
 {papers}"""
 
-TECHNOLOGY_EXTRACT_PROMPT = """From these analyzed papers, extract the key technologies. For each technology:
+TECHNOLOGY_EXTRACT_PROMPT = """From these analyzed papers, extract the key technologies with proper scores. For each technology:
 - Count how many papers mention it
-- Classify maturity (early/medium/high)
-- Estimate confidence (0-1)
-- Detect trend direction (rising/breakout/emerging/peak)
-- List potential application domains
+- Classify maturity (early/medium/high) — high means production-ready or widely adopted
+- Estimate confidence (0.0-1.0) — based on paper depth, benchmark results, code availability
+- Detect trend direction:
+  - "breakout": rapid recent growth, many papers in short time
+  - "rising": clear upward trajectory, growing interest
+  - "emerging": just appeared, too early to tell
+  - "peak": very hot but may be saturating
+  - "maturing": well-established, incremental improvements
+- List potential application domains (REQUIRED, at least 1)
+
+CRITICAL RULES:
+- confidence MUST be > 0.0 — infer from paper quality, benchmark results, citations
+- applications MUST NOT be empty — infer at least 1-2 domains from paper content
+- trend MUST differentiate — not all "emerging", use paper count + context
 
 Return STRICT JSON array:
-[{{"name": "...", "papers": <int>, "maturity": "...", "confidence": <float>, "trend": "...", "applications": ["..."]}}]
+[{{"name": "...", "papers": <int>, "maturity": "...", "confidence": <float>, "trend": "...", "applications": ["...", "..."]}}]
 
-Technologies found across papers:
+Technologies found across papers (with paper context):
 {technologies_list}"""
 
-OPPORTUNITY_PROMPT = """You are a startup founder who reads research to find product opportunities. Based on each analyzed paper, generate the single most promising product opportunity per paper.
+OPPORTUNITY_PROMPT = """You are a startup founder who reads research to find product opportunities. For each technology below, generate the single most promising product opportunity.
 
-For each paper, extract:
-- The core technology from the "technologies" field
-- A concrete, specific product idea (1-2 sentences, name it)
-- Business value (1-10), engineering difficulty (1-10)
-- Competitive advantage (low/medium/high/very high)
-- Development time estimate in weeks
+For each entry, provide:
+- technology: the technology name (copy exactly from input)
+- idea: a concrete, specific product idea (1-sentence, give it a product name)
+- business_value: 1-10 (how much revenue/impact potential)
+- engineering_difficulty: 1-10 (how hard to build)
+- competitive_advantage: "low" | "medium" | "high" | "very high"
+- development_time: "<X-Y weeks>" or "<X-Y months>"
 
-Return STRICT JSON array only:
-[{{"technology": "<technology name>", "idea": "<product idea name: one-liner>", "business_value": <int>, "engineering_difficulty": <int>, "competitive_advantage": "<low|medium|high|very high>", "development_time": "<X-Y weeks>"}}]
+Return STRICT JSON array only — one entry per technology:
+[{{"technology": "<exact tech name>", "idea": "<Product Name: one-liner>", "business_value": <int>, "engineering_difficulty": <int>, "competitive_advantage": "<low|medium|high|very high>", "development_time": "<X-Y weeks>"}}]
 
-Papers with their technologies and product potential:
+Even with just 1-2 technologies, generate the best opportunity you can.
+
+Technology list:
 {papers}"""
 
 
