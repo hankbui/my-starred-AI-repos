@@ -62,10 +62,22 @@ function bindAskAi() {
         try { await navigator.clipboard.writeText(window.buildPrompt ? window.buildPrompt() : ''); copyBtn.textContent = 'Copied ✓'; setTimeout(() => { copyBtn.textContent = 'Copy prompt'; }, 1400); }
         catch { copyBtn.textContent = 'Failed'; setTimeout(() => { copyBtn.textContent = 'Copy prompt'; }, 1400); }
     });
-    goBtn.addEventListener('click', () => {
+    goBtn.addEventListener('click', async () => {
         const prompt = window.buildPrompt ? window.buildPrompt() : '';
-        const url = 'https://www.google.com/search?q=' + encodeURIComponent(prompt) + '&udm=50';
-        window.open(url, '_blank', 'noopener');
+        const q = encodeURIComponent(prompt);
+        const url = 'https://www.google.com/search?q=' + q + '&udm=50';
+
+        // Always copy first as backup (same pattern as app.js)
+        try { await navigator.clipboard.writeText(prompt); } catch {}
+
+        // If URL exceeds ~28K, trim by removing summaries and auto-copy full prompt
+        if (url.length > 28000) {
+            const short = window.buildPromptShort ? window.buildPromptShort() : prompt.slice(0, 2000);
+            const shortUrl = 'https://www.google.com/search?q=' + encodeURIComponent(short) + '&udm=50';
+            window.open(shortUrl, '_blank', 'noopener');
+        } else {
+            window.open(url, '_blank', 'noopener');
+        }
     });
 
     const promptsBtn = document.getElementById('rd-prompts-btn');

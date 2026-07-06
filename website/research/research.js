@@ -155,6 +155,26 @@ window.buildContextText = function () {
         `${state.technologies.length} technologies identified, ${state.product_opportunities.length} product opportunities.`;
 };
 
+window.buildPromptShort = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const papers = count > 0 ? state.papers.slice(0, count) : state.papers;
+    const limit = Math.min(papers.length, 5);
+
+    let text = `Research Intelligence Report — ${state.meta.date || 'latest'}\n\n`;
+    text += `Top ${limit} papers (summaries excluded for length):\n`;
+    for (let i = 0; i < limit; i++) {
+        const p = papers[i];
+        text += `\n${i + 1}. "${p.title}" by ${(p.authors || []).join(', ')}`;
+        text += `\n   Technologies: ${(p.technologies || []).join(', ')}`;
+        text += '\n';
+    }
+    text += '\nFull prompt copied to clipboard — paste it if Google trims the URL.\n';
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
 function bindSearch() {
     let timer;
     document.getElementById('rd-search').addEventListener('input', (e) => {
