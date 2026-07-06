@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Report — AI Technology Radar</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260701-9">
+    <style>
+        .rd-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .rd-back:hover { color:var(--accent); }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .today-grid { display:grid; gap:18px; }
+        .today-section h2 { font-size:1.15rem; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+
+        .brief-grid { display:grid; gap:10px; }
+        .brief-card { padding:16px 18px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); position:relative; }
+        .brief-card::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:3px; border-radius:3px; background:linear-gradient(180deg, var(--accent), rgba(167,139,250,0.4)); }
+        .brief-text { font-size:0.9rem; line-height:1.55; color:var(--text-primary); }
+
+        .top-techs { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:10px; }
+        .top-tech-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:6px; }
+        .top-tech-name { font-weight:700; font-size:0.9rem; color:var(--text-primary); }
+        .top-tech-bar-wrap { height:6px; background:rgba(156,169,184,0.1); border-radius:99px; overflow:hidden; }
+        .top-tech-bar { height:100%; border-radius:99px; background:linear-gradient(90deg, var(--accent), #a78bfa); transition:width 400ms ease; }
+        .top-tech-meta { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); }
+
+        .top-opps { display:grid; gap:10px; }
+        .opp-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .opp-tech { font-size:0.75rem; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px; }
+        .opp-idea { font-size:0.9rem; font-weight:600; color:var(--text-primary); margin-bottom:6px; }
+        .opp-meta { display:flex; flex-wrap:wrap; gap:10px; }
+        .opp-tag { padding:2px 8px; border-radius:999px; font-size:0.68rem; font-weight:600; border:1px solid var(--border); }
+        .opp-tag-value { background:rgba(77,224,168,0.1); color:var(--success); border-color:rgba(77,224,168,0.2); }
+        .opp-tag-difficulty { background:rgba(255,184,87,0.1); color:var(--warning); border-color:rgba(255,184,87,0.2); }
+        .opp-tag-adv { background:rgba(167,139,250,0.1); color:#c4b5fd; border-color:rgba(167,139,250,0.2); }
+
+        .papers-list { display:grid; gap:10px; }
+        .paper-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .paper-title { font-weight:600; font-size:0.88rem; color:var(--text-primary); margin-bottom:4px; }
+        .paper-title a { color:inherit; text-decoration:none; }
+        .paper-title a:hover { color:var(--accent); }
+        .paper-authors { font-size:0.78rem; color:var(--text-muted); margin-bottom:6px; }
+        .paper-techs { display:flex; flex-wrap:wrap; gap:4px; }
+        .paper-tech { padding:2px 7px; border-radius:999px; font-size:0.68rem; font-weight:600; border:1px solid var(--border); color:var(--text-secondary); background:rgba(156,169,184,0.06); }
+        .paper-conf { font-size:0.72rem; color:var(--text-muted); margin-left:auto; }
+
+        .rd-trend-badge { padding:2px 10px; border-radius:999px; font-size:0.7rem; font-weight:700; }
+        .rd-trend-emerging { background:rgba(63,167,255,0.12); color:#7fc4ff; border:1px solid rgba(63,167,255,0.2); }
+        .rd-trend-rising { background:rgba(77,224,168,0.12); color:var(--success); border:1px solid rgba(77,224,168,0.2); }
+        .rd-trend-breakout { background:rgba(255,184,87,0.12); color:var(--warning); border:1px solid rgba(255,184,87,0.2); }
+
+        .rd-empty { padding:40px; text-align:center; color:var(--text-secondary); font-size:0.9rem; }
+        .rd-report-date { font-size:0.85rem; color:var(--text-secondary); margin-bottom:8px; font-weight:500; }
+        .rd-meta-bar { display:flex; flex-wrap:wrap; gap:14px; padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); margin-bottom:18px; }
+        .rd-meta-item { display:flex; flex-direction:column; }
+        .rd-meta-val { font-weight:700; font-size:1rem; color:var(--text-primary); }
+        .rd-meta-label { font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; }
+
+        @media (max-width:720px) { .top-techs { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="rd-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to dashboard
+                </a>
+                <span class="eyebrow" id="rd-eyebrow">AI Technology Radar</span>
+                <h1>Today's CTO Report</h1>
+                <p class="hero-subtitle">
+                    A daily scan of AI research converted into product intelligence.
+                    What to watch, what to build, and what's emerging.
+                </p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+                    <span class="pill-value" id="rd-stat-techs">-</span>
+                    <span class="pill-label">technologies</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                    <span class="pill-value" id="rd-stat-opps">-</span>
+                    <span class="pill-label">opportunities</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></span>
+                    <span class="pill-value" id="rd-stat-papers">-</span>
+                    <span class="pill-label">papers</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg></span>
+                    <span class="pill-value" id="rd-stat-date">-</span>
+                    <span class="pill-label">report date</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="today.html" class="active">Today</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html">Radar</a>
+                <a href="trends.html">Trends</a>
+            </nav>
+
+            <div class="rd-meta-bar" id="rd-meta-bar">
+                <div class="rd-meta-item"><span class="rd-meta-val" id="rd-meta-date">-</span><span class="rd-meta-label">Report date</span></div>
+                <div class="rd-meta-item"><span class="rd-meta-val" id="rd-meta-techs">-</span><span class="rd-meta-label">Technologies</span></div>
+                <div class="rd-meta-item"><span class="rd-meta-val" id="rd-meta-opps">-</span><span class="rd-meta-label">Opportunities</span></div>
+                <div class="rd-meta-item"><span class="rd-meta-val" id="rd-meta-papers">-</span><span class="rd-meta-label">Papers tracked</span></div>
+                <div class="rd-meta-item"><span class="rd-meta-val" id="rd-meta-updated">-</span><span class="rd-meta-label">Last update</span></div>
+            </div>
+
+            <div class="today-grid">
+                <section class="today-section">
+                    <h2><span>🧠</span> Intelligence Brief</h2>
+                    <div class="brief-grid" id="rd-brief-grid"></div>
+                </section>
+
+                <section class="today-section">
+                    <h2><span>🔥</span> Top Technologies by Confidence</h2>
+                    <div class="top-techs" id="rd-top-techs"></div>
+                </section>
+
+                <section class="today-section">
+                    <h2><span>💡</span> Product Opportunities</h2>
+                    <div class="top-opps" id="rd-top-opps"></div>
+                </section>
+
+                <section class="today-section">
+                    <h2><span>📄</span> Latest Papers</h2>
+                    <div class="papers-list" id="rd-papers-list"></div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            Auto-curated daily by AI &middot; <a href="index.html">Dashboard</a> &middot; <a href="today.html">Today</a> &middot; <a href="technologies.html">Technologies</a> &middot; <a href="product-opportunities.html">Opportunities</a> &middot; <a href="radar.html">Radar</a> &middot; <a href="trends.html">Trends</a> &middot; <a href="innovation-map.html">Map</a>
+        </footer>
+    </div>
+
+    <div class="ai-ask-backdrop" id="rd-ai-backdrop" hidden></div>
+    <div class="ai-ask-modal" id="rd-ai-modal" role="dialog" aria-modal="true" aria-labelledby="rd-ai-title" aria-hidden="true">
+        <div class="ai-ask-header">
+            <div>
+                <div class="ai-ask-overline">Ask AI about this page</div>
+                <h3 class="ai-ask-title" id="rd-ai-title">Ask AI about today's report</h3>
+            </div>
+            <button class="ai-ask-close" id="rd-ai-close" type="button" aria-label="Close">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+            </button>
+        </div>
+        <div class="ai-ask-body">
+            <p class="ai-ask-context" id="rd-ai-context">-</p>
+            <label class="ai-ask-field">
+                <div class="ai-ask-label-row">
+                    <span class="ai-ask-label">Your question</span>
+                    <div class="ai-ask-prompts-wrapper">
+                        <button class="ai-ask-prompts-btn" id="rd-prompts-btn" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            <span>Prompts</span>
+                            <svg class="prompts-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="ai-ask-prompts-menu" id="rd-prompts-menu" hidden>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">🔬 Intelligence</div>
+                                <button class="prompts-item" data-prompt="What is the single most important thing I should do today based on this research scan?">One thing to do today</button>
+                                <button class="prompts-item" data-prompt="Rank technologies by buildability for a small team this quarter. Consider confidence, maturity, and opportunity value.">Most buildable tech</button>
+                            </div>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">📱 Product</div>
+                                <button class="prompts-item" data-prompt="Which product opportunity has the highest business value relative to its engineering difficulty?">Best value/difficulty ratio</button>
+                                <button class="prompts-item" data-prompt="What competitive advantage could we get from these technologies within 3 months?">3-month advantage</button>
+                            </div>
+                            <button class="prompts-add-btn" id="rd-prompts-add" type="button">➕ Add your own prompt</button>
+                            <div class="prompts-group" id="prompts-custom-group" hidden>
+                                <div class="prompts-group-title">📌 Custom</div>
+                                <div id="prompts-custom-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <textarea id="rd-ai-question" class="ai-ask-question" rows="3" spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-controls">
+                <label class="ai-ask-field ai-ask-field-inline">
+                    <span class="ai-ask-label">Include</span>
+                    <select id="rd-ai-count" class="ai-ask-select">
+                        <option value="10" selected>Top 10</option>
+                        <option value="0">All data</option>
+                    </select>
+                </label>
+            </div>
+            <label class="ai-ask-field">
+                <span class="ai-ask-label">Prompt preview</span>
+                <textarea id="rd-ai-preview" class="ai-ask-preview" rows="9" readonly spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-meta">
+                <span class="ai-ask-meter" id="rd-ai-meter">-</span>
+                <span class="ai-ask-warning" id="rd-ai-warning" hidden></span>
+            </div>
+        </div>
+        <div class="ai-ask-footer">
+            <button class="ai-ask-secondary" id="rd-ai-copy" type="button">Copy prompt</button>
+            <button class="ai-ask-primary" id="rd-ai-open" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+                <span>Open in Google AI Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="rd-back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="research-ai.js?v=20260701-1"></script>
+    <script src="today.js?v=20260701-1"></script>
+</body>
+</html>
