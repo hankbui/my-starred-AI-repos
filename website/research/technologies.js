@@ -131,10 +131,33 @@ function bindBackToTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+window.buildPrompt = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const techs = count > 0 ? state.technologies.slice(0, count) : state.technologies;
+
+    let text = `Technology Explorer — ${state.meta.date || 'latest'}\n\n`;
+    text += `Technologies (${techs.length}):\n`;
+    techs.forEach((t, i) => {
+        text += `\n${i + 1}. ${t.name}`;
+        text += `\n   Maturity: ${t.maturity} | Confidence: ${Math.round((t.confidence || 0) * 100)}% | Trend: ${t.trend}`;
+        text += `\n   Papers: ${t.papers || 1}`;
+        if ((t.applications || []).length) text += `\n   Applications: ${t.applications.slice(0, 5).join(', ')}`;
+        text += '\n';
+    });
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
+window.buildContextText = function () {
+    return `Based on ${state.technologies.length} technologies from ${state.meta.date || 'latest scan'}.`;
+};
+
 async function init() {
     bindControls();
     bindBackToTop();
-    bindAskAi('Technology Explorer');
+    bindAskAi();
     try {
         await loadData();
     } catch (e) {

@@ -125,6 +125,35 @@ async function loadData() {
 }
 
 // ── Ask AI (via shared research-ai.js) ──────────────────────────────────────
+window.buildPrompt = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const includeDesc = document.getElementById('rd-ai-include-desc').checked;
+    const papers = count > 0 ? state.papers.slice(0, count) : state.papers;
+
+    let text = `Research Intelligence Report — ${state.meta.date || 'latest'}\n\n`;
+    if (state.brief.length) {
+        text += 'Brief:\n' + state.brief.map((b) => '- ' + b).join('\n') + '\n\n';
+    }
+    text += `Papers (${papers.length}):\n`;
+    papers.forEach((p, i) => {
+        text += `\n${i + 1}. "${p.title}" by ${(p.authors || []).join(', ')}`;
+        text += `\n   Categories: ${(p.categories || []).join(', ')}`;
+        text += `\n   Maturity: ${p.maturity} | Confidence: ${Math.round((p.confidence || 0) * 100)}%`;
+        if (includeDesc) text += `\n   Summary: ${p.summary}`;
+        text += `\n   Technologies: ${(p.technologies || []).join(', ')}`;
+        if ((p.product_potential || []).length) text += `\n   Product potential: ${p.product_potential.join('; ')}`;
+        text += '\n';
+    });
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
+window.buildContextText = function () {
+    return `Based on ${state.papers.length} papers from ${state.meta.date || 'latest scan'}. ` +
+        `${state.technologies.length} technologies identified, ${state.product_opportunities.length} product opportunities.`;
+};
 
 function bindSearch() {
     let timer;
@@ -143,7 +172,7 @@ function bindBackToTop() {
 async function init() {
     bindSearch();
     bindBackToTop();
-    bindAskAi('AI Research Intelligence');
+    bindAskAi();
     try {
         await loadData();
     } catch (e) {

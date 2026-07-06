@@ -162,9 +162,41 @@ function bindBackToTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+window.buildPrompt = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const byTrend = {};
+    for (const t of state.technologies) {
+        const key = t.trend || 'emerging';
+        if (!byTrend[key]) byTrend[key] = [];
+        byTrend[key].push(t);
+    }
+
+    let text = `Trend Analysis — ${state.meta.date || 'latest'}\n\n`;
+
+    for (const key of TREND_ORDER) {
+        const items = byTrend[key] || [];
+        if (!items.length) continue;
+        const t = TREND_LABELS[key];
+        const limited = count > 0 ? items.slice(0, Math.ceil(count / TREND_ORDER.length)) : items;
+        text += `${t.icon} ${t.label} (${items.length}):\n`;
+        limited.forEach((x) => {
+            text += `- ${x.name} (${Math.round((x.confidence || 0) * 100)}% confidence, ${x.papers || 1} papers)\n`;
+        });
+        text += '\n';
+    }
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
+window.buildContextText = function () {
+    return `${state.technologies.length} technologies · ${state.meta.date || 'latest scan'}`;
+};
+
 async function init() {
     bindBackToTop();
-    bindAskAi('Trend Analysis');
+    bindAskAi();
     try {
         await loadData();
     } catch (e) {

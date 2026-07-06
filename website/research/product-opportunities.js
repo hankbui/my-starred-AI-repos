@@ -154,10 +154,36 @@ function bindBackToTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+window.buildPrompt = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const opps = count > 0 ? state.opportunities.slice(0, count) : state.opportunities;
+
+    let text = `Product Opportunities — ${state.meta.date || 'latest'}\n\n`;
+    if (!opps.length) {
+        text += '(No product opportunities generated yet.)\n\n';
+    } else {
+        opps.forEach((o, i) => {
+            text += `\n${i + 1}. [${o.technology}] ${o.idea}`;
+            text += `\n   Business value: ${o.business_value}/5 | Difficulty: ${o.engineering_difficulty}/5 | Advantage: ${o.competitive_advantage}`;
+            text += `\n   Est. time: ${o.development_time || '2-4 weeks'}`;
+            text += '\n';
+        });
+    }
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
+window.buildContextText = function () {
+    const opps = state.opportunities.length;
+    return `Based on ${opps} product opportunities from ${state.meta.date || 'latest scan'}.`;
+};
+
 async function init() {
     bindControls();
     bindBackToTop();
-    bindAskAi('Product Opportunities');
+    bindAskAi();
     try {
         await loadData();
     } catch (e) {

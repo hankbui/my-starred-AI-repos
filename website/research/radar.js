@@ -121,9 +121,38 @@ function bindBackToTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+window.buildPrompt = function () {
+    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
+    const buckets = classify(state.technologies);
+    const all = [...buckets.adopt, ...buckets.trial, ...buckets.assess, ...buckets.hold];
+    const items = count > 0 ? all.slice(0, count) : all;
+
+    let text = `Technology Radar — ${state.meta.date || 'latest'}\n\n`;
+    text += `Adopt (${buckets.adopt.length}) | Trial (${buckets.trial.length}) | Assess (${buckets.assess.length}) | Hold (${buckets.hold.length})\n\n`;
+
+    for (const q of QUADRANTS) {
+        const list = buckets[q.id];
+        if (!list.length) continue;
+        text += `${q.title}:\n`;
+        list.slice(0, 10).forEach((t) => {
+            text += `- ${t.name} (${Math.round((t.confidence || 0) * 100)}% confidence, ${t.papers || 1} papers)\n`;
+        });
+        text += '\n';
+    }
+
+    const question = document.getElementById('rd-ai-question').value.trim();
+    if (question) text += `\nMy question: ${question}`;
+    return text;
+};
+
+window.buildContextText = function () {
+    const buckets = classify(state.technologies);
+    return `${state.technologies.length} technologies mapped · Adopt: ${buckets.adopt.length} · Trial: ${buckets.trial.length} · Assess: ${buckets.assess.length} · Hold: ${buckets.hold.length} · ${state.meta.date || 'latest scan'}`;
+};
+
 async function init() {
     bindBackToTop();
-    bindAskAi('Technology Radar');
+    bindAskAi();
     try {
         await loadData();
     } catch (e) {
