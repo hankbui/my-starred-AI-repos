@@ -22,15 +22,6 @@ PRODUCT_KEYWORDS = [
     'knowledge graph', 'memory', 'attention', 'transformer',
 ]
 
-HANVERSE_KEYWORDS = [
-    'speech', 'pronunciation', 'phoneme', 'prosody', 'intonation',
-    'language', 'chinese', 'character', 'hanzi', 'stroke',
-    'grammar', 'translation', 'vocabulary', 'flashcard',
-    'reading', 'listening', 'shadowing', 'learning', 'education',
-    'tutor', 'feedback', 'correction', 'assessment',
-    'memory', 'spaced repetition', 'forgetting',
-]
-
 TREND_KEYWORDS = [
     'attention', 'transformer', 'diffusion', 'reinforcement',
     'graph neural', 'graph network', 'contrastive',
@@ -49,10 +40,6 @@ def curator_score(paper: Paper) -> float:
     # product potential keywords
     product_hits = sum(1 for kw in PRODUCT_KEYWORDS if re.search(rf'\b{re.escape(kw)}\b', text))
     score += min(product_hits * 0.5, 3.0)
-
-    # hanverse relevance
-    hanverse_hits = sum(1 for kw in HANVERSE_KEYWORDS if re.search(rf'\b{re.escape(kw)}\b', text))
-    score += min(hanverse_hits * 0.8, 4.0)
 
     # trending area bonus
     trend_hits = sum(1 for kw in TREND_KEYWORDS if re.search(rf'\b{re.escape(kw)}\b', text))
@@ -210,7 +197,7 @@ def build_report(
             paper.maturity = a.get('maturity', classify_maturity(a.get('confidence', 0), paper.technologies))
             paper.confidence = a.get('confidence', paper.confidence)
             paper.product_potential = a.get('product_potential', paper.product_potential)
-            paper.hanverse_applications = a.get('hanverse_applications', paper.hanverse_applications)
+            paper.domain_applications = a.get('domain_applications', paper.domain_applications)
         enriched_papers.append(paper)
 
     return ResearchReport(

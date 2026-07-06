@@ -24,8 +24,7 @@ PAPER_ANALYSIS_PROMPT = """Analyze this AI research paper for product potential.
   "maturity": "early" | "medium" | "high",
   "confidence": <0.0-1.0>,
   "curator_score": <1-10>,
-  "product_potential": ["2-3 concrete product ideas this enables"],
-  "hanverse_applications": ["1-2 specific features for an AI Chinese learning platform (Hanverse) this technology could power"]
+  "product_potential": ["2-3 concrete product ideas this enables"]
 }}
 
 Paper title: {title}

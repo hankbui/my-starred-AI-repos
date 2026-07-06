@@ -66,8 +66,7 @@ function renderPapers() {
     list.innerHTML = items.map((p) => {
         const authors = (p.authors || []).join(', ');
         const techs = (p.technologies || []).map((t) => `<span class="rd-badge rd-badge-maturity">${esc(t)}</span>`).join('');
-        const hanverse = (p.hanverse_applications || []).map((h) => `<li>${esc(h)}</li>`).join('');
-        const products = (p.product_potential || []).slice(0, 2).map((h) => `<li>${esc(h)}</li>`).join('');
+        const products = (p.product_potential || []).slice(0, 3).map((h) => `<li>${esc(h)}</li>`).join('');
         return `
             <div class="rd-paper">
                 <div class="rd-paper-head">
@@ -86,8 +85,7 @@ function renderPapers() {
                 </div>
                 <div class="rd-paper-summary">${esc(p.summary)}</div>
                 ${techs ? `<div class="rd-paper-techs">${techs}</div>` : ''}
-                ${products ? `<div><b style="font-size:0.82rem;color:var(--text-muted)">Product potential:</b><ul class="rd-paper-apps">${products}</ul></div>` : ''}
-                ${hanverse ? `<div><b style="font-size:0.82rem;color:var(--text-muted)">Hanverse applications:</b><ul class="rd-paper-apps">${hanverse}</ul></div>` : ''}
+                ${products ? `<div><b style="font-size:0.82rem;color:var(--text-muted)">Product opportunities:</b><ul class="rd-paper-apps">${products}</ul></div>` : ''}
             </div>`;
     }).join('');
 }
@@ -145,7 +143,6 @@ function buildAiPrompt() {
         if (includeDesc) text += `\n   Summary: ${p.summary}`;
         text += `\n   Technologies: ${(p.technologies || []).join(', ')}`;
         if ((p.product_potential || []).length) text += `\n   Product potential: ${p.product_potential.join('; ')}`;
-        if ((p.hanverse_applications || []).length) text += `\n   Hanverse: ${p.hanverse_applications.join('; ')}`;
         text += '\n';
     });
 

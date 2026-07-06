@@ -163,7 +163,7 @@ def main():
                     'confidence': p.get('confidence', 0),
                     'curator_score': p.get('curator_score', 0),
                     'product_potential': p.get('product_potential', []),
-                    'hanverse_applications': p.get('hanverse_applications', []),
+                    'domain_applications': p.get('domain_applications', []),
                 }
 
     analyzed = []

@@ -4,9 +4,7 @@ on:
   push:
     branches: [ main ]
   workflow_run:
-    # Deploy after the daily data refresh finishes (its commit uses [skip ci],
-    # which push triggers honour but workflow_run does not).
-    workflows: ["Update AI Repos Data"]
+    workflows: ["Update AI Repos Data", "Update Research Intelligence"]
     types: [completed]
   workflow_dispatch:
 

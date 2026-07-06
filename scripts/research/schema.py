@@ -20,7 +20,7 @@ class Paper:
     confidence: float = 0.0
     curator_score: float = 0.0
     product_potential: list[str] = field(default_factory=list)
-    hanverse_applications: list[str] = field(default_factory=list)
+    domain_applications: list[str] = field(default_factory=list)
 
 
 @dataclass

@@ -408,13 +408,13 @@ Personalized Recommendations
 
 Assume my primary project is
 
-Hanverse
+your product
 
-an AI-powered Chinese learning platform.
+an AI-powered product you are building.
 
 Every report should include
 
-Ideas specifically for Hanverse
+Ideas specifically for your product
 
 Learning features
 
@@ -684,7 +684,7 @@ Obsidian
 
 Cursor
 
-Hanverse
+your product
 
 ...
 
@@ -908,6 +908,6 @@ X/Twitter của các phòng nghiên cứu lớn → tín hiệu sớm về các 
 
 Khi đó AI có thể tạo một báo cáo như:
 
-"5 công nghệ xuất hiện tuần này có khả năng tạo ra tính năng mới cho Hanverse trong 3–6 tháng tới."
+"5 công nghệ xuất hiện tuần này có khả năng tạo ra tính năng mới cho sản phẩm của bạn trong 3–6 tháng tới."
 
 Theo tôi, đó sẽ là một tính năng rất khác biệt so với các trang chỉ tổng hợp paper hoặc repo, vì nó tập trung vào chuyển đổi nghiên cứu thành ý tưởng sản phẩm thay vì chỉ tóm tắt nội dung nghiên cứu.
