@@ -152,36 +152,39 @@ def parse_json(text: str) -> Optional[dict | list]:
         return None
     text = text.strip()
     text = text.removeprefix('```json').removeprefix('```').removesuffix('```').strip()
-    start = text.find('{')
-    if start == -1:
-        start = text.find('[')
-        if start == -1:
-            return None
-        # parse array
+    # 1) Try direct parse first (handles well-formed array/object)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    # 2) Find outermost bracket — prefer array if it starts the payload
+    arr = text.find('[')
+    obj = text.find('{')
+    if arr != -1 and (obj == -1 or arr < obj):
         depth = 0
-        for i in range(start, len(text)):
+        for i in range(arr, len(text)):
             if text[i] == '[':
                 depth += 1
             elif text[i] == ']':
                 depth -= 1
                 if depth == 0:
                     try:
-                        return json.loads(text[start:i + 1])
+                        return json.loads(text[arr:i + 1])
                     except json.JSONDecodeError:
                         return None
         return None
-    # parse object
-    depth = 0
-    for i in range(start, len(text)):
-        if text[i] == '{':
-            depth += 1
-        elif text[i] == '}':
-            depth -= 1
-            if depth == 0:
-                try:
-                    return json.loads(text[start:i + 1])
-                except json.JSONDecodeError:
-                    return None
+    if obj != -1:
+        depth = 0
+        for i in range(obj, len(text)):
+            if text[i] == '{':
+                depth += 1
+            elif text[i] == '}':
+                depth -= 1
+                if depth == 0:
+                    try:
+                        return json.loads(text[obj:i + 1])
+                    except json.JSONDecodeError:
+                        return None
     return None
 
 
@@ -243,17 +246,10 @@ def generate_opportunities(papers_data: str, backend: dict) -> Optional[list[dic
         {'role': 'user', 'content': prompt},
     ]
     raw = chat(messages, temperature=0.5, backend=backend)
-    print(f'    [RAW: {len(raw) if raw else 0} bytes]')
-    if raw:
-        print(f'    [RAW START]: {raw[:300]}')
-        if len(raw) > 300:
-            print(f'    [RAW END]: {raw[-200:]}')
     data = parse_json(raw)
-    if data is None and raw:
-        print(f'    [PARSE FAILED] Raw: {raw[:600]}')
     if data and isinstance(data, list):
         validated = [d for d in data if isinstance(d, dict) and 'technology' in d and 'idea' in d]
-        print(f'    [PARSED: {len(data)} items, {len(validated)} valid]')
+        print(f'    [opportunities: LLM returned {len(validated)}/{len(data)} valid]')
         if validated:
             return validated
         print(f'    [WARN] LLM returned data but missing required fields: {[d.get("technology", "?") for d in data[:5]]}')
