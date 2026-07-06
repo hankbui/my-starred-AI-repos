@@ -243,19 +243,22 @@ def generate_opportunities(papers_data: str, backend: dict) -> Optional[list[dic
         {'role': 'user', 'content': prompt},
     ]
     raw = chat(messages, temperature=0.5, backend=backend)
-    print(f'    [RAW response length: {len(raw) if raw else 0}]')
+    print(f'    [RAW: {len(raw) if raw else 0} bytes]')
+    if raw:
+        print(f'    [RAW START]: {raw[:300]}')
+        if len(raw) > 300:
+            print(f'    [RAW END]: {raw[-200:]}')
     data = parse_json(raw)
     if data is None and raw:
-        print(f'    [DEBUG] Raw: {raw[:500]}')
+        print(f'    [PARSE FAILED] Raw: {raw[:600]}')
     if data and isinstance(data, list):
-        # validate each item has required fields
         validated = [d for d in data if isinstance(d, dict) and 'technology' in d and 'idea' in d]
+        print(f'    [PARSED: {len(data)} items, {len(validated)} valid]')
         if validated:
             return validated
-        print(f'    [WARN] LLM returned data but missing required fields')
+        print(f'    [WARN] LLM returned data but missing required fields: {[d.get("technology", "?") for d in data[:5]]}')
         return None
     if data and isinstance(data, dict) and 'technology' in data:
-        # single object returned instead of array
         return [data]
     print(f'    [WARN] Could not parse opportunities from LLM response')
     return None
