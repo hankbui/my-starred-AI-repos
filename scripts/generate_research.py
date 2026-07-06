@@ -238,30 +238,33 @@ def main():
         tech_summary = ''
         tech_data = None
 
-    # 5e. Generate product opportunities — per technology with context
-    print('  Generating product opportunities...')
-    all_tech_info = [
-        t for t in (tech_data or []) if t.get('name')
-    ] if tech_data else []
-    tech_opp_lines = []
-    for t in all_tech_info[:15]:
-        apps = ', '.join(t.get('applications', [])[:3]) or 'general AI'
-        conf = t.get('confidence', 0.5)
-        mat = t.get('maturity', 'early')
-        tech_opp_lines.append(f'- {t["name"]} (confidence: {conf:.2f}, maturity: {mat}, applications: {apps})')
-    papers_for_opp = '\n'.join(tech_opp_lines) if tech_opp_lines else ''
-    opp_data = llm.generate_opportunities(papers_for_opp, backend) if papers_for_opp else None
-
-    # 6. Build report
+    # 6. Build report (preliminary — no opportunities yet)
     print('\n[6/6] Building research report...')
     report = curator.build_report(
         all_papers=top_papers,
         analyzed=analyzed,
         brief=brief or [],
         tech_data=tech_data,
-        opp_data=opp_data,
+        opp_data=None,
         backend_name=backend_name,
     )
+
+    # 6b. Generate opportunities from FULL technology list (after curator fallbacks)
+    print('  Generating product opportunities from final technology list...')
+    tech_opp_lines = []
+    for t in sorted(report.technologies, key=lambda x: x.confidence or 0, reverse=True)[:15]:
+        apps = ', '.join(t.applications[:3]) or 'general AI'
+        tech_opp_lines.append(f'- {t.name} (confidence: {t.confidence:.2f}, maturity: {t.maturity}, applications: {apps})')
+    papers_for_opp = '\n'.join(tech_opp_lines)
+    opp_data = llm.generate_opportunities(papers_for_opp, backend) if papers_for_opp else None
+
+    if opp_data:
+        from research.schema import ProductOpportunity
+        report.product_opportunities = [ProductOpportunity(**o) for o in opp_data]
+        report.meta['opportunities_identified'] = len(opp_data)
+        print(f'  ✅ Generated {len(opp_data)} product opportunities')
+    else:
+        print('  ⚠️ No opportunities generated')
 
     report_dict = report.to_dict()
     save_report(report_dict, is_archive=True)
