@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Radar — AI Technology Radar</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260701-8">
+    <style>
+        .rd-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .rd-back:hover { color:var(--accent); }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .rd-radar-layout { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:28px; }
+        .rd-radar-quadrant { display:flex; flex-direction:column; gap:12px; padding:20px; border-radius:var(--radius-lg); border:1px solid var(--border); background:var(--bg-panel); }
+        .rd-radar-quadrant:hover { border-color:var(--border-strong); }
+        .rd-radar-qhead { display:flex; align-items:center; gap:10px; }
+        .rd-radar-qtitle { font-family:"Space Grotesk",sans-serif; font-size:1.1rem; font-weight:700; }
+        .rd-radar-qcount { font-size:0.8rem; color:var(--text-muted); font-weight:600; margin-left:auto; }
+        .rd-radar-qdesc { font-size:0.82rem; color:var(--text-secondary); line-height:1.4; }
+
+        .rd-radar-item { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); background:var(--bg-elevated); transition:140ms ease; }
+        .rd-radar-item:hover { border-color:var(--border-strong); }
+        .rd-radar-item-name { font-size:0.88rem; font-weight:600; color:var(--text-primary); }
+        .rd-radar-item-meta { display:flex; gap:6px; align-items:center; flex-shrink:0; }
+        .rd-radar-item-stat { font-size:0.72rem; color:var(--text-muted); }
+
+        .rd-q-adopt { border-left:3px solid var(--success); }
+        .rd-q-adopt .rd-radar-qtitle { color:var(--success); }
+        .rd-q-adopt .rd-radar-qhead svg { stroke:var(--success); fill:none; }
+
+        .rd-q-trial { border-left:3px solid var(--accent); }
+        .rd-q-trial .rd-radar-qtitle { color:var(--accent); }
+        .rd-q-trial .rd-radar-qhead svg { stroke:var(--accent); fill:none; }
+
+        .rd-q-assess { border-left:3px solid var(--warning); }
+        .rd-q-assess .rd-radar-qtitle { color:var(--warning); }
+        .rd-q-assess .rd-radar-qhead svg { stroke:var(--warning); fill:none; }
+
+        .rd-q-hold { border-left:3px solid #ff7878; }
+        .rd-q-hold .rd-radar-qtitle { color:#ff7878; }
+        .rd-q-hold .rd-radar-qhead svg { stroke:#ff7878; fill:none; }
+
+        .rd-count { font-size:0.85rem; color:var(--text-secondary); margin-bottom:8px; }
+        .rd-empty { padding:60px; text-align:center; color:var(--text-secondary); }
+
+        @media (max-width:780px) { .rd-radar-layout { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="rd-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to dashboard
+                </a>
+                <span class="eyebrow" id="rd-eyebrow">AI Technology Radar</span>
+                <h1>Technology Radar</h1>
+                <p class="hero-subtitle">
+                    Think Tank–style technology classification. Which technologies are ready to adopt now,
+                    which deserve a trial, which need assessment, and which should be held for later.
+                </p>
+            </div>
+            <div class="hero-stats" id="rd-stats">
+                <div class="stat-pill"><span class="pill-value" id="rd-stat-adopt">-</span><span class="pill-label">adopt</span></div>
+                <div class="stat-pill"><span class="pill-value" id="rd-stat-trial">-</span><span class="pill-label">trial</span></div>
+                <div class="stat-pill"><span class="pill-value" id="rd-stat-assess">-</span><span class="pill-label">assess</span></div>
+                <div class="stat-pill"><span class="pill-value" id="rd-stat-hold">-</span><span class="pill-label">hold</span></div>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html" class="active">Radar</a>
+                <a href="trends.html">Trends</a>
+            </nav>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div class="rd-count" id="rd-count" style="margin:0"></div>
+                <button class="action-btn ask-ai-btn" id="rd-ask-ai" type="button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                    <span>Ask AI</span>
+                </button>
+            </div>
+            <div class="rd-radar-layout" id="rd-radar-layout"></div>
+        </main>
+
+        <footer class="footer">
+            Auto-curated daily by AI &middot; <a href="index.html">Dashboard</a> &middot; <a href="technologies.html">Technologies</a> &middot; <a href="product-opportunities.html">Opportunities</a> &middot; <a href="radar.html">Radar</a> &middot; <a href="trends.html">Trends</a>
+        </footer>
+    </div>
+
+    <div class="ai-ask-backdrop" id="rd-ai-backdrop" hidden></div>
+    <div class="ai-ask-modal" id="rd-ai-modal" role="dialog" aria-modal="true" aria-labelledby="rd-ai-title" aria-hidden="true">
+        <div class="ai-ask-header">
+            <div>
+                <div class="ai-ask-overline">Ask AI about this page</div>
+                <h3 class="ai-ask-title" id="rd-ai-title">Ask AI about radar</h3>
+            </div>
+            <button class="ai-ask-close" id="rd-ai-close" type="button" aria-label="Close">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+            </button>
+        </div>
+        <div class="ai-ask-body">
+            <p class="ai-ask-context" id="rd-ai-context">-</p>
+            <label class="ai-ask-field">
+                <div class="ai-ask-label-row">
+                    <span class="ai-ask-label">Your question</span>
+                    <div class="ai-ask-prompts-wrapper">
+                        <button class="ai-ask-prompts-btn" id="rd-prompts-btn" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            <span>Prompts</span>
+                            <svg class="prompts-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="ai-ask-prompts-menu" id="rd-prompts-menu" hidden>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">🎯 Radar</div>
+                                <button class="prompts-item" data-prompt="Which technologies in Adopt should we prioritize integrating? Create a phased adoption plan.">Adopt now plan</button>
+                                <button class="prompts-item" data-prompt="Review the Trial category. Which 3 technologies should graduate to Adopt first, and what's needed for that transition?">Trial → Adopt candidates</button>
+                            </div>
+                            <div class="prompts-group">
+                                <div class="prompts-group-title">🔭 Discovery</div>
+                                <button class="prompts-item" data-prompt="What patterns do you see across Assess technologies? Are there clusters worth watching together?">Assess cluster analysis</button>
+                                <button class="prompts-item" data-prompt="Review the Hold items. Did any get misclassified? Which should be re-evaluated sooner?">Hold re-classification check</button>
+                            </div>
+                            <button class="prompts-add-btn" id="rd-prompts-add" type="button">➕ Add your own prompt</button>
+                            <div class="prompts-group" id="prompts-custom-group" hidden>
+                                <div class="prompts-group-title">📌 Custom</div>
+                                <div id="prompts-custom-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <textarea id="rd-ai-question" class="ai-ask-question" rows="3" spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-controls">
+                <label class="ai-ask-field ai-ask-field-inline">
+                    <span class="ai-ask-label">Include</span>
+                    <select id="rd-ai-count" class="ai-ask-select">
+                        <option value="10" selected>Top 10</option>
+                        <option value="0">All technologies</option>
+                    </select>
+                </label>
+            </div>
+            <label class="ai-ask-field">
+                <span class="ai-ask-label">Prompt preview</span>
+                <textarea id="rd-ai-preview" class="ai-ask-preview" rows="9" readonly spellcheck="false"></textarea>
+            </label>
+            <div class="ai-ask-meta">
+                <span class="ai-ask-meter" id="rd-ai-meter">-</span>
+                <span class="ai-ask-warning" id="rd-ai-warning" hidden></span>
+            </div>
+        </div>
+        <div class="ai-ask-footer">
+            <button class="ai-ask-secondary" id="rd-ai-copy" type="button">Copy prompt</button>
+            <button class="ai-ask-primary" id="rd-ai-open" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+                <span>Open in Google AI Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="rd-back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="research-ai.js?v=20260701-1"></script>
+    <script src="radar.js?v=20260701-1"></script>
+</body>
+</html>

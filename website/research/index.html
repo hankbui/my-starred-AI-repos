@@ -55,6 +55,10 @@
 
         .rd-empty { padding:50px; text-align:center; color:var(--text-secondary); }
         .rd-note { font-size:0.82rem; color:var(--text-muted); margin-top:8px; }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
 
         @media (max-width:720px) { .rd-grid { grid-template-columns:1fr; } }
     </style>
@@ -108,6 +112,14 @@
         </header>
 
         <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html" class="active">Dashboard</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html">Radar</a>
+                <a href="trends.html">Trends</a>
+            </nav>
+
             <div class="rd-brief" id="rd-brief" hidden>
                 <h2>⚡ Today's intelligence brief</h2>
                 <ul id="rd-brief-list"></ul>
@@ -140,7 +152,7 @@
         </main>
 
         <footer class="footer">
-            Auto-curated daily by AI • Made with ❤️ by <a href="https://github.com/hankbui" target="_blank" rel="noreferrer">@hankbui</a>
+            Auto-curated daily by AI &middot; <a href="index.html">Dashboard</a> &middot; <a href="technologies.html">Technologies</a> &middot; <a href="product-opportunities.html">Opportunities</a> &middot; <a href="radar.html">Radar</a> &middot; <a href="trends.html">Trends</a> &middot; Made with ❤️ by <a href="https://github.com/hankbui" target="_blank" rel="noreferrer">@hankbui</a>
         </footer>
     </div>
 
@@ -220,6 +232,7 @@
         <span>Top</span>
     </button>
 
+    <script src="research-ai.js?v=20260701-1"></script>
     <script src="research.js?v=20260701-1"></script>
 </body>
 </html>

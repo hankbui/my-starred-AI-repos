@@ -9,17 +9,37 @@ from . import llm
 
 
 PRODUCT_KEYWORDS = [
-    'interaction', 'interface', 'ui', 'ux', 'application', 'tool',
-    'framework', 'platform', 'deploy', 'real-time', 'inference',
-    'mobile', 'edge', 'on-device', 'browser', 'web',
-    'api', 'sdk', 'library', 'pipeline', 'workflow',
-    'user study', 'human', 'accessible', 'democratiz',
-    'cost-effective', 'efficient', 'optimization', 'compression',
-    'distillation', 'pruning', 'quantization', 'latency',
-    'personalized', 'adaptive', 'recommend', 'search',
-    'retrieval', 'generation', 'reasoning', 'planning',
-    'vision', 'speech', 'audio', 'multimodal', 'language',
-    'knowledge graph', 'memory', 'attention', 'transformer',
+    # big AI challenges & pain points
+    'safety', 'alignment', 'hallucination', 'bias', 'fairness',
+    'interpretability', 'explainability', 'robustness', 'reliability',
+    'privacy', 'security', 'trust', 'transparency',
+    'scalability', 'cost', 'efficiency', 'throughput',
+    'evaluation', 'benchmark', 'monitoring', 'observability',
+
+    # real-world impact domains
+    'healthcare', 'medical', 'clinical', 'diagnosis', 'drug',
+    'climate', 'environment', 'energy', 'sustainability',
+    'education', 'accessibility', 'assistive',
+    'scientific discovery', 'biology', 'genomics', 'materials',
+    'robotics', 'autonomous', 'decision making',
+
+    # building AI products
+    'application', 'tool', 'platform', 'framework',
+    'deploy', 'serving', 'inference', 'pipeline',
+    'api', 'sdk', 'workflow', 'automation',
+    'agent', 'assistant', 'chatbot', 'copilot',
+    'search', 'recommend', 'personalized', 'adaptive',
+    'real-time', 'interactive', 'user study', 'human',
+
+    # access & adoption
+    'open source', 'democratiz', 'accessible', 'affordable',
+    'on-device', 'mobile', 'edge', 'browser', 'webassembly',
+    'fine-tuning', 'adaptation', 'customization', 'few-shot',
+
+    # core AI capabilities
+    'reasoning', 'planning', 'retrieval', 'generation',
+    'multimodal', 'vision', 'speech', 'language', 'code',
+    'memory', 'long context', 'tool use',
 ]
 
 TREND_KEYWORDS = [
@@ -29,6 +49,9 @@ TREND_KEYWORDS = [
     'retrieval augmented', 'multimodal', 'quantization',
     'sparse', 'mixture of experts', 'moe', 'kv cache',
     'speculative decoding', 'prompt engineering',
+    'agent', 'reasoning', 'planning', 'tool use',
+    'world model', 'embodied', 'multimodal generation',
+    'long context', 'in-context learning',
 ]
 
 

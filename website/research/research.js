@@ -124,122 +124,7 @@ async function loadData() {
     renderPapers();
 }
 
-// ── Ask AI (reuse same pattern as app.js / report.js) ─────────────────────────
-
-function buildAiPrompt() {
-    const count = parseInt(document.getElementById('rd-ai-count').value, 10);
-    const includeDesc = document.getElementById('rd-ai-include-desc').checked;
-    const papers = count > 0 ? state.papers.slice(0, count) : state.papers;
-
-    let text = `Today's AI Research Intelligence Report — ${state.meta.date || 'latest'}\n\n`;
-    if (state.brief.length) {
-        text += 'Brief:\n' + state.brief.map((b) => '- ' + b).join('\n') + '\n\n';
-    }
-    text += `Papers (${papers.length}):\n`;
-    papers.forEach((p, i) => {
-        text += `\n${i + 1}. "${p.title}" by ${(p.authors || []).join(', ')}`;
-        text += `\n   Categories: ${(p.categories || []).join(', ')}`;
-        text += `\n   Maturity: ${p.maturity} | Confidence: ${Math.round((p.confidence || 0) * 100)}%`;
-        if (includeDesc) text += `\n   Summary: ${p.summary}`;
-        text += `\n   Technologies: ${(p.technologies || []).join(', ')}`;
-        if ((p.product_potential || []).length) text += `\n   Product potential: ${p.product_potential.join('; ')}`;
-        text += '\n';
-    });
-
-    const question = document.getElementById('rd-ai-question').value.trim();
-    if (question) text += `\n\nMy question: ${question}`;
-    return text;
-}
-
-function updateAiPreview() {
-    const preview = document.getElementById('rd-ai-preview');
-    const meter = document.getElementById('rd-ai-meter');
-    const warning = document.getElementById('rd-ai-warning');
-    const prompt = buildAiPrompt();
-    preview.value = prompt;
-    const chars = prompt.length;
-    const urlLength = chars + 'https://www.google.com/search?q=&udm=50'.length;
-    meter.textContent = `${state.filtered.length} papers • ${chars.toLocaleString()} chars • URL ~${urlLength.toLocaleString()}`;
-    warning.hidden = urlLength < 29000;
-    warning.textContent = urlLength >= 29000 ? '⚠️ Prompt may exceed URL length limit' : '';
-}
-
-function bindAiAsk() {
-    const backdrop = document.getElementById('rd-ai-backdrop');
-    const modal = document.getElementById('rd-ai-modal');
-    const openBtn = document.getElementById('rd-ask-ai');
-    const closeBtn = document.getElementById('rd-ai-close');
-    const copyBtn = document.getElementById('rd-ai-copy');
-    const goBtn = document.getElementById('rd-ai-open');
-    const question = document.getElementById('rd-ai-question');
-    const count = document.getElementById('rd-ai-count');
-    const includeDesc = document.getElementById('rd-ai-include-desc');
-
-    function openModal() {
-        document.getElementById('rd-ai-context').textContent =
-            `Based on ${state.papers.length} papers from ${state.meta.date || 'latest scan'}. ` +
-            `${state.technologies.length} technologies identified, ${state.product_opportunities.length} product opportunities.`;
-        updateAiPreview();
-        backdrop.hidden = false;
-        modal.hidden = false;
-        document.body.classList.add('drawer-open');
-        setTimeout(() => question.focus(), 100);
-    }
-    function closeModal() {
-        backdrop.hidden = true;
-        modal.hidden = true;
-        document.body.classList.remove('drawer-open');
-    }
-
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-    question.addEventListener('input', updateAiPreview);
-    count.addEventListener('change', updateAiPreview);
-    includeDesc.addEventListener('change', updateAiPreview);
-
-    copyBtn.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(buildAiPrompt()); copyBtn.textContent = 'Copied ✓'; setTimeout(() => { copyBtn.textContent = 'Copy prompt'; }, 1400); }
-        catch { copyBtn.textContent = 'Failed'; setTimeout(() => { copyBtn.textContent = 'Copy prompt'; }, 1400); }
-    });
-    goBtn.addEventListener('click', () => {
-        const prompt = buildAiPrompt();
-        const url = 'https://www.google.com/search?q=' + encodeURIComponent(prompt) + '&udm=50';
-        window.open(url, '_blank', 'noopener');
-    });
-
-    // prompts menu
-    const promptsBtn = document.getElementById('rd-prompts-btn');
-    const promptsMenu = document.getElementById('rd-prompts-menu');
-    promptsBtn.addEventListener('click', (e) => { e.stopPropagation(); promptsMenu.hidden = !promptsMenu.hidden; });
-    document.addEventListener('click', () => { promptsMenu.hidden = true; });
-    promptsMenu.addEventListener('click', (e) => e.stopPropagation());
-    promptsMenu.querySelectorAll('.prompts-item').forEach((item) => {
-        item.addEventListener('click', () => {
-            question.value = item.dataset.prompt;
-            promptsMenu.hidden = true;
-            updateAiPreview();
-        });
-    });
-
-    // add custom prompt
-    const addBtn = document.getElementById('rd-prompts-add');
-    addBtn.addEventListener('click', () => {
-        const custom = prompt('Enter your custom prompt:');
-        if (custom && custom.trim()) {
-            const list = document.getElementById('prompts-custom-list');
-            const group = document.getElementById('prompts-custom-group');
-            group.hidden = false;
-            const btn = document.createElement('button');
-            btn.className = 'prompts-item';
-            btn.textContent = custom.trim().slice(0, 60) + (custom.trim().length > 60 ? '…' : '');
-            btn.dataset.prompt = custom.trim();
-            btn.addEventListener('click', () => { question.value = btn.dataset.prompt; promptsMenu.hidden = true; updateAiPreview(); });
-            list.appendChild(btn);
-        }
-    });
-}
+// ── Ask AI (via shared research-ai.js) ──────────────────────────────────────
 
 function bindSearch() {
     let timer;
@@ -258,7 +143,7 @@ function bindBackToTop() {
 async function init() {
     bindSearch();
     bindBackToTop();
-    bindAiAsk();
+    bindAskAi('AI Research Intelligence');
     try {
         await loadData();
     } catch (e) {
