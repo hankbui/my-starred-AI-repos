@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive — AI Technology Radar</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260701-9">
+    <style>
+        .rd-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .rd-back:hover { color:var(--accent); }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .archive-layout { display:grid; grid-template-columns:220px 1fr; gap:18px; }
+        .archive-sidebar { display:flex; flex-direction:column; gap:8px; }
+        .archive-date-btn { padding:8px 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-panel); color:var(--text-primary); font-size:0.85rem; font-weight:600; cursor:pointer; text-align:left; transition:120ms ease; }
+        .archive-date-btn:hover { border-color:var(--border-strong); background:rgba(99,207,255,0.06); }
+        .archive-date-btn.active { border-color:var(--accent); background:rgba(99,207,255,0.1); color:var(--accent); }
+        .archive-empty { font-size:0.82rem; color:var(--text-muted); padding:10px 0; }
+
+        .report-section h2 { font-size:1.1rem; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+
+        .brief-list { display:grid; gap:8px; }
+        .brief-item { padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); font-size:0.88rem; line-height:1.5; color:var(--text-primary); position:relative; }
+        .brief-item::before { content:''; position:absolute; left:0; top:6px; bottom:6px; width:3px; border-radius:3px; background:linear-gradient(180deg, var(--accent), rgba(167,139,250,0.4)); }
+
+        .tech-mini-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:8px; }
+        .tech-mini-card { padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .tech-mini-name { font-weight:600; font-size:0.85rem; color:var(--text-primary); }
+        .tech-mini-bar { height:4px; background:rgba(156,169,184,0.1); border-radius:99px; margin:6px 0 4px; overflow:hidden; }
+        .tech-mini-fill { height:100%; border-radius:99px; background:linear-gradient(90deg, var(--accent), #a78bfa); }
+        .tech-mini-meta { font-size:0.7rem; color:var(--text-muted); }
+
+        .opp-mini-list { display:grid; gap:8px; }
+        .opp-mini-card { padding:10px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .opp-mini-tech { font-size:0.72rem; font-weight:600; color:var(--accent); text-transform:uppercase; }
+        .opp-mini-idea { font-size:0.85rem; font-weight:500; color:var(--text-primary); margin-top:2px; }
+
+        .rd-empty { padding:60px; text-align:center; color:var(--text-secondary); }
+
+        @media (max-width:720px) { .archive-layout { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="rd-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to dashboard
+                </a>
+                <span class="eyebrow">AI Technology Radar</span>
+                <h1>Report Archive</h1>
+                <p class="hero-subtitle">Browse historical research intelligence reports day by day.</p>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="today.html">Today</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html">Radar</a>
+                <a href="trends.html">Trends</a>
+                <a href="innovation-map.html">Map</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="archive.html" class="active">Archive</a>
+            </nav>
+
+            <div class="archive-layout">
+                <aside class="archive-sidebar" id="rd-archive-dates">
+                    <h3 style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);margin-bottom:4px;">Available Dates</h3>
+                    <div id="rd-archive-list"></div>
+                </aside>
+                <div class="archive-report" id="rd-archive-report">
+                    <div class="rd-empty" style="padding:100px 40px">Select a date from the sidebar to view the report.</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            Auto-curated daily by AI &middot; <a href="index.html">Dashboard</a> &middot; <a href="today.html">Today</a> &middot; <a href="technologies.html">Technologies</a> &middot; <a href="product-opportunities.html">Opportunities</a> &middot; <a href="radar.html">Radar</a> &middot; <a href="trends.html">Trends</a> &middot; <a href="innovation-map.html">Map</a> &middot; <a href="timeline.html">Timeline</a> &middot; <a href="archive.html">Archive</a>
+        </footer>
+    </div>
+
+    <script src="archive.js?v=20260701-1"></script>
+</body>
+</html>

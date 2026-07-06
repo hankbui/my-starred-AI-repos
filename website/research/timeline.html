@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Timeline — AI Technology Radar</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260701-9">
+    <style>
+        .rd-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .rd-back:hover { color:var(--accent); }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .tl-summary { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; }
+        .tl-stat { padding:14px 18px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); flex:1; min-width:140px; }
+        .tl-stat-val { font-weight:700; font-size:1.3rem; color:var(--text-primary); }
+        .tl-stat-label { font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; }
+
+        .tl-section h2 { font-size:1.05rem; font-weight:700; margin:18px 0 10px; display:flex; align-items:center; gap:8px; }
+
+        .tl-bar-wrap { display:grid; gap:10px; }
+        .tl-bar-row { display:grid; grid-template-columns:200px 1fr 50px; gap:10px; align-items:center; }
+        .tl-bar-label { font-size:0.82rem; font-weight:600; color:var(--text-primary); text-align:right; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .tl-bar-track { height:22px; background:rgba(156,169,184,0.08); border-radius:99px; overflow:hidden; position:relative; }
+        .tl-bar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg, var(--accent), #a78bfa); transition:width 500ms ease; min-width:4px; }
+        .tl-bar-fill.rising { background:linear-gradient(90deg, #4ac7ff, #7fc4ff); }
+        .tl-bar-fill.breakout { background:linear-gradient(90deg, #fbbf24, #f59e0b); }
+        .tl-bar-fill.peak { background:linear-gradient(90deg, #f87171, #ef4444); }
+        .tl-bar-fill.maturing { background:linear-gradient(90deg, #34d399, #10b981); }
+        .tl-bar-value { font-size:0.78rem; color:var(--text-muted); font-weight:600; }
+
+        .tl-trend-clusters { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; }
+        .tl-cluster-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .tl-cluster-title { font-weight:700; font-size:0.9rem; color:var(--text-primary); margin-bottom:4px; }
+        .tl-cluster-items { font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
+
+        .tl-timeline { position:relative; padding-left:24px; margin-top:10px; }
+        .tl-timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:2px; background:var(--border); }
+        .tl-event { position:relative; padding:8px 0 8px 16px; }
+        .tl-event::before { content:''; position:absolute; left:-20px; top:14px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg-surface); }
+        .tl-event-date { font-size:0.7rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; }
+        .tl-event-text { font-size:0.88rem; color:var(--text-primary); }
+
+        .rd-empty { padding:60px; text-align:center; color:var(--text-secondary); }
+        @media (max-width:720px) { .tl-bar-row { grid-template-columns:120px 1fr 40px; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="rd-back" href="index.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Back to dashboard</a>
+                <span class="eyebrow">AI Technology Radar</span>
+                <h1>Technology Timeline</h1>
+                <p class="hero-subtitle">How technologies tracked in the research scan evolve over time.</p>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="today.html">Today</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html">Radar</a>
+                <a href="trends.html">Trends</a>
+                <a href="innovation-map.html">Map</a>
+                <a href="timeline.html" class="active">Timeline</a>
+                <a href="archive.html">Archive</a>
+            </nav>
+
+            <div class="tl-summary" id="rd-tl-summary"></div>
+
+            <section class="tl-section">
+                <h2>📊 Technologies by Confidence</h2>
+                <div class="tl-bar-wrap" id="rd-tl-bars"></div>
+            </section>
+
+            <section class="tl-section">
+                <h2>🔄 Trend Clusters</h2>
+                <div class="tl-trend-clusters" id="rd-tl-clusters"></div>
+            </section>
+
+            <section class="tl-section">
+                <h2>📅 Timeline</h2>
+                <div class="tl-timeline" id="rd-tl-events"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            Auto-curated daily by AI &middot; <a href="index.html">Dashboard</a> &middot; <a href="today.html">Today</a> &middot; <a href="technologies.html">Technologies</a> &middot; <a href="product-opportunities.html">Opportunities</a> &middot; <a href="radar.html">Radar</a> &middot; <a href="trends.html">Trends</a> &middot; <a href="innovation-map.html">Map</a> &middot; <a href="timeline.html">Timeline</a> &middot; <a href="archive.html">Archive</a>
+        </footer>
+    </div>
+
+    <script src="timeline.js?v=20260701-1"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@ from pathlib import Path
 # add parent so we can import research module
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from research import arxiv, llm, curator
+from research import arxiv, huggingface, llm, curator
 from research.schema import ResearchReport
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -110,14 +110,31 @@ def main():
     existing_ids |= existing_paper_ids
     print(f'  Existing papers in cache: {len(existing_ids)}')
 
-    # 3. Fetch new papers
-    print('\n[3/6] Fetching new papers from arXiv...')
-    all_papers = arxiv.fetch_all(existing_ids=existing_ids)
+    # 3. Fetch new papers from multiple sources
+    print('\n[3/6] Fetching new papers...')
+    all_papers = []
+    seen_ids = set(existing_ids or [])
+
+    # 3a. arXiv API + RSS
+    print('  [3a] arXiv...')
+    arxiv_papers = arxiv.fetch_all(existing_ids=existing_ids)
+    for p in arxiv_papers:
+        if p.id not in seen_ids:
+            all_papers.append(p)
+            seen_ids.add(p.id)
+
+    # 3b. HuggingFace Daily Papers
+    print('  [3b] HuggingFace Daily Papers...')
+    hf_papers = huggingface.fetch_all(existing_ids=seen_ids)
+    for p in hf_papers:
+        if p.id not in seen_ids:
+            all_papers.append(p)
+            seen_ids.add(p.id)
+
     if not all_papers:
         print('  No new papers found. Using existing data if available.')
         if existing_report:
             print('  Existing report available — will re-generate with current LLM.')
-            # still continue to re-analyze existing papers
         else:
             print('  No data to process. Exiting.')
             return
