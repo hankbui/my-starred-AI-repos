@@ -238,12 +238,18 @@ def main():
         tech_summary = ''
         tech_data = None
 
-    # 5e. Generate product opportunities — per technology, not per paper
+    # 5e. Generate product opportunities — per technology with context
     print('  Generating product opportunities...')
-    all_tech_names = list(set(
-        t.get('name', '') for t in (tech_data or []) if t.get('name')
-    )) if tech_data else []
-    papers_for_opp = '\n'.join(f'- {t}' for t in all_tech_names[:15]) if all_tech_names else ''
+    all_tech_info = [
+        t for t in (tech_data or []) if t.get('name')
+    ] if tech_data else []
+    tech_opp_lines = []
+    for t in all_tech_info[:15]:
+        apps = ', '.join(t.get('applications', [])[:3]) or 'general AI'
+        conf = t.get('confidence', 0.5)
+        mat = t.get('maturity', 'early')
+        tech_opp_lines.append(f'- {t["name"]} (confidence: {conf:.2f}, maturity: {mat}, applications: {apps})')
+    papers_for_opp = '\n'.join(tech_opp_lines) if tech_opp_lines else ''
     opp_data = llm.generate_opportunities(papers_for_opp, backend) if papers_for_opp else None
 
     # 6. Build report

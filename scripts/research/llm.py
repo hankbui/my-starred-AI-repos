@@ -79,22 +79,21 @@ Return STRICT JSON array:
 Technologies found across papers (with paper context):
 {technologies_list}"""
 
-OPPORTUNITY_PROMPT = """You are a startup founder who reads research to find product opportunities. For each technology below, generate the single most promising product opportunity.
+OPPORTUNITY_PROMPT = """You are a startup founder. Generate concrete product opportunities from these AI technologies.
 
-For each entry, provide:
-- technology: the technology name (copy exactly from input)
-- idea: a concrete, specific product idea (1-sentence, give it a product name)
-- business_value: 1-10 (how much revenue/impact potential)
-- engineering_difficulty: 1-10 (how hard to build)
+For EACH technology below, produce ONE opportunity entry with:
+- technology: exact name from input
+- idea: specific product idea with a name (e.g. "AutoSlide: AI presentation generator from meeting notes")
+- business_value: 1-10
+- engineering_difficulty: 1-10
 - competitive_advantage: "low" | "medium" | "high" | "very high"
-- development_time: "<X-Y weeks>" or "<X-Y months>"
+- development_time: e.g. "2-4 weeks" or "1-3 months"
 
-Return STRICT JSON array only — one entry per technology:
-[{{"technology": "<exact tech name>", "idea": "<Product Name: one-liner>", "business_value": <int>, "engineering_difficulty": <int>, "competitive_advantage": "<low|medium|high|very high>", "development_time": "<X-Y weeks>"}}]
+CRITICAL: Return a JSON array. If there are N technologies, return N entries. Never return an empty array.
 
-Even with just 1-2 technologies, generate the best opportunity you can.
+[{{"technology": "...", "idea": "...", "business_value": <int>, "engineering_difficulty": <int>, "competitive_advantage": "...", "development_time": "..."}}]
 
-Technology list:
+Technologies with context:
 {papers}"""
 
 
