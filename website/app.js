@@ -1631,7 +1631,20 @@ async function loadData() {
     applyFilters();
 }
 
+async function initPageViewer() {
+    const countEl = document.getElementById('page-viewer-count');
+    if (!countEl) return;
+    try {
+        const res = await fetch('https://api.countapi.xyz/hit/hankbui/my-starred-ai-repos-pageviews');
+        const data = await res.json();
+        countEl.textContent = Number(data.value).toLocaleString();
+    } catch {
+        countEl.textContent = '0';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    initPageViewer();
     restoreStateFromUrl();
     bindNav();
     bindFilters();
