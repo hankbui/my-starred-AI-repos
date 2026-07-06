@@ -14,8 +14,13 @@ LLM7_TOKEN = os.getenv('LLM7_TOKEN', 'unused')
 CURATOR_SYS = (
     'You are a Staff AI Research Engineer and Product Strategist. '
     'Your job is to read research papers and extract technologies and product opportunities. '
-    'Reply with STRICT JSON only, no prose, no markdown. '
-    'Technology names MUST be standard research terms, NOT product descriptions.'
+    'Reply with STRICT JSON only, no prose, no markdown.'
+)
+
+OPPORTUNITY_SYS = (
+    'You are a startup founder who turns AI research into product opportunities. '
+    'For each technology, generate the most concrete, specific product idea you can. '
+    'Reply with STRICT JSON array only, no prose, no markdown.'
 )
 
 PAPER_ANALYSIS_PROMPT = """Analyze this AI research paper for product potential. Return JSON with EXACTLY these keys:
@@ -233,11 +238,14 @@ def generate_opportunities(papers_data: str, backend: dict) -> Optional[list[dic
 
     prompt = OPPORTUNITY_PROMPT.format(papers=papers_data)
     messages = [
-        {'role': 'system', 'content': CURATOR_SYS},
+        {'role': 'system', 'content': OPPORTUNITY_SYS},
         {'role': 'user', 'content': prompt},
     ]
     raw = chat(messages, temperature=0.5, backend=backend)
+    print(f'    [RAW response length: {len(raw) if raw else 0}]')
     data = parse_json(raw)
+    if data is None and raw:
+        print(f'    [DEBUG] Raw: {raw[:500]}')
     if data and isinstance(data, list):
         # validate each item has required fields
         validated = [d for d in data if isinstance(d, dict) and 'technology' in d and 'idea' in d]
