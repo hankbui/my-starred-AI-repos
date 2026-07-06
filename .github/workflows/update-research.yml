@@ -1,0 +1,43 @@
+name: Update Research Intelligence
+
+on:
+  schedule:
+    - cron: '30 5 * * *'   # Daily at 05:30 UTC (after main repo update)
+  workflow_dispatch:         # Manual trigger
+
+concurrency:
+  group: research
+  cancel-in-progress: true
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run research pipeline
+        run: python scripts/generate_research.py
+        env:
+          LLM7_TOKEN: ${{ secrets.LLM7_TOKEN }}
+        continue-on-error: true
+
+      - name: Commit research data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add website/research/json/ data/research_cache.json || true
+          git diff --staged --quiet || git commit -m "chore: update research intelligence data [skip ci]"
+          git push
