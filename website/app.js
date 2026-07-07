@@ -1,3 +1,5 @@
+const STAR_HISTORY_URL = 'data/star_history.json?v=20260701-1';
+
 const state = {
     starredRepos: [],
     trendingRepos: [],
@@ -9,6 +11,7 @@ const state = {
     category: 'all',
     topic: 'all',
     activity: 'all',
+    stackLayer: 'all',
     minStars: 0,
     sort: 'stars_desc',
     search: '',
@@ -18,6 +21,7 @@ const state = {
     historyPoints: 0,
     trendingMode: 'bootstrap',
     selectedRepoId: null,
+    starHistoryMap: null,
     mobileView: localStorage.getItem('mobileView') === 'true',
 };
 
@@ -34,6 +38,7 @@ function hasCustomFilters() {
         || state.category !== 'all'
         || state.topic !== 'all'
         || state.activity !== 'all'
+        || state.stackLayer !== 'all'
         || state.minStars !== 0
         || state.sort !== getDefaultSortForView(state.view);
 }
@@ -55,6 +60,9 @@ function buildStateQueryParams() {
     }
     if (state.activity !== 'all') {
         params.set('activity', state.activity);
+    }
+    if (state.stackLayer !== 'all') {
+        params.set('stack', state.stackLayer);
     }
     if (state.minStars > 0) {
         params.set('stars', String(state.minStars));
@@ -114,6 +122,7 @@ function restoreStateFromUrl() {
     state.category = params.get('category') || 'all';
     state.topic = params.get('topic') || 'all';
     state.activity = params.get('activity') || 'all';
+    state.stackLayer = params.get('stack') || 'all';
 
     if (Number.isFinite(requestedPerPage) && [25, 50, 100].includes(requestedPerPage)) {
         state.perPage = requestedPerPage;
@@ -231,6 +240,27 @@ function formatGrowth(delta, pct) {
     `;
 }
 
+function classifyStackLayer(repo) {
+    const cat = repo.category || '';
+    const name = (repo.name || '').toLowerCase();
+    const desc = (repo.description || '').toLowerCase();
+    const topics = (repo.topics || []).map(t => t.toLowerCase());
+    const text = name + ' ' + desc + ' ' + topics.join(' ');
+
+    if (/\b(infrastructure|inference|serving|deploy|gateway|orchestrat|compute|hosting|runtime|engine)\b/.test(text)) return 'Infra';
+    if (/\b(framework|sdk|library|api|sdk|agent.*framework|orchestrat|protocol)\b/.test(text) && !/\b(demo|app|ui|dashboard|cli)\b/.test(text)) return 'Framework';
+    if (/\b(dataset|benchmark|evaluation|eval|data.*pipeline|embedding|vector.*db|chroma|milvus|qdrant)\b/.test(text)) return 'Data';
+    if (/\b(design|creative|media|video|image|audio|3d|render|animate|art|photo|music)\b/.test(text)) return 'Creative';
+    if (/\b(dev.?tool|cli|plugin|extension|editor|terminal|git|ci|cd)\b/.test(text) || cat === 'Developer Tools') return 'Tool';
+    if (/\b(app|platform|dashboard|studio|desktop|web.?ui|ui.?ux|demo|product|launcher)\b/.test(text) && cat !== 'Infrastructure') return 'Product';
+    if (cat === 'Applications' || cat === 'Vision & Media') return 'Product';
+    if (cat === 'Agents & Automation' || cat === 'AI Engineering') return 'Framework';
+    if (cat === 'Infrastructure' || cat === 'Models & Inference') return 'Infra';
+    if (cat === 'Data & Evaluation') return 'Data';
+    if (cat === 'Research & Knowledge') return 'Framework';
+    return 'Other';
+}
+
 function normalizeRepo(repo) {
     const name = repo.name || '';
     const [ownerFromName, repoNameFromName] = name.split('/');
@@ -263,6 +293,7 @@ function normalizeRepo(repo) {
         readme_excerpt: repo.readme_excerpt || '',
         readme_path: repo.readme_path || '',
         readme_status: repo.readme_status || 'unavailable',
+        stack_layer: classifyStackLayer(repo),
     };
 }
 
@@ -516,6 +547,7 @@ function applyFilters() {
     renderPresetChips();
     document.getElementById('repo-search').value = state.search;
     document.getElementById('stars-filter').value = String(state.minStars);
+    document.getElementById('stack-filter').value = state.stackLayer;
     document.getElementById('sort-select').value = state.sort;
 
     const query = state.search.trim().toLowerCase();
@@ -531,6 +563,10 @@ function applyFilters() {
             }
 
             if (state.activity !== 'all' && repo.activity !== state.activity) {
+                return false;
+            }
+
+            if (state.stackLayer !== 'all' && repo.stack_layer !== state.stackLayer) {
                 return false;
             }
 
@@ -570,6 +606,32 @@ function applyFilters() {
     renderPagination();
 }
 
+function renderSparkline(repo) {
+    if (!state.starHistoryMap) return '';
+    const arr = state.starHistoryMap.get(repo.name);
+    if (!arr || arr.length < 2) return '';
+    const values = arr.filter(v => v !== null);
+    if (values.length < 2) return '';
+    const w = 72, h = 22;
+    const min = Math.min(...values), max = Math.max(...values);
+    const range = max - min || 1;
+    const points = values.map((v, i) => {
+        const x = (i / (values.length - 1)) * (w - 4) + 2;
+        const y = h - 4 - ((v - min) / range) * (h - 8);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    const color = values[values.length - 1] >= values[0] ? 'var(--success)' : '#ff7878';
+    const fillId = `sfill-${repo.id}`;
+    return `<svg class="sparkline" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-label="Star history trend">
+        <defs><linearGradient id="${fillId}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="${color}" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="${color}" stop-opacity="0.02"/>
+        </linearGradient></defs>
+        <polygon points="${points} ${(w - 2).toFixed(1)},${(h - 4).toFixed(1)} 2,${(h - 4).toFixed(1)}" fill="url(#${fillId})"/>
+        <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+}
+
 function renderTable() {
     const isMobile = state.mobileView;
     const tableShell = document.querySelector('.table-shell');
@@ -590,7 +652,7 @@ function renderTable() {
     if (pageRepos.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="10" class="empty-state">No repositories match the current filters.</td>
+                <td colspan="11" class="empty-state">No repositories match the current filters.</td>
             </tr>
         `;
         return;
@@ -626,6 +688,7 @@ function renderTable() {
                     <td class="col-stars" data-label="Stars">${repo.stars.toLocaleString()}</td>
                     <td class="col-growth" data-label="1d">${formatGrowth(repo.star_delta_1d, repo.star_delta_1d_pct)}</td>
                     <td class="col-growth" data-label="7d">${formatGrowth(repo.star_delta_7d, repo.star_delta_7d_pct)}</td>
+                    <td class="col-trend" data-label="Trend">${renderSparkline(repo)}</td>
                     <td class="col-forks" data-label="Forks">${repo.forks.toLocaleString()}</td>
                     <td class="col-desc" data-label="Description">
                         <div class="desc-text" title="${escapeHtml(repo.description)}">${escapeHtml(repo.description)}</div>
@@ -791,6 +854,7 @@ function buildAiAskFilterContext() {
     if (state.category !== 'all') bits.push(`Category: ${state.category}`);
     if (state.topic !== 'all') bits.push(`Topic: ${state.topic}`);
     if (state.activity !== 'all') bits.push(`Activity: ${state.activity}`);
+    if (state.stackLayer !== 'all') bits.push(`Stack: ${state.stackLayer}`);
     if (state.minStars > 0) bits.push(`Min stars: ${state.minStars.toLocaleString()}`);
     return bits.join(' • ');
 }
@@ -1181,6 +1245,10 @@ function openDrawer(repo) {
                 <strong>${escapeHtml(repo.trend_source)}</strong>
             </div>
             <div class="drawer-metric">
+                <span class="drawer-metric-label">Stack Layer</span>
+                <strong>${escapeHtml(repo.stack_layer)}</strong>
+            </div>
+            <div class="drawer-metric">
                 <span class="drawer-metric-label">1d growth</span>
                 <strong>${typeof repo.star_delta_1d === 'number' ? `${repo.star_delta_1d >= 0 ? '+' : ''}${repo.star_delta_1d.toLocaleString()}` : 'warming up'}</strong>
             </div>
@@ -1237,6 +1305,7 @@ function resetFilters({ keepView = true, preset = 'all' } = {}) {
     state.category = 'all';
     state.topic = 'all';
     state.activity = 'all';
+    state.stackLayer = 'all';
     state.minStars = 0;
     state.sort = keepView && currentView === 'trending' ? 'trend_desc' : 'stars_desc';
     state.currentPage = 1;
@@ -1410,6 +1479,13 @@ function bindFilters() {
         applyFilters();
     });
 
+    document.getElementById('stack-filter').addEventListener('change', (event) => {
+        state.stackLayer = event.target.value;
+        state.currentPage = 1;
+        state.activePreset = 'custom';
+        applyFilters();
+    });
+
     document.getElementById('sort-select').addEventListener('change', (event) => {
         state.sort = event.target.value;
         state.currentPage = 1;
@@ -1568,9 +1644,12 @@ function renderMobileList() {
                                 <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
                                 <span class="language-pill">${escapeHtml(repo.language)}</span>
                             </div>
-                            <div class="mobile-card-stars">
-                                <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
-                                <span>${repo.stars.toLocaleString()}</span>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div class="mobile-card-stars">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                                    <span>${repo.stars.toLocaleString()}</span>
+                                </div>
+                                ${renderSparkline(repo)}
                             </div>
                         </div>
                     </div>
@@ -1614,18 +1693,42 @@ function bindViewToggle() {
 }
 
 async function loadData() {
-    const response = await fetch(DATA_URL);
-    if (!response.ok) {
+    const [reposResp, historyResp] = await Promise.all([
+        fetch(DATA_URL),
+        fetch(STAR_HISTORY_URL).catch(() => null),
+    ]);
+
+    if (!reposResp.ok) {
         throw new Error('Failed to load repository data');
     }
 
-    const data = await response.json();
+    const data = await reposResp.json();
     state.starredRepos = (data.starred_repos || []).map(normalizeRepo);
     state.trendingRepos = (data.trending_repos || []).map(normalizeRepo);
     state.updatedAt = data.updated_at || '';
     state.historyStartAt = data.history_start_at || '';
     state.historyPoints = data.history_points || 0;
     state.trendingMode = data.trending_mode || 'bootstrap';
+
+    // Build star history map
+    if (historyResp && historyResp.ok) {
+        try {
+            const history = await historyResp.json();
+            const dates = Object.keys(history).sort();
+            const map = new Map();
+            for (const [name, stars] of Object.entries(history[dates[dates.length - 1]])) {
+                const arr = [];
+                for (const d of dates) {
+                    const v = history[d][name];
+                    arr.push(v !== undefined ? v : null);
+                }
+                map.set(name, arr);
+            }
+            state.starHistoryMap = map;
+        } catch (e) {
+            console.warn('Failed to parse star history:', e);
+        }
+    }
 
     renderStats();
     applyFilters();
@@ -1677,7 +1780,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('results-meta').textContent = 'Unable to load repository data';
         document.getElementById('repos-tbody').innerHTML = `
             <tr>
-                <td colspan="10" class="empty-state">Repository data could not be loaded.</td>
+                <td colspan="11" class="empty-state">Repository data could not be loaded.</td>
             </tr>
         `;
     }
