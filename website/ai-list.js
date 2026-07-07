@@ -3,11 +3,32 @@
 const state = {
     repos: [], devs: [], bots: [],
     tab: 'repos',
-    search: '', category: 'all', sort: '',
+    search: '', category: 'all', stackLayer: 'all', sort: '',
     page: 1, perPage: 50,
     filtered: [],
     updatedAt: '',
 };
+
+function classifyStackLayer(repo) {
+    const cat = repo.category || '';
+    const name = (repo.name || '').toLowerCase();
+    const desc = (repo.description || '').toLowerCase();
+    const topics = (repo.topics || []).map(t => t.toLowerCase());
+    const text = name + ' ' + desc + ' ' + topics.join(' ');
+
+    if (/\b(infrastructure|inference|serving|deploy|gateway|orchestrat|compute|hosting|runtime|engine)\b/.test(text)) return 'Infra';
+    if (/\b(framework|sdk|library|api|sdk|agent.*framework|orchestrat|protocol)\b/.test(text) && !/\b(demo|app|ui|dashboard|cli)\b/.test(text)) return 'Framework';
+    if (/\b(dataset|benchmark|evaluation|eval|data.*pipeline|embedding|vector.*db|chroma|milvus|qdrant)\b/.test(text)) return 'Data';
+    if (/\b(design|creative|media|video|image|audio|3d|render|animate|art|photo|music)\b/.test(text)) return 'Creative';
+    if (/\b(dev.?tool|cli|plugin|extension|editor|terminal|git|ci|cd)\b/.test(text) || cat === 'Developer Tools') return 'Tool';
+    if (/\b(app|platform|dashboard|studio|desktop|web.?ui|ui.?ux|demo|product|launcher)\b/.test(text) && cat !== 'Infrastructure') return 'Product';
+    if (cat === 'Applications' || cat === 'Vision & Media') return 'Product';
+    if (cat === 'Agents & Automation' || cat === 'AI Engineering') return 'Framework';
+    if (cat === 'Infrastructure' || cat === 'Models & Inference') return 'Infra';
+    if (cat === 'Data & Evaluation') return 'Data';
+    if (cat === 'Research & Knowledge') return 'Framework';
+    return 'Other';
+}
 
 const DATA_URL = 'data/ailist.json?v=' + Date.now();
 
@@ -68,6 +89,9 @@ function applyFilters() {
 
     if (state.tab === 'repos' && state.category !== 'all') {
         rows = rows.filter((r) => r.category === state.category);
+    }
+    if (state.tab === 'repos' && state.stackLayer !== 'all') {
+        rows = rows.filter((r) => classifyStackLayer(r) === state.stackLayer);
     }
     if (q) {
         const terms = q.split(',').map((t) => t.trim()).filter(Boolean);
@@ -173,7 +197,9 @@ function renderPagination() {
 
 function renderTabs() {
     document.querySelectorAll('.ail-tab').forEach((b) => b.classList.toggle('active', b.dataset.tab === state.tab));
-    document.getElementById('category-wrap').style.display = TAB_CONFIG[state.tab].hasCategory ? '' : 'none';
+    const showCat = TAB_CONFIG[state.tab].hasCategory;
+    document.getElementById('category-wrap').style.display = showCat ? '' : 'none';
+    document.getElementById('ail-stack').closest('.control').style.display = showCat ? '' : 'none';
 }
 
 function populateControls() {
@@ -193,6 +219,7 @@ function populateControls() {
     catSel.value = state.category;
 
     document.getElementById('ail-search').value = state.search;
+    document.getElementById('ail-stack').value = state.stackLayer;
 }
 
 // ── Export / copy / share ─────────────────────────────────────────────────────
@@ -244,6 +271,7 @@ function syncUrl() {
     if (state.tab !== 'repos') p.set('tab', state.tab);
     if (state.search.trim()) p.set('q', state.search.trim());
     if (state.category !== 'all') p.set('category', state.category);
+    if (state.stackLayer !== 'all') p.set('stack', state.stackLayer);
     const url = new URL(window.location.href);
     url.search = p.toString();
     window.history.replaceState({}, '', url);
@@ -254,6 +282,7 @@ function restoreUrl() {
     if (t && TAB_CONFIG[t]) state.tab = t;
     state.search = p.get('q') || '';
     state.category = p.get('category') || 'all';
+    state.stackLayer = p.get('stack') || 'all';
 }
 
 // ── Ask AI ────────────────────────────────────────────────────────────────────
@@ -403,6 +432,7 @@ function bind() {
         clearTimeout(timer); timer = setTimeout(() => { state.search = e.target.value; state.page = 1; applyFilters(); }, 250);
     });
     document.getElementById('ail-category').addEventListener('change', (e) => { state.category = e.target.value; state.page = 1; applyFilters(); });
+    document.getElementById('ail-stack').addEventListener('change', (e) => { state.stackLayer = e.target.value; state.page = 1; applyFilters(); });
     document.getElementById('ail-sort').addEventListener('change', (e) => { state.sort = e.target.value; applyFilters(); });
     document.getElementById('ail-prev').addEventListener('click', () => { if (state.page > 1) { state.page--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
     document.getElementById('ail-next').addEventListener('click', () => { const t = Math.ceil(state.filtered.length / state.perPage); if (state.page < t) { state.page++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
