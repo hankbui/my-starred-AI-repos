@@ -50,6 +50,22 @@ function sortTechs() {
     });
 }
 
+function computeInnovationScore(t) {
+    const conf = t.confidence || 0;
+    const papers = Math.min(t.papers || 1, 20);
+    const maturityScore = t.maturity === 'high' ? 1.0 : t.maturity === 'medium' ? 0.7 : 0.4;
+    const trendScore = t.trend === 'breakout' ? 1.0 : t.trend === 'rising' ? 0.8 : t.trend === 'emerging' ? 0.5 : 0.6;
+    const raw = (conf * 0.35 + (papers / 20) * 0.25 + maturityScore * 0.2 + trendScore * 0.2) * 100;
+    return Math.round(Math.min(raw, 100));
+}
+
+function innovationScoreColor(score) {
+    if (score >= 80) return 'var(--success)';
+    if (score >= 60) return 'var(--accent)';
+    if (score >= 40) return 'var(--warning)';
+    return 'var(--text-muted)';
+}
+
 function render() {
     const grid = document.getElementById('rd-tech-grid');
     const count = document.getElementById('rd-count');
@@ -68,18 +84,23 @@ function render() {
         const trend = TREND_LABELS[t.trend] || TREND_LABELS.emerging;
         const maturity = MATURITY_LABELS[t.maturity] || MATURITY_LABELS.early;
         const apps = (t.applications || []).map((a) => `<span class="rd-tech-app">${esc(a)}</span>`).join('');
+        const innovScore = computeInnovationScore(t);
+        const innovColor = innovationScoreColor(innovScore);
 
         return `
             <div class="rd-tech-card">
                 <div class="rd-tech-meta">
                     <span class="rd-trend-badge ${trend.cls}">${trend.label}</span>
                     <span class="rd-maturity-badge ${maturity.cls}">${maturity.label}</span>
+                    <span class="rd-innov-badge" style="margin-left:auto;padding:2px 8px;border-radius:999px;font-size:0.68rem;font-weight:700;border:1px solid ${innovColor};color:${innovColor};background:rgba(0,0,0,0.2)">${innovScore}</span>
                 </div>
                 <div class="rd-tech-name">${esc(t.name)}</div>
                 <div class="rd-tech-meta">
                     <span class="rd-tech-stat">Confidence: ${Math.round((t.confidence || 0) * 100)}%</span>
                     <span class="rd-tech-stat">&middot;</span>
                     <span class="rd-tech-stat">${t.papers || 1} paper${(t.papers || 1) !== 1 ? 's' : ''}</span>
+                    <span class="rd-tech-stat">&middot;</span>
+                    <span class="rd-tech-stat" style="color:${innovColor};font-weight:700">Innovation ${innovScore}/100</span>
                 </div>
                 ${apps ? `<div class="rd-tech-apps">${apps}</div>` : ''}
             </div>`;

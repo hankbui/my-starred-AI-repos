@@ -81,6 +81,23 @@
     }).join('')
   }
 
+  function computeQuality(p) {
+    const conf = p.confidence || 0;
+    const cs = p.curator_score || 0;
+    const techs = Math.min(p.technologies ? p.technologies.length : 0, 10);
+    const hasCode = (p.comment && p.comment.includes('github')) || (p.summary || '').toLowerCase().includes('code') || (p.summary || '').toLowerCase().includes('github') ? 1 : 0;
+    const mat = p.maturity === 'high' ? 1.0 : p.maturity === 'medium' ? 0.7 : 0.4;
+    const raw = (conf * 0.25 + (cs / 10) * 0.25 + (techs / 10) * 0.2 + hasCode * 0.15 + mat * 0.15) * 100;
+    return Math.round(Math.min(raw, 100))
+  }
+
+  function qColor(s) {
+    if (s >= 75) return 'var(--success)'
+    if (s >= 50) return 'var(--accent)'
+    if (s >= 30) return 'var(--warning)'
+    return 'var(--text-muted)'
+  }
+
   function renderPapers(r) {
     const container = el('rd-papers-list')
     const papers = r.papers || []
@@ -91,12 +108,15 @@
     container.innerHTML = papers.slice(0, 10).map(p => {
       const techs = (p.technologies || []).slice(0, 6)
       const authors = (p.authors || []).slice(0, 3).join(', ') + ((p.authors || []).length > 3 ? ' et al.' : '')
+      const quality = computeQuality(p)
+      const qc = qColor(quality)
       return `<div class="paper-card">
         <div class="paper-title"><a href="${escHtml(p.pdf_url || '#')}" target="_blank" rel="noopener">${escHtml(p.title)}</a></div>
         <div class="paper-authors">${escHtml(authors)}</div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <div class="paper-techs">${techs.map(t => `<span class="paper-tech">${escHtml(t)}</span>`).join('')}</div>
           <span class="paper-conf">${p.confidence ? `confidence ${(p.confidence * 100).toFixed(0)}%` : ''}</span>
+          <span class="paper-conf" style="color:${qc};font-weight:700">quality ${quality}/100</span>
         </div>
       </div>`
     }).join('')

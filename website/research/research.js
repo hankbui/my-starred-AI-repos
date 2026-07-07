@@ -56,6 +56,23 @@ function renderCards() {
     }).join('');
 }
 
+function computePaperQuality(p) {
+    const conf = p.confidence || 0;
+    const curatorScore = p.curator_score || 0;
+    const techCount = Math.min(p.technologies ? p.technologies.length : 0, 10);
+    const hasCode = (p.comment && p.comment.includes('github')) || (p.summary || '').toLowerCase().includes('code') || (p.summary || '').toLowerCase().includes('github') ? 1 : 0;
+    const maturityScore = p.maturity === 'high' ? 1.0 : p.maturity === 'medium' ? 0.7 : 0.4;
+    const raw = (conf * 0.25 + (curatorScore / 10) * 0.25 + (techCount / 10) * 0.2 + hasCode * 0.15 + maturityScore * 0.15) * 100;
+    return Math.round(Math.min(raw, 100));
+}
+
+function qualityColor(score) {
+    if (score >= 75) return 'var(--success)';
+    if (score >= 50) return 'var(--accent)';
+    if (score >= 30) return 'var(--warning)';
+    return 'var(--text-muted)';
+}
+
 function renderPapers() {
     const list = document.getElementById('rd-papers-list');
     const items = state.filtered;
@@ -67,10 +84,13 @@ function renderPapers() {
         const authors = (p.authors || []).join(', ');
         const techs = (p.technologies || []).map((t) => `<span class="rd-badge rd-badge-maturity">${esc(t)}</span>`).join('');
         const products = (p.product_potential || []).slice(0, 3).map((h) => `<li>${esc(h)}</li>`).join('');
+        const quality = computePaperQuality(p);
+        const qColor = qualityColor(quality);
         return `
             <div class="rd-paper">
                 <div class="rd-paper-head">
                     <a class="rd-paper-title" href="${esc(p.pdf_url)}" target="_blank" rel="noreferrer">${esc(p.title)}</a>
+                    <span class="rd-badge" style="flex-shrink:0;background:rgba(0,0,0,0.2);border-color:${qColor};color:${qColor}">${quality}/100</span>
                 </div>
                 <div class="rd-paper-meta">
                     <span class="rd-paper-authors">${esc(authors)}</span>
@@ -82,6 +102,7 @@ function renderPapers() {
                     <span>maturity: ${esc(p.maturity)}</span>
                     <span>·</span>
                     <span>confidence: ${Math.round((p.confidence || 0) * 100)}%</span>
+                    ${p.curator_score ? `<span>·</span><span>score: ${p.curator_score}/10</span>` : ''}
                 </div>
                 <div class="rd-paper-summary">${esc(p.summary)}</div>
                 ${techs ? `<div class="rd-paper-techs">${techs}</div>` : ''}
