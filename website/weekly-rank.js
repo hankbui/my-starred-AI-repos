@@ -3,18 +3,18 @@ const STARS_DATA_URL = 'data/star_history.json?v=20260701-1';
 const REPOS_DATA_URL = 'data/repos.json?v=20260328-5';
 
 const state = {
-    history: null,       // parsed star_history.json
-    reposMap: null,      // name -> repo metadata
-    rows: [],            // computed ranking rows
+    history: null,
+    reposMap: null,
+    rows: [],
     filtered: [],
-    period: 7,            // 1, 7, 30
+    period: 7,
     search: '',
     category: 'all',
     sortCol: 'delta',
     sortDir: 'desc',
     latestDate: null,
-    weekDates: [],       // available dates for week picker
-    weekIndex: 1,        // which week (0 = oldest, n = latest)
+    weekDates: [],
+    viewMode: 'list',    // 'list' | 'cards'
 };
 
 function repoName(r) { return r && (r.name || r.repo_name); }
@@ -110,11 +110,23 @@ function renderInfo() {
     const total = state.rows.length;
     const filtered = state.filtered.length;
     const el = document.getElementById('wr-info');
-    if (total === filtered) {
-        el.textContent = `${total.toLocaleString()} repos tracked • showing all`;
-    } else {
-        el.textContent = `${filtered.toLocaleString()} of ${total.toLocaleString()} repos`;
-    }
+    const label = total === filtered
+        ? `${total.toLocaleString()} repos tracked`
+        : `${filtered.toLocaleString()} of ${total.toLocaleString()} repos`;
+    const activeList = state.viewMode === 'list' ? ' active' : '';
+    const activeCards = state.viewMode === 'cards' ? ' active' : '';
+    el.innerHTML = `<span class="wr-info-text">${label}</span>
+        <span class="wr-view-toggle">
+            <button class="wr-view-btn${activeList}" data-view="list">📋 List</button>
+            <button class="wr-view-btn${activeCards}" data-view="cards">✨ Top Gainers</button>
+        </span>`;
+    el.querySelectorAll('.wr-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            state.viewMode = btn.dataset.view;
+            renderInfo();
+            renderVisibleContent();
+        });
+    });
 }
 
 function renderTable() {
@@ -188,14 +200,14 @@ function renderDetailCards() {
     const section = document.getElementById('wr-detail-section');
     const grid = document.getElementById('wr-detail-grid');
     const count = document.getElementById('wr-detail-count');
-    const rows = state.filtered.filter(r => r.delta > 0).slice(0, 20);
+    const sorted = [...state.filtered].sort((a, b) => b.delta - a.delta);
+    const rows = sorted.filter(r => r.delta > 0).slice(0, 20);
 
     if (!rows.length) {
-        section.hidden = true;
+        section.style.display = 'none';
         return;
     }
 
-    section.hidden = false;
     count.textContent = `Top gainers • showing ${rows.length}`;
 
     grid.innerHTML = rows.map((r, i) => {
@@ -235,12 +247,23 @@ function renderCategorySummary() {
     ).join('');
 }
 
+function renderVisibleContent() {
+    if (state.viewMode === 'cards') {
+        document.getElementById('wr-table-wrap').style.display = 'none';
+        document.getElementById('wr-detail-section').style.display = '';
+        renderDetailCards();
+    } else {
+        document.getElementById('wr-table-wrap').style.display = '';
+        document.getElementById('wr-detail-section').style.display = 'none';
+        renderTable();
+    }
+}
+
 function render() {
     renderStats();
     renderInfo();
-    renderTable();
-    renderDetailCards();
     renderCategorySummary();
+    renderVisibleContent();
 }
 
 // ---- AI Ask Modal (adapted for weekly) ----

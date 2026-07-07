@@ -62,7 +62,12 @@
         .wr-empty { padding:60px 20px; text-align:center; color:var(--text-secondary); }
         .wr-loading { padding:60px 20px; text-align:center; color:var(--text-secondary); }
 
-        .wr-info { font-size:0.82rem; color:var(--text-muted); margin-bottom:8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+        .wr-info { font-size:0.82rem; color:var(--text-muted); margin-bottom:8px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+        .wr-info-text { flex:1; }
+        .wr-view-toggle { display:inline-flex; gap:3px; background:rgba(255,255,255,0.04); border-radius:10px; padding:3px; }
+        .wr-view-btn { padding:5px 12px; border-radius:8px; border:none; background:transparent; color:var(--text-secondary); font:inherit; font-size:0.78rem; font-weight:700; cursor:pointer; transition:120ms ease; white-space:nowrap; }
+        .wr-view-btn:hover { color:var(--text-primary); }
+        .wr-view-btn.active { background:var(--bg-panel); color:var(--text-primary); box-shadow:0 1px 3px rgba(0,0,0,0.2); }
 
         @media (max-width:720px) {
             .wr-controls { flex-direction:column; }
@@ -141,7 +146,7 @@
                 <div class="wr-loading">Loading weekly data...</div>
             </div>
 
-            <section class="wr-detail-section" id="wr-detail-section" hidden>
+            <section class="wr-detail-section" id="wr-detail-section" style="display:none">
                 <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
                     <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:1.05rem">Top Gainers Detail</h2>
                     <span style="font-size:0.82rem;color:var(--text-muted)" id="wr-detail-count"></span>
