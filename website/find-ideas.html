@@ -206,6 +206,83 @@
         }
         .prompts-custom-item .prompts-del:hover { opacity: 1; background: rgba(255,100,100,0.15); }
 
+        .matrix-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 999px;
+            border: 1px solid var(--border); background: rgba(192,132,252,0.08);
+            color: #c084fc; font-size: 0.84rem; font-weight: 700;
+            cursor: pointer; transition: 160ms ease; user-select: none;
+        }
+        .matrix-btn:hover { border-color: #c084fc; background: rgba(192,132,252,0.15); }
+        .matrix-btn.active { border-color: #c084fc; background: rgba(192,132,252,0.18); }
+
+        .matrix-section { margin-top: 18px; }
+        .matrix-grid { display: grid; gap: 6px; }
+        .matrix-header { display: contents; }
+        .matrix-header-cell {
+            padding: 10px 8px; font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.04em;
+            color: var(--text-muted); text-align: center; border-radius: 8px;
+            background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: center; gap: 4px;
+        }
+        .matrix-row-label {
+            padding: 8px 8px; font-size: 0.78rem; font-weight: 700;
+            color: var(--text-secondary); display: flex; align-items: center; gap: 6px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .matrix-cell {
+            padding: 10px 6px; border-radius: 10px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.015); cursor: pointer;
+            transition: all 160ms ease; text-align: center;
+            font-size: 0.74rem; color: var(--text-muted); line-height: 1.3;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+            min-height: 52px;
+        }
+        .matrix-cell:hover { border-color: #c084fc; background: rgba(192,132,252,0.08); color: var(--text-primary); }
+        .matrix-cell.selected { border-color: #c084fc; background: rgba(192,132,252,0.14); color: var(--text-primary); box-shadow: 0 0 0 2px rgba(192,132,252,0.2); }
+        .matrix-cell .cell-icon { font-size: 1.1rem; }
+        .matrix-cell .cell-label { font-weight: 600; }
+        .matrix-cell-gen {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 3px 8px; border-radius: 999px; border: none;
+            background: rgba(99,207,255,0.12); color: var(--accent);
+            font-size: 0.65rem; font-weight: 700; cursor: pointer; transition: 100ms ease; margin-top: 4px;
+        }
+        .matrix-cell-gen:hover { background: rgba(99,207,255,0.22); }
+
+        .matrix-detail {
+            margin-top: 14px; padding: 18px; border: 1px solid var(--border);
+            border-radius: var(--radius-md); background: rgba(255,255,255,0.02);
+        }
+        .matrix-detail h3 { margin: 0 0 8px; font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; }
+        .matrix-detail p { margin: 6px 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+        .matrix-detail textarea {
+            width: 100%; min-height: 100px; padding: 12px; border: 1px solid var(--border);
+            border-radius: 10px; background: #0a0e13; color: var(--text-primary);
+            font: inherit; font-size: 0.84rem; resize: vertical;
+        }
+        .matrix-detail textarea:focus { outline: none; border-color: var(--accent-strong); }
+        .matrix-detail .md-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+        .matrix-detail .md-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03); color: var(--text-primary);
+            font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: 140ms ease;
+        }
+        .matrix-detail .md-btn:hover { border-color: var(--border-strong); background: rgba(255,255,255,0.07); }
+        .matrix-detail .md-btn.primary { border-color: #c084fc; background: rgba(192,132,252,0.12); color: #c084fc; }
+        .matrix-detail .md-btn.primary:hover { background: rgba(192,132,252,0.22); }
+        .matrix-detail .md-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .matrix-result { margin-top: 12px; padding: 14px; border: 1px solid rgba(192,132,252,0.2); border-radius: var(--radius-md); background: rgba(192,132,252,0.04); }
+        .matrix-result h4 { margin: 0 0 8px; color: var(--text-primary); font-size: 1rem; }
+        .matrix-result .mr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .matrix-result .mr-block { }
+        .matrix-result .mr-block b { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px; }
+        .matrix-result .mr-block div, .matrix-result .mr-block ul { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin: 0; padding-left: 16px; }
+        .matrix-result .mr-opp { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; background: rgba(192,132,252,0.12); color: #c084fc; font-size: 0.82rem; font-weight: 700; }
+        .matrix-result .mr-note { font-size: 0.74rem; color: var(--text-muted); margin-top: 10px; }
+
         @media (max-width: 720px) {
             .find-stats { flex-wrap: wrap; gap: 10px; }
             .find-stats .ai-ask-toggle { margin-left: 0; }
@@ -220,6 +297,8 @@
             .source-filters { gap: 6px; }
             .source-filter { font-size: 0.78rem; padding: 4px 10px; }
             .ai-ask-prompts-menu { min-width: 260px; right: -40px; }
+            .matrix-grid { font-size: 0.72rem; }
+            .matrix-cell { padding: 6px 4px; min-height: 40px; font-size: 0.68rem; }
         }
     </style>
 </head>
@@ -278,6 +357,12 @@
                     </button>
                 </div>
                 <div class="source-filters" id="source-filters"></div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:10px">
+                    <button class="matrix-btn" id="matrix-toggle" type="button">
+                        <span>⬡</span>
+                        <span>Idea Matrix</span>
+                    </button>
+                </div>
                 <div class="find-stats" id="find-stats">
                     <span class="find-stat-label">Loaded <strong class="find-stat-value" id="loaded-count">0</strong> ideas</span>
                     <span class="find-stat-label">Page <strong class="find-stat-value" id="page-info">1 / 1</strong></span>
@@ -407,6 +492,25 @@
             </div>
         </div>
 
+        <div class="matrix-section" id="matrix-section" hidden>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+                <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:1.1rem">Idea Matrix Generator</h2>
+                <span style="font-size:0.8rem;color:var(--text-muted)">Click a cell → generate startup idea</span>
+            </div>
+            <div class="matrix-grid" id="matrix-grid"></div>
+            <div class="matrix-detail" id="matrix-detail" hidden>
+                <h3 id="md-title">Idea</h3>
+                <p id="md-desc"></p>
+                <textarea id="md-prompt" readonly spellcheck="false"></textarea>
+                <div class="md-actions">
+                    <button class="md-btn" id="md-copy" type="button">📋 Copy prompt</button>
+                    <button class="md-btn" id="md-ask-ai" type="button">🤖 Ask AI Mode</button>
+                    <button class="md-btn primary" id="md-generate" type="button">⚡ Generate with AI</button>
+                </div>
+                <div class="matrix-result" id="matrix-result" hidden></div>
+            </div>
+        </div>
+
         <footer class="footer">
             Powered by HN Algolia API, Product Hunt API, GitHub API, RSS feeds &amp; more —
             <a href="https://github.com/hankbui/my-starred-AI-repos" target="_blank" rel="noreferrer">View on GitHub</a>
@@ -425,6 +529,7 @@
             liveMode: false,
             activeTab: 'all',
             updatedAt: '',
+            matrixMode: false,
         };
 
         const SOURCE_NAMES = {
@@ -945,7 +1050,219 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', () => { bindControls(); bindAiAsk(); loadIdeas(); });
+        // ── LLM7 helpers (ported from report.js) ──
+        const LLM7_URL = 'https://api.llm7.io/v1/chat/completions';
+        async function llm7(messages, temperature) {
+            const res = await fetch(LLM7_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer unused' },
+                body: JSON.stringify({ model: 'default', messages, temperature: temperature ?? 0.5 }),
+            });
+            if (!res.ok) throw new Error('LLM7 HTTP ' + res.status);
+            const d = await res.json();
+            return d?.choices?.[0]?.message?.content || '';
+        }
+        function parseJson(text) {
+            if (!text) return null;
+            text = text.replace(/^```(?:json)?/im, '').replace(/```$/m, '').trim();
+            const start = text.indexOf('{');
+            if (start === -1) return null;
+            let depth = 0;
+            for (let i = start; i < text.length; i++) {
+                if (text[i] === '{') depth++;
+                else if (text[i] === '}') { depth--; if (depth === 0) { try { return JSON.parse(text.slice(start, i + 1)); } catch { return null; } } }
+            }
+            return null;
+        }
+
+        // ── Idea Matrix Generator ──
+        const INDUSTRIES = [
+            { id: 'real_estate', label: '🏠 Real Estate', desc: 'Property search, valuation, transactions, rental management' },
+            { id: 'healthcare', label: '🏥 Healthcare', desc: 'Patient records, diagnosis, telemedicine, admin workflows' },
+            { id: 'legal', label: '⚖️ Legal', desc: 'Contract review, compliance, case research, document drafting' },
+            { id: 'logistics', label: '🚚 Logistics', desc: 'Supply chain, fleet management, route optimization, tracking' },
+            { id: 'education', label: '📚 Education', desc: 'Learning platforms, tutoring, curriculum, assessment' },
+            { id: 'finance', label: '💰 Finance', desc: 'Accounting, banking, investment, fraud detection, budgeting' },
+            { id: 'marketing', label: '📢 Marketing', desc: 'Campaigns, content, SEO, analytics, customer insights' },
+            { id: 'ecommerce', label: '🛒 E-commerce', desc: 'Online stores, checkout, inventory, customer support' },
+            { id: 'hr_recruiting', label: '👥 HR & Recruiting', desc: 'Hiring, onboarding, performance, payroll, culture' },
+            { id: 'agriculture', label: '🌾 Agriculture', desc: 'Crop monitoring, supply chain, equipment, yield prediction' },
+        ];
+        const AI_FEATURES = [
+            { id: 'voice_agent', label: 'Voice Agent', icon: '🎤', desc: 'Voice-driven task automation & conversational AI' },
+            { id: 'vision_analysis', label: 'Vision AI', icon: '👁️', desc: 'Image/video recognition, object detection, visual search' },
+            { id: 'automated_workflow', label: 'Auto Workflow', icon: '⚙️', desc: 'Multi-step process automation with AI decision points' },
+            { id: 'document_intel', label: 'Doc Intelligence', icon: '📄', desc: 'Document parsing, summarization, data extraction' },
+            { id: 'chatbot', label: 'Chatbot', icon: '💬', desc: 'Conversational assistants, customer support, Q&A bots' },
+            { id: 'recommendation', label: 'Recommendations', icon: '🎯', desc: 'Personalized suggestions, cross-sell, content curation' },
+            { id: 'predictive', label: 'Predictive', icon: '📊', desc: 'Forecasting, trend analysis, risk scoring, demand planning' },
+            { id: 'content_gen', label: 'Content Gen', icon: '✍️', desc: 'Text/image/video generation, copywriting, creative assets' },
+            { id: 'data_extraction', label: 'Data Extraction', icon: '🔍', desc: 'Entity extraction, web scraping, database mining' },
+            { id: 'sentiment', label: 'Sentiment', icon: '📈', desc: 'Opinion mining, brand monitoring, feedback analysis' },
+        ];
+
+        let matrixSelected = null;
+
+        function renderMatrixGrid() {
+            const grid = document.getElementById('matrix-grid');
+            const cols = AI_FEATURES.length + 1; // +1 for row labels
+
+            grid.style.gridTemplateColumns = `140px repeat(${cols - 1}, 1fr)`;
+
+            // Header row
+            let html = `<div class="matrix-header-cell" style="background:transparent"></div>`;
+            AI_FEATURES.forEach(f => {
+                html += `<div class="matrix-header-cell" title="${escapeHtml(f.desc)}">${f.icon} ${f.label}</div>`;
+            });
+
+            // Industry rows
+            INDUSTRIES.forEach(ind => {
+                html += `<div class="matrix-row-label" title="${escapeHtml(ind.desc)}">${ind.label}</div>`;
+                AI_FEATURES.forEach(af => {
+                    const key = `${ind.id}__${af.id}`;
+                    const sel = matrixSelected === key ? ' selected' : '';
+                    html += `<div class="matrix-cell${sel}" data-key="${key}" data-industry="${escapeHtml(ind.label)}" data-feature="${escapeHtml(af.label)}" data-industry-id="${ind.id}" data-feature-id="${af.id}">
+                        <span class="cell-icon">${af.icon}</span>
+                        <span class="cell-label">${ind.label.split(' ').slice(1).join(' ')}</span>
+                    </div>`;
+                });
+            });
+
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.matrix-cell').forEach(cell => {
+                cell.addEventListener('click', () => {
+                    const key = cell.dataset.key;
+                    grid.querySelectorAll('.matrix-cell').forEach(c => c.classList.remove('selected'));
+                    cell.classList.add('selected');
+                    matrixSelected = key;
+                    showMatrixDetail(cell.dataset.industry, cell.dataset.feature, cell.dataset.industryId, cell.dataset.featureId);
+                });
+            });
+        }
+
+        function buildMatrixPrompt(industry, feature, industryId, featureId) {
+            const ind = INDUSTRIES.find(i => i.id === industryId);
+            const af = AI_FEATURES.find(f => f.id === featureId);
+            const indDesc = ind ? ind.desc : industry;
+            const afDesc = af ? af.desc : feature;
+            const prompt = `You are a startup analyst. Generate a concrete, actionable SaaS startup idea that applies **${feature}** (${afDesc}) to the **${industry}** industry (${indDesc}).
+
+Respond with STRICT JSON only (no markdown, no prose) in this exact format:
+{
+  "title": "Catchy startup name",
+  "one_liner": "What it does in one sentence (30 words max)",
+  "pain_point": "The specific problem it solves for this industry",
+  "target_user": "Who exactly pays for this (be specific — role, company size, budget)",
+  "how_it_works": "How AI + ${feature} solves the problem (2-3 sentences)",
+  "app_ideas": ["MVP feature 1", "MVP feature 2", "MVP feature 3", "Growth feature"],
+  "monetization": "Pricing model (SaaS tier / usage-based / hybrid + estimated price point)",
+  "competitors": ["Alternative 1", "Alternative 2", "Alternative 3"],
+  "opportunity": 0,
+  "why_now": "Why this is the right time to build this",
+  "risks": "Key risks and how to mitigate them"
+}
+
+Fill "opportunity" with a number 1-10 based on: market size + urgency + lack of good solutions + AI feasibility.`;
+            return prompt;
+        }
+
+        function showMatrixDetail(industry, feature, industryId, featureId) {
+            const detail = document.getElementById('matrix-detail');
+            document.getElementById('md-title').textContent = `${industry} × ${feature}`;
+            document.getElementById('md-desc').textContent = `Apply ${feature} to solve real problems in ${industry}. Click "Generate with AI" to create a detailed startup idea.`;
+            const prompt = buildMatrixPrompt(industry, feature, industryId, featureId);
+            document.getElementById('md-prompt').value = prompt;
+            document.getElementById('matrix-result').hidden = true;
+            detail.hidden = false;
+        }
+
+        async function generateMatrixIdea() {
+            const prompt = document.getElementById('md-prompt').value;
+            if (!prompt) return;
+            const btn = document.getElementById('md-generate');
+            const result = document.getElementById('matrix-result');
+            const label = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Generating…';
+            result.hidden = false;
+            result.innerHTML = '<div class="mr-note">Generating idea via LLM7… (5-10 seconds)</div>';
+
+            try {
+                const messages = [
+                    { role: 'system', content: 'You are a startup analyst. Always respond with strict JSON only, no markdown, no prose. Follow the format requested exactly.' },
+                    { role: 'user', content: prompt },
+                ];
+                const raw = await llm7(messages, 0.6);
+                const data = parseJson(raw);
+                if (!data) throw new Error('Could not parse the model response. Raw: ' + raw.slice(0, 200));
+                renderMatrixResult(data);
+            } catch (e) {
+                result.innerHTML = `<div class="mr-note">Generation failed: ${escapeHtml(e.message)}. Try "Ask AI Mode" instead.</div>`;
+            } finally {
+                btn.disabled = false; btn.textContent = label;
+            }
+        }
+
+        function renderMatrixResult(d) {
+            const result = document.getElementById('matrix-result');
+            const ideas = (d.app_ideas || []).map(x => `<li>${escapeHtml(x)}</li>`).join('');
+            const comps = (d.competitors || []).map(x => `<li>${escapeHtml(x)}</li>`).join('');
+            const opp = Number.isFinite(+d.opportunity) ? +d.opportunity : '–';
+            result.innerHTML = `
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                    <h4>${escapeHtml(d.title || 'Startup Idea')}</h4>
+                    <span class="mr-opp">${opp}/10 opportunity</span>
+                </div>
+                ${d.one_liner ? `<p style="color:var(--text-secondary);font-size:0.9rem;margin:4px 0 10px">${escapeHtml(d.one_liner)}</p>` : ''}
+                <div class="mr-grid">
+                    ${d.pain_point ? `<div class="mr-block"><b>Pain point</b><div>${escapeHtml(d.pain_point)}</div></div>` : ''}
+                    ${d.target_user ? `<div class="mr-block"><b>Who pays</b><div>${escapeHtml(d.target_user)}</div></div>` : ''}
+                    ${d.how_it_works ? `<div class="mr-block"><b>How it works</b><div>${escapeHtml(d.how_it_works)}</div></div>` : ''}
+                    ${ideas ? `<div class="mr-block"><b>Build ideas</b><ul>${ideas}</ul></div>` : ''}
+                    ${comps ? `<div class="mr-block"><b>Competitors</b><ul>${comps}</ul></div>` : ''}
+                    ${d.monetization ? `<div class="mr-block"><b>Monetize</b><div>${escapeHtml(d.monetization)}</div></div>` : ''}
+                    ${d.why_now ? `<div class="mr-block"><b>Why now</b><div>${escapeHtml(d.why_now)}</div></div>` : ''}
+                    ${d.risks ? `<div class="mr-block"><b>Risks</b><div>${escapeHtml(d.risks)}</div></div>` : ''}
+                </div>
+                <div class="mr-note">Generated live via LLM7 — verify before acting.</div>`;
+            result.hidden = false;
+        }
+
+        async function copyMatrixPrompt() {
+            const prompt = document.getElementById('md-prompt').value;
+            try {
+                await navigator.clipboard.writeText(prompt);
+                const btn = document.getElementById('md-copy');
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.textContent = '📋 Copy prompt'; }, 1500);
+            } catch {}
+        }
+
+        function askMatrixAIMode() {
+            const prompt = document.getElementById('md-prompt').value;
+            navigator.clipboard.writeText(prompt).catch(() => {});
+            window.open('https://www.google.com/search?q=' + encodeURIComponent(prompt) + '&udm=50', '_blank', 'noopener');
+        }
+
+        function toggleMatrixMode() {
+            state.matrixMode = !state.matrixMode;
+            const btn = document.getElementById('matrix-toggle');
+            const section = document.getElementById('matrix-section');
+            const results = document.querySelector('.panel');
+            btn.classList.toggle('active', state.matrixMode);
+            results.hidden = state.matrixMode;
+            section.hidden = !state.matrixMode;
+            if (state.matrixMode) renderMatrixGrid();
+        }
+
+        function bindMatrix() {
+            document.getElementById('matrix-toggle').addEventListener('click', toggleMatrixMode);
+            document.getElementById('md-copy').addEventListener('click', copyMatrixPrompt);
+            document.getElementById('md-ask-ai').addEventListener('click', askMatrixAIMode);
+            document.getElementById('md-generate').addEventListener('click', generateMatrixIdea);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { bindControls(); bindAiAsk(); bindMatrix(); loadIdeas(); });
     </script>
 </body>
 </html>
