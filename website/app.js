@@ -606,6 +606,16 @@ function applyFilters() {
     renderPagination();
 }
 
+function renderSignalBadge(repo) {
+    const d7 = repo.star_delta_7d;
+    const d1 = repo.star_delta_1d;
+    if (d7 === null && d1 === null) return '';
+    if (d7 >= 500) return '<span class="sig-badge sig-fire" title="On fire — 500+ stars this week">🔥</span>';
+    if (d7 >= 100 || d1 >= 50) return '<span class="sig-badge sig-surging" title="Surging — strong growth">⚡</span>';
+    if (d7 > 0) return '<span class="sig-badge sig-growing" title="Growing — positive momentum">📈</span>';
+    return '';
+}
+
 function renderSparkline(repo) {
     if (!state.starHistoryMap) return '';
     const arr = state.starHistoryMap.get(repo.name);
@@ -652,7 +662,7 @@ function renderTable() {
     if (pageRepos.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="11" class="empty-state">No repositories match the current filters.</td>
+                <td colspan="12" class="empty-state">No repositories match the current filters.</td>
             </tr>
         `;
         return;
@@ -686,6 +696,7 @@ function renderTable() {
                         </div>
                     </td>
                     <td class="col-stars" data-label="Stars">${repo.stars.toLocaleString()}</td>
+                    <td class="col-signal" data-label="">${renderSignalBadge(repo)}</td>
                     <td class="col-growth" data-label="1d">${formatGrowth(repo.star_delta_1d, repo.star_delta_1d_pct)}</td>
                     <td class="col-growth" data-label="7d">${formatGrowth(repo.star_delta_7d, repo.star_delta_7d_pct)}</td>
                     <td class="col-trend" data-label="Trend">${renderSparkline(repo)}</td>
@@ -1192,6 +1203,27 @@ function renderCopyToolbar() {
     renderActionToolbar();
 }
 
+function getSimilarRepos(repo, limit = 5) {
+    const all = getActiveRepos();
+    const myId = repo.id;
+    const myTopics = new Set((repo.topics || []).map(t => t.toLowerCase()));
+    const myCat = repo.category || '';
+
+    const scored = all.filter(r => r.id !== myId).map(r => {
+        let score = 0;
+        if (r.category === myCat) score += 3;
+        const rTopics = new Set((r.topics || []).map(t => t.toLowerCase()));
+        const overlap = [...myTopics].filter(t => rTopics.has(t)).length;
+        score += overlap * 2;
+        if (r.stars > repo.stars * 0.5 && r.stars < repo.stars * 2) score += 1;
+        if (r.language && r.language === repo.language && r.language !== 'Unknown') score += 1;
+        return { repo: r, score };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored.slice(0, limit).filter(s => s.score > 0).map(s => s.repo);
+}
+
 function openDrawer(repo) {
     if (!repo) {
         return;
@@ -1282,8 +1314,44 @@ function openDrawer(repo) {
                     <pre class="drawer-readme">${readmeContent}</pre>
                 </div>
             </section>
+
+            <section class="drawer-section">
+                <h5>Similar Repos</h5>
+                <div class="drawer-similar" id="drawer-similar">Loading…</div>
+            </section>
         </div>
     `;
+
+    // Render similar repos asynchronously
+    const similar = getSimilarRepos(repo, 6);
+    const similarEl = document.getElementById('drawer-similar');
+    if (similar.length) {
+        similarEl.innerHTML = similar.map(r => {
+            const tone = categoryTones[r.category] || categoryTones.Other;
+            return `<a class="drawer-sim-item" href="javascript:void(0)" data-repo-id="${r.id}" tabindex="0">
+                <span class="drawer-sim-name">${escapeHtml(r.repo_name)}</span>
+                <span class="drawer-sim-meta">
+                    <span class="badge ${tone}" style="font-size:0.65rem;padding:1px 6px">${escapeHtml(r.category)}</span>
+                    <span>${r.stars.toLocaleString()}★</span>
+                </span>
+            </a>`;
+        }).join('');
+        similarEl.querySelectorAll('.drawer-sim-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const target = getRepoById(Number(el.dataset.repoId));
+                if (target) openDrawer(target);
+            });
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const target = getRepoById(Number(el.dataset.repoId));
+                    if (target) openDrawer(target);
+                }
+            });
+        });
+    } else {
+        similarEl.textContent = 'No closely related repos found.';
+    }
 
     document.getElementById('drawer-backdrop').hidden = false;
     document.getElementById('repo-drawer').classList.add('open');
@@ -1649,6 +1717,7 @@ function renderMobileList() {
                                     <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
                                     <span>${repo.stars.toLocaleString()}</span>
                                 </div>
+                                ${renderSignalBadge(repo)}
                                 ${renderSparkline(repo)}
                             </div>
                         </div>
@@ -1780,7 +1849,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('results-meta').textContent = 'Unable to load repository data';
         document.getElementById('repos-tbody').innerHTML = `
             <tr>
-                <td colspan="11" class="empty-state">Repository data could not be loaded.</td>
+                <td colspan="12" class="empty-state">Repository data could not be loaded.</td>
             </tr>
         `;
     }
