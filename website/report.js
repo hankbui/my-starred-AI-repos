@@ -5,6 +5,17 @@ const DATA_URL = 'data/report.json?v=' + Date.now();
 const LLM7_URL = 'https://api.llm7.io/v1/chat/completions';
 const TIMING_LABEL = { breakout: '🚀 Breakout', emerging: '📈 Emerging', steady: '◦ Steady', saturated: '◦ Saturated' };
 
+function showToast(msg, isGood) {
+    const el = document.getElementById('rep-toast');
+    if (!el) return;
+    el.textContent = (isGood ? '✅ ' : '⚠️ ') + msg;
+    el.style.display = 'block';
+    el.style.background = isGood ? 'rgba(77,224,168,0.12)' : 'rgba(255,120,120,0.12)';
+    el.style.borderColor = isGood ? 'rgba(77,224,168,0.3)' : 'rgba(255,120,120,0.3)';
+    el.style.color = isGood ? 'var(--success)' : '#ff7878';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
 function esc(v) {
     return String(v ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 }
@@ -279,12 +290,17 @@ async function generateLiveReport() {
 
         report._analytics = { totalRepos: analytics.totalRepos, gainers: analytics.gainers, totalD7: analytics.totalD7, topCat: analytics.categories[0]?.[0] || '' };
         const today = new Date().toISOString().slice(0, 10);
-        saveLocalReport(today, report);
+        const saved = saveLocalReport(today, report);
         showLiveReportView(true);
         renderLiveReport(report, analytics, false);
         loading.hidden = true;
-        // Refresh the date dropdown to include this new report
+        // Refresh dropdown
         populateDates(await loadIndex());
+        if (!saved) {
+            showToast('Private mode? Report shown but not saved to browser', false);
+        } else {
+            showToast('Report saved to browser — appears in date dropdown above', true);
+        }
     } catch (e) {
         document.getElementById('rpt-content').innerHTML = `<div class="rpt-error">
             <p>${esc(e.message)}</p>
@@ -509,9 +525,11 @@ async function publishLiveReport() {
         }
 
         btn.textContent = '✅ Published!';
+        showToast('Report published to GitHub — available to everyone after deploy (~1 min)', true);
         setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 3000);
     } catch (e) {
         btn.textContent = '❌ Failed: ' + e.message;
+        showToast('Publish failed: ' + e.message, false);
         setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 4000);
         if (e.message.includes('Bad credentials') || e.message.includes('401')) {
             localStorage.removeItem('gh_token');
@@ -526,9 +544,15 @@ function getLocalReports() {
     try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch { return {}; }
 }
 function saveLocalReport(date, data) {
-    const reports = getLocalReports();
-    reports[date] = data;
-    try { localStorage.setItem(LS_KEY, JSON.stringify(reports)); } catch {}
+    try {
+        // Test localStorage availability
+        localStorage.setItem('__test', '1');
+        localStorage.removeItem('__test');
+        const reports = getLocalReports();
+        reports[date] = data;
+        localStorage.setItem(LS_KEY, JSON.stringify(reports));
+        return true;
+    } catch { return false; }
 }
 
 async function loadIndex() {
@@ -542,13 +566,17 @@ async function loadIndex() {
 }
 function populateDates(result) {
     const sel = document.getElementById('rep-datesel');
+    const savedCount = document.getElementById('rep-saved-count');
     const { dates, localDates } = result;
     if (!dates.length) { document.querySelector('.rep-datebar').hidden = true; return; }
     sel.innerHTML = dates.map(d => {
         const isLocal = localDates.includes(d);
-        return `<option value="${d}">${d}${isLocal ? ' · 🔴 saved' : d === dates[0] && !d.includes('saved') ? ' · latest' : ''}</option>`;
+        return `<option value="${d}">${d}${isLocal ? ' · 🔴 saved' : d === dates[0] && !localDates.includes(d) ? ' · latest' : ''}</option>`;
     }).join('');
     sel.value = dates[0];
+    if (savedCount) {
+        savedCount.textContent = localDates.length ? `🔴 ${localDates.length} saved` : '';
+    }
 }
 async function loadReport(date) {
     const localReports = getLocalReports();
