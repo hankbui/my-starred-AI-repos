@@ -277,8 +277,14 @@ async function generateLiveReport() {
         const report = parseJson(raw);
         if (!report) throw new Error('Could not parse AI response — try again');
 
-        renderLiveReport(report, analytics);
+        report._analytics = { totalRepos: analytics.totalRepos, gainers: analytics.gainers, totalD7: analytics.totalD7, topCat: analytics.categories[0]?.[0] || '' };
+        const today = new Date().toISOString().slice(0, 10);
+        saveLocalReport(today, report);
+        showLiveReportView(true);
+        renderLiveReport(report, analytics, false);
         loading.hidden = true;
+        // Refresh the date dropdown to include this new report
+        populateDates(await loadIndex());
     } catch (e) {
         document.getElementById('rpt-content').innerHTML = `<div class="rpt-error">
             <p>${esc(e.message)}</p>
@@ -291,9 +297,10 @@ async function generateLiveReport() {
     }
 }
 
-function renderLiveReport(r, a) {
+function renderLiveReport(r, a, saved) {
     const content = document.getElementById('rpt-content');
-    const cats = r.category_breakdown || a.categories.map(([n, c]) => ({ name: n, count: c, percent: Math.round(c / a.totalRepos * 100), insight: '' }));
+    document.getElementById('rpt-loading').hidden = true;
+    const cats = r.category_breakdown || (a ? a.categories.map(([n, c]) => ({ name: n, count: c, percent: Math.round(c / (a.totalRepos || 1) * 100), insight: '' })) : []);
     const maxCatCount = Math.max(...cats.map(c => c.count), 1);
 
     const catHtml = cats.map(c => `
@@ -306,7 +313,7 @@ function renderLiveReport(r, a) {
         ${c.insight ? `<div class="rpt-cat-insight" style="padding-left:110px">${esc(c.insight)}</div>` : ''}
     `).join('');
 
-    const stats = r.key_stats || { total_repos: a.totalRepos, total_gainers: a.gainers, total_weekly_stars: a.totalD7, top_category: a.categories[0]?.[0] || '' };
+    const stats = r.key_stats || (a ? { total_repos: a.totalRepos, total_gainers: a.gainers, total_weekly_stars: a.totalD7, top_category: a.categories[0]?.[0] || '' } : {});
 
     const oppHtml = (r.opportunities || []).map(o => `
         <div class="rpt-card">
@@ -401,41 +408,179 @@ function renderLiveReport(r, a) {
 
         ${r.conclusion ? `<div class="rpt-conclusion"><p>${esc(r.conclusion)}</p></div>` : ''}
 
-        <div style="text-align:center;padding:8px;font-size:0.74rem;color:var(--text-muted)">
-            Generated live from ${stats.total_repos} repos via LLM7 AI — verify before acting.
-            <button class="action-btn" style="margin-left:8px;padding:4px 12px;font-size:0.74rem" onclick="generateLiveReport()">🔄 Regenerate</button>
+        <div style="text-align:center;padding:12px;font-size:0.74rem;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center">
+            <span>Generated from ${stats.total_repos} repos via LLM7 AI</span>
+            ${saved ? '<span class="rpt-tag rev">🔴 Saved</span>' : ''}
+            <button class="action-btn" style="padding:4px 12px;font-size:0.74rem" onclick="downloadLiveReport()">💾 Download JSON</button>
+            <button class="action-btn" style="padding:4px 12px;font-size:0.74rem" onclick="copyLiveReport()">📋 Copy JSON</button>
+            <button class="rep-live-btn" style="min-height:32px;padding:0 14px;font-size:0.74rem" id="rep-publish-btn" onclick="publishLiveReport()">📤 Publish to GitHub</button>
+            <button class="action-btn" style="padding:4px 12px;font-size:0.74rem" onclick="generateLiveReport()">🔄 Regenerate</button>
         </div>
     </div>`;
     content.querySelector('.rpt')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Store for download/publish
+    window.__lastLiveReport = r;
 }
 
-// ── Date history ──────────────────────────────────────────────────────────────
-async function loadIndex() {
-    try { const r = await fetch('data/reports/index.json?cb=' + Date.now()); if (r.ok) return (await r.json()).dates || []; } catch { }
-    return [];
+// ── Download / Copy / Publish live report ─────────────────────────────────────
+const GH_OWNER = 'hankbui';
+const GH_REPO = 'my-starred-AI-repos';
+
+function downloadLiveReport() {
+    const r = window.__lastLiveReport;
+    if (!r) return;
+    const today = new Date().toISOString().slice(0, 10);
+    const blob = new Blob([JSON.stringify(r, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = `market-report-${today}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
 }
-function populateDates(dates) {
+async function copyLiveReport() {
+    const r = window.__lastLiveReport;
+    if (!r) return;
+    try { await navigator.clipboard.writeText(JSON.stringify(r, null, 2)); } catch {}
+}
+async function publishLiveReport() {
+    const r = window.__lastLiveReport;
+    if (!r) return;
+    let token = localStorage.getItem('gh_token');
+    if (!token) {
+        token = prompt('Enter a GitHub Personal Access Token with repo/content write access:');
+        if (!token) return;
+        localStorage.setItem('gh_token', token);
+    }
+    const today = new Date().toISOString().slice(0, 10);
+    const path = `data/reports/${today}.json`;
+    const indexPath = 'data/reports/index.json';
+    const btn = document.getElementById('rep-publish-btn');
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Publishing...';
+    try {
+        // Get current index to merge dates
+        let existingDates = [];
+        try {
+            const idxRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${indexPath}`);
+            if (idxRes.ok) {
+                const idxData = await idxRes.json();
+                const idxContent = JSON.parse(atob(idxData.content));
+                existingDates = idxContent.dates || [];
+                r._indexSha = idxData.sha;
+            }
+        } catch {}
+
+        if (!existingDates.includes(today)) existingDates.unshift(today);
+        const newIndex = { dates: existingDates, updated_at: new Date().toISOString() };
+
+        // Save report file
+        const reportContent = btoa(unescape(encodeURIComponent(JSON.stringify(r, null, 2))));
+        let reportSha = null;
+        try {
+            const check = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`);
+            if (check.ok) reportSha = (await check.json()).sha;
+        } catch {}
+
+        const reportBody = { message: `Live market report ${today}`, content: reportContent };
+        if (reportSha) reportBody.sha = reportSha;
+
+        const reportRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+            method: 'PUT',
+            headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(reportBody),
+        });
+        if (!reportRes.ok) {
+            const err = await reportRes.json().catch(() => ({}));
+            throw new Error(err.message || `HTTP ${reportRes.status}`);
+        }
+
+        // Save index file
+        const idxContent = btoa(unescape(encodeURIComponent(JSON.stringify(newIndex, null, 2))));
+        const idxBody = { message: `Update report index [live: ${today}]`, content: idxContent };
+        if (r._indexSha) idxBody.sha = r._indexSha;
+
+        const idxRes2 = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${indexPath}`, {
+            method: 'PUT',
+            headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(idxBody),
+        });
+        if (!idxRes2.ok) {
+            const err = await idxRes2.json().catch(() => ({}));
+            throw new Error('Index update: ' + (err.message || `HTTP ${idxRes2.status}`));
+        }
+
+        btn.textContent = '✅ Published!';
+        setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 3000);
+    } catch (e) {
+        btn.textContent = '❌ Failed: ' + e.message;
+        setTimeout(() => { btn.disabled = false; btn.textContent = label; }, 4000);
+        if (e.message.includes('Bad credentials') || e.message.includes('401')) {
+            localStorage.removeItem('gh_token');
+        }
+    }
+}
+
+// ── Date history + live report persistence ────────────────────────────────────
+const LS_KEY = 'live_reports';
+
+function getLocalReports() {
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch { return {}; }
+}
+function saveLocalReport(date, data) {
+    const reports = getLocalReports();
+    reports[date] = data;
+    try { localStorage.setItem(LS_KEY, JSON.stringify(reports)); } catch {}
+}
+
+async function loadIndex() {
+    let serverDates = [];
+    try { const r = await fetch('data/reports/index.json?cb=' + Date.now()); if (r.ok) serverDates = (await r.json()).dates || []; } catch { }
+    const localReports = getLocalReports();
+    const localDates = Object.keys(localReports).sort().reverse();
+    const merged = [...localDates];
+    serverDates.forEach(d => { if (!merged.includes(d)) merged.push(d); });
+    return { dates: merged, localDates };
+}
+function populateDates(result) {
     const sel = document.getElementById('rep-datesel');
+    const { dates, localDates } = result;
     if (!dates.length) { document.querySelector('.rep-datebar').hidden = true; return; }
-    sel.innerHTML = dates.map((d, i) => `<option value="${d}">${d}${i === 0 ? ' · latest' : ''}</option>`).join('');
+    sel.innerHTML = dates.map(d => {
+        const isLocal = localDates.includes(d);
+        return `<option value="${d}">${d}${isLocal ? ' · 🔴 saved' : d === dates[0] && !d.includes('saved') ? ' · latest' : ''}</option>`;
+    }).join('');
     sel.value = dates[0];
 }
-async function loadReport(date, isLatest) {
-    const url = isLatest ? DATA_URL : `data/reports/${date}.json?cb=${Date.now()}`;
+async function loadReport(date) {
+    const localReports = getLocalReports();
+    if (localReports[date]) {
+        showLiveReportView(true);
+        renderLiveReport(localReports[date], localReports[date]._analytics || null, true);
+        document.getElementById('rep-date').textContent = 'Live Market Report · ' + date;
+        return;
+    }
+    showLiveReportView(false);
+    const url = date ? `data/reports/${date}.json?cb=${Date.now()}` : DATA_URL;
     const res = await fetch(url);
     if (!res.ok) throw new Error('report HTTP ' + res.status);
     const d = await res.json();
     state.items = (d.items || []).slice();
     state.brief = d.brief || [];
-    state.meta = { date: d.date, backend: d.backend, model: d.model };
+    state.meta = { date: d.date || date, backend: d.backend, model: d.model };
 
-    document.getElementById('rep-date').textContent = 'AI Opportunity Report · ' + (d.date || '');
+    document.getElementById('rep-date').textContent = 'AI Opportunity Report · ' + (d.date || date || '');
     document.getElementById('stat-count').textContent = state.items.length;
     document.getElementById('stat-breakout').textContent = state.items.filter((i) => i.timing === 'breakout').length;
     document.getElementById('stat-model').textContent = d.backend === 'lmstudio' ? 'Local LLM' : 'LLM7';
 
     renderBrief();
     applyFilters();
+}
+
+function showLiveReportView(show) {
+    document.getElementById('rep-brief').hidden = show;
+    document.getElementById('rep-toolbar').style.display = show ? 'none' : '';
+    document.getElementById('rep-grid').style.display = show ? 'none' : '';
+    document.getElementById('rep-live-output').hidden = !show;
 }
 
 function bind() {
@@ -456,18 +601,22 @@ function bind() {
     });
     document.getElementById('rep-analyze-btn').addEventListener('click', runAnalyze);
     document.getElementById('rep-live-btn').addEventListener('click', generateLiveReport);
+    document.getElementById('rep-publish-btn')?.addEventListener('click', publishLiveReport);
     document.getElementById('rep-analyze-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') runAnalyze(); });
     document.getElementById('rep-datesel').addEventListener('change', (e) => {
-        loadReport(e.target.value).catch((err) => { document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Could not load ${esc(e.target.value)}: ${esc(err.message)}</div>`; });
+        loadReport(e.target.value).catch((err) => {
+            document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Could not load ${esc(e.target.value)}: ${esc(err.message)}</div>`;
+            document.getElementById('rep-live-output').hidden = true;
+        });
     });
 }
 
 async function init() {
     bind();
-    const dates = await loadIndex();
-    populateDates(dates);
+    const idxResult = await loadIndex();
+    populateDates(idxResult);
     try {
-        if (dates.length) await loadReport(dates[0]);
+        if (idxResult.dates.length) await loadReport(idxResult.dates[0]);
         else await loadReport(null, true);
     } catch (e) {
         document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Report not available yet: ${esc(e.message)}</div>`;
