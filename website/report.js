@@ -196,6 +196,218 @@ async function runAnalyze() {
     }
 }
 
+// ── Live Market Report (client-side generation) ──────────────────────────────
+const REPORT_SYS = `You are a senior startup analyst and market intelligence expert. Your job is to analyze a dataset of trending open-source AI repositories and produce a structured market report.
+
+Return STRICT JSON only — no markdown, no prose outside the JSON. Use this exact structure:
+{
+  "market_overview": "2-3 sentence summary of the overall market state",
+  "key_stats": { "total_repos": number, "total_gainers": number, "total_weekly_stars": number, "top_category": "string" },
+  "category_breakdown": [{"name":"string","count":number,"percent":number,"insight":"1 sentence"}],
+  "opportunities": [{"title":"string","description":"1-2 sentences","why_now":"string","revenue":"string","difficulty":"easy|medium|hard","signal_repo":"string"}],
+  "trends": [{"trend":"string","evidence":"string","opportunity":"string"}],
+  "market_gaps": [{"gap":"string","why_untapped":"string","opportunity_size":"small|medium|large"}],
+  "recommendations": [{"idea":"string","target":"string","revenue_model":"string","mvp_weeks":number,"why_win":"string"}],
+  "risks": ["string"],
+  "conclusion": "1-2 sentence final take"
+}`;
+
+function computeAnalytics(repos) {
+    const cats = {}, langs = {}, catGrowth = {};
+    let totalD7 = 0, gainers = 0;
+    repos.forEach(r => {
+        const c = r.category || 'Other';
+        cats[c] = (cats[c] || 0) + 1;
+        const l = r.language || 'Unknown';
+        langs[l] = (langs[l] || 0) + 1;
+        if (r.star_delta_7d) { totalD7 += r.star_delta_7d; if (r.star_delta_7d > 0) gainers++; }
+        if (r.star_delta_7d) catGrowth[c] = (catGrowth[c] || 0) + r.star_delta_7d;
+    });
+    const sortedCats = Object.entries(cats).sort((a, b) => b[1] - a[1]);
+    const catGrowthSorted = Object.entries(catGrowth).sort((a, b) => b[1] - a[1]);
+    const topD7 = repos.filter(r => r.star_delta_7d).sort((a, b) => b.star_delta_7d - a.star_delta_7d).slice(0, 15);
+    const topD1 = repos.filter(r => r.star_delta_1d).sort((a, b) => b.star_delta_1d - a.star_delta_1d).slice(0, 10);
+    const langSorted = Object.entries(langs).sort((a, b) => b[1] - a[1]).slice(0, 8);
+    return { categories: sortedCats, catGrowth: catGrowthSorted, topD7, topD1, languages: langSorted, totalRepos: repos.length, totalD7, gainers };
+}
+
+function buildReportPrompt(a) {
+    const catLines = a.categories.map(([n, c]) => `${n}: ${c} (${(c / a.totalRepos * 100).toFixed(0)}%)`).join('\n');
+    const growthLines = a.catGrowth.map(([n, c]) => `${n}: +${c.toLocaleString()} stars`).join('\n');
+    const topRepoLines = a.topD7.map((r, i) => `${i + 1}. ${r.name} +${r.star_delta_7d}★ (${r.stars.toLocaleString()} total, ${r.category})`).join('\n');
+    const topD1Lines = a.topD1.map((r, i) => `${i + 1}. ${r.name} +${r.star_delta_1d}★/day`).join('\n');
+    const langLines = a.languages.map(([l, c]) => `${l}: ${c}`).join('\n');
+    return `I analyzed ${a.totalRepos} trending open-source AI repositories. Here are the facts:\n\n` +
+        `TOTAL: ${a.totalRepos} repos, ${a.gainers} gaining stars this week, +${a.totalD7.toLocaleString()} total weekly stars.\n\n` +
+        `CATEGORIES:\n${catLines}\n\n` +
+        `CATEGORY GROWTH (total stars gained):\n${growthLines}\n\n` +
+        `TOP 15 GAINERS THIS WEEK:\n${topRepoLines}\n\n` +
+        `TOP 10 DAILY GAINERS:\n${topD1Lines}\n\n` +
+        `TOP LANGUAGES:\n${langLines}\n\n` +
+        `Based on this data, generate a structured market report identifying: market overview, top opportunities for startups, emerging trends, market gaps, specific recommendations with revenue models, and risks. Focus on practical, actionable insights for a solo founder or small team looking to build something valuable.`;
+}
+
+async function generateLiveReport() {
+    const btn = document.getElementById('rep-live-btn');
+    const output = document.getElementById('rep-live-output');
+    const loading = document.getElementById('rpt-loading');
+    const loadingText = document.getElementById('rpt-loading-text');
+    const label = btn.innerHTML;
+
+    btn.disabled = true;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;animation:spin .8s linear infinite;margin:0"><circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" opacity="0.3"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor"/></svg> Generating...';
+    output.hidden = false;
+    loading.hidden = false;
+    document.getElementById('rpt-content').innerHTML = '';
+    loadingText.textContent = 'Fetching repo data...';
+
+    try {
+        const res = await fetch('data/repos.json?v=' + Date.now());
+        if (!res.ok) throw new Error('Failed to load repo data (HTTP ' + res.status + ')');
+        const data = await res.json();
+        const repos = data.starred_repos || data.repos || [];
+        if (!repos.length) throw new Error('No repo data found');
+        loadingText.textContent = `Computing analytics on ${repos.length} repos...`;
+
+        const analytics = computeAnalytics(repos);
+        loadingText.textContent = 'Generating report via LLM7 AI...';
+
+        const prompt = buildReportPrompt(analytics);
+        const raw = await llm7([{ role: 'system', content: REPORT_SYS }, { role: 'user', content: prompt }], 0.4);
+        const report = parseJson(raw);
+        if (!report) throw new Error('Could not parse AI response — try again');
+
+        renderLiveReport(report, analytics);
+        loading.hidden = true;
+    } catch (e) {
+        output.innerHTML = `<div class="rpt-error">
+            <p>${esc(e.message)}</p>
+            <button onclick="generateLiveReport()">Try again</button>
+        </div>`;
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = label;
+    }
+}
+
+function renderLiveReport(r, a) {
+    const content = document.getElementById('rpt-content');
+    const cats = r.category_breakdown || a.categories.map(([n, c]) => ({ name: n, count: c, percent: Math.round(c / a.totalRepos * 100), insight: '' }));
+    const maxCatCount = Math.max(...cats.map(c => c.count), 1);
+
+    const catHtml = cats.map(c => `
+        <div class="rpt-cat-item">
+            <span class="rpt-cat-name">${esc(c.name)}</span>
+            <div class="rpt-cat-bar"><div class="rpt-cat-fill" style="width:${(c.count / maxCatCount * 100).toFixed(0)}%"></div></div>
+            <span class="rpt-cat-count">${c.count}</span>
+            <span style="font-size:0.74rem;color:var(--text-muted)">${c.percent}%</span>
+        </div>
+        ${c.insight ? `<div class="rpt-cat-insight" style="padding-left:110px">${esc(c.insight)}</div>` : ''}
+    `).join('');
+
+    const stats = r.key_stats || { total_repos: a.totalRepos, total_gainers: a.gainers, total_weekly_stars: a.totalD7, top_category: a.categories[0]?.[0] || '' };
+
+    const oppHtml = (r.opportunities || []).map(o => `
+        <div class="rpt-card">
+            <h3>${esc(o.title)}</h3>
+            <p>${esc(o.description)}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+                ${o.why_now ? `<span class="rpt-tag">⚡ ${esc(o.why_now)}</span>` : ''}
+                ${o.revenue ? `<span class="rpt-tag rev">💰 ${esc(o.revenue)}</span>` : ''}
+                ${o.difficulty ? `<span class="rpt-tag ${o.difficulty === 'easy' ? 'easy' : 'hard'}">${o.difficulty}</span>` : ''}
+                ${o.signal_repo ? `<span class="rpt-tag">${esc(o.signal_repo)}</span>` : ''}
+            </div>
+        </div>
+    `).join('');
+
+    const trendHtml = (r.trends || []).map(t => `
+        <div class="rpt-trend-item">
+            <h3>📈 ${esc(t.trend)}</h3>
+            <p>${esc(t.evidence)}</p>
+            ${t.opportunity ? `<p style="margin-top:4px;color:var(--accent);font-weight:600">→ ${esc(t.opportunity)}</p>` : ''}
+        </div>
+    `).join('');
+
+    const gapsHtml = (r.market_gaps || []).map(g => `
+        <div class="rpt-card" style="border-color:rgba(77,224,168,0.2)">
+            <h3>🕳️ ${esc(g.gap)}</h3>
+            <p>${esc(g.why_untapped)}</p>
+            ${g.opportunity_size ? `<span class="rpt-tag" style="background:rgba(77,224,168,0.1);color:var(--success)">${g.opportunity_size} opportunity</span>` : ''}
+        </div>
+    `).join('');
+
+    const recoHtml = (r.recommendations || []).map((rec, i) => `
+        <div class="rpt-reco-card">
+            <div class="rpt-reco-num">${i + 1}</div>
+            <h3>${esc(rec.idea)}</h3>
+            <p>${esc(rec.target)}</p>
+            <div class="rpt-reco-meta">
+                ${rec.revenue_model ? `<span class="rev">💰 ${esc(rec.revenue_model)}</span>` : ''}
+                ${rec.mvp_weeks ? `<span>⚡ ${rec.mvp_weeks} weeks to MVP</span>` : ''}
+                <span>🎯 ${esc(rec.why_win || 'Validated signal')}</span>
+            </div>
+        </div>
+    `).join('');
+
+    const risksHtml = (r.risks || []).map(risk => `<span class="rpt-risk">⚠ ${esc(risk)}</span>`).join('');
+
+    content.innerHTML = `<div class="rpt">
+        <div class="rpt-section">
+            <h2><span class="rpt-emoji">📊</span> Market Overview</h2>
+            <p class="rpt-sub">${esc(r.market_overview || '')}</p>
+            <div class="rpt-stat-row">
+                <div class="rpt-stat"><div class="rpt-stat-val">${stats.total_repos}</div><div class="rpt-stat-lbl">Repos tracked</div></div>
+                <div class="rpt-stat"><div class="rpt-stat-val">${stats.total_gainers}</div><div class="rpt-stat-lbl">Gainers this week</div></div>
+                <div class="rpt-stat"><div class="rpt-stat-val">+${(stats.total_weekly_stars / 1000).toFixed(0)}k</div><div class="rpt-stat-lbl">Weekly stars</div></div>
+                <div class="rpt-stat"><div class="rpt-stat-val">${esc(stats.top_category || '')}</div><div class="rpt-stat-lbl">Top category</div></div>
+            </div>
+        </div>
+
+        <div class="rpt-section">
+            <h2><span class="rpt-emoji">📂</span> Category Breakdown</h2>
+            <p class="rpt-sub">Distribution of repos across AI categories — larger bars indicate more activity</p>
+            <div class="rpt-cat-list">${catHtml}</div>
+        </div>
+
+        ${oppHtml ? `<div class="rpt-section">
+            <h2><span class="rpt-emoji">🚀</span> Top Startup Opportunities</h2>
+            <p class="rpt-sub">Based on growth signals, market gaps, and timing — ranked by potential</p>
+            <div class="rpt-grid2">${oppHtml}</div>
+        </div>` : ''}
+
+        ${trendHtml ? `<div class="rpt-section">
+            <h2><span class="rpt-emoji">📈</span> Emerging Trends</h2>
+            <p class="rpt-sub">Patterns identified from repo growth and category shifts</p>
+            <div class="rpt-trend-list">${trendHtml}</div>
+        </div>` : ''}
+
+        ${gapsHtml ? `<div class="rpt-section">
+            <h2><span class="rpt-emoji">🕳️</span> Market Gaps</h2>
+            <p class="rpt-sub">Underserved areas with high potential — few repos but strong demand signals</p>
+            <div class="rpt-grid2">${gapsHtml}</div>
+        </div>` : ''}
+
+        ${recoHtml ? `<div class="rpt-section">
+            <h2><span class="rpt-emoji">💡</span> Top Recommendations</h2>
+            <p class="rpt-sub">Ranked startup ideas to act on right now</p>
+            <div class="rpt-reco-grid">${recoHtml}</div>
+        </div>` : ''}
+
+        ${risksHtml ? `<div class="rpt-section">
+            <h2><span class="rpt-emoji">⚠️</span> Risks to Watch</h2>
+            <div class="rpt-risks">${risksHtml}</div>
+        </div>` : ''}
+
+        ${r.conclusion ? `<div class="rpt-conclusion"><p>${esc(r.conclusion)}</p></div>` : ''}
+
+        <div style="text-align:center;padding:8px;font-size:0.74rem;color:var(--text-muted)">
+            Generated live from ${stats.total_repos} repos via LLM7 AI — verify before acting.
+            <button class="action-btn" style="margin-left:8px;padding:4px 12px;font-size:0.74rem" onclick="generateLiveReport()">🔄 Regenerate</button>
+        </div>
+    </div>`;
+    content.querySelector('.rpt')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 // ── Date history ──────────────────────────────────────────────────────────────
 async function loadIndex() {
     try { const r = await fetch('data/reports/index.json?cb=' + Date.now()); if (r.ok) return (await r.json()).dates || []; } catch { }
@@ -242,6 +454,7 @@ function bind() {
         flash('rep-ask', 'Opened ✓', 'Ask AI');
     });
     document.getElementById('rep-analyze-btn').addEventListener('click', runAnalyze);
+    document.getElementById('rep-live-btn').addEventListener('click', generateLiveReport);
     document.getElementById('rep-analyze-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') runAnalyze(); });
     document.getElementById('rep-datesel').addEventListener('change', (e) => {
         loadReport(e.target.value).catch((err) => { document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Could not load ${esc(e.target.value)}: ${esc(err.message)}</div>`; });

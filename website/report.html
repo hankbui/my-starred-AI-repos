@@ -47,6 +47,68 @@
         .rep-sig { padding:2px 8px; border-radius:999px; font-size:0.7rem; font-weight:700; background:rgba(140,111,255,0.12); color:#c4b5fd; }
         .rep-sig.whitespace { background:rgba(77,224,168,0.16); color:#5be0a8; }
         /* date bar */
+        .rep-live-section { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:0 0 18px; padding:16px 20px; border:1px solid var(--border-strong); border-radius:var(--radius-lg); background:linear-gradient(135deg,rgba(140,111,255,0.08),rgba(99,207,255,0.04)); }
+        .rep-live-btn { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 24px; border:none; border-radius:12px; background:linear-gradient(135deg,#8c6fff,#5a3dff); color:#fff; font:inherit; font-size:0.92rem; font-weight:800; cursor:pointer; transition:140ms ease; white-space:nowrap; }
+        .rep-live-btn:hover { filter:brightness(1.1); transform:translateY(-1px); }
+        .rep-live-btn:disabled { opacity:0.5; cursor:progress; transform:none; filter:none; }
+        .rep-live-btn svg { width:18px; height:18px; }
+        .rep-live-sub { font-size:0.8rem; color:var(--text-muted); }
+        .rep-live-steps { display:flex; gap:10px; margin-top:6px; flex-wrap:wrap; }
+        .rep-live-step { padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:700; background:rgba(255,255,255,0.04); color:var(--text-muted); border:1px solid var(--border); display:flex; align-items:center; gap:5px; }
+        .rep-live-step.done { background:rgba(77,224,168,0.12); color:var(--success); border-color:rgba(77,224,168,0.2); }
+        .rep-live-step.active { background:rgba(99,207,255,0.1); color:var(--accent); border-color:rgba(99,207,255,0.2); animation:pulse-step 1.2s infinite; }
+        @keyframes pulse-step { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .rep-live-output { margin-bottom:22px; }
+
+        .rpt { display:grid; gap:20px; }
+        .rpt-section { padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .rpt-section h2 { margin:0 0 4px; font-family:"Space Grotesk",sans-serif; font-size:1.1rem; display:flex; align-items:center; gap:8px; }
+        .rpt-section h2 .rpt-emoji { font-size:1.2rem; }
+        .rpt-sub { margin:0 0 14px; font-size:0.85rem; color:var(--text-secondary); line-height:1.5; }
+        .rpt-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .rpt-card { padding:14px; border:1px solid var(--border); border-radius:var(--radius-md); background:rgba(255,255,255,0.015); }
+        .rpt-card h3 { margin:0 0 6px; font-size:0.92rem; color:var(--text-primary); }
+        .rpt-card p { margin:0; font-size:0.84rem; color:var(--text-secondary); line-height:1.5; }
+        .rpt-card .rpt-tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.65rem; font-weight:700; margin-top:6px; background:rgba(99,207,255,0.1); color:var(--accent); }
+        .rpt-card .rpt-tag.rev { background:rgba(77,224,168,0.12); color:var(--success); }
+        .rpt-card .rpt-tag.hard { background:rgba(255,120,120,0.12); color:#ff7878; }
+        .rpt-card .rpt-tag.easy { background:rgba(77,224,168,0.12); color:var(--success); }
+        .rpt-stat-row { display:flex; flex-wrap:wrap; gap:16px; margin:12px 0 0; }
+        .rpt-stat { text-align:center; min-width:80px; }
+        .rpt-stat-val { font-family:"Space Grotesk",sans-serif; font-size:1.4rem; font-weight:700; color:var(--text-primary); }
+        .rpt-stat-lbl { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; margin-top:2px; }
+        .rpt-cat-list { display:grid; gap:6px; margin-top:10px; }
+        .rpt-cat-item { display:flex; align-items:center; gap:10px; font-size:0.85rem; }
+        .rpt-cat-bar { flex:1; height:6px; border-radius:99px; background:rgba(255,255,255,0.04); overflow:hidden; }
+        .rpt-cat-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--accent),#8c6fff); }
+        .rpt-cat-name { min-width:110px; font-weight:600; color:var(--text-primary); }
+        .rpt-cat-count { min-width:36px; text-align:right; color:var(--text-secondary); font-weight:600; font-family:"Space Grotesk",sans-serif; }
+        .rpt-cat-insight { font-size:0.78rem; color:var(--text-muted); margin-top:2px; }
+        .rpt-trend-list { display:grid; gap:12px; }
+        .rpt-trend-item { padding:12px; border-left:3px solid var(--accent); background:rgba(255,255,255,0.015); border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
+        .rpt-trend-item h3 { margin:0 0 4px; font-size:0.92rem; color:var(--text-primary); }
+        .rpt-trend-item p { margin:0; font-size:0.84rem; color:var(--text-secondary); line-height:1.5; }
+        .rpt-reco-grid { display:grid; gap:14px; }
+        .rpt-reco-card { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:linear-gradient(135deg,rgba(99,207,255,0.04),rgba(140,111,255,0.04)); }
+        .rpt-reco-card .rpt-reco-num { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#8c6fff); color:#fff; font-size:0.8rem; font-weight:800; margin-bottom:8px; }
+        .rpt-reco-card h3 { margin:0 0 4px; font-size:0.95rem; color:var(--text-primary); }
+        .rpt-reco-card p { margin:0; font-size:0.84rem; color:var(--text-secondary); line-height:1.5; }
+        .rpt-reco-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+        .rpt-reco-meta span { padding:3px 9px; border-radius:999px; font-size:0.7rem; font-weight:700; background:rgba(99,207,255,0.08); color:var(--accent); border:1px solid rgba(99,207,255,0.12); }
+        .rpt-reco-meta span.rev { background:rgba(77,224,168,0.1); color:var(--success); border-color:rgba(77,224,168,0.15); }
+        .rpt-risks { display:flex; flex-wrap:wrap; gap:8px; }
+        .rpt-risk { padding:4px 12px; border-radius:999px; font-size:0.78rem; background:rgba(255,120,120,0.08); color:#ff7878; border:1px solid rgba(255,120,120,0.15); }
+        .rpt-conclusion { padding:16px 18px; border:1px solid var(--border-strong); border-radius:var(--radius-md); background:linear-gradient(135deg,rgba(99,207,255,0.06),rgba(140,111,255,0.04)); }
+        .rpt-conclusion p { margin:0; font-size:0.92rem; line-height:1.6; color:var(--text-primary); }
+        .rpt-loading { padding:40px; text-align:center; color:var(--text-secondary); }
+        .rpt-loading .rpt-spinner { display:inline-block; width:32px; height:32px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin .8s linear infinite; margin-bottom:12px; }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        .rpt-error { padding:30px; text-align:center; color:#ff7878; border:1px solid rgba(255,120,120,0.2); border-radius:var(--radius-md); background:rgba(255,120,120,0.04); }
+        .rpt-error button { margin-top:12px; padding:8px 20px; border-radius:999px; border:1px solid rgba(99,207,255,0.2); background:rgba(99,207,255,0.08); color:var(--accent); font:inherit; font-size:0.88rem; font-weight:700; cursor:pointer; }
+        .rpt-raw { margin-top:10px; padding:12px; border-radius:var(--radius-md); background:#0a0e13; font-family:monospace; font-size:0.78rem; max-height:400px; overflow-y:auto; white-space:pre-wrap; }
+
+        @media (max-width:640px) { .rpt-grid2 { grid-template-columns:1fr; } }
+
         .rep-datebar { display:flex; align-items:center; gap:10px; margin:4px 0 14px; }
         .rep-datebar label { font-size:0.82rem; font-weight:700; color:var(--text-secondary); }
         .rep-datesel { min-height:36px; padding:0 30px 0 12px; border:1px solid var(--border-strong); border-radius:10px;
@@ -109,6 +171,21 @@
                 <div class="rep-datebar">
                     <label for="rep-datesel">📅 Report date</label>
                     <select id="rep-datesel" class="rep-datesel" aria-label="Choose report date"></select>
+                </div>
+
+                <div class="rep-live-section">
+                    <button class="rep-live-btn" id="rep-live-btn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        Generate Live Market Report
+                    </button>
+                    <span class="rep-live-sub">Uses live repo data + LLM7 AI — takes ~15s</span>
+                </div>
+                <div class="rep-live-output" id="rep-live-output" hidden>
+                    <div class="rpt-loading" id="rpt-loading">
+                        <div class="rpt-spinner"></div>
+                        <p id="rpt-loading-text">Initializing...</p>
+                    </div>
+                    <div id="rpt-content"></div>
                 </div>
 
                 <div class="rep-brief" id="rep-brief" hidden>
