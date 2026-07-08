@@ -280,10 +280,11 @@ async function generateLiveReport() {
         renderLiveReport(report, analytics);
         loading.hidden = true;
     } catch (e) {
-        output.innerHTML = `<div class="rpt-error">
+        document.getElementById('rpt-content').innerHTML = `<div class="rpt-error">
             <p>${esc(e.message)}</p>
             <button onclick="generateLiveReport()">Try again</button>
         </div>`;
+        loading.hidden = true;
     } finally {
         btn.disabled = false;
         btn.innerHTML = label;
