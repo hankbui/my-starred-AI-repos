@@ -1806,13 +1806,22 @@ async function loadData() {
 async function initPageViewer() {
     const countEl = document.getElementById('page-viewer-count');
     if (!countEl) return;
+
+    // Local browser view counter
+    const KEY = 'page_view_count';
+    let localCount = Number(localStorage.getItem(KEY) || 0);
+    localCount++;
+    try { localStorage.setItem(KEY, String(localCount)); } catch {}
+
+    // Try to get repo stars for social proof
+    let stars = null;
     try {
-        const res = await fetch('https://api.countapi.xyz/hit/hankbui/my-starred-ai-repos-pageviews');
-        const data = await res.json();
-        countEl.textContent = Number(data.value).toLocaleString();
-    } catch {
-        countEl.textContent = '0';
-    }
+        const r = await fetch('https://api.github.com/repos/hankbui/my-starred-AI-repos');
+        if (r.ok) stars = (await r.json()).stargazers_count;
+    } catch {}
+
+    countEl.innerHTML = `<span class="viewer-local">${localCount.toLocaleString()} views</span>` +
+        (stars ? ` · <span class="viewer-stars">⭐ ${stars.toLocaleString()}</span>` : ' • <span class="viewer-offline">offline</span>');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
