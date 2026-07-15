@@ -256,6 +256,18 @@ function renderBody() {
                 btn.classList.toggle('open');
             });
         });
+        tbody.querySelectorAll('.ail-row').forEach((row) => {
+            const idx = Number(row.dataset.ailIdx);
+            row.addEventListener('click', (e) => {
+                if (e.target.closest('a, .desc-expand')) return;
+                openAilDrawer(state.filtered[idx]);
+            });
+            row.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                e.preventDefault();
+                openAilDrawer(state.filtered[idx]);
+            });
+        });
         return;
     }
 
@@ -278,6 +290,18 @@ function renderBody() {
                 <td class="ail-hide-sm"><div class="ail-toprepos">${top}</div></td>
             </tr>`;
     }).join('');
+    tbody.querySelectorAll('.ail-row').forEach((row) => {
+        const idx = Number(row.dataset.ailIdx);
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            openAilDrawer(state.filtered[idx]);
+        });
+        row.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            e.preventDefault();
+            openAilDrawer(state.filtered[idx]);
+        });
+    });
 }
 
 function renderMobileList() {
@@ -782,22 +806,6 @@ function bind() {
             if (label) label.textContent = 'Desktop View';
         }
     }
-
-    const ailTbody = document.getElementById('ail-tbody');
-    ailTbody.addEventListener('click', (e) => {
-        if (e.target.closest('.desc-expand') || e.target.closest('a')) return;
-        const row = e.target.closest('.ail-row');
-        if (!row) return;
-        openAilDrawer(state.filtered[Number(row.dataset.ailIdx)]);
-    });
-    ailTbody.addEventListener('keydown', (e) => {
-        if (e.key !== 'Enter' && e.key !== ' ') return;
-        if (e.target.closest('.desc-expand') || e.target.closest('a')) return;
-        const row = e.target.closest('.ail-row');
-        if (!row) return;
-        e.preventDefault();
-        openAilDrawer(state.filtered[Number(row.dataset.ailIdx)]);
-    });
 
     document.getElementById('ail-drawer-close').addEventListener('click', closeAilDrawer);
     document.getElementById('ail-drawer-backdrop').addEventListener('click', closeAilDrawer);
