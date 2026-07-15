@@ -233,8 +233,30 @@ function renderBody() {
                 <td class="ail-right ail-hide-sm">${fmt(r.forks)}</td>
                 <td class="ail-hide-sm">${escapeHtml(r.language || '—')}</td>
                 <td class="ail-hide-sm"><span class="ail-pill">${escapeHtml(r.category)}</span></td>
-                <td class="ail-hide-sm"><div class="ail-desc">${escapeHtml(r.description)}</div></td>
+                <td class="ail-hide-sm">
+                    <div class="desc-wrap">
+                        <div class="ail-desc">${escapeHtml(r.description)}</div>
+                        <button class="desc-expand" type="button" aria-label="Show more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                    </div>
+                </td>
             </tr>`).join('');
+
+        const tbody = document.getElementById('ail-tbody');
+        tbody.querySelectorAll('.desc-wrap').forEach((wrap) => {
+            const desc = wrap.querySelector('.ail-desc');
+            if (desc && desc.scrollHeight > desc.clientHeight) {
+                wrap.classList.add('has-overflow');
+            }
+        });
+        tbody.querySelectorAll('.desc-expand').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const wrap = btn.closest('.desc-wrap');
+                const desc = wrap.querySelector('.ail-desc');
+                desc.classList.toggle('expanded');
+                btn.classList.toggle('open');
+            });
+        });
         return;
     }
 

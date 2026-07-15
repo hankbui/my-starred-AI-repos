@@ -759,7 +759,10 @@ function renderTable() {
                     <td class="col-trend" data-label="Trend">${renderSparkline(repo)}</td>
                     <td class="col-forks" data-label="Forks">${repo.forks.toLocaleString()}</td>
                     <td class="col-desc" data-label="Description">
-                        <div class="desc-text" title="${escapeHtml(repo.description)}">${escapeHtml(repo.description)}</div>
+                        <div class="desc-wrap">
+                            <div class="desc-text">${escapeHtml(repo.description)}</div>
+                            <button class="desc-expand" type="button" aria-label="Show more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                        </div>
                     </td>
                     <td class="col-category" data-label="Category">
                         <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
@@ -770,6 +773,23 @@ function renderTable() {
             `;
         })
         .join('');
+
+    const tbody2 = document.getElementById('repos-tbody');
+    tbody2.querySelectorAll('.desc-wrap').forEach((wrap) => {
+        const desc = wrap.querySelector('.desc-text');
+        if (desc && desc.scrollHeight > desc.clientHeight) {
+            wrap.classList.add('has-overflow');
+        }
+    });
+    tbody2.querySelectorAll('.desc-expand').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const wrap = btn.closest('.desc-wrap');
+            const desc = wrap.querySelector('.desc-text');
+            desc.classList.toggle('expanded');
+            btn.classList.toggle('open');
+        });
+    });
 }
 
 function renderPagination() {
@@ -1706,7 +1726,7 @@ function bindTableInteractions() {
     const tbody = document.getElementById('repos-tbody');
 
     tbody.addEventListener('click', (event) => {
-        if (event.target.closest('a.repo-open-link')) {
+        if (event.target.closest('a.repo-open-link') || event.target.closest('.desc-expand')) {
             return;
         }
 

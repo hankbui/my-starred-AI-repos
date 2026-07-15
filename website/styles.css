@@ -1052,10 +1052,61 @@ a {
     margin-top: 10px;
 }
 
-.desc-text {
+.desc-wrap {
+    position: relative;
+}
+
+.desc-text, .ail-desc {
     max-width: 480px;
     color: var(--text-secondary);
     line-height: 1.55;
+    max-height: calc(1.55em * 10);
+    overflow: hidden;
+    transition: max-height 220ms ease;
+}
+
+.desc-text.expanded, .ail-desc.expanded {
+    max-height: none;
+}
+
+.desc-expand {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-top: 4px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 160ms ease;
+    padding: 0;
+}
+
+.desc-wrap.has-overflow .desc-expand {
+    display: inline-flex;
+}
+
+.desc-expand:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+}
+
+.desc-expand svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 220ms ease;
+}
+
+.desc-expand.open svg {
+    transform: rotate(90deg);
 }
 
 .badge,
