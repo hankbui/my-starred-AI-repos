@@ -2105,27 +2105,20 @@ a {
     text-align: right;
 }
 
-.mobile-card-thumb-wrap {
-    flex: 0 0 80px;
-    width: 80px;
-    height: 42px;
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    margin-top: 2px;
-}
-
-.mobile-card-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
 .mobile-card-body {
     flex: 1;
     min-width: 0;
+}
+
+.mobile-card-ogimg {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
 }
 
 .mobile-card-name {
@@ -2150,11 +2143,62 @@ a {
     letter-spacing: 0.03em;
 }
 
-.mobile-card-desc {
+.mobile-card-desc-wrap {
+    position: relative;
     margin-top: 6px;
+}
+
+.mobile-card-desc {
     color: var(--text-secondary);
     font-size: 0.88rem;
     line-height: 1.5;
+    max-height: calc(1.5em * 10);
+    overflow: hidden;
+    transition: max-height 220ms ease;
+}
+
+.mobile-card-desc.expanded {
+    max-height: none;
+}
+
+.mobile-card-expand {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin: 6px auto 0;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 160ms ease;
+    padding: 0;
+}
+
+.mobile-card-desc-wrap.has-overflow .mobile-card-expand {
+    display: inline-flex;
+}
+
+.mobile-card-expand:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+}
+
+.mobile-card-expand svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 220ms ease;
+}
+
+.mobile-card-desc.expanded ~ .mobile-card-expand svg {
+    transform: rotate(90deg);
 }
 
 .mobile-card-footer {
@@ -2212,12 +2256,6 @@ a {
         width: 22px;
         flex: 0 0 22px;
         font-size: 0.82rem;
-    }
-
-    .mobile-card-thumb-wrap {
-        flex: 0 0 64px;
-        width: 64px;
-        height: 36px;
     }
 
     .mobile-card-name .repo-link {

@@ -1729,15 +1729,16 @@ function renderMobileList() {
             return `
                 <div class="mobile-card" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
                     <div class="mobile-card-num">${rowNumber}</div>
-                    <div class="mobile-card-thumb-wrap">
-                        <img class="mobile-card-thumb" src="${getRepoThumbnail(repo)}" alt="" loading="lazy" width="80" height="42">
-                    </div>
                     <div class="mobile-card-body">
                         <div class="mobile-card-name">
                             <span class="repo-link">${escapeHtml(repo.repo_name)}</span>
                             <span class="mobile-card-owner">${escapeHtml(repo.owner)}</span>
                         </div>
-                        <div class="mobile-card-desc">${escapeHtml(repo.description)}</div>
+                        <div class="mobile-card-desc-wrap">
+                            <div class="mobile-card-desc">${escapeHtml(repo.description)}</div>
+                            <button class="mobile-card-expand" type="button" aria-label="Show more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                        </div>
+                        <img class="mobile-card-ogimg" src="${getRepoThumbnail(repo)}" alt="" loading="lazy">
                         <div class="mobile-card-footer">
                             <div class="mobile-card-meta">
                                 <span class="badge ${tone}">${escapeHtml(repo.category)}</span>
@@ -1757,6 +1758,22 @@ function renderMobileList() {
             `;
         })
         .join('');
+
+    list.querySelectorAll('.mobile-card-desc-wrap').forEach((wrap) => {
+        const desc = wrap.querySelector('.mobile-card-desc');
+        if (desc && desc.scrollHeight > desc.clientHeight) {
+            wrap.classList.add('has-overflow');
+        }
+    });
+
+    list.querySelectorAll('.mobile-card-expand').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const wrap = btn.closest('.mobile-card-desc-wrap');
+            const desc = wrap.querySelector('.mobile-card-desc');
+            desc.classList.toggle('expanded');
+        });
+    });
 
     list.querySelectorAll('.mobile-card').forEach((card) => {
         card.addEventListener('click', (event) => {
