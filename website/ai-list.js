@@ -222,8 +222,8 @@ function renderBody() {
     }
 
     if (state.tab === 'repos') {
-        tbody.innerHTML = page.map((r) => `
-            <tr>
+        tbody.innerHTML = page.map((r, i) => `
+            <tr class="ail-row" data-ail-idx="${start + i}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(r.repo_name)}">
                 <td class="ail-num">${r.rank}</td>
                 <td>
                     <a class="ail-repo-name" href="${escapeHtml(r.url)}" target="_blank" rel="noreferrer">${escapeHtml(r.repo_name)}</a>
@@ -259,11 +259,12 @@ function renderBody() {
         return;
     }
 
-    tbody.innerHTML = page.map((a) => {
+    tbody.innerHTML = page.map((a, i) => {
         const top = (a.top_repos || []).map((t) =>
             `<a class="ail-pill" href="https://github.com/${escapeHtml(t.name)}" target="_blank" rel="noreferrer">${escapeHtml(t.name)}</a>`).join('');
+        const idx2 = start + i;
         return `
-            <tr>
+            <tr class="ail-row" data-ail-idx="${idx2}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(a.login)}">
                 <td class="ail-num">${a.rank}</td>
                 <td>
                     <div class="ail-acct">
@@ -781,6 +782,22 @@ function bind() {
             if (label) label.textContent = 'Desktop View';
         }
     }
+
+    const ailTbody = document.getElementById('ail-tbody');
+    ailTbody.addEventListener('click', (e) => {
+        if (e.target.closest('.desc-expand') || e.target.closest('a')) return;
+        const row = e.target.closest('.ail-row');
+        if (!row) return;
+        openAilDrawer(state.filtered[Number(row.dataset.ailIdx)]);
+    });
+    ailTbody.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        if (e.target.closest('.desc-expand') || e.target.closest('a')) return;
+        const row = e.target.closest('.ail-row');
+        if (!row) return;
+        e.preventDefault();
+        openAilDrawer(state.filtered[Number(row.dataset.ailIdx)]);
+    });
 
     document.getElementById('ail-drawer-close').addEventListener('click', closeAilDrawer);
     document.getElementById('ail-drawer-backdrop').addEventListener('click', closeAilDrawer);
