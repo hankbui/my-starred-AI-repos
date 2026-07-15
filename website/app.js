@@ -266,6 +266,58 @@ function getRepoThumbnail(repo) {
     return `https://opengraph.githubassets.com/${repo.id || 1}/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.repo_name)}`;
 }
 
+function renderBasicMarkdown(text) {
+    let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    html = html
+        .replace(/```[\s\S]*?```/g, '<pre><code>[code block]</code></pre>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        .replace(/_([^_]+)_/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+        .replace(/^### (.+)/gm, '<h6>$1</h6>')
+        .replace(/^## (.+)/gm, '<h5>$1</h5>')
+        .replace(/^# (.+)/gm, '<h4>$1</h4>')
+        .replace(/^\s*[-*]\s+(.+)/gm, '• $1');
+    const parts = html.split(/\n\n+/);
+    return parts.map(p => {
+        const t = p.trim();
+        if (!t) return '';
+        if (/^<h[456]/.test(t) || /^<pre/.test(t)) return t;
+        return `<p>${t}</p>`;
+    }).join('\n');
+}
+
+async function fetchReadmeFallback(repo, readmeEl) {
+    const branch = repo.default_branch || 'main';
+    const url = `https://raw.githubusercontent.com/${repo.owner}/${repo.repo_name}/${branch}/README.md`;
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const cleaned = text
+            .replace(/\r\n/g, '\n')
+            .replace(/<!--[\s\S]*?-->/g, '')
+            .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+            .replace(/<img[^>]*>/gi, '');
+        const lines = cleaned.split('\n').filter(l => l.trim());
+        let excerpt = '';
+        let count = 0;
+        for (const line of lines) {
+            if (count > 300) break;
+            excerpt += line + '\n';
+            count++;
+        }
+        readmeEl.innerHTML = renderBasicMarkdown(excerpt.trim());
+    } catch {
+        readmeEl.innerHTML = '<span class="drawer-muted">README preview unavailable.</span>';
+    }
+}
+
 function normalizeRepo(repo) {
     const name = repo.name || '';
     const [ownerFromName, repoNameFromName] = name.split('/');
@@ -1340,7 +1392,8 @@ function openDrawer(repo, fromHistory = false) {
         if (repo.readme_excerpt) {
             readmeEl.innerHTML = repo.readme_excerpt;
         } else {
-            readmeEl.textContent = 'README preview is not cached for this repo yet. The generator will gradually cache popular and trending repos so the drawer stays static-friendly on GitHub Pages.';
+            readmeEl.innerHTML = '<span class="drawer-muted">Loading README…</span>';
+            fetchReadmeFallback(repo, readmeEl);
         }
     }
 
