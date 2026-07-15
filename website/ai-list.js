@@ -7,6 +7,7 @@ const state = {
     page: 1, perPage: 50,
     filtered: [],
     updatedAt: '',
+    mobileView: localStorage.getItem('ailMobileView') === 'true',
 };
 
 function classifyStackLayer(repo) {
@@ -70,6 +71,9 @@ const TAB_CONFIG = {
 function escapeHtml(v) {
     return String(v ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 }
+function getRepoThumbnail(repo) {
+    return `https://opengraph.githubassets.com/${repo.id || 1}/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.repo_name)}`;
+}
 function fmt(n) {
     n = Number(n || 0);
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
@@ -123,6 +127,20 @@ function applyFilters() {
 
 // ── Rendering ─────────────────────────────────────────────────────────────────
 function render() {
+    const isMobile = state.mobileView;
+    const tableShell = document.querySelector('.ail-table') ? document.querySelector('.table-shell') : null;
+    const mobileList = document.getElementById('ail-mobile-list');
+    const paginationBar = document.querySelector('.pagination-bar');
+
+    if (tableShell) tableShell.style.display = isMobile ? 'none' : '';
+    if (mobileList) mobileList.style.display = isMobile ? 'block' : 'none';
+    if (paginationBar) paginationBar.style.display = isMobile ? 'none' : '';
+
+    if (isMobile) {
+        renderMobileList();
+        return;
+    }
+
     renderHead();
     renderBody();
     renderPagination();
@@ -185,6 +203,79 @@ function renderBody() {
                 <td class="ail-right ail-hide-sm">${a.weighted.toLocaleString()}</td>
                 <td class="ail-hide-sm"><div class="ail-toprepos">${top}</div></td>
             </tr>`;
+    }).join('');
+}
+
+function renderMobileList() {
+    const list = document.getElementById('ail-mobile-list');
+    const start = (state.page - 1) * state.perPage;
+    const pageItems = state.filtered.slice(start, start + state.perPage);
+
+    if (pageItems.length === 0) {
+        list.innerHTML = '<div class="mobile-empty">No matches. Try a broader search.</div>';
+        return;
+    }
+
+    if (state.tab === 'repos') {
+        list.innerHTML = pageItems.map((r, i) => {
+            const rowNumber = start + i + 1;
+            return `
+                <div class="mobile-card" tabindex="0" role="button" onclick="window.open('${escapeHtml(r.url)}', '_blank', 'noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('${escapeHtml(r.url)}', '_blank', 'noopener')}">
+                    <div class="mobile-card-num">${rowNumber}</div>
+                    <div class="mobile-card-thumb-wrap">
+                        <img class="mobile-card-thumb" src="${getRepoThumbnail(r)}" alt="" loading="lazy" width="80" height="42">
+                    </div>
+                    <div class="mobile-card-body">
+                        <div class="mobile-card-name">
+                            <span class="repo-link">${escapeHtml(r.repo_name)}</span>
+                            <span class="mobile-card-owner">${escapeHtml(r.owner)}</span>
+                        </div>
+                        <div class="mobile-card-desc">${escapeHtml(r.description)}</div>
+                        <div class="mobile-card-footer">
+                            <div class="mobile-card-meta">
+                                <span class="ail-pill">${escapeHtml(r.category)}</span>
+                                <span class="language-pill">${escapeHtml(r.language)}</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px">
+                                <div class="mobile-card-stars">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" class="star-icon"><path d="m12 3 2.8 5.68 6.27.91-4.54 4.43 1.07 6.24L12 17.3l-5.6 2.94 1.07-6.24L2.93 9.6l6.27-.91z"/></svg>
+                                    <span>${fmt(r.stars)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        return;
+    }
+
+    list.innerHTML = pageItems.map((a, i) => {
+        const rowNumber = start + i + 1;
+        const topRepos = (a.top_repos || []).slice(0, 2).map((t) =>
+            `<a class="ail-pill" href="https://github.com/${escapeHtml(t.name)}" target="_blank" rel="noreferrer">${escapeHtml(t.name)}</a>`).join('');
+        const who = state.tab === 'bots' ? 'Bot' : 'Dev';
+        return `
+            <div class="mobile-card" tabindex="0" role="button" onclick="window.open('${escapeHtml(a.profile_url)}', '_blank', 'noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('${escapeHtml(a.profile_url)}', '_blank', 'noopener')}">
+                <div class="mobile-card-num">${rowNumber}</div>
+                <div class="mobile-card-body">
+                    <div class="mobile-card-name">
+                        <span class="repo-link">${escapeHtml(a.login)}</span>
+                        <span class="mobile-card-owner">${who}</span>
+                    </div>
+                    <div class="mobile-card-desc">${a.repos.toLocaleString()} repos · ${a.contributions.toLocaleString()} contributions</div>
+                    <div class="mobile-card-footer">
+                        <div class="mobile-card-meta" style="align-items:center">
+                            <img class="ail-avatar" src="${escapeHtml(a.avatar_url)}" alt="" loading="lazy" width="24" height="24" style="border-radius:999px;background:var(--bg-soft);flex-shrink:0">
+                            ${topRepos}
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px">
+                            <span class="sig-badge">Σ${a.weighted.toLocaleString()}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     }).join('');
 }
 
@@ -444,6 +535,30 @@ function bind() {
     document.getElementById('ail-share').addEventListener('click', async () => { const ok = await copyText(window.location.href); flash('ail-share', ok ? 'Copied URL' : 'Failed', 'Share URL'); });
     document.getElementById('ail-csv').addEventListener('click', () => { download(`ai-landscape-${state.tab}.csv`, buildCsv()); flash('ail-csv', 'Done', 'CSV'); });
     document.getElementById('ail-md').addEventListener('click', () => { download(`ai-landscape-${state.tab}.md`, buildMd()); flash('ail-md', 'Done', 'MD'); });
+
+    const viewToggle = document.getElementById('ail-view-toggle');
+    if (viewToggle) {
+        viewToggle.addEventListener('click', () => {
+            state.mobileView = !state.mobileView;
+            localStorage.setItem('ailMobileView', state.mobileView);
+            const icon = document.getElementById('ail-view-toggle-icon');
+            const label = document.getElementById('ail-view-toggle-label');
+            if (state.mobileView) {
+                if (icon) icon.textContent = '💻';
+                if (label) label.textContent = 'Desktop View';
+            } else {
+                if (icon) icon.textContent = '📱';
+                if (label) label.textContent = 'Mobile View';
+            }
+            render();
+        });
+        if (state.mobileView) {
+            const icon = document.getElementById('ail-view-toggle-icon');
+            const label = document.getElementById('ail-view-toggle-label');
+            if (icon) icon.textContent = '💻';
+            if (label) label.textContent = 'Desktop View';
+        }
+    }
 
     document.getElementById('ail-ask-ai').addEventListener('click', openAsk);
     document.getElementById('ail-ask-close').addEventListener('click', closeAsk);

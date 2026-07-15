@@ -23,6 +23,7 @@ const state = {
     selectedRepoId: null,
     starHistoryMap: null,
     mobileView: localStorage.getItem('mobileView') === 'true',
+    drawerHistory: [],
 };
 
 const DATA_URL = 'data/repos.json?v=20260328-5';
@@ -259,6 +260,10 @@ function classifyStackLayer(repo) {
     if (cat === 'Data & Evaluation') return 'Data';
     if (cat === 'Research & Knowledge') return 'Framework';
     return 'Other';
+}
+
+function getRepoThumbnail(repo) {
+    return `https://opengraph.githubassets.com/${repo.id || 1}/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.repo_name)}`;
 }
 
 function normalizeRepo(repo) {
@@ -1224,9 +1229,13 @@ function getSimilarRepos(repo, limit = 5) {
     return scored.slice(0, limit).filter(s => s.score > 0).map(s => s.repo);
 }
 
-function openDrawer(repo) {
+function openDrawer(repo, fromHistory = false) {
     if (!repo) {
         return;
+    }
+
+    if (!fromHistory) {
+        state.drawerHistory = [];
     }
 
     state.selectedRepoId = repo.id;
@@ -1316,13 +1325,25 @@ function openDrawer(repo) {
             </section>
 
             <section class="drawer-section">
-                <h5>Similar Repos</h5>
+                <div class="drawer-section-header">
+                    <h5>Similar Repos</h5>
+                    ${state.drawerHistory.length ? '<button class="drawer-back-btn" id="drawer-sim-back" type="button">← Back</button>' : ''}
+                </div>
                 <div class="drawer-similar" id="drawer-similar">Loading…</div>
             </section>
         </div>
     `;
 
-    // Render similar repos asynchronously
+    // Back button handler
+    const backBtn = document.getElementById('drawer-sim-back');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            const prev = state.drawerHistory.pop();
+            if (prev) openDrawer(prev, true);
+        });
+    }
+
+    // Render similar repos
     const similar = getSimilarRepos(repo, 6);
     const similarEl = document.getElementById('drawer-similar');
     if (similar.length) {
@@ -1339,13 +1360,19 @@ function openDrawer(repo) {
         similarEl.querySelectorAll('.drawer-sim-item').forEach(el => {
             el.addEventListener('click', () => {
                 const target = getRepoById(Number(el.dataset.repoId));
-                if (target) openDrawer(target);
+                if (target) {
+                    state.drawerHistory.push(repo);
+                    openDrawer(target, true);
+                }
             });
             el.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     const target = getRepoById(Number(el.dataset.repoId));
-                    if (target) openDrawer(target);
+                    if (target) {
+                        state.drawerHistory.push(repo);
+                        openDrawer(target, true);
+                    }
                 }
             });
         });
@@ -1361,6 +1388,7 @@ function openDrawer(repo) {
 
 function closeDrawer() {
     state.selectedRepoId = null;
+    state.drawerHistory = [];
     document.getElementById('drawer-backdrop').hidden = true;
     document.getElementById('repo-drawer').classList.remove('open');
     document.getElementById('repo-drawer').setAttribute('aria-hidden', 'true');
@@ -1701,6 +1729,9 @@ function renderMobileList() {
             return `
                 <div class="mobile-card" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
                     <div class="mobile-card-num">${rowNumber}</div>
+                    <div class="mobile-card-thumb-wrap">
+                        <img class="mobile-card-thumb" src="${getRepoThumbnail(repo)}" alt="" loading="lazy" width="80" height="42">
+                    </div>
                     <div class="mobile-card-body">
                         <div class="mobile-card-name">
                             <span class="repo-link">${escapeHtml(repo.repo_name)}</span>

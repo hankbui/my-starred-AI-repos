@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Landscape — Repos, Devs &amp; Bots</title>
+    <meta property="og:title" content="AI Landscape — Repos, Devs &amp; Bots | Auto-discovered Open Source AI">
+    <meta property="og:description" content="The open-source AI world — top repositories, developers, and bots auto-discovered from GitHub. Updated daily.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/ai-list.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260701-5">
+    <link rel="stylesheet" href="styles.css?v=20260701-6">
     <style>
         .ail-hero { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
         .ail-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
@@ -39,6 +44,22 @@
             .ail-desc, .ail-toprepos { max-width:none; }
             .ail-hide-sm { display:none; }
         }
+        .mobile-card .ail-pill {
+            font-size: 0.72rem;
+            padding: 3px 7px;
+        }
+        .mobile-card .ail-avatar {
+            width: 22px;
+            height: 22px;
+        }
+        .mobile-card .sig-badge {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        #ail-mobile-list .mobile-card:hover {
+            background: rgba(99, 207, 255, 0.04);
+        }
     </style>
 </head>
 <body>
@@ -61,6 +82,12 @@
                     The open-source AI world, pulled automatically from GitHub — top repositories,
                     the developers building them, and the bots maintaining them. No manual curation.
                 </p>
+                <div class="hero-actions">
+                    <button class="view-toggle" id="ail-view-toggle" type="button" title="Switch to mobile view">
+                        <span class="view-toggle-icon" id="ail-view-toggle-icon">📱</span>
+                        <span class="view-toggle-label" id="ail-view-toggle-label">Mobile View</span>
+                    </button>
+                </div>
             </div>
             <div class="hero-stats">
                 <div class="stat-pill"><span class="pill-value" id="stat-repos">-</span><span class="pill-label">AI repos</span></div>
@@ -133,6 +160,8 @@
                         <tbody id="ail-tbody"></tbody>
                     </table>
                 </div>
+
+                <div class="mobile-repos-list" id="ail-mobile-list"></div>
             </section>
         </main>
 
@@ -186,6 +215,6 @@
         </div>
     </div>
 
-    <script src="ai-list.js?v=20260701-5"></script>
+    <script src="ai-list.js?v=20260701-6"></script>
 </body>
 </html>
