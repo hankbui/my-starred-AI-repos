@@ -1002,22 +1002,16 @@ function openAiAskModal() {
         questionEl.value = AI_ASK_DEFAULT_QUESTION;
     }
     renderAiAskPreview();
-    document.getElementById('ai-ask-backdrop').hidden = false;
     const modal = document.getElementById('ai-ask-modal');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('drawer-open');
 }
 
 function closeAiAskModal() {
     closePromptsMenu();
-    document.getElementById('ai-ask-backdrop').hidden = true;
     const modal = document.getElementById('ai-ask-modal');
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
-    if (!document.getElementById('repo-drawer').classList.contains('open')) {
-        document.body.classList.remove('drawer-open');
-    }
 }
 
 function setAiAskOpenFeedback(label) {
@@ -1046,7 +1040,6 @@ function bindAiAsk() {
     document.getElementById('top-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('bottom-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('ai-ask-close')?.addEventListener('click', closeAiAskModal);
-    document.getElementById('ai-ask-backdrop')?.addEventListener('click', closeAiAskModal);
     document.getElementById('ai-ask-count')?.addEventListener('change', renderAiAskPreview);
     document.getElementById('ai-ask-include-desc')?.addEventListener('change', renderAiAskPreview);
     document.getElementById('ai-ask-question')?.addEventListener('input', renderAiAskPreview);

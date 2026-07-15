@@ -708,15 +708,11 @@ function openAsk() {
     qta.value = defaultQuestion();
     document.getElementById('ail-ask-title').textContent = 'Ask AI about these ' + state.tab;
     renderAiPreview();
-    document.getElementById('ail-ask-backdrop').hidden = false;
     const m = document.getElementById('ail-ask-modal'); m.classList.add('open'); m.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('drawer-open');
 }
 function closeAsk() {
     closePromptsMenu();
-    document.getElementById('ail-ask-backdrop').hidden = true;
     const m = document.getElementById('ail-ask-modal'); m.classList.remove('open'); m.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('drawer-open');
 }
 async function launchAsk() {
     const prompt = buildPrompt();
@@ -791,7 +787,6 @@ function bind() {
 
     document.getElementById('ail-ask-ai').addEventListener('click', openAsk);
     document.getElementById('ail-ask-close').addEventListener('click', closeAsk);
-    document.getElementById('ail-ask-backdrop').addEventListener('click', closeAsk);
     document.getElementById('ail-ask-count').addEventListener('change', renderAiPreview);
     document.getElementById('ail-ask-question').addEventListener('input', renderAiPreview);
     document.getElementById('ail-ask-open').addEventListener('click', launchAsk);

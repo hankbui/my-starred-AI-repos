@@ -1711,41 +1711,28 @@ a {
     text-decoration: underline;
 }
 
-/* ---- Ask AI (Google AI Mode) modal ---- */
-.ai-ask-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 40;
-    background: rgba(5, 8, 12, 0.62);
-    backdrop-filter: blur(4px);
-}
-
+/* ---- Ask AI (Google AI Mode) drawer ---- */
 .ai-ask-modal {
     position: fixed;
+    top: 0;
+    right: 0;
     z-index: 41;
-    top: 50%;
-    left: 50%;
-    width: min(720px, calc(100vw - 32px));
-    max-height: min(86vh, 760px);
     display: flex;
     flex-direction: column;
+    width: min(640px, 100vw);
+    height: 100vh;
     padding: 22px 24px 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    border-left: 1px solid var(--border);
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
         #0d1218;
-    box-shadow: var(--shadow);
-    transform: translate(-50%, -46%) scale(0.97);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms ease;
+    box-shadow: -24px 0 80px rgba(0, 0, 0, 0.4);
+    transform: translateX(104%);
+    transition: transform 220ms ease;
 }
 
 .ai-ask-modal.open {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(0);
 }
 
 .ai-ask-header {
@@ -1753,7 +1740,8 @@ a {
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
 }
 
 .ai-ask-overline {
@@ -1801,10 +1789,12 @@ a {
 }
 
 .ai-ask-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 14px;
     overflow-y: auto;
+    padding-top: 18px;
 }
 
 .ai-ask-context {
@@ -1918,8 +1908,8 @@ a {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-top: 18px;
-    padding-top: 16px;
+    margin-top: auto;
+    padding-top: 18px;
     border-top: 1px solid var(--border);
 }
 
