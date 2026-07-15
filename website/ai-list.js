@@ -241,7 +241,6 @@ function renderBody() {
                 </td>
             </tr>`).join('');
 
-        const tbody = document.getElementById('ail-tbody');
         tbody.querySelectorAll('.desc-wrap').forEach((wrap) => {
             const desc = wrap.querySelector('.ail-desc');
             if (desc && desc.scrollHeight > desc.clientHeight) {
