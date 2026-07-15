@@ -1243,7 +1243,7 @@ function openDrawer(repo, fromHistory = false) {
     const body = document.getElementById('drawer-body');
     const badgeTone = categoryTones[repo.category] || categoryTones.Other;
     const readmeContent = repo.readme_excerpt
-        ? escapeHtml(repo.readme_excerpt)
+        ? repo.readme_excerpt
         : 'README preview is not cached for this repo yet. The generator will gradually cache popular and trending repos so the drawer stays static-friendly on GitHub Pages.';
     const homepage = repo.homepage
         ? `<a href="${escapeHtml(repo.homepage)}" target="_blank" rel="noreferrer">${escapeHtml(repo.homepage)}</a>`
@@ -1320,7 +1320,7 @@ function openDrawer(repo, fromHistory = false) {
                 <h5>README Preview</h5>
                 <div class="drawer-readme-wrap">
                     <div class="drawer-readme-path">${escapeHtml(repo.readme_path || 'README cache')}</div>
-                    <pre class="drawer-readme">${readmeContent}</pre>
+                    <div class="drawer-readme"></div>
                 </div>
             </section>
 
@@ -1333,6 +1333,15 @@ function openDrawer(repo, fromHistory = false) {
             </section>
         </div>
     `;
+
+    const readmeEl = body.querySelector('.drawer-readme');
+    if (readmeEl) {
+        if (repo.readme_excerpt) {
+            readmeEl.innerHTML = repo.readme_excerpt;
+        } else {
+            readmeEl.textContent = 'README preview is not cached for this repo yet. The generator will gradually cache popular and trending repos so the drawer stays static-friendly on GitHub Pages.';
+        }
+    }
 
     // Back button handler
     const backBtn = document.getElementById('drawer-sim-back');
