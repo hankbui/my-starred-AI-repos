@@ -256,18 +256,6 @@ function renderBody() {
                 btn.classList.toggle('open');
             });
         });
-        tbody.querySelectorAll('.ail-row').forEach((row) => {
-            const idx = Number(row.dataset.ailIdx);
-            row.addEventListener('click', (e) => {
-                if (e.target.closest('a, .desc-expand')) return;
-                openAilDrawer(state.filtered[idx]);
-            });
-            row.addEventListener('keydown', (e) => {
-                if (e.key !== 'Enter' && e.key !== ' ') return;
-                e.preventDefault();
-                openAilDrawer(state.filtered[idx]);
-            });
-        });
         return;
     }
 
@@ -290,18 +278,6 @@ function renderBody() {
                 <td class="ail-hide-sm"><div class="ail-toprepos">${top}</div></td>
             </tr>`;
     }).join('');
-    tbody.querySelectorAll('.ail-row').forEach((row) => {
-        const idx = Number(row.dataset.ailIdx);
-        row.addEventListener('click', (e) => {
-            if (e.target.closest('a')) return;
-            openAilDrawer(state.filtered[idx]);
-        });
-        row.addEventListener('keydown', (e) => {
-            if (e.key !== 'Enter' && e.key !== ' ') return;
-            e.preventDefault();
-            openAilDrawer(state.filtered[idx]);
-        });
-    });
 }
 
 function renderMobileList() {
@@ -823,6 +799,26 @@ function bind() {
     document.getElementById('ail-prompts-btn').addEventListener('click', (e) => { e.stopPropagation(); togglePromptsMenu(); });
     document.addEventListener('click', (e) => { const w = document.querySelector('.ai-ask-prompts-wrapper'); if (w && !w.contains(e.target)) closePromptsMenu(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.getElementById('ail-ask-modal').classList.contains('open')) closeAsk(); });
+
+    const atb = document.getElementById('ail-tbody');
+    if (atb) {
+        atb.addEventListener('click', (e) => {
+            if (e.target.closest('a, .desc-expand, button')) return;
+            const row = e.target.closest('.ail-row');
+            if (!row) return;
+            const item = state.filtered[Number(row.dataset.ailIdx)];
+            if (item) openAilDrawer(item);
+        });
+        atb.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            if (e.target.closest('a, .desc-expand, button')) return;
+            const row = e.target.closest('.ail-row');
+            if (!row) return;
+            e.preventDefault();
+            const item = state.filtered[Number(row.dataset.ailIdx)];
+            if (item) openAilDrawer(item);
+        });
+    }
 }
 
 async function load() {
