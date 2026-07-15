@@ -1265,6 +1265,7 @@ function openDrawer(repo, fromHistory = false) {
             <div class="drawer-actions">
                 <a class="drawer-action primary" href="${escapeHtml(repo.url)}" target="_blank" rel="noreferrer">Open GitHub</a>
                 <button class="drawer-action" type="button" data-copy-clone="${escapeHtml(repo.name)}">Copy clone URL</button>
+                <button class="drawer-action drawer-ask-ai-action" type="button" data-ask-ai-repo="${escapeHtml(repo.name)}"><svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14" style="flex-shrink:0"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>Ask AI</button>
             </div>
         </div>
 
@@ -1349,6 +1350,18 @@ function openDrawer(repo, fromHistory = false) {
         backBtn.addEventListener('click', () => {
             const prev = state.drawerHistory.pop();
             if (prev) openDrawer(prev, true);
+        });
+    }
+
+    // Ask AI for this specific repo
+    const askAiBtn = body.querySelector('.drawer-ask-ai-action');
+    if (askAiBtn) {
+        askAiBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const repoName = askAiBtn.dataset.askAiRepo;
+            const prompt = `I'm looking at the GitHub repository "${repoName}" (${repo.url}). ${repo.description ? repo.description + '. ' : ''}Can you give me a detailed overview of what this project does, its key features, who it's for, and how it compares to alternatives?`;
+            copyText(prompt);
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(prompt)}&udm=50`, '_blank', 'noopener');
         });
     }
 
