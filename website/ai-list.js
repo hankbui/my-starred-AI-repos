@@ -216,11 +216,13 @@ function renderMobileList() {
         return;
     }
 
+    const prefix = 'ail-item-';
     if (state.tab === 'repos') {
         list.innerHTML = pageItems.map((r, i) => {
             const rowNumber = start + i + 1;
+            const idx = start + i;
             return `
-                <div class="mobile-card" tabindex="0" role="button" onclick="window.open('${escapeHtml(r.url)}', '_blank', 'noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('${escapeHtml(r.url)}', '_blank', 'noopener')}">
+                <div class="mobile-card" data-ail-idx="${idx}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(r.repo_name)}">
                     <div class="mobile-card-num">${rowNumber}</div>
                     <div class="mobile-card-body">
                         <div class="mobile-card-name">
@@ -248,16 +250,27 @@ function renderMobileList() {
                 </div>
             `;
         }).join('');
+        list.querySelectorAll('.mobile-card').forEach((el) => {
+            const idx = Number(el.dataset.ailIdx);
+            el.addEventListener('click', () => openAilDrawer(state.filtered[idx]));
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openAilDrawer(state.filtered[idx]);
+                }
+            });
+        });
         return;
     }
 
     list.innerHTML = pageItems.map((a, i) => {
         const rowNumber = start + i + 1;
+        const idx = start + i;
         const topRepos = (a.top_repos || []).slice(0, 2).map((t) =>
             `<a class="ail-pill" href="https://github.com/${escapeHtml(t.name)}" target="_blank" rel="noreferrer">${escapeHtml(t.name)}</a>`).join('');
         const who = state.tab === 'bots' ? 'Bot' : 'Dev';
         return `
-            <div class="mobile-card" tabindex="0" role="button" onclick="window.open('${escapeHtml(a.profile_url)}', '_blank', 'noopener')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('${escapeHtml(a.profile_url)}', '_blank', 'noopener')}">
+            <div class="mobile-card" data-ail-idx="${idx}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(a.login)}">
                 <div class="mobile-card-num">${rowNumber}</div>
                 <div class="mobile-card-body">
                     <div class="mobile-card-name">
@@ -278,6 +291,16 @@ function renderMobileList() {
             </div>
         `;
     }).join('');
+    list.querySelectorAll('.mobile-card').forEach((el) => {
+        const idx = Number(el.dataset.ailIdx);
+        el.addEventListener('click', () => openAilDrawer(state.filtered[idx]));
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openAilDrawer(state.filtered[idx]);
+            }
+        });
+    });
 
     list.querySelectorAll('.mobile-card-desc-wrap').forEach((wrap) => {
         const desc = wrap.querySelector('.mobile-card-desc');
@@ -294,6 +317,88 @@ function renderMobileList() {
             desc.classList.toggle('expanded');
         });
     });
+}
+
+function openAilDrawer(item) {
+    if (!item) return;
+    const body = document.getElementById('ail-drawer-body');
+    const overline = document.getElementById('ail-drawer-overline');
+    const title = document.getElementById('ail-drawer-title');
+
+    if (state.tab === 'repos') {
+        overline.textContent = escapeHtml(item.category || 'Repository');
+        title.textContent = escapeHtml(item.repo_name);
+        body.innerHTML = `
+            <div class="drawer-hero">
+                <div class="drawer-hero-copy">
+                    <div class="drawer-owner">${escapeHtml(item.owner)}</div>
+                    <p class="drawer-description">${escapeHtml(item.description)}</p>
+                    <div class="drawer-badges">
+                        <span class="language-pill">${escapeHtml(item.language || '—')}</span>
+                    </div>
+                </div>
+                <div class="drawer-actions">
+                    <a class="drawer-action primary" href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">Open GitHub</a>
+                </div>
+            </div>
+            <div class="drawer-metric-grid">
+                <div class="drawer-metric">
+                    <span class="drawer-metric-label">Stars</span>
+                    <strong>${fmt(item.stars)}</strong>
+                </div>
+                <div class="drawer-metric">
+                    <span class="drawer-metric-label">Forks</span>
+                    <strong>${fmt(item.forks)}</strong>
+                </div>
+            </div>
+        `;
+    } else {
+        const who = state.tab === 'bots' ? 'Bot' : 'Developer';
+        overline.textContent = who;
+        title.textContent = escapeHtml(item.login);
+        const top = (item.top_repos || []).map((t) =>
+            `<a class="ail-pill" href="https://github.com/${escapeHtml(t.name)}" target="_blank" rel="noreferrer">${escapeHtml(t.name)}</a>`).join('');
+        body.innerHTML = `
+            <div class="drawer-hero">
+                <div class="drawer-hero-copy">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+                        <img src="${escapeHtml(item.avatar_url)}" alt="" width="48" height="48" style="border-radius:999px;background:var(--bg-soft)">
+                    </div>
+                    <p class="drawer-description">${item.repos.toLocaleString()} repositories · ${item.contributions.toLocaleString()} contributions</p>
+                </div>
+                <div class="drawer-actions">
+                    <a class="drawer-action primary" href="${escapeHtml(item.profile_url)}" target="_blank" rel="noreferrer">View Profile</a>
+                </div>
+            </div>
+            <div class="drawer-metric-grid">
+                <div class="drawer-metric">
+                    <span class="drawer-metric-label">Repositories</span>
+                    <strong>${item.repos.toLocaleString()}</strong>
+                </div>
+                <div class="drawer-metric">
+                    <span class="drawer-metric-label">Contributions</span>
+                    <strong>${item.contributions.toLocaleString()}</strong>
+                </div>
+                <div class="drawer-metric">
+                    <span class="drawer-metric-label">Weighted</span>
+                    <strong>${item.weighted.toLocaleString()}</strong>
+                </div>
+            </div>
+            ${top ? `<div class="drawer-section-grid"><section class="drawer-section"><h5>Top Repos</h5><div style="display:flex;flex-wrap:wrap;gap:6px">${top}</div></section></div>` : ''}
+        `;
+    }
+
+    document.getElementById('ail-drawer-backdrop').hidden = false;
+    document.getElementById('ail-drawer').classList.add('open');
+    document.getElementById('ail-drawer').setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drawer-open');
+}
+
+function closeAilDrawer() {
+    document.getElementById('ail-drawer-backdrop').hidden = true;
+    document.getElementById('ail-drawer').classList.remove('open');
+    document.getElementById('ail-drawer').setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('drawer-open');
 }
 
 function renderPagination() {
@@ -576,6 +681,12 @@ function bind() {
             if (label) label.textContent = 'Desktop View';
         }
     }
+
+    document.getElementById('ail-drawer-close').addEventListener('click', closeAilDrawer);
+    document.getElementById('ail-drawer-backdrop').addEventListener('click', closeAilDrawer);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('ail-drawer').classList.contains('open')) closeAilDrawer();
+    });
 
     document.getElementById('ail-ask-ai').addEventListener('click', openAsk);
     document.getElementById('ail-ask-close').addEventListener('click', closeAsk);
