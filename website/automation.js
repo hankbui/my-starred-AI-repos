@@ -174,8 +174,10 @@ async function loadAutomationData() {
             updated.textContent = 'Updated ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         }
 
-        // Build section filter buttons
+        // Build section filter buttons — save existing search+count first
         const bar = document.getElementById('auto-bar');
+        const searchEl = document.getElementById('auto-search');
+        const countEl = document.getElementById('auto-count');
         const existingAll = bar.querySelector('.auto-section-btn[data-section="all"]');
         bar.innerHTML = '';
         bar.appendChild(existingAll || createChip('all', '📋 All'));
@@ -186,8 +188,6 @@ async function loadAutomationData() {
             }
         }
         // Re-append search + count
-        const searchEl = document.getElementById('auto-search');
-        const countEl = document.getElementById('auto-count');
         if (searchEl) bar.appendChild(searchEl);
         bar.appendChild(document.createTextNode(' '));
         const flex = document.createElement('span');
