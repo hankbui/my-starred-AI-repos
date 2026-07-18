@@ -445,8 +445,14 @@ async function generateLiveReport() {
         }
 
         loadingText.textContent = 'Generating report via LLM7 AI...';
-        const prompt = buildReportPrompt(analytics, extras);
-        const raw = await llm7([{ role: 'system', content: REPORT_SYS }, { role: 'user', content: prompt }], 0.4);
+        const userPrompt = buildReportPrompt(analytics, extras);
+        const fullSystem = REPORT_SYS;
+        window.__lastReportPrompt = { system: fullSystem, user: userPrompt };
+        document.getElementById('rep-export-prompt-btn').disabled = false;
+        document.getElementById('rep-export-prompt-btn').style.opacity = '';
+        document.getElementById('rep-copy-prompt-btn').disabled = false;
+        document.getElementById('rep-copy-prompt-btn').style.opacity = '';
+        const raw = await llm7([{ role: 'system', content: fullSystem }, { role: 'user', content: userPrompt }], 0.4);
         const report = parseJson(raw);
         if (!report) throw new Error('Could not parse AI response — try again');
 
@@ -618,6 +624,24 @@ async function copyLiveReport() {
     const r = window.__lastLiveReport;
     if (!r) return;
     try { await navigator.clipboard.writeText(JSON.stringify(r, null, 2)); } catch {}
+}
+function getFullPrompt() {
+    const p = window.__lastReportPrompt;
+    if (!p) return null;
+    return `# SYSTEM PROMPT\n\n${p.system}\n\n# USER PROMPT\n\n${p.user}`;
+}
+function exportPromptMd() {
+    const full = getFullPrompt();
+    if (!full) return;
+    const today = new Date().toISOString().slice(0, 10);
+    download(`report-prompt-${today}.md`, full);
+    flash('rep-export-prompt-btn', 'Done', '📥 MD');
+}
+async function copyPrompt() {
+    const full = getFullPrompt();
+    if (!full) return;
+    const ok = await copyText(full);
+    flash('rep-copy-prompt-btn', ok ? 'Copied' : 'Failed', '📋 Prompt');
 }
 async function publishLiveReport() {
     const r = window.__lastLiveReport;
@@ -833,6 +857,8 @@ function bind() {
     });
     document.getElementById('rep-analyze-btn').addEventListener('click', runAnalyze);
     document.getElementById('rep-live-btn').addEventListener('click', generateLiveReport);
+    document.getElementById('rep-export-prompt-btn').addEventListener('click', exportPromptMd);
+    document.getElementById('rep-copy-prompt-btn').addEventListener('click', copyPrompt);
     document.getElementById('rep-publish-btn')?.addEventListener('click', publishLiveReport);
     document.getElementById('rep-analyze-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') runAnalyze(); });
     document.getElementById('rep-datesel').addEventListener('change', (e) => {
