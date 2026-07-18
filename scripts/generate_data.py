@@ -26,7 +26,7 @@ load_dotenv(ENV_FILE)
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 GITHUB_USERNAME = os.getenv("GITHUB_USERNAME", "hankbui")
 GITHUB_API_URL = "https://api.github.com"
-MAX_PAGES = 10
+MAX_PAGES = 30
 PER_PAGE = 100
 MAX_HISTORY_DAYS = 30
 TRENDING_LIMIT = 250
