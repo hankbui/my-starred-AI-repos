@@ -94,12 +94,26 @@ def build_nodes_and_edges() -> dict:
     papers = research.get("papers", [])
     technologies = research.get("technologies", [])
 
+    # ── Pre-process text for matching ──
+
+    def norm(text: str) -> str:
+        return re.sub(r"[^a-z0-9\s]", " ", text.lower())
+
+    def text_set(text: str) -> set[str]:
+        return {t for t in norm(text).split() if len(t) > 2 and t not in STOPWORDS}
+
+    # Tech → normalized index for matching
+    tech_index: dict[str, dict] = {}
+    for t in technologies:
+        tn = t.get("name", "")
+        if not tn:
+            continue
+        tech_index[tn] = t
+
     # ── Build nodes ──
     nodes: dict[str, dict] = {}
-    inverted: dict[str, list[str]] = defaultdict(list)
-    frequency: Counter = Counter()
 
-    def add_node(node_id: str, node_type: str, label: str, href: str = "", meta: dict | None = None):
+    def add_n(node_id: str, node_type: str, label: str, href: str = "", meta: dict | None = None):
         if node_id not in nodes:
             nodes[node_id] = {
                 "id": node_id,
@@ -109,133 +123,135 @@ def build_nodes_and_edges() -> dict:
                 **(meta or {}),
             }
 
-    def index_tokens(node_id: str, tokens: set[str]):
-        for tok in tokens:
-            inverted[tok].append(node_id)
-            frequency[tok] += 1
+    all_tech_aliases: dict[str, str] = {}
+    for tn in tech_index:
+        all_tech_aliases[tn.lower()] = tn
+        all_tech_aliases[tn.lower().replace(" ", "")] = tn
+        all_tech_aliases[tn.lower().replace("-", "")] = tn
 
-    # Repo nodes
-    for r in repos:
+    # ── Edge building ──
+    # We only build cross-type edges with explicit match rules:
+    #   1. Paper ↔ Technology  (explicit from data)
+    #   2. Technology ↔ Repo   (tech name appears in repo description/topics)
+    #   3. Technology ↔ Idea   (tech name appears in idea title/description)
+    #   4. Repo ↔ Idea         (shared technology interest — both reference same tech)
+
+    edges: list[dict] = []
+    edge_set: set[tuple[str, str]] = set()
+
+    def add_edge(src: str, tgt: str, weight: int, keywords: list[str]):
+        a, b = (src, tgt) if src < tgt else (tgt, src)
+        key = (a, b)
+        if key in edge_set:
+            return
+        edge_set.add(key)
+        edges.append({"source": src, "target": tgt, "weight": weight, "keywords": keywords[:3]})
+
+    # ── 1. Paper ↔ Technology (direct from research data) ──
+    for p in papers:
+        pid = build_node_id("paper", p.get("id", ""))
+        title = p.get("title", "")[:80]
+        add_n(pid, "paper", title, p.get("url", ""), {"confidence": p.get("confidence", 0)})
+        for tech_name in p.get("technologies", []):
+            tn = tech_name.strip()
+            tid = build_node_id("tech", tn)
+            add_n(tid, "tech", tn, f"technologies.html?q={tn}", {
+                "confidence": tech_index.get(tn, {}).get("confidence", 0),
+                "maturity": tech_index.get(tn, {}).get("maturity", ""),
+                "trend": tech_index.get(tn, {}).get("trend", ""),
+            })
+            add_edge(pid, tid, 5, [tn])
+
+    # ── 2. Technology ↔ Repo (tech name in repo topics/description) ──
+    # Limit to top 200 repos by stars to keep things manageable
+    sorted_repos = sorted(repos, key=lambda r: r.get("stargazers_count", r.get("stars", 0)), reverse=True)
+    for r in sorted_repos[:300]:
         name = r.get("full_name", r.get("name", ""))
         if not name:
             continue
-        nid = build_node_id("repo", name)
+        rid = build_node_id("repo", name)
         desc = r.get("description") or ""
         topics = " ".join(r.get("topics", []))
         lang = r.get("language") or ""
         stars = r.get("stargazers_count", r.get("stars", 0))
-        add_node(nid, "repo", name, f"https://github.com/{name}", {"stars": stars, "language": lang})
-        tokens = tokenize(desc + " " + topics + " " + lang)
-        tokens |= extract_phrases(desc + " " + topics)
-        index_tokens(nid, tokens)
+        add_n(rid, "repo", name, f"https://github.com/{name}", {"stars": stars, "language": lang})
 
-    # Idea nodes
+        haystack = (desc + " " + topics + " " + lang).lower()
+        matched_techs = set()
+        for tn in tech_index:
+            alias = tn.lower()
+            if alias in haystack or alias.replace(" ", "") in haystack or alias.replace("-", "") in haystack:
+                matched_techs.add(tn)
+        # Also check strong keywords
+        for kw in STRONG_TECH_KEYWORDS:
+            if kw in haystack:
+                matched_techs.add(kw)
+        for tn in matched_techs:
+            tid = build_node_id("tech", tn)
+            add_n(tid, "tech", tn)
+            add_edge(rid, tid, 3, [tn])
+
+    # ── 3. Technology ↔ Idea (tech name in idea title/description) ──
     for idea in ideas:
         iid = build_node_id("idea", idea.get("id", ""))
         title = idea.get("title", "")
         desc = idea.get("description", "")
         tags = " ".join(idea.get("tags", []))
-        cat = idea.get("category", "")
-        revenue = idea.get("revenue_signal") or ""
-        add_node(iid, "idea", title, idea.get("url", ""), {
+        revenue = bool(idea.get("revenue_signal"))
+        add_n(iid, "idea", title, idea.get("url", ""), {
             "source": idea.get("source", ""),
             "score": idea.get("score", 0),
-            "revenue": bool(idea.get("revenue_signal")),
+            "revenue": revenue,
             "composite_score": idea.get("composite_score", 0),
         })
-        tokens = tokenize(title + " " + desc + " " + tags + " " + cat + " " + revenue)
-        tokens |= extract_phrases(title + " " + desc + " " + tags)
-        index_tokens(iid, tokens)
 
-    # Technology nodes
-    for t in technologies:
-        tn = t.get("name", "")
-        if not tn:
-            continue
-        nid = build_node_id("tech", tn)
-        add_node(nid, "tech", tn, f"technologies.html?q={tn}", {
-            "confidence": t.get("confidence", 0),
-            "maturity": t.get("maturity", ""),
-            "trend": t.get("trend", ""),
-        })
-        tokens = tokenize(tn) | extract_phrases(tn)
-        index_tokens(nid, tokens)
+        haystack = (title + " " + desc + " " + tags).lower()
+        matched_techs = set()
+        for tn in tech_index:
+            alias = tn.lower()
+            if alias in haystack or alias.replace(" ", "") in haystack or alias.replace("-", "") in haystack:
+                matched_techs.add(tn)
+        for kw in STRONG_TECH_KEYWORDS:
+            if kw in haystack:
+                matched_techs.add(kw)
+        for tn in matched_techs:
+            tid = build_node_id("tech", tn)
+            add_n(tid, "tech", tn)
+            add_edge(iid, tid, 3, [tn])
 
-    # Paper nodes
-    for p in papers:
-        pid = build_node_id("paper", p.get("id", ""))
-        title = p.get("title", "")
-        summary = p.get("summary", "")
-        add_node(pid, "paper", title[:80], p.get("url", ""), {
-            "confidence": p.get("confidence", 0),
-        })
-        tokens = tokenize(title + " " + summary)
-        tokens |= extract_phrases(title + " " + summary)
-        # Also add technology mentions as strong links
-        for tech_name in p.get("technologies", []):
-            tech_nid = build_node_id("tech", tech_name)
-            if tech_nid in nodes:
-                tokens.add(tech_name.lower())
-        index_tokens(pid, tokens)
-
-    # ── Filter common tokens (>30% of all nodes) ──
-    total_nodes = len(nodes)
-    common_threshold = max(3, total_nodes * 0.30)
-    common_tokens = {tok for tok, count in frequency.items() if count > common_threshold}
-
-    # ── Build edges ──
-    edges: list[dict] = []
-    edge_set: set[tuple[str, str]] = set()
-
-    for tok, node_ids in inverted.items():
-        if tok in common_tokens:
-            continue
-        ids = [nid for nid in node_ids if nid in nodes]
-        if len(ids) < 2:
-            continue
-        for i in range(len(ids)):
-            for j in range(i + 1, len(ids)):
-                src, tgt = ids[i], ids[j]
-                if src == tgt:
-                    continue
-                key = (src, tgt) if src < tgt else (tgt, src)
-                if key in edge_set:
-                    continue
-                edge_set.add(key)
-                weight = 3 if tok in STRONG_TECH_KEYWORDS else 1
-                edges.append({"source": src, "target": tgt, "weight": weight, "keyword": tok})
-
-    # ── Merge multi-keyword edges ──
-    edge_map: dict[tuple[str, str], list[str]] = defaultdict(list)
+    # ── 4. Repo ↔ Idea (both connected to same technology) ──
+    # Find repo-idea pairs that share at least one technology
+    repo_techs: dict[str, set[str]] = {}
+    idea_techs: dict[str, set[str]] = {}
     for e in edges:
-        key = (e["source"], e["target"])
-        edge_map[key].append(e["keyword"])
+        s, t = e["source"], e["target"]
+        if s.startswith("repo:") and t.startswith("tech:"):
+            repo_techs.setdefault(s, set()).add(t)
+        elif s.startswith("tech:") and t.startswith("repo:"):
+            repo_techs.setdefault(t, set()).add(s)
+        if s.startswith("idea:") and t.startswith("tech:"):
+            idea_techs.setdefault(s, set()).add(t)
+        elif s.startswith("tech:") and t.startswith("idea:"):
+            idea_techs.setdefault(t, set()).add(s)
 
-    merged_edges = []
-    for (src, tgt), keywords in edge_map.items():
-        weight = min(10, 1 + sum(3 if kw in STRONG_TECH_KEYWORDS else 1 for kw in keywords))
-        merged_edges.append({
-            "source": src,
-            "target": tgt,
-            "weight": weight,
-            "keywords": keywords[:5],
-        })
+    for rid, rtechs in repo_techs.items():
+        for iid, itechs in idea_techs.items():
+            shared = rtechs & itechs
+            if shared:
+                add_edge(rid, iid, 2, [tn.replace("tech:", "") for tn in list(shared)[:3]])
 
-    # ── Prune to top 200 nodes by degree ──
+    # ── Bound to 200 nodes, keep the most connected ──
     degree: Counter = Counter()
-    for e in merged_edges:
+    for e in edges:
         degree[e["source"]] += e["weight"]
         degree[e["target"]] += e["weight"]
 
-    top_nodes = {nid for nid, _ in degree.most_common(200)}
-    # Always keep nodes with degree > 0
-    pruned_nodes = {nid: n for nid, n in nodes.items() if nid in top_nodes and degree.get(nid, 0) > 0}
-    pruned_node_ids = set(pruned_nodes.keys())
+    top_node_ids = {nid for nid, _ in degree.most_common(200)}
+    pruned_nodes = {nid: n for nid, n in nodes.items() if nid in top_node_ids}
+    pruned_ids = set(pruned_nodes.keys())
+    pruned_edges = [e for e in edges if e["source"] in pruned_ids and e["target"] in pruned_ids]
 
-    pruned_edges = [
-        e for e in merged_edges
-        if e["source"] in pruned_node_ids and e["target"] in pruned_node_ids
-    ]
+    by_type = Counter(n["type"] for n in pruned_nodes.values())
 
     # ── Stats ──
     by_type = Counter(n["type"] for n in pruned_nodes.values())

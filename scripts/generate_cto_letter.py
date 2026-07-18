@@ -31,18 +31,17 @@ def extract_accelerating_techs(technologies: list[dict], top_n: int = 3) -> list
     scored = [
         {
             "name": t.get("name", "?"),
-            "description": (t.get("description") or "")[:200],
+            "description": (t.get("name") or "?"),
             "trend": t.get("trend", "stable"),
             "confidence": t.get("confidence", 0),
             "maturity": t.get("maturity", "unknown"),
-            "growth": t.get("growth", 0),
-            "paper_count": len(t.get("papers") or []),
+            "paper_count": t.get("papers", 0) if isinstance(t.get("papers"), int) else len(t.get("papers") or []),
             "signal": t.get("trend", "stable"),
         }
         for t in technologies
         if t.get("trend") in ("rising", "breakout") and t.get("confidence", 0) >= 0.4
     ]
-    scored.sort(key=lambda x: (x["confidence"], x.get("growth", 0)), reverse=True)
+    scored.sort(key=lambda x: (x["confidence"], x.get("paper_count", 0)), reverse=True)
     return scored[:top_n]
 
 
@@ -67,15 +66,15 @@ def extract_revenue_ideas(ideas: list[dict], top_n: int = 3) -> list[dict]:
 
 def extract_hidden_gems(papers: list[dict], technologies: list[dict], top_n: int = 2) -> list[dict]:
     low_confidence = [t for t in technologies if t.get("confidence", 1) < 0.5 and t.get("trend") == "rising"]
-    low_confidence.sort(key=lambda t: t.get("growth", 0), reverse=True)
+    low_confidence.sort(key=lambda t: t.get("papers", 0), reverse=True)
     gems = []
     for t in low_confidence[:top_n]:
         related = [p for p in papers if t.get("name") in (p.get("technologies") or [])]
         gems.append({
             "technology": t.get("name", "?"),
-            "description": (t.get("description") or "")[:300],
+            "description": (t.get("name") or "?")[:300],
             "confidence": t.get("confidence", 0),
-            "growth": t.get("growth", 0),
+            "paper_count": t.get("papers", 0),
             "related_papers": [{"title": p.get("title", "?"), "url": p.get("url", "")} for p in related[:3]],
         })
     return gems

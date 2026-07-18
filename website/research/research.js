@@ -115,7 +115,10 @@ function renderBrief() {
     const box = document.getElementById('rd-brief');
     if (!state.brief || !state.brief.length) { box.hidden = true; return; }
     box.hidden = false;
-    document.getElementById('rd-brief-list').innerHTML = state.brief.map((b) => `<li>${esc(b)}</li>`).join('');
+    document.getElementById('rd-brief-list').innerHTML = state.brief.map((b) => {
+        const text = typeof b === 'string' ? b : (b.technology ? `🔬 ${b.technology} — ${b.why_it_matters || ''}` : JSON.stringify(b));
+        return `<li>${esc(text)}</li>`;
+    }).join('');
 }
 
 function renderStats() {
