@@ -1,7 +1,70 @@
 'use strict';
 
-const state = { items: [], brief: [], meta: {}, search: '', timing: 'all', filtered: [] };
+const state = { items: [], brief: [], meta: {}, search: '', timing: 'all', filtered: [], viewMode: 'all', allDates: [] };
 const DATA_URL = 'data/report.json?v=' + Date.now();
+const TIMING_RANK = { breakout: 4, emerging: 3, steady: 2, saturated: 1 };
+
+function mergeReports(reports) {
+    const itemsMap = new Map();
+    const allBriefs = [];
+    const seenBriefs = new Set();
+    for (const r of reports) {
+        if (r.brief) {
+            for (const b of r.brief) {
+                const key = typeof b === 'string' ? b : (b.technology || b.why_it_matters || JSON.stringify(b));
+                if (!seenBriefs.has(key)) { seenBriefs.add(key); allBriefs.push(b); }
+            }
+        }
+        if (r.items) {
+            for (const item of r.items) {
+                const key = item.name || item.title;
+                if (!key) continue;
+                const existing = itemsMap.get(key);
+                if (!existing) {
+                    itemsMap.set(key, { ...item, _dates: [r.date || ''] });
+                } else {
+                    if ((item.opportunity || 0) > (existing.opportunity || 0)) existing.opportunity = item.opportunity;
+                    if ((TIMING_RANK[item.timing] || 0) > (TIMING_RANK[existing.timing] || 0)) existing.timing = item.timing;
+                    if (item.app_ideas) {
+                        if (!existing.app_ideas) existing.app_ideas = [];
+                        for (const idea of item.app_ideas) { if (!existing.app_ideas.includes(idea)) existing.app_ideas.push(idea); }
+                    }
+                    if (item.signals) {
+                        if (!existing.signals) existing.signals = [];
+                        for (const sig of item.signals) { if (!existing.signals.includes(sig)) existing.signals.push(sig); }
+                    }
+                    if (!existing._dates.includes(r.date)) existing._dates.push(r.date);
+                }
+            }
+        }
+    }
+    state.brief = allBriefs;
+    state.items = [...itemsMap.values()];
+    state.meta.date = reports.length === 1 ? reports[0].date : `${reports[reports.length - 1]?.date || ''} – ${reports[0]?.date || ''} (${reports.length} reports)`;
+}
+
+async function loadReportsForMode(viewMode, anchorDate) {
+    const allDates = state.allDates.slice().sort();
+    if (!allDates.length && !anchorDate) { await loadReport(null); return; }
+    let dates;
+    if (viewMode === 'today') {
+        dates = [anchorDate || allDates[0]];
+    } else if (viewMode === 'week') {
+        const end = new Date(anchorDate || allDates[0]);
+        const start = new Date(end); start.setDate(start.getDate() - 6);
+        dates = allDates.filter(d => { const t = new Date(d); return t >= start && t <= end; });
+        if (!dates.length) dates = [allDates[0]];
+    } else if (viewMode === 'month') {
+        const end = new Date(anchorDate || allDates[0]);
+        const start = new Date(end); start.setMonth(start.getMonth() - 1);
+        dates = allDates.filter(d => { const t = new Date(d); return t >= start && t <= end; });
+        if (!dates.length) dates = [allDates[0]];
+    } else {
+        dates = allDates.slice();
+    }
+    if (!dates.length) { await loadReport(null); return; }
+    await loadReport(dates);
+}
 const LLM7_URL = 'https://api.llm7.io/v1/chat/completions';
 const TIMING_LABEL = { breakout: '🚀 Breakout', emerging: '📈 Emerging', steady: '◦ Steady', saturated: '◦ Saturated' };
 
@@ -83,11 +146,16 @@ function render() {
     }).join('');
 }
 
+function briefText(b) {
+    if (typeof b === 'string') return b;
+    if (b && typeof b === 'object') return b.technology ? `${b.technology}: ${b.why_it_matters || b.opportunity || ''}` : JSON.stringify(b);
+    return String(b);
+}
 function renderBrief() {
     const box = document.getElementById('rep-brief');
     if (!state.brief.length) { box.hidden = true; return; }
     box.hidden = false;
-    document.getElementById('rep-brief-list').innerHTML = state.brief.map((b) => `<li>${esc(b)}</li>`).join('');
+    document.getElementById('rep-brief-list').innerHTML = state.brief.map((b) => `<li>${esc(briefText(b))}</li>`).join('');
 }
 
 // ── Export / share / Ask AI ───────────────────────────────────────────────────
@@ -568,6 +636,7 @@ function populateDates(result) {
     const sel = document.getElementById('rep-datesel');
     const savedCount = document.getElementById('rep-saved-count');
     const { dates, localDates } = result;
+    state.allDates = dates.slice();
     if (!dates.length) { document.querySelector('.rep-datebar').hidden = true; return; }
     sel.innerHTML = dates.map(d => {
         const isLocal = localDates.includes(d);
@@ -578,24 +647,65 @@ function populateDates(result) {
         savedCount.textContent = localDates.length ? `🔴 ${localDates.length} saved` : '';
     }
 }
-async function loadReport(date) {
+
+function setViewMode(mode) {
+    state.viewMode = mode;
+    document.querySelectorAll('.rep-viewmode .rep-chip').forEach(c => c.classList.toggle('active', c.dataset.view === mode));
+    const singleMode = mode === 'today';
+    document.getElementById('rep-datesel').hidden = !singleMode;
+    document.getElementById('rep-datelabel').hidden = !singleMode;
+    const anchor = document.getElementById('rep-datesel').value || state.allDates[0];
+    loadReportsForMode(mode, anchor).catch(e => {
+        document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">${esc(e.message)}</div>`;
+    });
+}
+async function loadReport(dates) {
+    if (typeof dates === 'string' || typeof dates === 'number') {
+        dates = [String(dates)];
+    }
+    if (Array.isArray(dates) && dates.length > 1) {
+        const localReports = getLocalReports();
+        const reports = await Promise.all(dates.map(async (d) => {
+            if (localReports[d]) return localReports[d];
+            try {
+                const res = await fetch(`data/reports/${d}.json?cb=${Date.now()}`);
+                if (res.ok) return await res.json();
+            } catch {}
+            return null;
+        }));
+        const valid = reports.filter(Boolean);
+        if (valid.length) {
+            mergeReports(valid);
+            const range = `${dates[dates.length - 1]} – ${dates[0]} (${dates.length} reports)`;
+            showLiveReportView(false);
+            document.getElementById('rep-date').textContent = 'AI Opportunity Report · ' + range;
+            document.getElementById('stat-count').textContent = state.items.length;
+            document.getElementById('stat-breakout').textContent = state.items.filter((i) => i.timing === 'breakout').length;
+            document.getElementById('stat-model').textContent = 'Merged';
+            renderBrief();
+            applyFilters();
+            return;
+        }
+    }
+
+    const singleDate = Array.isArray(dates) ? dates[0] : dates;
     const localReports = getLocalReports();
-    if (localReports[date]) {
+    if (singleDate && localReports[singleDate]) {
         showLiveReportView(true);
-        renderLiveReport(localReports[date], localReports[date]._analytics || null, true);
-        document.getElementById('rep-date').textContent = 'Live Market Report · ' + date;
+        renderLiveReport(localReports[singleDate], localReports[singleDate]._analytics || null, true);
+        document.getElementById('rep-date').textContent = 'Live Market Report · ' + singleDate;
         return;
     }
     showLiveReportView(false);
-    const url = date ? `data/reports/${date}.json?cb=${Date.now()}` : DATA_URL;
+    const url = singleDate ? `data/reports/${singleDate}.json?cb=${Date.now()}` : DATA_URL;
     const res = await fetch(url);
     if (!res.ok) throw new Error('report HTTP ' + res.status);
     const d = await res.json();
     state.items = (d.items || []).slice();
     state.brief = d.brief || [];
-    state.meta = { date: d.date || date, backend: d.backend, model: d.model };
+    state.meta = { date: d.date || singleDate, backend: d.backend, model: d.model };
 
-    document.getElementById('rep-date').textContent = 'AI Opportunity Report · ' + (d.date || date || '');
+    document.getElementById('rep-date').textContent = 'AI Opportunity Report · ' + (d.date || singleDate || '');
     document.getElementById('stat-count').textContent = state.items.length;
     document.getElementById('stat-breakout').textContent = state.items.filter((i) => i.timing === 'breakout').length;
     document.getElementById('stat-model').textContent = d.backend === 'lmstudio' ? 'Local LLM' : 'LLM7';
@@ -632,22 +742,32 @@ function bind() {
     document.getElementById('rep-publish-btn')?.addEventListener('click', publishLiveReport);
     document.getElementById('rep-analyze-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') runAnalyze(); });
     document.getElementById('rep-datesel').addEventListener('change', (e) => {
-        loadReport(e.target.value).catch((err) => {
-            document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Could not load ${esc(e.target.value)}: ${esc(err.message)}</div>`;
-            document.getElementById('rep-live-output').hidden = true;
-        });
+        if (state.viewMode === 'today') {
+            loadReport(e.target.value).catch((err) => {
+                document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Could not load ${esc(e.target.value)}: ${esc(err.message)}</div>`;
+                document.getElementById('rep-live-output').hidden = true;
+            });
+        } else {
+            loadReportsForMode(state.viewMode, e.target.value).catch((err) => {
+                document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">${esc(err.message)}</div>`;
+            });
+        }
     });
+    document.querySelectorAll('.rep-viewmode .rep-chip').forEach(c => c.addEventListener('click', () => setViewMode(c.dataset.view)));
 }
 
 async function init() {
     bind();
     const idxResult = await loadIndex();
     populateDates(idxResult);
-    try {
-        if (idxResult.dates.length) await loadReport(idxResult.dates[0]);
-        else await loadReport(null, true);
-    } catch (e) {
-        document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Report not available yet: ${esc(e.message)}</div>`;
+    if (idxResult.dates.length) {
+        setViewMode('all');
+    } else {
+        try {
+            await loadReport(null, true);
+        } catch (e) {
+            document.getElementById('rep-grid').innerHTML = `<div class="rep-empty">Report not available yet: ${esc(e.message)}</div>`;
+        }
     }
 }
 

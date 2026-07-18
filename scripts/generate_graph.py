@@ -83,9 +83,17 @@ def build_nodes_and_edges() -> dict:
     # ── Load all 3 datasets ──
     repos_data = load_json(DATA / "repos.json")
     if isinstance(repos_data, dict):
-        repos = repos_data.get("repos", repos_data.get("items", []))
+        repos = repos_data.get("starred_repos", repos_data.get("repos", repos_data.get("items", [])))
     else:
         repos = []
+    # Also include trending repos
+    trending = repos_data.get("trending_repos", []) if isinstance(repos_data, dict) else []
+    if trending:
+        existing_names = {r.get("full_name", r.get("name", "")) for r in repos}
+        for r in trending:
+            name = r.get("full_name", r.get("name", ""))
+            if name and name not in existing_names:
+                repos.append(r)
 
     ideas_data = load_json(DATA / "ideas.json")
     ideas = ideas_data.get("ideas", [])
@@ -240,13 +248,34 @@ def build_nodes_and_edges() -> dict:
             if shared:
                 add_edge(rid, iid, 2, [tn.replace("tech:", "") for tn in list(shared)[:3]])
 
-    # ── Bound to 200 nodes, keep the most connected ──
+    # ── Stratified node selection (200 max, fair per-type representation) ──
     degree: Counter = Counter()
     for e in edges:
         degree[e["source"]] += e["weight"]
         degree[e["target"]] += e["weight"]
 
-    top_node_ids = {nid for nid, _ in degree.most_common(200)}
+    # Group node IDs by type, then sort each group by degree descending
+    by_type_nodes: dict[str, list[str]] = defaultdict(list)
+    for nid in nodes:
+        t = nodes[nid]["type"]
+        by_type_nodes[t].append(nid)
+    for t in by_type_nodes:
+        by_type_nodes[t].sort(key=lambda nid: degree.get(nid, 0), reverse=True)
+
+    available = {t: len(nids) for t, nids in by_type_nodes.items()}
+    # Fixed per-type budgets for balanced representation
+    budgets = {
+        "paper": min(available.get("paper", 0), 30),
+        "tech": min(available.get("tech", 0), 50),
+        "idea": min(available.get("idea", 0), 80),
+    }
+    used = sum(budgets.values())
+    budgets["repo"] = min(available.get("repo", 0), 200 - used)
+
+    top_node_ids: set[str] = set()
+    for t, budget in budgets.items():
+        top_node_ids.update(by_type_nodes[t][:budget])
+
     pruned_nodes = {nid: n for nid, n in nodes.items() if nid in top_node_ids}
     pruned_ids = set(pruned_nodes.keys())
     pruned_edges = [e for e in edges if e["source"] in pruned_ids and e["target"] in pruned_ids]
