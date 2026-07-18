@@ -276,19 +276,28 @@ async function runAnalyze() {
 }
 
 // ── Live Market Report (client-side generation) ──────────────────────────────
-const REPORT_SYS = `You are a senior startup analyst and market intelligence expert. Your job is to analyze a dataset of trending open-source AI repositories and produce a structured market report.
+const REPORT_SYS = `You are a battle-tested startup studio partner — you've built and sold 3 companies, advised 20+ YC startups, and your last fund returned 4x. You do not write fluff.
 
-Return STRICT JSON only — no markdown, no prose outside the JSON. Use this exact structure:
+Your job: read the data I give you (repo trends, startup ideas, research signals, graph connections, and a weekly CTO brief), then synthesize a market intelligence report that a solo founder can print and build from.
+
+Rules:
+- No generic advice. Every recommendation must cite a specific repo, tech, or idea from the data.
+- If a market gap is "build an AI wrapper" — call it out and reject it. Push for defensible ideas.
+- Surface which technologies have the strongest open-source momentum and which are overhyped.
+- Rank opportunities by: (a) revenue proximity, (b) technical difficulty, (c) competitive moat.
+- The "conclusion" must be a single, memorable takeaway — the one thing to act on this week.
+
+Return STRICT JSON only. No markdown, no prose outside the JSON. Use this exact structure:
 {
-  "market_overview": "2-3 sentence summary of the overall market state",
+  "market_overview": "3-4 sentence executive summary — what a founder needs to know right now",
   "key_stats": { "total_repos": number, "total_gainers": number, "total_weekly_stars": number, "top_category": "string" },
-  "category_breakdown": [{"name":"string","count":number,"percent":number,"insight":"1 sentence"}],
-  "opportunities": [{"title":"string","description":"1-2 sentences","why_now":"string","revenue":"string","difficulty":"easy|medium|hard","signal_repo":"string"}],
-  "trends": [{"trend":"string","evidence":"string","opportunity":"string"}],
-  "market_gaps": [{"gap":"string","why_untapped":"string","opportunity_size":"small|medium|large"}],
-  "recommendations": [{"idea":"string","target":"string","revenue_model":"string","mvp_weeks":number,"why_win":"string"}],
-  "risks": ["string"],
-  "conclusion": "1-2 sentence final take"
+  "category_breakdown": [{"name":"string","count":number,"percent":number,"insight":"1 sentence that a founder can act on"}],
+  "opportunities": [{"title":"short product name","description":"1-2 sentences","why_now":"timing rationale tied to specific data","revenue":"concrete revenue model","difficulty":"easy|medium|hard","signal_repo":"real GitHub repo name"}],
+  "trends": [{"trend":"what's shifting","evidence":"specific data point","opportunity":"what a founder should do"}],
+  "market_gaps": [{"gap":"description","why_untapped":"reason incumbents missed it","opportunity_size":"small|medium|large"}],
+  "recommendations": [{"idea":"concept name","target":"who it's for","revenue_model":"how it makes money","mvp_weeks":number,"why_win":"specific moat or timing advantage"}],
+  "risks": ["string — what could kill these opportunities"],
+  "conclusion": "one sharp takeaway — act or pass"
 }`;
 
 function computeAnalytics(repos) {
@@ -310,20 +319,77 @@ function computeAnalytics(repos) {
     return { categories: sortedCats, catGrowth: catGrowthSorted, topD7, topD1, languages: langSorted, totalRepos: repos.length, totalD7, gainers };
 }
 
-function buildReportPrompt(a) {
+function buildReportPrompt(a, extras) {
     const catLines = a.categories.map(([n, c]) => `${n}: ${c} (${(c / a.totalRepos * 100).toFixed(0)}%)`).join('\n');
     const growthLines = a.catGrowth.map(([n, c]) => `${n}: +${c.toLocaleString()} stars`).join('\n');
     const topRepoLines = a.topD7.map((r, i) => `${i + 1}. ${r.name} +${r.star_delta_7d}★ (${r.stars.toLocaleString()} total, ${r.category})`).join('\n');
     const topD1Lines = a.topD1.map((r, i) => `${i + 1}. ${r.name} +${r.star_delta_1d}★/day`).join('\n');
     const langLines = a.languages.map(([l, c]) => `${l}: ${c}`).join('\n');
-    return `I analyzed ${a.totalRepos} trending open-source AI repositories. Here are the facts:\n\n` +
+
+    let prompt = `I analyzed ${a.totalRepos} trending open-source AI repositories. Here are the facts:\n\n` +
         `TOTAL: ${a.totalRepos} repos, ${a.gainers} gaining stars this week, +${a.totalD7.toLocaleString()} total weekly stars.\n\n` +
         `CATEGORIES:\n${catLines}\n\n` +
         `CATEGORY GROWTH (total stars gained):\n${growthLines}\n\n` +
         `TOP 15 GAINERS THIS WEEK:\n${topRepoLines}\n\n` +
         `TOP 10 DAILY GAINERS:\n${topD1Lines}\n\n` +
-        `TOP LANGUAGES:\n${langLines}\n\n` +
-        `Based on this data, generate a structured market report identifying: market overview, top opportunities for startups, emerging trends, market gaps, specific recommendations with revenue models, and risks. Focus on practical, actionable insights for a solo founder or small team looking to build something valuable.`;
+        `TOP LANGUAGES:\n${langLines}\n\n`;
+
+    // ── Additional data sources ──
+
+    if (extras.ideas?.length) {
+        prompt += `STARTUP IDEAS WITH REVENUE SIGNALS (${extras.ideas.length} found):\n`;
+        prompt += extras.ideas.slice(0, 15).map((i, idx) =>
+            `${idx + 1}. ${i.title} — rev: ${i.revenue_signal || '?'} — source: ${i.source || '?'} — score: ${i.composite_score || i.score || '?'}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.techs?.length) {
+        prompt += `TRENDING TECHNOLOGIES (${extras.techs.length} tracked):\n`;
+        const hot = extras.techs.filter(t => t.trend === 'breakout' || (t.trend === 'rising' && t.confidence >= 0.7));
+        prompt += (hot.length ? hot : extras.techs).slice(0, 12).map((t, idx) =>
+            `${idx + 1}. ${t.name} — trend: ${t.trend}, confidence: ${t.confidence}, maturity: ${t.maturity}, papers: ${t.papers || 0}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.graphRepos?.length) {
+        prompt += `TOP CONNECTED REPOS IN DISCOVERY GRAPH (${extras.graphRepos.length} nodes):\n`;
+        prompt += extras.graphRepos.slice(0, 10).map((r, idx) =>
+            `${idx + 1}. ${r.label} — ${r.stars?.toLocaleString() || '?'} stars, language: ${r.language || '?'}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.ctoLetter?.notable_repos?.length) {
+        prompt += `WEEKLY CTO LETTER — NOTABLE REPOS:\n`;
+        prompt += extras.ctoLetter.notable_repos.slice(0, 5).map((r, idx) =>
+            `${idx + 1}. ${r.name} — ${r.stars?.toLocaleString() || '?'}★ — ${r.description?.slice(0, 80) || ''}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.ctoLetter?.accelerating_technologies?.length) {
+        prompt += `WEEKLY CTO LETTER — ACCELERATING TECHNOLOGIES:\n`;
+        prompt += extras.ctoLetter.accelerating_technologies.map((t, idx) =>
+            `${idx + 1}. ${t.name} — signal: ${t.signal}, confidence: ${t.confidence}, papers: ${t.paper_count}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.ctoLetter?.hidden_gems?.length) {
+        prompt += `WEEKLY CTO LETTER — HIDDEN GEMS (under-explored techs):\n`;
+        prompt += extras.ctoLetter.hidden_gems.map((g, idx) =>
+            `${idx + 1}. ${g.technology} — confidence: ${g.confidence}, papers: ${g.paper_count}`
+        ).join('\n') + '\n\n';
+    }
+
+    if (extras.prevReport) {
+        const pr = extras.prevReport;
+        prompt += `YESTERDAY'S REPORT SUMMARY:\n` +
+            `  Overview: ${(pr.market_overview || '').slice(0, 200)}\n` +
+            `  Opportunities mentioned: ${(pr.opportunities || []).map(o => o.title).join(', ')}\n` +
+            `  Recommendations: ${(pr.recommendations || []).map(r => r.idea).join(', ')}\n\n`;
+    }
+
+    prompt += `Based on ALL the data above, generate a structured market report. Identify opportunities, trends, market gaps, and ranked recommendations. Be specific — cite repo names, tech names, and revenue models. No generic fluff. Focus on what a solo founder or small team should build right now.`;
+
+    return prompt;
 }
 
 async function generateLiveReport() {
@@ -341,17 +407,45 @@ async function generateLiveReport() {
     loadingText.textContent = 'Fetching repo data...';
 
     try {
-        const res = await fetch('data/repos.json?v=' + Date.now());
-        if (!res.ok) throw new Error('Failed to load repo data (HTTP ' + res.status + ')');
-        const data = await res.json();
-        const repos = data.starred_repos || data.repos || [];
+        loadingText.textContent = 'Fetching repo data...';
+        const [repoRes, ideaRes, researchRes, graphRes, ctoRes, prevRes] = await Promise.all([
+            fetch('data/repos.json?v=' + Date.now()),
+            fetch('data/ideas.json?v=' + Date.now()).catch(() => null),
+            fetch('research/json/index.json?v=' + Date.now()).catch(() => null),
+            fetch('data/graph.json?v=' + Date.now()).catch(() => null),
+            fetch('data/cto-letter.json?v=' + Date.now()).catch(() => null),
+            fetch('data/report.json?v=' + Date.now()).catch(() => null),
+        ]);
+        if (!repoRes.ok) throw new Error('Failed to load repo data (HTTP ' + repoRes.status + ')');
+        const repoData = await repoRes.json();
+        const repos = repoData.starred_repos || repoData.repos || [];
         if (!repos.length) throw new Error('No repo data found');
+
         loadingText.textContent = `Computing analytics on ${repos.length} repos...`;
-
         const analytics = computeAnalytics(repos);
-        loadingText.textContent = 'Generating report via LLM7 AI...';
 
-        const prompt = buildReportPrompt(analytics);
+        const extras = {};
+        if (ideaRes && ideaRes.ok) {
+            const d = await ideaRes.json();
+            extras.ideas = (d.ideas || []).filter(i => i.revenue_signal).slice(0, 20);
+        }
+        if (researchRes && researchRes.ok) {
+            const d = await researchRes.json();
+            extras.techs = d.technologies || [];
+        }
+        if (graphRes && graphRes.ok) {
+            const d = await graphRes.json();
+            extras.graphRepos = (d.nodes || []).filter(n => n.type === 'repo').slice(0, 15);
+        }
+        if (ctoRes && ctoRes.ok) {
+            extras.ctoLetter = await ctoRes.json();
+        }
+        if (prevRes && prevRes.ok) {
+            extras.prevReport = await prevRes.json();
+        }
+
+        loadingText.textContent = 'Generating report via LLM7 AI...';
+        const prompt = buildReportPrompt(analytics, extras);
         const raw = await llm7([{ role: 'system', content: REPORT_SYS }, { role: 'user', content: prompt }], 0.4);
         const report = parseJson(raw);
         if (!report) throw new Error('Could not parse AI response — try again');
