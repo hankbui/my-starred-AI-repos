@@ -65,7 +65,7 @@ def extract_revenue_ideas(ideas: list[dict], top_n: int = 3) -> list[dict]:
 
 
 def extract_hidden_gems(papers: list[dict], technologies: list[dict], top_n: int = 2) -> list[dict]:
-    low_confidence = [t for t in technologies if t.get("confidence", 1) < 0.5 and t.get("trend") == "rising"]
+    low_confidence = [t for t in technologies if t.get("confidence", 1) < 0.75 and t.get("trend") in ("rising", "emerging")]
     low_confidence.sort(key=lambda t: t.get("papers", 0), reverse=True)
     gems = []
     for t in low_confidence[:top_n]:
@@ -106,7 +106,15 @@ def build_letter() -> dict:
     ideas = ideas_data.get("ideas", [])
     repos = load_json(DATA / "repos.json")
     if isinstance(repos, dict):
-        repos = repos.get("repos", repos.get("items", []))
+        repo_data = repos
+        repos = repo_data.get("starred_repos", repo_data.get("repos", repo_data.get("items", [])))
+        trending = repo_data.get("trending_repos", [])
+        if trending:
+            existing_names = {r.get("full_name", r.get("name", "")) for r in repos}
+            for r in trending:
+                name = r.get("full_name", r.get("name", ""))
+                if name and name not in existing_names:
+                    repos.append(r)
 
     papers = research_data.get("papers", [])
     technologies = research_data.get("technologies", [])
