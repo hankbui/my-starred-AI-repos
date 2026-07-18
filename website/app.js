@@ -1943,20 +1943,35 @@ async function initPageViewer() {
     const countEl = document.getElementById('page-viewer-count');
     if (!countEl) return;
 
-    // Local browser view counter
     const KEY = 'page_view_count';
-    let localCount = Number(localStorage.getItem(KEY) || 0);
-    localCount++;
-    try { localStorage.setItem(KEY, String(localCount)); } catch {}
+    let count = 0;
+    let fromCookie = false;
 
-    // Try to get repo stars for social proof
+    // 1. Read from cookie (most persistent)
+    const cMatch = document.cookie.match(new RegExp('(?:^|;\\s*)' + KEY + '=([^;]*)'));
+    if (cMatch) count = parseInt(cMatch[1], 10) || 0;
+
+    // 2. Read from localStorage, take the higher value
+    try {
+        const ls = parseInt(localStorage.getItem(KEY), 10);
+        if (ls > count) count = ls;
+    } catch {}
+
+    count++;
+    fromCookie = !!cMatch;
+
+    // 3. Save to both
+    try { localStorage.setItem(KEY, String(count)); } catch {}
+    document.cookie = KEY + '=' + count + ';path=/;max-age=' + (365 * 86400 * 10); // 10 years
+
+    // 4. Try to get repo stars for social proof
     let stars = null;
     try {
         const r = await fetch('https://api.github.com/repos/hankbui/my-starred-AI-repos');
         if (r.ok) stars = (await r.json()).stargazers_count;
     } catch {}
 
-    countEl.innerHTML = `<span class="viewer-local">${localCount.toLocaleString()} views</span>` +
+    countEl.innerHTML = `<span class="viewer-local">${count.toLocaleString()} views</span>` +
         (stars ? ` · <span class="viewer-stars">⭐ ${stars.toLocaleString()}</span>` : ' • <span class="viewer-offline">offline</span>');
 }
 
