@@ -354,9 +354,11 @@
                     <label class="control">
                         <span class="control-label">Sort</span>
                         <select id="sort-by">
-                            <option value="score">Most votes</option>
+                            <option value="composite">Recommended (AI + revenue + votes)</option>
+                            <option value="score">Popularity (raw score)</option>
                             <option value="date">Newest</option>
                             <option value="comments">Most comments</option>
+                            <option value="ai_potential">AI potential</option>
                         </select>
                     </label>
                     <button class="live-toggle" id="live-toggle" type="button">
@@ -365,6 +367,9 @@
                     </button>
                 </div>
                 <div class="source-filters" id="source-filters"></div>
+                <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">
+                    <button class="source-filter" id="filter-revenue" style="border-color:var(--success);color:var(--success)" type="button">💰 Has revenue signal</button>
+                </div>
                 <div style="display:flex;gap:8px;align-items:center;margin-top:10px">
                     <button class="matrix-btn" id="matrix-toggle" type="button">
                         <span>⬡</span>
@@ -533,11 +538,12 @@
             perPage: 25,
             search: '',
             minScore: 0,
-            sortBy: 'score',
+            sortBy: 'composite',
             liveMode: false,
             activeTab: 'all',
             updatedAt: '',
             matrixMode: false,
+            filterRevenue: false,
         };
 
         const SOURCE_NAMES = {
@@ -718,10 +724,13 @@
                 }
             }
             if(minScore>0) filtered = filtered.filter(i => (i.score||0) >= minScore);
+            if(state.filterRevenue) filtered = filtered.filter(i => i.revenue_signal);
 
-            if(sortBy==='score') filtered.sort((a,b)=>(b.score||0)-(a.score||0));
+            if(sortBy==='composite') filtered.sort((a,b)=>(b.composite_score||0)-(a.composite_score||0));
+            else if(sortBy==='score') filtered.sort((a,b)=>(b.score||0)-(a.score||0));
             else if(sortBy==='date') filtered.sort((a,b)=>new Date(b.date_published||b.date_collected)-new Date(a.date_published||a.date_collected));
             else if(sortBy==='comments') filtered.sort((a,b)=>(b.num_comments||0)-(a.num_comments||0));
+            else if(sortBy==='ai_potential') filtered.sort((a,b)=>(b.ai_potential||0)-(a.ai_potential||0));
 
             state.filteredIdeas = filtered;
             state.currentPage = 1;
@@ -807,6 +816,11 @@
             });
             document.getElementById('min-points').addEventListener('change', e => { state.minScore=Number(e.target.value); applyFilters(); });
             document.getElementById('sort-by').addEventListener('change', e => { state.sortBy=e.target.value; applyFilters(); });
+            document.getElementById('filter-revenue')?.addEventListener('click', e => {
+                state.filterRevenue = !state.filterRevenue;
+                e.currentTarget.classList.toggle('active', state.filterRevenue);
+                applyFilters();
+            });
             document.getElementById('prev-page').addEventListener('click', ()=>changePage(-1));
             document.getElementById('next-page').addEventListener('click', ()=>changePage(1));
             document.getElementById('live-toggle').addEventListener('click', async () => {

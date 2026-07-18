@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discovery Graph — AI Repos ↔ Ideas ↔ Research</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=20260718-1">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .rd-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .rd-back:hover { color:var(--accent); }
+        .rd-nav { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; }
+        .rd-nav a { padding:8px 16px; border-radius:999px; border:1px solid var(--border); color:var(--text-secondary); font-size:0.85rem; font-weight:600; text-decoration:none; transition:160ms ease; }
+        .rd-nav a:hover { color:var(--text-primary); border-color:var(--border-strong); background:rgba(99,207,255,0.08); }
+        .rd-nav a.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .dg-layout { display:grid; grid-template-columns:1fr 300px; gap:18px; min-height:500px; }
+        .dg-canvas { position:relative; border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; background:#060a0e; }
+        .dg-canvas svg { display:block; width:100%; height:600px; cursor:grab; }
+        .dg-canvas svg:active { cursor:grabbing; }
+
+        .dg-sidebar { display:flex; flex-direction:column; gap:12px; }
+        .dg-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .dg-card h3 { font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); margin-bottom:6px; }
+        .dg-detail-name { font-weight:700; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px; }
+        .dg-detail-name a { color:var(--accent); text-decoration:none; }
+        .dg-detail-name a:hover { text-decoration:underline; }
+        .dg-detail-meta { font-size:0.8rem; color:var(--text-secondary); }
+        .dg-detail-empty { font-size:0.82rem; color:var(--text-muted); }
+        .dg-conn-item { padding:6px 0; border-bottom:1px solid var(--border); font-size:0.82rem; }
+        .dg-conn-item:last-child { border-bottom:none; }
+        .dg-conn-item a { color:var(--accent); text-decoration:none; }
+        .dg-conn-item a:hover { text-decoration:underline; }
+        .dg-conn-weight { font-size:0.7rem; color:var(--text-muted); }
+
+        .dg-legend { display:flex; flex-direction:column; gap:6px; }
+        .dg-legend-item { display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--text-secondary); }
+        .dg-legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+        .dg-search { width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:10px; background:#0a0e13; color:var(--text-primary); font:inherit; font-size:0.85rem; box-sizing:border-box; }
+        .dg-search:focus { outline:none; border-color:var(--accent-strong); }
+
+        .dg-controls { display:flex; gap:8px; flex-wrap:wrap; }
+        .dg-controls button { padding:6px 12px; border:1px solid var(--border); border-radius:999px; background:transparent; color:var(--text-secondary); font-size:0.78rem; font-weight:600; cursor:pointer; transition:120ms ease; }
+        .dg-controls button:hover { border-color:var(--border-strong); color:var(--text-primary); background:rgba(156,169,184,0.06); }
+        .dg-controls button.active { background:rgba(99,207,255,0.1); border-color:var(--accent); color:var(--accent); }
+
+        .node-repo { fill:#4ac7ff; stroke:#1b374a; stroke-width:1.5; }
+        .node-repo:hover { stroke:#7fc4ff; stroke-width:2.5; }
+        .node-idea { fill:#5be0a8; stroke:#1a4a38; stroke-width:1.5; }
+        .node-idea:hover { stroke:#7fe0b8; stroke-width:2.5; }
+        .node-tech { fill:#a78bfa; stroke:#3b2f6e; stroke-width:1.5; }
+        .node-tech:hover { stroke:#c4b5fd; stroke-width:2.5; }
+        .node-paper { fill:#ffb857; stroke:#4a3820; stroke-width:1.5; }
+        .node-paper:hover { stroke:#ffcc7a; stroke-width:2.5; }
+        .link { stroke:rgba(156,169,184,0.1); stroke-width:1; }
+        .link-highlight { stroke:rgba(99,207,255,0.5); stroke-width:2; }
+        .label { fill:rgba(255,255,255,0.6); font-size:8px; font-family:system-ui,sans-serif; pointer-events:none; text-anchor:middle; }
+
+        .dg-empty { padding:60px; text-align:center; color:var(--text-secondary); font-size:0.9rem; }
+        .dg-stats { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; }
+        .dg-stat { padding:10px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:rgba(255,255,255,0.02); }
+        .dg-stat-val { font-family:"Space Grotesk",sans-serif; font-size:1.1rem; font-weight:700; }
+        .dg-stat-lbl { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; }
+
+        @media (max-width:860px) { .dg-layout { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="rd-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to dashboard
+                </a>
+                <span class="eyebrow">AI Technology Radar</span>
+                <h1>Discovery Graph</h1>
+                <p class="hero-subtitle">Connecting GitHub repos ↔ startup ideas ↔ research papers ↔ technologies through keyword overlap. Find what's related across all three data silos.</p>
+            </div>
+            <div class="dg-stats" id="dg-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <nav class="rd-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="today.html">Today</a>
+                <a href="weekly.html">Weekly</a>
+                <a href="technologies.html">Technologies</a>
+                <a href="product-opportunities.html">Opportunities</a>
+                <a href="radar.html">Radar</a>
+                <a href="trends.html">Trends</a>
+                <a href="innovation-map.html">Map</a>
+                <a href="discovery-graph.html" class="active">Discovery</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="archive.html">Archive</a>
+            </nav>
+
+            <div class="dg-layout">
+                <div class="dg-canvas" id="dg-canvas">
+                    <svg id="dg-svg"></svg>
+                </div>
+                <div class="dg-sidebar">
+                    <input type="search" class="dg-search" id="dg-search" placeholder="Search nodes..." spellcheck="false">
+                    <div class="dg-controls">
+                        <button id="dg-reset">Reset view</button>
+                        <button id="dg-filter-repo" class="active">Repos</button>
+                        <button id="dg-filter-idea" class="active">Ideas</button>
+                        <button id="dg-filter-tech" class="active">Tech</button>
+                        <button id="dg-filter-paper" class="active">Papers</button>
+                    </div>
+                    <div class="dg-card" id="dg-detail">
+                        <h3>Selected</h3>
+                        <div class="dg-detail-empty">Click a node to see connections</div>
+                    </div>
+                    <div class="dg-card">
+                        <h3>Legend</h3>
+                        <div class="dg-legend">
+                            <div class="dg-legend-item"><span class="dg-legend-dot" style="background:#4ac7ff"></span> GitHub Repo</div>
+                            <div class="dg-legend-item"><span class="dg-legend-dot" style="background:#5be0a8"></span> Startup Idea</div>
+                            <div class="dg-legend-item"><span class="dg-legend-dot" style="background:#a78bfa"></span> Technology</div>
+                            <div class="dg-legend-item"><span class="dg-legend-dot" style="background:#ffb857"></span> Research Paper</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            Auto-generated from repos, ideas &amp; research pipelines —
+            <a href="https://github.com/hankbui/my-starred-AI-repos" target="_blank" rel="noreferrer">View on GitHub</a>
+        </footer>
+    </div>
+
+    <script src="discovery-graph.js?v=20260718-1"></script>
+</body>
+</html>

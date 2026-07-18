@@ -34,10 +34,14 @@ jobs:
           LLM7_TOKEN: ${{ secrets.LLM7_TOKEN }}
         continue-on-error: true
 
+      - name: Generate discovery graph
+        run: python scripts/generate_graph.py || echo "Discovery graph generation skipped"
+        continue-on-error: true
+
       - name: Commit research data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add website/research/json/ data/research_cache.json || true
+          git add website/research/json/ data/research_cache.json website/data/graph.json || true
           git diff --staged --quiet || git commit -m "chore: update research intelligence data [skip ci]"
           git push

@@ -27,11 +27,13 @@ CREATE TABLE IF NOT EXISTS ideas (
     trend_score INTEGER DEFAULT 0,
     trend_direction TEXT,
     ai_potential INTEGER DEFAULT 0,
+    composite_score INTEGER DEFAULT 0,
     created_at TEXT DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_ideas_source ON ideas(source);
 CREATE INDEX IF NOT EXISTS idx_ideas_score ON ideas(score DESC);
+CREATE INDEX IF NOT EXISTS idx_ideas_composite ON ideas(composite_score DESC);
 CREATE INDEX IF NOT EXISTS idx_ideas_date ON ideas(date_collected DESC);
 CREATE INDEX IF NOT EXISTS idx_ideas_category ON ideas(category);
 """
@@ -44,6 +46,13 @@ class IdeasDB:
         self.conn = sqlite3.connect(str(self.db_path))
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
+        self._migrate_composite_column()
+
+    def _migrate_composite_column(self) -> None:
+        """Add composite_score column if an older DB lacks it (backward compat)."""
+        cols = {row["name"] for row in self.conn.execute("PRAGMA table_info(ideas)").fetchall()}
+        if "composite_score" not in cols:
+            self.conn.execute("ALTER TABLE ideas ADD COLUMN composite_score INTEGER DEFAULT 0")
 
     def upsert(self, idea: dict) -> bool:
         now = datetime.now(timezone.utc).isoformat()
@@ -56,8 +65,9 @@ class IdeasDB:
             """INSERT OR REPLACE INTO ideas
                (id, source, title, url, description, revenue_signal, category, tags,
                 score, num_comments, comments_url, date_published, date_collected,
-                raw_snippet, summary, business_model, trend_score, trend_direction, ai_potential)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                raw_snippet, summary, business_model, trend_score, trend_direction,
+                ai_potential, composite_score)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 idea["id"],
                 idea["source"],
@@ -78,9 +88,38 @@ class IdeasDB:
                 idea.get("trend_score", 0),
                 idea.get("trend_direction"),
                 idea.get("ai_potential", 0),
+                idea.get("composite_score", 0),
             ),
         )
         return self.conn.total_changes > 0
+
+    def write_composite_scores(self, scored: list[dict]) -> int:
+        """Persist composite_score (and refreshed enrichment fields) back to rows
+        that already exist. `scored` is the post-enrichment idea list."""
+        updated = 0
+        for idea in scored:
+            cur = self.conn.execute(
+                """UPDATE ideas
+                   SET composite_score = ?,
+                       ai_potential = ?,
+                       business_model = ?,
+                       trend_score = ?,
+                       trend_direction = ?,
+                       revenue_signal = ?
+                   WHERE id = ?""",
+                (
+                    idea.get("composite_score", 0),
+                    idea.get("ai_potential", 0),
+                    idea.get("business_model"),
+                    idea.get("trend_score", 0),
+                    idea.get("trend_direction"),
+                    idea.get("revenue_signal"),
+                    idea["id"],
+                ),
+            )
+            updated += cur.rowcount
+        self.conn.commit()
+        return updated
 
     def get_source_count(self, source: str) -> int:
         row = self.conn.execute(

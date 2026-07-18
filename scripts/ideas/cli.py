@@ -69,7 +69,7 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
 
     # Export to JSON
     all_ideas = database.get_all_ideas()
-    database.close()
+    # NOTE: do not close the DB yet — we persist composite scores back after enrichment.
 
     # Convert Row objects
     ideas_list = []
@@ -87,12 +87,20 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
 
     # Enrich all ideas
     print(f"\n{'='*50}")
-    print("Enriching ideas (revenue, business model, AI potential, trends)...")
+    print("Enriching ideas (revenue, business model, AI potential, trends, composite)...")
     ideas_list = enrich_all(ideas_list)
     enriched = sum(1 for i in ideas_list if i.get("business_model") or i.get("ai_potential"))
     trended = sum(1 for i in ideas_list if i.get("trend_direction") and i.get("trend_direction") != "stable")
-    print(f"  Enriched: {enriched} with BM/AI | {trended} with trend signals")
+    revenue_count = sum(1 for i in ideas_list if i.get("revenue_signal"))
+    print(f"  Enriched: {enriched} with BM/AI | {trended} with trend signals | {revenue_count} with revenue")
     print(f"  Trends API calls: {len(ideas_list)} ideas scanned")
+
+    # Persist composite + refreshed enrichment back to the DB so later runs read
+    # them from get_all_ideas() rather than recomputing from a cold state.
+    try:
+        database.write_composite_scores(ideas_list)
+    except Exception as e:
+        print(f"  [WARN] could not persist composite scores to DB: {e}")
 
     # Carry forward Reddit ideas when this run couldn't collect any (e.g. GitHub
     # Actions' datacenter IP is blocked from Reddit's public RSS). This keeps the
@@ -117,6 +125,12 @@ def run_all(db_path: str | Path, output_path: str | Path) -> dict:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(output, indent=2, ensure_ascii=False))
+
+    # Now safe to close — composite scores have been persisted and JSON written.
+    try:
+        database.close()
+    except Exception:
+        pass
 
     print(f"\n{'='*50}")
     print(f"Total ideas collected: {stats['total']}")

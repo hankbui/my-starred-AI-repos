@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly AI CTO Letter — Intelligence Brief</title>
+    <meta name="description" content="Auto-generated weekly letter: accelerating AI technologies, startup ideas with revenue signals, hidden-gem papers, and notable GitHub implementations.">
+    <meta property="og:title" content="Weekly AI CTO Letter">
+    <meta property="og:description" content="Three technologies accelerating. Three ideas generating revenue. One hidden gem. Every week, AI-generated.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260718-1">
+    <style>
+        .ctl-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .ctl-back:hover { color:var(--accent); }
+        .ctl-hero { padding:28px 32px; border:1px solid var(--border-strong); border-radius:var(--radius-lg); background:linear-gradient(135deg,rgba(99,207,255,0.06),rgba(140,111,255,0.04)); margin-bottom:22px; }
+        .ctl-hero h1 { margin:10px 0 6px; font-family:"Space Grotesk",sans-serif; font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-0.03em; }
+        .ctl-hero p { margin:0; color:var(--text-secondary); font-size:0.95rem; line-height:1.6; max-width:650px; }
+        .ctl-stats { display:flex; flex-wrap:wrap; gap:14px; margin-top:16px; }
+        .ctl-stat { padding:10px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:rgba(255,255,255,0.02); }
+        .ctl-stat-val { font-family:"Space Grotesk",sans-serif; font-size:1.3rem; font-weight:700; }
+        .ctl-stat-lbl { font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; margin-top:2px; }
+        .ctl-section { margin-bottom:24px; padding:20px 22px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .ctl-section h2 { margin:0 0 4px; font-family:"Space Grotesk",sans-serif; font-size:1.15rem; display:flex; align-items:center; gap:8px; }
+        .ctl-sub { margin:0 0 14px; font-size:0.85rem; color:var(--text-secondary); line-height:1.5; }
+        .ctl-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; }
+        .ctl-card { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:rgba(255,255,255,0.015); transition:border-color 160ms ease; }
+        .ctl-card:hover { border-color:var(--border-strong); }
+        .ctl-card h3 { margin:0 0 6px; font-size:0.96rem; }
+        .ctl-card h3 a { color:var(--text-primary); text-decoration:none; }
+        .ctl-card h3 a:hover { color:var(--accent); }
+        .ctl-card p { margin:0; font-size:0.86rem; color:var(--text-secondary); line-height:1.5; }
+        .ctl-badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.68rem; font-weight:700; margin-top:6px; }
+        .ctl-badge-accent { background:rgba(99,207,255,0.1); color:var(--accent); }
+        .ctl-badge-green { background:rgba(77,224,168,0.12); color:var(--success); }
+        .ctl-badge-purple { background:rgba(167,139,250,0.12); color:#c4b5fd; }
+        .ctl-badge-amber { background:rgba(255,184,87,0.12); color:var(--warning); }
+        .ctl-tag { display:inline-flex; padding:3px 9px; border-radius:999px; font-size:0.72rem; font-weight:700; border:1px solid var(--border); }
+        .ctl-empty { padding:60px 20px; text-align:center; color:var(--text-secondary); }
+        .ctl-empty a { color:var(--accent); }
+        .ctl-paper-link { font-size:0.82rem; color:var(--accent); text-decoration:none; }
+        .ctl-paper-link:hover { text-decoration:underline; }
+        .ctl-meta { font-size:0.82rem; color:var(--text-muted); margin-top:10px; }
+        .ctl-repo-lang { font-size:0.72rem; color:var(--text-muted); }
+        @media (max-width:640px) { .ctl-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <a class="ctl-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to directory
+                </a>
+                <span class="eyebrow">Weekly Intelligence Brief</span>
+                <h1>AI CTO Letter</h1>
+                <p>Auto-generated every week. Three accelerating technologies. Three startup ideas generating revenue. Hidden gems you might have missed. Notable repos worth watching.</p>
+            </div>
+            <div class="ctl-stats" id="ctl-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <div id="ctl-loading" class="ctl-empty">
+                <div class="spinner"></div>
+                <p style="margin-top:12px">Generating letter...</p>
+            </div>
+
+            <div id="ctl-content" hidden>
+                <section class="ctl-section" id="ctl-section-accel">
+                    <h2><span>🚀</span> Accelerating Technologies</h2>
+                    <p class="ctl-sub">Technologies whose research signal is rising fastest this week — confidence + growth score.</p>
+                    <div class="ctl-grid" id="ctl-accel-grid"></div>
+                </section>
+
+                <section class="ctl-section" id="ctl-section-ideas">
+                    <h2><span>💰</span> Startup Ideas With Revenue</h2>
+                    <p class="ctl-sub">Real ideas from the pipeline that have detectable revenue signals, sorted by AI potential.</p>
+                    <div class="ctl-grid" id="ctl-ideas-grid"></div>
+                </section>
+
+                <section class="ctl-section" id="ctl-section-gems">
+                    <h2><span>💎</span> Hidden Gems</h2>
+                    <p class="ctl-sub">Low-confidence technologies with surprisingly strong growth signals — ones to watch before they break out.</p>
+                    <div class="ctl-grid" id="ctl-gems-grid"></div>
+                </section>
+
+                <section class="ctl-section" id="ctl-section-repos">
+                    <h2><span>⭐</span> Notable Repositories</h2>
+                    <p class="ctl-sub">Top-starred repos this week across the AI landscape.</p>
+                    <div class="ctl-grid" id="ctl-repos-grid"></div>
+                </section>
+
+                <div class="ctl-meta" id="ctl-meta"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            Auto-generated weekly — <a href="https://github.com/hankbui/my-starred-AI-repos" target="_blank" rel="noreferrer">View on GitHub</a>
+        </footer>
+    </div>
+
+    <script>
+        const DATA_URL = 'data/cto-letter.json?v=' + Date.now();
+
+        function esc(v) { return String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;'); }
+
+        function fmtStars(n) { if (n >= 1000) return (n/1000).toFixed(1) + 'k'; return String(n); }
+
+        function renderTechBadge(t) {
+            const cls = t.trend === 'breakout' ? 'ctl-badge-amber' : t.growth > 0 ? 'ctl-badge-green' : 'ctl-badge-accent';
+            const trendStr = t.trend === 'breakout' ? '🔥 Breakout' : t.trend === 'rising' ? '↑ Rising' : t.trend;
+            return `<span class="ctl-badge ${cls}">${esc(trendStr)} · ${esc(t.maturity || '?')} · ${Math.round(t.confidence * 100)}% conf</span>`;
+        }
+
+        function renderRevenueTag(idea) {
+            const parts = [];
+            if (idea.revenue_signal) parts.push(`<span class="ctl-badge ctl-badge-green">${esc(idea.revenue_signal.slice(0, 30))}</span>`);
+            if (idea.business_model) parts.push(`<span class="ctl-tag">${esc(idea.business_model)}</span>`);
+            if (idea.ai_potential >= 50) parts.push(`<span class="ctl-badge ctl-badge-purple">AI ${idea.ai_potential}</span>`);
+            return parts.join(' ');
+        }
+
+        async function loadLetter() {
+            try {
+                const r = await fetch(DATA_URL);
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                const data = await r.json();
+                renderLetter(data);
+            } catch (e) {
+                document.getElementById('ctl-loading').innerHTML = `
+                    <div class="ctl-empty">
+                        <p>No CTO Letter available yet.</p>
+                        <p style="font-size:0.84rem;color:var(--text-muted);margin-top:6px">${esc(e.message)}</p>
+                        <p style="margin-top:10px">The letter is generated weekly via the data pipeline. Check back after the next run.</p>
+                    </div>`;
+            }
+        }
+
+        function renderLetter(data) {
+            document.getElementById('ctl-loading').hidden = true;
+            document.getElementById('ctl-content').hidden = false;
+
+            const meta = data.meta || {};
+            document.getElementById('ctl-stats').innerHTML = `
+                <div class="ctl-stat"><div class="ctl-stat-val">${meta.papers_tracked || '?'}</div><div class="ctl-stat-lbl">Papers tracked</div></div>
+                <div class="ctl-stat"><div class="ctl-stat-val">${meta.technologies_tracked || '?'}</div><div class="ctl-stat-lbl">Technologies</div></div>
+                <div class="ctl-stat"><div class="ctl-stat-val">${meta.ideas_tracked || '?'}</div><div class="ctl-stat-lbl">Startup ideas</div></div>
+                <div class="ctl-stat"><div class="ctl-stat-val">${meta.repos_tracked || '?'}</div><div class="ctl-stat-lbl">Repos tracked</div></div>
+            `;
+
+            const accel = data.accelerating_technologies || [];
+            const ideas = data.startup_ideas_with_revenue || [];
+            const gems = data.hidden_gems || [];
+            const repos = data.notable_repos || [];
+
+            if (accel.length) {
+                document.getElementById('ctl-accel-grid').innerHTML = accel.map(t => `
+                    <div class="ctl-card">
+                        <h3>${esc(t.name)}</h3>
+                        <p>${esc(t.description)}</p>
+                        <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+                            ${renderTechBadge(t)}
+                            <span class="ctl-repo-lang">${t.paper_count} papers</span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('ctl-section-accel').hidden = true;
+            }
+
+            if (ideas.length) {
+                document.getElementById('ctl-ideas-grid').innerHTML = ideas.map(i => `
+                    <div class="ctl-card">
+                        <h3><a href="${esc(i.url)}" target="_blank" rel="noreferrer">${esc(i.title)}</a></h3>
+                        <p>Source: ${esc(i.source)}${i.category ? ' · ' + esc(i.category) : ''}</p>
+                        <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+                            ${renderRevenueTag(i)}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('ctl-section-ideas').hidden = true;
+            }
+
+            if (gems.length) {
+                document.getElementById('ctl-gems-grid').innerHTML = gems.map(g => `
+                    <div class="ctl-card">
+                        <h3>${esc(g.technology)}</h3>
+                        <p>${esc(g.description)}</p>
+                        <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">
+                            <span class="ctl-badge ctl-badge-amber">${Math.round(g.confidence * 100)}% confidence</span>
+                            <span class="ctl-badge ctl-badge-accent">Growth: ${g.growth || '?'}</span>
+                        </div>
+                        ${g.related_papers?.length ? `
+                            <div style="margin-top:8px;font-size:0.8rem;color:var(--text-muted)">Related papers:</div>
+                            ${g.related_papers.map(p => `<div><a class="ctl-paper-link" href="${esc(p.url)}" target="_blank" rel="noreferrer">${esc(p.title)}</a></div>`).join('')}
+                        ` : ''}
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('ctl-section-gems').hidden = true;
+            }
+
+            if (repos.length) {
+                document.getElementById('ctl-repos-grid').innerHTML = repos.map(r => `
+                    <div class="ctl-card">
+                        <h3><a href="${esc(r.url)}" target="_blank" rel="noreferrer">${esc(r.name)}</a></h3>
+                        <p>${esc(r.description)}</p>
+                        <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+                            <span class="ctl-tag">⭐ ${fmtStars(r.stars)}</span>
+                            ${r.language ? `<span class="ctl-repo-lang">${esc(r.language)}</span>` : ''}
+                            ${r.category ? `<span class="ctl-badge ctl-badge-accent">${esc(r.category)}</span>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('ctl-section-repos').hidden = true;
+            }
+
+            const genAt = data.generated_at ? new Date(data.generated_at) : null;
+            document.getElementById('ctl-meta').textContent = genAt
+                ? 'Generated ' + genAt.toLocaleDateString() + ' ' + genAt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})
+                : '';
+        }
+
+        loadLetter();
+    </script>
+</body>
+</html>
