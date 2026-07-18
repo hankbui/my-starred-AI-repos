@@ -156,7 +156,10 @@ window.buildPrompt = function () {
 
     let text = `Research Intelligence Report — ${state.meta.date || 'latest'}\n\n`;
     if (state.brief.length) {
-        text += 'Brief:\n' + state.brief.map((b) => '- ' + b).join('\n') + '\n\n';
+        text += 'Brief:\n' + state.brief.map((b) => {
+          const s = typeof b === 'string' ? b : (b.technology ? `🔬 ${b.technology} — ${b.why_it_matters || ''}` : JSON.stringify(b));
+          return '- ' + s;
+        }).join('\n') + '\n\n';
     }
     text += `Papers (${papers.length}):\n`;
     papers.forEach((p, i) => {

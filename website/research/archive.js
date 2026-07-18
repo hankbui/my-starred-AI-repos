@@ -110,7 +110,10 @@
     // Brief
     html += '<section class="report-section"><h2>🧠 Intelligence Brief</h2><div class="brief-list">'
     if (brief.length) {
-      html += brief.map(s => `<div class="brief-item">${escHtml(s)}</div>`).join('')
+      html += brief.map(s => {
+        const text = typeof s === 'string' ? s : (s.technology ? `🔬 ${s.technology} — ${s.why_it_matters || ''}` : JSON.stringify(s));
+        return `<div class="brief-item">${escHtml(text)}</div>`;
+      }).join('')
     } else {
       html += '<div class="brief-item" style="color:var(--text-muted)">No brief generated for this date.</div>'
     }

@@ -33,7 +33,10 @@
       grid.innerHTML = '<div class="rd-empty">No intelligence brief generated yet. Pipeline will regenerate with the next cron run.</div>'
       return
     }
-    grid.innerHTML = brief.map(s => `<div class="brief-card"><div class="brief-text">${escHtml(s)}</div></div>`).join('')
+    grid.innerHTML = brief.map(s => {
+      const text = typeof s === 'string' ? s : (s.technology ? `🔬 ${s.technology} — ${s.why_it_matters || ''}` : JSON.stringify(s));
+      return `<div class="brief-card"><div class="brief-text">${escHtml(text)}</div></div>`;
+    }).join('')
   }
 
   function renderTopTechs(r) {

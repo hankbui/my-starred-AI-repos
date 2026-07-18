@@ -68,7 +68,10 @@
       const date = r._date || ''
       if (date) allDates.add(date)
 
-      if (r.brief && r.brief.length) allBriefs.push(...r.brief.map(b => ({ text: b, date })))
+      if (r.brief && r.brief.length) allBriefs.push(...r.brief.map(b => {
+        const text = typeof b === 'string' ? b : (b.technology ? `🔬 ${b.technology} — ${b.why_it_matters || ''}` : JSON.stringify(b));
+        return { text, date };
+      }))
 
       if (r.technologies) {
         for (const t of r.technologies) {
