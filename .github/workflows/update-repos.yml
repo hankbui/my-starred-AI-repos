@@ -45,6 +45,12 @@ jobs:
         run: |
           python scripts/generate_ailist.py || echo "AI landscape generation skipped/partial"
 
+      - name: Generate China AI Landscape
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/generate_china_landscape.py || echo "China landscape generation skipped"
+
       - name: Generate AI opportunity report (LLM distillation)
         env:
           LLM7_TOKEN: ${{ secrets.LLM7_TOKEN }}

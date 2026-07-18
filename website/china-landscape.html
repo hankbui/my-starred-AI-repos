@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China AI Landscape — Chinese Open-Source AI Ecosystem</title>
+    <meta property="og:title" content="China AI Landscape — Chinese Open-Source AI Ecosystem">
+    <meta property="og:description" content="Auto-discovered Chinese AI open-source ecosystem — repos from Alibaba, Baidu, Tencent, DeepSeek, ByteDance, and more.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/china-landscape.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260701-11">
+    <style>
+        .cl-hero { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+        .cl-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .cl-back:hover { color:var(--accent); }
+        .cl-table { width:100%; border-collapse:collapse; }
+        .cl-table th { text-align:left; padding:10px 12px; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); border-bottom:1px solid var(--border); white-space:nowrap; }
+        .cl-table td { padding:12px; border-bottom:1px solid var(--border); vertical-align:top; font-size:0.9rem; }
+        .cl-table tr:hover td { background:rgba(255,255,255,0.02); }
+        .cl-num { color:var(--text-muted); width:42px; }
+        .cl-right { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+        .cl-repo-name { font-weight:700; color:var(--text-primary); text-decoration:none; }
+        .cl-repo-name:hover { color:var(--accent); }
+        .cl-owner { color:var(--text-secondary); }
+        .cl-desc { color:var(--text-secondary); max-width:480px; }
+        .cl-pill { display:inline-block; padding:3px 9px; border-radius:999px; background:rgba(99,207,255,0.08); border:1px solid rgba(99,207,255,0.16); color:var(--accent); font-size:0.76rem; text-decoration:none; white-space:nowrap; }
+        .cl-pill:hover { background:rgba(99,207,255,0.16); }
+        .cl-empty { padding:40px; text-align:center; color:var(--text-secondary); }
+        .cl-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; margin-bottom:14px; }
+        .cl-controls .control { min-width:160px; }
+        .cl-controls .search-control { flex:1 1 280px; }
+        .cl-source-badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:0.7rem; font-weight:600; letter-spacing:0.04em; }
+        .cl-source-github { background:rgba(255,255,255,0.06); color:var(--text-secondary); }
+        .cl-source-gitee { background:rgba(212,106,45,0.12); color:#e8833a; }
+        @media (max-width:720px) {
+            .cl-desc { max-width:none; }
+            .cl-hide-sm { display:none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                    <a class="cl-back" href="index.html">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                        Back
+                    </a>
+                </div>
+                <span class="eyebrow">Chinese AI Ecosystem • auto-discovered</span>
+                <h1>China AI Landscape</h1>
+                <p class="hero-subtitle">
+                    The Chinese open-source AI ecosystem — repos from Alibaba, Baidu, Tencent, DeepSeek,
+                    ByteDance, Tsinghua, Zhipu, and other Chinese AI labs &amp; companies. Auto-discovered from GitHub (and Gitee when available).
+                </p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-pill"><span class="pill-value" id="stat-repos">-</span><span class="pill-label">repos</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-github">-</span><span class="pill-label">from GitHub</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-gitee">-</span><span class="pill-label">from Gitee</span></div>
+                <div class="stat-pill"><span class="pill-value" id="stat-updated">-</span><span class="pill-label">updated</span></div>
+            </div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <div class="cl-controls">
+                    <label class="control search-control">
+                        <span class="control-label">Search</span>
+                        <span class="control-field control-search">
+                            <span class="control-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+                            <input type="search" id="cl-search" placeholder="Search repos, orgs, keywords...">
+                        </span>
+                    </label>
+                    <label class="control">
+                        <span class="control-label">Category</span>
+                        <span class="control-field"><select id="cl-category"></select></span>
+                    </label>
+                    <label class="control">
+                        <span class="control-label">Sort</span>
+                        <span class="control-field"><select id="cl-sort">
+                            <option value="stars_desc">Stars</option>
+                            <option value="forks_desc">Forks</option>
+                            <option value="name_asc">Name</option>
+                        </select></span>
+                    </label>
+                </div>
+
+                <div class="pagination-bar">
+                    <div class="copy-toolbar">
+                        <button class="copy-btn" id="cl-copy" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copy</span>
+                        </button>
+                        <div class="export-toolbar">
+                            <button class="action-btn share-btn" id="cl-share" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8"/><path d="M13 7l5 5-5 5"/><path d="M6 20h12a2 2 0 0 0 2-2v-3"/><path d="M18 4H6a2 2 0 0 0-2 2v3"/></svg><span>Share URL</span></button>
+                            <button class="action-btn export-btn" data-format="csv" id="cl-csv" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span>CSV</span></button>
+                            <button class="action-btn export-btn" data-format="md" id="cl-md" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V6h3l3 6 3-6h3v12"/><path d="M19 18V6"/><path d="M16 18h6"/></svg><span>MD</span></button>
+                        </div>
+                    </div>
+                    <button class="pager-btn" id="cl-prev" type="button">« Prev</button>
+                    <span class="pager-info" id="cl-page-info">1 / 1</span>
+                    <button class="pager-btn" id="cl-next" type="button">Next »</button>
+                    <span class="results-meta" id="cl-meta">-</span>
+                </div>
+
+                <div class="table-shell">
+                    <table class="cl-table">
+                        <thead><tr><th class="cl-num">#</th><th>Repo</th><th class="cl-right">Stars</th><th class="cl-right cl-hide-sm">Forks</th><th class="cl-hide-sm">Lang</th><th class="cl-hide-sm">Category</th><th class="cl-hide-sm">Description</th></tr></thead>
+                        <tbody id="cl-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            Auto-discovered from GitHub &amp; Gitee • Updated daily • 
+            <a href="https://theankurb.com/explore-chinese-open-source-ai" target="_blank" rel="noreferrer">About this page</a> •
+            Made with ❤️ by <a href="https://github.com/hankbui" target="_blank" rel="noreferrer">@hankbui</a>
+        </footer>
+    </div>
+
+    <script src="china-landscape.js?v=20260701-11"></script>
+</body>
+</html>
