@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Radar — Agent Frameworks, Multi-Agent Teams &amp; Solo Founder Stack</title>
+    <meta name="description" content="Daily intelligence on AI automation — agent frameworks, multi-agent teams, AI coding agents, browser automation, and the solo founder stack. Curated from 1,000+ trending repos.">
+    <meta property="og:title" content="AI Automation Radar — Daily Agent &amp; Automation Intelligence">
+    <meta property="og:description" content="Track the entire AI automation ecosystem. Agent frameworks, multi-agent teams, coding agents, browser automation, and Chinese projects. Updated daily.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/automation.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Automation Radar — Agent &amp; Automation Intelligence">
+    <meta name="twitter:description" content="Daily intelligence on AI automation — agent frameworks, multi-agent teams, AI coding agents, browser automation, solo founder stack.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260717-1">
+    <style>
+        .auto-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .auto-back:hover { color:var(--accent); }
+        .auto-hero { padding:0 0 12px; }
+        .auto-hero h1 { font-family:"Space Grotesk",sans-serif; font-size:clamp(1.8rem,3vw,2.8rem); letter-spacing:-0.03em; margin:4px 0 0; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+        .auto-hero h1 small { font-size:0.55em; font-weight:600; color:var(--text-muted); letter-spacing:0; }
+        .auto-hero p { color:var(--text-secondary); font-size:0.95rem; line-height:1.6; max-width:700px; margin:8px 0 0; }
+        .auto-stats { display:flex; flex-wrap:wrap; gap:12px; margin:10px 0 20px; }
+        .auto-stat { padding:10px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); min-width:100px; }
+        .auto-stat-val { font-family:"Space Grotesk",sans-serif; font-size:1.2rem; font-weight:700; color:var(--text-primary); }
+        .auto-stat-lbl { font-size:0.68rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); margin-top:1px; }
+        .auto-bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 18px; padding:10px 16px; border:1px solid var(--border-strong); border-radius:var(--radius-lg); background:rgba(99,207,255,0.04); }
+        .auto-section-btn { min-height:32px; padding:0 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,0.02); color:var(--text-secondary); font:inherit; font-size:0.78rem; font-weight:700; cursor:pointer; transition:120ms ease; white-space:nowrap; }
+        .auto-section-btn:hover { border-color:var(--border-strong); color:var(--text-primary); }
+        .auto-section-btn.active { border-color:var(--accent); background:rgba(99,207,255,0.1); color:var(--accent); }
+        .auto-search { flex:1 1 200px; min-height:34px; padding:0 12px; border:1px solid var(--border); border-radius:10px; background:#0a0e13; color:var(--text-primary); font:inherit; font-size:0.85rem; }
+        .auto-section { margin-bottom:28px; }
+        .auto-section-header { display:flex; align-items:center; gap:10px; margin:0 0 10px; }
+        .auto-section-header h2 { margin:0; font-size:1.1rem; font-family:"Space Grotesk",sans-serif; display:flex; align-items:center; gap:6px; }
+        .auto-section-header span { font-size:0.82rem; color:var(--text-muted); font-weight:600; }
+        .auto-section-desc { font-size:0.84rem; color:var(--text-secondary); margin:-4px 0 12px; }
+        .auto-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
+        .auto-card { padding:14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:6px; transition:140ms ease; }
+        .auto-card:hover { border-color:var(--border-strong); }
+        .auto-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+        .auto-card-name { font-weight:700; color:var(--text-primary); text-decoration:none; font-size:0.92rem; word-break:break-all; }
+        .auto-card-name:hover { color:var(--accent); }
+        .auto-card-stars { font-size:0.78rem; color:var(--text-muted); white-space:nowrap; font-weight:600; }
+        .auto-card-desc { font-size:0.82rem; color:var(--text-secondary); line-height:1.45; }
+        .auto-card-tags { display:flex; flex-wrap:wrap; gap:4px; }
+        .auto-card-tag { padding:2px 7px; border-radius:999px; font-size:0.64rem; font-weight:700; background:rgba(99,207,255,0.08); color:var(--accent); }
+        .auto-card-tag.green { background:rgba(77,224,168,0.1); color:var(--success); }
+        .auto-card-tag.orange { background:rgba(255,184,87,0.1); color:#ffb857; }
+        .auto-card-tag.purple { background:rgba(140,111,255,0.1); color:#c4b5fd; }
+        .auto-card-tag.curated { background:rgba(255,184,87,0.1); color:#ffb857; border:1px solid rgba(255,184,87,0.2); }
+        .auto-card-growth { font-size:0.72rem; color:var(--text-muted); display:flex; gap:8px; }
+        .auto-card-growth .up { color:var(--success); }
+        .auto-card-lang { font-size:0.7rem; color:var(--text-muted); background:rgba(255,255,255,0.03); padding:1px 6px; border-radius:6px; }
+        .auto-empty { padding:40px; text-align:center; color:var(--text-secondary); font-size:0.92rem; }
+        .auto-footer { font-size:0.78rem; color:var(--text-muted); text-align:center; padding:20px 0; border-top:1px solid var(--border); margin-top:28px; }
+
+        .auto-section-tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
+        .st-agent-framework { background:rgba(99,207,255,0.12); color:var(--accent); }
+        .st-multi-agent { background:rgba(140,111,255,0.12); color:#c4b5fd; }
+        .st-ai-coding { background:rgba(77,224,168,0.12); color:var(--success); }
+        .st-solo-founder { background:rgba(255,184,87,0.12); color:#ffb857; }
+        .st-browser-auto { background:rgba(255,120,120,0.1); color:#ff7878; }
+        .st-research-agent { background:rgba(99,207,255,0.08); color:#63cfff; }
+        .st-workflow { background:rgba(156,169,184,0.12); color:#9ca9b8; }
+        .st-chinese { background:rgba(255,77,77,0.08); color:#ff4d4d; }
+
+        @media (max-width:640px) { .auto-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="auto-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="auto-hero">
+                    <h1>
+                        <span>🤖 AI Automation Radar</span>
+                        <small id="auto-updated"></small>
+                    </h1>
+                    <p>Agent frameworks, multi-agent teams, AI coding agents, browser automation, workflow orchestration, and the solo founder stack — curated daily from open-source intelligence.</p>
+                </div>
+            </div>
+            <div class="auto-stats" id="auto-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <div class="auto-bar" id="auto-bar">
+                    <button class="auto-section-btn active" data-section="all" type="button">📋 All</button>
+                    <input type="search" class="auto-search" id="auto-search" placeholder="Search automation repos..." autocomplete="off" spellcheck="false">
+                    <span style="flex:1"></span>
+                    <span id="auto-count" style="font-size:0.8rem;color:var(--text-muted);font-weight:600"></span>
+                </div>
+
+                <div id="auto-content"></div>
+
+                <div class="auto-footer">
+                    Updated daily via GitHub Actions · Data from starred repos, trending repos, and GitHub API
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="automation.js?v=20260717-1"></script>
+</body>
+</html>
