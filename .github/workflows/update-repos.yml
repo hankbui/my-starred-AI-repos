@@ -68,6 +68,10 @@ jobs:
         run: |
           python scripts/generate_automation.py || echo "Automation Radar generation skipped"
 
+      - name: Generate Hugging Face Daily Digest
+        run: |
+          python scripts/generate_hf_daily.py || echo "HF Daily Digest generation skipped"
+
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"

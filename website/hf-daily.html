@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugging Face Daily — Trending Models, Papers &amp; Spaces in One Glance</title>
+    <meta name="description" content="Hugging Face is overwhelming. This page distills it: today's hottest models, papers, spaces, and datasets — ranked, themed, and summarised. Updated daily.">
+    <meta property="og:title" content="Hugging Face Daily — One-Page Digest of What's Hot on HF">
+    <meta property="og:description" content="Stop scrolling Hugging Face. See today's trending models, papers, spaces, and datasets — ranked and summarised.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/hf-daily.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hugging Face Daily — One-Page Digest of What's Hot on HF">
+    <meta name="twitter:description" content="Today's hottest models, papers, spaces, and datasets on Hugging Face — ranked and summarised.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260721-1">
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="hf-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="hf-hero">
+                    <h1>
+                        <span>🤗 Hugging Face Daily</span>
+                        <small id="hf-updated"></small>
+                    </h1>
+                    <p>
+                        Hugging Face is a firehose. This page turns it into a signal: today's
+                        hottest <b>models</b>, <b>papers</b>, <b>spaces</b>, and <b>datasets</b> —
+                        ranked by 7-day momentum, themed, and summarised. Spend 2 minutes here
+                        instead of 30 scrolling huggingface.co.
+                    </p>
+                </div>
+            </div>
+            <div class="hf-stats" id="hf-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <!-- AI Daily Brief -->
+            <div class="hf-brief-bar">
+                <button class="hf-brief-btn" id="hf-brief-btn" type="button">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                    Generate Daily Brief
+                </button>
+                <span class="hf-brief-note">AI summary of today's HF highlights — what to know in 60s</span>
+            </div>
+            <div class="hf-brief-box" id="hf-brief-box" hidden>
+                <div class="hf-brief-body" id="hf-brief-body"></div>
+                <div class="hf-brief-meta" id="hf-brief-meta"></div>
+            </div>
+
+            <!-- 30-second digest: themes + orgs + keywords -->
+            <section class="hf-highlight" id="hf-highlight"></section>
+
+            <!-- Tab bar -->
+            <section class="panel">
+                <div class="hf-bar">
+                    <button class="hf-tab active" data-tab="models" type="button">🔥 Models <span class="count" id="hf-c-models"></span></button>
+                    <button class="hf-tab" data-tab="papers" type="button">📄 Papers <span class="count" id="hf-c-papers"></span></button>
+                    <button class="hf-tab" data-tab="spaces" type="button">🚀 Spaces <span class="count" id="hf-c-spaces"></span></button>
+                    <button class="hf-tab" data-tab="datasets" type="button">📊 Datasets <span class="count" id="hf-c-datasets"></span></button>
+                    <input type="search" class="hf-search" id="hf-search" placeholder="Search name, author, tags..." autocomplete="off" spellcheck="false">
+                    <span class="hf-count" id="hf-visible-count"></span>
+                </div>
+
+                <div class="hf-grid" id="hf-grid"></div>
+
+                <div class="hf-footer">
+                    Updated daily via GitHub Actions · Data from Hugging Face public API (no key required) · Sorted by 7-day likes
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="hf-daily.js?v=20260721-1"></script>
+</body>
+</html>
