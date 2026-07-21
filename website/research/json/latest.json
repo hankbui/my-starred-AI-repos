@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-07-20",
+    "date": "2026-07-21",
     "papers_tracked": 15,
-    "technologies_discovered": 40,
+    "technologies_discovered": 41,
     "opportunities_identified": 15,
-    "last_update": "2026-07-20 08:22 UTC",
+    "last_update": "2026-07-21 07:46 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,7 +13,7 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "40",
+      "value": "41",
       "label": "discovered this scan",
       "detail": "Multi-modal Memory, Self-evolution Loop, EmbodiedWorldBench, Universal Multi-modal Graph Memory, Diffusion Models, Multimodal Learning, Depth Estimation, Object Detection",
       "color": "accent"
@@ -21,15 +21,15 @@
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "40",
+      "value": "41",
       "label": "active trend clusters",
-      "detail": "Instance-level 2.5D Mapping, Open-vocabulary Panoptic Segmentation, LLM-based Target Selection, Score-level Fusion, Storage-efficient Semantic Representation",
+      "detail": "Reinforcement Learning from Human Feedback, Masked Diffusion Language Models, World Models, Steerable Text-Based World Models, Diffusion Models",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.9",
       "label": "avg opportunity score",
       "detail": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
       "color": "amber"
@@ -45,17 +45,17 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Instance-Enriched Semantic Map",
+      "value": "Octo-planner: On-device Langua",
       "label": "highest confidence paper",
-      "detail": "Smart home navigation assistant with real-time object recognition and natural language guidance, Indoor navigation system for visually impaired individuals with detailed semantic mapping and voice instructions",
+      "detail": "Offline-first AI assistant for edge devices, Customizable AI planner for enterprise workflows",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "0",
+      "value": "17",
       "label": "early-stage technologies",
-      "detail": "HiLSVA: Design and Evaluation of a Human-in-the-Loop Agentic System for Scientif",
+      "detail": "Reward-Driven LLM Agent Workflows: Synthesizing POMDP Routing and Self-Correctio",
       "color": "blue"
     }
   ],
@@ -124,6 +124,38 @@
       ]
     },
     {
+      "id": "2607.17038",
+      "title": "Reward-Driven LLM Agent Workflows: Synthesizing POMDP Routing and Self-Correction for Autonomous Decision-Making",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.17038v1 Announce Type: new Abstract: This paper addresses key technical challenges in current large language model (LLM) agent applications, including long-horizon planning, sparse reward attribution, and dynamic environmental interaction, by designing and optimizing an intelligent agent workflow. The proposed architecture is based on the synthesis of core AI paradigms: Visual, Language, Generative, Graph, Multimodal, Reinforcement, and Agent Intelligence. Unlike conventional baseline models that rely on static prompting and lack robust perception-action loops, our approach introduces a Partially Observable Markov Decision Process (POMDP) routing mechanism. This mechanism is augmented with an internal, self-correcting reward model that evaluates decision trajectories before execution. By integrating multimodal inputs and advanced reinforcement learning principles (such as proximal policy optimization and value function approximation), the agent maintains long-term structural memory and dynamically adapts its reasoning pathways to mitigate error accumulation. Empirical experiments on the ALFWorld embodied simulation environment and the WebShop online navigation benchmark demonstrate a 24.5% absolute improvement in task success rate and trajectory efficiency over mainstream baselines like the standard ReAct framework. Comprehensive ablation studies confirm the significant contribution of the reward-driven critique module in suppressing hallucination rates. This research bridges theoretical foundations of reinforcement learning and graph-based memory with autonomous agent workflows. Ultimately, the resulting architecture offers a practical, scalable reference framework for developing artificial intelligence technologies in complex, multi-step autonomous systems. Code is available at https://github.com/01Amez/RLAW_Implementation.",
+      "pdf_url": "https://arxiv.org/abs/2607.17038",
+      "comment": "",
+      "technologies": [
+        "Partially Observable Markov Decision Process (POMDP)",
+        "Reinforcement Learning",
+        "Graph-based Memory",
+        "Multimodal Learning",
+        "Self-Correction"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Autonomous decision-making systems for complex environments",
+        "Enhanced AI agents for long-horizon planning tasks"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
       "id": "2606.26614",
       "title": "HiLSVA: Design and Evaluation of a Human-in-the-Loop Agentic System for Scientific Visualization",
       "authors": [],
@@ -154,6 +186,71 @@
         "science",
         "education",
         "enterprise"
+      ]
+    },
+    {
+      "id": "2607.17765",
+      "title": "FIFA World Cup 2026 as a Contamination-Free Benchmark for LLM Forecasting Agents: Four Models, a Bookmaker, and 104 Matches",
+      "authors": [
+        "Jiacheng Ding",
+        "Cong Guo",
+        "Jason Xu"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.DB"
+      ],
+      "published": "2026-07-20",
+      "updated": "2026-07-20",
+      "summary": "We introduce WC2026-Agents, a benchmark and dataset for evaluating large language models (LLMs) as autonomous forecasting agents on real, future events. For every one of the 104 matches of the 2026 FIFA World Cup, four frontier models -- Claude Opus 4.8, ChatGPT (GPT-5.5, high reasoning), Gemini 3.1 Pro, and Grok (Expert Mode) -- ran an identical search-act-reflect loop: gather evidence with a web tool, commit to a 1X2 (team-A win / draw / team-B win) distribution and a virtual 100-USD bet, and, after the match, reflect given only the final score. Because every match kicked off after the models' training cutoffs, the benchmark is contamination-free by construction. Crucially, we pair the four agents with a fifth competitor drawn from the same information environment -- the pre-match betting market -- collected as per-match 1X2 odds, giving an economically grounded baseline and letting us score not just what an agent predicts but what it does with money. The release contains 416 forecasts and 414 reflections with verbatim reasoning, ground truth (including penalty shootouts), odds, and a reproducible evaluation suite. A reference evaluation surfaces findings that raw accuracy hides: the four agents issue an identical top pick in 92% of matches and none beats the market's Brier score; indeed, a naive flat stake on the market favorite out-earns all four agents. Yet the agents diverge sharply as decision-makers: betting return-on-investment ranges from -18% to +10%, fading the market is unprofitable for all four, the share of forecasts that cite the market ranges from 12% to 100%, and self-reported error rates on wrong picks range from 36% to 86%. The benchmark thus measures calibration, decision quality, and self-knowledge -- axes on which frontier models differ even when their predictions do not. Data and code: https://github.com/graphuofm/FIFA2026LLM",
+      "pdf_url": "https://arxiv.org/pdf/2607.17765v1",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Sports betting platform with AI-driven forecasting agents",
+        "Decision-making AI assistant for sports analysts and bettors"
+      ],
+      "domain_applications": [
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "id": "2406.18082",
+      "title": "Octo-planner: On-device Language Model for Planner-Action Agents",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2406.18082v2 Announce Type: replace Abstract: AI agents have become increasingly significant in various domains, enabling autonomous decision-making and problem-solving. To function effectively, these agents require a planning process that determines the best course of action and then executes the planned actions. In this paper, we present an efficient on-device Planner-Action framework that separates planning and action execution into two distinct components: a planner agent based on Phi-3 Mini, a 3.8 billion parameter LLM optimized for edge devices, and an action agent using the Octopus model for function execution. The planner agent first responds to user queries by decomposing tasks into a sequence of sub-steps, which are then executed by the action agent. To optimize performance on resource-constrained devices, we employ model fine-tuning instead of in-context learning, reducing computational costs and energy consumption while improving response times. Our approach involves using GPT-4 to generate diverse planning queries and responses based on available functions, with subsequent validations to ensure data quality. We fine-tune the Phi-3 Mini model on this curated dataset, achieving a 97\\% success rate in our in-domain test environment. To address multi-domain planning challenges, we developed a multi-LoRA training method that merges weights from LoRAs trained on distinct function subsets. This approach enables flexible handling of complex, multi-domain queries while maintaining computational efficiency on resource-constrained devices. To support further research, we have open-sourced our model weights at https://huggingface.co/NexaAIDev/octopus-planning. For the demo, please refer to https://www.nexa4ai.com/octo-planner.",
+      "pdf_url": "https://arxiv.org/abs/2406.18082",
+      "comment": "",
+      "technologies": [
+        "On-device AI",
+        "Low-Rank Adaptation",
+        "Chain-of-Thought Prompting"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Offline-first AI assistant for edge devices",
+        "Customizable AI planner for enterprise workflows",
+        "Multi-domain AI agent for resource-constrained environments"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "robotics",
+        "other"
       ]
     },
     {
@@ -216,26 +313,147 @@
       ]
     },
     {
-      "id": "2604.10024",
-      "title": "LVSum: A Benchmark for Timestamp-Aware Long Video Summarization",
+      "id": "2607.16204",
+      "title": "Masked Diffusion Language Models are Strong and Steerable Text-Based World Models for Agentic RL",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-07-20",
-      "updated": "2026-07-20",
-      "summary": "arXiv:2604.10024v2 Announce Type: replace-cross Abstract: Long video summarization presents significant challenges for multimodal large language models (MLLMs), particularly in maintaining temporal fidelity over extended durations and producing summaries that are both semantically and temporally grounded. We introduce LVSum, a human-annotated benchmark for evaluating long-form video summarization with fine-grained temporal alignment. LVSum comprises 72 diverse videos spanning 13 domains with an average duration of 16 minutes, each annotated with up to 10 human-generated summaries containing temporal references. We conduct a comprehensive evaluation of leading proprietary and open-source MLLMs using newly introduced LLM-based metrics for content relevance and modality coherence, alongside standard automatic metrics. Our experiments reveal three key findings: (1) transcripts contribute substantially more to summarization quality than visual frames alone, (2) a significant performance gap persists between model-generated and human-written summaries, and (3) current MLLMs exhibit systematic weaknesses in temporal grounding, instruction adherence, and cross-modal coherence. We release the dataset and code.",
-      "pdf_url": "https://arxiv.org/abs/2604.10024",
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.16204v1 Announce Type: new Abstract: Recent growth in reinforcement learning (RL) has surfaced a need for diverse, specialized training environments. Hand-curated environments with fixed task and reward difficulties become ineffective signals as model performance improves, and sparse rewards over long horizons induce mode collapse on specific workflows or tool structures. World models that simulate environment states have matched pure rollout performance, making them promising for scaling diversity on-demand. However, autoregressive (AR) world models suffer from a left-to-right bias preventing conditioning on globally interdependent state anchors such as tool schemas, prior turns, and expected outcomes. We (i) formalize text-based world modeling as a steerable transition-dynamics problem decomposed into initial state, task context, tool schemas, domain rules, and steering directives, and (ii) curate 239,403 grounded state-action trajectories spanning nine open-source environments and twelve frontier model families. We compare AR LMs and masked diffusion language models (MDLMs), showing MDLMs, via bidirectional anchor-aware denoising, achieve better coherence, groundedness, and empirically validated rollout diversity than LLMs over 4x their parameter size, at comparable inference latency. We introduce a plug-and-play GRPO training framework with deterministic state checks, and perform zero-shot transfer ablations on three OOD environments (ScienceWorld, ALFWorld, AppWorld) across three 1.2B-7B agent backbones (LFM2.5, Qwen3, Mistral), achieving up to 47% absolute gains over baselines without environment-specific fine-tuning. We further conduct behavioral analysis of failure modes under adversarial scenarios and human evaluation on realism, outcome correctness, and training utility. We open-source our work to encourage research in this direction.",
+      "pdf_url": "https://arxiv.org/abs/2607.16204",
       "comment": "",
       "technologies": [
+        "Masked Diffusion Language Models",
+        "Reinforcement Learning from Human Feedback",
+        "World Models",
+        "Steerable Text-Based World Models"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Developing a plug-and-play GRPO training framework for RL agents",
+        "Creating a platform for zero-shot transfer of RL agents across different environments"
+      ],
+      "domain_applications": [
+        "robotics",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.17437",
+      "title": "Empirical Grounding Improves the Realism of LLM Agents Simulating Human Behavior During Disruptions",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.17437v1 Announce Type: new Abstract: Large language model (LLM) agents offer a generative approach to simulating human behavior under conditions that may have few or no direct historical analogues, a common challenge in disaster and infrastructure-disruption planning. However, this generative capacity creates a validity problem: individually plausible agent reasoning may fail to reproduce empirical population behavior. We evaluate whether empirical grounding improves the statistical realism of LLM-agent simulations during disruptions. Specifically, we develop an empirically grounded LLM-agent framework that embeds demographic profiles from the American Community Survey, baseline routines from the American Time Use Survey, and urban spatial context into agent initialization, memory, decision prompts, and activity execution. An independent household survey conducted during the July 2024 Philadelphia heatwave is reserved as an external validation benchmark. Compared with an ungrounded LLM-agent baseline, the grounded model improved reconstruction of normal daily routines, increasing mean correlation with empirical activity profiles from 0.528 to 0.912 and reducing mean squared error from 0.066 to 0.008. Under heatwave conditions, the grounded model better reproduced survey-derived activity profiles, increasing mean correlation from 0.349 to 0.836 and reducing mean squared error from 0.098 to 0.012. The grounded model captured 46.4% of observed heatwave response amplitude, compared with 20.6% for the ungrounded baseline. These findings show that empirical grounding can make LLM agents more statistically credible simulators of population behavior while revealing remaining gaps in modeling human adaptation during disruptions.",
+      "pdf_url": "https://arxiv.org/abs/2607.17437",
+      "comment": "",
+      "technologies": [
+        "Empirical Grounding",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Disaster preparedness and response simulation tool for governments and emergency services",
+        "Personalized urban planning and infrastructure development tool for city planners and urban developers"
+      ],
+      "domain_applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.16283",
+      "title": "GenSyn10: A Multi-Generative AI Dataset For Benchmarking Image Classification",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.16283v1 Announce Type: cross Abstract: The rapid advancement of generative AI has outpaced our ability to reliably detect its outputs, particularly when detectors encounter generators they have not seen before. We introduce GenSyn10, a CIFAR-10-aligned synthetic image dataset of 60,000 images (10 classes, 32$\\times$32, 50k/10k split) generated using three architecturally diverse state-of-the-art models: FLUX.2-dev (Rectified Flow Transformer), HunyuanImage-3.0 (MoE Transformer), and Qwen-Image-2512 (Multimodal Diffusion Transformer), to advance research in AI-generated image detection. A central challenge in this domain is that detectors perform well on known generators but degrade on unseen ones. GenSyn10 addresses this limitation by curating data from multiple contemporary architectures under a standardized generation protocol, enabling controlled and systematic evaluation of out-of-distribution (OOD) generalization to novel generators. Images are generated using a template-based prompt engine and downsampled to ensure consistency. We evaluate 17 image classification models under a four-stage protocol: real-data baseline, zero-shot transfer, fine-tuning, and retention. Despite a measurable domain gap, CIFAR-10-trained models achieve up to 96.86\\% zero-shot accuracy on GenSyn10, increasing to 99.88\\% after fine-tuning. In binary real-vs-synthetic classification, fine-tuned models achieve 97-99.9\\% accuracy on seen generators but drop to 79-96\\% on images from an unseen generator, highlighting persistent limitations in OOD generalization. These results establish GenSyn10 as a controlled benchmark for studying synthetic image detection beyond single-generator settings, supporting research on robustness, domain adaptation, and cross-generator generalization.",
+      "pdf_url": "https://arxiv.org/abs/2607.16283",
+      "comment": "",
+      "technologies": [
+        "Vision Transformer",
+        "Multimodal Learning",
+        "Diffusion Models",
+        "Mixture of Experts"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-generated image detection tool for content moderation platforms",
+        "Benchmarking tool for AI model developers to evaluate cross-generator generalization"
+      ],
+      "domain_applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.16303",
+      "title": "Med-OPD: Improving Medical Vision-Language Models via Evidence-Aware On-Policy Distillation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.16303v1 Announce Type: cross Abstract: Medical Vision-Language Models (Med-VLMs) require reliable reasoning from fine-grained visual evidence, yet existing models can produce plausible clinical answers by relying on language priors or medical templates rather than truly attending to diagnosis-critical regions. On-Policy Distillation (OPD) offers dense token-level supervision on student-generated trajectories and provides a privacy-compatible means of capability transfer without requiring the redistribution of raw patient data. However, standard OPD uniformly distills all tokens, causing sparse evidence-dependent tokens to be diluted by abundant clinical narrative tokens. Inspired by the success of OPD in the large language model community, we propose \\textbf{Med-OPD}, to our knowledge the first unified post-training framework that integrates on-policy distillation with medical evidence-aware supervision for Med-VLMs. We introduce \\textbf{Medical Evidence Advantage} (MEA), a teacher-grounded counterfactual signal that uses an answer-aware hint to focus teacher scoring on evidence supporting the target diagnosis, and measures each token's dependence on medical visual evidence by comparing teacher likelihoods under the original and evidence-degraded imaging modalities. Based on MEA, Med-OPD redistributes the distillation signal at both the token and trajectory levels, emphasizing diagnosis-critical tokens and evidence-reliant rollouts. Experiments on OmniMedVQA subsets show that Med-OPD consistently outperforms SFT and standard OPD across CT, MRI, Disease Diagnosis, and Lesion Grading. These results demonstrate that evidence-aware distillation can better strengthen medical VLMs' reliance on key visual evidence and improve reliable multimodal medical reasoning. The source code and data is publicly available at: https://github.com/yunhang8658/MedOPD.git",
+      "pdf_url": "https://arxiv.org/abs/2607.16303",
+      "comment": "",
+      "technologies": [
+        "On-Policy Distillation",
         "Multimodal Learning"
       ],
       "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.6,
+      "confidence": 0.8,
+      "curator_score": 5.7,
       "product_potential": [
-        "AI-powered video editing tools that can automatically generate summaries with temporal references for long videos",
-        "Personalized video recommendation systems that leverage temporal-aware summarization to provide users with relevant content"
+        "Enhanced medical imaging analysis tools for radiologists",
+        "AI-assisted diagnostic systems for primary care physicians"
+      ],
+      "domain_applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2607.16409",
+      "title": "Think, Plan, Paint: Layout-Aware Reasoning for Controllable Image Generation in Unified Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2607.16409v1 Announce Type: cross Abstract: Unified Multimodal Large Language Models (MLLMs) offer a promising paradigm for unifying visual understanding and generation, yet they still struggle to follow complex spatial instructions and logical constraints in controllable image generation. To address this gap, we present ATLAS, a unified framework that equips MLLMs with a human-like \"Think, Plan, and Paint\" paradigm. We adopt layout as the shared representation that connects the three stages, enabling the model to reason about spatial requirements, plan explicit object arrangements, and render the final image. We further improve plan-to-image fidelity with reinforcement-learning-based layout alignment. We instantiate ATLAS at 7B and 80B scales, achieving state-of-the-art performance among MLLMs on image generation benchmarks and an average 65.31% improvement over existing layout-based unified MLLMs. On spatially related tasks, ATLAS obtains an average 23.06% gain over the base models. Through the same layout interface, ATLAS also supports instruction-guided editing and multimodal grounding. We further introduce ATLAS-Reasoning, a benchmark for evaluating generation under complex spatial instructions.",
+      "pdf_url": "https://arxiv.org/abs/2607.16409",
+      "comment": "",
+      "technologies": [
+        "Unified Multimodal Large Language Models",
+        "Reinforcement Learning from Human Feedback",
+        "Layout-Aware Reasoning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-powered design assistant for architects and interior designers",
+        "Customizable image generation platform for e-commerce and marketing",
+        "Interactive storytelling tool for educational content creation"
       ],
       "domain_applications": [
         "creative",
@@ -244,402 +462,211 @@
       ]
     },
     {
-      "id": "2607.11889",
-      "title": "Scaling Point-in-Time Language Models",
+      "id": "2511.15830",
+      "title": "Mini Amusement Parks (MAPs): A Testbed for Modelling Business Decisions",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-07-20",
-      "updated": "2026-07-20",
-      "summary": "arXiv:2607.11889v2 Announce Type: replace-cross Abstract: Large language models trained on unrestricted internet corpora inevitably embed information from the future, introducing lookahead bias that compromises the validity of backtests and causal inference in finance and the social sciences. Point-in-time language models--trained exclusively on text available up to each calendar date--eliminate this leakage by construction, but existing efforts typically produce models that lag substantially behind their unconstrained counterparts. We show that this performance gap can be substantially narrowed through scale. Training decoder-only transformers with up to 4 billion parameters on 1 trillion chronologically filtered tokens from FineWeb, we construct a sequence of monthly model checkpoints spanning 2013-2024. Across a range of common-sense reasoning and language understanding benchmarks, our models approach the performance of leading open-weight models of comparable size (e.g., Gemma-3-4B and LLaMA-7B) trained on temporally unrestricted data, although a performance gap remains on several tasks. Instruction fine-tuning via LoRA further improves downstream usability. We release the complete pipeline--including dataset construction, training infrastructure, and evaluation code--to enable reproducible point-in-time language modeling and to support research applications that require strict temporal validity.",
-      "pdf_url": "https://arxiv.org/abs/2607.11889",
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2511.15830v3 Announce Type: replace Abstract: Despite rapid progress in artificial intelligence, current systems struggle with the interconnected challenges that define real-world decision making. Practical domains such as business management require open-ended optimization, actively learning environment dynamics from sparse experience, planning over long horizons in stochastic settings, and reasoning over spatial information. Yet no existing human--AI benchmarks assess how well agents integrate these challenges in a grounded decision-making context. To this end, we introduce Mini Amusement Parks (MAPs), an amusement-park simulator designed to evaluate an agent's ability to model its environment, anticipate long-term consequences under uncertainty, and strategically operate a complex business. We provide expert human performance and a comprehensive evaluation of state-of-the-art agents, finding experts outperform these systems by 11.4x on easy mode and 15.3x on medium mode. Our analysis reveals persistent weaknesses in long-horizon planning, sample-efficient learning, spatial reasoning, and modelling uncertainty. By unifying these challenges within a single environment, MAPs offers a new foundation for benchmarking agents capable of adaptable decision making. Code: https://github.com/Skyfall-Research/MAPs",
+      "pdf_url": "https://arxiv.org/abs/2511.15830",
       "comment": "",
       "technologies": [
-        "Point-in-Time Language Models",
-        "Chronologically Filtered Training",
-        "LoRA for Instruction Fine-Tuning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Temporal-aware AI assistants for financial analysis and social science research",
-        "Historical data-driven content creation tools for media and education"
-      ],
-      "domain_applications": [
-        "finance",
-        "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "id": "2606.07636",
-      "title": "Crayotter: Traceable Multi-Agent Workflows for Long-Form Video Editing",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-20",
-      "updated": "2026-07-20",
-      "summary": "arXiv:2606.07636v2 Announce Type: replace-cross Abstract: Long-form video editing over heterogeneous footage requires agents to coordinate source selection, multimodal analysis, timeline construction, narration and subtitle alignment, rendering, and revision while exposing intermediate state for inspection and repair. We present Crayotter, an open-source multimodal multi-agent demo system for prompt-driven long-form video editing. Crayotter organizes production around coverage-aware material preparation, artifact-grounded editing research, and tool-grounded timeline execution. Across these stages, retrieval reports, video analyses, editing blueprints, scheduler events, tool calls, intermediate renders, and final exports are treated as first-class artifacts rather than hidden transient state. The workbench supports local assets, agent-assisted retrieval, progress monitoring, artifact preview, failure diagnosis, interrupted-job resumption, and resource-aware asynchronous execution for long-running workflows. In a 23-theme evaluation, Crayotter achieves the highest human overall score (3.40/5) among the compared systems, with its largest margins in theme alignment, narrative coherence, and editing smoothness. These results show that long-horizon video editing agents can be made traceable, inspectable, and practically controllable through observable production artifacts. Code, traces, and examples are publicly available at https://github.com/idwts/Crayotter.",
-      "pdf_url": "https://arxiv.org/abs/2606.07636",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Sparse Attention",
         "Retrieval Augmented Generation"
       ],
       "maturity": "early",
       "confidence": 0.7,
-      "curator_score": 5.6,
+      "curator_score": 5.7,
       "product_potential": [
-        "A collaborative video editing platform with AI agents for automated workflows and traceable edits",
-        "An AI-powered video production tool for content creators with features like artifact preview and failure diagnosis"
+        "AI-powered business strategy simulator for training and decision-making",
+        "Adaptive AI agents for long-horizon planning in dynamic environments",
+        "Spatial reasoning AI for complex business environments"
       ],
       "domain_applications": [
-        "creative",
-        "enterprise"
+        "enterprise",
+        "finance",
+        "other"
       ]
     },
     {
-      "id": "2607.15278",
-      "title": "Hierarchical Denoising For Multi-Step Visual Reasoning",
-      "authors": [
-        "Zezhong Qian",
-        "Xiaowei Chi",
-        "Chak-Wing Mak",
-        "Tianze Zhou",
-        "Ruibin Yuan",
-        "Yuhan Rui",
-        "Hengzhe Sun",
-        "Zhuoqun Wu",
-        "Yuming Li",
-        "Siyuan Qian",
-        "Sirui Han",
-        "Shanghang Zhang"
-      ],
+      "id": "2505.11765",
+      "title": "OMAC: A Holistic Optimization Framework for LLM-Based Multi-Agent Collaboration",
+      "authors": [],
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-07-16",
-      "updated": "2026-07-16",
-      "summary": "Video models are evolving into vision foundation models, yet they still lack human-like multi-step reasoning. Streaming autoregressive diffusion models are efficient but limited in reasoning, while bidirectional diffusion enables global revision with high inference costs due to dense frame-level denoising. Both paradigms struggle to achieve logical consistency and low-latency streaming for complex reasoning tasks. We propose HDR (Hierarchical Denoising for Visual Reasoning), a unified framework that integrates hierarchical latents into causal video generation for multi-step reasoning. HDR organizes video latents into a tree-structured hierarchy, enabling coarse-to-fine reasoning before streaming output. Coarse denoising layers preserve uncertain hypotheses for global planning, while finer layers progressively refine them into concrete visual states. A sparse hierarchical attention pattern (SHAP) further reduces temporal attention costs. We introduce a level-stratified multi-step video reasoning benchmark with out-of-distribution cases, covering six tasks: maze navigation, Tower of Hanoi, one-line drawing, sliding puzzle, Sokoban, and water pouring. Compared with streaming autoregressive diffusion baselines, HDR improves success from 34.22 to 60.29 (76.2% relative gain) and increases average progress from 76.00 to 89.56, demonstrating more consistent reasoning trajectories. HDR maintains low-latency streaming at 0.70 seconds per latent, achieving 54.2 times faster inference than bidirectional diffusion. It also retains 82.9% of full-data performance with only 2% training data, compared with 52.0% for bidirectional diffusion. Real-world robot experiments further demonstrate HDR's potential for physical interaction and world modeling. Project demo: https://hierarchical-diffusion-reasoning.github.io/.",
-      "pdf_url": "https://arxiv.org/pdf/2607.15278v1",
+      "published": "2026-07-21",
+      "updated": "2026-07-21",
+      "summary": "arXiv:2505.11765v5 Announce Type: replace-cross Abstract: Agents powered by advanced large language models (LLMs) have demonstrated impressive capabilities across diverse complex applications. Recently, Multi-Agent Systems (MAS), wherein multiple agents collaborate and communicate with each other, have exhibited enhanced capabilities in complex tasks, such as high-quality code generation and arithmetic reasoning. However, the development of such systems often relies on handcrafted methods, and the literature on systematic design and optimization of LLM-based MAS remains limited. In this work, we introduce \\textbf{OMAC}, a general framework designed for holistic optimization of LLM-based MAS. Specifically, we identify five key optimization dimensions for MAS, encompassing both agent functionality and collaboration structure. Building upon these dimensions, we first propose a general algorithm, utilizing two actors termed the Semantic Initializer and the Contrastive Comparator, to optimize any single dimension. Then, we present an algorithm for joint optimization across multiple dimensions. Extensive experiments demonstrate the superior performance of OMAC on diverse tasks against recent approaches.",
+      "pdf_url": "https://arxiv.org/abs/2505.11765",
       "comment": "",
       "technologies": [
-        "Diffusion Models",
-        "Hierarchical Latents",
-        "Sparse Hierarchical Attention Pattern"
+        "Multi-Agent Systems",
+        "LLM Optimization",
+        "Contrastive Learning"
       ],
-      "maturity": "medium",
+      "maturity": "early",
       "confidence": 0.8,
-      "curator_score": 5.5,
+      "curator_score": 5.7,
       "product_potential": [
-        "Real-time visual reasoning for robotics applications",
-        "Interactive educational tools for complex problem-solving",
-        "Enhanced video generation and editing tools for creative industries"
+        "Enhanced AI-driven collaboration tools for enterprise workflows",
+        "Advanced AI tutors for personalized education",
+        "Automated multi-agent systems for complex scientific simulations"
       ],
       "domain_applications": [
-        "robotics",
         "education",
-        "creative"
-      ]
-    },
-    {
-      "id": "2607.14544",
-      "title": "3D Geometric Tooth Alignment Planning via Deep Reinforcement Learning",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-07-17",
-      "updated": "2026-07-17",
-      "summary": "arXiv:2607.14544v1 Announce Type: new Abstract: 3D geometric tooth alignment planning, which determines sequential trajectories from initial malocclusion to the final target alignment, is a cornerstone of modern digital orthodontics. This paper presents a novel deep reinforcement learning (DRL) framework to automate the generation of these alignment paths. We formulate the planning process as a Markov Decision Process (MDP) to capture its sequential decision-making nature, focusing on optimizing geometric trajectories while integrating essential spatial constraints, such as inter-dental collision avoidance and path efficiency. The proposed method leverages the Deep Deterministic Policy Gradient (DDPG) algorithm, enhanced by three key innovations: (1) a Transformer-based agent to model complex spatial interactions between teeth and manage high-dimensional state-action spaces; (2) a dynamic masking scheme that restricts movement to a sparse subset of teeth per step, better reflecting the clinical logic of sequential alignment; and (3) a two-stage curriculum learning strategy that gradually increases task difficulty to ensure training stability and efficient path discovery. We evaluate our approach on a dataset of 10K expert-designed treatment plans based on clinical data. Experimental results demonstrate that our method outperforms existing baselines in terms of path safety and geometric efficiency, providing a robust and automated solution for 3D geometric orthodontic alignment planning.",
-      "pdf_url": "https://arxiv.org/abs/2607.14544",
-      "comment": "",
-      "technologies": [
-        "Deep Reinforcement Learning",
-        "Markov Decision Process",
-        "Deep Deterministic Policy Gradient",
-        "Transformer-based Agent",
-        "Curriculum Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.5,
-      "product_potential": [
-        "AI-powered orthodontic treatment planning software for dentists",
-        "Automated tooth alignment simulation tool for dental education",
-        "AI-assisted orthodontic treatment planning platform for orthodontists"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "id": "2512.16864",
-      "title": "RePlan: Reasoning-guided Region Planning for Complex Instruction-based Image Editing",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-07-17",
-      "updated": "2026-07-17",
-      "summary": "arXiv:2512.16864v2 Announce Type: replace Abstract: Instruction-based image editing enables natural-language control over visual modifications, yet existing models falter under Instruction-Visual Complexity (IV-Complexity), where intricate instructions meet cluttered or ambiguous scenes. We introduce RePlan (Region-aligned Planning), a plan-then-execute framework that couples a vision-language planner with a diffusion editor. The planner decomposes instructions via step-by-step reasoning and explicitly grounds them to target regions; the editor then applies changes using a training-free attention-region injection mechanism, enabling precise, parallel multi-region edits without iterative inpainting. To strengthen planning, we apply GRPO-based reinforcement learning using 1K instruction-only examples, yielding substantial gains in reasoning fidelity and format reliability. We further present IV-Edit, a benchmark focused on fine-grained grounding and knowledge-intensive edits. Across IV-Complex settings, RePlan consistently outperforms strong baselines trained on far larger datasets, improving regional precision and overall consistency. Our project page: https://replan-iv-edit.github.io",
-      "pdf_url": "https://arxiv.org/abs/2512.16864",
-      "comment": "",
-      "technologies": [
-        "Vision-Language Models",
-        "Diffusion Models",
-        "Reinforcement Learning from Human Feedback",
-        "Attention Mechanisms"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "AI-powered image editing tool for designers and photographers",
-        "Customizable AI assistant for e-commerce product image generation",
-        "AI-driven content creation platform for social media"
-      ],
-      "domain_applications": [
-        "creative",
         "enterprise",
-        "other"
+        "science"
       ]
-    },
-    {
-      "id": "2607.13188",
-      "title": "Concurrent Image Understanding and Generation: Self-Correcting Coupled Markov Jump Processes",
-      "authors": [
-        "Minh-Quan Le",
-        "Armand Comas",
-        "Alexandros Lattas",
-        "Stylianos Moschoglou",
-        "Pedro Vélez",
-        "Amit Raj",
-        "Aaron Germuth",
-        "Thabo Beeler",
-        "Dimitris Samaras",
-        "Di Qiu"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-14",
-      "updated": "2026-07-14",
-      "summary": "Human cognition does not separate understanding and generation. A teacher at a whiteboard speaks and draws together, each modality reshapes the other. In this paper, we bring this coupled loop to artificial systems. Masked Diffusion Models (MDMs) are ideally suited to this task, yet existing samplers either decode text and image interleavedly or independently update them in parallel branches that share only previous-step history, but not the other modality's latest decisions within the same step; combined with MDMs' inability to remask, cross-modal contradictions are neither detected nor repaired. We introduce Self-Correcting Coupled Markov Jump Processes (SC-CMJP), a framework in which one modality's transition rates are functionals of the other modality's confidence score, as weighted by cross-modal attention. Furthermore, a remasking jump retracts commitments the moment cross-modal evidence turns against them. In conjunction with SC-CMJP, we introduce CO_2Jump (Self-text{CO}rrecting text{CO}upled text{Jump}), a novel training-free single-pass sampler for joint multimodal geneneration. For training and evaluation purposes, we have created and will release three large-scale joint multimodal generation corpora: JEdit-1M, JMaze-200K, JNono-200K, with matching in- and out-of-distribution benchmarks. CO_2Jump achieves best joint performance for image understanding and editing as well as visual reasoning (maze and nonogram solving). The performance of the sampler scales monotonically with the number of denoising steps, evidence that the benefits of cross-modal coupling compound across the trajectory. Project page: https://coupled-jump.github.io",
-      "pdf_url": "https://arxiv.org/pdf/2607.13188",
-      "comment": "",
-      "technologies": [
-        "Masked Diffusion Models",
-        "Multimodal Learning",
-        "Self-Correcting Coupled Markov Jump Processes"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.5,
-      "product_potential": [
-        "A multimodal AI assistant that can understand and generate both text and images in real-time, enabling more natural and interactive communication.",
-        "An AI-powered design tool that allows users to sketch ideas and have the AI generate corresponding images, facilitating creative collaboration."
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "robotics"
-      ]
-    },
-    {
-      "id": "2607.15660",
-      "title": "ToolVerse: Unlocking Massive Environments and Long-Horizon Tasks for Agentic Reinforcement Learning",
-      "authors": [
-        "Shuaiyu Zhou",
-        "Fengpeng Yue",
-        "Zengjie Hu",
-        "Yuanzhe Shen",
-        "Chenyang Zhang",
-        "feng hong",
-        "Cao Liu",
-        "Ke Zeng"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-17",
-      "updated": "2026-07-17",
-      "summary": "While LLM agents demonstrate strong reasoning abilities in compact and well-defined scenarios, they struggle to maintain robustness and effectiveness when faced with large-scale, diverse, and dynamic real-world environments that demand seamless tool integration. To address this gap, we introduce ToolVerse, a comprehensive framework that scales up agentic RL environments and enables agents to perform complex long-horizon reasoning in Tool-Integrated Reasoning (TIR) tasks. First, ToolVerse automatically builds the massive executable agent training environments from nearly 400 real-world Model Context Protocols (MCPs) that contain about 4500 tools. Second, we propose a task design strategy based on a tool dependency graph, utilizing Dynamic Unlocking Sampling Algorithm to generate long-horizon tasks, and produce GUST (Graph Unlocking Sampling Tasks) dataset. Third, to alleviate the credit assigment problem in long-horizon agentic RL, we propose a fine-grained Turn-Aware Relative Advantage algorithm. We conduct extensive Agentic RL training using ToolVerse and evaluate our framework on serveral agentic benchmarks. Experimental results demonstrate that our framework significantly strengthens LLMs' capabilities in long-horizon tool use, achieving a marked performance boost and showcasing robust reasoning within dynamic environments.",
-      "pdf_url": "https://arxiv.org/pdf/2607.15660v1",
-      "comment": "",
-      "technologies": [
-        "Agentic Reinforcement Learning",
-        "Dynamic Unlocking Sampling Algorithm",
-        "Turn-Aware Relative Advantage"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "AI-powered personal assistants with advanced tool integration capabilities",
-        "Automated workflow management systems for enterprise environments"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.15592",
-      "title": "MGDT: MLLM-Guided Diffusion Transformer with Relation-Adaptive Mixture-of-Experts for Multimodal Knowledge Graph Completion",
-      "authors": [
-        "Xu Hou",
-        "Meiyu Liang",
-        "Wei Huang",
-        "Yawen Li",
-        "Zhe Xue",
-        "Wu Liu",
-        "Guanhua Ye",
-        "Lei Shi",
-        "Kangkang Lu"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-17",
-      "updated": "2026-07-17",
-      "summary": "Multimodal Knowledge Graph Completion (MKGC) requires inferring missing entities from structural, textual, and visual cues. Existing diffusion-based MKGC methods usually denoise directly on raw multimodal features. Such a design forces the denoiser to simultaneously perform relation-dependent cue selection, cross-modal semantic alignment, and structure-aware entity generation, which introduces noisy and semantically inconsistent conditions for diffusion and consequently leads to suboptimal completion performance. To address this limitation, we propose MGDT: MLLM-Guided Diffusion Transformer with Relation-Adaptive Mixture-of-Experts (MGDT), a novel MKGC framework built on an align-then-diffuse paradigm. MGDT first employs a Relation-Adaptive Semantic Routing Mixture-of-Experts (RASR-MoE) module to select relation-relevant multimodal semantic transformation paths and suppress irrelevant modality interference. MGDT then uses a frozen Multimodal Large Language Model (MLLM) as a semantic anchor to align the routed multimodal representations into a unified latent space and reduce cross-modal semantic heterogeneity. Finally, a Knowledge Graph Diffusion Transformer (KGDT) performs graph-conditioned denoising generation in the aligned space to produce the missing entity representation. Experiments on three benchmark datasets show that MGDT consistently outperforms strong baselines.",
-      "pdf_url": "https://arxiv.org/pdf/2607.15592v1",
-      "comment": "8pages, 6 figures",
-      "technologies": [
-        "Diffusion Models",
-        "Mixture of Experts",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Enhanced multimodal knowledge graph completion for enterprise data integration",
-        "Improved recommendation systems by leveraging multimodal data"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.12550",
-      "title": "A JoLT for the KV Cache: Near-Lossless KV Cache Compression via Joint Tucker and JL-Residual Allocation for LLMs",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-20",
-      "updated": "2026-07-20",
-      "summary": "arXiv:2607.12550v2 Announce Type: replace-cross Abstract: The key-value (KV) cache has become the dominant memory cost of transformer inference: it grows with batch size, context length, and depth, and at long context it, rather than the model weights, sets the throughput ceiling. Existing reductions fall into two families. Low-rank methods factor two-dimensional slices of the cache, either per-head matrices or cross-layer feature blocks, and quantization methods lower the bit-width of every entry. Neither exploits the fact that the cache at a layer is naturally a third-order tensor whose three axes, the heads, the tokens, and the features, carry very different amounts of redundancy. We take this tensor view directly. Our method, JoLT (Joint Lagrangian Tucker), applies a partial Tucker decomposition that compresses only the token and feature axes while leaving the head and layer axes intact, then restores the energy that truncation discards with a rotated low-bit residual: a random orthogonal rotation followed by low-bit quantization. A single Lagrangian dual allocates the Tucker ranks and the residual bit-widths together, per layer group and separately for keys and values, under one byte budget. The result is a near-lossless 2-3x compression. Perplexity stays near-lossless on both a grouped-query-attention model (Mistral-7B-v0.3) and a multi-head-attention model (LLaMA-2-13B), and GSM8K accuracy and needle-in-a-haystack retrieval hold at the uncompressed baseline at 2x on both architectures and through 3x on the GQA model. At 2x, JoLT reconstructs the cache to relative Frobenius error 0.009 (K) and 0.006 (V) on both architectures. A randomized-SVD variant, FlashJoLT, delivers a 5-13x compression-time speedup at 1024-token context and matched quality.",
-      "pdf_url": "https://arxiv.org/abs/2607.12550",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.5,
-      "product_potential": [],
-      "domain_applications": []
     }
   ],
   "technologies": [
     {
       "name": "Multi-modal Memory",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "science"
+        "science",
+        "robotics"
       ]
     },
     {
       "name": "Self-evolution Loop",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "science"
+        "science",
+        "robotics"
       ]
     },
     {
       "name": "EmbodiedWorldBench",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "science"
+        "science",
+        "robotics"
       ]
     },
     {
       "name": "Universal Multi-modal Graph Memory",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "science"
+        "science",
+        "robotics"
       ]
     },
     {
       "name": "Diffusion Models",
-      "papers": 4,
+      "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "creative",
+        "other",
         "education",
         "robotics",
+        "creative",
         "enterprise"
       ]
     },
     {
       "name": "Multimodal Learning",
-      "papers": 5,
+      "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "creative",
+        "other",
+        "healthcare",
         "education",
         "robotics",
+        "creative",
         "enterprise"
       ]
     },
     {
       "name": "Depth Estimation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "creative",
         "education",
+        "creative",
         "robotics"
       ]
     },
     {
       "name": "Object Detection",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "creative",
         "education",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Partially Observable Markov Decision Process (POMDP)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Graph-based Memory",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Self-Correction",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
         "robotics"
       ]
     },
@@ -647,7 +674,7 @@
       "name": "Multi-Agent Systems",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "science",
@@ -658,9 +685,9 @@
     {
       "name": "Plan-First Architecture",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
         "science",
         "education",
@@ -670,9 +697,9 @@
     {
       "name": "Stepwise Provenance Tracking",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
         "science",
         "education",
@@ -682,9 +709,9 @@
     {
       "name": "Learn-at-Test-Time Adaptation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
         "science",
         "education",
@@ -694,231 +721,13 @@
     {
       "name": "Mixed-Initiative Interaction",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
         "science",
         "education",
         "enterprise"
-      ]
-    },
-    {
-      "name": "Cost-Aware Skill Rewriting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Operational Knowledge Engineering",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Instance-level 2.5D Mapping",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Open-vocabulary Panoptic Segmentation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "LLM-based Target Selection",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Score-level Fusion",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Storage-efficient Semantic Representation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Point-in-Time Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Chronologically Filtered Training",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "name": "LoRA for Instruction Fine-Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Hierarchical Latents",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "name": "Sparse Hierarchical Attention Pattern",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "name": "Deep Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Markov Decision Process",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Deep Deterministic Policy Gradient",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Transformer-based Agent",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Curriculum Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "enterprise",
-        "other"
       ]
     },
     {
@@ -928,212 +737,407 @@
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "finance",
+        "science",
+        "other",
+        "education",
+        "robotics",
         "creative",
-        "enterprise",
-        "other"
+        "enterprise"
       ]
     },
     {
-      "name": "Attention Mechanisms",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Masked Diffusion Models",
+      "name": "On-device AI",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "creative",
+        "robotics",
+        "other",
         "education",
-        "robotics"
+        "enterprise"
       ]
     },
     {
-      "name": "Self-Correcting Coupled Markov Jump Processes",
+      "name": "Low-Rank Adaptation",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "creative",
+        "robotics",
+        "other",
         "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "other",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Cost-Aware Skill Rewriting",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Operational Knowledge Engineering",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Instance-level 2.5D Mapping",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "accessibility",
         "robotics"
       ]
     },
     {
-      "name": "Agentic Reinforcement Learning",
+      "name": "Open-vocabulary Panoptic Segmentation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "accessibility",
+        "robotics"
       ]
     },
     {
-      "name": "Dynamic Unlocking Sampling Algorithm",
+      "name": "LLM-based Target Selection",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "accessibility",
+        "robotics"
       ]
     },
     {
-      "name": "Turn-Aware Relative Advantage",
+      "name": "Score-level Fusion",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Storage-efficient Semantic Representation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Masked Diffusion Language Models",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "other"
+        "science",
+        "other",
+        "robotics"
+      ]
+    },
+    {
+      "name": "World Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "other",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Steerable Text-Based World Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "other",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Empirical Grounding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "finance",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "enterprise"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "other"
+        "other",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Unified Multimodal Large Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Layout-Aware Reasoning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Contrastive Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
       ]
     }
   ],
   "product_opportunities": [
     {
-      "technology": "Instance-level 2.5D Mapping",
-      "idea": "SmartRoom: AI-powered indoor navigation assistant for the visually impaired",
+      "technology": "Reinforcement Learning from Human Feedback",
+      "idea": "FeedbackLoop: AI-driven personal finance assistant that learns from user feedback to optimize spending and savings",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
       "development_time": "3-6 months"
     },
     {
-      "technology": "Open-vocabulary Panoptic Segmentation",
-      "idea": "SmartVision: AI-powered object recognition and segmentation for visually impaired users",
+      "technology": "Masked Diffusion Language Models",
+      "idea": "DiffuseWrite: AI-powered writing assistant that generates and refines text based on user input and context",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
       "development_time": "2-4 months"
     },
     {
-      "technology": "LLM-based Target Selection",
-      "idea": "SmartPick: AI-powered target selection for robotic arms in automated warehouses",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Score-level Fusion",
-      "idea": "SmartFusion: AI-powered score-level fusion for multi-sensor robotic systems",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Storage-efficient Semantic Representation",
-      "idea": "SmartStore: AI-powered storage-efficient semantic representation for robotic memory systems",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Deep Reinforcement Learning",
-      "idea": "SmartCare: AI-powered personalized healthcare assistant for patient care",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Markov Decision Process",
-      "idea": "SmartLearn: AI-powered personalized learning platform for students",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Deep Deterministic Policy Gradient",
-      "idea": "SmartTreat: AI-powered personalized treatment plan generator for healthcare providers",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Transformer-based Agent",
-      "idea": "SmartAgent: AI-powered transformer-based agent for healthcare decision-making",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Curriculum Learning",
-      "idea": "SmartProgress: AI-powered personalized learning curriculum for students",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Multi-modal Memory",
-      "idea": "SmartMem: AI-powered multi-modal memory system for robotic systems",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Self-evolution Loop",
-      "idea": "SmartEvolve: AI-powered self-evolution loop for robotic systems",
+      "technology": "World Models",
+      "idea": "WorldSim: AI-driven virtual world simulator for training and testing autonomous systems and AI agents",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "4-6 months"
+      "development_time": "6-12 months"
     },
     {
-      "technology": "EmbodiedWorldBench",
-      "idea": "SmartBench: AI-powered embodied world benchmarking system for robotic systems",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Universal Multi-modal Graph Memory",
-      "idea": "SmartGraph: AI-powered universal multi-modal graph memory system for robotic systems",
+      "technology": "Steerable Text-Based World Models",
+      "idea": "SteerSim: AI-driven virtual world simulator with steerable parameters for training and testing autonomous systems and AI agents",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "4-6 months"
+      "development_time": "6-12 months"
     },
     {
       "technology": "Diffusion Models",
-      "idea": "SmartCreate: AI-powered creative content generator for artists and educators",
+      "idea": "DiffuseArt: AI-powered art generation tool that creates unique and customizable artwork based on user input",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Multimodal Learning",
+      "idea": "MediLearn: AI-powered educational platform that combines text, images, and videos to create immersive and interactive learning experiences",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "3-5 months"
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Partially Observable Markov Decision Process (POMDP)",
+      "idea": "POMDPilot: AI-driven decision-making tool for autonomous systems that operates in uncertain and partially observable environments",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "6-12 months"
+    },
+    {
+      "technology": "Reinforcement Learning",
+      "idea": "RLTrade: AI-driven trading platform that uses reinforcement learning to optimize trading strategies and maximize returns",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Graph-based Memory",
+      "idea": "GraphMind: AI-powered knowledge management tool that uses graph-based memory to organize, retrieve, and visualize information",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Self-Correction",
+      "idea": "SelfCheck: AI-powered self-correction tool for autonomous systems that continuously monitors and corrects its own actions and decisions",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "6-12 months"
+    },
+    {
+      "technology": "Multi-Agent Systems",
+      "idea": "AgentSim: AI-driven multi-agent simulation platform for training and testing collaborative and competitive AI agents",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "On-device AI",
+      "idea": "DeviceMind: AI-powered on-device assistant that performs tasks such as image recognition, speech-to-text, and language translation without requiring an internet connection",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Low-Rank Adaptation",
+      "idea": "LRA: AI-powered low-rank adaptation tool for fine-tuning large language models with minimal computational resources",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Chain-of-Thought Prompting",
+      "idea": "ChainThink: AI-powered reasoning tool that uses chain-of-thought prompting to generate and evaluate multiple possible solutions to a problem",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Empirical Grounding",
+      "idea": "GroundTruth: AI-powered empirical grounding tool that connects AI-generated content to real-world data and evidence to ensure accuracy and reliability",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "6-12 months"
     }
   ]
 }
