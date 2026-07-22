@@ -6,11 +6,15 @@
 
     const $ = (id) => document.getElementById(id);
 
+    const scriptEl = document.currentScript;
+    const initTab = scriptEl?.dataset?.initTab || 'agents';
+    const initUc = scriptEl?.dataset?.initUc || '';
+
     const state = {
         data: null,
-        tab: 'agents',
-        search: '',
-        useCase: '',
+        tab: initTab,
+        search: initUc || '',
+        useCase: initUc,
     };
 
     function esc(s) {
@@ -68,8 +72,8 @@
             healthcare: '🏥', education: '📚', 'customer-support': '🎧', productivity: '⚡',
         };
         chips.innerHTML = '<span class="as-chips-label">Filter by use case:</span> ' +
-            ucs.map(uc => `<button class="as-chip" data-uc="${esc(uc)}" type="button">${icons[uc] || '📌'} ${esc(uc)}</button>`).join('') +
-            '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button" hidden>✕ Clear</button>';
+            ucs.map(uc => `<button class="as-chip${uc === state.useCase ? ' active' : ''}" data-uc="${esc(uc)}" type="button">${icons[uc] || '📌'} ${esc(uc)}</button>`).join('') +
+            '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button"' + (state.useCase ? '' : ' hidden') + '>✕ Clear</button>';
     }
 
     // ---- filter + render grid ---------------------------------------------
@@ -261,6 +265,9 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
 
     document.addEventListener('DOMContentLoaded', () => {
         bindControls();
+        if (state.useCase) {
+            $('as-search').value = state.useCase;
+        }
         load();
     });
 })();
