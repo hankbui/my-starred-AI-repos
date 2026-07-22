@@ -78,6 +78,10 @@ jobs:
         run: |
           python scripts/generate_daily_top.py || echo "Daily Top Picks generation skipped"
 
+      - name: Generate Agent & Skills Data
+        run: |
+          python scripts/generate_agent_skills.py || echo "Agent & Skills classification skipped"
+
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"

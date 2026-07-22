@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents & Skills — Find the Right Tool for Every Job</title>
+    <meta name="description" content="Search 250+ AI agents and skills by use case — marketing, coding, design, research, data, and more. Updated daily with curated GitHub repos.">
+    <meta property="og:title" content="AI Agents & Skills Directory — Find by Use Case">
+    <meta property="og:description" content="Find the best AI agents and skills for marketing, coding, design, sales, and more. Curated from GitHub, updated daily.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/agent-skills.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Agents & Skills — Find by Use Case">
+    <meta name="twitter:description" content="Find the best AI agent or skill for any job. Search by use case.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260721-1">
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="hf-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="hf-hero">
+                    <h1>
+                        <span>🤖 AI Agents & Skills</span>
+                        <small id="as-updated"></small>
+                    </h1>
+                    <p>
+                        Stop hunting. <b>Find the right agent or skill</b> for any job —
+                        marketing, coding, design, research, data, and more.
+                        Curated from GitHub, classified by use case, updated daily.
+                    </p>
+                </div>
+            </div>
+            <div class="as-stats" id="as-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <!-- Tab bar -->
+                <div class="as-bar">
+                    <button class="as-tab active" data-tab="agents" type="button">🤖 Agents <span class="count" id="as-c-agents"></span></button>
+                    <button class="as-tab" data-tab="skills" type="button">🛠️ Skills <span class="count" id="as-c-skills"></span></button>
+                    <input type="search" class="as-search" id="as-search" placeholder="Search by name, description, or what you need (e.g. 'marketing')..." autocomplete="off" spellcheck="false">
+                    <span class="as-count" id="as-count"></span>
+                </div>
+
+                <!-- Use-case chips -->
+                <div class="as-chips" id="as-chips"></div>
+
+                <!-- Ask AI bar -->
+                <div class="as-ai-bar">
+                    <button class="as-ai-btn" id="as-ai-btn" type="button">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                        Ask AI: Find the best match
+                    </button>
+                    <span class="as-ai-note">Describe what you need — LLM7 finds the best agent/skill from the data</span>
+                </div>
+                <div class="as-ai-result" id="as-ai-result" hidden></div>
+
+                <!-- Results grid -->
+                <div class="as-grid" id="as-grid"></div>
+                <div class="as-empty" id="as-empty" hidden></div>
+
+                <div class="as-footer">Data from GitHub starred repos · Classified by category, topics &amp; keywords · Updated daily via GitHub Actions</div>
+            </section>
+        </main>
+    </div>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="agent-skills.js?v=20260721-1"></script>
+</body>
+</html>
