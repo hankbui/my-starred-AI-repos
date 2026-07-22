@@ -72,6 +72,12 @@ jobs:
         run: |
           python scripts/generate_hf_daily.py || echo "HF Daily Digest generation skipped"
 
+      - name: Generate Daily Top Picks
+        env:
+          PRODUCTHUNT_TOKEN: ${{ secrets.PRODUCTHUNT_TOKEN }}
+        run: |
+          python scripts/generate_daily_top.py || echo "Daily Top Picks generation skipped"
+
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"

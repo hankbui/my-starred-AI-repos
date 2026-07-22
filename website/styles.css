@@ -2526,3 +2526,25 @@ a {
 .hf-brief-body { font-size:0.85rem; line-height:1.65; color:var(--text-primary); white-space:pre-wrap; }
 .hf-brief-body em { color:var(--accent); font-style:normal; font-weight:600; }
 .hf-brief-meta { font-size:0.7rem; color:var(--text-muted); margin-top:8px; }
+
+/* ===== Daily Top Picks ===== */
+.dt-stats { display:flex; flex-wrap:wrap; gap:12px; margin:10px 0 20px; }
+.dt-stats .hf-stat { min-width:80px; }
+.dt-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; margin-bottom:28px; }
+@media (max-width:720px) { .dt-grid { grid-template-columns:1fr; } }
+.dt-card { padding:18px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:10px; transition:140ms ease; }
+.dt-card:hover { border-color:var(--border-strong); }
+.dt-card-head { display:flex; align-items:flex-start; gap:10px; }
+.dt-rank-badge { flex-shrink:0; display:inline-flex; align-items:center; justify-content:center; min-width:52px; height:26px; padding:0 10px; border-radius:999px; background:linear-gradient(135deg,#ffb857,#f59e0b); color:#000; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.02em; }
+.dt-card-icon { font-size:1.5rem; flex-shrink:0; line-height:1; margin-top:2px; }
+.dt-card-title-group { flex:1; min-width:0; }
+.dt-card-ov { font-size:0.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); font-weight:700; margin-bottom:1px; }
+.dt-card-title { font-family:"Space Grotesk",sans-serif; font-size:1rem; font-weight:700; color:var(--text-primary); line-height:1.3; word-break:break-word; }
+.dt-card-body { font-size:0.82rem; color:var(--text-secondary); line-height:1.5; flex:1; }
+.dt-card-body p { margin:0 0 6px; }
+.dt-meta { display:flex; flex-wrap:wrap; gap:8px; font-size:0.74rem; color:var(--text-muted); margin-top:4px; }
+.dt-meta .dt-up { color:var(--success); font-weight:700; }
+.dt-tag { display:inline-block; padding:1px 7px; border-radius:999px; font-size:0.64rem; font-weight:700; background:rgba(99,207,255,0.08); color:var(--accent); }
+.dt-card-link { display:inline-flex; align-items:center; gap:4px; margin-top:auto; padding:7px 14px; border:1px solid var(--border); border-radius:999px; font-size:0.78rem; font-weight:700; color:var(--accent); text-decoration:none; align-self:flex-start; transition:120ms ease; }
+.dt-card-link:hover { background:rgba(99,207,255,0.08); border-color:var(--accent-strong); }
+.dt-footer { font-size:0.78rem; color:var(--text-muted); text-align:center; padding:20px 0; border-top:1px solid var(--border); }
