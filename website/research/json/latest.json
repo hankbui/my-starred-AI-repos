@@ -1,61 +1,41 @@
 {
   "meta": {
-    "date": "2026-07-24",
+    "date": "2026-07-25",
     "papers_tracked": 15,
-    "technologies_discovered": 43,
+    "technologies_discovered": 34,
     "opportunities_identified": 0,
-    "last_update": "2026-07-24 07:45 UTC",
+    "last_update": "2026-07-25 07:32 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    {
-      "technology": "Retrieval Augmented Generation",
-      "why_it_matters": "Enhances the accuracy and relevance of AI-generated content by integrating external knowledge sources, which is crucial for applications requiring up-to-date or specialized information.",
-      "opportunity": "Develop AI-driven educational platforms or scientific research tools that can dynamically retrieve and integrate the latest information to provide accurate and contextually relevant responses."
-    },
-    {
-      "technology": "Multimodal Learning",
-      "why_it_matters": "Allows AI systems to process and understand multiple types of data (e.g., text, images, EEG signals), enabling more comprehensive and nuanced interactions.",
-      "opportunity": "Create multimodal AI applications in healthcare for diagnostics, in robotics for navigation and interaction, and in education for interactive learning experiences."
-    },
-    {
-      "technology": "Reinforcement Learning",
-      "why_it_matters": "Enables AI systems to learn from interactions with their environment, making them adaptable and capable of complex decision-making tasks.",
-      "opportunity": "Build AI agents for enterprise automation, robotics, and other domains where adaptive learning and decision-making are critical."
-    },
-    {
-      "technology": "Vision-Language Guardrails",
-      "why_it_matters": "Provides a safety mechanism for AI systems by ensuring their outputs are aligned with ethical and safety guidelines, which is essential for real-world applications.",
-      "opportunity": "Develop AI moderation systems for social media, content creation platforms, and other applications where ensuring safe and appropriate content is paramount."
-    },
-    {
-      "technology": "Embodied Chain-of-Thought",
-      "why_it_matters": "Enables AI systems to reason about and interact with their physical environment, which is crucial for applications in robotics and interactive learning.",
-      "opportunity": "Create AI-driven robotic systems for enterprise applications, such as automated warehouses or customer service robots, and educational tools that can guide and interact with users in real-time."
-    }
+    "Retrieval Augmented Generation (RAG) is advancing rapidly, particularly in academic and scientific domains. It matters for product builders as it enhances information retrieval and knowledge synthesis, crucial for educational and research applications. The opportunity lies in developing RAG-powered tools for academic research, education, and scientific workflows.",
+    "Multimodal Learning is gaining traction, especially in scientific and healthcare domains. It matters for product builders as it enables the integration of diverse data types, enhancing the capabilities of AI systems. The opportunity lies in creating multimodal AI systems for scientific research, healthcare diagnostics, and educational tools.",
+    "Reinforcement Learning from Human Feedback (RLHF) is being applied to various domains, including CUDA kernel generation and financial decision-making. It matters for product builders as it improves the alignment of AI systems with human preferences and expertise. The opportunity lies in developing RLHF-powered tools for performance optimization, financial decision-making, and other domains requiring human-AI collaboration.",
+    "On-device AI is being explored for robotics and multimodal interaction systems. It matters for product builders as it enables real-time, privacy-preserving AI applications. The opportunity lies in developing on-device AI systems for robotics, education, and enterprise applications.",
+    "Bias Mitigation in Large Language Models (LLMs) is a growing concern, particularly in educational and enterprise domains. It matters for product builders as it ensures the fairness and inclusivity of AI systems. The opportunity lies in developing bias mitigation techniques and tools for LLMs, particularly in educational and enterprise applications."
   ],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "43",
+      "value": "34",
       "label": "discovered this scan",
-      "detail": "Retrieval Augmented Generation, Knowledge Distillation, Multimodal Learning, Reinforcement Learning, Chain-of-Thought Prompting, Vision-Language Guardrails, Behavioral Auditing, Neuro-symbolic Systems",
+      "detail": "Retrieval Augmented Generation, Knowledge Distillation, Multimodal Learning, Transformer, Modality-specific Encoders, Modality-specific Decoders, Modality-tailored Adapters, Curriculum Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "43",
+      "value": "34",
       "label": "active trend clusters",
-      "detail": "Chain-of-Thought Prompting, Neuro-symbolic Systems, Depth Estimation, Vision Transformer, YOLO-based Gesture Detection",
+      "detail": "Retrieval Augmented Generation, Reinforcement Learning from Human Feedback, Reinforcement Learning, Vision-Language Models, Interface Quality Assessment",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "8.0",
+      "value": "7.9",
       "label": "avg opportunity score",
       "detail": "AISE-Bench: A Full-Cycle Curated Benchmark for Information Seeking on Academic K",
       "color": "amber"
@@ -71,17 +51,17 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Artificial Intelligence for Ma",
+      "value": "An Intelligent-Cloud Edge Mult",
       "label": "highest confidence paper",
-      "detail": "AI-powered math tutoring system that provides step-by-step solutions and explanations for students of all levels, Automated theorem prover that assists mathematicians in formalizing and verifying their proofs, reducing the time and effort required for manual verification",
+      "detail": "A multimodal robot assistant for home automation, An interactive educational robot for children",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "5",
+      "value": "18",
       "label": "early-stage technologies",
-      "detail": "Artificial Intelligence for Mathematical Reasoning: An Integrated Survey of Lang",
+      "detail": "Monkey King Bang: A Unified Scientific Multimodal Foundation Model",
       "color": "blue"
     }
   ],
@@ -112,278 +92,6 @@
       "domain_applications": [
         "science",
         "education"
-      ]
-    },
-    {
-      "id": "2607.21384",
-      "title": "Multimodal Pretraining for Generalizable EEG Representation Learning",
-      "authors": [
-        "Targol Bakhtiarvand",
-        "Jugal Kalita",
-        "Adham Atyabi"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "Electroencephalography (EEG) models used for epilepsy are often limited to specific datasets and tasks. This limited approach can make it challenging to apply these models across different datasets or in various situations. However, recent studies in foundation models and self-supervised learning suggest that an adaptable EEG backbone could support a range of EEG related tasks. In this study, we have developed a multimodal EEG foundation model that combines a raw signal encoder based on the Mamba architecture, a Vision Transformer (ViT)-style encoder for time-frequency data, and a lightweight encoder for text, all within a shared embedding space. The pretraining process relies on several innovative techniques, such as masked modeling, cross-view contrastive alignment, and temporal consistency losses. These methods are designed to create rich, seizure-relevant representations without requiring labeled data. To assess the efficacy and generalization of our pretrained model, we fine-tuned it on the canonical CHB-MIT seizure detection benchmark and additional seizure detection datasets, and conducted extensive experiments comparing different model variants. On the standard CHB-MIT split, our best single model achieved an AUROC of 0.874, and an ensemble variant reached 0.878 AUROC, representing state-of-the-art performance on this benchmark. In addition to standard train-test splits, we evaluated performance under a leave-one-subject-out (LOSO) protocol, which is rarely reported in prior EEG seizure modeling work and highlights the difficulty of patient-independent seizure detection, with a mean LOSO balanced accuracy of 0.558 across 19 subjects. Across datasets and evaluation settings, our multimodal foundation model enabled robust seizure detection and straightforward adaptation to new seizure detection scenarios, while also supporting interpretable seizure localization.",
-      "pdf_url": "https://arxiv.org/pdf/2607.21384v1",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Self-supervised Learning",
-        "Masked Modeling",
-        "Cross-view Contrastive Alignment",
-        "Temporal Consistency Losses"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "A wearable EEG device with multimodal foundation model for real-time seizure detection and localization",
-        "A telemedicine platform for epilepsy monitoring and management using EEG data"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "id": "2607.21401",
-      "title": "When Are Reasoning-Based Guardrails Not Efficient? ResponseGuard: A Fast Vision-Language Guard for Real-Time Moderation",
-      "authors": [
-        "Dongbin Na"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "A vision-language AI assistant returns its answer as a stream of generated tokens. Therefore, a safety guard that watches that answer has to keep up with the stream and stop a harmful reply before a user reads it. Recent vision-language guardrails instead generate a chain of thought before they issue a verdict. They believe that step-by-step reasoning yields a safer guard. This design makes the guard heavy and slow, since the model must decode many tokens for harmfulness detection. We pose the question of whether a vision-language guard really needs to reason in order to screen a response. We answer with a guard that has no chain. ResponseGuard reads a harmful verdict from a single pooled representation of the request, the response, and the image in one forward pass. Across a standard multimodal guardrail benchmark, our 2B ResponseGuard outperforms a recent 3B reasoning-based vision-language guard on response harmfulness detection, without any reasoning and at about 150 times lower time cost. On request harmfulness the reasoning guard retains an overall lead, and the remaining gap on both tracks sits on the image-only cells. We observe that the gap may stem from the frozen vision encoders that both designs use rather than from the missing chain. We have also found the reasoning guard directs almost none of its verdict attention to the image. Based on a single-pass detection, ResponseGuard can screen an answer sentence by sentence as it streams and stop a harmful answer before it finishes. For guarding the response of a vision-language model, a calibrated single-pass label may provide a sufficient safety signal. We fully release all source code, trained models, and datasets at https://github.com/ndb796/ResponseGuard.",
-      "pdf_url": "https://arxiv.org/pdf/2607.21401v1",
-      "comment": "8 pages, 6 figures, 3 tables. Project page: https://ndb796.github.io/ResponseGuard ; Code: https://github.com/ndb796/ResponseGuard",
-      "technologies": [
-        "Vision-Language Guardrails",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "Real-time content moderation for social media platforms",
-        "AI-powered moderation for live-streaming services"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.18867",
-      "title": "HindsightBench: A Black-Box Behavioral Audit Protocol for Parametric Hindsight in Time-Indexed LLM Decision Tasks",
-      "authors": [
-        "Haozhe Jia"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.CL"
-      ],
-      "published": "2026-07-21",
-      "updated": "2026-07-21",
-      "summary": "Large language models leak parametric knowledge of realized outcomes into historical financial decision tasks. Existence is settled; what users lack is a cheap way to audit a given model for it. We present HindsightBench, a black-box behavioral audit protocol that profiles parametric hindsight in any time-indexed LLM decision task at probe-level cost (no backtests, no logprobs, no corpus access). The protocol chains a four-arm date-manipulation matrix (revealed/date-only/masked/transplanted), dual memory probes (date recovery; outcome recall), and six per-model metrics -- trigger strength, transplant effect, post-cutoff placebo, recoverability, behaviorally effective knowledge cutoff, and a recall-accuracy dissociation coefficient -- with explicit gates where identifiability is data-dependent. Applying it to 15 models from seven vendors on a 258-node vintage-correct macro panel yields three headline patterns: (i) the date-trigger reflex tracks training generation, not scale -- absent across the 2024 open-weight generation from 1B to 70B, present in every tested 2026-generation model, and switching on within one vendor lineage (Qwen3 -> Qwen3.6) at fixed MoE architecture and 3B active parameters; (ii) effective cutoffs span 22 months across vendors and precede vendor-reported dates by up to eight months, invalidating calendar-window placebo designs; (iii) audit results are not invariant to serving -- BF16 serving of an FP8-referenced model breaks the trigger estimate's stability while AWQ-INT4 preserves it, and a provider-locked reasoning regime makes one probe non-convergent -- so the protocol ships with operational requirements (pin quantization and thinking regime; disclose parser and sampling policy). We release the panel, frozen preregistrations, per-model audit rows with measured dollar costs, transcripts, and one-command regeneration.",
-      "pdf_url": "https://arxiv.org/pdf/2607.18867v1",
-      "comment": "15 pages, 3 figures. Code, panel, and per-model audit rows: https://github.com/Khaozhe/hindsightbench (v1.0 release archived at doi:10.5281/zenodo.21453191)",
-      "technologies": [
-        "Behavioral Auditing",
-        "Black-Box Auditing",
-        "Parametric Hindsight"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A SaaS platform for auditing LLMs for parametric hindsight in financial decision tasks, helping organizations ensure compliance and transparency.",
-        "A tool for developers to integrate into their applications to audit LLMs in real-time, providing insights into potential biases and parametric knowledge leaks."
-      ],
-      "domain_applications": [
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2606.08728",
-      "title": "Artificial Intelligence for Mathematical Reasoning: An Integrated Survey of Language Models, Neuro-symbolic Systems, and Verified Discovery",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "arXiv:2606.08728v3 Announce Type: replace Abstract: Mathematical reasoning has long served as a stringent test of machine intelligence; over the past decade, it has moved from a niche problem within NLP to one of the most consequential AI frontiers. This survey provides a unified account of the field's evolution, from early rule-based math word problem (MWP) solvers and template-driven geometry systems, through neural expression generation and LLM prompting, to contemporary reasoning models, multi-agent systems, neuro-symbolic theorem provers, and verified discovery workflows. We organize the landscape along four axes: (i) informal reasoning over text and diagrams, spanning MWP solving, multimodal geometry, and VLMs; (ii) formal reasoning in proof assistants, including autoformalization, tactic prediction, compiler-guided repair, and proof search; (iii) mathematical discovery, where systems propose constructions, improve bounds, or assist attacks on open problems; and (iv) the inference and training-time techniques, including CoT prompting, tool use, process reward models, and RLVR, that increasingly connect generation with verification. We catalog major benchmarks across grade-school arithmetic, competition mathematics, geometry, formal proving, multimodal and multilingual reasoning, and expert evaluation, and we examine benchmark saturation, contamination, reporting mismatches, and the distinction between pass@1, majority voting, and verifier-assisted pass@$k$. We critically assess failure modes: brittleness under perturbation, reward hacking, multimodal grounding failures, fragile formalization, and the energy cost of reasoning-scale inference. Drawing on recent perspectives from working mathematicians, we identify future directions centered on verified-discovery workflows, reasoning efficiency, and infrastructure to make AI-assisted formalization broadly usable. Companion materials: https://github.com/Starscream-11813/awesome-AI4Math.",
-      "pdf_url": "https://arxiv.org/abs/2606.08728",
-      "comment": "",
-      "technologies": [
-        "Chain-of-Thought Prompting",
-        "Neuro-symbolic Systems",
-        "Retrieval Augmented Generation",
-        "Reinforcement Learning from Human Feedback",
-        "Multimodal Learning",
-        "Knowledge Distillation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered math tutoring system that provides step-by-step solutions and explanations for students of all levels",
-        "Automated theorem prover that assists mathematicians in formalizing and verifying their proofs, reducing the time and effort required for manual verification"
-      ],
-      "domain_applications": [
-        "education",
-        "science"
-      ]
-    },
-    {
-      "id": "2602.15875",
-      "title": "Fly0: Persistent Metric Anchoring for Zero-Shot Aerial Vision-Language Navigation",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "arXiv:2602.15875v2 Announce Type: replace-cross Abstract: Current Visual-Language Navigation (VLN) methodologies face a trade-off between semantic understanding and control precision. While Multimodal Large Language Models (MLLMs) offer superior reasoning, deploying them as low-level controllers leads to high latency, trajectory oscillations, and poor generalization due to weak geometric grounding. To address these limitations, we propose Fly0, a framework that decouples semantic reasoning from geometric planning. The proposed method operates through a three-stage pipeline: (1) an MLLM-driven module for grounding natural language instructions into 2D pixel coordinates; (2) a geometric projection module that utilizes depth data to localize targets in 3D space; and (3) a geometric planner that generates collision-free trajectories. This mechanism enables robust navigation even when visual contact is lost. By eliminating the need for continuous inference, Fly0 reduces computational overhead and improves system stability. Extensive experiments in simulation and real-world environments demonstrate that Fly0 outperforms state-of-the-art baselines, improving the Success Rate by over 20\\% and reducing Navigation Error (NE) by approximately 50\\% in unstructured environments. Our code is available at https://github.com/xuzhenxing1/Fly0.",
-      "pdf_url": "https://arxiv.org/abs/2602.15875",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Depth Estimation",
-        "Vision Transformer"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Autonomous aerial drones for delivery and logistics",
-        "Search and rescue operations using aerial drones",
-        "Smart surveillance systems with natural language commands"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2605.13632",
-      "title": "Guide, Think, Act: Interactive Embodied Reasoning in Vision-Language-Action Models",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "arXiv:2605.13632v2 Announce Type: replace-cross Abstract: In this paper, we propose GTA-VLA(Guide, Think, Act), an interactive Vision-Language-Action (VLA) framework that enables spatially steerable embodied reasoning by allowing users to guide robot policies with explicit visual cues. Existing VLA models learn a direct \"Sense-to-Act\" mapping from multimodal observations to robot actions. While effective within the training distribution, such tightly coupled policies are brittle under out-of-domain (OOD) shifts and difficult to correct when failures occur. Although recent embodied Chain-of-Thought (CoT) approaches expose intermediate reasoning, they still lack a mechanism for incorporating human spatial guidance, limiting their ability to resolve visual ambiguities or recover from mistakes. To address this gap, our framework allows users to optionally guide the policy with spatial priors, such as affordance points, boxes, and traces, which the subsequent reasoning process can directly condition on. Based on these inputs, the model generates a unified spatial-visual Chain-of-Thought that integrates external guidance with internal task planning, aligning human visual intent with autonomous decision-making. For practical deployment, we further couple the reasoning module with a lightweight reactive action head for efficient action execution. Extensive experiments demonstrate the effectiveness of our approach. On the in-domain SimplerEnv WidowX benchmark, our framework achieves a state-of-the-art 81.2% success rate. Under OOD visual shifts and spatial ambiguities, a single visual interaction substantially improves task success over existing methods, highlighting the value of interactive reasoning for failure recovery in embodied control. More details of the project can be found here: https://github.com/FutianLabs/GTA-VLA.",
-      "pdf_url": "https://arxiv.org/abs/2605.13632",
-      "comment": "",
-      "technologies": [
-        "Vision-Language-Action Models",
-        "Embodied Chain-of-Thought",
-        "Spatial Guidance Integration",
-        "Reactive Action Head"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Interactive robotic assistants with visual guidance capabilities",
-        "Augmented reality interfaces for robot control and feedback",
-        "Smart home automation systems with visual interaction"
-      ],
-      "domain_applications": [
-        "robotics",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2607.21557",
-      "title": "OpenForgeRL: Train Harness-native Agents in Any Environment",
-      "authors": [
-        "Xiao Yu",
-        "Baolin Peng",
-        "Ruize Xu",
-        "Hao Zou",
-        "Qianhui Wu",
-        "Hao Cheng",
-        "Wenlin Yao",
-        "Nikhil Singh",
-        "Zhou Yu",
-        "Jianfeng Gao"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "Modern AI agents rely on elaborate inference harnesses such as Claude Code, Codex, and OpenClaw to drive multi-turn reasoning, tool use, and access to external systems. While powerful, these complex harnesses also make agents hard to train end-to-end with open infrastructure, whose SFT/RL stacks cannot natively express stateful, multi-process harness inference. To address this, we present OpenForgeRL, an open-source framework for training harness-based agents end-to-end in diverse environments. OpenForgeRL achieves this with a lightweight proxy that serves the harness's model calls while recording them as training data for a standard RL codebase (e.g., veRL), and a Kubernetes orchestrator that runs each rollout in its own remote container, together enabling training on any harness in any environment at scale. By decoupling training and inference, OpenForgeRL allows researchers to easily train, study, and improve agents directly in the real harnesses and environments they are deployed with. We validate our framework across diverse, complex harnesses and environments, spanning tool/claw-based agents and multimodal GUI browser- and computer-use agents. Using only hundreds to a few thousand tasks, OpenForgeClaw reaches 31.7 pass^3 and 55.9 pass@3 on ClawEval and 33.7 on QwenClawBench. OpenForgeGUI reaches 37.7 on OSWorld-Verified, 63.0 on Online-Mind2Web, and 72.3 on WebVoyager. Both outperform open baselines of similar size on nearly all benchmarks, and in the GUI setting match or surpass models several times larger. Beyond benchmarks, we analyze how harness choice (e.g., ZeroClaw, OpenClaw, Codex) and RL shape agent behavior. We find that some harnesses are substantially harder to learn than others, and that RL improves agentic reliability, such as self-verification, tool coverage, and completing multi-step plans, though critical abilities such as error recovery remain weak.",
-      "pdf_url": "https://arxiv.org/pdf/2607.21557v1",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning",
-        "Multi-process Training",
-        "Kubernetes Orchestration",
-        "Proxy-based Model Serving"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A scalable platform for training and deploying AI agents in complex, real-world environments",
-        "A framework for developing and optimizing AI agents for specific tasks and domains"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.21343",
-      "title": "M$^3$-Gen: Interpretable Multimodal Generation of Gene Expression Profiles Using Clinical and Imaging Data",
-      "authors": [
-        "Francesca Pia Panaccione",
-        "Carlo Sgaravatti",
-        "Marco Venere"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.CV"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "Integrating heterogeneous biomedical data, including clinical metadata, histopathology images, and molecular profiles, is crucial for comprehensive disease understanding. However, gene expression data acquisition remains constrained by high costs and privacy concerns, limiting its use in multimodal research and AI-driven applications. We present MultiModal Molecular Generation (M$^3$-Gen), a novel framework for the generation of gene expression profiles by conditioning a Generative Adversarial Network on histopathology images and clinical metadata. M$^3$-Gen learns a unified latent representation from the clinical variables and the images, leveraging contrastive learning, and exploits the embeddings of the two modalities to guide a generative model in producing biologically coherent gene expression profiles. Evaluations on the TCGA dataset demonstrate that M$^3$-Gen generates realistic and functionally meaningful gene expression data. Importantly, by integrating multiple modalities in an attention-based mechanism, M$^3$-Gen provides intrinsic explainability: it allows the identification of which regions of the histopathology images most strongly influenced the generation of specific gene expression profiles, making the model's decisions interpretable by design.",
-      "pdf_url": "https://arxiv.org/pdf/2607.21343v1",
-      "comment": "15 pages, 6 figures",
-      "technologies": [
-        "Generative Adversarial Network",
-        "Contrastive Learning",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-driven tool for generating synthetic gene expression profiles from histopathology images and clinical metadata",
-        "Interpretable AI system for identifying key regions in histopathology images influencing gene expression profiles"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "science"
       ]
     },
     {
@@ -485,299 +193,488 @@
       ]
     },
     {
-      "id": "2604.24927",
-      "title": "Large Language Models Explore by Latent Distilling",
+      "id": "2607.20690",
+      "title": "Learning to Detect UI Principle Violations via Reinforcement Learning",
       "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20690v1 Announce Type: new Abstract: Small language models and coding agents increasingly generate web front-end code, yet their outputs are typically evaluated primarily for functional correctness. A generated interface may compile, render, and pass unit tests while still violating established interface quality principles, including accessibility barriers, deceptive design patterns, poor visual hierarchy, and excessive decision complexity. Existing auditing approaches face a trade-off between cost, coverage, and scalability: expert human review provides rich judgment but is slow and expensive; frontier vision-language models offer broader reasoning capabilities but remain costly to deploy at scale; and rule-based tools such as axe-core and Lighthouse are inexpensive but primarily capture mechanically checkable accessibility issues. We investigate whether a lightweight vision-language model can serve as an effective critic for generated interfaces. We unify 19 interface-quality principles from three complementary sources of HCI knowledge: WCAG 2.2 accessibility standards, deceptive design taxonomies, and established theories of perception, cognition, and interaction. To train this critic, we construct a verified dataset of approximately 10,000 generated web pages by synthetically injecting known violations into clean, LLM-generated Tailwind pages. Continued reinforcement learning on a 4B vision-language model improves micro-F1 from 36\\% to 84\\%, with 13 of 19 principles exceeding 80\\% F1. The resulting critic can audit generated interfaces, filter low-quality interface training data, and provide a reward signal for design-aware code generation. We release our data-generation recipe and injection/verification prompts to support reproducible evaluation and future work on scalable interface-quality assessment.",
+      "pdf_url": "https://arxiv.org/abs/2607.20690",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "Vision-Language Models",
+        "Interface Quality Assessment"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Automated UI quality assessment tool for developers",
+        "AI-powered design review assistant for UX/UI teams",
+        "Scalable interface quality monitoring system for web applications"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "accessibility",
+        "creative"
+      ]
+    },
+    {
+      "id": "2607.20465",
+      "title": "DataPrep-Bench: Benchmarking LLMs as Training Data Preparators",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20465v1 Announce Type: cross Abstract: The quality of training data fundamentally determines the capabilities of large language models (LLMs), yet no unified benchmark exists to measure how well LLMs, agents, and data-centric workflows actually prepare training data end to end. We view LLM-driven data preparation as comprising two complementary capabilities: data construction, which transforms raw sources into supervised training data, and data quality evaluation, which predicts the training value of candidate datasets before downstream training; throughout, \"quality\" refers to downstream training utility rather than surface-level textual properties. We introduce DataPrep-Bench, the first unified benchmark that jointly evaluates both capabilities under a shared downstream-grounded protocol over six domains and multiple base models. For data construction, methods consume identical raw sources and are scored by fine-tuning a base model on their outputs jointly with Dolly-15k; alongside this track we release Data-Construction-Skill, a skill-guided agent that lifts the Dolly-only baseline by nearly 20 points absolute on Llama-3.1-8B Finance and is competitive with the strongest agent- and DataFlow-based methods in knowledge-extraction-dense domains. For data quality evaluation, scoring functions are scored by Pearson correlation with downstream performance on a shared candidate pool; we release the Distributional Alignment Score (DAS), a distribution-based evaluator that uses MMD between a candidate dataset and a domain proxy. DAS attains the strongest cross-model correlation in four of six domains and is the only metric clearing r > 0.70 simultaneously in Math, Science, and Medical, outperforming existing quality-, diversity-, and heuristic-based evaluators. DataPrep-Bench provides a unified, downstream-grounded framework for measuring progress on both capabilities as co-equal targets of LLM-driven data preparation.",
+      "pdf_url": "https://arxiv.org/abs/2607.20465",
+      "comment": "",
+      "technologies": [
+        "Data Construction",
+        "Data Quality Evaluation",
+        "Distributional Alignment Score"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Automated data preparation tools for LLMs",
+        "Data quality evaluation systems for training datasets",
+        "Domain-specific data construction agents"
+      ],
+      "domain_applications": [
+        "science",
+        "finance",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.20491",
+      "title": "DFAH-Bench: Benchmarking Observable Agent Instability in Financial Decision-Making",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20491v1 Announce Type: cross Abstract: Standard evaluation benchmarks measure what a tool-using agent decides, not whether it arrives at that decision through the same process each time. We introduce DFAH-Bench, a replay benchmark that measures observable behavioral instability in financial agent decision-making across three channels -- tool-call trajectories, evidence contacts, and decision concentration -- none of which require access to hidden reasoning text. Across 8,127 replay episodes spanning 10 models and 3 financial tasks, we find that outcome agreement alone is an incomplete stability signal: frontier models can agree on decisions 95% of the time while following the same tool path only 77% of the time -- an 18-percentage-point gap (95% CI: [0.14, 0.22]) that outcome-only evaluation misses entirely. Among frontier-model case groups with high decision agreement, over 55% exhibit meaningful trajectory divergence. We identify three behavioral profiles: pattern matchers that achieve near-perfect agreement by collapsing to a single output regardless of input, stable executors with relatively consistent tool-use processes, and trajectory divergers that reach the same conclusions through materially different tool paths and evidence contacts. The benchmark code, metric scripts, replay logs, benchmark card, dataset README, and release manifest are released in the accompanying repository.",
+      "pdf_url": "https://arxiv.org/abs/2607.20491",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.6,
+      "product_potential": [
+        "A financial decision-making tool that provides transparency by showing the tool-call trajectories and evidence contacts used to arrive at a decision.",
+        "A benchmarking platform for financial agents that helps developers understand and improve the stability and consistency of their models."
+      ],
+      "domain_applications": [
+        "finance"
+      ]
+    },
+    {
+      "id": "2607.20638",
+      "title": "WaveformQA: Benchmarking LLM Temporal Reasoning on Digital Waveforms",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20638v1 Announce Type: cross Abstract: Large Language Models (LLMs) have demonstrated strong capabilities in code generation and reasoning, yet their ability to perform temporal reasoning over digital waveform data remains largely unexplored. Although reasoning over digital waveforms is a critical bottleneck in design verification, existing benchmarks primarily evaluate hardware description language (HDL) code generation and use waveforms only as supplementary context. This paper presents WaveformQA, an open-source question-answering benchmark for evaluating LLM temporal reasoning over digital waveforms. The benchmark comprises 360 questions with programmatically generated ground truths across eight categories of varying difficulty, including questions targeting multi-signal correlation and event ordering. Waveforms are generated from open-source design implementations, ensuring reproducibility and grounding the benchmark in real hardware behavior. Evaluation of frontier LLMs reveals that while models achieve reasonable accuracy on simple queries, performance degrades due to context window limitations and reasoning difficulties on complex temporal and multi-step questions. In addition, we show that an event-time JSON representation of waveforms improves LLM reasoning accuracy versus the standardized value change dump (VCD) format. The open-source framework supports extending to new question categories and importing new waveform sources, enabling researchers to rapidly prototype temporal reasoning experiments.",
+      "pdf_url": "https://arxiv.org/abs/2607.20638",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Developing an AI-powered tool for hardware designers to analyze and debug digital waveforms more efficiently.",
+        "Creating a platform for educational purposes to teach temporal reasoning and digital waveform analysis."
+      ],
+      "domain_applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "id": "2604.01925",
+      "title": "ImplicitBBQ: Benchmarking Implicit Bias in Large Language Models through Characteristic Based Cues",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2604.01925v2 Announce Type: replace Abstract: Large Language Models increasingly suppress biased outputs when demographic identity is stated explicitly, yet may still exhibit implicit biases when identity is conveyed indirectly. Existing benchmarks use name based proxies to detect implicit biases, which carry weak associations with many social demographics and cannot extend to dimensions like age or socioeconomic status. We introduce ImplicitBBQ, a QA benchmark that evaluates implicit bias through characteristic based cues, demographically associated attributes that signal implicitly, across age, gender, region, religion, caste, and socioeconomic status. Evaluating 11 models, we find that implicit bias in ambiguous contexts is over six times higher than explicit bias in open weight models. Notably, this bias is distributed unevenly across demographics: caste emerges as the most severe while gender is the least affected. Safety prompting and chain-of-thought reasoning fail to substantially close this gap; even few-shot prompting, which reduces implicit bias by 79%, leaves caste bias at four times the level of any other dimension. These findings indicate that current alignment and prompting strategies address the surface of bias evaluation while leaving demographically associated stereotypic associations largely unresolved. We publicly release our code and dataset for model providers and researchers to benchmark potential mitigation techniques.",
+      "pdf_url": "https://arxiv.org/abs/2604.01925",
+      "comment": "",
+      "technologies": [
+        "Bias Mitigation",
+        "Large Language Models",
+        "Prompt Engineering",
+        "Chain-of-Thought Prompting"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Developing AI content moderation tools that can detect and mitigate implicit biases in user-generated content.",
+        "Creating AI-driven educational tools that help users understand and mitigate implicit biases in their language models."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2607.21384",
+      "title": "Multimodal Pretraining for Generalizable EEG Representation Learning",
+      "authors": [
+        "Targol Bakhtiarvand",
+        "Jugal Kalita",
+        "Adham Atyabi"
+      ],
       "categories": [
         "cs.AI"
       ],
       "published": "2026-07-23",
       "updated": "2026-07-23",
-      "summary": "arXiv:2604.24927v2 Announce Type: replace-cross Abstract: Generating diverse responses is crucial for test-time scaling of large language models (LLMs), yet standard stochastic sampling mostly yields surface-level lexical variation, limiting semantic exploration. In this paper, we propose Exploratory Sampling (ESamp), a decoding approach that explicitly encourages semantic diversity during generation. ESamp is motivated by the well-known observation that neural networks tend to make lower-error predictions on inputs similar to those encountered before, and incur higher prediction error on novel ones. Building on this property, we train a lightweight Distiller at test time to predict deep-layer hidden representations of the LLM from its shallow-layer representations to model the LLM's depth-wise representation transitions. During decoding, the Distiller continuously adapts to the mappings induced by the current generation context. ESamp uses the prediction error as a novelty signal to reweight candidate token extensions conditioned on the current prefix, thereby biasing decoding toward less-explored semantic patterns. ESamp is implemented with an asynchronous training--inference pipeline, with less than 5% worst case overhead (1.2% in the optimized release). Empirical results show that ESamp significantly boosts the Pass@k efficiency of reasoning models, showing superior or comparable performance to strong stochastic and heuristic baselines. Notably, ESamp achieves robust generalization across mathematics, science, and code generation benchmarks and breaks the trade-off between diversity and coherence in creative writing. Our code has released at: https://github.com/LinesHogan/tLLM.",
-      "pdf_url": "https://arxiv.org/abs/2604.24927",
+      "summary": "Electroencephalography (EEG) models used for epilepsy are often limited to specific datasets and tasks. This limited approach can make it challenging to apply these models across different datasets or in various situations. However, recent studies in foundation models and self-supervised learning suggest that an adaptable EEG backbone could support a range of EEG related tasks. In this study, we have developed a multimodal EEG foundation model that combines a raw signal encoder based on the Mamba architecture, a Vision Transformer (ViT)-style encoder for time-frequency data, and a lightweight encoder for text, all within a shared embedding space. The pretraining process relies on several innovative techniques, such as masked modeling, cross-view contrastive alignment, and temporal consistency losses. These methods are designed to create rich, seizure-relevant representations without requiring labeled data. To assess the efficacy and generalization of our pretrained model, we fine-tuned it on the canonical CHB-MIT seizure detection benchmark and additional seizure detection datasets, and conducted extensive experiments comparing different model variants. On the standard CHB-MIT split, our best single model achieved an AUROC of 0.874, and an ensemble variant reached 0.878 AUROC, representing state-of-the-art performance on this benchmark. In addition to standard train-test splits, we evaluated performance under a leave-one-subject-out (LOSO) protocol, which is rarely reported in prior EEG seizure modeling work and highlights the difficulty of patient-independent seizure detection, with a mean LOSO balanced accuracy of 0.558 across 19 subjects. Across datasets and evaluation settings, our multimodal foundation model enabled robust seizure detection and straightforward adaptation to new seizure detection scenarios, while also supporting interpretable seizure localization.",
+      "pdf_url": "https://arxiv.org/pdf/2607.21384v1",
       "comment": "",
       "technologies": [
-        "Knowledge Distillation",
-        "Exploratory Sampling"
+        "Multimodal Learning",
+        "Self-supervised Learning",
+        "Masked Modeling",
+        "Cross-view Contrastive Alignment",
+        "Temporal Consistency Losses"
       ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.6,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.5,
       "product_potential": [
-        "A creative writing assistant that generates diverse and coherent stories by leveraging Exploratory Sampling to encourage semantic diversity.",
-        "An educational tool that uses Exploratory Sampling to generate diverse and accurate explanations for complex mathematical and scientific concepts."
+        "A wearable EEG device with multimodal foundation model for real-time seizure detection and localization",
+        "A telemedicine platform for epilepsy monitoring and management using EEG data"
       ],
       "domain_applications": [
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "id": "2605.09635",
-      "title": "K12-KGraph: A Curriculum-Aligned Knowledge Graph for Benchmarking and Training Educational LLMs",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "arXiv:2605.09635v2 Announce Type: replace Abstract: Large language models are increasingly used in K-12 education, but existing benchmarks mainly test exam question answering rather than understanding how curriculum knowledge is structured and visually presented. We call this capability curriculum cognition. It covers prerequisite chains, concept taxonomies, experiment-concept links, pedagogical sequencing, and visual grounding. We introduce K12-KGraph, a curriculum-aligned knowledge graph extracted from official People's Education Press textbooks in mathematics, physics, chemistry, and biology across primary, middle, and high school. It contains nine node types and fourteen relation types covering curriculum structure and visual grounding. From this graph, we derive K12-Bench, a 23,640-question multi-select benchmark with five task families: Ground, Prereq, Neighbor, Evidence, and Locate. We also build K12-Train, a graph-guided supervised fine-tuning corpus of 7,335 samples, including 2,267 text-only QA pairs and 5,068 multimodal VQA pairs. On K12-Bench, Gemini-3-Flash achieves only 57 percent exact match and Gemma-4-31B-IT reaches 46 percent, with Prereq and Neighbor being the hardest tasks. Our training experiments show that domain-specific supervision can reduce this gap. Under a matched 2,300-sample budget, K12-Train-Text consistently outperforms equally sized subsets of eight mainstream instruction-tuning corpora on GaokaoBench and EduEval. For vision-language models, K12-Train-Full achieves the best overall results on Gaokao-MM, MDK12-medium, and K12Vista among all compared training configurations, despite using fewer samples than the full DataFlow and WizardLM baselines. It also surpasses both text-only and multimodal-only variants, showing that textual and visual supervision are complementary. We release the graph, benchmark, training data, and complete construction pipeline.",
-      "pdf_url": "https://arxiv.org/abs/2605.09635",
-      "comment": "",
-      "technologies": [
-        "Knowledge Graph",
-        "Retrieval Augmented Generation",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.6,
-      "product_potential": [
-        "An AI-powered educational assistant that can answer questions and explain concepts in a way that aligns with the curriculum structure and visual presentation.",
-        "A personalized learning platform that uses the knowledge graph to create adaptive learning paths based on the student's understanding of prerequisite concepts."
-      ],
-      "domain_applications": [
-        "education"
-      ]
-    },
-    {
-      "id": "2607.09530",
-      "title": "FreyaTTS: A Compact Tokenizer-Free Flow-Matching Transformer for Turkish-First Speech Synthesis",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-23",
-      "updated": "2026-07-23",
-      "summary": "arXiv:2607.09530v2 Announce Type: replace Abstract: We introduce Freya-TTS, a compact, tokenizer-free, Turkish-first text-to-speech model designed for highly reliable and efficient conversational synthesis. Freya-TTS is a 183.2M-parameter non-autoregressive conditional flow-matching Diffusion Transformer (DiT) that operates in the continuous latent space of the frozen AudioVAE2 (16 kHz encode, 48 kHz decode), allowing the model to focus its capacity on text-to-latent mapping while inheriting high-quality 48 kHz reconstruction. We advance the framework along three key dimensions: (1) rule-free end-to-end modeling from a 92-symbol Turkish character vocabulary without a phonemizer, grapheme-to-phoneme frontend, or discrete speech tokenizer, with digit strings expanded to their spoken form at the text frontend; (2) non-autoregressive parallel denoising, which predicts the entire latent sequence simultaneously over a predicted duration; and (3) a production-oriented two-stage post-training recipe consisting of single-speaker voice locking and short-utterance coverage, improving speaker consistency and robustness on short inputs. On the Freya-TR-Eval benchmark, Freya-TTS achieves a band-matched word error rate (WER) of 8.0% and character error rate (CER) of 3.0%, lower error than both larger open systems in its field, XTTS-v2 and F5-TTS, at 40-55% of their parameter count, together with the highest naturalness (MOS) among the compact systems. The model achieves a real-time factor of 0.11 on a consumer GPU (RTX 4090; ~0.14 mean on an H100) and synthesizes in real time on a laptop CPU, making it well suited for resource-constrained edge deployment. We release the model weights, training and inference code, and evaluation benchmark under the Apache-2.0 license.",
-      "pdf_url": "https://arxiv.org/abs/2607.09530",
-      "comment": "",
-      "technologies": [
-        "Flow-Matching",
-        "Diffusion Models",
-        "Transformer",
-        "AudioVAE2",
-        "Non-autoregressive Parallel Denoising"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "A real-time, low-latency text-to-speech application for mobile devices",
-        "An accessible voice assistant for users with disabilities"
-      ],
-      "domain_applications": [
-        "accessibility",
-        "education",
-        "creative"
-      ]
-    }
-  ],
-  "technologies": [
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 4,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Knowledge Distillation",
-      "papers": 3,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 8,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
         "healthcare",
-        "science",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 3,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
         "science"
       ]
     },
     {
-      "name": "Vision-Language Guardrails",
-      "papers": 1,
+      "id": "2601.01885",
+      "title": "Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2601.01885v3 Announce Type: replace Abstract: Large language model (LLM) agents face fundamental limitations in long-horizon reasoning due to finite context windows, making effective memory management critical. Existing methods typically handle long-term memory (LTM) and short-term memory (STM) as separate components, relying on heuristics or auxiliary controllers, which limits adaptability and end-to-end optimization. In this paper, we propose Agentic Memory (AgeMem), a unified framework that integrates LTM and STM management directly into the agent's policy. AgeMem exposes memory operations as tool-based actions, enabling the LLM agent to autonomously decide what and when to store, retrieve, update, summarize, or discard information. To train such unified behaviors, we propose a three-stage progressive reinforcement learning strategy and design a step-wise GRPO to address sparse and discontinuous rewards induced by memory operations. Experiments on five long-horizon benchmarks demonstrate that AgeMem consistently outperforms strong memory-augmented baselines across multiple LLM backbones, achieving improved task performance, higher-quality long-term memory, and more efficient context usage.",
+      "pdf_url": "https://arxiv.org/abs/2601.01885",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Personalized AI assistants with adaptive memory management",
+        "Enhanced conversational AI systems with improved long-term context retention"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.21401",
+      "title": "When Are Reasoning-Based Guardrails Not Efficient? ResponseGuard: A Fast Vision-Language Guard for Real-Time Moderation",
+      "authors": [
+        "Dongbin Na"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-23",
+      "updated": "2026-07-23",
+      "summary": "A vision-language AI assistant returns its answer as a stream of generated tokens. Therefore, a safety guard that watches that answer has to keep up with the stream and stop a harmful reply before a user reads it. Recent vision-language guardrails instead generate a chain of thought before they issue a verdict. They believe that step-by-step reasoning yields a safer guard. This design makes the guard heavy and slow, since the model must decode many tokens for harmfulness detection. We pose the question of whether a vision-language guard really needs to reason in order to screen a response. We answer with a guard that has no chain. ResponseGuard reads a harmful verdict from a single pooled representation of the request, the response, and the image in one forward pass. Across a standard multimodal guardrail benchmark, our 2B ResponseGuard outperforms a recent 3B reasoning-based vision-language guard on response harmfulness detection, without any reasoning and at about 150 times lower time cost. On request harmfulness the reasoning guard retains an overall lead, and the remaining gap on both tracks sits on the image-only cells. We observe that the gap may stem from the frozen vision encoders that both designs use rather than from the missing chain. We have also found the reasoning guard directs almost none of its verdict attention to the image. Based on a single-pass detection, ResponseGuard can screen an answer sentence by sentence as it streams and stop a harmful answer before it finishes. For guarding the response of a vision-language model, a calibrated single-pass label may provide a sufficient safety signal. We fully release all source code, trained models, and datasets at https://github.com/ndb796/ResponseGuard.",
+      "pdf_url": "https://arxiv.org/pdf/2607.21401v1",
+      "comment": "8 pages, 6 figures, 3 tables. Project page: https://ndb796.github.io/ResponseGuard ; Code: https://github.com/ndb796/ResponseGuard",
+      "technologies": [
+        "Vision-Language Guardrails",
+        "Multimodal Learning"
+      ],
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
+      "curator_score": 5.4,
+      "product_potential": [
+        "Real-time content moderation for social media platforms",
+        "AI-powered moderation for live-streaming services"
+      ],
+      "domain_applications": [
         "enterprise",
         "creative",
         "other"
       ]
     },
     {
-      "name": "Behavioral Auditing",
-      "papers": 1,
-      "maturity": "medium",
+      "id": "2607.20833",
+      "title": "REFACT: Adaptive Fact Restatement for Compact and Faithful Chain-of-Thought Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20833v1 Announce Type: new Abstract: Large language models increasingly rely on long-form reasoning for complex tasks, yet their reasoning traces may drift away from the supplied context when evidence is sparse, noisy, or in conflict with parametric knowledge. Existing grounding methods either attach citations after generation or encourage evidence retrieval inside the trace, but they often do not ensure that cited content is sufficient for the local inference and final answer. We propose REFACT, an adaptive fact-restatement citation framework that trains models to decide when a reasoning step needs contextual grounding and at what granularity source facts should be restated. This design avoids both unsupported inference and indiscriminate fact copying by turning citations into answer-supporting intermediate states. REFACT is optimized with a two-stage SFT-to-RL pipeline in which a citation-utility reward encourages cited facts to be well-formed, source-traceable, and answer-sufficient. Experiments on LongBench, LV-Eval, and ConFiQA show that REFACT improves long-context QA and counterfactual faithfulness while substantially reducing token consumption. Further analysis shows that REFACT preserves more answer-bearing evidence with fewer restated facts, yielding reasoning traces that are denser rather than longer. All code and data are available at https://github.com/NEUIR/REFACT.",
+      "pdf_url": "https://arxiv.org/abs/2607.20833",
+      "comment": "",
+      "technologies": [
+        "Chain-of-Thought Prompting",
+        "Retrieval Augmented Generation",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
       "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "enterprise"
+      "curator_score": 5.4,
+      "product_potential": [
+        "Enhanced AI assistants that provide more accurate and concise reasoning traces for complex queries",
+        "Improved educational tools that can generate step-by-step explanations with reliable sources",
+        "Advanced enterprise knowledge management systems that can generate concise and accurate reports with proper citations"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science"
       ]
     },
     {
-      "name": "Neuro-symbolic Systems",
+      "id": "2511.12997",
+      "title": "WebCoach: Self-Evolving Web Agents with Cross-Session Memory Guidance",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2511.12997v2 Announce Type: replace-cross Abstract: Multimodal LLM-powered agents have recently demonstrated impressive capabilities in web navigation, enabling agents to complete complex browsing tasks across diverse domains. However, current agents struggle with repetitive errors and lack the ability to learn from past experiences across sessions, limiting their long-term robustness and sample efficiency. We introduce WebCoach, a model-agnostic self-evolving framework that equips web browsing agents with persistent cross-session memory, enabling improved long-term planning, reflection, and continual learning without retraining. WebCoach consists of three key components: (1) a WebCondenser, which standardizes raw navigation logs into concise summaries; (2) an External Memory Store, which organizes complete trajectories as episodic experiences; and (3) a Coach, which retrieves relevant experiences based on similarity and recency, and decides whether to inject task-specific advice into the agent via runtime hooks. This design empowers web agents to access long-term memory beyond their native context window, improving robustness in complex browsing tasks. Moreover, WebCoach achieves self-evolution by continuously curating episodic memory from new navigation trajectories, enabling agents to improve over time without retraining. Evaluations on the WebVoyager benchmark demonstrate that WebCoach consistently improves the performance of browser-use agents across three different LLM backbones. With a 38B model, it increases task success rates from 47% to 61% while reducing or maintaining the average number of steps. Notably, smaller base models with WebCoach achieve performance comparable to the same web agent using GPT-4o.",
+      "pdf_url": "https://arxiv.org/abs/2511.12997",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.4,
+      "product_potential": [
+        "A personalized web browsing assistant that learns from user interactions across sessions to improve navigation and task completion.",
+        "A self-improving web agent platform that can be integrated into various applications requiring complex web interactions."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.20448",
+      "title": "Domyn-Small: A European 10B Reasoning Language Model",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-25",
+      "updated": "2026-07-25",
+      "summary": "arXiv:2607.20448v1 Announce Type: new Abstract: We introduce Domyn-Small, a 10-billion-parameter open-weight reasoning language model released under the MIT license. Domyn-Small is the product of an initial pre-training phase on 9 trillion tokens multilingual data, followed by a post-training pipeline for reasoning, instruction following, and context extension. For the latter, we performed a Continued Pre-Training (CPT) phase that doubles the native context window to 32K tokens, followed by SFT with a math-focused annealing run. Finally, the RL phase includes GRPO with verifiable rewards, DPO, and a multi-environment GRPO stage spanning five task domains: mathematics, code, multiple-choice QA, instruction-following, and tool calling. The 32K-token native context extends to 128K at inference via YaRN, and a chat-template toggle enables dual-mode reasoning. Against peer models in the 7--10B class (Qwen3.5-9B, OLMo-3-7B-Think, Nemotron-Nano-8B, Ministral-3-8B), Domyn-Small achieves a strong accuracy-efficiency balance: it produces roughly one-third as many tokens as Qwen3.5-9B and approximately 35% of OLMo-3-7B-Think's token budget on core reasoning benchmarks, while delivering strong instruction-following (IFEval 79.9) and competitive science reasoning (GPQA-Diamond 50.0). We release the weights and the post-training recipe alongside Domyn Swarm (Apache~2.0), an open-source framework for scalable LLM inference on HPC clusters developed during this program and used throughout this work.",
+      "pdf_url": "https://arxiv.org/abs/2607.20448",
+      "comment": "",
+      "technologies": [
+        "Continued Pre-Training",
+        "Direct Preference Optimization",
+        "YaRN",
+        "Grouped Rank Projection Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.3,
+      "product_potential": [
+        "A scalable LLM inference framework for HPC clusters",
+        "A reasoning-enhanced chatbot for educational and professional use"
+      ],
+      "domain_applications": [
+        "education",
+        "science",
+        "enterprise"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Retrieval Augmented Generation",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "accessibility",
+        "other",
+        "education",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Knowledge Distillation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "other",
+        "education",
+        "creative",
+        "healthcare",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Transformer",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Modality-specific Encoders",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Modality-specific Decoders",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Modality-tailored Adapters",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Curriculum Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
         "education",
         "science"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Vision-Language-Action Models",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
+        "accessibility",
+        "other",
         "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Depth Estimation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
+        "finance",
         "enterprise",
         "science"
-      ]
-    },
-    {
-      "name": "Vision Transformer",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Generative Adversarial Network",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Contrastive Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Transformer",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "healthcare",
-        "education"
       ]
     },
     {
       "name": "Structural Code Analysis",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
+        "other",
         "enterprise",
-        "other"
+        "science"
       ]
     },
     {
       "name": "Performance Optimization",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
+        "other",
         "enterprise",
-        "other"
+        "science"
       ]
     },
     {
       "name": "YOLO-based Gesture Detection",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "education",
@@ -787,9 +684,9 @@
     {
       "name": "Convolutional Block Attention Module",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "education",
@@ -799,9 +696,9 @@
     {
       "name": "Distance-IoU Loss",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "education",
@@ -811,9 +708,9 @@
     {
       "name": "On-device AI",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "education",
@@ -821,258 +718,231 @@
       ]
     },
     {
-      "name": "Exploratory Sampling",
+      "name": "Reinforcement Learning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "education",
+        "accessibility",
+        "enterprise",
         "creative"
       ]
     },
     {
-      "name": "Knowledge Graph",
+      "name": "Vision-Language Models",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education"
-      ]
-    },
-    {
-      "name": "Flow-Matching",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
         "education",
+        "accessibility",
+        "enterprise",
         "creative"
       ]
     },
     {
-      "name": "Diffusion Models",
+      "name": "Interface Quality Assessment",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "accessibility",
         "education",
+        "accessibility",
+        "enterprise",
         "creative"
       ]
     },
     {
-      "name": "AudioVAE2",
+      "name": "Data Construction",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "education",
-        "creative"
+        "finance",
+        "other",
+        "science"
       ]
     },
     {
-      "name": "Non-autoregressive Parallel Denoising",
+      "name": "Data Quality Evaluation",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "accessibility",
+        "finance",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Distributional Alignment Score",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Bias Mitigation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
         "education",
-        "creative"
+        "accessibility",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Large Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "accessibility",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Prompt Engineering",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "accessibility",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "accessibility",
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Self-supervised Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare"
+        "healthcare",
+        "science"
       ]
     },
     {
       "name": "Masked Modeling",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare"
+        "healthcare",
+        "science"
       ]
     },
     {
       "name": "Cross-view Contrastive Alignment",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare"
+        "healthcare",
+        "science"
       ]
     },
     {
       "name": "Temporal Consistency Losses",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Black-Box Auditing",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Parametric Hindsight",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Embodied Chain-of-Thought",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Spatial Guidance Integration",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Reactive Action Head",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-process Training",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Kubernetes Orchestration",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Proxy-based Model Serving",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Modality-specific Encoders",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
         "healthcare",
-        "education"
+        "science"
       ]
     },
     {
-      "name": "Modality-specific Decoders",
+      "name": "Vision-Language Guardrails",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Continued Pre-Training",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare",
-        "education"
+        "education",
+        "enterprise",
+        "science"
       ]
     },
     {
-      "name": "Modality-tailored Adapters",
+      "name": "Direct Preference Optimization",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare",
-        "education"
+        "education",
+        "enterprise",
+        "science"
       ]
     },
     {
-      "name": "Curriculum Learning",
+      "name": "YaRN",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "science",
-        "healthcare",
-        "education"
+        "education",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Grouped Rank Projection Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "science"
       ]
     }
   ],
