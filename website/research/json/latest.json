@@ -1,19 +1,39 @@
 {
   "meta": {
-    "date": "2026-07-25",
+    "date": "2026-07-26",
     "papers_tracked": 15,
     "technologies_discovered": 34,
-    "opportunities_identified": 0,
-    "last_update": "2026-07-25 07:32 UTC",
+    "opportunities_identified": 15,
+    "last_update": "2026-07-26 07:54 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Retrieval Augmented Generation (RAG) is advancing rapidly, particularly in academic and scientific domains. It matters for product builders as it enhances information retrieval and knowledge synthesis, crucial for educational and research applications. The opportunity lies in developing RAG-powered tools for academic research, education, and scientific workflows.",
-    "Multimodal Learning is gaining traction, especially in scientific and healthcare domains. It matters for product builders as it enables the integration of diverse data types, enhancing the capabilities of AI systems. The opportunity lies in creating multimodal AI systems for scientific research, healthcare diagnostics, and educational tools.",
-    "Reinforcement Learning from Human Feedback (RLHF) is being applied to various domains, including CUDA kernel generation and financial decision-making. It matters for product builders as it improves the alignment of AI systems with human preferences and expertise. The opportunity lies in developing RLHF-powered tools for performance optimization, financial decision-making, and other domains requiring human-AI collaboration.",
-    "On-device AI is being explored for robotics and multimodal interaction systems. It matters for product builders as it enables real-time, privacy-preserving AI applications. The opportunity lies in developing on-device AI systems for robotics, education, and enterprise applications.",
-    "Bias Mitigation in Large Language Models (LLMs) is a growing concern, particularly in educational and enterprise domains. It matters for product builders as it ensures the fairness and inclusivity of AI systems. The opportunity lies in developing bias mitigation techniques and tools for LLMs, particularly in educational and enterprise applications."
+    {
+      "technology": "Retrieval Augmented Generation (RAG)",
+      "why_it_matters": "RAG is a key technology for improving the accuracy and relevance of AI-generated content by integrating external knowledge sources. This is crucial for product builders aiming to create more reliable and context-aware AI applications.",
+      "opportunity": "Developing AI applications that require up-to-date information, such as educational tools, scientific research assistants, and financial analysis platforms, by leveraging RAG to enhance content accuracy and relevance."
+    },
+    {
+      "technology": "Reinforcement Learning (RL) and Reinforcement Learning from Human Feedback (RLHF)",
+      "why_it_matters": "RL and RLHF are essential for training AI models to perform complex tasks and improve based on feedback, which is critical for creating adaptive and user-friendly AI systems.",
+      "opportunity": "Building adaptive AI agents for various domains, including education, enterprise, and healthcare, by utilizing RL and RLHF to enhance user interaction and performance."
+    },
+    {
+      "technology": "Vision-Language Models and Vision-Language Guardrails",
+      "why_it_matters": "These technologies are vital for developing AI systems that can understand and generate both visual and textual content, which is important for applications in creative, enterprise, and accessibility domains.",
+      "opportunity": "Creating multimodal AI applications, such as real-time content moderation tools and accessible educational platforms, by integrating vision-language models and guardrails."
+    },
+    {
+      "technology": "Multimodal Learning",
+      "why_it_matters": "Multimodal learning enables AI systems to process and integrate information from multiple sources, which is crucial for creating comprehensive and context-aware AI applications.",
+      "opportunity": "Developing AI applications that require understanding and generating content across multiple modalities, such as healthcare diagnostics and creative content generation."
+    },
+    {
+      "technology": "Chain-of-Thought Prompting and Adaptive Fact Restatement",
+      "why_it_matters": "These techniques are important for improving the reasoning and factual accuracy of AI models, which is essential for creating reliable and trustworthy AI applications.",
+      "opportunity": "Building AI applications that require complex reasoning and factual accuracy, such as educational tools and scientific research assistants, by leveraging chain-of-thought prompting and adaptive fact restatement."
+    }
   ],
   "top_cards": [
     {
@@ -21,15 +41,15 @@
       "title": "New Technologies",
       "value": "34",
       "label": "discovered this scan",
-      "detail": "Retrieval Augmented Generation, Knowledge Distillation, Multimodal Learning, Transformer, Modality-specific Encoders, Modality-specific Decoders, Modality-tailored Adapters, Curriculum Learning",
+      "detail": "Retrieval Augmented Generation, Reinforcement Learning from Human Feedback, Multimodal Learning, Chain-of-Thought Prompting, Vision-Language Guardrails, Knowledge Distillation, Reinforcement Learning, Vision-Language Models",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "34",
+      "value": "27",
       "label": "active trend clusters",
-      "detail": "Retrieval Augmented Generation, Reinforcement Learning from Human Feedback, Reinforcement Learning, Vision-Language Models, Interface Quality Assessment",
+      "detail": "Vision-Language Models, Transformer, On-device AI, YOLO-based Gesture Detection, Multimodal Learning",
       "color": "green"
     },
     {
@@ -51,15 +71,15 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "An Intelligent-Cloud Edge Mult",
+      "value": "Learning to Detect UI Principl",
       "label": "highest confidence paper",
-      "detail": "A multimodal robot assistant for home automation, An interactive educational robot for children",
+      "detail": "Automated UI quality assessment tool for developers, AI-powered design review assistant for UX/UI teams",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "18",
+      "value": "14",
       "label": "early-stage technologies",
       "detail": "Monkey King Bang: A Unified Scientific Multimodal Foundation Model",
       "color": "blue"
@@ -84,7 +104,7 @@
       ],
       "maturity": "early",
       "confidence": 0.8,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "Developing an AI-powered academic research assistant that can autonomously gather and synthesize information from academic knowledge graphs to answer complex research queries.",
         "Creating a benchmarking tool for evaluating the performance of AI agents in information seeking tasks on academic knowledge graphs."
@@ -92,104 +112,6 @@
       "domain_applications": [
         "science",
         "education"
-      ]
-    },
-    {
-      "id": "2607.20557",
-      "title": "Monkey King Bang: A Unified Scientific Multimodal Foundation Model",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-24",
-      "updated": "2026-07-24",
-      "summary": "arXiv:2607.20557v1 Announce Type: cross Abstract: Scientific discovery is increasingly shifting from isolated disciplines to multi-domain reasoning, and AI for science faces a similar transition. Existing systems are either specialised for individual domains or unify scientific data mainly through text tokenisation and prompt-based interfaces, limiting their ability to handle diverse scientific inputs, produce modality-native outputs, and support joint understanding, reasoning, and generation across scientific domains. We introduce MKB, a unified scientific multimodal model for both understanding and generation, built around a shared Transformer backbone and modality-tailored encoders, adapters, and decoders. MKB covers six scientific branches, including DNA, RNA, proteins, small molecules, earth science, and medical images, and supports native outputs such as biological sequences, molecular strings, meteorological fields, and segmentation masks. Training follows a two-stage modality-then-language curriculum: Stage 1 aligns modality-specific components with the frozen backbone, and Stage 2 consolidates them with the language backbone using mixed scientific and general corpora. Experiments show that MKB achieves competitive scientific understanding across biological and molecular benchmarks, produces high-fidelity native outputs for weather forecasting, biological generation, and medical-image segmentation, and largely retains the general capabilities of its Qwen3-VL backbone. These results demonstrate the feasibility of the proposed paradigm, suggesting that shared-backbone models with modality-tailored components can provide a promising foundation for future cross-domain scientific multimodal exploration. The model and code are publicly available at https://github.com/Shanghai-Academy-of-AI-For-Science/MKB and https://huggingface.co/sais-org/MKB.",
-      "pdf_url": "https://arxiv.org/abs/2607.20557",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Transformer",
-        "Modality-specific Encoders",
-        "Modality-specific Decoders",
-        "Modality-tailored Adapters",
-        "Curriculum Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A unified scientific research assistant that can handle diverse scientific inputs and produce modality-native outputs",
-        "A platform for cross-domain scientific exploration and collaboration",
-        "A tool for automated scientific discovery and hypothesis generation"
-      ],
-      "domain_applications": [
-        "science",
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "id": "2607.20908",
-      "title": "Multi-turn RL with Structural and Performance Aware Rewards for CUDA Kernel Generation",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-24",
-      "updated": "2026-07-24",
-      "summary": "arXiv:2607.20908v1 Announce Type: cross Abstract: Reinforcement Learning with Verifiable Rewards (RLVR) has emerged as a powerful technique to enhance the reasoning capacity of LLMs for optimized code generation. However, existing RLVR approaches primarily rely on outcome-based signals such as correctness and speedup, overlooking performance-critical structural properties of programs that are essential for generating optimized code. In this work, we propose CudaPerf, a reflective RL framework that incorporates both verifiable execution rewards and structural code-aware rewards derived from parallelization features (e.g., memory coalescing, occupancy, Arithmatic Intensity, and synchronization patterns). CudaPerf operates in two stages: (1) an offline pairwise ranking module that learns to distinguish strong and weak program candidates via contrastive comparisons, and (2) an online RL training phase that jointly optimizes for correctness, performance, and structural efficiency through a unified reward signal. To further enhance learning, CudaPerf utilizes iterative refinement using execution feedback enabling progressive improvement of generated candidates. We also introduce a dataset comprising 2.9k C to CUDA and 1k PyTorch to CUDA programs, each paired with diverse input configurations and multiple CUDA implementations encompassing diverse optimization strategies. CudaPerf is evaluated across multiple benchmarks comprising both C to CUDA and PyTorch to CUDA transformations. Empirical findings suggest that CudaPerf significantly outperforms strong baselines, including Qwen-3-32B (for C to CUDA) and CUDA Agent (for PyTorch to CUDA) by achieving up to 5X & 3.32X improvements in speedup, and 17% & 7% improvements in correctness, respectively.",
-      "pdf_url": "https://arxiv.org/abs/2607.20908",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Structural Code Analysis",
-        "Performance Optimization"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Automated CUDA Kernel Optimization Tool",
-        "Performance-Aware Code Generation Assistant",
-        "CUDA Kernel Optimization Framework"
-      ],
-      "domain_applications": [
-        "science",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.14675",
-      "title": "An Intelligent-Cloud Edge Multimodal Interaction System for Robots",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-07-24",
-      "updated": "2026-07-24",
-      "summary": "arXiv:2607.14675v3 Announce Type: replace-cross Abstract: Robust human-robot interaction in complex environments requires accurate gesture perception, semantic scene understanding, and reliable task planning under limited onboard computing resources. This paper presents a cloud-edge multimodal interaction framework that integrates an enhanced YOLO-based gesture detector with coordinated large language model (LLM) and vision-language model (VLM) agents. The proposed detector, incorporates the Convolutional Block Attention Module (CBAM) into the neck and replaces the baseline bounding-box regression objective with Distance-IoU (DIoU) loss. These modifications improve feature discrimination and localization for small or partially occluded gestures in complex backgrounds. The cloud layer performs gesture detection, scene understanding, multimodal fusion, and action planning, whereas the TonyPi robot locally handles data acquisition, communication, action execution, and feedback. Experiments on a public gesture dataset and a custom dataset show that YOLO-DC achieves precision values of 98.9% and 95.0%, with mAP@0.5 values of 90.7% and 92.7%, respectively. System-level evaluation yields success rates of 95%, 88%, and 82% for single-action, composite-action, and vision-dependent tasks. A 30 participant evaluation yields an overall mean satisfaction score of 3.69 out of 5. These results demonstrate the feasibility of combining refined gesture detection with multimodal agents for resource-constrained robotic interaction.",
-      "pdf_url": "https://arxiv.org/abs/2607.14675",
-      "comment": "",
-      "technologies": [
-        "YOLO-based Gesture Detection",
-        "Convolutional Block Attention Module",
-        "Distance-IoU Loss",
-        "Multimodal Learning",
-        "On-device AI"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A multimodal robot assistant for home automation",
-        "An interactive educational robot for children",
-        "A gesture-controlled industrial robot for manufacturing"
-      ],
-      "domain_applications": [
-        "robotics",
-        "education",
-        "enterprise"
       ]
     },
     {
@@ -526,72 +448,458 @@
         "science",
         "enterprise"
       ]
+    },
+    {
+      "id": "2607.20557",
+      "title": "Monkey King Bang: A Unified Scientific Multimodal Foundation Model",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-24",
+      "updated": "2026-07-24",
+      "summary": "arXiv:2607.20557v1 Announce Type: cross Abstract: Scientific discovery is increasingly shifting from isolated disciplines to multi-domain reasoning, and AI for science faces a similar transition. Existing systems are either specialised for individual domains or unify scientific data mainly through text tokenisation and prompt-based interfaces, limiting their ability to handle diverse scientific inputs, produce modality-native outputs, and support joint understanding, reasoning, and generation across scientific domains. We introduce MKB, a unified scientific multimodal model for both understanding and generation, built around a shared Transformer backbone and modality-tailored encoders, adapters, and decoders. MKB covers six scientific branches, including DNA, RNA, proteins, small molecules, earth science, and medical images, and supports native outputs such as biological sequences, molecular strings, meteorological fields, and segmentation masks. Training follows a two-stage modality-then-language curriculum: Stage 1 aligns modality-specific components with the frozen backbone, and Stage 2 consolidates them with the language backbone using mixed scientific and general corpora. Experiments show that MKB achieves competitive scientific understanding across biological and molecular benchmarks, produces high-fidelity native outputs for weather forecasting, biological generation, and medical-image segmentation, and largely retains the general capabilities of its Qwen3-VL backbone. These results demonstrate the feasibility of the proposed paradigm, suggesting that shared-backbone models with modality-tailored components can provide a promising foundation for future cross-domain scientific multimodal exploration. The model and code are publicly available at https://github.com/Shanghai-Academy-of-AI-For-Science/MKB and https://huggingface.co/sais-org/MKB.",
+      "pdf_url": "https://arxiv.org/abs/2607.20557",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Transformer",
+        "Modality-specific Encoders",
+        "Modality-specific Decoders",
+        "Modality-tailored Adapters",
+        "Curriculum Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A unified scientific research assistant that can handle diverse scientific inputs and produce modality-native outputs",
+        "A platform for cross-domain scientific exploration and collaboration",
+        "A tool for automated scientific discovery and hypothesis generation"
+      ],
+      "domain_applications": [
+        "science",
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "id": "2607.20908",
+      "title": "Multi-turn RL with Structural and Performance Aware Rewards for CUDA Kernel Generation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-24",
+      "updated": "2026-07-24",
+      "summary": "arXiv:2607.20908v1 Announce Type: cross Abstract: Reinforcement Learning with Verifiable Rewards (RLVR) has emerged as a powerful technique to enhance the reasoning capacity of LLMs for optimized code generation. However, existing RLVR approaches primarily rely on outcome-based signals such as correctness and speedup, overlooking performance-critical structural properties of programs that are essential for generating optimized code. In this work, we propose CudaPerf, a reflective RL framework that incorporates both verifiable execution rewards and structural code-aware rewards derived from parallelization features (e.g., memory coalescing, occupancy, Arithmatic Intensity, and synchronization patterns). CudaPerf operates in two stages: (1) an offline pairwise ranking module that learns to distinguish strong and weak program candidates via contrastive comparisons, and (2) an online RL training phase that jointly optimizes for correctness, performance, and structural efficiency through a unified reward signal. To further enhance learning, CudaPerf utilizes iterative refinement using execution feedback enabling progressive improvement of generated candidates. We also introduce a dataset comprising 2.9k C to CUDA and 1k PyTorch to CUDA programs, each paired with diverse input configurations and multiple CUDA implementations encompassing diverse optimization strategies. CudaPerf is evaluated across multiple benchmarks comprising both C to CUDA and PyTorch to CUDA transformations. Empirical findings suggest that CudaPerf significantly outperforms strong baselines, including Qwen-3-32B (for C to CUDA) and CUDA Agent (for PyTorch to CUDA) by achieving up to 5X & 3.32X improvements in speedup, and 17% & 7% improvements in correctness, respectively.",
+      "pdf_url": "https://arxiv.org/abs/2607.20908",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Structural Code Analysis",
+        "Performance Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Automated CUDA Kernel Optimization Tool",
+        "Performance-Aware Code Generation Assistant",
+        "CUDA Kernel Optimization Framework"
+      ],
+      "domain_applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.14675",
+      "title": "An Intelligent-Cloud Edge Multimodal Interaction System for Robots",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-24",
+      "updated": "2026-07-24",
+      "summary": "arXiv:2607.14675v3 Announce Type: replace-cross Abstract: Robust human-robot interaction in complex environments requires accurate gesture perception, semantic scene understanding, and reliable task planning under limited onboard computing resources. This paper presents a cloud-edge multimodal interaction framework that integrates an enhanced YOLO-based gesture detector with coordinated large language model (LLM) and vision-language model (VLM) agents. The proposed detector, incorporates the Convolutional Block Attention Module (CBAM) into the neck and replaces the baseline bounding-box regression objective with Distance-IoU (DIoU) loss. These modifications improve feature discrimination and localization for small or partially occluded gestures in complex backgrounds. The cloud layer performs gesture detection, scene understanding, multimodal fusion, and action planning, whereas the TonyPi robot locally handles data acquisition, communication, action execution, and feedback. Experiments on a public gesture dataset and a custom dataset show that YOLO-DC achieves precision values of 98.9% and 95.0%, with mAP@0.5 values of 90.7% and 92.7%, respectively. System-level evaluation yields success rates of 95%, 88%, and 82% for single-action, composite-action, and vision-dependent tasks. A 30 participant evaluation yields an overall mean satisfaction score of 3.69 out of 5. These results demonstrate the feasibility of combining refined gesture detection with multimodal agents for resource-constrained robotic interaction.",
+      "pdf_url": "https://arxiv.org/abs/2607.14675",
+      "comment": "",
+      "technologies": [
+        "YOLO-based Gesture Detection",
+        "Convolutional Block Attention Module",
+        "Distance-IoU Loss",
+        "Multimodal Learning",
+        "On-device AI"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A multimodal robot assistant for home automation",
+        "An interactive educational robot for children",
+        "A gesture-controlled industrial robot for manufacturing"
+      ],
+      "domain_applications": [
+        "robotics",
+        "education",
+        "enterprise"
+      ]
     }
   ],
   "technologies": [
     {
       "name": "Retrieval Augmented Generation",
-      "papers": 1,
+      "papers": 5,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "other",
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 5,
+      "maturity": "medium",
+      "confidence": 0.75,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 4,
+      "maturity": "medium",
+      "confidence": 0.82,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "science",
+        "robotics",
+        "enterprise",
+        "creative"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "maturing",
+      "applications": [
         "education",
         "enterprise",
         "science"
+      ]
+    },
+    {
+      "name": "Vision-Language Guardrails",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "other"
       ]
     },
     {
       "name": "Knowledge Distillation",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "maturing",
       "applications": [
-        "education",
-        "science"
+        "science",
+        "education"
       ]
     },
     {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "name": "Reinforcement Learning",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.82,
+      "trend": "maturing",
       "applications": [
-        "robotics",
-        "other",
         "education",
-        "creative",
-        "healthcare",
         "enterprise",
-        "science"
+        "accessibility",
+        "creative",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "peak",
+      "applications": [
+        "education",
+        "enterprise",
+        "accessibility",
+        "creative"
       ]
     },
     {
       "name": "Transformer",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "maturity": "high",
+      "confidence": 0.85,
+      "trend": "maturing",
+      "applications": [
+        "science",
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Self-supervised Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
       "applications": [
         "healthcare",
-        "education",
         "science"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "On-device AI",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "YOLO-based Gesture Detection",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Bias Mitigation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Large Language Models",
+      "papers": 1,
+      "maturity": "high",
+      "confidence": 0.8,
+      "trend": "peak",
+      "applications": [
+        "education",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Data Quality Evaluation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "finance",
+        "other"
       ]
     },
     {
       "name": "Modality-specific Encoders",
       "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Curriculum Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "maturing",
+      "applications": [
+        "science",
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Performance Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Continued Pre-Training",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Interface Quality Assessment",
+      "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "education",
+        "accessibility",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Data Construction",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "finance"
+      ]
+    },
+    {
+      "name": "Distributional Alignment Score",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "finance"
+      ]
+    },
+    {
+      "name": "Prompt Engineering",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "accessibility",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Masked Modeling",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
       "trend": "emerging",
       "applications": [
         "healthcare",
-        "education",
         "science"
+      ]
+    },
+    {
+      "name": "Cross-view Contrastive Alignment",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "Temporal Consistency Losses",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "YaRN",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.53,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Grouped Rank Projection Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.53,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
       ]
     },
     {
@@ -602,8 +910,8 @@
       "trend": "emerging",
       "applications": [
         "healthcare",
-        "education",
-        "science"
+        "science",
+        "education"
       ]
     },
     {
@@ -614,35 +922,8 @@
       "trend": "emerging",
       "applications": [
         "healthcare",
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Curriculum Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare",
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "other",
-        "education",
-        "finance",
-        "enterprise",
-        "science"
+        "science",
+        "education"
       ]
     },
     {
@@ -652,32 +933,8 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "science",
         "other",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Performance Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "YOLO-based Gesture Detection",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "education",
         "enterprise"
       ]
     },
@@ -704,247 +961,128 @@
         "education",
         "enterprise"
       ]
-    },
-    {
-      "name": "On-device AI",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Interface Quality Assessment",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Data Construction",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Data Quality Evaluation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Distributional Alignment Score",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "finance",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Bias Mitigation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Large Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Prompt Engineering",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Self-supervised Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Masked Modeling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Cross-view Contrastive Alignment",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Temporal Consistency Losses",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Vision-Language Guardrails",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "creative",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Continued Pre-Training",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Direct Preference Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "YaRN",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Grouped Rank Projection Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
     }
   ],
-  "product_opportunities": []
+  "product_opportunities": [
+    {
+      "technology": "Vision-Language Models",
+      "idea": "EduVision: AI textbook scanner that explains diagrams and images aloud for students with learning disabilities",
+      "business_value": 8,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Transformer",
+      "idea": "MediSearch: Research paper synthesizer that answers clinician questions with cited evidence from millions of studies",
+      "business_value": 9,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-4 months"
+    },
+    {
+      "technology": "On-device AI",
+      "idea": "PocketTutor: Offline AI learning companion that runs entirely on mobile devices, adapting to students without internet",
+      "business_value": 8,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "very high",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "YOLO-based Gesture Detection",
+      "idea": "SignBridge: Real-time sign language translator using phone camera for deaf-hearing communication",
+      "business_value": 9,
+      "engineering_difficulty": 4,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Multimodal Learning",
+      "idea": "DiagnosAI: Cancer screening assistant combining patient symptoms, medical images, and lab results for early detection",
+      "business_value": 10,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Reinforcement Learning",
+      "idea": "AdaptiveMath: Math practice platform that dynamically adjusts problem difficulty based on real-time student performance",
+      "business_value": 7,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Retrieval Augmented Generation",
+      "idea": "CorpBrain: Enterprise knowledge assistant that answers employee questions using company documents with citations",
+      "business_value": 8,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Chain-of-Thought Prompting",
+      "idea": "ReasonTutor: Step-by-step math and logic tutor that shows AI reasoning process to help students learn problem-solving",
+      "business_value": 7,
+      "engineering_difficulty": 4,
+      "competitive_advantage": "medium",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Vision-Language Guardrails",
+      "idea": "SafeBrand: Automated content moderation for user-generated images ensuring brand safety and policy compliance",
+      "business_value": 8,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Knowledge Distillation",
+      "idea": "MiniLearn: Compact AI tutoring engine for under-resourced schools that runs on cheap Chromebooks",
+      "business_value": 9,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "very high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Self-supervised Learning",
+      "idea": "RareScan: Medical imaging analyzer for rare diseases trained without labeled data, helping diagnose underserved conditions",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Direct Preference Optimization",
+      "idea": "LearnPersonalize: AI course generator that adapts content style and difficulty to individual learner preferences",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Bias Mitigation",
+      "idea": "FairHire: Resume screening audit tool that detects and removes biased language and不公平 screening criteria",
+      "business_value": 8,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Large Language Models",
+      "idea": "SupportAI: Customer service automation platform handling complex inquiries with context memory across conversations",
+      "business_value": 9,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "medium",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Data Quality Evaluation",
+      "idea": "CleanFinance: Automated financial data validation pipeline that scores and cleans datasets before trading algorithms use them",
+      "business_value": 8,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    }
+  ]
 }
