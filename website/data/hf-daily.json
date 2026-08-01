@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T02:21:44.098090+00:00",
+  "updated_at": "2026-08-01T02:22:34.944679+00:00",
   "sources": {
     "papers": 30,
     "models": 40,
@@ -9,34 +9,30 @@
   "digest": {
     "highlights": {
       "top_paper": {
-        "id": "2607.27205",
-        "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
+        "id": "2607.28618",
+        "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
         "authors": [
-          "Hengyi Xie",
-          "Chenfei Yao",
-          "Xianjin Wu",
-          "Xuanyang Xi",
-          "Yiping Tang",
-          "Di Xu",
-          "Yingying Zhu",
-          "Dingkang Liang"
+          "Bing Yan",
+          "Gregory Wolfe",
+          "Stefano Martiniani",
+          "Kyunghyun Cho"
         ],
-        "published": "2026-07-29",
+        "published": "2026-07-30",
         "submitted_on": "",
-        "summary": "Vision-language-action (VLA) models commonly adopt an LLM-centric V to L to A pathway, where visual observations are projected into the representation space of a large language model before being decoded into robot actions. Although effective, this design incurs substantial computation and memory overhead at every policy invocation. In this work, we introduce TurboVLA, a new VLA paradigm that reformulates the conventional V to L to A pathway as a direct V + L to A mapping. Instead of using a large language model as the central interface between perception and action, TurboVLA independently enc",
-        "github": "https://github.com/H-EmbodVis/TurboVLA",
-        "upvotes": 121,
-        "url": "https://huggingface.co/papers/2607.27205",
-        "pdf_url": "https://arxiv.org/pdf/2607.27205"
+        "summary": "Chemistry literature synthesis often requires assembling specific findings scattered across many publications, yet existing literature-search systems primarily return ranked document lists. As a result, scientists and AI agents need to locate relevant information, verify their provenance, and assemble cross-paper answers manually. We present AskChem, a claim-centered infrastructure for cross-paper chemistry search. AskChem changes the unit of retrieval from the paper to the provenance-carrying claim: each paper is converted into atomic, typed claims, each grounded by a source DOI and a verbati",
+        "github": "https://github.com/bingyan4science/askchem",
+        "upvotes": 285,
+        "url": "https://huggingface.co/papers/2607.28618",
+        "pdf_url": "https://arxiv.org/pdf/2607.28618"
       },
       "top_models": [
         {
           "id": "moonshotai/Kimi-K3",
           "author": "moonshotai",
           "name": "Kimi-K3",
-          "likes": 9017,
-          "trending_score": 8105,
-          "downloads": 387822,
+          "likes": 9282,
+          "trending_score": 8284,
+          "downloads": 493481,
           "pipeline_tag": "image-text-to-text",
           "tags": [
             "transformers",
@@ -58,12 +54,38 @@
           "url": "https://huggingface.co/moonshotai/Kimi-K3"
         },
         {
+          "id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+          "author": "deepseek-ai",
+          "name": "DeepSeek-V4-Flash-0731",
+          "likes": 1030,
+          "trending_score": 990,
+          "downloads": 0,
+          "pipeline_tag": "text-generation",
+          "tags": [
+            "transformers",
+            "safetensors",
+            "deepseek_v4",
+            "text-generation",
+            "endpoints_compatible",
+            "8-bit",
+            "fp8"
+          ],
+          "library": [
+            "transformers",
+            "safetensors"
+          ],
+          "license": "mit",
+          "last_modified": "2026-07-31",
+          "created_at": "2026-07-31",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"
+        },
+        {
           "id": "DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF",
           "author": "DavidAU",
           "name": "Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF",
-          "likes": 1038,
-          "trending_score": 582,
-          "downloads": 955767,
+          "likes": 1150,
+          "trending_score": 580,
+          "downloads": 1119057,
           "pipeline_tag": "image-text-to-text",
           "tags": [
             "gguf",
@@ -87,9 +109,9 @@
           "id": "baidu/Unlimited-OCR",
           "author": "baidu",
           "name": "Unlimited-OCR",
-          "likes": 3584,
-          "trending_score": 568,
-          "downloads": 2598659,
+          "likes": 3664,
+          "trending_score": 528,
+          "downloads": 2513603,
           "pipeline_tag": "image-text-to-text",
           "tags": [
             "transformers",
@@ -114,9 +136,9 @@
           "id": "owensong/Inflect-Micro-v2",
           "author": "owensong",
           "name": "Inflect-Micro-v2",
-          "likes": 321,
-          "trending_score": 311,
-          "downloads": 1100,
+          "likes": 348,
+          "trending_score": 335,
+          "downloads": 1449,
           "pipeline_tag": "text-to-speech",
           "tags": [
             "text-to-speech",
@@ -132,75 +154,48 @@
             "pytorch"
           ],
           "license": "apache-2.0",
-          "last_modified": "2026-07-30",
+          "last_modified": "2026-07-31",
           "created_at": "2026-06-25",
           "url": "https://huggingface.co/owensong/Inflect-Micro-v2"
-        },
-        {
-          "id": "poolside/Laguna-S-2.1",
-          "author": "poolside",
-          "name": "Laguna-S-2.1",
-          "likes": 847,
-          "trending_score": 299,
-          "downloads": 73246,
-          "pipeline_tag": "text-generation",
-          "tags": [
-            "transformers",
-            "safetensors",
-            "laguna",
-            "text-generation",
-            "laguna-s-2.1",
-            "vllm",
-            "conversational",
-            "custom_code"
-          ],
-          "library": [
-            "transformers",
-            "safetensors"
-          ],
-          "license": "openmdw-1.1",
-          "last_modified": "2026-07-27",
-          "created_at": "2026-07-13",
-          "url": "https://huggingface.co/poolside/Laguna-S-2.1"
         }
       ],
       "hot_themes": [
         [
           "Language",
-          57
+          55
         ],
         [
           "Agents",
-          53
+          50
         ],
         [
           "Vision",
-          43
-        ],
-        [
-          "Other",
-          23
+          40
         ],
         [
           "Multimodal",
           21
         ],
         [
-          "Infra/Quant",
+          "Other",
+          21
+        ],
+        [
+          "Audio",
           14
         ]
       ],
       "trending_orgs": [
         {
           "name": "unsloth",
-          "count": 3
+          "count": 4
         },
         {
           "name": "microsoft",
           "count": 3
         },
         {
-          "name": "moonshotai",
+          "name": "deepseek-ai",
           "count": 2
         },
         {
@@ -216,54 +211,46 @@
           "count": 2
         },
         {
-          "name": "prism-ml",
+          "name": "XYZAILab",
           "count": 2
         },
         {
-          "name": "Qwen",
+          "name": "LiquidAI",
           "count": 2
         }
       ]
     },
     "keyword_cloud": [
       {
-        "word": "image-text-to-text",
+        "word": "text-generation",
         "count": 31
       },
       {
-        "word": "agents",
-        "count": 26
-      },
-      {
         "word": "transformers",
-        "count": 26
+        "count": 29
       },
       {
         "word": "safetensors",
-        "count": 26
+        "count": 29
       },
       {
-        "word": "text-generation",
-        "count": 25
+        "word": "image-text-to-text",
+        "count": 29
       },
       {
         "word": "gradio",
-        "count": 25
+        "count": 26
       },
       {
-        "word": "existing",
-        "count": 20
+        "word": "agents",
+        "count": 21
+      },
+      {
+        "word": "reasoning",
+        "count": 16
       },
       {
         "word": "memory",
-        "count": 18
-      },
-      {
-        "word": "visual",
-        "count": 17
-      },
-      {
-        "word": "introduce",
         "count": 16
       },
       {
@@ -271,44 +258,596 @@
         "count": 16
       },
       {
-        "word": "tasks",
-        "count": 15
-      },
-      {
-        "word": "qwen3",
+        "word": "multimodal",
         "count": 15
       },
       {
         "word": "large",
-        "count": 14
-      },
-      {
-        "word": "multimodal",
         "count": 13
       },
       {
-        "word": "reasoning",
+        "word": "through",
         "count": 13
       },
       {
-        "word": "gguf",
+        "word": "qwen3",
         "count": 13
+      },
+      {
+        "word": "existing",
+        "count": 12
+      },
+      {
+        "word": "yet",
+        "count": 12
       },
       {
         "word": "mcp-server",
         "count": 12
       },
       {
-        "word": "into",
+        "word": "one",
         "count": 11
       },
       {
-        "word": "however",
+        "word": "moe",
+        "count": 11
+      },
+      {
+        "word": "distillation",
+        "count": 11
+      },
+      {
+        "word": "gguf",
         "count": 11
       }
     ]
   },
   "papers": [
+    {
+      "id": "2607.23193",
+      "title": "OmniScope: Modality-Decoupled Token Compression for Omnimodal Large Language Models",
+      "authors": [
+        "Jinsen Su",
+        "Yongdong Luo",
+        "Yuexiao Ma",
+        "Yibo Hu",
+        "Meiguang Jin",
+        "Xiaowu Zheng"
+      ],
+      "published": "2026-07-28",
+      "submitted_on": "",
+      "summary": "Existing token compression methods for omnimodal large language models typically rely on one modality to determine what to retain in the other. We show that this assumption often breaks down: for the same query, audio and video relevance often peaks at different moments. This cross-modal salience mismatch makes unidirectional guidance prone to discarding answer-critical cues under aggressive compression. We propose OmniScope, a training-free token compression framework that uses the query as a shared semantic anchor while estimating relevance separately for audio and video. OmniScope allocates",
+      "github": "https://github.com/MAC-AutoML/OmniScope",
+      "upvotes": 3,
+      "url": "https://huggingface.co/papers/2607.23193",
+      "pdf_url": "https://arxiv.org/pdf/2607.23193"
+    },
+    {
+      "id": "2607.28582",
+      "title": "β-OPSD: Deriving with Policy Optimization, Training with Self-Distillation",
+      "authors": [
+        "Jiawei Xu",
+        "Minghui Liu",
+        "Juzheng Zhang",
+        "Tom Goldstein",
+        "Furong Huang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "On-policy self-distillation (OPSD) is a promising approach to improve reasoning language models, but it remains brittle in practice: making it work reliably often requires substantial engineering effort. We identify a structural source of this difficulty: vanilla OPSD is precisely the β=1 member of a broader policy-optimization family, where β weights the KL penalty anchoring the student to a reference policy. This equivalence turns β from an implicit value fixed at one into a controllable regularization parameter, yielding a more general formulation that trades off proximity to a reference po",
+      "github": "",
+      "upvotes": 16,
+      "url": "https://huggingface.co/papers/2607.28582",
+      "pdf_url": "https://arxiv.org/pdf/2607.28582"
+    },
+    {
+      "id": "2607.28308",
+      "title": "Beyond Geometric Complementarity: Coherent Overlap in Sparse Mixture-of-Experts Routing",
+      "authors": [
+        "Huiyuan Tian",
+        "Bonan Xu",
+        "Shijian Li"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Sparse mixture-of-experts (MoE) language models route each token to multiple experts, suggesting a geometric account of their benefit: co-selected experts should contribute distinct representation directions. Existing evidence often conflates route coherence, candidate quality, and candidate-by-context interaction. We distinguish these quantities using an Expert Subspace Separation Index (ESSI), matched-route residuals, and a prefix-controlled 2times2 factorial; frozen-route interventions and a controlled Top-k study assess functional value. Three paired contrasts organize the findings. First,",
+      "github": "",
+      "upvotes": 1,
+      "url": "https://huggingface.co/papers/2607.28308",
+      "pdf_url": "https://arxiv.org/pdf/2607.28308"
+    },
+    {
+      "id": "2607.28319",
+      "title": "Fairness Pruning: Locating Demographic Bias in GLU-MLP Layers via Differential Activations",
+      "authors": [
+        "Pere Martra",
+        "Eugenio Martínez Cámara",
+        "Alfonso Ureña López"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "This work presents Fairness Pruning, a lightweight structural intervention method designed for the management and future mitigation of demographic bias in large language models (LLMs). As a foundational empirical validation of this method, this work focuses on causal bias localization. Using minimally contrastive prompt pairs and inference-time activation capture, the method identifies neurons that react differentially when processing demographic attributes in GLU architectures, evaluating the signal at the down_proj input. Empirical evaluation was conducted on models of up to 3 billion parame",
+      "github": "",
+      "upvotes": 2,
+      "url": "https://huggingface.co/papers/2607.28319",
+      "pdf_url": "https://arxiv.org/pdf/2607.28319"
+    },
+    {
+      "id": "2607.27958",
+      "title": "Σ-Mem: An Online Reliability Memory for LLM-based Multi-Agent Systems",
+      "authors": [
+        "Peilin Feng",
+        "Suorong Yang",
+        "Soujanya Poria"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Memory is central to long-horizon LLM agents, yet existing memory systems primarily preserve interaction content rather than modeling which agents can be trusted and under what conditions. This limitation is particularly important in multi-agent systems, where a central model may be unable to directly verify plausible or correlated peer responses. We introduce Σ-Mem, an online reliability memory that records historical competence evidence for individual peers and peer relationship evidence across the peer set. Both forms of evidence are maintained as real symmetric states and updated from post",
+      "github": "",
+      "upvotes": 8,
+      "url": "https://huggingface.co/papers/2607.27958",
+      "pdf_url": "https://arxiv.org/pdf/2607.27958"
+    },
+    {
+      "id": "2607.26769",
+      "title": "See2Think: Do Multimodal Models Really Use Intermediate Visual States?",
+      "authors": [
+        "Siyu Yan",
+        "Zhuoran Yan",
+        "Haiying Xu",
+        "Panhao Zhou",
+        "Jingyu Chen",
+        "Chenhao Ji",
+        "Shuo Cao",
+        "Yongheng Zhang"
+      ],
+      "published": "2026-07-29",
+      "submitted_on": "",
+      "summary": "Multimodal large language models increasingly use sketches, annotations, tools, and intermediate images during reasoning, but it remains unclear whether they truly rely on these visual states. Existing benchmarks are limited both by task collections with narrow coverage or partially text-solvable samples and by evaluations that emphasize final answers without diagnosing how intermediate visual states are generated, rendered, and used. We introduce See2Think, a unified evaluation framework comprising See2ThinkBench and Visual Action-of-Thought (VAoT). See2ThinkBench contains 1,200 open-ended, v",
+      "github": "https://github.com/CSU-JPG/See2Think",
+      "upvotes": 21,
+      "url": "https://huggingface.co/papers/2607.26769",
+      "pdf_url": "https://arxiv.org/pdf/2607.26769"
+    },
+    {
+      "id": "2607.26637",
+      "title": "Filesystem-Based Memory for LLM Agents: Organization, Evolution, and Sustainability",
+      "authors": [
+        "Sizhe Zhou",
+        "Sheldon Yu",
+        "Hui Wei",
+        "Junda Wu",
+        "Siru Ouyang",
+        "Yizhu Jiao",
+        "Shijia Pan",
+        "Julian McAuley"
+      ],
+      "published": "2026-07-29",
+      "submitted_on": "",
+      "summary": "Deployed LLM agents increasingly keep their long-term memory as a filesystem: a directory tree of markdown files that the agent itself reads, writes, and reorganizes through generic file tools. Yet research has largely passed over this medium: prior systems design bespoke memory representations and study retrieval over them, leaving the default's two working assumptions untested: that an agent can keep a growing store organized as memories accumulate, conflict, and go stale, and that this organization pays. We present the first systematic exploration of filesystem-based memory for LLM agents. ",
+      "github": "",
+      "upvotes": 6,
+      "url": "https://huggingface.co/papers/2607.26637",
+      "pdf_url": "https://arxiv.org/pdf/2607.26637"
+    },
+    {
+      "id": "2607.16922",
+      "title": "Pedestrian Archetypes Extension -- More Pedestrian Models for Autonomous Vehicle Safety Testing",
+      "authors": [
+        "Taorui Huang",
+        "Namita Gaidhani",
+        "Ritvik Bansal",
+        "S M Jubaer",
+        "Regina Lim",
+        "Rhett Zhao",
+        "Gavin Rafael Selin",
+        "Sunnie Deng Gao"
+      ],
+      "published": "2026-07-18",
+      "submitted_on": "",
+      "summary": "In our prior work, Pedestrian Archetypes, we defined pedestrian archetypes as collections of behaviors that uniquely identify a specific type of pedestrian. The first paper proposed 12 pedestrian archetypes, including the Wanderer, Drunk, Distracted, Flash, Indecisive, Blind, Flock, Jaywalker, Elderly, Kid, Eventful, and Parked Pedestrian. These archetypes were introduced to move beyond single behavior labels and provide a more natural way to describe how dangerous pedestrians actually behave progressively in real-world traffic scenarios. However, upon further annotation of YouTube dash-cam vi",
+      "github": "",
+      "upvotes": 0,
+      "url": "https://huggingface.co/papers/2607.16922",
+      "pdf_url": "https://arxiv.org/pdf/2607.16922"
+    },
+    {
+      "id": "2607.20891",
+      "title": "Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions",
+      "authors": [
+        "Pengyu Zhu",
+        "Lijun Li",
+        "Longju Yang",
+        "Sen Su"
+      ],
+      "published": "2026-07-23",
+      "submitted_on": "",
+      "summary": "Deep Research agents extend LLM-based assistants into long-horizon workflows involving planning, retrieval, evidence synthesis, and report generation, yet their reliability in open information environments remains underexplored. A key concern is whether apparently credible but factually misleading knowledge encountered in such environments can propagate through these workflows and be adopted as false conclusions in final reports. To study this failure mode, we introduce MisKnow-Agent, a framework for constructing and validating misleading knowledge for Deep Research tasks. MisKnow-Agent genera",
+      "github": "",
+      "upvotes": 3,
+      "url": "https://huggingface.co/papers/2607.20891",
+      "pdf_url": "https://arxiv.org/pdf/2607.20891"
+    },
+    {
+      "id": "2607.28362",
+      "title": "ShadowDancer: Teaching Video World Models Any Action by Learning Unified Dynamics Representations from a Video and Its Shadow",
+      "authors": [
+        "Jin Cao",
+        "Zian Meng",
+        "Kaipeng Zhang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "We present ShadowDancer, a novel approach to any-action, frame-level control of interactive video world models. The obstacle is representational: existing interfaces either encode an action loosely, leaving how it unfolds for the model to improvise, or encode it exactly through structured signals that serve one family and are hard to acquire, so precise control across diverse dynamics remains impractical. Demonstration videos are the natural remedy, specifying any dynamics frame by frame; yet a video shows its dynamics only through one particular appearance, a single shadow of the underlying d",
+      "github": "https://github.com/AlayaLab/ShadowDancer",
+      "upvotes": 16,
+      "url": "https://huggingface.co/papers/2607.28362",
+      "pdf_url": "https://arxiv.org/pdf/2607.28362"
+    },
+    {
+      "id": "2607.25289",
+      "title": "AMRD: Adaptive Multi-Teacher Relational Distillation for Lightweight Speech Emotion Recognition",
+      "authors": [
+        "Yuqi Li",
+        "Yi-Cheng Lin",
+        "Xianglong Wang",
+        "Kuo Yang",
+        "Xiaoqin Feng",
+        "Yixuan Wang",
+        "Huiran Duan",
+        "Yingli Tian"
+      ],
+      "published": "2026-07-28",
+      "submitted_on": "",
+      "summary": "On-device speech emotion recognition (SER) is critical for real-time applications, yet large self-supervised models that excel at SER are too costly for edge devices. Multi-teacher knowledge distillation can compress them into a lightweight student, but two challenges remain: teacher reliability varies across batches, and logit-level distillation ignores inter-sample relational structure. We propose Adaptive Multi-teacher Relational Distillation (AMRD) to address both. A one-class SVM on each teacher's logit similarity matrix assigns per-batch weights favoring more coherent teachers. A relatio",
+      "github": "",
+      "upvotes": 0,
+      "url": "https://huggingface.co/papers/2607.25289",
+      "pdf_url": "https://arxiv.org/pdf/2607.25289"
+    },
+    {
+      "id": "2607.27230",
+      "title": "Multi-Head Attention Residuals",
+      "authors": [
+        "Cheng Luo",
+        "Zefan Cai",
+        "Junjie Hu"
+      ],
+      "published": "2026-07-22",
+      "submitted_on": "",
+      "summary": "Transformers propagate information across depth through a single additive residual stream: every sublayer reads only the most recent state. Attention residuals relax this by letting each sublayer attend, through a learned softmax. However, that read uses a single query shared across the entire width, so every feature subspace must read the depth history through one distribution. The cost of this forced compromise grows with how much the subspaces disagree about which layers to read, and disagreement grows with model width. We introduce Multi-Head Attention Residuals (MHAR): the routing query i",
+      "github": "https://github.com/wdlctc/multi-head-attention-residuals",
+      "upvotes": 8,
+      "url": "https://huggingface.co/papers/2607.27230",
+      "pdf_url": "https://arxiv.org/pdf/2607.27230"
+    },
+    {
+      "id": "2607.26056",
+      "title": "INTACT: Isomorphic Intent-to-Action Learning for Search-Free World Models",
+      "authors": [
+        "Junhan Sun",
+        "Hao Zhao",
+        "Guofeng Zhang"
+      ],
+      "published": "2026-07-28",
+      "submitted_on": "",
+      "summary": "Forward latent world models predict how actions change a scene, but recover actions for a desired change only through expensive test-time search. We introduce INTACT (INtent-To-ACTion), an end-to-end JEPA that turns action-labeled, reward-free trajectories into a deployable intent-to-action interface. Each transition supplies physical intent z_{t+1}-z_t, while a future goal supplies deployment intent sg(z_g)-z_t. The architecture is isomorphic between the local and goal motion-intent backbone-input graphs through an identical four-slot grammar and shared parameters, and between supported local",
+      "github": "https://github.com/zju3dv/INTACT-JEPA",
+      "upvotes": 12,
+      "url": "https://huggingface.co/papers/2607.26056",
+      "pdf_url": "https://arxiv.org/pdf/2607.26056"
+    },
+    {
+      "id": "2607.28374",
+      "title": "LEDGERMIND: Provenance-Constrained Multimodal Agentic Reasoning with a Structured Evidence Ledger",
+      "authors": [
+        "Enjun Du",
+        "Hange Zhou",
+        "Chenxu Du",
+        "Siyi Liu",
+        "Zirong Chen",
+        "Ziyu Zheng",
+        "Yongqi Zhang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Multimodal agents for visual question answering increasingly operate as multi-step trajectories that interleave perception, retrieval, and reasoning, yet evaluation still largely reduces to final-answer accuracy. This aggregate signal cannot tell whether a correct answer was reached through grounded evidence, language priors, or accidental error cancellation. We propose to treat a multimodal agent trajectory as a provenance-constrained state machine: tool outputs are normalized into a Structured Evidence Ledger that serves as the trajectory state, downstream reasoning and decision claims may c",
+      "github": "",
+      "upvotes": 9,
+      "url": "https://huggingface.co/papers/2607.28374",
+      "pdf_url": "https://arxiv.org/pdf/2607.28374"
+    },
+    {
+      "id": "2607.27372",
+      "title": "Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation",
+      "authors": [
+        "Alexi Gladstone",
+        "Heng Ji",
+        "Yilun Du"
+      ],
+      "published": "2026-07-29",
+      "submitted_on": "",
+      "summary": "The deep learning revolution, kicked off by AlexNet, taught us that end-to-end training beats decomposing a problem into hand-designed stages. Generative modeling, however, has remained the exception-despite generative models being remarkably capable, they are still not trained end-to-end. This is because, at its core, generative modeling is about handling distributions with many modes, and existing scalable approaches handle this the same way, by factoring the generation procedure, which prevents end-to-end generation. In this work, we introduce Explorative Modeling, a new paradigm that inste",
+      "github": "https://github.com/alexiglad/XM",
+      "upvotes": 6,
+      "url": "https://huggingface.co/papers/2607.27372",
+      "pdf_url": "https://arxiv.org/pdf/2607.27372"
+    },
+    {
+      "id": "2607.26627",
+      "title": "Revisiting Lossy Verification in Speculative Decoding: Mechanisms, Trade-offs, and Failure Modes",
+      "authors": [
+        "Tianyu Wang",
+        "Yuxuan Zhou",
+        "Wenbin Wang",
+        "Heng Li",
+        "Zikai Xiao",
+        "Junyuan Shang"
+      ],
+      "published": "2026-07-29",
+      "submitted_on": "",
+      "summary": "Speculative Decoding (SD) accelerates large language model inference by allowing a lightweight draft model to propose tokens that are subsequently verified in parallel by a larger target model. Recent approaches introduce lossy verification schemes to further improve efficiency by relaxing strict distributional matching. Yet such relaxation silently rewrites the decoding distribution, and the resulting acceleration can come at the cost of unstable, sometimes severely degraded generation quality. In this work, we present a principled analysis of the distributions induced by lossy verification m",
+      "github": "https://github.com/ZhouYuxuanYX/Fast-HSD",
+      "upvotes": 4,
+      "url": "https://huggingface.co/papers/2607.26627",
+      "pdf_url": "https://arxiv.org/pdf/2607.26627"
+    },
+    {
+      "id": "2607.18806",
+      "title": "AI Tour Meeting: Group Travel Planning by LLM Agents",
+      "authors": [
+        "Daisuke Kikuta"
+      ],
+      "published": "2026-07-21",
+      "submitted_on": "",
+      "summary": "This paper proposes AI Tour Meeting, a group travel planning framework powered by multiple Large Language Model (LLM)-based agents. The agents are instantiated with distinct personas and collaboratively seek an itinerary that satisfies their constraints and preferences through natural language discussion. The framework enables easy and flexible orchestration of such discussions by providing interfaces for configuring agent personas, discussion workflows, monitoring, and LLM deployment. Its primary use case is a simulation tool for analyzing the behavior of multiple LLM agents during tour plann",
+      "github": "https://github.com/ntt-dkiku/ai-tour-meeting",
+      "upvotes": 3,
+      "url": "https://huggingface.co/papers/2607.18806",
+      "pdf_url": "https://arxiv.org/pdf/2607.18806"
+    },
+    {
+      "id": "2607.27816",
+      "title": "Beyond Borrowed Histories: Person-Aligned User Simulation for Interactive Role-Playing Evaluation",
+      "authors": [
+        "Yuhang Zhu",
+        "Mingxuan Du",
+        "Benfeng Xu",
+        "Jie Gao",
+        "Lingyun Yu",
+        "Hongtao Xie"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Role-playing agents (RPAs) have become one of the most important consumer applications of large language models. Users engage in multi-turn conversations with RPAs for experiences such as emotional comfort, making reliable evaluation essential for measuring capability, comparing systems, and guiding further improvement. Existing benchmarks, however, typically require an RPA to continue a fixed dialogue history and then evaluate the continuation using a fixed rubric detached from the user. We identify and empirically demonstrate two limitations of this design. First, an RPA's output is shaped b",
+      "github": "https://github.com/Zhuyh1139/PALATE",
+      "upvotes": 30,
+      "url": "https://huggingface.co/papers/2607.27816",
+      "pdf_url": "https://arxiv.org/pdf/2607.27816"
+    },
+    {
+      "id": "2607.27616",
+      "title": "MPIE-Bench: Benchmarking Anatomically Plausible Multi-Person Interaction Editing",
+      "authors": [
+        "Jiajia Lin",
+        "Mingxuan Du",
+        "Tuowen Zhou",
+        "Benfeng Xu",
+        "Hongtao Xie"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Text-to-image and personalized editing models now synthesize high-fidelity single-subject images with ease. Yet placing multiple named people into shared contact actions such as embrace, carry, or grapple still exposes major failures: fused limbs, invented extremities, and interpenetrating bodies. Existing evaluations largely overlook these anatomical and geometric issues, and VLM-as-a-judge checklists often saturate on Interaction while the errors remain obvious to humans. We introduce MPIE-Bench, a 2,500-sample benchmark of video-mined editing triplets spanning 405 scenes, 14 interaction cat",
+      "github": "https://github.com/AnnLin0628/mpie-bench",
+      "upvotes": 35,
+      "url": "https://huggingface.co/papers/2607.27616",
+      "pdf_url": "https://arxiv.org/pdf/2607.27616"
+    },
+    {
+      "id": "2607.28410",
+      "title": "Can Large Language Models Execute Parent Orders?",
+      "authors": [
+        "Zane Shen",
+        "Xinli Xu",
+        "Guangyi Zhang",
+        "Jialong Chen",
+        "Jinsong Zhou",
+        "Cong Chen",
+        "Guibao Shen",
+        "Dongyu Yan"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Parent-order execution is a core problem in algorithmic trading, where the goal is to split a large order into smaller orders while reducing execution costs. Existing approaches either rely on pre-specified market assumptions that may not hold in practice, or require task-specific training that limits adaptability to new settings. To overcome these limitations, we present the first systematic study of large language models (LLMs) for parent-order execution. This extends the use of LLMs in finance from what to trade to how to execute. We propose PACE (Plan-Ahead Controlled Execution), a hierarc",
+      "github": "https://github.com/zaneopen/PACE",
+      "upvotes": 13,
+      "url": "https://huggingface.co/papers/2607.28410",
+      "pdf_url": "https://arxiv.org/pdf/2607.28410"
+    },
+    {
+      "id": "2607.27919",
+      "title": "Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory",
+      "authors": [
+        "Rubin Wei",
+        "Jiaqi Cao",
+        "Jiarui Wang",
+        "Junming Zhang",
+        "Qipeng Guo",
+        "Bowen Zhou",
+        "Zhouhan Lin"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Decoder-only language models entangle long-term memory and reasoning in a single parameter set, making it difficult to scale memory capacity independently. Memory Decoder introduces a parametric long-term memory module but only studies it at a relatively small scale. In this work, we present Memory Decoder at Scale, scaling memory models up to 6.9B parameters and pretraining them on 300B tokens. At this data scale, the combined cost of indexing and search makes a standard Faiss pipeline infeasible. We address this bottleneck with a distributed pipeline for Faiss indexing and retrieval, togethe",
+      "github": "https://github.com/LUMIA-Group/MemoryDecoder-at-Scale",
+      "upvotes": 46,
+      "url": "https://huggingface.co/papers/2607.27919",
+      "pdf_url": "https://arxiv.org/pdf/2607.27919"
+    },
+    {
+      "id": "2607.28227",
+      "title": "Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents",
+      "authors": [
+        "Hanzhang Zhou",
+        "Panrong Tong",
+        "Xu Zhang",
+        "Quyu Kong",
+        "Chenglin Cai",
+        "Tianyu Xia",
+        "Gongjie Zhang",
+        "Jianan Zhang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "GUI agents have the potential to become a general purpose executor over existing digital devices. To advance them toward real-world use, we envision agents that operate reliably on real devices, execute workflows across platforms, combine GUI interaction with CLI execution, complete long-horizon tasks, proactively initiate useful services, and autonomously improve their capabilities with minimal human effort. Guided by this vision, we present Qwen-UI-Agent, a real-world centric foundation GUI agent spanning mobile, computer-use, web, and DeepSearch environments. Qwen-UI-Agent combines diverse ",
+      "github": "",
+      "upvotes": 267,
+      "url": "https://huggingface.co/papers/2607.28227",
+      "pdf_url": "https://arxiv.org/pdf/2607.28227"
+    },
+    {
+      "id": "2607.28509",
+      "title": "RefCaptioner: Multi-Reference Image-Grounded Video Captioning",
+      "authors": [
+        "Tengfei Liu",
+        "Yang Shi",
+        "Yuran Wang",
+        "Xiaohan Zhang",
+        "Yuqing Wen",
+        "Yuqi Tang",
+        "Qixun Wang",
+        "Zhuoran Zhang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Existing video captioning models generate natural descriptions of video content but cannot explicitly ground local visual elements to multiple reference images. We introduce multi-reference image-grounded video captioning, a new task requiring factual video descriptions with phrase-level reference grounding, and propose RefCaptioner, a two-stage post-training framework for this task. RefCaptioner combines mixed-data SFT with Hierarchical Coverage-Discounted GRPO to jointly improve reference selection, phrase-level binding, distractor rejection, and cross-reference consistency while preserving ",
+      "github": "https://github.com/pkucs-Ltf/RefCaptioner",
+      "upvotes": 24,
+      "url": "https://huggingface.co/papers/2607.28509",
+      "pdf_url": "https://arxiv.org/pdf/2607.28509"
+    },
+    {
+      "id": "2607.28595",
+      "title": "Beacon: Knowing When and How to Perform Agentic Visual Reasoning",
+      "authors": [
+        "Qixun Wang",
+        "Yang Shi",
+        "Letian Cheng",
+        "Zhuoran Zhang",
+        "Yan He",
+        "Yuqi Tang",
+        "Qi Zhang",
+        "Xinlei Yu"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "The fundamental goal of agentic visual reasoning is to improve the success rate of multimodal large language models (MLLMs) on complex tasks, rather than merely equipping them with a sophisticated yet inefficient reasoning paradigm. In this work, we rethink agentic visual reasoning through two key dimensions of tool use: Mode Adaptiveness (MA) and Tool Effect (TE). Mode Adaptiveness characterizes whether an MLLM can recognize when tools are truly necessary and invoke them accordingly, thereby avoiding unnecessary computational overhead while improving performance on challenging problems that r",
+      "github": "https://github.com/NOVAglow646/Beacon",
+      "upvotes": 45,
+      "url": "https://huggingface.co/papers/2607.28595",
+      "pdf_url": "https://arxiv.org/pdf/2607.28595"
+    },
+    {
+      "id": "2607.26497",
+      "title": "BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented Generation Paradigms",
+      "authors": [
+        "Pengyu Wang",
+        "Benfeng Xu",
+        "Shaohan Wang",
+        "Xin Zeng",
+        "Huarui Wu",
+        "Lei Zhang",
+        "Licheng Zhang"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Retrieval-augmented generation (RAG) spans lexical and dense retrieval, graph-based indexing, and agentic search, but these paradigms are usually evaluated on different benchmarks at one corpus size, leaving their accuracy-cost scaling unclear. To bridge this gap, we present a controlled study that varies corpus size along 28 strictly nested tiers spanning roughly 450-fold, while holding questions and a fixed bedrock of relevant and adversarial documents unchanged. Under one reader model and one judging protocol, we measure official accuracy, construction and query tokens, and latency. The res",
+      "github": "",
+      "upvotes": 39,
+      "url": "https://huggingface.co/papers/2607.26497",
+      "pdf_url": "https://arxiv.org/pdf/2607.26497"
+    },
+    {
+      "id": "2607.28022",
+      "title": "Flux-OPD: On-Policy Distillation with Evolving Contexts",
+      "authors": [
+        "Yuran Wang",
+        "Zekun Wang",
+        "Bohan Zeng",
+        "Ruixu Zhang",
+        "Wenxuan Liu",
+        "Liu Yang",
+        "Yifan Dai",
+        "Yang Shi"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Large language model training in open-ended domains lacks verifiable rewards, making task preferences difficult to formalize as effective supervision. Contexts can convey such preferences, yet provide little additional supervision once distilled into the student, motivating contexts that evolve with student performance. However, directly using evolving contexts as in-training supervision results in an unstable distillation target and conflicting distributions, requiring mechanisms to stabilize target and downweight conflicts. In this paper, we analyze the effect of contexts through a decomposi",
+      "github": "",
+      "upvotes": 38,
+      "url": "https://huggingface.co/papers/2607.28022",
+      "pdf_url": "https://arxiv.org/pdf/2607.28022"
+    },
+    {
+      "id": "2607.27652",
+      "title": "Harness-G: A Graph-Structured Harness for Search Agents",
+      "authors": [
+        "Yanning Hou",
+        "Haoyuan Chen",
+        "Sihang Zhou",
+        "Xiaoshu Chen",
+        "Xirui Liu",
+        "Duanyang Yuan",
+        "Lingyuan Meng",
+        "Quan Liu"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Reinforcement learning (RL) search agents commonly model retrieval as free-form natural-language query generation and optimize multi-turn interactions using final-answer rewards. Current studies mainly improve training with denser or more structured credit signals, but rarely examine whether retrieval is properly formulated at the policy-environment interface. We observe pronounced retrieval aliasing during Search-R1 training: rollouts for the same question continue to generate distinct query strings, yet their accumulated evidence sets increasingly overlap. We call this phenomenon retrieval-e",
+      "github": "https://github.com/7HHHHH/Harness-G",
+      "upvotes": 3,
+      "url": "https://huggingface.co/papers/2607.27652",
+      "pdf_url": "https://arxiv.org/pdf/2607.27652"
+    },
+    {
+      "id": "2607.28074",
+      "title": "Echoverse: Deep, Evolving Environments for Training Computer-Use Agents at Scale",
+      "authors": [
+        "Yash Pandya",
+        "Sahil Gupta",
+        "Sarthak Harne",
+        "Archana Yadav",
+        "Kavyansh Chourasia",
+        "Hussein Mozannar",
+        "Vibhav Vineet",
+        "Sara Abdali"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Computer-use agents learn from what their actions change, so training one needs applications it can act on, break and reset. The applications that matter most are login-gated and stateful, so synthetic environments stand in for them. Recent pipelines generate such environments in bulk, which moves the bottleneck from how many exist to what is inside each one. The returns, we find, come from three properties: how much behavioural depth an environment carries, whether it targets the interaction an agent actually fails, and whether it improves alongside the model. We present Echoverse, which comp",
+      "github": "https://github.com/microsoft/Echoverse",
+      "upvotes": 9,
+      "url": "https://huggingface.co/papers/2607.28074",
+      "pdf_url": "https://arxiv.org/pdf/2607.28074"
+    },
+    {
+      "id": "2607.28618",
+      "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
+      "authors": [
+        "Bing Yan",
+        "Gregory Wolfe",
+        "Stefano Martiniani",
+        "Kyunghyun Cho"
+      ],
+      "published": "2026-07-30",
+      "submitted_on": "",
+      "summary": "Chemistry literature synthesis often requires assembling specific findings scattered across many publications, yet existing literature-search systems primarily return ranked document lists. As a result, scientists and AI agents need to locate relevant information, verify their provenance, and assemble cross-paper answers manually. We present AskChem, a claim-centered infrastructure for cross-paper chemistry search. AskChem changes the unit of retrieval from the paper to the provenance-carrying claim: each paper is converted into atomic, typed claims, each grounded by a source DOI and a verbati",
+      "github": "https://github.com/bingyan4science/askchem",
+      "upvotes": 285,
+      "url": "https://huggingface.co/papers/2607.28618",
+      "pdf_url": "https://arxiv.org/pdf/2607.28618"
+    },
     {
       "id": "2607.28568",
       "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
@@ -326,576 +865,9 @@
       "submitted_on": "",
       "summary": "Recursive self-improvement (RSI) requires AI systems that improve the process of building AI (i.e., AI4AI); machine learning engineering (MLE) offers a concrete, executable testbed for studying this capability. We introduce OpenMLE, an open full-stack system for RSI research in MLE, spanning verifiable task environments with execution feedback (OpenMLE-Gym), operator learning (OpenMLE-RL), and long-horizon search (OpenMLE-Evo). On this stack we post-train Frontis-MA1 (35B) as a meta-evolution agent for MLE, aligning post-training and inference around four atomic program-evolution operators (Dr",
       "github": "https://github.com/FrontisAI/OpenRSI",
-      "upvotes": 0,
+      "upvotes": 155,
       "url": "https://huggingface.co/papers/2607.28568",
       "pdf_url": "https://arxiv.org/pdf/2607.28568"
-    },
-    {
-      "id": "2607.26760",
-      "title": "Metis: Memory Foundation Model",
-      "authors": [
-        "Zeyu Zhang",
-        "Ziliang Guo",
-        "Yihang Sun",
-        "Xichong Zhang",
-        "Xixuan Hao",
-        "Zehao Lin",
-        "Yang Zhang",
-        "Xiaoyan Zhao"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within",
-      "github": "https://github.com/MemTensor/Metis",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.26760",
-      "pdf_url": "https://arxiv.org/pdf/2607.26760"
-    },
-    {
-      "id": "2607.28627",
-      "title": "ReToken: One Token to Improve Vision-Language Models for Visual Retrieval",
-      "authors": [
-        "Yao Xiao",
-        "Reuben Tan",
-        "Zhen Zhu",
-        "Yuqun Wu",
-        "Jianfeng Gao",
-        "Derek Hoiem"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "Long visual context poses a challenge for vision-language models: performance degrades as the number of distractors grows, and processing all tokens at once is computationally infeasible under GPU memory constraints. We present ReToken, a single learnable embedding trained as an explicit retrieval target that selects a sparse set of query-relevant visual tokens from a pre-filled visual KV cache. Trained on only a small image-QA dataset, ReToken yields consistent gains across image and video benchmarks: on Visual Haystacks it improves Qwen3VL-8B by 13.4 points and InternVL3.5 by 12.4 points (>2",
-      "github": "https://github.com/avaxiao/ReToken",
-      "upvotes": 0,
-      "url": "https://huggingface.co/papers/2607.28627",
-      "pdf_url": "https://arxiv.org/pdf/2607.28627"
-    },
-    {
-      "id": "2607.28611",
-      "title": "Chimera: Designing and Chinchilla-Scaling Hybrid Visual Diffusion Transformers",
-      "authors": [
-        "Chongjian Ge",
-        "Hanwen Jiang",
-        "Tianyu Wang",
-        "Jiuxiang Gu",
-        "Yiran Xu",
-        "Ziwen Chen",
-        "Shaoteng Liu",
-        "Jing Shi"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "Visual generation increasingly requires high-resolution images, long videos, and multimodal context, making the quadratic cost of full attention prohibitive. We introduce Chimera, a hybrid visual diffusion backbone with a principled scaling recipe. Chimera processes text, image, and video tokens in one raster-ordered stream without positional embeddings. It combines Kimi Delta Attention (KDA) for long-context state tracking with O(N) complexity, interleaved Multi-head Latent Attention (MLA) for direct global interaction, and modality-aware short convolutions for local spatiotemporal context. S",
-      "github": "",
-      "upvotes": 0,
-      "url": "https://huggingface.co/papers/2607.28611",
-      "pdf_url": "https://arxiv.org/pdf/2607.28611"
-    },
-    {
-      "id": "2607.27380",
-      "title": "VideoCoCo: Code-as-CoT for Physically-Consistent Video Generation via an Agentic Dual-Engine System",
-      "authors": [
-        "Haodong Li",
-        "Tianfei Ren",
-        "Xiaoxiao Ma",
-        "Chunmei Qing",
-        "Zhen Fang",
-        "Sipeng He",
-        "Ziyu Guo",
-        "Haoyu Wu"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Text-to-video models have achieved remarkable visual quality, yet they still struggle to generate physically consistent dynamics because the temporal evolution of a scene must be inferred implicitly from a highly compressed text prompt. Existing chain-of-thought approaches introduce intermediate plans or visual states, but these representations are typically non-executable or temporally sparse, limiting their ability to instantiate and control the complete spatiotemporal process. To address this limitation, we introduce VideoCoCo, an agentic dual-engine framework in which executable Blender co",
-      "github": "",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.27380",
-      "pdf_url": "https://arxiv.org/pdf/2607.27380"
-    },
-    {
-      "id": "2607.28625",
-      "title": "ACE-Data-0: Human-Centric Ambient Capture as Embodied Data Engine",
-      "authors": [
-        "Yukang Cao",
-        "Haozhe Xie",
-        "Beichen Wen",
-        "Runmao Yao",
-        "Yinghao Liu",
-        "Yue Huang",
-        "Zhichao Liao",
-        "Yunxiang Wang"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "Embodied intelligence faces a fundamental data bottleneck. Models must capture how first-person perception, whole-body motion, dexterous manipulation, object state, sound, and touch evolve together as humans pursue goals over time. Existing datasets fragment this experience across viewpoints, modalities, or spatial scales, leaving the full perception-action loop only partially observed. We introduce the Ambient Capture Engine (ACE), a human-centric data engine that transforms real home environments into spatially calibrated, temporally synchronized recording studios. ACE operates at two comple",
-      "github": "",
-      "upvotes": 0,
-      "url": "https://huggingface.co/papers/2607.28625",
-      "pdf_url": "https://arxiv.org/pdf/2607.28625"
-    },
-    {
-      "id": "2607.28624",
-      "title": "PhiZero: A World Model Built Around Physical Language",
-      "authors": [
-        "Shuyao Shang",
-        "Yuqi Wang",
-        "Ruopeng Gao",
-        "Xu Chen",
-        "Tieniu Tan",
-        "Lue Fan",
-        "Zhaoxiang Zhang"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "We introduce PhiZero, a physical world model built around physical language, a compact discrete representation of world-state transitions. Existing physical world models typically predict future videos directly in pixel space, leaving the underlying world dynamics implicit within high-dimensional visual predictors. Motivated by humans' ability to abstract predictive structure from visual experience and organize it in natural language for explicit reasoning, we learn physical language from in-the-wild videos through self-supervision and use it to explicitly reason about how the physical world e",
-      "github": "https://github.com/yaoyao-jpg/PhiZero",
-      "upvotes": 1,
-      "url": "https://huggingface.co/papers/2607.28624",
-      "pdf_url": "https://arxiv.org/pdf/2607.28624"
-    },
-    {
-      "id": "2607.28272",
-      "title": "MemHarness: Memory Is Reconstructed, Not Replayed",
-      "authors": [
-        "Rong Wu",
-        "Daocheng Fu",
-        "Licheng Wen",
-        "Xuemeng Yang",
-        "Shu Zou",
-        "Jianbiao Mei",
-        "Yuxin Wang",
-        "Hairong Zhang"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "Retrieving past experiences has become a common strategy to enhance large language model agents. However, most existing memory-augmented agents treat retrieved experiences as static records to be replayed verbatim, injecting them into the context regardless of whether they align with the agent's current situation. This ``replay'' paradigm ignores the gap between the abstract, general nature of stored experience and the concrete, ever-changing states encountered at decision time, frequently causing negative transfer. In contrast, humans rarely recall past experiences verbatim; instead, they reo",
-      "github": "https://github.com/KnowledgeXLab/MemHarness",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.28272",
-      "pdf_url": "https://arxiv.org/pdf/2607.28272"
-    },
-    {
-      "id": "2607.27703",
-      "title": "SpatialCLI: Learning to Reason With Spatial Tools, Then Without Them",
-      "authors": [
-        "Yang Zhou",
-        "Zixuan Huang",
-        "Sunzhu Li",
-        "Zhuo Yang",
-        "Chen Zhang",
-        "Shunian Chen",
-        "Caijun Yan",
-        "Jianyao Xu"
-      ],
-      "published": "2026-07-30",
-      "submitted_on": "",
-      "summary": "Vision-language models (VLMs) are increasingly used in embodied agents to interpret visual inputs, reason about spatial relationships, and make task-level decisions based on that reasoning. However, a fundamental capability mismatch remains: general VLMs can reason about the overall task but often miss the visual details that determine success, while specialist vision models can capture those details but cannot translate them into task-level decisions. In this work, we propose SpatialCLI, a framework that teaches VLMs to reason with spatial tools and progressively internalize the specialist pe",
-      "github": "https://github.com/IANNXANG/SpatialCLI",
-      "upvotes": 3,
-      "url": "https://huggingface.co/papers/2607.27703",
-      "pdf_url": "https://arxiv.org/pdf/2607.27703"
-    },
-    {
-      "id": "2607.27278",
-      "title": "OVEarth-Bench: Evaluating Category Breadth and Query Diversity for Open-Vocabulary Earth Observation",
-      "authors": [
-        "Kaiyu Li",
-        "Zepeng Xin",
-        "Zixuan Jiang",
-        "Jing Fu",
-        "Lanxuan Xue",
-        "Lingyu Zhang",
-        "Xiangyong Cao"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Open-vocabulary Earth observation (EO) aims to localize geospatial concepts specified in natural language rather than a fixed label set. Existing benchmarks, however, usually cover narrow category vocabularies or limited query forms. To fill this gap, we introduce OVEarth-Bench, which extends existing evaluation in two directions: category breadth, through broad hierarchical category coverage with positive and negative expressions, and query diversity, through vocabulary, referring, and reasoning queries. The benchmark supports mask and box localization under a unified zero-shot protocol. We e",
-      "github": "https://github.com/earth-insights/OVEarth-bench",
-      "upvotes": 5,
-      "url": "https://huggingface.co/papers/2607.27278",
-      "pdf_url": "https://arxiv.org/pdf/2607.27278"
-    },
-    {
-      "id": "2607.27167",
-      "title": "SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch",
-      "authors": [
-        "Yihao Chen",
-        "Shi Chang",
-        "Feng Lin",
-        "Khaled Chawa",
-        "Boyuan Chen",
-        "Shaowei Wang",
-        "Ahmed E. Hassan"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "LLM-based agents excel at software engineering tasks where an existing codebase provides context, but constructing a program from scratch remains fundamentally harder. Recent benchmarks such as ProgramBench quantify this gap: given only natural-language documentation and an execute-only binary as a behavioral oracle, even frontier models solve fewer than 1% of instances. Existing frameworks conflate documentation reading, behavioral exploration, and code synthesis into a single pass, causing agents to probe insufficiently, lose behavioral intent as context drifts, and propagate early misinterp",
-      "github": "",
-      "upvotes": 15,
-      "url": "https://huggingface.co/papers/2607.27167",
-      "pdf_url": "https://arxiv.org/pdf/2607.27167"
-    },
-    {
-      "id": "2607.27146",
-      "title": "MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis",
-      "authors": [
-        "Yihao Chen",
-        "Shi Chang",
-        "Khaled Chawa",
-        "Feng Lin",
-        "Boyuan Chen",
-        "Shaowei Wang",
-        "Ahmed E. Hassan"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Coding agents have made substantial progress on software engineering tasks that modify existing codebases, including bug fixing and feature implementation. However, constructing a complete program from scratch remains a major challenge: even the frontier models evaluated on ProgramBench fully resolve fewer than 1% of tasks. One obstacle is the lack of scalable training environments for this from-scratch setting, spanning the whole software engineering life cycle, as existing environment-construction frameworks focus only on a single phase in software development. To address this gap, we introd",
-      "github": "",
-      "upvotes": 18,
-      "url": "https://huggingface.co/papers/2607.27146",
-      "pdf_url": "https://arxiv.org/pdf/2607.27146"
-    },
-    {
-      "id": "2607.26811",
-      "title": "DistillAlign: Coordinating Mode Covering and Mode Seeking in Autoregressive Video Distillation",
-      "authors": [
-        "Jiaxing Li",
-        "Kai Zou",
-        "Cindy Zhou",
-        "Kaichen Huang",
-        "Junyao Gao",
-        "Zile Wang",
-        "Yang Liu",
-        "Bin Liu"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Existing autoregressive video distillation methods commonly adopt a Distribution Matching Distillation (DMD)-based multi-stage pipeline. However, they typically decouple the initialization and DMD stages -- which then pursue different target distributions -- and judge the intermediate student mainly by visual scores such as VBench. In this paper, we revisit this design from a distributional perspective. Given the mode-seeking nature of the distribution matching loss, a good initialization should match the mode coverage of the target DMD teacher, rather than merely pursuing high quality. To ana",
-      "github": "https://github.com/LiJiaxing0213/DistillAlign",
-      "upvotes": 0,
-      "url": "https://huggingface.co/papers/2607.26811",
-      "pdf_url": "https://arxiv.org/pdf/2607.26811"
-    },
-    {
-      "id": "2607.26410",
-      "title": "Voice Memory for Agentic Speech Recognition",
-      "authors": [
-        "Chao-Han Huck Yang",
-        "Zih-Ching Chen",
-        "Piotr Zelasko",
-        "Zhehuai Chen",
-        "Jagadeesh Balam",
-        "Boris Ginsburg"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "We present Voice Memory, a inference-only scheme for agentic speech recognition: at stream time, a frozen corrector reads a single per-domain memory.md and decides per utterance whether to act on the hypothesis or abstain and keep the 1-best. Asynchronously, a score-gated optimizer revises that file through bounded edits, accepting an edit only when it strictly improves a held-out score. Extended from classical ASR-LM framework, we refer this split the listener-thinker architecture; the two roles are coupled only through the memory, so no weights change and the learned skill stays auditable an",
-      "github": "https://github.com/huckiyang/voice-memory-notebook",
-      "upvotes": 6,
-      "url": "https://huggingface.co/papers/2607.26410",
-      "pdf_url": "https://arxiv.org/pdf/2607.26410"
-    },
-    {
-      "id": "2607.26055",
-      "title": "πR^2: Reactive Real-time Flow Policies",
-      "authors": [
-        "Sungjae Park",
-        "Shubham Tulsiani"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Generalist manipulation policies increasingly take the form of action-chunking flow policies built on large pretrained backbones. Such chunks run open-loop, so the policy cannot react to sensory input arriving mid-execution, sacrificing reactivity. Replanning more often would restore it, but the perception-to-action pipeline (a large backbone plus multiple denoising steps) is too slow: this latency forbids frequent replanning and leaves committed actions stale, making such policies ill-suited for dynamic, closed-loop control. We present πR^2, which makes these policies reactive and real-time w",
-      "github": "https://github.com/pi-r2-flow/pi-r2-flow",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.26055",
-      "pdf_url": "https://arxiv.org/pdf/2607.26055"
-    },
-    {
-      "id": "2607.25380",
-      "title": "Memory for Large Language Models",
-      "authors": [
-        "Sining Zhoubian",
-        "Dan Zhang",
-        "Evgeny Kharlamov",
-        "Jie Tang"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Memory has evolved into a foundational architectural dimension in large language models (LLMs), shifting from an implicit byproduct of computation to a spectrum of explicit, controllable mechanisms. While recent advances introduce diverse strategies---spanning transient attention, recurrent state dynamics, parameter-efficient adaptations, and scalable lookup storage---this rapid evolution has led to a highly fragmented research landscape. In this survey, we present a systematic, architecture-centric taxonomy of memory in LLMs. Our framework characterizes memory along three orthogonal axes: rep",
-      "github": "",
-      "upvotes": 4,
-      "url": "https://huggingface.co/papers/2607.25380",
-      "pdf_url": "https://arxiv.org/pdf/2607.25380"
-    },
-    {
-      "id": "2607.16955",
-      "title": "CADENCE: Closing the Reasoning Gap via Coverage-Adaptive On-Policy Distillation",
-      "authors": [
-        "Satyam Kumar",
-        "Saurabh Jha"
-      ],
-      "published": "2026-07-18",
-      "submitted_on": "",
-      "summary": "On-policy knowledge distillation transfers reasoning from large teachers to compact students, but existing approaches suffer three compounding failure modes: (i) cold-start collapse, where a fresh student assigns near-zero mass to teacher-preferred tokens; (ii) state-agnostic divergence scheduling, where time-only forward/reverse-KL interpolation ignores the student's coverage state; and (iii) binary reward sparsity, where pass/fail signals discard information from partially correct traces.\n  We present CADENCE, a unified framework with a targeted fix for each. Its DRIFT mechanism schedules a ",
-      "github": "",
-      "upvotes": 4,
-      "url": "https://huggingface.co/papers/2607.16955",
-      "pdf_url": "https://arxiv.org/pdf/2607.16955"
-    },
-    {
-      "id": "2607.26754",
-      "title": "StatePlay: State-Aware Game World Models for Mechanics-Consistent Generation",
-      "authors": [
-        "Zijun Lin",
-        "Zeqing Wang",
-        "Cheston Tan",
-        "Bihan Wen",
-        "Yeying Jin"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Recent game world models can generate visually realistic and interactive environments conditioned on player actions. However, games are not defined by pixels alone; they are governed by explicit mechanics, namely state-dependent rules that control health reduction, skill activation, and game termination. These mechanics depend on precise internal states, such as health points, skill meters, and timers, which are tightly coupled with visual observations and determine how gameplay evolves. Without modeling these state dynamics, existing game world models may generate visually plausible rollouts ",
-      "github": "https://github.com/Jimntu/StatePlay",
-      "upvotes": 13,
-      "url": "https://huggingface.co/papers/2607.26754",
-      "pdf_url": "https://arxiv.org/pdf/2607.26754"
-    },
-    {
-      "id": "2607.26791",
-      "title": "SecRespond: Benchmarking AI Agents for Real-World Post-Compromise Incident Response",
-      "authors": [
-        "Lehan Wang",
-        "Boli Chen",
-        "Ruixue Ding",
-        "Pengjun Xie",
-        "Jinwei Huang",
-        "Zhendong Liu",
-        "Shuo Wang",
-        "Tao Lei"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Large Language Model (LLM) agents are increasingly adopted in real-world security operations with access to host artifacts and command-line interfaces (CLIs), making it critical to thoroughly assess their security capabilities. However, existing cybersecurity benchmarks focus on pre-compromise settings where agents are placed in a clean and idealized environment before an attack occurs. This leaves the post-compromise setting underexplored. To address this gap, we introduce SecRespond, the first benchmark for evaluating LLM agents on the post-compromise incident-response workflow. Given a fore",
-      "github": "",
-      "upvotes": 1,
-      "url": "https://huggingface.co/papers/2607.26791",
-      "pdf_url": "https://arxiv.org/pdf/2607.26791"
-    },
-    {
-      "id": "2607.24117",
-      "title": "Grading the Narrators: An Isnad-Rijal Framework for Claim-Level Provenance in Multi-Agent Knowledge Systems",
-      "authors": [
-        "Ali Zahid Raja"
-      ],
-      "published": "2026-07-27",
-      "submitted_on": "",
-      "summary": "Modern multi-agent knowledge systems increasingly accumulate knowledge through chains of autonomous transformations rather than direct retrieval. Existing provenance work records what happened - execution traces, tool calls, evidence links - and source-reliability estimation is long established (truth discovery, reputation systems). What is missing is an operational framework that attaches graded, per-domain transmitter reliability to claim-level transmission chains, with completeness semantics, transformation-typed aggregation, decoupled content criticism, and serve/review/quarantine routing.",
-      "github": "https://github.com/alizahidraja/isnad",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.24117",
-      "pdf_url": "https://arxiv.org/pdf/2607.24117"
-    },
-    {
-      "id": "2607.25294",
-      "title": "CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition",
-      "authors": [
-        "Lai Wei",
-        "Chengqi Li",
-        "Jiapeng Li",
-        "Ruina Hu",
-        "Yue Wang",
-        "Weiran Huang"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Real-world tasks often require models to learn from task-specific context rather than relying only on pre-trained knowledge. While recent work has highlighted this capability as context learning, existing evaluations mainly focus on textual contexts. In many practical settings, however, the context to be learned from is multimodal: scientific findings are conveyed through figures and tables, financial indicators are scattered across converted reports, and spatial decisions depend on maps, scenes, or web pages. We introduce CLBench-V, a benchmark for multimodal context learning that addresses t",
-      "github": "https://github.com/IamLihua/CLBench-V",
-      "upvotes": 40,
-      "url": "https://huggingface.co/papers/2607.25294",
-      "pdf_url": "https://arxiv.org/pdf/2607.25294"
-    },
-    {
-      "id": "2607.25659",
-      "title": "CoRT: Counterfactual Replay for Token-Level Rubric-Guided Policy Optimization",
-      "authors": [
-        "Bo-Wen Zhang",
-        "Junwei He",
-        "Wen Wang",
-        "Song-Lin Lv",
-        "Wentao Ma",
-        "Rongyi Lin",
-        "Shuhan Zhong",
-        "Lan-Zhe Guo"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Rubric-based reinforcement learning enriches language model training by evaluating model outputs against explicit criteria. Yet in GRPO-style pipelines, these structured judgments are reduced to a scalar response-level reward and converted into a response-level advantage, which is broadcast uniformly to all generated tokens. This leaves no explicit mechanism for allocating credit within a response, even when different criteria are grounded in different spans, formatting decisions, or semantic choices. We propose CoRT, a token-level credit weighting method for rubric-conditioned GRPO. Instead o",
-      "github": "",
-      "upvotes": 77,
-      "url": "https://huggingface.co/papers/2607.25659",
-      "pdf_url": "https://arxiv.org/pdf/2607.25659"
-    },
-    {
-      "id": "2607.26784",
-      "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
-      "authors": [
-        "Zhiyuan Yao",
-        "Yuxin Chen",
-        "Zhengxi Lu",
-        "Zishan Xu",
-        "Yueqing Sun",
-        "Yifu Guo",
-        "Yuquan Lu",
-        "Zhengzhou Cai"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Large language model agents often encounter related yet distinct tasks that share reusable solution patterns. Yet standard agentic reinforcement learning treats tasks as independent episodes, while existing approaches to skill learning either focus on repeated attempts of one task or use pipelines with multiple stages that entangle extraction, retrieval, and execution. We introduce SkillRise, a unified reinforcement learning framework for learning skills across tasks. SkillRise organizes related instances into progressively challenging sequences and uses a single policy to alternate between ta",
-      "github": "https://github.com/Within-yao/SkillRise",
-      "upvotes": 19,
-      "url": "https://huggingface.co/papers/2607.26784",
-      "pdf_url": "https://arxiv.org/pdf/2607.26784"
-    },
-    {
-      "id": "2607.25675",
-      "title": "DecoEvo: Score-Decoupled Co-Evolution of Solver and Rubric-Generator Skills in Text Space",
-      "authors": [
-        "Jiangwang Chen",
-        "Zixin Song",
-        "Junlin Liu",
-        "Shuaiyu Zhou",
-        "Haiyan Wu",
-        "Haihan Shi",
-        "Chenxi Zhou",
-        "Hanqing Li"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Text-space optimization adapts large language models (LLMs) by editing external natural-language artifacts rather than model weights, so the optimized artifacts remain inspectable and the model can be treated as a black box. However, most existing text-space methods keep evaluation fixed. On open-ended tasks, this can become a bottleneck: once the solver improves on the criteria a rubric measures, omitted dimensions remain invisible to the optimization signal. Simply evolving the rubric is also unreliable when updates are selected by the current solver's score, because apparent progress can co",
-      "github": "",
-      "upvotes": 54,
-      "url": "https://huggingface.co/papers/2607.25675",
-      "pdf_url": "https://arxiv.org/pdf/2607.25675"
-    },
-    {
-      "id": "2607.25308",
-      "title": "CAST: Game Solvers as Turn-Level Teachers for LLM Agents",
-      "authors": [
-        "Yu Wang",
-        "Yi-Kai Zhang",
-        "Wentao Shi",
-        "Ziang Ye",
-        "Yuchun Miao",
-        "Yueqing Sun",
-        "Qi Gu",
-        "Xunliang Cai"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Training large language models (LLMs) to act in long-horizon games is a promising step toward generalist decision-making, yet reinforcement learning with verifiable rewards (RLVR) relies on sparse final rewards that reveal little about which decisions determine success. Denser process signals could supply this missing turn-level credit, but existing sources are hard to keep both cheap and accurate. We observe that changes in a game solver's state value reveal whether an action advances the state toward success. Building on this insight, we propose CAST (Credit Assignment from Solver Teachers),",
-      "github": "https://github.com/Wloner0809/CAST",
-      "upvotes": 30,
-      "url": "https://huggingface.co/papers/2607.25308",
-      "pdf_url": "https://arxiv.org/pdf/2607.25308"
-    },
-    {
-      "id": "2607.26314",
-      "title": "StealthBench: Measuring Operational Stealth in Autonomous Offensive-Security Agents",
-      "authors": [
-        "Ads Dawson",
-        "Adrian Wood"
-      ],
-      "published": "2026-07-28",
-      "submitted_on": "",
-      "summary": "Stealth, the discipline of achieving an objective without revealing your presence, capabilities, or collected intelligence, is what separates sophisticated operators from detectable ones. Elite security researchers and advanced persistent threats achieve their objectives unnoticed; autonomous agents increasingly inherit the same offensive tasks, but do they inherit the tradecraft? We introduce StealthBench,a benchmark that measures operational stealth in autonomous offensive-security agents across six operational security (OPSEC) dimensions. We extract 11 hand-verified OPSEC incidents from rea",
-      "github": "https://github.com/GangGreenTemperTatum/stealthbench",
-      "upvotes": 2,
-      "url": "https://huggingface.co/papers/2607.26314",
-      "pdf_url": "https://arxiv.org/pdf/2607.26314"
-    },
-    {
-      "id": "2607.27155",
-      "title": "OmegaUse-OfficeVal: Benchmarking LLM Agents on Long-Horizon Office-Suite Tasks with Economic Grounding",
-      "authors": [
-        "Jingbo Zhou",
-        "Yusai Zhao",
-        "Qi Bao",
-        "Jingjia Cao",
-        "Zhenghai Chen",
-        "Chang Gao",
-        "Kaiqi Guo",
-        "Muxin Guo"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Large language model (LLM) agents are increasingly expected to assist users in completing tasks. However, existing benchmarks provide limited support for evaluating whether agents can carry out office-suite workflows at a reasonable cost. We introduce OmegaUse-OfficeVal, a benchmark for evaluating LLM agents on long-horizon office-suite tasks with task-level economic grounding. The benchmark comprises 100 tasks derived from office-suite requests proposed by practitioners and adapted through a privacy-preserving process. On average, these tasks require 2.32 hours of human labor to complete. An ",
-      "github": "https://github.com/baidu-frontier-research/OmegaUse-OfficeVal",
-      "upvotes": 7,
-      "url": "https://huggingface.co/papers/2607.27155",
-      "pdf_url": "https://arxiv.org/pdf/2607.27155"
-    },
-    {
-      "id": "2607.27191",
-      "title": "Can AI agents conduct open-ended AI research? Early evidence from two case studies",
-      "authors": [
-        "Peter Kirgis",
-        "Sayash Kapoor",
-        "Andrew Schwartz",
-        "Stephan Rabanser",
-        "David Africa",
-        "Konstantinos Voudouris",
-        "Viet Nguyen",
-        "Toby Pilditch"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Forecasts of explosive AI progress hinge on AI agents automating AI research. But evidence on whether agents can carry out open-ended AI research is thin. Current evaluations either test agents on narrow, verifiable tasks, which excludes open-ended research, or submit AI-generated papers to blind peer review, which is overstretched, stochastic, and suffers from poor review quality. We introduce a third way to measure progress towards AI R\\&D automation. An agent takes on the central, open-ended research question of a high-quality unpublished paper, and the paper's original authors grade its ou",
-      "github": "",
-      "upvotes": 12,
-      "url": "https://huggingface.co/papers/2607.27191",
-      "pdf_url": "https://arxiv.org/pdf/2607.27191"
-    },
-    {
-      "id": "2607.27205",
-      "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
-      "authors": [
-        "Hengyi Xie",
-        "Chenfei Yao",
-        "Xianjin Wu",
-        "Xuanyang Xi",
-        "Yiping Tang",
-        "Di Xu",
-        "Yingying Zhu",
-        "Dingkang Liang"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Vision-language-action (VLA) models commonly adopt an LLM-centric V to L to A pathway, where visual observations are projected into the representation space of a large language model before being decoded into robot actions. Although effective, this design incurs substantial computation and memory overhead at every policy invocation. In this work, we introduce TurboVLA, a new VLA paradigm that reformulates the conventional V to L to A pathway as a direct V + L to A mapping. Instead of using a large language model as the central interface between perception and action, TurboVLA independently enc",
-      "github": "https://github.com/H-EmbodVis/TurboVLA",
-      "upvotes": 121,
-      "url": "https://huggingface.co/papers/2607.27205",
-      "pdf_url": "https://arxiv.org/pdf/2607.27205"
-    },
-    {
-      "id": "2607.27180",
-      "title": "HumanCLAW: Can Vision-Language Models Act Through a Body?",
-      "authors": [
-        "Siyao Li",
-        "Jiawei Gu",
-        "Shuai Liu",
-        "Kairui Hu",
-        "Zekun Li",
-        "Linjie Li",
-        "Chengcheng Tang",
-        "Po-Chen Wu"
-      ],
-      "published": "2026-07-29",
-      "submitted_on": "",
-      "summary": "Evaluating whether a vision-language model (VLM) can act through a physical body is challenging. The outcome of an action couples the VLM's decision with motor control. When a task fails, it is hard to tell whether the VLM made a bad choice or the motor controller simply failed to execute it, e.g., losing balance and falling. In this work, we introduce HumanCLAW, an evaluation framework that decouples action decision-making from low-level execution. At every step, a harnessed, off-the-shelf VLM issues an atomic skill command, and the command is translated into a sub-second chunk of continuous ",
-      "github": "https://github.com/Human-CLAW/HumanCLAW",
-      "upvotes": 66,
-      "url": "https://huggingface.co/papers/2607.27180",
-      "pdf_url": "https://arxiv.org/pdf/2607.27180"
     }
   ],
   "models": [
@@ -903,9 +875,9 @@
       "id": "moonshotai/Kimi-K3",
       "author": "moonshotai",
       "name": "Kimi-K3",
-      "likes": 9017,
-      "trending_score": 8105,
-      "downloads": 387822,
+      "likes": 9282,
+      "trending_score": 8284,
+      "downloads": 493481,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
@@ -927,12 +899,38 @@
       "url": "https://huggingface.co/moonshotai/Kimi-K3"
     },
     {
+      "id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "author": "deepseek-ai",
+      "name": "DeepSeek-V4-Flash-0731",
+      "likes": 1030,
+      "trending_score": 990,
+      "downloads": 0,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "deepseek_v4",
+        "text-generation",
+        "endpoints_compatible",
+        "8-bit",
+        "fp8"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "mit",
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-31",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"
+    },
+    {
       "id": "DavidAU/Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF",
       "author": "DavidAU",
       "name": "Qwen3.6-27B-Fable-Fusion-711-Uncensored-Heretic-NM-DAU-NEO-MAX-MTP-GGUF",
-      "likes": 1038,
-      "trending_score": 582,
-      "downloads": 955767,
+      "likes": 1150,
+      "trending_score": 580,
+      "downloads": 1119057,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "gguf",
@@ -956,9 +954,9 @@
       "id": "baidu/Unlimited-OCR",
       "author": "baidu",
       "name": "Unlimited-OCR",
-      "likes": 3584,
-      "trending_score": 568,
-      "downloads": 2598659,
+      "likes": 3664,
+      "trending_score": 528,
+      "downloads": 2513603,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
@@ -983,9 +981,9 @@
       "id": "owensong/Inflect-Micro-v2",
       "author": "owensong",
       "name": "Inflect-Micro-v2",
-      "likes": 321,
-      "trending_score": 311,
-      "downloads": 1100,
+      "likes": 348,
+      "trending_score": 335,
+      "downloads": 1449,
       "pipeline_tag": "text-to-speech",
       "tags": [
         "text-to-speech",
@@ -1001,44 +999,17 @@
         "pytorch"
       ],
       "license": "apache-2.0",
-      "last_modified": "2026-07-30",
+      "last_modified": "2026-07-31",
       "created_at": "2026-06-25",
       "url": "https://huggingface.co/owensong/Inflect-Micro-v2"
-    },
-    {
-      "id": "poolside/Laguna-S-2.1",
-      "author": "poolside",
-      "name": "Laguna-S-2.1",
-      "likes": 847,
-      "trending_score": 299,
-      "downloads": 73246,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "laguna",
-        "text-generation",
-        "laguna-s-2.1",
-        "vllm",
-        "conversational",
-        "custom_code"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "openmdw-1.1",
-      "last_modified": "2026-07-27",
-      "created_at": "2026-07-13",
-      "url": "https://huggingface.co/poolside/Laguna-S-2.1"
     },
     {
       "id": "Kwaipilot/KAT-Coder-V2.5-Dev",
       "author": "Kwaipilot",
       "name": "KAT-Coder-V2.5-Dev",
-      "likes": 351,
-      "trending_score": 280,
-      "downloads": 9225,
+      "likes": 371,
+      "trending_score": 242,
+      "downloads": 10241,
       "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
@@ -1060,39 +1031,12 @@
       "url": "https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev"
     },
     {
-      "id": "Nanbeige/Nanbeige4.2-3B",
-      "author": "Nanbeige",
-      "name": "Nanbeige4.2-3B",
-      "likes": 582,
-      "trending_score": 251,
-      "downloads": 24542,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "nanbeige",
-        "text-generation",
-        "llm",
-        "conversational",
-        "custom_code",
-        "en"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-28",
-      "created_at": "2026-07-21",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.2-3B"
-    },
-    {
       "id": "zai-org/GLM-5.2",
       "author": "zai-org",
       "name": "GLM-5.2",
-      "likes": 4683,
-      "trending_score": 244,
-      "downloads": 1527760,
+      "likes": 4708,
+      "trending_score": 234,
+      "downloads": 1651533,
       "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
@@ -1114,39 +1058,39 @@
       "url": "https://huggingface.co/zai-org/GLM-5.2"
     },
     {
-      "id": "upstage/Solar-Open2-250B",
-      "author": "upstage",
-      "name": "Solar-Open2-250B",
-      "likes": 703,
-      "trending_score": 224,
-      "downloads": 12411,
+      "id": "poolside/Laguna-S-2.1",
+      "author": "poolside",
+      "name": "Laguna-S-2.1",
+      "likes": 863,
+      "trending_score": 222,
+      "downloads": 76212,
       "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
         "safetensors",
-        "solar_open2",
+        "laguna",
         "text-generation",
-        "upstage",
-        "solar",
-        "moe",
-        "llm"
+        "laguna-s-2.1",
+        "vllm",
+        "conversational",
+        "custom_code"
       ],
       "library": [
         "transformers",
         "safetensors"
       ],
-      "license": "other",
+      "license": "openmdw-1.1",
       "last_modified": "2026-07-27",
-      "created_at": "2026-07-22",
-      "url": "https://huggingface.co/upstage/Solar-Open2-250B"
+      "created_at": "2026-07-13",
+      "url": "https://huggingface.co/poolside/Laguna-S-2.1"
     },
     {
       "id": "unsloth/Kimi-K3-GGUF",
       "author": "unsloth",
       "name": "Kimi-K3-GGUF",
-      "likes": 209,
-      "trending_score": 202,
-      "downloads": 12178,
+      "likes": 228,
+      "trending_score": 218,
+      "downloads": 36180,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
@@ -1167,146 +1111,39 @@
       "url": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
     },
     {
-      "id": "microsoft/Fara1.5-27B",
-      "author": "microsoft",
-      "name": "Fara1.5-27B",
-      "likes": 223,
-      "trending_score": 182,
-      "downloads": 2316,
-      "pipeline_tag": "image-text-to-text",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "qwen3_5",
-        "image-text-to-text",
-        "computer-use",
-        "cua",
-        "web-agent",
-        "multimodal"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "mit",
-      "last_modified": "2026-07-27",
-      "created_at": "2026-07-17",
-      "url": "https://huggingface.co/microsoft/Fara1.5-27B"
-    },
-    {
-      "id": "unsloth/Kimi-K3",
-      "author": "unsloth",
-      "name": "Kimi-K3",
-      "likes": 176,
-      "trending_score": 174,
-      "downloads": 766,
-      "pipeline_tag": "image-text-to-text",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "kimi_k3",
-        "feature-extraction",
-        "compressed-tensors",
-        "unsloth",
-        "conversational",
-        "image-text-to-text"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "other",
-      "last_modified": "2026-07-28",
-      "created_at": "2026-07-27",
-      "url": "https://huggingface.co/unsloth/Kimi-K3"
-    },
-    {
-      "id": "thinkingmachines/Inkling",
-      "author": "thinkingmachines",
-      "name": "Inkling",
-      "likes": 1654,
-      "trending_score": 124,
-      "downloads": 45658,
-      "pipeline_tag": "image-text-to-text",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "inkling_mm_model",
-        "image-text-to-text",
-        "conversational",
-        "audio-text-to-text",
-        "moe",
-        "eval-results"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-23",
-      "created_at": "2026-07-14",
-      "url": "https://huggingface.co/thinkingmachines/Inkling"
-    },
-    {
-      "id": "Audio8/Audio8-TTS-Preview-0.6b",
-      "author": "Audio8",
-      "name": "Audio8-TTS-Preview-0.6b",
-      "likes": 126,
-      "trending_score": 124,
-      "downloads": 225,
-      "pipeline_tag": "text-to-speech",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "arktts",
-        "feature-extraction",
-        "audio",
-        "text-to-speech",
-        "tts",
-        "voice-cloning"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-07-28",
-      "url": "https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b"
-    },
-    {
-      "id": "nota-ai/Solar-Open2-250B-Nota-NVFP4",
-      "author": "nota-ai",
-      "name": "Solar-Open2-250B-Nota-NVFP4",
-      "likes": 147,
-      "trending_score": 122,
-      "downloads": 7755,
+      "id": "Nanbeige/Nanbeige4.2-3B",
+      "author": "Nanbeige",
+      "name": "Nanbeige4.2-3B",
+      "likes": 595,
+      "trending_score": 211,
+      "downloads": 26928,
       "pipeline_tag": "text-generation",
       "tags": [
-        "vllm",
+        "transformers",
         "safetensors",
-        "solar_open2",
-        "quantization",
-        "nvfp4",
-        "moe",
-        "nota",
-        "text-generation"
+        "nanbeige",
+        "text-generation",
+        "llm",
+        "conversational",
+        "custom_code",
+        "en"
       ],
       "library": [
+        "transformers",
         "safetensors"
       ],
-      "license": "other",
-      "last_modified": "2026-07-23",
+      "license": "apache-2.0",
+      "last_modified": "2026-07-28",
       "created_at": "2026-07-21",
-      "url": "https://huggingface.co/nota-ai/Solar-Open2-250B-Nota-NVFP4"
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.2-3B"
     },
     {
       "id": "thinkingmachines/Inkling-Small",
       "author": "thinkingmachines",
       "name": "Inkling-Small",
-      "likes": 121,
-      "trending_score": 121,
-      "downloads": 840,
+      "likes": 197,
+      "trending_score": 197,
+      "downloads": 2971,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
@@ -1328,38 +1165,118 @@
       "url": "https://huggingface.co/thinkingmachines/Inkling-Small"
     },
     {
-      "id": "LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
-      "author": "LuffyTheFox",
-      "name": "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
-      "likes": 241,
-      "trending_score": 120,
-      "downloads": 162394,
-      "pipeline_tag": "image-text-to-text",
+      "id": "unsloth/DeepSeek-V4-Flash-0731-GGUF",
+      "author": "unsloth",
+      "name": "DeepSeek-V4-Flash-0731-GGUF",
+      "likes": 189,
+      "trending_score": 186,
+      "downloads": 0,
+      "pipeline_tag": "",
       "tags": [
-        "hermes",
         "gguf",
-        "uncensored",
-        "qwen3.6",
-        "moe",
-        "vision",
-        "multimodal",
-        "genesis"
+        "unsloth",
+        "deepseek_v4",
+        "deepseek",
+        "endpoints_compatible",
+        "imatrix",
+        "conversational"
       ],
       "library": [
         "gguf"
       ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-30",
-      "created_at": "2026-07-13",
-      "url": "https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
+      "license": "mit",
+      "last_modified": "2026-08-01",
+      "created_at": "2026-07-31",
+      "url": "https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF"
+    },
+    {
+      "id": "unsloth/Kimi-K3",
+      "author": "unsloth",
+      "name": "Kimi-K3",
+      "likes": 216,
+      "trending_score": 179,
+      "downloads": 1044,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "kimi_k3",
+        "feature-extraction",
+        "compressed-tensors",
+        "unsloth",
+        "conversational",
+        "image-text-to-text"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "other",
+      "last_modified": "2026-07-28",
+      "created_at": "2026-07-27",
+      "url": "https://huggingface.co/unsloth/Kimi-K3"
+    },
+    {
+      "id": "microsoft/Fara1.5-27B",
+      "author": "microsoft",
+      "name": "Fara1.5-27B",
+      "likes": 234,
+      "trending_score": 177,
+      "downloads": 2726,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen3_5",
+        "image-text-to-text",
+        "computer-use",
+        "cua",
+        "web-agent",
+        "multimodal"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "mit",
+      "last_modified": "2026-07-27",
+      "created_at": "2026-07-17",
+      "url": "https://huggingface.co/microsoft/Fara1.5-27B"
+    },
+    {
+      "id": "upstage/Solar-Open2-250B",
+      "author": "upstage",
+      "name": "Solar-Open2-250B",
+      "likes": 714,
+      "trending_score": 153,
+      "downloads": 12911,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "solar_open2",
+        "text-generation",
+        "upstage",
+        "solar",
+        "moe",
+        "llm"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "other",
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/upstage/Solar-Open2-250B"
     },
     {
       "id": "microsoft/Mage-VL",
       "author": "microsoft",
       "name": "Mage-VL",
-      "likes": 121,
-      "trending_score": 120,
-      "downloads": 2951,
+      "likes": 150,
+      "trending_score": 147,
+      "downloads": 5650,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
@@ -1381,38 +1298,92 @@
       "url": "https://huggingface.co/microsoft/Mage-VL"
     },
     {
-      "id": "HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive",
-      "author": "HauhauCS",
-      "name": "Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive",
-      "likes": 3190,
-      "trending_score": 119,
-      "downloads": 1803090,
+      "id": "Audio8/Audio8-TTS-Preview-0.6b",
+      "author": "Audio8",
+      "name": "Audio8-TTS-Preview-0.6b",
+      "likes": 152,
+      "trending_score": 147,
+      "downloads": 2481,
+      "pipeline_tag": "text-to-speech",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "arktts",
+        "feature-extraction",
+        "audio",
+        "text-to-speech",
+        "tts",
+        "voice-cloning"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-28",
+      "url": "https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b"
+    },
+    {
+      "id": "LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
+      "author": "LuffyTheFox",
+      "name": "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
+      "likes": 272,
+      "trending_score": 133,
+      "downloads": 212426,
       "pipeline_tag": "image-text-to-text",
       "tags": [
+        "hermes",
         "gguf",
         "uncensored",
         "qwen3.6",
         "moe",
         "vision",
         "multimodal",
-        "image-text-to-text",
-        "en"
+        "genesis"
       ],
       "library": [
         "gguf"
       ],
       "license": "apache-2.0",
-      "last_modified": "2026-04-17",
-      "created_at": "2026-04-17",
-      "url": "https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive"
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-13",
+      "url": "https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
+    },
+    {
+      "id": "XYZAILab/XYZ-Aquila-mini",
+      "author": "XYZAILab",
+      "name": "XYZ-Aquila-mini",
+      "likes": 353,
+      "trending_score": 131,
+      "downloads": 579,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen3_5_moe",
+        "image-text-to-text",
+        "qwen3.6",
+        "agentic-search",
+        "text-generation",
+        "conversational"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/XYZAILab/XYZ-Aquila-mini"
     },
     {
       "id": "owensong/Inflect-Nano-v2",
       "author": "owensong",
       "name": "Inflect-Nano-v2",
-      "likes": 119,
-      "trending_score": 118,
-      "downloads": 654,
+      "likes": 121,
+      "trending_score": 119,
+      "downloads": 802,
       "pipeline_tag": "text-to-speech",
       "tags": [
         "text-to-speech",
@@ -1433,12 +1404,65 @@
       "url": "https://huggingface.co/owensong/Inflect-Nano-v2"
     },
     {
+      "id": "nota-ai/Solar-Open2-250B-Nota-NVFP4",
+      "author": "nota-ai",
+      "name": "Solar-Open2-250B-Nota-NVFP4",
+      "likes": 151,
+      "trending_score": 116,
+      "downloads": 18531,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "vllm",
+        "safetensors",
+        "solar_open2",
+        "quantization",
+        "nvfp4",
+        "moe",
+        "nota",
+        "text-generation"
+      ],
+      "library": [
+        "safetensors"
+      ],
+      "license": "other",
+      "last_modified": "2026-07-23",
+      "created_at": "2026-07-21",
+      "url": "https://huggingface.co/nota-ai/Solar-Open2-250B-Nota-NVFP4"
+    },
+    {
+      "id": "XYZAILab/XYZ-Aquila-pro",
+      "author": "XYZAILab",
+      "name": "XYZ-Aquila-pro",
+      "likes": 326,
+      "trending_score": 111,
+      "downloads": 869,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen3_5_moe",
+        "image-text-to-text",
+        "agentic-search",
+        "text-generation",
+        "conversational",
+        "endpoints_compatible"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/XYZAILab/XYZ-Aquila-pro"
+    },
+    {
       "id": "microsoft/VibeVoice-ASR-BitNet",
       "author": "microsoft",
       "name": "VibeVoice-ASR-BitNet",
-      "likes": 120,
-      "trending_score": 118,
-      "downloads": 3864,
+      "likes": 135,
+      "trending_score": 106,
+      "downloads": 5464,
       "pipeline_tag": "automatic-speech-recognition",
       "tags": [
         "ggml",
@@ -1463,9 +1487,9 @@
       "id": "prism-ml/Ternary-Bonsai-27B-gguf",
       "author": "prism-ml",
       "name": "Ternary-Bonsai-27B-gguf",
-      "likes": 1116,
-      "trending_score": 112,
-      "downloads": 697666,
+      "likes": 1125,
+      "trending_score": 105,
+      "downloads": 712835,
       "pipeline_tag": "text-generation",
       "tags": [
         "llama.cpp",
@@ -1486,66 +1510,109 @@
       "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf"
     },
     {
-      "id": "fdtn-ai/antares-1b",
-      "author": "fdtn-ai",
-      "name": "antares-1b",
-      "likes": 240,
-      "trending_score": 111,
-      "downloads": 9820,
-      "pipeline_tag": "text-generation",
+      "id": "thinkingmachines/Inkling",
+      "author": "thinkingmachines",
+      "name": "Inkling",
+      "likes": 1664,
+      "trending_score": 105,
+      "downloads": 57259,
+      "pipeline_tag": "image-text-to-text",
       "tags": [
         "transformers",
         "safetensors",
-        "granitemoehybrid",
-        "text-generation",
-        "security",
-        "vulnerability-detection",
-        "agentic",
-        "terminal-agent"
+        "inkling_mm_model",
+        "image-text-to-text",
+        "conversational",
+        "audio-text-to-text",
+        "moe",
+        "eval-results"
       ],
       "library": [
         "transformers",
         "safetensors"
       ],
       "license": "apache-2.0",
-      "last_modified": "2026-07-22",
-      "created_at": "2026-07-21",
-      "url": "https://huggingface.co/fdtn-ai/antares-1b"
+      "last_modified": "2026-07-23",
+      "created_at": "2026-07-14",
+      "url": "https://huggingface.co/thinkingmachines/Inkling"
     },
     {
-      "id": "unsloth/Laguna-S-2.1-GGUF",
-      "author": "unsloth",
-      "name": "Laguna-S-2.1-GGUF",
-      "likes": 259,
+      "id": "EschaLabs/Qwen3.6-35B-A3B-Escha-W2",
+      "author": "EschaLabs",
+      "name": "Qwen3.6-35B-A3B-Escha-W2",
+      "likes": 107,
       "trending_score": 105,
-      "downloads": 159331,
+      "downloads": 599,
       "pipeline_tag": "text-generation",
       "tags": [
-        "transformers",
-        "gguf",
-        "laguna-s-2.1",
-        "unsloth",
-        "vllm",
-        "text-generation",
-        "imatrix",
-        "conversational"
+        "safetensors",
+        "qwen3_5_moe",
+        "mixture-of-experts",
+        "moe",
+        "qwen3",
+        "2-bit",
+        "quantization",
+        "eschamoe"
       ],
       "library": [
-        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-30",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/EschaLabs/Qwen3.6-35B-A3B-Escha-W2"
+    },
+    {
+      "id": "Comfy-Org/Mage-Flow",
+      "author": "Comfy-Org",
+      "name": "Mage-Flow",
+      "likes": 107,
+      "trending_score": 105,
+      "downloads": 60162,
+      "pipeline_tag": "",
+      "tags": [
+        "diffusion-single-file",
+        "comfyui"
+      ],
+      "library": [],
+      "license": "mit",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-24",
+      "url": "https://huggingface.co/Comfy-Org/Mage-Flow"
+    },
+    {
+      "id": "HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive",
+      "author": "HauhauCS",
+      "name": "Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive",
+      "likes": 3205,
+      "trending_score": 104,
+      "downloads": 1835931,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "gguf",
+        "uncensored",
+        "qwen3.6",
+        "moe",
+        "vision",
+        "multimodal",
+        "image-text-to-text",
+        "en"
+      ],
+      "library": [
         "gguf"
       ],
-      "license": "openmdw-1.1",
-      "last_modified": "2026-07-27",
-      "created_at": "2026-07-21",
-      "url": "https://huggingface.co/unsloth/Laguna-S-2.1-GGUF"
+      "license": "apache-2.0",
+      "last_modified": "2026-04-17",
+      "created_at": "2026-04-17",
+      "url": "https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive"
     },
     {
       "id": "DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
       "author": "DavidAU",
       "name": "Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF",
-      "likes": 159,
-      "trending_score": 102,
-      "downloads": 248173,
+      "likes": 175,
+      "trending_score": 103,
+      "downloads": 261856,
       "pipeline_tag": "image-text-to-text",
       "tags": [
         "gguf",
@@ -1566,57 +1633,39 @@
       "url": "https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF"
     },
     {
-      "id": "Comfy-Org/Mage-Flow",
-      "author": "Comfy-Org",
-      "name": "Mage-Flow",
-      "likes": 97,
-      "trending_score": 96,
-      "downloads": 44714,
-      "pipeline_tag": "",
-      "tags": [
-        "diffusion-single-file",
-        "comfyui"
-      ],
-      "library": [],
-      "license": "mit",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-07-24",
-      "url": "https://huggingface.co/Comfy-Org/Mage-Flow"
-    },
-    {
-      "id": "ATH-MaaS/OvisOCR2",
-      "author": "ATH-MaaS",
-      "name": "OvisOCR2",
-      "likes": 351,
-      "trending_score": 93,
-      "downloads": 57439,
-      "pipeline_tag": "image-text-to-text",
+      "id": "deepseek-ai/DeepSeek-V4-Flash",
+      "author": "deepseek-ai",
+      "name": "DeepSeek-V4-Flash",
+      "likes": 1923,
+      "trending_score": 98,
+      "downloads": 2923499,
+      "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
         "safetensors",
-        "qwen3_5",
-        "image-text-to-text",
-        "ocr",
-        "document-parsing",
-        "multimodal",
-        "markdown"
+        "deepseek_v4",
+        "text-generation",
+        "conversational",
+        "eval-results",
+        "endpoints_compatible",
+        "8-bit"
       ],
       "library": [
         "transformers",
         "safetensors"
       ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-16",
-      "created_at": "2026-07-13",
-      "url": "https://huggingface.co/ATH-MaaS/OvisOCR2"
+      "license": "mit",
+      "last_modified": "2026-06-22",
+      "created_at": "2026-04-22",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
     },
     {
       "id": "amd/Instella-MoE-16B-A3B-Think",
       "author": "amd",
       "name": "Instella-MoE-16B-A3B-Think",
-      "likes": 94,
-      "trending_score": 93,
-      "downloads": 1315,
+      "likes": 101,
+      "trending_score": 95,
+      "downloads": 1580,
       "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
@@ -1638,91 +1687,66 @@
       "url": "https://huggingface.co/amd/Instella-MoE-16B-A3B-Think"
     },
     {
-      "id": "EschaLabs/Qwen3.6-35B-A3B-Escha-W2",
-      "author": "EschaLabs",
-      "name": "Qwen3.6-35B-A3B-Escha-W2",
-      "likes": 94,
-      "trending_score": 92,
-      "downloads": 201,
+      "id": "unsloth/Laguna-S-2.1-GGUF",
+      "author": "unsloth",
+      "name": "Laguna-S-2.1-GGUF",
+      "likes": 267,
+      "trending_score": 93,
+      "downloads": 164322,
       "pipeline_tag": "text-generation",
       "tags": [
-        "safetensors",
-        "qwen3_5_moe",
-        "mixture-of-experts",
-        "moe",
-        "qwen3",
-        "2-bit",
-        "quantization",
-        "eschamoe"
+        "transformers",
+        "gguf",
+        "laguna-s-2.1",
+        "unsloth",
+        "vllm",
+        "text-generation",
+        "imatrix",
+        "conversational"
       ],
       "library": [
-        "safetensors"
+        "transformers",
+        "gguf"
       ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-30",
-      "created_at": "2026-07-22",
-      "url": "https://huggingface.co/EschaLabs/Qwen3.6-35B-A3B-Escha-W2"
+      "license": "openmdw-1.1",
+      "last_modified": "2026-07-27",
+      "created_at": "2026-07-21",
+      "url": "https://huggingface.co/unsloth/Laguna-S-2.1-GGUF"
     },
     {
-      "id": "Qwen/Qwen3.6-35B-A3B",
-      "author": "Qwen",
-      "name": "Qwen3.6-35B-A3B",
-      "likes": 2595,
-      "trending_score": 86,
-      "downloads": 6119519,
-      "pipeline_tag": "image-text-to-text",
+      "id": "fdtn-ai/antares-1b",
+      "author": "fdtn-ai",
+      "name": "antares-1b",
+      "likes": 248,
+      "trending_score": 91,
+      "downloads": 10871,
+      "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
         "safetensors",
-        "qwen3_5_moe",
-        "image-text-to-text",
-        "conversational",
-        "eval-results",
-        "endpoints_compatible"
+        "granitemoehybrid",
+        "text-generation",
+        "security",
+        "vulnerability-detection",
+        "agentic",
+        "terminal-agent"
       ],
       "library": [
         "transformers",
         "safetensors"
       ],
       "license": "apache-2.0",
-      "last_modified": "2026-04-24",
-      "created_at": "2026-04-15",
-      "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
-    },
-    {
-      "id": "moonshotai/Kimi-K2.7-Code",
-      "author": "moonshotai",
-      "name": "Kimi-K2.7-Code",
-      "likes": 1341,
-      "trending_score": 77,
-      "downloads": 631820,
-      "pipeline_tag": "image-text-to-text",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "kimi_k25",
-        "feature-extraction",
-        "compressed-tensors",
-        "image-text-to-text",
-        "conversational",
-        "custom_code"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "other",
-      "last_modified": "2026-06-15",
-      "created_at": "2026-06-11",
-      "url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code"
+      "last_modified": "2026-07-22",
+      "created_at": "2026-07-21",
+      "url": "https://huggingface.co/fdtn-ai/antares-1b"
     },
     {
       "id": "LiquidAI/LFM2.5-Encoder-350M",
       "author": "LiquidAI",
       "name": "LFM2.5-Encoder-350M",
-      "likes": 77,
-      "trending_score": 77,
-      "downloads": 6697,
+      "likes": 83,
+      "trending_score": 83,
+      "downloads": 6453,
       "pipeline_tag": "fill-mask",
       "tags": [
         "transformers",
@@ -1744,64 +1768,119 @@
       "url": "https://huggingface.co/LiquidAI/LFM2.5-Encoder-350M"
     },
     {
-      "id": "prism-ml/Bonsai-27B-gguf",
-      "author": "prism-ml",
-      "name": "Bonsai-27B-gguf",
-      "likes": 702,
-      "trending_score": 72,
-      "downloads": 2455730,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "llama.cpp",
-        "gguf",
-        "conversational",
-        "1-bit",
-        "llama-cpp",
-        "cuda",
-        "metal",
-        "on-device"
-      ],
-      "library": [
-        "gguf"
-      ],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-17",
-      "created_at": "2026-07-04",
-      "url": "https://huggingface.co/prism-ml/Bonsai-27B-gguf"
-    },
-    {
-      "id": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
-      "author": "empero-ai",
-      "name": "Qwythos-9B-Claude-Mythos-5-1M-GGUF",
-      "likes": 2526,
-      "trending_score": 71,
-      "downloads": 1025618,
+      "id": "Qwen/Qwen3.6-35B-A3B",
+      "author": "Qwen",
+      "name": "Qwen3.6-35B-A3B",
+      "likes": 2603,
+      "trending_score": 80,
+      "downloads": 6099228,
       "pipeline_tag": "image-text-to-text",
       "tags": [
-        "gguf",
-        "llama.cpp",
-        "quantized",
-        "qwen3.5",
-        "reasoning",
-        "uncensored",
-        "long-context",
-        "1M-context"
+        "transformers",
+        "safetensors",
+        "qwen3_5_moe",
+        "image-text-to-text",
+        "conversational",
+        "eval-results",
+        "endpoints_compatible"
       ],
       "library": [
-        "gguf"
+        "transformers",
+        "safetensors"
       ],
       "license": "apache-2.0",
-      "last_modified": "2026-07-14",
-      "created_at": "2026-06-19",
-      "url": "https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF"
+      "last_modified": "2026-04-24",
+      "created_at": "2026-04-15",
+      "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
+    },
+    {
+      "id": "ATH-MaaS/OvisOCR2",
+      "author": "ATH-MaaS",
+      "name": "OvisOCR2",
+      "likes": 356,
+      "trending_score": 79,
+      "downloads": 66178,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen3_5",
+        "image-text-to-text",
+        "ocr",
+        "document-parsing",
+        "multimodal",
+        "markdown"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-16",
+      "created_at": "2026-07-13",
+      "url": "https://huggingface.co/ATH-MaaS/OvisOCR2"
+    },
+    {
+      "id": "empero-ai/Qwythos-27B-v1",
+      "author": "empero-ai",
+      "name": "Qwythos-27B-v1",
+      "likes": 80,
+      "trending_score": 79,
+      "downloads": 864,
+      "pipeline_tag": "image-text-to-text",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "qwen3_5",
+        "image-text-to-text",
+        "qwen3.5",
+        "reasoning",
+        "multimodal",
+        "vision"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-13",
+      "url": "https://huggingface.co/empero-ai/Qwythos-27B-v1"
+    },
+    {
+      "id": "LGAI-EXAONE/K-EXAONE-2.0-750B-A37B",
+      "author": "LGAI-EXAONE",
+      "name": "K-EXAONE-2.0-750B-A37B",
+      "likes": 82,
+      "trending_score": 77,
+      "downloads": 15,
+      "pipeline_tag": "text-generation",
+      "tags": [
+        "transformers",
+        "safetensors",
+        "exaone_moe",
+        "text-generation",
+        "lg-ai",
+        "exaone",
+        "k-exaone",
+        "moe"
+      ],
+      "library": [
+        "transformers",
+        "safetensors"
+      ],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-29",
+      "url": "https://huggingface.co/LGAI-EXAONE/K-EXAONE-2.0-750B-A37B"
     },
     {
       "id": "LiquidAI/LFM2.5-Encoder-230M",
       "author": "LiquidAI",
       "name": "LFM2.5-Encoder-230M",
-      "likes": 71,
-      "trending_score": 71,
-      "downloads": 7353,
+      "likes": 75,
+      "trending_score": 75,
+      "downloads": 12028,
       "pipeline_tag": "fill-mask",
       "tags": [
         "transformers",
@@ -1823,68 +1902,22 @@
       "url": "https://huggingface.co/LiquidAI/LFM2.5-Encoder-230M"
     },
     {
-      "id": "Qwen/Qwen3.6-27B",
-      "author": "Qwen",
-      "name": "Qwen3.6-27B",
-      "likes": 2116,
-      "trending_score": 67,
-      "downloads": 6549533,
-      "pipeline_tag": "image-text-to-text",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "qwen3_5",
-        "image-text-to-text",
-        "conversational",
-        "eval-results",
-        "endpoints_compatible"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "apache-2.0",
-      "last_modified": "2026-04-24",
-      "created_at": "2026-04-21",
-      "url": "https://huggingface.co/Qwen/Qwen3.6-27B"
-    },
-    {
-      "id": "conradlocke/krea2-identity-edit",
-      "author": "conradlocke",
-      "name": "krea2-identity-edit",
-      "likes": 582,
-      "trending_score": 67,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "image-editing",
-        "lora",
-        "comfyui",
-        "krea-2"
-      ],
-      "library": [],
-      "license": "other",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-07-07",
-      "url": "https://huggingface.co/conradlocke/krea2-identity-edit"
-    },
-    {
-      "id": "XYZAILab/XYZ-Aquila-mini",
-      "author": "XYZAILab",
-      "name": "XYZ-Aquila-mini",
-      "likes": 242,
-      "trending_score": 67,
-      "downloads": 447,
+      "id": "skt/A.X-K2",
+      "author": "skt",
+      "name": "A.X-K2",
+      "likes": 73,
+      "trending_score": 72,
+      "downloads": 993,
       "pipeline_tag": "text-generation",
       "tags": [
         "transformers",
         "safetensors",
-        "qwen3_5_moe",
-        "image-text-to-text",
-        "qwen3.6",
-        "agentic-search",
+        "axk2",
         "text-generation",
-        "conversational"
+        "conversational",
+        "en",
+        "ko",
+        "zh"
       ],
       "library": [
         "transformers",
@@ -1892,88 +1925,17 @@
       ],
       "license": "apache-2.0",
       "last_modified": "2026-07-29",
-      "created_at": "2026-07-22",
-      "url": "https://huggingface.co/XYZAILab/XYZ-Aquila-mini"
-    },
-    {
-      "id": "KyleHessling1/Qwopus3.6-27B-Fusion-GGUF",
-      "author": "KyleHessling1",
-      "name": "Qwopus3.6-27B-Fusion-GGUF",
-      "likes": 66,
-      "trending_score": 66,
-      "downloads": 2058,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "gguf",
-        "merge",
-        "task-vector",
-        "dare-ties",
-        "layer-weighted",
-        "qwen3",
-        "qwen35",
-        "reasoning"
-      ],
-      "library": [
-        "gguf"
-      ],
-      "license": "other",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-07-20",
-      "url": "https://huggingface.co/KyleHessling1/Qwopus3.6-27B-Fusion-GGUF"
-    },
-    {
-      "id": "deepseek-ai/DeepSeek-V4-Flash",
-      "author": "deepseek-ai",
-      "name": "DeepSeek-V4-Flash",
-      "likes": 1886,
-      "trending_score": 65,
-      "downloads": 2999612,
-      "pipeline_tag": "text-generation",
-      "tags": [
-        "transformers",
-        "safetensors",
-        "deepseek_v4",
-        "text-generation",
-        "conversational",
-        "eval-results",
-        "endpoints_compatible",
-        "8-bit"
-      ],
-      "library": [
-        "transformers",
-        "safetensors"
-      ],
-      "license": "mit",
-      "last_modified": "2026-06-22",
-      "created_at": "2026-04-22",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+      "created_at": "2026-07-28",
+      "url": "https://huggingface.co/skt/A.X-K2"
     }
   ],
   "spaces": [
     {
-      "id": "kulkas2pintu/wan555",
-      "author": "kulkas2pintu",
-      "name": "wan555",
-      "likes": 963,
-      "trending_score": 166,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio",
-        "mcp-server"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-19",
-      "created_at": "2026-05-17",
-      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555"
-    },
-    {
       "id": "cinderholm/wan2-2-i2v-v3",
       "author": "cinderholm",
       "name": "wan2-2-i2v-v3",
-      "likes": 219,
-      "trending_score": 164,
+      "likes": 275,
+      "trending_score": 192,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -1987,11 +1949,29 @@
       "url": "https://huggingface.co/spaces/cinderholm/wan2-2-i2v-v3"
     },
     {
+      "id": "kulkas2pintu/wan555",
+      "author": "kulkas2pintu",
+      "name": "wan555",
+      "likes": 976,
+      "trending_score": 157,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio",
+        "mcp-server"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-19",
+      "created_at": "2026-05-17",
+      "url": "https://huggingface.co/spaces/kulkas2pintu/wan555"
+    },
+    {
       "id": "prithivMLmods/Qwen-Image-Edit-2511-LoRAs-Fast",
       "author": "prithivMLmods",
       "name": "Qwen-Image-Edit-2511-LoRAs-Fast",
-      "likes": 2118,
-      "trending_score": 88,
+      "likes": 2151,
+      "trending_score": 104,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2005,47 +1985,11 @@
       "url": "https://huggingface.co/spaces/prithivMLmods/Qwen-Image-Edit-2511-LoRAs-Fast"
     },
     {
-      "id": "webml-community/bonsai-webgpu-kernels",
-      "author": "webml-community",
-      "name": "bonsai-webgpu-kernels",
-      "likes": 402,
-      "trending_score": 81,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "static"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-14",
-      "created_at": "2026-07-14",
-      "url": "https://huggingface.co/spaces/webml-community/bonsai-webgpu-kernels"
-    },
-    {
-      "id": "pliny-the-prompter/obliteratus",
-      "author": "pliny-the-prompter",
-      "name": "obliteratus",
-      "likes": 497,
-      "trending_score": 77,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio",
-        "abliteration",
-        "mechanistic-interpretability"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-03-16",
-      "created_at": "2026-02-13",
-      "url": "https://huggingface.co/spaces/pliny-the-prompter/obliteratus"
-    },
-    {
       "id": "owensong/Inflect-v2",
       "author": "owensong",
       "name": "Inflect-v2",
-      "likes": 78,
-      "trending_score": 70,
+      "likes": 90,
+      "trending_score": 78,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2061,29 +2005,47 @@
       "url": "https://huggingface.co/spaces/owensong/Inflect-v2"
     },
     {
-      "id": "microsoft/mage-flow",
-      "author": "microsoft",
-      "name": "mage-flow",
-      "likes": 113,
-      "trending_score": 54,
+      "id": "pliny-the-prompter/obliteratus",
+      "author": "pliny-the-prompter",
+      "name": "obliteratus",
+      "likes": 502,
+      "trending_score": 74,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
         "gradio",
-        "mcp-server"
+        "abliteration",
+        "mechanistic-interpretability"
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-24",
-      "created_at": "2026-07-22",
-      "url": "https://huggingface.co/spaces/microsoft/mage-flow"
+      "last_modified": "2026-03-16",
+      "created_at": "2026-02-13",
+      "url": "https://huggingface.co/spaces/pliny-the-prompter/obliteratus"
+    },
+    {
+      "id": "webml-community/bonsai-webgpu-kernels",
+      "author": "webml-community",
+      "name": "bonsai-webgpu-kernels",
+      "likes": 406,
+      "trending_score": 67,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "static"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-14",
+      "created_at": "2026-07-14",
+      "url": "https://huggingface.co/spaces/webml-community/bonsai-webgpu-kernels"
     },
     {
       "id": "microsoft/mage-vl-demo",
       "author": "microsoft",
       "name": "mage-vl-demo",
-      "likes": 52,
-      "trending_score": 48,
+      "likes": 65,
+      "trending_score": 58,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2096,11 +2058,29 @@
       "url": "https://huggingface.co/spaces/microsoft/mage-vl-demo"
     },
     {
+      "id": "microsoft/mage-flow",
+      "author": "microsoft",
+      "name": "mage-flow",
+      "likes": 119,
+      "trending_score": 54,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio",
+        "mcp-server"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/spaces/microsoft/mage-flow"
+    },
+    {
       "id": "acvlab/abot-world-interactive",
       "author": "acvlab",
       "name": "abot-world-interactive",
-      "likes": 52,
-      "trending_score": 47,
+      "likes": 60,
+      "trending_score": 53,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2113,66 +2093,11 @@
       "url": "https://huggingface.co/spaces/acvlab/abot-world-interactive"
     },
     {
-      "id": "Fighterdan/LTX-2.3-10Eros_I2V",
-      "author": "Fighterdan",
-      "name": "LTX-2.3-10Eros_I2V",
-      "likes": 134,
-      "trending_score": 45,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-06-16",
-      "created_at": "2026-06-17",
-      "url": "https://huggingface.co/spaces/Fighterdan/LTX-2.3-10Eros_I2V"
-    },
-    {
-      "id": "t-tech/t-search-blog",
-      "author": "t-tech",
-      "name": "t-search-blog",
-      "likes": 44,
-      "trending_score": 44,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "docker",
-        "retrieval",
-        "agents",
-        "reinforcement-learning",
-        "RAG"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-24",
-      "created_at": "2026-07-20",
-      "url": "https://huggingface.co/spaces/t-tech/t-search-blog"
-    },
-    {
-      "id": "baidu/Unlimited-OCR",
-      "author": "baidu",
-      "name": "Unlimited-OCR",
-      "likes": 341,
-      "trending_score": 41,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-06-24",
-      "created_at": "2026-06-24",
-      "url": "https://huggingface.co/spaces/baidu/Unlimited-OCR"
-    },
-    {
       "id": "burtenshaw/open-weights-breakout",
       "author": "burtenshaw",
       "name": "open-weights-breakout",
-      "likes": 45,
-      "trending_score": 41,
+      "likes": 52,
+      "trending_score": 45,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2185,28 +2110,11 @@
       "url": "https://huggingface.co/spaces/burtenshaw/open-weights-breakout"
     },
     {
-      "id": "microsoft/TRELLIS.2",
-      "author": "microsoft",
-      "name": "TRELLIS.2",
-      "likes": 1881,
-      "trending_score": 40,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-05-20",
-      "created_at": "2025-12-10",
-      "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
-    },
-    {
       "id": "selfit-camera/Omni-Image-Editor",
       "author": "selfit-camera",
       "name": "Omni-Image-Editor",
-      "likes": 2259,
-      "trending_score": 40,
+      "likes": 2267,
+      "trending_score": 43,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2219,11 +2127,11 @@
       "url": "https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor"
     },
     {
-      "id": "conradlocke/krea2-identity-edit",
-      "author": "conradlocke",
-      "name": "krea2-identity-edit",
-      "likes": 163,
-      "trending_score": 40,
+      "id": "Fighterdan/LTX-2.3-10Eros_I2V",
+      "author": "Fighterdan",
+      "name": "LTX-2.3-10Eros_I2V",
+      "likes": 142,
+      "trending_score": 43,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2231,16 +2139,33 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-20",
-      "created_at": "2026-07-07",
-      "url": "https://huggingface.co/spaces/conradlocke/krea2-identity-edit"
+      "last_modified": "2026-06-16",
+      "created_at": "2026-06-17",
+      "url": "https://huggingface.co/spaces/Fighterdan/LTX-2.3-10Eros_I2V"
+    },
+    {
+      "id": "microsoft/TRELLIS.2",
+      "author": "microsoft",
+      "name": "TRELLIS.2",
+      "likes": 1888,
+      "trending_score": 42,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-05-20",
+      "created_at": "2025-12-10",
+      "url": "https://huggingface.co/spaces/microsoft/TRELLIS.2"
     },
     {
       "id": "M3st3rJ4k3l/FLUX.2-Klein-Multi-LoRA",
       "author": "M3st3rJ4k3l",
       "name": "FLUX.2-Klein-Multi-LoRA",
-      "likes": 263,
-      "trending_score": 38,
+      "likes": 270,
+      "trending_score": 40,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2254,11 +2179,45 @@
       "url": "https://huggingface.co/spaces/M3st3rJ4k3l/FLUX.2-Klein-Multi-LoRA"
     },
     {
+      "id": "baidu/Unlimited-OCR",
+      "author": "baidu",
+      "name": "Unlimited-OCR",
+      "likes": 351,
+      "trending_score": 40,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-06-24",
+      "created_at": "2026-06-24",
+      "url": "https://huggingface.co/spaces/baidu/Unlimited-OCR"
+    },
+    {
+      "id": "conradlocke/krea2-identity-edit",
+      "author": "conradlocke",
+      "name": "krea2-identity-edit",
+      "likes": 165,
+      "trending_score": 38,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-20",
+      "created_at": "2026-07-07",
+      "url": "https://huggingface.co/spaces/conradlocke/krea2-identity-edit"
+    },
+    {
       "id": "PLUS-WAVE/InfiniSplat",
       "author": "PLUS-WAVE",
       "name": "InfiniSplat",
-      "likes": 38,
-      "trending_score": 31,
+      "likes": 45,
+      "trending_score": 36,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2271,11 +2230,46 @@
       "url": "https://huggingface.co/spaces/PLUS-WAVE/InfiniSplat"
     },
     {
+      "id": "cruisewagner2220/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo",
+      "author": "cruisewagner2220",
+      "name": "Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo",
+      "likes": 123,
+      "trending_score": 29,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio",
+        "mcp-server"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-05-14",
+      "created_at": "2026-03-06",
+      "url": "https://huggingface.co/spaces/cruisewagner2220/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo"
+    },
+    {
+      "id": "obsxrver/wan22-i2v-omni-lora",
+      "author": "obsxrver",
+      "name": "wan22-i2v-omni-lora",
+      "likes": 33,
+      "trending_score": 29,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-27",
+      "created_at": "2026-07-21",
+      "url": "https://huggingface.co/spaces/obsxrver/wan22-i2v-omni-lora"
+    },
+    {
       "id": "smolagents/hf-realtime-voice",
       "author": "smolagents",
       "name": "hf-realtime-voice",
-      "likes": 492,
-      "trending_score": 29,
+      "likes": 493,
+      "trending_score": 28,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2288,11 +2282,11 @@
       "url": "https://huggingface.co/spaces/smolagents/hf-realtime-voice"
     },
     {
-      "id": "yijunwang2/krea2-outpaint",
-      "author": "yijunwang2",
-      "name": "krea2-outpaint",
-      "likes": 81,
-      "trending_score": 27,
+      "id": "mrfakename/Z-Image-Turbo",
+      "author": "mrfakename",
+      "name": "Z-Image-Turbo",
+      "likes": 3635,
+      "trending_score": 25,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2301,49 +2295,9 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-18",
-      "created_at": "2026-07-17",
-      "url": "https://huggingface.co/spaces/yijunwang2/krea2-outpaint"
-    },
-    {
-      "id": "Sneak-Moose/FireRed-Image-Edit-Stripped",
-      "author": "Sneak-Moose",
-      "name": "FireRed-Image-Edit-Stripped",
-      "likes": 53,
-      "trending_score": 25,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio",
-        "image-generation",
-        "image-to-image",
-        "image-editing",
-        "text-guided",
-        "diffusion",
-        "mcp-server"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-06-21",
-      "created_at": "2026-06-20",
-      "url": "https://huggingface.co/spaces/Sneak-Moose/FireRed-Image-Edit-Stripped"
-    },
-    {
-      "id": "obsxrver/wan22-i2v-omni-lora",
-      "author": "obsxrver",
-      "name": "wan22-i2v-omni-lora",
-      "likes": 28,
-      "trending_score": 25,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-27",
-      "created_at": "2026-07-21",
-      "url": "https://huggingface.co/spaces/obsxrver/wan22-i2v-omni-lora"
+      "last_modified": "2026-07-13",
+      "created_at": "2025-11-26",
+      "url": "https://huggingface.co/spaces/mrfakename/Z-Image-Turbo"
     },
     {
       "id": "hugging-apps/bs-roformer-leap-audio-separator",
@@ -2364,46 +2318,45 @@
       "url": "https://huggingface.co/spaces/hugging-apps/bs-roformer-leap-audio-separator"
     },
     {
-      "id": "mrfakename/Z-Image-Turbo",
-      "author": "mrfakename",
-      "name": "Z-Image-Turbo",
-      "likes": 3632,
+      "id": "yijunwang2/krea2-outpaint",
+      "author": "yijunwang2",
+      "name": "krea2-outpaint",
+      "likes": 82,
+      "trending_score": 24,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio",
+        "mcp-server"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-18",
+      "created_at": "2026-07-17",
+      "url": "https://huggingface.co/spaces/yijunwang2/krea2-outpaint"
+    },
+    {
+      "id": "SeedOfEvil/Pro-Realism-Edit-Studio",
+      "author": "SeedOfEvil",
+      "name": "Pro-Realism-Edit-Studio",
+      "likes": 40,
       "trending_score": 22,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
-        "gradio",
-        "mcp-server"
+        "gradio"
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-13",
-      "created_at": "2025-11-26",
-      "url": "https://huggingface.co/spaces/mrfakename/Z-Image-Turbo"
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-07",
+      "url": "https://huggingface.co/spaces/SeedOfEvil/Pro-Realism-Edit-Studio"
     },
     {
-      "id": "r3gm/wan2-2-fp8da-aoti-preview-2c",
-      "author": "r3gm",
-      "name": "wan2-2-fp8da-aoti-preview-2c",
-      "likes": 2110,
-      "trending_score": 21,
-      "downloads": 0,
-      "pipeline_tag": "",
-      "tags": [
-        "gradio",
-        "mcp-server"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-05-15",
-      "created_at": "2025-11-18",
-      "url": "https://huggingface.co/spaces/r3gm/wan2-2-fp8da-aoti-preview-2c"
-    },
-    {
-      "id": "Qwen/Qwen3-TTS",
-      "author": "Qwen",
-      "name": "Qwen3-TTS",
-      "likes": 2098,
+      "id": "k2-fsa/OmniVoice",
+      "author": "k2-fsa",
+      "name": "OmniVoice",
+      "likes": 1169,
       "trending_score": 21,
       "downloads": 0,
       "pipeline_tag": "",
@@ -2412,15 +2365,38 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-06-09",
-      "created_at": "2026-01-21",
-      "url": "https://huggingface.co/spaces/Qwen/Qwen3-TTS"
+      "last_modified": "2026-04-13",
+      "created_at": "2026-03-30",
+      "url": "https://huggingface.co/spaces/k2-fsa/OmniVoice"
     },
     {
-      "id": "cruisewagner2220/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo",
-      "author": "cruisewagner2220",
-      "name": "Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo",
-      "likes": 109,
+      "id": "Sneak-Moose/FireRed-Image-Edit-Stripped",
+      "author": "Sneak-Moose",
+      "name": "FireRed-Image-Edit-Stripped",
+      "likes": 61,
+      "trending_score": 21,
+      "downloads": 0,
+      "pipeline_tag": "",
+      "tags": [
+        "gradio",
+        "image-generation",
+        "image-to-image",
+        "image-editing",
+        "text-guided",
+        "diffusion",
+        "mcp-server"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-06-21",
+      "created_at": "2026-06-20",
+      "url": "https://huggingface.co/spaces/Sneak-Moose/FireRed-Image-Edit-Stripped"
+    },
+    {
+      "id": "microsoft/vibevoice-asr-bitnet-demo",
+      "author": "microsoft",
+      "name": "vibevoice-asr-bitnet-demo",
+      "likes": 21,
       "trending_score": 21,
       "downloads": 0,
       "pipeline_tag": "",
@@ -2430,16 +2406,16 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-05-14",
-      "created_at": "2026-03-06",
-      "url": "https://huggingface.co/spaces/cruisewagner2220/Qwen-Image-Edit-Rapid-AIO-Loras-Experimental-neo"
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-29",
+      "url": "https://huggingface.co/spaces/microsoft/vibevoice-asr-bitnet-demo"
     },
     {
       "id": "loveseries/wanmanlove",
       "author": "loveseries",
       "name": "wanmanlove",
-      "likes": 189,
-      "trending_score": 21,
+      "likes": 192,
+      "trending_score": 20,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2453,11 +2429,11 @@
       "url": "https://huggingface.co/spaces/loveseries/wanmanlove"
     },
     {
-      "id": "SeedOfEvil/Pro-Realism-Edit-Studio",
-      "author": "SeedOfEvil",
-      "name": "Pro-Realism-Edit-Studio",
-      "likes": 33,
-      "trending_score": 21,
+      "id": "Qwen/Qwen3-TTS",
+      "author": "Qwen",
+      "name": "Qwen3-TTS",
+      "likes": 2102,
+      "trending_score": 19,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2465,16 +2441,16 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-31",
-      "created_at": "2026-07-07",
-      "url": "https://huggingface.co/spaces/SeedOfEvil/Pro-Realism-Edit-Studio"
+      "last_modified": "2026-06-09",
+      "created_at": "2026-01-21",
+      "url": "https://huggingface.co/spaces/Qwen/Qwen3-TTS"
     },
     {
-      "id": "google/gemma4_vision_token_budget",
-      "author": "google",
-      "name": "gemma4_vision_token_budget",
-      "likes": 55,
-      "trending_score": 20,
+      "id": "victor/DeepSeek-V4-Flash-0731-free-endpoint",
+      "author": "victor",
+      "name": "DeepSeek-V4-Flash-0731-free-endpoint",
+      "likes": 18,
+      "trending_score": 17,
       "downloads": 0,
       "pipeline_tag": "",
       "tags": [
@@ -2482,9 +2458,9 @@
       ],
       "library": [],
       "license": "",
-      "last_modified": "2026-07-14",
-      "created_at": "2026-07-14",
-      "url": "https://huggingface.co/spaces/google/gemma4_vision_token_budget"
+      "last_modified": "2026-07-31",
+      "created_at": "2026-07-31",
+      "url": "https://huggingface.co/spaces/victor/DeepSeek-V4-Flash-0731-free-endpoint"
     }
   ],
   "datasets": [
@@ -2492,8 +2468,8 @@
       "id": "HuggingFaceCode/stack-v3-train",
       "author": "HuggingFaceCode",
       "name": "stack-v3-train",
-      "likes": 243,
-      "trending_score": 181,
+      "likes": 261,
+      "trending_score": 134,
       "downloads": 102755,
       "pipeline_tag": "",
       "tags": [
@@ -2501,16 +2477,38 @@
       ],
       "library": [],
       "license": "odc-by",
-      "last_modified": "2026-07-29",
+      "last_modified": "2026-07-31",
       "created_at": "2026-07-23",
       "url": "https://huggingface.co/datasets/HuggingFaceCode/stack-v3-train"
+    },
+    {
+      "id": "XYZAILab/XYZ-Aquila-SFT",
+      "author": "XYZAILab",
+      "name": "XYZ-Aquila-SFT",
+      "likes": 321,
+      "trending_score": 128,
+      "downloads": 294,
+      "pipeline_tag": "",
+      "tags": [
+        "agent",
+        "tool-use",
+        "multi-turn",
+        "supervised-fine-tuning",
+        "web-search",
+        "xyz-aquila"
+      ],
+      "library": [],
+      "license": "apache-2.0",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-07-22",
+      "url": "https://huggingface.co/datasets/XYZAILab/XYZ-Aquila-SFT"
     },
     {
       "id": "Qyrou/reasoning-corpus-4K-5M-v1",
       "author": "Qyrou",
       "name": "reasoning-corpus-4K-5M-v1",
-      "likes": 164,
-      "trending_score": 81,
+      "likes": 171,
+      "trending_score": 67,
       "downloads": 4305,
       "pipeline_tag": "",
       "tags": [
@@ -2530,33 +2528,11 @@
       "url": "https://huggingface.co/datasets/Qyrou/reasoning-corpus-4K-5M-v1"
     },
     {
-      "id": "XYZAILab/XYZ-Aquila-SFT",
-      "author": "XYZAILab",
-      "name": "XYZ-Aquila-SFT",
-      "likes": 214,
-      "trending_score": 67,
-      "downloads": 294,
-      "pipeline_tag": "",
-      "tags": [
-        "agent",
-        "tool-use",
-        "multi-turn",
-        "supervised-fine-tuning",
-        "web-search",
-        "xyz-aquila"
-      ],
-      "library": [],
-      "license": "apache-2.0",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-07-22",
-      "url": "https://huggingface.co/datasets/XYZAILab/XYZ-Aquila-SFT"
-    },
-    {
       "id": "Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
       "author": "Manusagents",
       "name": "GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset",
-      "likes": 129,
-      "trending_score": 57,
+      "likes": 140,
+      "trending_score": 63,
       "downloads": 9914,
       "pipeline_tag": "",
       "tags": [
@@ -2576,33 +2552,11 @@
       "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset"
     },
     {
-      "id": "FlyRank/internship-warehouse",
-      "author": "FlyRank",
-      "name": "internship-warehouse",
-      "likes": 391,
-      "trending_score": 35,
-      "downloads": 8441,
-      "pipeline_tag": "",
-      "tags": [
-        "seo",
-        "content-performance",
-        "data-warehouse",
-        "tabular",
-        "education",
-        "flyrank-internship"
-      ],
-      "library": [],
-      "license": "other",
-      "last_modified": "2026-07-07",
-      "created_at": "2026-07-07",
-      "url": "https://huggingface.co/datasets/FlyRank/internship-warehouse"
-    },
-    {
       "id": "unstonio/pixelgpt-24x24-20k",
       "author": "unstonio",
       "name": "pixelgpt-24x24-20k",
-      "likes": 35,
-      "trending_score": 35,
+      "likes": 39,
+      "trending_score": 38,
       "downloads": 3412,
       "pipeline_tag": "",
       "tags": [
@@ -2620,11 +2574,33 @@
       "url": "https://huggingface.co/datasets/unstonio/pixelgpt-24x24-20k"
     },
     {
+      "id": "FlyRank/internship-warehouse",
+      "author": "FlyRank",
+      "name": "internship-warehouse",
+      "likes": 402,
+      "trending_score": 34,
+      "downloads": 8441,
+      "pipeline_tag": "",
+      "tags": [
+        "seo",
+        "content-performance",
+        "data-warehouse",
+        "tabular",
+        "education",
+        "flyrank-internship"
+      ],
+      "library": [],
+      "license": "other",
+      "last_modified": "2026-07-07",
+      "created_at": "2026-07-07",
+      "url": "https://huggingface.co/datasets/FlyRank/internship-warehouse"
+    },
+    {
       "id": "r0b0tlab/qwen3.8-max-distillation-50k",
       "author": "r0b0tlab",
       "name": "qwen3.8-max-distillation-50k",
-      "likes": 54,
-      "trending_score": 29,
+      "likes": 60,
+      "trending_score": 32,
       "downloads": 887,
       "pipeline_tag": "",
       "tags": [
@@ -2647,8 +2623,8 @@
       "id": "moonshotai/PerceptionBench",
       "author": "moonshotai",
       "name": "PerceptionBench",
-      "likes": 30,
-      "trending_score": 29,
+      "likes": 31,
+      "trending_score": 30,
       "downloads": 2211,
       "pipeline_tag": "",
       "tags": [
@@ -2667,8 +2643,8 @@
       "id": "Glint-Research/Fable-5-traces",
       "author": "Glint-Research",
       "name": "Fable-5-traces",
-      "likes": 686,
-      "trending_score": 23,
+      "likes": 697,
+      "trending_score": 29,
       "downloads": 50950,
       "pipeline_tag": "",
       "tags": [
@@ -2691,7 +2667,7 @@
       "id": "ianncity/GLM-5.2-Conversation",
       "author": "ianncity",
       "name": "GLM-5.2-Conversation",
-      "likes": 42,
+      "likes": 43,
       "trending_score": 23,
       "downloads": 2265,
       "pipeline_tag": "",
@@ -2712,11 +2688,26 @@
       "url": "https://huggingface.co/datasets/ianncity/GLM-5.2-Conversation"
     },
     {
+      "id": "HuggingFaceFW/fineweb",
+      "author": "HuggingFaceFW",
+      "name": "fineweb",
+      "likes": 2985,
+      "trending_score": 22,
+      "downloads": 681438,
+      "pipeline_tag": "",
+      "tags": [],
+      "library": [],
+      "license": "odc-by",
+      "last_modified": "2025-07-11",
+      "created_at": "2024-04-18",
+      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb"
+    },
+    {
       "id": "greghavens/kimi-k3-coding-and-debugging-traces",
       "author": "greghavens",
       "name": "kimi-k3-coding-and-debugging-traces",
-      "likes": 53,
-      "trending_score": 21,
+      "likes": 56,
+      "trending_score": 20,
       "downloads": 6490,
       "pipeline_tag": "",
       "tags": [
@@ -2734,21 +2725,6 @@
       "last_modified": "2026-07-31",
       "created_at": "2026-07-18",
       "url": "https://huggingface.co/datasets/greghavens/kimi-k3-coding-and-debugging-traces"
-    },
-    {
-      "id": "HuggingFaceFW/fineweb",
-      "author": "HuggingFaceFW",
-      "name": "fineweb",
-      "likes": 2983,
-      "trending_score": 20,
-      "downloads": 685790,
-      "pipeline_tag": "",
-      "tags": [],
-      "library": [],
-      "license": "odc-by",
-      "last_modified": "2025-07-11",
-      "created_at": "2024-04-18",
-      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb"
     },
     {
       "id": "NVEagle/LocateAnything-Data",
@@ -2774,26 +2750,11 @@
       "url": "https://huggingface.co/datasets/NVEagle/LocateAnything-Data"
     },
     {
-      "id": "Alibaba-YuFeng/MMA-SafetyBench",
-      "author": "Alibaba-YuFeng",
-      "name": "MMA-SafetyBench",
-      "likes": 16,
-      "trending_score": 16,
-      "downloads": 364,
-      "pipeline_tag": "",
-      "tags": [],
-      "library": [],
-      "license": "cc-by-4.0",
-      "last_modified": "2026-05-06",
-      "created_at": "2026-05-06",
-      "url": "https://huggingface.co/datasets/Alibaba-YuFeng/MMA-SafetyBench"
-    },
-    {
       "id": "scholarweave/arxiv-latex",
       "author": "scholarweave",
       "name": "arxiv-latex",
-      "likes": 108,
-      "trending_score": 16,
+      "likes": 110,
+      "trending_score": 17,
       "downloads": 26225,
       "pipeline_tag": "",
       "tags": [
@@ -2809,41 +2770,26 @@
       "url": "https://huggingface.co/datasets/scholarweave/arxiv-latex"
     },
     {
-      "id": "markov-ai/gaming-500-hours",
-      "author": "markov-ai",
-      "name": "gaming-500-hours",
-      "likes": 230,
+      "id": "Alibaba-YuFeng/MMA-SafetyBench",
+      "author": "Alibaba-YuFeng",
+      "name": "MMA-SafetyBench",
+      "likes": 16,
       "trending_score": 16,
-      "downloads": 45719,
+      "downloads": 364,
       "pipeline_tag": "",
       "tags": [],
       "library": [],
-      "license": "",
-      "last_modified": "2026-06-30",
-      "created_at": "2026-06-30",
-      "url": "https://huggingface.co/datasets/markov-ai/gaming-500-hours"
-    },
-    {
-      "id": "Crownelius/Complete-FABLE.5-traces-2M",
-      "author": "Crownelius",
-      "name": "Complete-FABLE.5-traces-2M",
-      "likes": 139,
-      "trending_score": 14,
-      "downloads": 14266,
-      "pipeline_tag": "",
-      "tags": [],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-29",
-      "created_at": "2026-06-19",
-      "url": "https://huggingface.co/datasets/Crownelius/Complete-FABLE.5-traces-2M"
+      "license": "cc-by-4.0",
+      "last_modified": "2026-05-06",
+      "created_at": "2026-05-06",
+      "url": "https://huggingface.co/datasets/Alibaba-YuFeng/MMA-SafetyBench"
     },
     {
       "id": "greghavens/fable-5-coding-and-debugging-traces",
       "author": "greghavens",
       "name": "fable-5-coding-and-debugging-traces",
-      "likes": 37,
-      "trending_score": 14,
+      "likes": 39,
+      "trending_score": 16,
       "downloads": 4162,
       "pipeline_tag": "",
       "tags": [
@@ -2863,47 +2809,26 @@
       "url": "https://huggingface.co/datasets/greghavens/fable-5-coding-and-debugging-traces"
     },
     {
-      "id": "wikimedia/wikipedia",
-      "author": "wikimedia",
-      "name": "wikipedia",
-      "likes": 1342,
-      "trending_score": 13,
-      "downloads": 239180,
+      "id": "markov-ai/gaming-500-hours",
+      "author": "markov-ai",
+      "name": "gaming-500-hours",
+      "likes": 232,
+      "trending_score": 15,
+      "downloads": 45719,
       "pipeline_tag": "",
       "tags": [],
       "library": [],
-      "license": "cc-by-sa-3.0",
-      "last_modified": "2024-01-09",
-      "created_at": "2022-03-02",
-      "url": "https://huggingface.co/datasets/wikimedia/wikipedia"
-    },
-    {
-      "id": "nvidia/Open-SWE-Traces",
-      "author": "nvidia",
-      "name": "Open-SWE-Traces",
-      "likes": 84,
-      "trending_score": 13,
-      "downloads": 11305,
-      "pipeline_tag": "",
-      "tags": [
-        "code",
-        "synthetic",
-        "tools",
-        "agents",
-        "software"
-      ],
-      "library": [],
-      "license": "cc-by-4.0",
-      "last_modified": "2026-07-16",
-      "created_at": "2026-04-16",
-      "url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces"
+      "license": "",
+      "last_modified": "2026-06-30",
+      "created_at": "2026-06-30",
+      "url": "https://huggingface.co/datasets/markov-ai/gaming-500-hours"
     },
     {
       "id": "simple-world-lab/HiFi-UMI-2K",
       "author": "simple-world-lab",
       "name": "HiFi-UMI-2K",
-      "likes": 14,
-      "trending_score": 13,
+      "likes": 16,
+      "trending_score": 15,
       "downloads": 10382,
       "pipeline_tag": "",
       "tags": [
@@ -2923,11 +2848,142 @@
       "url": "https://huggingface.co/datasets/simple-world-lab/HiFi-UMI-2K"
     },
     {
+      "id": "Crownelius/Complete-FABLE.5-traces-2M",
+      "author": "Crownelius",
+      "name": "Complete-FABLE.5-traces-2M",
+      "likes": 139,
+      "trending_score": 14,
+      "downloads": 14266,
+      "pipeline_tag": "",
+      "tags": [],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-29",
+      "created_at": "2026-06-19",
+      "url": "https://huggingface.co/datasets/Crownelius/Complete-FABLE.5-traces-2M"
+    },
+    {
+      "id": "wikimedia/wikipedia",
+      "author": "wikimedia",
+      "name": "wikipedia",
+      "likes": 1347,
+      "trending_score": 13,
+      "downloads": 239520,
+      "pipeline_tag": "",
+      "tags": [],
+      "library": [],
+      "license": "cc-by-sa-3.0",
+      "last_modified": "2024-01-09",
+      "created_at": "2022-03-02",
+      "url": "https://huggingface.co/datasets/wikimedia/wikipedia"
+    },
+    {
+      "id": "nvidia/Open-SWE-Traces",
+      "author": "nvidia",
+      "name": "Open-SWE-Traces",
+      "likes": 84,
+      "trending_score": 12,
+      "downloads": 11305,
+      "pipeline_tag": "",
+      "tags": [
+        "code",
+        "synthetic",
+        "tools",
+        "agents",
+        "software"
+      ],
+      "library": [],
+      "license": "cc-by-4.0",
+      "last_modified": "2026-07-16",
+      "created_at": "2026-04-16",
+      "url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces"
+    },
+    {
+      "id": "datacurve/deep-swe",
+      "author": "datacurve",
+      "name": "deep-swe",
+      "likes": 37,
+      "trending_score": 11,
+      "downloads": 630,
+      "pipeline_tag": "",
+      "tags": [
+        "code",
+        "software-engineering",
+        "coding-agents",
+        "benchmark",
+        "long-horizon",
+        "harbor",
+        "pier"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-06-02",
+      "created_at": "2026-06-01",
+      "url": "https://huggingface.co/datasets/datacurve/deep-swe"
+    },
+    {
+      "id": "HuggingFaceFW/fineweb-edu",
+      "author": "HuggingFaceFW",
+      "name": "fineweb-edu",
+      "likes": 1226,
+      "trending_score": 10,
+      "downloads": 378716,
+      "pipeline_tag": "",
+      "tags": [],
+      "library": [],
+      "license": "odc-by",
+      "last_modified": "2025-07-11",
+      "created_at": "2024-05-28",
+      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu"
+    },
+    {
+      "id": "armand0e/claude-fable-5-claude-code",
+      "author": "armand0e",
+      "name": "claude-fable-5-claude-code",
+      "likes": 342,
+      "trending_score": 10,
+      "downloads": 7912,
+      "pipeline_tag": "",
+      "tags": [
+        "agent-traces",
+        "claude",
+        "distillation",
+        "claude-fable-5",
+        "teich"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-06-19",
+      "created_at": "2026-06-11",
+      "url": "https://huggingface.co/datasets/armand0e/claude-fable-5-claude-code"
+    },
+    {
+      "id": "AletheiaResearch/Kimi-K3-Codex",
+      "author": "AletheiaResearch",
+      "name": "Kimi-K3-Codex",
+      "likes": 15,
+      "trending_score": 10,
+      "downloads": 478,
+      "pipeline_tag": "",
+      "tags": [
+        "agent-traces",
+        "codex",
+        "distillation",
+        "moonshotai/kimi-k3",
+        "teich"
+      ],
+      "library": [],
+      "license": "",
+      "last_modified": "2026-07-19",
+      "created_at": "2026-07-19",
+      "url": "https://huggingface.co/datasets/AletheiaResearch/Kimi-K3-Codex"
+    },
+    {
       "id": "AlicanKiraz0/Turkish-CoT-Instruct-Dataset",
       "author": "AlicanKiraz0",
       "name": "Turkish-CoT-Instruct-Dataset",
       "likes": 19,
-      "trending_score": 11,
+      "trending_score": 10,
       "downloads": 153,
       "pipeline_tag": "",
       "tags": [
@@ -2949,9 +3005,9 @@
       "id": "SWE-bench/SWE-bench_Verified",
       "author": "SWE-bench",
       "name": "SWE-bench_Verified",
-      "likes": 120,
-      "trending_score": 10,
-      "downloads": 74479,
+      "likes": 121,
+      "trending_score": 9,
+      "downloads": 75073,
       "pipeline_tag": "",
       "tags": [],
       "library": [],
@@ -2964,8 +3020,8 @@
       "id": "CMRobot/MotionDecode",
       "author": "CMRobot",
       "name": "MotionDecode",
-      "likes": 56,
-      "trending_score": 10,
+      "likes": 57,
+      "trending_score": 9,
       "downloads": 49720,
       "pipeline_tag": "",
       "tags": [],
@@ -2974,71 +3030,6 @@
       "last_modified": "2026-07-29",
       "created_at": "2026-06-11",
       "url": "https://huggingface.co/datasets/CMRobot/MotionDecode"
-    },
-    {
-      "id": "datacurve/deep-swe",
-      "author": "datacurve",
-      "name": "deep-swe",
-      "likes": 34,
-      "trending_score": 9,
-      "downloads": 630,
-      "pipeline_tag": "",
-      "tags": [
-        "code",
-        "software-engineering",
-        "coding-agents",
-        "benchmark",
-        "long-horizon",
-        "harbor",
-        "pier"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-06-02",
-      "created_at": "2026-06-01",
-      "url": "https://huggingface.co/datasets/datacurve/deep-swe"
-    },
-    {
-      "id": "armand0e/claude-fable-5-claude-code",
-      "author": "armand0e",
-      "name": "claude-fable-5-claude-code",
-      "likes": 340,
-      "trending_score": 9,
-      "downloads": 7912,
-      "pipeline_tag": "",
-      "tags": [
-        "agent-traces",
-        "claude",
-        "distillation",
-        "claude-fable-5",
-        "teich"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-06-19",
-      "created_at": "2026-06-11",
-      "url": "https://huggingface.co/datasets/armand0e/claude-fable-5-claude-code"
-    },
-    {
-      "id": "AletheiaResearch/Kimi-K3-Codex",
-      "author": "AletheiaResearch",
-      "name": "Kimi-K3-Codex",
-      "likes": 12,
-      "trending_score": 9,
-      "downloads": 478,
-      "pipeline_tag": "",
-      "tags": [
-        "agent-traces",
-        "codex",
-        "distillation",
-        "moonshotai/kimi-k3",
-        "teich"
-      ],
-      "library": [],
-      "license": "",
-      "last_modified": "2026-07-19",
-      "created_at": "2026-07-19",
-      "url": "https://huggingface.co/datasets/AletheiaResearch/Kimi-K3-Codex"
     },
     {
       "id": "AxiomicLabs/Arithmark-3.0",
@@ -3061,34 +3052,19 @@
       "url": "https://huggingface.co/datasets/AxiomicLabs/Arithmark-3.0"
     },
     {
-      "id": "roneneldan/TinyStories",
-      "author": "roneneldan",
-      "name": "TinyStories",
-      "likes": 1103,
-      "trending_score": 8,
-      "downloads": 94517,
+      "id": "google/asimov_agentic",
+      "author": "google",
+      "name": "asimov_agentic",
+      "likes": 9,
+      "trending_score": 9,
+      "downloads": 6,
       "pipeline_tag": "",
       "tags": [],
       "library": [],
-      "license": "cdla-sharing-1.0",
-      "last_modified": "2024-08-12",
-      "created_at": "2023-05-12",
-      "url": "https://huggingface.co/datasets/roneneldan/TinyStories"
-    },
-    {
-      "id": "HuggingFaceFW/fineweb-edu",
-      "author": "HuggingFaceFW",
-      "name": "fineweb-edu",
-      "likes": 1224,
-      "trending_score": 8,
-      "downloads": 379773,
-      "pipeline_tag": "",
-      "tags": [],
-      "library": [],
-      "license": "odc-by",
-      "last_modified": "2025-07-11",
-      "created_at": "2024-05-28",
-      "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu"
+      "license": "cc-by-4.0",
+      "last_modified": "2026-07-24",
+      "created_at": "2026-07-21",
+      "url": "https://huggingface.co/datasets/google/asimov_agentic"
     }
   ]
 }
