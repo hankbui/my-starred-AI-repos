@@ -1,39 +1,19 @@
 {
   "meta": {
-    "date": "2026-08-01",
+    "date": "2026-08-02",
     "papers_tracked": 15,
     "technologies_discovered": 39,
     "opportunities_identified": 15,
-    "last_update": "2026-08-01 07:41 UTC",
+    "last_update": "2026-08-02 07:45 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    {
-      "technology": "Multimodal Learning",
-      "why_it_matters": "Multimodal learning integrates multiple data types (text, images, videos) to create more comprehensive and context-aware models. This is crucial for applications requiring deep understanding and interaction across different data modalities.",
-      "opportunity": "Product builders can leverage multimodal learning to create more intuitive and interactive applications, such as enhanced e-commerce platforms, advanced medical imaging tools, and improved mental health understanding systems."
-    },
-    {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "why_it_matters": "This technology allows models to learn from human preferences and corrections, leading to more aligned and effective AI systems. It is particularly valuable in domains where human judgment is critical.",
-      "opportunity": "Product builders can use RLHF to develop AI systems that better align with user needs and preferences, such as personalized medical imaging report generators and cross-platform reward models."
-    },
-    {
-      "technology": "Agentic Modeling",
-      "why_it_matters": "Agentic modeling enables the creation of autonomous agents that can perform complex tasks with minimal human intervention. This is transformative for automation and decision-making processes.",
-      "opportunity": "Product builders can develop advanced agentic frameworks for applications in education, enterprise, and creative domains, such as adaptive learning systems and social deduction games."
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "why_it_matters": "RAG enhances the ability of models to generate accurate and contextually relevant responses by retrieving relevant information from a large corpus. This is essential for applications requiring up-to-date and precise information.",
-      "opportunity": "Product builders can integrate RAG into educational tools, enterprise applications, and scientific research platforms to provide more accurate and context-aware responses."
-    },
-    {
-      "technology": "Generative Embeddings",
-      "why_it_matters": "Generative embeddings allow models to generate embeddings that capture complex relationships and patterns in data. This is crucial for applications requiring advanced data representation and understanding.",
-      "opportunity": "Product builders can use generative embeddings to enhance educational tools, enterprise applications, and other domains by providing more sophisticated and accurate data representations."
-    }
+    "Multimodal learning is becoming infrastructure-level: 7 of 10 papers feature multimodal approaches across e-commerce, healthcare, education, and social deduction. The technology is moving from research novelty to production-ready capability. Product opportunity: Build domain-specific multimodal pipelines that combine vision, language, and structured data with modality-balanced training (like MOON2.0's MoE approach) for vertical applications.",
+    "Agentic AI training is getting sophisticated process rewards: Papers show advances in credit-assignment SFT (Orchard), rubric-based process rewards, and on-policy distillation. This means agents can now learn multi-step reasoning chains with better evaluation signals. Product opportunity: Develop agent frameworks that incorporate process-level rewards rather than just outcome rewards, enabling more reliable task completion in enterprise workflows.",
+    "Healthcare AI is emerging as a major vertical with specialized multimodal needs: Three papers address clinical applications—medical imaging report generation with multimodal RLHF, clinical narrative anchoring mitigation (NarrativeShield), and mental health detection in video (MMHBench). Product opportunity: Build HIPAA-compliant multimodal health AI products that handle the unique challenges of clinical language, medical imaging, and long-form behavioral video analysis.",
+    "Context compression is enabling efficient LLM deployment at scale: ARC-Encoder demonstrates compressed text representations that maintain performance while reducing context length. Combined with RAG advances, this enables cheaper inference. Product opportunity: Build compression-aware RAG systems that optimize for both accuracy and token costs, especially valuable for enterprise knowledge bases with long documents.",
+    "Evaluation infrastructure is becoming critical for AI products: Multiple papers (OSReward, MathNet, MMHBench) focus on benchmarking and reward model evaluation. As models become more capable, evaluation frameworks are the bottleneck. Product opportunity: Create domain-specific evaluation suites and reward models that help enterprises measure AI performance on their specific use cases, particularly for computer-use agents and multimodal applications."
   ],
   "top_cards": [
     {
@@ -41,7 +21,7 @@
       "title": "New Technologies",
       "value": "39",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Retrieval Augmented Generation, Agentic Modeling, Chain-of-Thought Prompting, Generative Embeddings, Modality-driven Mixture-of-Experts, Dual-level Alignment",
+      "detail": "Multimodal Learning, Modality-driven Mixture-of-Experts, Dual-level Alignment, MLLM-based Image-text Co-augmentation, Dynamic Sample Filtering, Agentic Modeling, Credit-Assignment Supervised Fine-Tuning, Balanced Adaptive Rollout",
       "color": "accent"
     },
     {
@@ -49,7 +29,7 @@
       "title": "Emerging Trends",
       "value": "39",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Agentic Modeling, Generative Embeddings, Credit-Assignment Supervised Fine-Tuning",
+      "detail": "Multimodal Learning, Agentic Modeling, Credit-Assignment Supervised Fine-Tuning, Balanced Adaptive Rollout, On-Policy Distillation",
       "color": "green"
     },
     {
@@ -79,7 +59,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "1",
+      "value": "2",
       "label": "early-stage technologies",
       "detail": "Orchard: An Open-Source Agentic Modeling Framework",
       "color": "blue"
@@ -107,7 +87,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "Enhanced e-commerce search and recommendation systems with improved multimodal understanding",
         "Advanced product categorization and tagging tools for online retailers",
@@ -141,7 +121,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 6.0,
+      "curator_score": 5.5,
       "product_potential": [
         "A scalable platform for developing and deploying autonomous AI agents across various domains",
         "A suite of tools for training and evaluating agentic models with a focus on software engineering and personal assistants"
@@ -150,118 +130,6 @@
         "education",
         "enterprise",
         "other"
-      ]
-    },
-    {
-      "id": "2607.27384",
-      "title": "Same Facts, Different Diagnosis: Measuring and Mitigating Narrative Anchoring in Clinical Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-31",
-      "updated": "2026-07-31",
-      "summary": "arXiv:2607.27384v1 Announce Type: new Abstract: Large language models used for clinical diagnostic reasoning are sensitive to sociolinguistic register, not just clinical content. We term this failure mode Narrative Anchoring: identical clinical facts expressed in different registers cause diagnostic outputs to diverge. Unlike prior demographic-bias work, which manipulates explicit identity tokens such as race or income, our benchmark isolates register as the sole channel of variation, with no demographic marker present in any form. We construct a dataset of 1,000 USMLE clinical vignettes, each rewritten into three sociolinguistically distinct personas under an independently audited fact-preservation guarantee, verified by a separate model that never sees the generation prompt. Across seven language models spanning three architecture families and scales, Narrative Anchoring is statistically significant under direct prompting in every model tested, with a Narrative Anchoring Gap of 0.064 to 0.151. Chain-of-thought reasoning and explicit debiasing instructions reduce the bias only partially, and their apparent gains are frequently confounded by accuracy collapse. We introduce NarrativeShield, a three-agent pipeline that structurally extracts and verifies clinical facts before diagnostic reasoning begins, reducing the Narrative Anchoring Gap to near-zero ($-0.004$ to $0.037$) and achieving the lowest rate of severely unstable decisions (DSS $<$ 0.8) of any method across all models, at a modest and mechanistically expected accuracy cost for most models. A stress test using a non-instruction-tuned base model shows that executing a debiasing intervention at all is gated by zero-shot instruction-following ability, not prompt content alone. We release our dataset, human-validated for fact preservation, as a standalone resource for studying register-based clinical bias.",
-      "pdf_url": "https://arxiv.org/abs/2607.27384",
-      "comment": "",
-      "technologies": [
-        "NarrativeShield"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "A clinical decision support system that uses NarrativeShield to mitigate narrative anchoring and improve diagnostic accuracy.",
-        "A bias detection and mitigation tool for healthcare providers to ensure fair and equitable clinical outcomes."
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2601.17151",
-      "title": "Scaling medical imaging report generation with multimodal reinforcement learning",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-31",
-      "updated": "2026-07-31",
-      "summary": "arXiv:2601.17151v2 Announce Type: replace-cross Abstract: Frontier models have demonstrated remarkable capabilities in understanding and reasoning with natural-language text, but they still exhibit major competency gaps in multimodal understanding and reasoning especially in high-value verticals such as biomedicine. Medical imaging report generation is a prominent example. Supervised fine-tuning can substantially improve performance, but they are prone to overfitting to superficial boilerplate patterns. In this paper, we introduce Universal Report Generation (UniRG) as a general framework for medical imaging report generation. By leveraging reinforcement learning as a unifying mechanism to directly optimize for evaluation metrics designed for end applications, UniRG can significantly improve upon supervised fine-tuning and attain durable generalization across diverse institutions and clinical practices. We trained UniRG-CXR on publicly available chest X-ray (CXR) data and conducted a thorough evaluation in CXR report generation with rigorous evaluation scenarios. On the authoritative ReXrank benchmark, UniRG-CXR sets new overall SOTA, outperforming prior state of the art by a wide margin. We release our model at https://huggingface.co/microsoft/UniRG-CXR.",
-      "pdf_url": "https://arxiv.org/abs/2601.17151",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.9,
-      "product_potential": [
-        "AI-powered medical imaging report generation tool for radiologists",
-        "Automated medical imaging report generation system for telemedicine platforms"
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2603.10913",
-      "title": "LLM2Vec-Gen: Generative Embeddings from Large Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-07-31",
-      "updated": "2026-07-31",
-      "summary": "arXiv:2603.10913v3 Announce Type: replace Abstract: Fine-tuning LLM-based text embedders via contrastive learning maps inputs and outputs into a new representational space, discarding the LLM's output semantics. We propose LLM2Vec-Gen, a self-supervised alternative that instead produces embeddings directly in the LLM's output space by learning to represent the model's potential response. Specifically, trainable special tokens are appended to the input and optimized to compress the LLM's own response into a fixed-length embedding, guided by an unsupervised embedding teacher and a reconstruction objective. Crucially, the LLM backbone remains frozen and training requires only unlabeled queries. LLM2Vec-Gen achieves state-of-the-art self-supervised performance on the Massive Text Embedding Benchmark (MTEB), improving by 8.8% over the unsupervised embedding teacher. Since the embeddings preserve the LLM's response-space semantics, they inherit capabilities such as safety alignment (up to 22.6% reduction in harmful content retrieval) and reasoning (up to 35.6% improvement on reasoning-intensive retrieval). Finally, the learned embeddings are also interpretable: they can be decoded back into text to reveal their semantic content. Our code, data, and pretrained models are publicly available at https://github.com/McGill-NLP/llm2vec-gen.",
-      "pdf_url": "https://arxiv.org/abs/2603.10913",
-      "comment": "",
-      "technologies": [
-        "Generative Embeddings",
-        "Self-supervised Learning",
-        "Contrastive Learning",
-        "Unsupervised Embedding Teacher",
-        "Reconstruction Objective"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A search engine that leverages LLM2Vec-Gen embeddings for more accurate and context-aware retrieval",
-        "A recommendation system that uses the embeddings to understand user preferences and provide personalized suggestions"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.27895",
-      "title": "MMHBench: A Multi-Perspective Benchmark for Mental Health Understanding in Long-Form Videos",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-07-31",
-      "updated": "2026-07-31",
-      "summary": "arXiv:2607.27895v1 Announce Type: cross Abstract: Mental health understanding in long-form videos requires nuanced reasoning over observable behavior, interpersonal context, and latent psychological states. Existing benchmarks largely reduce this task to coarse-grained classification, providing limited insight into whether models truly understand psychological phenomena or rely on superficial correlations. To address this limitation, we introduce MMHBench, a comprehensive multimodal benchmark for multi-perspective mental health understanding, comprising 268 long-form videos and 2,184 carefully curated questions. MMHBench organizes the evaluation into two complementary settings: (1) third-person assessment, consisting of 605 questions that focus on the interpretation of observable behaviors and multimodal evidence, and (2) first-person perspective-taking, comprising 1,579 questions that require perspective-conditioned reasoning to identify the interpretation of the mental state supported by the available multimodal evidence. We propose a Multi-Agent Question Generation (MAQG) framework that simulates diverse social roles to synthesize questions from multiple perspectives. The generated questions are refined through multi-role feedback and iterative optimization, followed by expert-guided verification to ensure quality and validity. Extensive evaluation of 22 representative multimodal large language models (MLLMs), spanning both open-source and leading closed-source models, demonstrates that long-form video mental health understanding remains highly challenging.",
-      "pdf_url": "https://arxiv.org/abs/2607.27895",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Multi-Agent Question Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered mental health assessment tool for therapists and counselors to analyze long-form videos of patient interactions",
-        "Personalized mental health coaching app that uses multimodal data to provide tailored advice and support"
-      ],
-      "domain_applications": [
-        "healthcare"
       ]
     },
     {
@@ -294,6 +162,59 @@
         "creative",
         "education",
         "enterprise"
+      ]
+    },
+    {
+      "id": "2607.27384",
+      "title": "Same Facts, Different Diagnosis: Measuring and Mitigating Narrative Anchoring in Clinical Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "arXiv:2607.27384v1 Announce Type: new Abstract: Large language models used for clinical diagnostic reasoning are sensitive to sociolinguistic register, not just clinical content. We term this failure mode Narrative Anchoring: identical clinical facts expressed in different registers cause diagnostic outputs to diverge. Unlike prior demographic-bias work, which manipulates explicit identity tokens such as race or income, our benchmark isolates register as the sole channel of variation, with no demographic marker present in any form. We construct a dataset of 1,000 USMLE clinical vignettes, each rewritten into three sociolinguistically distinct personas under an independently audited fact-preservation guarantee, verified by a separate model that never sees the generation prompt. Across seven language models spanning three architecture families and scales, Narrative Anchoring is statistically significant under direct prompting in every model tested, with a Narrative Anchoring Gap of 0.064 to 0.151. Chain-of-thought reasoning and explicit debiasing instructions reduce the bias only partially, and their apparent gains are frequently confounded by accuracy collapse. We introduce NarrativeShield, a three-agent pipeline that structurally extracts and verifies clinical facts before diagnostic reasoning begins, reducing the Narrative Anchoring Gap to near-zero ($-0.004$ to $0.037$) and achieving the lowest rate of severely unstable decisions (DSS $<$ 0.8) of any method across all models, at a modest and mechanistically expected accuracy cost for most models. A stress test using a non-instruction-tuned base model shows that executing a debiasing intervention at all is gated by zero-shot instruction-following ability, not prompt content alone. We release our dataset, human-validated for fact preservation, as a standalone resource for studying register-based clinical bias.",
+      "pdf_url": "https://arxiv.org/abs/2607.27384",
+      "comment": "",
+      "technologies": [
+        "NarrativeShield"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.4,
+      "product_potential": [
+        "A clinical decision support system that uses NarrativeShield to mitigate narrative anchoring and improve diagnostic accuracy.",
+        "A bias detection and mitigation tool for healthcare providers to ensure fair and equitable clinical outcomes."
+      ],
+      "domain_applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2601.17151",
+      "title": "Scaling medical imaging report generation with multimodal reinforcement learning",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "arXiv:2601.17151v2 Announce Type: replace-cross Abstract: Frontier models have demonstrated remarkable capabilities in understanding and reasoning with natural-language text, but they still exhibit major competency gaps in multimodal understanding and reasoning especially in high-value verticals such as biomedicine. Medical imaging report generation is a prominent example. Supervised fine-tuning can substantially improve performance, but they are prone to overfitting to superficial boilerplate patterns. In this paper, we introduce Universal Report Generation (UniRG) as a general framework for medical imaging report generation. By leveraging reinforcement learning as a unifying mechanism to directly optimize for evaluation metrics designed for end applications, UniRG can significantly improve upon supervised fine-tuning and attain durable generalization across diverse institutions and clinical practices. We trained UniRG-CXR on publicly available chest X-ray (CXR) data and conducted a thorough evaluation in CXR report generation with rigorous evaluation scenarios. On the authoritative ReXrank benchmark, UniRG-CXR sets new overall SOTA, outperforming prior state of the art by a wide margin. We release our model at https://huggingface.co/microsoft/UniRG-CXR.",
+      "pdf_url": "https://arxiv.org/abs/2601.17151",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.4,
+      "product_potential": [
+        "AI-powered medical imaging report generation tool for radiologists",
+        "Automated medical imaging report generation system for telemedicine platforms"
+      ],
+      "domain_applications": [
+        "healthcare"
       ]
     },
     {
@@ -408,6 +329,65 @@
       "domain_applications": [
         "enterprise",
         "other"
+      ]
+    },
+    {
+      "id": "2603.10913",
+      "title": "LLM2Vec-Gen: Generative Embeddings from Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "arXiv:2603.10913v3 Announce Type: replace Abstract: Fine-tuning LLM-based text embedders via contrastive learning maps inputs and outputs into a new representational space, discarding the LLM's output semantics. We propose LLM2Vec-Gen, a self-supervised alternative that instead produces embeddings directly in the LLM's output space by learning to represent the model's potential response. Specifically, trainable special tokens are appended to the input and optimized to compress the LLM's own response into a fixed-length embedding, guided by an unsupervised embedding teacher and a reconstruction objective. Crucially, the LLM backbone remains frozen and training requires only unlabeled queries. LLM2Vec-Gen achieves state-of-the-art self-supervised performance on the Massive Text Embedding Benchmark (MTEB), improving by 8.8% over the unsupervised embedding teacher. Since the embeddings preserve the LLM's response-space semantics, they inherit capabilities such as safety alignment (up to 22.6% reduction in harmful content retrieval) and reasoning (up to 35.6% improvement on reasoning-intensive retrieval). Finally, the learned embeddings are also interpretable: they can be decoded back into text to reveal their semantic content. Our code, data, and pretrained models are publicly available at https://github.com/McGill-NLP/llm2vec-gen.",
+      "pdf_url": "https://arxiv.org/abs/2603.10913",
+      "comment": "",
+      "technologies": [
+        "Generative Embeddings",
+        "Self-supervised Learning",
+        "Contrastive Learning",
+        "Unsupervised Embedding Teacher",
+        "Reconstruction Objective"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A search engine that leverages LLM2Vec-Gen embeddings for more accurate and context-aware retrieval",
+        "A recommendation system that uses the embeddings to understand user preferences and provide personalized suggestions"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2607.27895",
+      "title": "MMHBench: A Multi-Perspective Benchmark for Mental Health Understanding in Long-Form Videos",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "arXiv:2607.27895v1 Announce Type: cross Abstract: Mental health understanding in long-form videos requires nuanced reasoning over observable behavior, interpersonal context, and latent psychological states. Existing benchmarks largely reduce this task to coarse-grained classification, providing limited insight into whether models truly understand psychological phenomena or rely on superficial correlations. To address this limitation, we introduce MMHBench, a comprehensive multimodal benchmark for multi-perspective mental health understanding, comprising 268 long-form videos and 2,184 carefully curated questions. MMHBench organizes the evaluation into two complementary settings: (1) third-person assessment, consisting of 605 questions that focus on the interpretation of observable behaviors and multimodal evidence, and (2) first-person perspective-taking, comprising 1,579 questions that require perspective-conditioned reasoning to identify the interpretation of the mental state supported by the available multimodal evidence. We propose a Multi-Agent Question Generation (MAQG) framework that simulates diverse social roles to synthesize questions from multiple perspectives. The generated questions are refined through multi-role feedback and iterative optimization, followed by expert-guided verification to ensure quality and validity. Extensive evaluation of 22 representative multimodal large language models (MLLMs), spanning both open-source and leading closed-source models, demonstrates that long-form video mental health understanding remains highly challenging.",
+      "pdf_url": "https://arxiv.org/abs/2607.27895",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Multi-Agent Question Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AI-powered mental health assessment tool for therapists and counselors to analyze long-form videos of patient interactions",
+        "Personalized mental health coaching app that uses multimodal data to provide tailored advice and support"
+      ],
+      "domain_applications": [
+        "healthcare"
       ]
     },
     {
@@ -581,42 +561,54 @@
   "technologies": [
     {
       "name": "Multimodal Learning",
-      "papers": 10,
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.85,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "education",
         "enterprise",
         "science",
         "other"
       ]
     },
     {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 4,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 2,
+      "name": "Modality-driven Mixture-of-Experts",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "education",
-        "enterprise",
-        "science",
-        "other"
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Dual-level Alignment",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "MLLM-based Image-text Co-augmentation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "Dynamic Sample Filtering",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education"
       ]
     },
     {
@@ -632,8 +624,125 @@
       ]
     },
     {
+      "name": "Credit-Assignment Supervised Fine-Tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "Balanced Adaptive Rollout",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "Rubric-Based Process Reward",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "Historical Experience Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "Value Model Reranking",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education"
+      ]
+    },
+    {
+      "name": "NarrativeShield",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 4,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "healthcare",
+        "science"
+      ]
+    },
+    {
       "name": "Chain-of-Thought Prompting",
       "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Context Compression",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
@@ -654,132 +763,6 @@
         "education",
         "enterprise",
         "other"
-      ]
-    },
-    {
-      "name": "Modality-driven Mixture-of-Experts",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Dual-level Alignment",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "MLLM-based Image-text Co-augmentation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Dynamic Sample Filtering",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Credit-Assignment Supervised Fine-Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Balanced Adaptive Rollout",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "On-Policy Distillation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Rubric-Based Process Reward",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Historical Experience Distillation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Value Model Reranking",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "NarrativeShield",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "healthcare"
       ]
     },
     {
@@ -838,56 +821,6 @@
       "trend": "rising",
       "applications": [
         "healthcare"
-      ]
-    },
-    {
-      "name": "Vision Transformer",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Context Compression",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education",
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reward Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
       ]
     },
     {
@@ -996,16 +929,25 @@
       ]
     },
     {
-      "name": "Multi-Agent Systems",
+      "name": "Vision-Language Models",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 3,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
         "healthcare",
         "education",
-        "robotics",
-        "creative",
         "enterprise"
       ]
     },
@@ -1038,86 +980,83 @@
       ]
     },
     {
-      "name": "Reinforcement Learning",
+      "name": "Reward Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.54,
+      "trend": "emerging",
       "applications": [
-        "education",
-        "creative",
+        "other",
         "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise",
+        "robotics",
+        "healthcare"
       ]
     }
   ],
   "product_opportunities": [
     {
       "technology": "Multimodal Learning",
-      "idea": "HealthAI: AI-powered diagnostic tool that analyzes medical images, patient data, and clinical notes to provide accurate diagnoses",
+      "idea": "MediMatch: AI-powered platform connecting patients with healthcare providers based on multimodal data analysis",
       "business_value": 9,
       "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
+      "competitive_advantage": "high",
       "development_time": "3-6 months"
     },
     {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "EduTutor: AI tutor that learns from human feedback to provide personalized, effective educational content",
+      "technology": "Agentic Modeling",
+      "idea": "EduBot: AI tutoring agent that adapts to individual student learning styles and progress",
       "business_value": 8,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
+      "competitive_advantage": "medium",
       "development_time": "2-4 months"
     },
     {
-      "technology": "Agentic Modeling",
-      "idea": "TaskMaster: AI agent that autonomously manages and optimizes complex workflows in enterprise environments",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Generative Embeddings",
-      "idea": "DocGenius: AI tool that generates high-quality, contextually relevant documents from user inputs and existing data",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
-    },
-    {
       "technology": "Credit-Assignment Supervised Fine-Tuning",
-      "idea": "LearnSmart: AI platform that uses credit-assignment techniques to provide detailed feedback and improve learning outcomes",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
+      "idea": "SkillMaster: AI-driven platform for personalized skill development and assessment",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
       "development_time": "1-3 months"
     },
     {
       "technology": "Balanced Adaptive Rollout",
-      "idea": "RolloutPro: AI tool that optimizes the rollout of new features or products based on user feedback and performance data",
-      "business_value": 7,
-      "engineering_difficulty": 6,
+      "idea": "CourseFlow: AI-powered adaptive learning platform for personalized course recommendations",
+      "business_value": 8,
+      "engineering_difficulty": 7,
       "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
+      "development_time": "2-4 months"
     },
     {
       "technology": "On-Policy Distillation",
-      "idea": "PolicyDistill: AI tool that simplifies complex decision-making processes by distilling on-policy information into actionable insights",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "low",
+      "idea": "PolicyPro: AI-driven platform for creating and optimizing educational policies",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
       "development_time": "1-3 months"
     },
     {
       "technology": "Rubric-Based Process Reward",
-      "idea": "ProcessPro: AI tool that uses rubric-based rewards to optimize and improve business processes",
-      "business_value": 7,
-      "engineering_difficulty": 6,
+      "idea": "GradeSmart: AI-powered grading system that uses rubrics to provide fair and consistent feedback",
+      "business_value": 8,
+      "engineering_difficulty": 7,
       "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
+      "development_time": "2-4 months"
     },
     {
       "technology": "Historical Experience Distillation",
-      "idea": "ExpDistill: AI tool that leverages historical data to provide actionable insights and improve decision-making processes",
+      "idea": "ExpLearn: AI-driven platform for distilling and applying historical experiences to current learning",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
@@ -1125,50 +1064,66 @@
     },
     {
       "technology": "Value Model Reranking",
-      "idea": "ValueRerank: AI tool that optimizes search results and recommendations by reranking them based on user value",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "low",
-      "development_time": "2-4 weeks"
+      "idea": "ValueRank: AI-powered platform for reranking and optimizing educational content based on value",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
     },
     {
-      "technology": "Self-supervised Learning",
-      "idea": "AutoLearn: AI platform that uses self-supervised learning to continuously improve and adapt to new data without human intervention",
+      "technology": "Reinforcement Learning",
+      "idea": "HealthOpt: AI-driven platform for optimizing healthcare treatment plans using reinforcement learning",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Chain-of-Thought Prompting",
+      "idea": "ThinkChain: AI-powered platform for developing and improving problem-solving skills through chain-of-thought prompting",
       "business_value": 8,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Contrastive Learning",
-      "idea": "ContrastPro: AI tool that uses contrastive learning to identify and highlight key differences in data, aiding in decision-making processes",
-      "business_value": 7,
-      "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "Unsupervised Embedding Teacher",
-      "idea": "EmbedTeach: AI tool that uses unsupervised embedding to teach and guide users in understanding complex data",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "low",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Reconstruction Objective",
-      "idea": "ReconPro: AI tool that uses reconstruction objectives to improve data quality and provide more accurate insights",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
+      "development_time": "2-4 months"
     },
     {
       "technology": "Vision Transformer",
-      "idea": "VisionPro: AI tool that uses vision transformers to analyze and interpret visual data, providing actionable insights for creative and enterprise applications",
+      "idea": "ArtSight: AI-powered platform for creating and analyzing digital art using Vision Transformers",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
+    },
+    {
+      "technology": "Generative Embeddings",
+      "idea": "EmbedGen: AI-powered platform for generating and analyzing embeddings for educational content",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
+    },
+    {
+      "technology": "Self-supervised Learning",
+      "idea": "SelfLearn: AI-powered platform for self-supervised learning and skill development",
       "business_value": 8,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Contrastive Learning",
+      "idea": "ContrastLearn: AI-powered platform for contrastive learning and skill development",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
+    },
+    {
+      "technology": "Unsupervised Embedding Teacher",
+      "idea": "EmbedTeach: AI-powered platform for unsupervised embedding teaching and skill development",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
       "development_time": "1-3 months"
     }
   ]
