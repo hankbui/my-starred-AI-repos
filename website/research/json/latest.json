@@ -1,25 +1,25 @@
 {
   "meta": {
-    "date": "2026-08-04",
+    "date": "2026-08-05",
     "papers_tracked": 15,
-    "technologies_discovered": 34,
+    "technologies_discovered": 39,
     "opportunities_identified": 15,
-    "last_update": "2026-08-04 08:00 UTC",
+    "last_update": "2026-08-05 08:00 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Agentic AI is rapidly advancing with technologies like LLM Inference, Tool Use, and Multi-Agent Systems. This matters for product builders as it enables fully autonomous and scalable AI agent systems. Concrete opportunities include developing enterprise solutions for automation, robotics applications, and scientific research.",
-    "Multimodal Learning is a key focus in several papers, particularly in robotics, education, and healthcare. This technology allows systems to process and generate responses from multiple input types. Product builders can leverage this for interactive learning platforms, creative applications, and diagnostic tools in healthcare.",
-    "Reinforcement Learning from Human Feedback (RLHF) is being applied in various domains, including healthcare, creative, and enterprise. This technology improves model performance by incorporating human preferences. Opportunities include developing adaptive systems in robotics, enhancing creative tools, and improving diagnostic assistance in healthcare.",
-    "Vision Transformer (ViT) and Contrastive Learning are emerging as important technologies in 3D shape understanding and multimodal learning. These can be used to develop advanced object detection and depth estimation systems, benefiting domains like robotics, science, and healthcare.",
-    "FP8 Training and Hybrid-Granularity Quantization are being explored for enhancing reasoning in language models. This can lead to more efficient and effective enterprise and scientific applications, as well as other domains requiring advanced reasoning capabilities."
+    "Agentic AI is rapidly advancing with technologies like LLM Inference, Tool Use, and Multi-Agent Systems. This matters for product builders as it enables fully autonomous and scalable AI agent systems. Concrete opportunities include developing enterprise automation tools, robotic assistants, and scientific research aids.",
+    "Multimodal Learning is a key focus across several papers, with applications in robotics, education, and healthcare. This technology matters for product builders as it enables systems to process and understand multiple types of data. Concrete opportunities include creating interactive educational tools, robotic assistants, and diagnostic aids for uncommon medical cases.",
+    "Memory Foundation Models and Memory Compression are emerging technologies with applications in education, enterprise, and robotics. These technologies matter for product builders as they enable systems to retain and utilize information over long periods. Concrete opportunities include developing educational tools, enterprise automation systems, and robotic assistants with persistent memory.",
+    "Vision Transformer and Contrastive Learning are advancing with applications in science, robotics, and healthcare. These technologies matter for product builders as they enable systems to understand and interpret visual data. Concrete opportunities include developing diagnostic tools for uncommon medical cases, robotic assistants, and scientific research aids.",
+    "FP8 Training and Hybrid-Granularity Quantization are emerging technologies with applications in enterprise, science, and other domains. These technologies matter for product builders as they enable more efficient and effective training of language models. Concrete opportunities include developing enterprise automation tools, scientific research aids, and other applications requiring reasoning-enhanced language models."
   ],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "34",
+      "value": "39",
       "label": "discovered this scan",
       "detail": "Agentic AI, LLM Inference, Tool Use, Multi-Agent Systems, Persistent Memory, Runtime Orchestration, Distributed Autonomous Systems, Adaptive Decision-Making",
       "color": "accent"
@@ -27,9 +27,9 @@
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "34",
+      "value": "25",
       "label": "active trend clusters",
-      "detail": "FP8 Training, Hybrid-Granularity Quantization, Continual Pre-training, Supervised Fine-tuning, Multi-Agent Systems",
+      "detail": "FP8 Training, Hybrid-Granularity Quantization, Continual Pre-training, Supervised Fine-tuning, Vision-Language Model",
       "color": "green"
     },
     {
@@ -90,7 +90,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.75,
-      "curator_score": 6.5,
+      "curator_score": 6.0,
       "product_potential": [
         "Enterprise workflow automation platform with autonomous agents capable of persistent task execution across enterprise software systems",
         "Robotics control framework enabling robots with long-horizon planning, memory, and adaptive decision-making for complex real-world tasks",
@@ -195,6 +195,39 @@
       ]
     },
     {
+      "id": "2607.26760",
+      "title": "Metis: Memory Foundation Model",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-05",
+      "updated": "2026-08-05",
+      "summary": "arXiv:2607.26760v2 Announce Type: replace Abstract: Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.",
+      "pdf_url": "https://arxiv.org/abs/2607.26760",
+      "comment": "",
+      "technologies": [
+        "Memory Foundation Models",
+        "Memory Attention",
+        "Gradient-free Memory Update",
+        "Native Memory Procedures"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Personalized AI assistants with persistent memory capabilities",
+        "Enhanced AI agents for enterprise applications with dynamic memory states",
+        "Autonomous AI systems for robotics and automation with native memory procedures"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "robotics",
+        "other"
+      ]
+    },
+    {
       "id": "2608.01012",
       "title": "MedUPS: Towards Diagnostic Assistance in Uncommon Medical Cases with Large Language Models",
       "authors": [],
@@ -254,69 +287,32 @@
       ]
     },
     {
-      "id": "2607.23802",
-      "title": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement",
+      "id": "2608.03225",
+      "title": "Open-Linguistic Concept Unified Learning for Cross-Site Interpretable Dermatology Image Diagnosis",
       "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-03",
-      "updated": "2026-08-03",
-      "summary": "arXiv:2607.23802v2 Announce Type: replace Abstract: Reinforcement Learning with Verifiable Rewards (RLVR) has driven recent progress in reasoning-oriented large language models (LLMs) by enabling large-scale optimization. However, its applicability remains largely limited to domains such as mathematics and coding, where correctness can be deterministically verifiable. Open-ended tasks instead often rely on human preferences, reward models, or LLM-based judges, introducing evaluation bias, judge capability bottlenecks, and additional inference costs. Drawing on the principle of self-supervised learning, which constructs pretext tasks to derive supervision from the data itself, we propose Reinforcement Learning with Self-Verifiable Rewards (RLSVR), a task-transformation-based training paradigm for extending RLVR to open-ended tasks. RLSVR transforms open-ended tasks into verifiable proxy environments whose internal rules and interaction outcomes automatically generate reward signals. We instantiate RLSVR with SpyRL, a Self-PlaY Reinforcement Learning method inspired by social deduction game Who Is the Spy?. Agents receive asymmetric information, complete the same target task, and vote to identify a designated spy. Because the spy identity is predetermined, voting outcomes provide fully verifiable rewards, while successful identification remains closely related to output quality. Experiments on text summarization, creative writing, and mathematical reasoning show that SpyRL outperforms existing self-improvement methods on non-verifiable tasks and yields consistent gains on verifiable reasoning tasks. These results demonstrate that task transformation can extend scalable RLVR-based self-improvement beyond inherently verifiable domains. Models and code have been released at https://github.com/wangqinsi1/RLSVR/tree/SpyRL.",
-      "pdf_url": "https://arxiv.org/abs/2607.23802",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning with Verifiable Rewards",
-        "Reinforcement Learning with Self-Verifiable Rewards"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Automated content generation and evaluation system for creative writing and text summarization",
-        "AI-driven educational platform with self-verifying exercises and assessments",
-        "Collaborative AI system for brainstorming and idea generation with verifiable contributions"
-      ],
-      "domain_applications": [
-        "education",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "id": "2608.02217",
-      "title": "VC-Tooler: Learning Compositional and Adaptive Visual Tool Use",
-      "authors": [
-        "Yizheng Wu",
-        "Jiashen Hua",
-        "Bing Deng",
-        "Jieping Ye"
-      ],
       "categories": [
         "cs.CV"
       ],
-      "published": "2026-08-03",
-      "updated": "2026-08-03",
-      "summary": "Agentic multimodal reasoning extends passive image understanding by allowing VLMs to actively acquire and refine visual evidence through visual tool interactions. Effective visual tool use requires three capabilities: grounding tool calls in visual context, composing tools across multiple steps, and adapting reasoning to tool-returned observations. However, existing approaches largely focus on grounding within fixed tool spaces and rigid invocation patterns, leaving composition and adaptation insufficiently addressed. We present VC-Tooler, which learns visual tool use as a compositional and adaptive capability. To this end, we first build a trajectory bank through a hierarchical synthesis pipeline covering three capability levels: single-tool grounding, multi-tool composition, and diverse tool contexts and interfaces. We then train the model in two stages: a supervised cold start that establishes these capabilities, followed by reinforcement learning that encourages accurate, efficient, and context-aware visual tool use. VC-Tooler achieves state-of-the-art performance among open-source models on both general-purpose and agentic benchmarks, including $95.8\\%$ on V* and $35.3\\%$ on VTC-Bench, and shows promising transfer under richer tool settings at inference time. Project page: https://w1zheng.github.io/VC-Tooler",
-      "pdf_url": "https://arxiv.org/pdf/2608.02217v1",
+      "published": "2026-08-05",
+      "updated": "2026-08-05",
+      "summary": "arXiv:2608.03225v1 Announce Type: new Abstract: Human-interpretable computer-aided diagnosis is crucial for clinical decision making. Concept-based models excel by providing transparent reasoning and enabling post-hoc, clinician-in-the-loop interventions. However, their rigid dataset-specific adaptation inherently restricts cross-site generalization. Applying them across diverse modalities, such as dermoscopic and clinical photographs, is challenging due to heterogeneous concept taxonomies varying in availability, granularity, and semantics across cohorts. Consequently, adapting Foundation Vision-Language Models (FVLMs) demands costly label engineering and repeated post-training. Existing intervention mechanisms remain rigidly tied to predefined concepts, lacking adaptability and hindering scalable dermatology CAD deployment. To address these bottlenecks, we propose UniCon, an open-linguistic unified concept learning framework for multimodal interpretable vision-language diagnosis. UniCon resolves these challenges through three contributions: (1) A shared semantic representation space via a unified concept prototype codebook, seamlessly coordinating heterogeneous concept systems across modalities without dataset-specific retraining. (2) Open-linguistic based multi-faceted semantic specifications to overcome sparse textual label limitations, improving boundary sensitivity in uncertain clinical contexts. (3) A robust, cross-site adjustable intervention interface powered by reliability-gated bottleneck aggregation, enabling consistent reasoning and transferable clinician corrections. Extensive experiments demonstrate that beyond securing top-tier diagnostic accuracy, UniCon successfully bridges disparate clinical taxonomies, unlocking unprecedented cross-site intervention capabilities. Code is available at https://github.com/wuchengyu123/UniCon.",
+      "pdf_url": "https://arxiv.org/abs/2608.03225",
       "comment": "",
       "technologies": [
         "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Vision Transformer"
+        "Vision Transformer",
+        "Knowledge Distillation",
+        "Retrieval Augmented Generation"
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [
-        "An AI assistant that can interact with visual tools to gather and refine information for users, such as a smart home assistant that can use camera feeds to locate objects or monitor activities.",
-        "A visual toolkit for developers to build applications that require complex visual reasoning and tool interactions, such as an AI-powered design tool that can analyze and suggest improvements to visual compositions."
+        "A dermatology diagnosis assistant that can interpret and adapt to different clinical taxonomies across various healthcare sites.",
+        "A multimodal platform for dermatologists to receive real-time, interpretable diagnoses from both dermoscopic and clinical photographs."
       ],
       "domain_applications": [
-        "robotics",
-        "creative",
-        "enterprise",
-        "other"
+        "healthcare"
       ]
     },
     {
@@ -452,12 +448,24 @@
       "summary": "arXiv:2602.06090v2 Announce Type: replace-cross Abstract: Large language models (LLMs) have recently been applied to Automated Program Repair (APR), yet most existing approaches remain unimodal and fail to use diagnostic signals contained in visual artifacts such as screenshots and control-flow graphs. In practice, many bug reports convey critical information visually (e.g., layout breakage or missing widgets), but directly using such dense visual inputs often causes context loss and noise, making it difficult for MLLMs to ground visual observations into precise fault localization and executable patches. To bridge this semantic gap, we propose \\textbf{SVRepair}, a multimodal APR framework with Structured Visual Representation (SVR). SVRepair first fine-tunes a vision-language model, SVR, to uniformly transform heterogeneous visual artifacts into a \\emph{semantic scene graph} that captures GUI elements and their structural relations (e.g., hierarchy), providing normalized, code-relevant context for downstream repair. Building on the graph, SVRepair drives a coding agent to localize faults and synthesize patches, and further introduces an iterative visual-artifact segmentation strategy that progressively narrows the input to bug-centered regions to suppress irrelevant context and reduce hallucinations. Across primary repository-level APR benchmarks, SVRepair resolves \\textbf{186/517} SWE-Bench M instances (\\textbf{35.98\\%} over all instances; \\textbf{36.47\\%} over submitted runs) and \\textbf{4/19} visual OmniGIRL instances (\\textbf{21.05\\%}). On supplementary structured multimodal code reasoning benchmarks, SVRepair reaches \\textbf{38.02\\%} on MMCode and \\textbf{95.73\\%} on CodeVision. Code is available at https://github.com/codefuse-ai/CodeFuse-SVR.",
       "pdf_url": "https://arxiv.org/abs/2602.06090",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Multimodal Learning",
+        "Vision-Language Model",
+        "Semantic Scene Graph",
+        "Vision Transformer"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
       "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "A multimodal IDE plugin that uses visual artifacts to assist developers in debugging and repairing code.",
+        "An automated bug reporting system that integrates visual context to generate more accurate and actionable bug reports."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
     },
     {
       "id": "2608.00066",
@@ -624,17 +632,17 @@
     },
     {
       "name": "Multimodal Learning",
-      "papers": 7,
+      "papers": 8,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "robotics",
         "education",
-        "creative",
         "enterprise",
         "healthcare",
-        "science"
+        "science",
+        "creative"
       ]
     },
     {
@@ -662,15 +670,17 @@
     },
     {
       "name": "Vision Transformer",
-      "papers": 3,
+      "papers": 4,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "science",
         "robotics",
         "healthcare",
-        "creative"
+        "creative",
+        "education",
+        "enterprise"
       ]
     },
     {
@@ -678,7 +688,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "science",
         "robotics",
@@ -691,7 +701,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "science",
         "robotics",
@@ -704,7 +714,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "science",
         "robotics",
@@ -713,29 +723,81 @@
       ]
     },
     {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 3,
+      "name": "Memory Foundation Models",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "robotics",
-        "creative",
+        "education",
         "enterprise",
-        "education"
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "name": "Memory Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "name": "Gradient-free Memory Update",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "name": "Native Memory Procedures",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "peak",
+      "applications": [
+        "healthcare",
+        "education",
+        "creative",
+        "enterprise"
       ]
     },
     {
       "name": "Retrieval Augmented Generation",
-      "papers": 2,
+      "papers": 3,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "healthcare",
-        "science",
-        "enterprise"
+        "education",
+        "enterprise",
+        "science"
       ]
     },
     {
@@ -743,7 +805,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.85,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "enterprise",
         "science",
@@ -755,7 +817,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.85,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "enterprise",
         "science",
@@ -767,7 +829,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.85,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "enterprise",
         "science",
@@ -779,7 +841,7 @@
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.85,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
         "enterprise",
         "science",
@@ -787,27 +849,13 @@
       ]
     },
     {
-      "name": "Reinforcement Learning with Verifiable Rewards",
+      "name": "Knowledge Distillation",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
-      "trend": "rising",
+      "trend": "peak",
       "applications": [
-        "education",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning with Self-Verifiable Rewards",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "creative",
-        "other"
+        "healthcare"
       ]
     },
     {
@@ -916,6 +964,30 @@
       ]
     },
     {
+      "name": "Vision-Language Model",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "peak",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Semantic Scene Graph",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "peak",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
       "name": "Remote Photoplethysmography",
       "papers": 1,
       "maturity": "medium",
@@ -939,123 +1011,123 @@
   "product_opportunities": [
     {
       "technology": "FP8 Training",
-      "idea": "TurboTrain: FP8 model training accelerator that reduces GPU memory usage by 50% while maintaining accuracy, targeting enterprise AI teams training large foundation models",
-      "business_value": 8,
-      "engineering_difficulty": 7,
+      "idea": "EcoTrain: AI model training platform with FP8 precision for reduced energy consumption and faster training times",
+      "business_value": 9,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
       "development_time": "3-5 months"
     },
     {
       "technology": "Hybrid-Granularity Quantization",
-      "idea": "QuantizeEdge: Adaptive quantization service that automatically selects optimal precision (4/8/16-bit) per layer for edge device deployment, with automated accuracy recovery",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Continual Pre-training",
-      "idea": "LiveBrain: Continuous pre-training pipeline that ingests new data streams (news, research papers, social media) and keeps enterprise LLMs current without full retraining",
+      "idea": "QuantumFit: AI model optimization tool using hybrid-granularity quantization for improved performance and efficiency",
       "business_value": 8,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "high",
-      "development_time": "1-2 months"
-    },
-    {
-      "technology": "Supervised Fine-tuning",
-      "idea": "TaskTuner: No-code SFT platform where enterprises upload domain data and get customized models in hours instead of weeks, with built-in evaluation metrics",
-      "business_value": 9,
-      "engineering_difficulty": 4,
-      "competitive_advantage": "high",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Multi-Agent Systems",
-      "idea": "AgentSwarm: Visual orchestration platform for designing multi-agent workflows where specialized AI agents collaborate on complex tasks like research synthesis or code review",
-      "business_value": 9,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "very high",
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
       "development_time": "2-4 months"
     },
     {
-      "technology": "Multimodal Learning",
-      "idea": "SenseAI: Educational platform that analyzes video lectures, slides, and transcripts together to generate quizzes, summaries, and concept maps automatically",
-      "business_value": 8,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "3-4 months"
-    },
-    {
-      "technology": "Vision Transformer",
-      "idea": "VisionCore: Medical imaging analysis platform using ViT for X-ray and CT scan interpretation, providing radiologists with preliminary diagnoses and anomaly highlighting",
+      "technology": "Continual Pre-training",
+      "idea": "LearnForever: AI model pre-training platform for continuous learning and adaptation to new data",
       "business_value": 9,
-      "engineering_difficulty": 7,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
       "development_time": "4-6 months"
     },
     {
-      "technology": "Contrastive Learning",
-      "idea": "SimMatch: Robotics training platform that uses contrastive learning to teach robots visual navigation in new environments from minimal demonstrations",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "3-4 months"
-    },
-    {
-      "technology": "Depth Estimation",
-      "idea": "DepthCam: Smartphone app that converts 2D photos into 3D depth maps for architects and real estate agents to create immersive property walkthroughs",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "medium",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Object Detection",
-      "idea": "DetectPro: Real-time object detection system for manufacturing quality control, identifying defects on production lines at 60fps with customizable alert thresholds",
+      "technology": "Supervised Fine-tuning",
+      "idea": "FineTunePro: AI model fine-tuning service for customized and high-performance models",
       "business_value": 8,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "high",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "FeedbackLoop: SaaS platform that collects human preferences on AI outputs and continuously fine-tunes models for enterprise-specific tone, accuracy, and compliance",
-      "business_value": 9,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "high",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "idea": "KnowledgeBase: Enterprise RAG platform that connects to internal documents, databases, and APIs to provide accurate, citeable answers to employee queries",
-      "business_value": 9,
-      "engineering_difficulty": 4,
-      "competitive_advantage": "high",
-      "development_time": "1-2 months"
-    },
-    {
-      "technology": "Reinforcement Learning with Verifiable Rewards",
-      "idea": "VerifyLearn: Math and programming tutor that uses RLVR to generate practice problems, verify solutions automatically, and adapt difficulty based on learner performance",
-      "business_value": 8,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "3-4 months"
-    },
-    {
-      "technology": "Reinforcement Learning with Self-Verifiable Rewards",
-      "idea": "SelfCheck: Creative writing assistant that uses self-verifiable rewards to generate and iteratively improve short stories, screenplays, and marketing copy",
-      "business_value": 7,
       "engineering_difficulty": 7,
       "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Vision-Language Model",
+      "idea": "SeeSay: AI-powered image captioning and visual question answering tool for education and enterprise",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
       "development_time": "3-5 months"
     },
     {
-      "technology": "Stackelberg Learning",
-      "idea": "GameStrategy: Supply chain optimization platform using Stackelberg learning where manufacturers (leaders) and suppliers (followers) negotiate optimal pricing and inventory",
+      "technology": "Semantic Scene Graph",
+      "idea": "SceneSense: AI-powered semantic scene graph generator for improved scene understanding and context-aware applications",
       "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Multi-Agent Systems",
+      "idea": "SwarmMind: AI-powered multi-agent system for collaborative problem-solving and decision-making in robotics and enterprise applications",
+      "business_value": 9,
       "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Multimodal Learning",
+      "idea": "UniLearn: AI-powered multimodal learning platform for processing and analyzing diverse data types",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Vision Transformer",
+      "idea": "SeeTransformer: AI-powered vision transformer for improved image recognition and classification",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Contrastive Learning",
+      "idea": "ContrastMaster: AI-powered contrastive learning platform for improved feature representation and clustering",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Depth Estimation",
+      "idea": "DepthSense: AI-powered depth estimation tool for improved 3D scene understanding and robotics applications",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Object Detection",
+      "idea": "DetectPro: AI-powered object detection tool for improved accuracy and efficiency in various applications",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Memory Foundation Models",
+      "idea": "MemBrain: AI-powered memory foundation model for improved long-term memory and learning in AI systems",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Memory Attention",
+      "idea": "AttendMem: AI-powered memory attention tool for improved focus and retention in learning and enterprise applications",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Gradient-free Memory Update",
+      "idea": "MemUpdate: AI-powered gradient-free memory update tool for improved efficiency and performance in learning and enterprise applications",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
     }
   ]
 }
