@@ -1,61 +1,35 @@
 {
   "meta": {
-    "date": "2026-08-10",
+    "date": "2026-08-11",
     "papers_tracked": 15,
-    "technologies_discovered": 55,
-    "opportunities_identified": 15,
-    "last_update": "2026-08-10 06:53 UTC",
+    "technologies_discovered": 44,
+    "opportunities_identified": 0,
+    "last_update": "2026-08-11 06:14 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
-  "brief": [
-    {
-      "technology": "Multimodal Learning",
-      "why_it_matters": "Multimodal learning is advancing rapidly, enabling systems to process and integrate information from multiple sensory inputs, which is crucial for creating more intuitive and effective AI-driven products.",
-      "opportunity": "Develop AI products that can understand and respond to multiple types of input data, such as text, images, and audio, to enhance user interaction and decision-making."
-    },
-    {
-      "technology": "Reinforcement Learning",
-      "why_it_matters": "Reinforcement learning is becoming more sophisticated, allowing for the creation of agents that can learn and adapt in complex environments, which is essential for building autonomous and intelligent systems.",
-      "opportunity": "Create AI-driven products that can autonomously learn and adapt to user needs and preferences, such as personalized recommendation systems and adaptive user interfaces."
-    },
-    {
-      "technology": "Multi-Agent Systems",
-      "why_it_matters": "Multi-agent systems are enabling more complex and collaborative AI solutions, which can handle a wider range of tasks and scenarios.",
-      "opportunity": "Develop AI products that leverage collaborative multi-agent systems to tackle complex problems, such as fraud detection and scientific discovery."
-    },
-    {
-      "technology": "Explainable AI",
-      "why_it_matters": "Explainable AI is gaining importance as users and regulators demand transparency in AI decision-making processes.",
-      "opportunity": "Build AI products that provide clear and understandable explanations for their decisions, enhancing user trust and compliance with regulatory requirements."
-    },
-    {
-      "technology": "Modality Orchestration",
-      "why_it_matters": "Modality orchestration is crucial for optimizing the use of different data types in AI systems, leading to more efficient and effective models.",
-      "opportunity": "Create AI products that dynamically orchestrate different data modalities to improve performance and efficiency, such as in 3D scene understanding and robotics."
-    }
-  ],
+  "brief": [],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "55",
+      "value": "44",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Reinforcement Learning, Low-Rank Adaptation, Contrastive Learning, Representation Learning, Domain Adaptation, Strategic Dialogue Agents",
+      "detail": "Multimodal Learning, Reinforcement Learning, Mixture-of-Experts, Retrieval Augmented Generation, Reinforcement Learning from Human Feedback, Low-Rank Adaptation, Neurosymbolic AI, Agentic Reinforcement Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "55",
+      "value": "44",
       "label": "active trend clusters",
-      "detail": "Vision-Language Models, Multi-turn Reasoning, Tool-use Agents, Kubernetes Orchestration, Distributed Training Infrastructure",
+      "detail": "Mixture-of-Experts, Reinforcement Learning, Reinforcement Learning from Human Feedback, Low-Rank Adaptation, Neurosymbolic AI",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.5",
       "label": "avg opportunity score",
       "detail": "AgentPatch: Coarse-to-Fine Weak-Task Repair for Merging Agentic Multimodal Large",
       "color": "amber"
@@ -71,17 +45,17 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "OpenForgeRL: Train Harness-nat",
+      "value": "Motif 3: Technical Report",
       "label": "highest confidence paper",
-      "detail": "Agent Training Platform-as-a-Service: Cloud-based platform enabling enterprises to fine-tune custom AI agents using their specific harnesses and environments with integrated RL infrastructure, Automated Agent Benchmarking Suite: Comprehensive evaluation framework for measuring agent performance across diverse harness types (code, GUI, browser) with standardized metrics and leaderboards",
+      "detail": "Long-context enterprise AI assistant supporting 256K token contexts for document analysis, legal review, and complex research synthesis, Specialized code generation and software engineering tool leveraging multi-token prediction and RL-trained teacher distillation for superior coding performance",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "6",
+      "value": "14",
       "label": "early-stage technologies",
-      "detail": "OpenForgeRL: Train Harness-native Agents in Any Environment",
+      "detail": "Motif 3: Technical Report",
       "color": "blue"
     }
   ],
@@ -142,6 +116,142 @@
       ]
     },
     {
+      "id": "2608.09119",
+      "title": "Motif 3: Technical Report",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.09119v1 Announce Type: new Abstract: We introduce Motif 3, a decoder-only Mixture-of-Experts language model with 314 billion total parameters and 13.2 billion activated per token. Each sparse MoE layer contains 384 routed experts, with eight selected per token. This fine-grained sparsity provides substantial expert capacity while limiting computation. Motif 3 is built around Grouped Differential Latent Attention (GDLA), which integrates grouped differential attention with the compressed key-value representation of Multi-head Latent Attention. The architecture further incorporates modified manifold-constrained hyper-connections, Expert Specific PolyNorm activations, and multi-token prediction to improve optimization stability, expert specialization, and inference efficiency. We pretrain Motif 3 on approximately 12.5 trillion tokens spanning web documents, STEM, code, mathematics, multilingual content, and domain-specialized corpora. Expert-balancing and numerical-stabilization techniques support stable training at scale, while selective MXFP8 computation and communication, memory-efficient fused kernels, and window-aware context parallelism enable training with context lengths up to 256K tokens. Our post-training pipeline combines general supervised fine-tuning, six specialist teachers trained with reinforcement learning, a software-engineering teacher trained with supervised fine-tuning, and Multi-teacher On-Policy Distillation. The resulting unified model consolidates complementary capabilities in reasoning, coding, tool use, professional work, long-context understanding, calibrated abstention, and instruction following. Across a broad evaluation suite, Motif 3 demonstrates competitive performance against leading open weight models, including strong results on long-horizon agentic tasks, mathematical reasoning, scientific knowledge, and hallucination-sensitive evaluation.",
+      "pdf_url": "https://arxiv.org/abs/2608.09119",
+      "comment": "",
+      "technologies": [
+        "Mixture-of-Experts",
+        "Grouped Differential Latent Attention",
+        "Multi-head Latent Attention",
+        "Manifold-constrained Hyper-connections",
+        "Expert Specific PolyNorm",
+        "Multi-token Prediction",
+        "MXFP8 Computation",
+        "Window-aware Context Parallelism",
+        "Memory-efficient Fused Kernels",
+        "Multi-teacher On-Policy Distillation",
+        "Reinforcement Learning",
+        "Supervised Fine-tuning",
+        "Selective Computation and Communication"
+      ],
+      "maturity": "high",
+      "confidence": 0.92,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Long-context enterprise AI assistant supporting 256K token contexts for document analysis, legal review, and complex research synthesis",
+        "Specialized code generation and software engineering tool leveraging multi-token prediction and RL-trained teacher distillation for superior coding performance",
+        "Agentic AI system for autonomous task completion combining reasoning, tool use, and calibrated abstention capabilities"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "education"
+      ]
+    },
+    {
+      "id": "2608.08219",
+      "title": "VTO: Visual Tool Orchestration for Video Anomaly Detection",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.08219v1 Announce Type: cross Abstract: Video anomaly detection (VAD) is a critical yet challenging task due to the complex and diverse nature of real-world scenarios. Traditional deep learning approaches are fundamentally limited by poor generalization across diverse scenarios. While multimodal agents offer a promising tool-learning paradigm for VAD, current systems relying on supervised fine-tuning struggle with complex orchestration, and standard reinforcement learning often causes premature termination due to coarse-grained outcome rewards. To address these challenges, we propose VTO, a process-supervised reinforcement learning framework. Moving beyond static tool usage, VTO enables the agent to dynamically explore and interact with the environment. Specifically, we introduce a foundation model-driven cognitive evaluator to provide context-aware semantic feedback, which is seamlessly integrated into a Process-Supervised Cognitive Alignment that delivers fine-grained, step-wise supervision. By explicitly penalizing logical truncation and rewarding complete causal chains, the agent optimizes its multi-step reasoning policy for interrelated tool orchestration. To support our proposed framework, we meticulously crafted VAD-Tool, a hierarchical visual tool set comprising 12 specialized vision tools spanning from entity tracking to high-stakes hazard detection, and established the corresponding benchmark for rigorous multi-step reasoning evaluation. Extensive experiments on VAD-Tool demonstrate that VTO significantly outperforms baselines, achieving up to a 10.2\\% absolute accuracy improvement in tool scheduling. Code and data are available at https://github.com/MICLAB-BUPT/VTO.",
+      "pdf_url": "https://arxiv.org/abs/2608.08219",
+      "comment": "",
+      "technologies": [
+        "Process-Supervised Reinforcement Learning",
+        "Multimodal Agents",
+        "Foundation Models",
+        "Tool Orchestration",
+        "Video Anomaly Detection",
+        "Multi-step Reasoning",
+        "Cognitive Alignment",
+        "Vision-Language Models"
+      ],
+      "maturity": "early",
+      "confidence": 0.65,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Automated surveillance systems with dynamic tool selection for real-time threat and anomaly detection in security environments",
+        "Industrial quality control platform using hierarchical vision tools for manufacturing defect detection across production lines",
+        "Healthcare patient monitoring system for detecting behavioral anomalies in clinical settings via multi-step visual reasoning"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "id": "2608.09142",
+      "title": "An Agentic Generative Large Language Model for Treatment Planning of Colorectal Cancer",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.09142v1 Announce Type: new Abstract: Treatment planning in precision oncology requires synthesizing heterogeneous patient information with rapidly evolving clinical guidelines to ensure guideline-concordant care. While large language models (LLMs) show promise in many diagnostic tasks, their adoption for high-stakes treatment planning is hindered by complex reasoning, adherence to timely clinical guidelines, and safety concerns. In this study, we present GatorOnco, an agentic LLM for colorectal cancer (CRC) treatment planning. GatorOnco is developed using a total of 282 billion tokens of biomedical text, including healthcare system-scale clinical text comprising 166 billion tokens from UF Health. We implemented a domain-adaptation method that integrates pre-training, model merging, a two-stage post-training approach, and agent-based reinforcement learning. An agentic retrieval-augmented generation (RAG) approach dynamically integrates time-sensitive clinical guidelines into the reasoning process. In a blind, randomized clinical evaluation conducted by five UF Health oncologists, GatorOnco significantly outperformed open-source LLMs (P < 0.01) and achieved expert-level performance comparable to UF Health oncologists. Compared with expert oncologists, GatorOnco received significantly higher ratings for readability (4.46 vs. 4.19, P < 0.01) and completeness (3.91 vs. 3.52, P < 0.01), while showing statistically comparable performance in correctness (4.09 vs. 4.11, P = 0.921), currency (4.04 vs. 3.98, P = 0.478), and safety (4.22 vs. 4.22, P = 0.999). These findings demonstrate that integrating agentic reasoning with large-scale domain adaptation can help bridge the gap for generative AI in high-stakes cancer treatment planning.",
+      "pdf_url": "https://arxiv.org/abs/2608.09142",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Reinforcement Learning from Human Feedback",
+        "Knowledge Distillation",
+        "Multimodal Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "A specialized AI assistant for oncologists to generate treatment plans for colorectal cancer patients, integrating real-time clinical guidelines and patient data.",
+        "A decision support system for healthcare providers to ensure guideline-concordant care and improve treatment planning accuracy."
+      ],
+      "domain_applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2604.09459",
+      "title": "From Reasoning to Agentic: Credit Assignment in Reinforcement Learning for Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2604.09459v3 Announce Type: replace Abstract: Reinforcement learning (RL) for large language models (LLMs) increasingly relies on sparse outcome rewards, yet such rewards say little about which token, reasoning step, tool call, memory operation, or agent caused an outcome. This credit assignment (CA) problem spans reasoning RL and becomes sharper in agentic RL, where environment interaction introduces transition non-closure, partial observability, limited replay, heterogeneous actions, weak intermediate verifiability, and agent coupling. We synthesize a unified corpus of 69 papers published from January 2024 through July 31, 2026: 56 core CA methods and 13 adjacent or boundary enablers, selected from 92 deduplicated screening records. We retain the original granularity-by-methodology taxonomy and add a six-diagnostic framework mapping assumption breaks to identification barriers, estimators, and evaluation controls. A source-located full-text audit covers a fixed 42-core-paper subset. Two algorithm researchers independently and blindly cross-coded 252 diagnostic cells, agreeing on 223 (88.5%); per-diagnostic Cohen's kappa ranges from .543 to .909, and principal-family agreement is 42/42 (kappa=1.000). Beyond taxonomy, we establish when restored-state comparisons identify a protocol-specific causal contrast, show that text-only histories can leave even the sign of credit unidentified, and introduce a reusable CA-ID Card linking each claim to its estimand, evidence provenance, and falsification test. An atomic reporting audit describes comparator, budget parity, ablation, overhead, uncertainty, and replay coverage without constructing a cross-paper leaderboard. The companion repository hosts a living catalog and decision aids; a dated release of the frozen audit bundle is planned there separately from the minimal arXiv source.",
+      "pdf_url": "https://arxiv.org/abs/2604.09459",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "Credit Assignment",
+        "Agentic Reinforcement Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Developing AI agents that can autonomously learn and adapt to complex environments by improving credit assignment in reinforcement learning.",
+        "Creating intelligent tutoring systems that can provide personalized feedback and guidance to students by leveraging reasoning and credit assignment in reinforcement learning."
+      ],
+      "domain_applications": [
+        "education",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
       "id": "2608.06909",
       "title": "Long-Horizon Agent Trajectory Attribution: A Unified Benchmark and Fine-Grained Annotation Framework",
       "authors": [],
@@ -171,33 +281,206 @@
       ]
     },
     {
-      "id": "2606.05506",
-      "title": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Contrastive Learning",
+      "id": "2608.08118",
+      "title": "Neurosymbolic Discovery of Algebraic Graph Constructions",
       "authors": [],
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-08-07",
-      "updated": "2026-08-07",
-      "summary": "arXiv:2606.05506v2 Announce Type: replace Abstract: We propose a sensor-guided adaptive contrastive learning framework for visual representation learning in PointGoal navigation. During training, privileged LiDAR sensing guides the contrastive objective through a geometry-aware similarity metric and adaptive temperature scaling, encouraging visual embeddings to capture navigation-relevant structure rather than scene-specific appearance. The resulting encoder is pretrained independently, frozen, and used as the perceptual backbone for reinforcement learning, decoupling representation learning from policy optimization. We further introduce a cross-stage domain mismatch between representation pretraining and policy learning to suppress environment-specific shortcuts and promote reliance on task-relevant features. Extensive experiments in high-fidelity simulation demonstrate that our approach significantly improves policy-level scene transfer across diverse indoor and outdoor environments. At deployment, the agent relies only on monocular RGB observations together with standard task-related inputs such as goal position and proprioceptive signals, without access to LiDAR or other privileged sensors. Our method outperforms large pretrained vision models and standard contrastive baselines under severe appearance and semantic shifts. We also release a multimodal dataset to support future research on privileged-guided visual representation learning for navigation. The code is available at:",
-      "pdf_url": "https://arxiv.org/abs/2606.05506",
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.08118v1 Announce Type: new Abstract: There are several methods for searching for graphs with prescribed properties, such as SAT solvers and specialized generators. These methods return the result as raw data: an adjacency matrix or a string encoding. The raw data certifies that the graph exists, but it does not reveal any structural properties of the graph. We ask whether one can automatically discover a short algebraic description if only this raw data is provided. We look for a description such as a Cayley graph $\\mathrm{Cay}(\\Gamma, S)$ or a lexicographic product $C_5[K_3]$. We address this question with a neurosymbolic approach. We propose an agent that runs on a general-purpose large language model with no fine-tuning or per-target training. The model interleaves reasoning with calls to the computer algebra system SageMath: it analyzes the target graph, proposes and tests candidate constructions, and revises them until the output matches the target. The agent communicates with SageMath through a Model Context Protocol (MCP) server, which we release as a general-purpose bridge. Whether a construction matches the target is checked by a single exact isomorphism test, and therefore rests on the symbolic side and not on the model. We test the approach on a benchmark of 100 highly symmetric graphs, namely two-orbit graphs on up to 25 vertices; the benchmark was fixed in advance. Our agent could find verified algebraic constructions for all of them, without falling back to raw encodings. A strong template-enumeration baseline reaches only about $20\\%$, and a catalog lookup could not identify any of these graphs. However, construction quality declines when symmetry is removed. As a concrete application, we identify the smallest known counterexample to the Bernhart-Kainen dispersability conjecture, a $16$-vertex graph that enumeration found as raw data. For this graph, our agent found an explicit algebraic construction.",
+      "pdf_url": "https://arxiv.org/abs/2608.08118",
       "comment": "",
       "technologies": [
-        "Contrastive Learning",
-        "Representation Learning",
-        "Domain Adaptation",
-        "Multimodal Learning"
+        "Neurosymbolic AI",
+        "Model Context Protocol (MCP)"
       ],
-      "maturity": "medium",
+      "maturity": "early",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [
-        "Developing a navigation assistant for visually impaired individuals using monocular RGB observations and proprioceptive signals.",
-        "Creating a robust autonomous delivery robot that can navigate diverse environments without relying on LiDAR or other privileged sensors."
+        "AI-driven graph construction tool for mathematicians and researchers",
+        "Automated algebraic description generator for complex graph structures"
+      ],
+      "domain_applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "id": "2608.08960",
+      "title": "Reading is not Reasoning: Bridging the Agentic Policy Gap in Vision-Text Compression",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.08960v1 Announce Type: new Abstract: Multi-step language-model agents repeatedly process growing interaction histories, leading to substantial context costs. Vision--text compression reduces these costs by rendering history as images, but the resulting modality shift creates a marked capability gap. Through controlled evaluations of history recovery, matched-state decisions, and complete trajectories, we show that this gap cannot be explained by OCR quality alone. Visual-history agents exhibit systematic drift in action selection, query formulation, stopping, and evidence use, revealing an agentic policy gap. We introduce \\textbf{CAPS}, a two-stage \\textbf{C}ross-modal \\textbf{A}gentic \\textbf{P}olicy \\textbf{S}elf-distillation framework that uses the same model's stronger text-history policy to supervise its visual-history counterpart. Offline trajectory self-distillation transfers successful text-policy behavior to visual-history inputs, while online policy self-distillation provides dense supervision on states visited by the visual-history policy during reinforcement learning. On SearchQA, CAPS improves over AgentOCR by 5.0\\% and 3.4\\% with 3B and 7B backbones, respectively. On full-history ALFWorld, the corresponding gains are 15.6\\% and 14.5\\%. Across settings, CAPS reduces average memory-context cost by up to 63.3\\% and peak cost by up to 83.4\\% relative to matched text-history policies. These results show that explicit cross-modal policy self-distillation can preserve agent capability under vision--text compression. Our code will be made publicly available in a future release.",
+      "pdf_url": "https://arxiv.org/abs/2608.08960",
+      "comment": "",
+      "technologies": [
+        "Vision-Text Compression",
+        "Agentic Policy Self-distillation",
+        "Multi-step Language Model Agents",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Enhanced multimodal agents with reduced context costs",
+        "Improved vision-text compression for AI assistants",
+        "Optimized memory management in AI agents"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.09380",
+      "title": "OpenLoopEvolve: A Verifiable Self-Evolution Framework for Loop Policies in Long-Horizon Complex Tasks",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.09380v1 Announce Type: new Abstract: Long-horizon complex tasks require agents to repeatedly observe states, formulate plans, invoke tools, verify results, and recover from failures in continuously changing environments. However, such control experience often remains confined to a single context or a fixed prompt, and is difficult to accumulate and reuse across historical traces. This paper presents OpenLoopEvolve (OLE), a self-evolution framework centered on the Loop Policy. OLE represents an agent's observation, planning, memory, action, verification, recovery, stopping, and budget control as portable policy assets with versions and lineages, and provides online and offline evolution modes that can be selected according to practical needs: the online mode triggers candidate generation based on feedback from continuous operation, whereas the offline mode searches for candidate policies from archived traces and failure evidence. Both modes share an evolution mechanism consisting of autonomous proposals by a large language model, Champion--Challenger paired evaluation, and robust release. Policies released online are activated at a subsequent task boundary, monitored using subsequent feedback, and rolled back to their parent versions when degradation conditions are met. On the simulated business benchmark YC-Bench, both modes improve aggregate task performance, task success rate, and risk metrics relative to a fixed initial Loop Policy. The results indicate that treating the Loop Policy as a governable asset can support the accumulation, comparison, release, and reuse of control experience and improve agent performance on long-horizon complex tasks.",
+      "pdf_url": "https://arxiv.org/abs/2608.09380",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "Self-Evolution Framework",
+        "Loop Policy",
+        "Champion-Challenger Evaluation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Autonomous agents with self-improving capabilities for complex tasks",
+        "Adaptive AI systems that learn and evolve from historical data and real-time feedback"
       ],
       "domain_applications": [
         "robotics",
-        "accessibility"
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.08907",
+      "title": "ToolVision: Learning When and How to Use Visual Tools with Capability-Aligned Supervision",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.08907v1 Announce Type: cross Abstract: Thinking with images allows a multimodal model to compensate for limited perception by invoking visual tools through code. Yet the prevailing SFT-then-RL recipe creates a different supervision misalignment at each stage. SFT is expected to teach how to use tools, but trajectories from stronger teachers may succeed through perceptual capabilities that a smaller student cannot reliably reproduce or exploit, causing the student to imitate tool-call patterns without learning how to make them useful. RL is expected to teach when to use tools, but outcome-only rewards make fallible tool execution a liability and suppress tool use, whereas a blanket bonus for every correct tool-using trajectory encourages valid but ineffective operations. To address these two misalignments, we introduce ToolVision. During SFT, a multi-agent pipeline explores candidate trajectories, and a committee including student-scale models scores stepwise evidence gain to rank and prune the search branches. Only successfully executed trajectories with correct final answers are retained for SFT. Before RL, ToolVision compares the learner's performance with and without tools, then rewards successful tool use only on questions where tools provide a clear benefit. Both signals are constructed automatically from public task data without additional human annotations of tool use or necessity. ToolVision-8B improves over its base on all seven main benchmarks, surpasses Thyme-7B, CodeVision-8B, and CodeDance-7B on all three high-resolution benchmarks, and outperforms Qwen3-VL-32B-Thinking on V* and HRBench 8K. We will publicly release the datasets and source code.",
+      "pdf_url": "https://arxiv.org/abs/2608.08907",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Capability-Aligned Supervision"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "AI-powered visual tool assistant for educational platforms to help students solve complex problems using visual tools",
+        "AI-driven visual analysis tool for healthcare professionals to assist in diagnosing and treating patients using medical imaging"
+      ],
+      "domain_applications": [
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2608.09251",
+      "title": "MoRSE: Task-Oriented Multi-Agent System with Mixture of Role-Subtask Experts",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2608.09251v1 Announce Type: cross Abstract: Large language model-based multi-agent systems have recently shown strong potential for complex, long-horizon tasks. However, existing methods mainly rely on coarse prompt-level differentiation without parameter adaptation for diverse subtasks, resulting in insufficient inter-agent heterogeneity and limited specialized capability that bottleneck performance on tasks with complex requirements. To address this, we introduce a Task-Oriented Multi-Agent System with Mixture of Role-Subtask Experts (MoRSE) that distinguishes agents with (role, subtask)-conditional specialization at both the task structure and parameter levels. To make agents' responsibility explicit at the task structure level, we formulate a task-oriented multi-agent system that decomposes each task into a dependency-aware Directed Acyclic Graph of subtasks and assigns each agent a specific (role, subtask), introducing task-level specialization across collaborating agents. Additionally, to address the diverse role and subtask parameter adaptation demands, we propose a dynamic Mixture of (role, subtask) LoRA Experts module with a prototype-based semantic router for subtasks, augmenting agents with parameter-level specialization on a shared LLM substrate cost-effectively. Then, to co-optimize experts and router stably under sparse task rewards, we further propose a hierarchical group-relative policy optimization with two-layer credit assignment that isolates expert updates from the cross-route variance introduced by routing decisions, disentangling expert quality from routing quality. Experiments on code-generation benchmarks across three backbones demonstrate the effectiveness of our approach, with improvements in both whole-task and step-wise performance, and the gains from trained specialization generalize across held-out task categories and domains.",
+      "pdf_url": "https://arxiv.org/abs/2608.09251",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Low-Rank Adaptation",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "A specialized AI assistant for complex enterprise workflows that can adapt to different roles and subtasks within a task structure.",
+        "An adaptive learning platform for education that can tailor content and support to different student roles and learning subtasks."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2507.03162",
+      "title": "MateInfoUB: A Real-World Benchmark for Testing LLMs in Competitive, Multilingual, and Multimodal Educational Tasks",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2507.03162v2 Announce Type: replace-cross Abstract: The rapid advancement of Large Language Models (LLMs) has transformed various domains, particularly computer science (CS) education. These models exhibit remarkable capabilities in code-related tasks and problem-solving, raising questions about their potential and limitations in advanced CS contexts. This study presents a novel bilingual (English-Romanian) multimodal (text and image) dataset of multiple-choice questions derived from a high-level computer science competition. A particularity of our dataset is that the problems are conceived such that some of them are easier solved using reasoning on paper, while for others writing code is more efficient. We systematically evaluate State of The Art LLMs on this dataset, analyzing their performance on theoretical programming tasks. Our findings reveal the strengths and limitations of current LLMs, including the influence of language choice (English vs. Romanian), providing insights into their applicability in CS education and competition settings. We also address critical ethical considerations surrounding educational integrity and the fairness of assessments in the context of LLM usage. These discussions aim to inform future educational practices and policies. To support further research, our dataset will be made publicly available in both English and Romanian. Additionally, we release an educational application tailored for Romanian students, enabling them to self-assess using the dataset in an interactive and practice-oriented environment.",
+      "pdf_url": "https://arxiv.org/abs/2507.03162",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.9,
+      "product_potential": [
+        "An interactive educational application for Romanian students to self-assess using the dataset in an interactive and practice-oriented environment.",
+        "A platform for evaluating and comparing the performance of LLMs in multilingual and multimodal educational tasks."
+      ],
+      "domain_applications": [
+        "education"
+      ]
+    },
+    {
+      "id": "2607.26977",
+      "title": "TREK: A Travel Reasoning and Evaluation Kit for LLM Agents in Complex Trip Planning",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-11",
+      "updated": "2026-08-11",
+      "summary": "arXiv:2607.26977v2 Announce Type: replace Abstract: Travel planning is a demanding stress test for tool-using LLM agents: a usable itinerary is a single artifact that must be right along many axes at once - every flight, hotel, and attraction must exist and be bookable, the days must be physically traversable, the total must clear a budget, and the plan must serve a traveler whose needs are only partly stated. Existing agent benchmarks reward these properties one at a time and grade the final output with soft or LLM-judged rubrics, which cannot certify that a returned plan is executable and are neither reproducible nor auditable. We introduce TREK (Travel Reasoning and Evaluation Kit), a benchmark for feasible itinerary synthesis: producing a single plan that is jointly constraint-correct, hallucination-free, spatio-temporally executable, budget-valid, and responsive to the traveler's unstated persona needs. TREK comprises 800 multi-constraint tasks - 533 feasible and 267 provably infeasible with typed route/entity/budget causes - over a synthetic, internally consistent knowledge base of 212,530 records across 375 cities and 13 personas, served through a production-style tool sandbox of validated RESTful APIs. Every task is scored by a fully deterministic, rule-based evaluator with no LLM judge and ships a human-verified gold reference that scores a perfect 1.0 under that same evaluator, so the ceiling is demonstrably achievable and every remaining gap is an agent limitation rather than scorer strictness. Evaluating 15 LLM agents across nine constraint dimensions, we find that even the strongest (GPT-5.6) produces a fully-feasible plan on only 46.2% of solvable tasks, with a median of 6.6% and a floor of 0.0%; satisfying travelers' unstated needs emerges as the universal bottleneck, unsolved even at the frontier. We release the dataset, tool sandbox, deterministic evaluator, and agent code as a fully reproducible benchmark.",
+      "pdf_url": "https://arxiv.org/abs/2607.26977",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.9,
+      "product_potential": [
+        "AI-powered travel planning assistant with real-time constraint validation",
+        "Personalized travel itinerary generator with budget and feasibility checks"
+      ],
+      "domain_applications": [
+        "other"
       ]
     },
     {
@@ -233,377 +516,105 @@
         "enterprise",
         "finance"
       ]
-    },
-    {
-      "id": "2608.06865",
-      "title": "Multi-Agent Forensic Reasoning for Generalizable Deepfake Video Detection",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2608.06865v1 Announce Type: cross Abstract: The malicious use of generative artificial intelligence to create highly realistic deepfake videos raises serious ethical concerns and poses substantial challenges to AI safety. However, existing deepfake video benchmarks provide limited coverage of recent synthesis methods and generally lack reliable fine-grained textual annotations. Meanwhile, conventional detectors and multimodal large language models (MLLMs), whether operating as a single model or relying on a single analytical perspective, often fail to capture subtle forgery artifacts, limiting their generalization to emerging AI-generated methods. To address these limitations, we introduce FaceVid-Forensics-100K, a large-scale deepfake video dataset comprising 100,000 videos and spanning 33 synthesis methods across face swapping, face reenactment, and entire-face synthesis, including recent generators such as Seedance 2.0. The dataset provides fine-grained textual annotations of visual observations and verdict-consistent forensic explanations, automatically synthesized through a multi-model aggregation and conflict-resolution pipeline powered by advanced MLLMs. Building on this benchmark, we propose a multi-agent forensic reasoning framework that employs four specialized domain-expert agents to independently analyze forgery cues from four perspectives: texture, lighting, motion, and physics. A judge agent then reconciles their reports to produce a final prediction together with an explanation. Extensive evaluations on out-of-domain test sets show that, despite being composed entirely of small open-source MLLMs, our framework outperforms all methods including closed-source GPT and Gemini models and ranks first across all reported metrics on this benchmark. The project page is available at https://xavierjiezou.github.io/ARGUS/.",
-      "pdf_url": "https://arxiv.org/abs/2608.06865",
-      "comment": "",
-      "technologies": [
-        "Multi-Agent Systems",
-        "Multimodal Large Language Models",
-        "Agent-based Reasoning",
-        "Vision-Language Models",
-        "Forensic Analysis",
-        "Conflict Resolution Pipelines",
-        "Multi-Model Aggregation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.78,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Real-time deepfake detection API for social media platforms and video conferencing services to flag AI-generated content",
-        "Automated media forensics platform for news organizations and legal institutions to verify video authenticity and generate court-admissible forensic reports",
-        "Enterprise content moderation suite with explainable AI detection for platforms hosting user-generated video content"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2607.21557",
-      "title": "OpenForgeRL: Train Harness-native Agents in Any Environment",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2607.21557v3 Announce Type: replace Abstract: Modern AI agents rely on elaborate inference harnesses such as Claude Code, Codex, and OpenClaw to drive multi-turn reasoning, tool use, and access to external systems. While powerful, these complex harnesses also make agents hard to train end-to-end with open infrastructure, whose SFT/RL stacks cannot natively express stateful, multi-process harness inference. To address this, we present OpenForgeRL, an open-source framework for training harness-based agents end-to-end in diverse environments. OpenForgeRL achieves this with a lightweight proxy that serves the harness's model calls while recording them as training data for a standard RL codebase (e.g., veRL), and a Kubernetes orchestrator that runs each rollout in its own remote container, together enabling training on any harness in any environment at scale. By decoupling training and inference, OpenForgeRL allows researchers to easily train, study, and improve agents directly in the real harnesses and environments they are deployed with. We validate our framework across diverse, complex harnesses and environments, spanning tool/claw-based agents and multimodal GUI browser- and computer-use agents. Using only hundreds to a few thousand tasks, OpenForgeClaw reaches 31.7 pass^3 and 55.9 pass@3 on ClawEval and 33.7 on QwenClawBench. OpenForgeGUI reaches 37.7 on OSWorld-Verified, 63.0 on Online-Mind2Web, and 72.3 on WebVoyager. Both outperform open baselines of similar size on nearly all benchmarks, and in the GUI setting match or surpass models several times larger. Beyond benchmarks, we analyze how harness choice (e.g., ZeroClaw, OpenClaw, Codex) and RL shape agent behavior. We find that some harnesses are substantially harder to learn than others, and that RL improves agentic reliability, such as self-verification, tool coverage, and completing multi-step plans, though critical abilities such as error recovery remain weak.",
-      "pdf_url": "https://arxiv.org/abs/2607.21557",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning",
-        "Multi-turn Reasoning",
-        "Tool-use Agents",
-        "Kubernetes Orchestration",
-        "Distributed Training Infrastructure",
-        "End-to-end Training Pipelines",
-        "Computer Use Agents",
-        "GUI Agents",
-        "Browser Agents",
-        "Agentic AI Systems",
-        "RL Fine-tuning",
-        "Inference Harness Architecture"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Agent Training Platform-as-a-Service: Cloud-based platform enabling enterprises to fine-tune custom AI agents using their specific harnesses and environments with integrated RL infrastructure",
-        "Automated Agent Benchmarking Suite: Comprehensive evaluation framework for measuring agent performance across diverse harness types (code, GUI, browser) with standardized metrics and leaderboards",
-        "Enterprise Agent Development SDK: Toolkit allowing companies to build, train, and deploy domain-specific agents (customer service, data analysis, workflow automation) with built-in RL optimization"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "id": "2602.02276",
-      "title": "Kimi K2.5: Visual Agentic Intelligence",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2602.02276v2 Announce Type: replace-cross Abstract: We introduce Kimi K2.5, an open-source multimodal agentic model designed to advance general agentic intelligence. K2.5 emphasizes the joint optimization of text and vision so that two modalities enhance each other. This includes a series of techniques such as joint text-vision pre-training, zero-vision SFT, and joint text-vision reinforcement learning. Building on this multimodal foundation, K2.5 introduces Agent Swarm, a self-directed parallel agent orchestration framework that dynamically decomposes complex tasks into heterogeneous sub-problems and executes them concurrently. Extensive evaluations show that Kimi K2.5 achieves state-of-the-art results across various domains including coding, vision, reasoning, and agentic tasks. Agent Swarm also reduces latency by up to $4.5\\times$ over single-agent baselines. We release the post-trained Kimi K2.5 model checkpoint to facilitate future research and real-world applications of agentic intelligence.",
-      "pdf_url": "https://arxiv.org/abs/2602.02276",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Vision-Language Models",
-        "Joint Text-Vision Pre-training",
-        "Zero-Vision Supervised Fine-Tuning",
-        "Joint Text-Vision Reinforcement Learning",
-        "Agentic AI",
-        "Agent Swarm",
-        "Parallel Agent Orchestration",
-        "Task Decomposition",
-        "Self-Directed Agent Execution"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Autonomous visual coding assistant that can see UI mockups, interpret design intent, and generate functional code while executing tasks in parallel",
-        "Enterprise process automation agent capable of analyzing visual documents, extracting structured data from charts and diagrams, and orchestrating multi-step workflows",
-        "Multimodal research assistant that jointly processes text, images, and visual data for scientific literature review and hypothesis generation"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "id": "2502.18816",
-      "title": "Grad-ECLIP: Gradient-based Visual and Textual Explanations for CLIP",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2502.18816v3 Announce Type: replace Abstract: Significant progress has been achieved on the improvement and downstream usages of the Contrastive Language-Image Pre-training (CLIP) vision-language model, while less attention is paid to the interpretation of CLIP. We propose a Gradient-based visual and textual Explanation method for CLIP (Grad-ECLIP), which interprets the matching result of CLIP for specific input image-text pair. By decomposing the architecture of the encoder and discovering the relationship between the matching similarity and intermediate spatial features, Grad-ECLIP produces effective heat maps that show the influence of image regions or words on the CLIP results. Different from the previous Transformer interpretation methods that focus on the utilization of self-attention maps, which are typically extremely sparse in CLIP, we produce high-quality visual explanations by applying channel and spatial weights on token features. Qualitative and quantitative evaluations verify the effectiveness and superiority of Grad-ECLIP compared with the state-of-the-art methods. Furthermore, a series of analysis are conducted based on our visual and textual explanation results, from which we explore the working mechanism of image-text matching, the strengths and limitations in attribution identification of CLIP, and the relationship between the concreteness/abstractness of a word and its usage in CLIP. Finally, based on the ability of explanation map that indicates text-specific saliency region of input image, we also propose an application with Grad-ECLIP, which is adopted to boost the fine-grained alignment in the CLIP fine-tuning. The code of Grad-ECLIP is available here: https://github.com/Cyang-Zhao/Grad-Eclip.",
-      "pdf_url": "https://arxiv.org/abs/2502.18816",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Explainable AI",
-        "Vision-Language Models"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered image and text analysis tool for content creators and marketers to understand how different image regions and text words influence the perceived match between them.",
-        "Enhanced CLIP fine-tuning application that uses Grad-ECLIP's explanation maps to improve fine-grained alignment between images and text."
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.05137",
-      "title": "SmartMage: Dynamic Modality Orchestration for 3D Scene Understanding",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2608.05137v2 Announce Type: replace Abstract: Understanding 3D scenes is fundamental to embodied intelligence, requiring joint reasoning over heterogeneous information from multiple modalities, including visual and geometric cues. However, the relevance of these modalities often varies across queries. Existing Multimodal Large Language Models (MLLMs) typically rely on fixed modality combinations, overlooking query-dependent modality needs. Such a rigid design can introduce semantic noise from irrelevant modalities while underutilizing more informative ones, leading to wasted computation and diluted reasoning. To address these challenges, this paper proposes SmartMage, a unified MLLM that dynamically orchestrates heterogeneous modalities for semantic-aware 3D scene understanding. Specifically, SmartMage incorporates: (1) a Semantic-guided Modality Adaptive RouTng (SMART) module that selects task-relevant modalities using semantic priors, text-modality alignment, and modality quality; and (2) a Modality-Aware Gating Expert (MAGE) module that leverages modality priors to guide expert activation, fostering adaptive specialization in multimodal reasoning. Empirically, SmartMage achieves state-of-the-art performance across five 3D scene understanding benchmarks, and attains competitive results on RGB-only video understanding benchmarks. In our diagnostic benchmark ScanFacet, tasks are divided into fine-grained semantic categories, enabling analysis of modality combinations preferred by each semantic type. The observed modality-semantic patterns provide further evidence of SmartMage's effectiveness. Project page: https://yuecheong.github.io/SmartMage/.",
-      "pdf_url": "https://arxiv.org/abs/2608.05137",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Modality Orchestration",
-        "Semantic-guided Modality Adaptive Routing",
-        "Modality-Aware Gating Expert"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A dynamic 3D scene understanding system for AR/VR applications that adapts to the user's context and query, improving interaction and immersion.",
-        "An intelligent robotics system that dynamically selects and processes relevant sensory data for real-time decision making in complex environments."
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "id": "2605.29738",
-      "title": "Multi-Legal-Bench: Evaluating LLMs on Legal Reasoning Across Jurisdictions, Languages, and Legal Traditions",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2605.29738v2 Announce Type: replace-cross Abstract: Legal NLP benchmarks overwhelmingly evaluate a single language or aggregate tasks that differ fundamentally across jurisdictions, making cross-lingual comparison impossible. We introduce Multi-Legal-Bench, the first cross-jurisdictional legal benchmark that evaluates identical tasks across six countries (Ukraine, France, Netherlands, Poland, Czech Republic, Lithuania), four language families, and 165 million full-text court decisions. The benchmark defines five tasks (court-type classification, judgment form classification, case-outcome prediction, legal norm extraction, and cause category prediction) mapped to structured metadata from national court registries, forming a deliberately sparse 5x6 task-jurisdiction matrix (20 of 30 cells filled). We evaluate 7 frontier LLMs under zero-shot and 3-shot prompting via AWS Bedrock, with 4 additional small/medium models (3-12B) for scaling analysis. Our results reveal that: (1) few-shot gains are uneven and track how much headroom a cell leaves rather than its language, with 8 of 28 judgment-form model-jurisdiction pairs losing accuracy; (2) no single model dominates any language, rankings shift with both task and jurisdiction; (3) cross-lingual few-shot transfer does not follow language proximity: UA->FR (Romance, -2.0 pp) transfers better than UA->PL (Slavic, -13.8 pp), with label-set alignment predicting transfer quality better than language family; and (4) tokenizer fertility, despite a 2.3x spread, does not significantly predict cross-lingual accuracy (r=-0.14, p=0.24), suggesting that model architecture and pretraining data dominate tokenizer efficiency. We release all data, prompts, and model predictions.",
-      "pdf_url": "https://arxiv.org/abs/2605.29738",
-      "comment": "",
-      "technologies": [
-        "Retrieval Augmented Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Cross-jurisdictional legal AI assistant that provides consistent legal reasoning across different countries and languages",
-        "Legal NLP platform that evaluates and compares the performance of LLMs across various jurisdictions and languages"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "finance",
-        "other"
-      ]
-    },
-    {
-      "id": "2604.26355",
-      "title": "Shorthand for Thought: Compressing LLM Reasoning via Entropy-Guided Supertokens",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2604.26355v4 Announce Type: replace Abstract: Reasoning in Large Language Models incurs significant inference-time compute, yet the token-level information structure of reasoning traces remains underexplored. We observe that reasoning tokens split into two functional types: low-entropy structural tokens (recurring phrases that scaffold the reasoning process) and higher-entropy organic tokens (problem-specific content that drives toward a solution). This asymmetry motivates a simple, model-agnostic compression pipeline: apply cross-word BPE merges on a model's own reasoning traces to derive \\textit{supertokens} that capture frequent structural patterns, then teach the model to adopt them via supervised fine-tuning. Across three model families and five mathematical reasoning benchmarks, our approach shortens reasoning traces by 8.1% on average; under a TOST equivalence analysis at a +/- 2pp margin, accuracy is equivalent or inconclusive on 13/15 model -- benchmark cells (2 pass equivalence, 11 inconclusive, predominantly AIME at N=30, with non-equivalent degradation on 2/15 cells (DeepSeek-R1-Distill-Llama-70B on MATH-500 and OlympiadBench). Beyond compression, learned supertokens often align with interpretable reasoning moves such as backtracking, verification, and strategy shifts. This enables a compact structural analysis of reasoning traces: correct traces show more recovery and verification patterns, while incorrect traces show more repeated hedging and unresolved counterarguments. We release the full pipeline as open-source code.",
-      "pdf_url": "https://arxiv.org/abs/2604.26355",
-      "comment": "",
-      "technologies": [
-        "Entropy-Guided Compression",
-        "Supertokens",
-        "Reasoning Trace Analysis"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Developing an AI-powered reasoning assistant that can compress and analyze reasoning traces to provide concise explanations and insights.",
-        "Creating a tool for educators to analyze student reasoning patterns and identify common mistakes or misconceptions."
-      ],
-      "domain_applications": [
-        "education",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2608.04720",
-      "title": "YOLOv14: Adaptive Real-Time Object Detection for Diverse Imaging Conditions",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-10",
-      "updated": "2026-08-10",
-      "summary": "arXiv:2608.04720v2 Announce Type: replace Abstract: Real-time object detectors achieve remarkable accuracy under controlled conditions, yet degrade sharply on non-ideal inputs: fisheye distortion, game-renderedcharacters, aerial viewpoints, and 360{\\deg}panoramas. We present YOLOv14, a detection framework with four adaptive mechanisms designed for specific types of inputvariation:(1) Deformable Area-Attention with windowed computation and shiftedwindows for geometric distortion;(2) Multi-level Game2Real Alignment with progressive adversarial training for domain shift;(3) View-Aware Contrastive Learning with adaptive temperature for viewpoint invariance; and (4) Scene-Adaptive Augmentation with dynamic loss balancing for scene diversity. Together, YOLOv14 achieves 49.1 mAP on COCO val2017 at 2.91 ms (T4 GPU), and delivers substantial gains on fisheye (+4.1 mAP), panorama (+6.6 mAP), drone (+6.4 mAP), andour synthesized game-character benchmark (+26.1 mAP). We release code and models to facilitate reproducible research.",
-      "pdf_url": "https://arxiv.org/abs/2608.04720",
-      "comment": "",
-      "technologies": [
-        "Deformable Area-Attention",
-        "Multi-level Game2Real Alignment",
-        "View-Aware Contrastive Learning",
-        "Scene-Adaptive Augmentation"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Real-time object detection for augmented reality applications",
-        "Autonomous vehicle systems with improved performance in diverse environments",
-        "Surveillance systems with enhanced accuracy in non-ideal conditions"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2604.00513",
-      "title": "MOON3.0: Reasoning-aware Multimodal Representation Learning for E-commerce Product Understanding",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-06",
-      "updated": "2026-08-06",
-      "summary": "arXiv:2604.00513v3 Announce Type: replace-cross Abstract: With the rapid growth of e-commerce, exploring general representations rather than task-specific ones has attracted increasing attention. Although recent multimodal large language models (MLLMs) have driven significant progress in product understanding, they are typically employed as feature extractors that implicitly encode product information into global embeddings, thereby limiting their ability to capture fine-grained attributes. Therefore, we argue that leveraging the reasoning capabilities of MLLMs to explicitly model fine-grained product attributes holds significant potential. Nevertheless, achieving this goal remains non-trivial due to several key challenges: (i) long-context reasoning tends to dilute the model's attention to salient information in the raw input; (ii) supervised fine-tuning (SFT) primarily encourages rigid imitation, limiting the exploration of effective reasoning strategies; and (iii) fine-grained details are progressively attenuated during forward propagation. To address these issues, we propose MOON3.0, the first reasoning-aware MLLM-based model for product representation learning. Our method (1) employs a multi-head modality fusion module to adaptively integrate raw signals; (2) incorporates a joint contrastive and reinforcement learning framework to autonomously explore more effective reasoning strategies; and (3) introduces a fine-grained residual enhancement module to progressively preserve local details throughout the network. Additionally, we release a large-scale multimodal e-commerce benchmark MBE3.0. Experimentally, our model demonstrates state-of-the-art zero-shot performance across various downstream tasks on both our benchmark and public datasets.",
-      "pdf_url": "https://arxiv.org/abs/2604.00513",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Knowledge Distillation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Enhanced e-commerce search and recommendation systems",
-        "Personalized product discovery and shopping assistants",
-        "Advanced product analytics and inventory management tools"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2608.05631",
-      "title": "ChronoVision: Temporal Reasoning via Latent State Reconstruction",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-07",
-      "updated": "2026-08-07",
-      "summary": "arXiv:2608.05631v1 Announce Type: new Abstract: Multimodal large language models excel at passive perception but struggle with complex visual cognitive tasks requiring multi-step temporal reasoning. This degradation largely stems from the inherent ambiguity of language-based reasoning, which often fails to accurately articulate continuous visual transformations. To address this, we propose ChronoVision, a multimodal framework designed to align visual logic with latent imagery. During supervised fine-tuning, a Reconstructive Visual Head predicts the latent representation of the final transformed state, while an ROI Attention Locating module focuses the model on key visual evidence via semantic span queries. In post-training, we apply reinforcement learning with an implicit process grounding mechanism, guided by a composite reward function that evaluates outcome correctness, latent process alignment, and unsupervised visual focus. Furthermore, we introduce Vbvr-VQA, a novel dataset that evaluates temporal tracking by reformulating video reasoning into a strict image-ordering task. Experiments demonstrate that ChronoVision achieves state-of-the-art performance on Vbvr-VQA with 74.8% in-domain and 71.6% out-of-domain accuracy, alongside a strong 55.0% accuracy on IntPhys2, a highly challenging cross-domain benchmark.",
-      "pdf_url": "https://arxiv.org/abs/2608.05631",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Latent State Reconstruction",
-        "ROI Attention",
-        "Process Grounding"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "A video editing tool that can understand and manipulate complex temporal transformations in videos.",
-        "An AI assistant for education that can provide step-by-step explanations of complex visual processes in scientific videos."
-      ],
-      "domain_applications": [
-        "education",
-        "creative",
-        "science"
-      ]
     }
   ],
   "technologies": [
     {
       "name": "Multimodal Learning",
-      "papers": 10,
+      "papers": 5,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 8,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "robotics",
         "enterprise",
-        "science",
-        "creative",
         "education"
       ]
     },
     {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 4,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "name": "Mixture-of-Experts",
+      "papers": 3,
+      "maturity": "high",
+      "confidence": 0.92,
       "trend": "rising",
       "applications": [
         "enterprise",
         "science",
-        "other"
+        "education"
       ]
     },
     {
-      "name": "Reinforcement Learning",
+      "name": "Retrieval Augmented Generation",
       "papers": 3,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "finance",
         "science",
-        "robotics"
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 5,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education",
+        "enterprise"
       ]
     },
     {
       "name": "Low-Rank Adaptation",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Neurosymbolic AI",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Agentic Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Self-Evolution Framework",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
@@ -611,40 +622,7 @@
       "applications": [
         "robotics",
         "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Contrastive Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Representation Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Domain Adaptation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
+        "science"
       ]
     },
     {
@@ -659,697 +637,405 @@
       ]
     },
     {
-      "name": "Bilateral Policy Coevolution",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.65,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Per-Agent Advantage Isolation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.65,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Action Masking",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.65,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Policy Generalization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.65,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Cooperative Multi-Agent Training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.65,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Multi-Agent Systems",
+      "name": "Grouped Differential Latent Attention",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.78,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Multimodal Large Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.78,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Agent-based Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.78,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
         "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Forensic Analysis",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.78,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Conflict Resolution Pipelines",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.78,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Multi-Model Aggregation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.78,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Multi-turn Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Tool-use Agents",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Kubernetes Orchestration",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Distributed Training Infrastructure",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "End-to-end Training Pipelines",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Computer Use Agents",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "GUI Agents",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Browser Agents",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Agentic AI Systems",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "RL Fine-tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Inference Harness Architecture",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Joint Text-Vision Pre-training",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Zero-Vision Supervised Fine-Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Joint Text-Vision Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Agentic AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Agent Swarm",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Parallel Agent Orchestration",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Task Decomposition",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Self-Directed Agent Execution",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Explainable AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "creative",
         "education",
         "enterprise"
       ]
     },
     {
-      "name": "Modality Orchestration",
+      "name": "Multi-head Latent Attention",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Semantic-guided Modality Adaptive Routing",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Modality-Aware Gating Expert",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
         "science",
-        "finance",
-        "other"
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Manifold-constrained Hyper-connections",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Expert Specific PolyNorm",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-token Prediction",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "MXFP8 Computation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Window-aware Context Parallelism",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Memory-efficient Fused Kernels",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-teacher On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Supervised Fine-tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Selective Computation and Communication",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Process-Supervised Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Agents",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Foundation Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Tool Orchestration",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Video Anomaly Detection",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-step Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Cognitive Alignment",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "enterprise"
       ]
     },
     {
       "name": "Knowledge Distillation",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "other"
+        "healthcare"
       ]
     },
     {
-      "name": "Latent State Reconstruction",
+      "name": "Credit Assignment",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "robotics",
         "education",
-        "creative",
-        "science"
+        "enterprise"
       ]
     },
     {
-      "name": "ROI Attention",
+      "name": "Model Context Protocol (MCP)",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
-        "creative",
-        "science"
+        "science",
+        "education"
       ]
     },
     {
-      "name": "Process Grounding",
+      "name": "Vision-Text Compression",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "other",
         "education",
-        "creative",
-        "science"
+        "enterprise"
       ]
     },
     {
-      "name": "Entropy-Guided Compression",
+      "name": "Agentic Policy Self-distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-step Language Model Agents",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Loop Policy",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Champion-Challenger Evaluation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Capability-Aligned Supervision",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "education",
-        "science",
-        "other"
+        "healthcare"
       ]
     },
     {
-      "name": "Supertokens",
+      "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "education",
-        "science",
-        "other"
+        "enterprise"
       ]
     },
     {
-      "name": "Reasoning Trace Analysis",
+      "name": "Bilateral Policy Coevolution",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "education",
-        "science",
-        "other"
+        "finance",
+        "enterprise"
       ]
     },
     {
-      "name": "Deformable Area-Attention",
+      "name": "Per-Agent Advantage Isolation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "enterprise",
-        "other"
+        "finance",
+        "enterprise"
       ]
     },
     {
-      "name": "Multi-level Game2Real Alignment",
+      "name": "Action Masking",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "enterprise",
-        "other"
+        "finance",
+        "enterprise"
       ]
     },
     {
-      "name": "View-Aware Contrastive Learning",
+      "name": "Policy Generalization",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "enterprise",
-        "other"
+        "finance",
+        "enterprise"
       ]
     },
     {
-      "name": "Scene-Adaptive Augmentation",
+      "name": "Cooperative Multi-Agent Training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "enterprise",
-        "other"
+        "finance",
+        "enterprise"
       ]
     }
   ],
-  "product_opportunities": [
-    {
-      "technology": "Vision-Language Models",
-      "idea": "VisualQ: AI-powered image analysis and question answering for customer support",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
-    },
-    {
-      "technology": "Multi-turn Reasoning",
-      "idea": "LogicFlow: AI-driven conversation analysis for customer service teams",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Tool-use Agents",
-      "idea": "TaskMaster: AI agents that can use various tools to automate complex workflows",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Kubernetes Orchestration",
-      "idea": "AutoScale: AI-driven Kubernetes orchestration for optimal resource allocation",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Distributed Training Infrastructure",
-      "idea": "TrainFaster: Distributed training infrastructure for faster AI model development",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "End-to-end Training Pipelines",
-      "idea": "PipelinePro: End-to-end training pipelines for streamlined AI model development",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Computer Use Agents",
-      "idea": "ClickBot: AI agents that can use computers to automate tasks and perform actions",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "GUI Agents",
-      "idea": "GUIMaster: AI agents that can interact with graphical user interfaces to automate tasks",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Browser Agents",
-      "idea": "WebBot: AI agents that can browse the web and perform actions to automate tasks",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Agentic AI Systems",
-      "idea": "Agentic: AI systems that can create and manage multiple AI agents for complex tasks",
-      "business_value": 10,
-      "engineering_difficulty": 9,
-      "competitive_advantage": "very high",
-      "development_time": "6-12 months"
-    },
-    {
-      "technology": "RL Fine-tuning",
-      "idea": "RLTune: Reinforcement learning fine-tuning for optimizing AI models",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Inference Harness Architecture",
-      "idea": "InferX: Inference harness architecture for efficient AI model deployment",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Joint Text-Vision Pre-training",
-      "idea": "JointEye: Joint text-vision pre-training for improved AI model performance",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Zero-Vision Supervised Fine-Tuning",
-      "idea": "ZeroSee: Zero-vision supervised fine-tuning for improved AI model performance",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Joint Text-Vision Reinforcement Learning",
-      "idea": "RLVision: Joint text-vision reinforcement learning for improved AI model performance",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    }
-  ]
+  "product_opportunities": []
 }
