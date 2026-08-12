@@ -369,5 +369,24 @@
         renderFavorites();
         renderGrid();
         bindControls();
+        initAskAI({
+            prefix: 'dr',
+            title: 'Ask AI about these dev resources',
+            defaultQuestion: 'For this list of developer tools and resources, summarize what each is best for, group them by purpose, and recommend which to try first.',
+            getItems: () => {
+                const q = state.search.trim().toLowerCase();
+                const cat = state.category;
+                return RESOURCES
+                    .filter(r => cat === 'all' || r.categories.includes(cat))
+                    .filter(r => matchesSearch(r, q));
+            },
+            context: () => {
+                const bits = [`Category: ${state.category === 'all' ? 'All' : state.category}`];
+                if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+                return bits.join(' • ');
+            },
+            contextDetail: (n) => `Asking about ${n} filtered resources.`,
+            itemFields: (r) => ({ name: r.name, url: r.url, stars: 0, desc: r.description }),
+        });
     });
 })();

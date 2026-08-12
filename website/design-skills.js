@@ -160,5 +160,17 @@
     document.addEventListener('DOMContentLoaded', () => {
         bindControls();
         load();
+        initAskAI({
+            prefix: 'ds',
+            title: 'Ask AI about these design skills',
+            defaultQuestion: 'For this list of design-related agents/skills, what is each best for, which are the strongest, and which should I use for designing a beautiful app UI?',
+            getItems: () => filterItems(state.tab),
+            context: () => {
+                const ucs = state.tab === 'agents' ? 'agents' : 'skills';
+                return `View: design use case • Tab: ${ucs}`;
+            },
+            contextDetail: (n) => `Asking about ${n} design ${state.tab}.`,
+            itemFields: (it) => ({ name: it.name, url: it.url, stars: it.stars || 0, desc: it.description || '' }),
+        });
     });
 })();

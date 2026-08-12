@@ -174,10 +174,11 @@ async function loadAutomationData() {
             updated.textContent = 'Updated ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         }
 
-        // Build section filter buttons — save existing search+count first
+        // Build section filter buttons — save existing search+count+ask first
         const bar = document.getElementById('auto-bar');
         const searchEl = document.getElementById('auto-search');
         const countEl = document.getElementById('auto-count');
+        const askEl = document.getElementById('auto-ask-ai');
         const existingAll = bar.querySelector('.auto-section-btn[data-section="all"]');
         bar.innerHTML = '';
         bar.appendChild(existingAll || createChip('all', '📋 All'));
@@ -187,8 +188,9 @@ async function loadAutomationData() {
                 bar.appendChild(btn);
             }
         }
-        // Re-append search + count
+        // Re-append search + ask-ai + count
         if (searchEl) bar.appendChild(searchEl);
+        if (askEl) bar.appendChild(askEl);
         bar.appendChild(document.createTextNode(' '));
         const flex = document.createElement('span');
         flex.style.cssText = 'flex:1';
@@ -237,4 +239,17 @@ function bind() {
 document.addEventListener('DOMContentLoaded', () => {
     bind();
     loadAutomationData();
+    initAskAI({
+        prefix: 'auto',
+        title: 'Ask AI about these automation repos',
+        defaultQuestion: 'Give me a concise overview of these automation/GitHub repos: what each does, the strongest options, and which to try first.',
+        getItems: () => filterItems(),
+        context: () => {
+            const bits = [`Section: ${activeSection === 'all' ? 'All' : (SECTION_LABELS[activeSection]?.label || activeSection)}`];
+            if (searchQuery.trim()) bits.push(`Search: ${searchQuery.trim()}`);
+            return bits.join(' • ');
+        },
+        contextDetail: (n) => `Asking about ${n} filtered automation repos.`,
+        itemFields: (it) => ({ name: it.name, url: it.url, stars: it.stars, desc: it.description }),
+    });
 });

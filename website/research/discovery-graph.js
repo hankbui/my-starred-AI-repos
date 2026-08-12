@@ -314,5 +314,33 @@
   document.addEventListener('DOMContentLoaded', () => {
     initControls();
     loadGraph();
+    initAskAI({
+      prefix: 'dg',
+      title: 'Ask AI about these graph nodes',
+      defaultQuestion: 'For these graph nodes from an AI market map, summarize what each is, group them, and highlight the most important signals.',
+      getItems: () => {
+        const filtered = nodeData.filter(n => typeFilters[n.type]);
+        let visible = filtered;
+        if (searchTerm) {
+          const matchIds = new Set();
+          const term = searchTerm.toLowerCase();
+          filtered.forEach(n => {
+            if (String(n.label || '').toLowerCase().includes(term)) matchIds.add(n.id);
+          });
+          filtered.forEach(l => { /* no-op guard */ });
+          visible = filtered.filter(n => matchIds.has(n.id));
+        }
+        return visible;
+      },
+      context: () => {
+        const types = Object.entries(typeFilters)
+          .filter(([, on]) => on).map(([t]) => t).join(', ');
+        const bits = [`Visible types: ${types || 'none'}`];
+        if (searchTerm) bits.push(`Search: ${searchTerm}`);
+        return bits.join(' • ');
+      },
+      contextDetail: (n) => `Asking about ${n} visible graph nodes.`,
+      itemFields: (n) => ({ name: n.label || n.id, url: n.href || '', stars: 0, desc: `${n.type}${n.confidence ? ' · confidence ' + Math.round(n.confidence * 100) + '%' : ''}` }),
+    });
   });
 })();

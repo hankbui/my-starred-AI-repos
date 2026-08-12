@@ -360,5 +360,25 @@ Write a brief that covers: (1) the biggest story of the day, (2) notable model r
     document.addEventListener('DOMContentLoaded', () => {
         bindControls();
         load();
+        initAskAI({
+            prefix: 'hf',
+            title: 'Ask AI about these Hugging Face picks',
+            defaultQuestion: 'Give me a concise overview of these trending Hugging Face items: what each does, the strongest options, and which to try first.',
+            getItems: () => {
+                const all = state.data?.[state.tab] || [];
+                return filterItems(all);
+            },
+            context: () => {
+                const bits = [`Tab: ${state.tab}`];
+                if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+                return bits.join(' • ');
+            },
+            contextDetail: (n) => `Asking about ${n} ${state.tab} from the current tab/filter.`,
+            itemFields: (it) => {
+                if (state.tab === 'papers') return { name: it.title || it.name, url: it.url, stars: it.upvotes || 0, desc: it.summary || '' };
+                if (state.tab === 'spaces') return { name: it.name || it.id, url: it.url, stars: it.likes || 0, desc: it.sdk || it.description || (Array.isArray(it.tags) ? it.tags.join(', ') : '') };
+                return { name: it.name || it.id, url: it.url, stars: it.likes || 0, desc: it.description || it.pipeline_tag || (Array.isArray(it.tags) ? it.tags.join(', ') : '') };
+            },
+        });
     });
 })();

@@ -329,5 +329,18 @@
     document.addEventListener('DOMContentLoaded', () => {
         bindControls();
         load();
+        initAskAI({
+            prefix: 'ms',
+            title: 'Ask AI about these mobile repos',
+            defaultQuestion: 'Give me a concise overview of these mobile dev repos: what each does, the strongest options, and which to try first.',
+            getItems: () => filterItems(),
+            context: () => {
+                const bits = [`Tab: ${PLATFORMS[state.tab].label}`];
+                if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+                return bits.join(' • ');
+            },
+            contextDetail: (n) => `Asking about ${n} ${PLATFORMS[state.tab].label} repos.`,
+            itemFields: (r) => ({ name: r.name, url: r.url, stars: r.stars || 0, desc: r.description || '' }),
+        });
     });
 })();

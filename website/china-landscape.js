@@ -179,4 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
     load().catch(e => {
         document.getElementById('cl-tbody').innerHTML = `<tr><td colspan="7" class="cl-empty">Failed to load data: ${escapeHtml(e.message)}</td></tr>`;
     });
+    initAskAI({
+        prefix: 'cl',
+        title: 'Ask AI about these China AI repos',
+        defaultQuestion: 'Give me a concise overview of these Chinese open-source AI repos: what each does, the strongest options, and which to try first.',
+        getItems: () => state.filtered,
+        context: () => {
+            const bits = [];
+            if (state.category !== 'all') bits.push(`Category: ${state.category}`);
+            if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+            bits.push(`Sort: ${state.sort.replace('_desc', ' ↓').replace('_asc', ' ↑')}`);
+            return bits.join(' • ');
+        },
+        contextDetail: (n) => `Asking about ${n} of ${state.filtered.length} filtered repos.`,
+        itemFields: (r) => ({ name: r.name, url: r.url, stars: r.stars, desc: r.description }),
+    });
 });
