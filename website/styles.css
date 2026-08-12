@@ -2674,6 +2674,35 @@ a {
     transition:120ms ease;
 }
 #page-translate-root .pt-toggle:hover { border-color:var(--accent); transform:scale(1.05); }
+#page-translate-root .pt-globe {
+    position:relative; display:inline-block; width:24px; height:24px;
+}
+#page-translate-root .pt-earth {
+    position:absolute; top:50%; left:50%; width:16px; height:16px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 30% 28%, rgba(255,255,255,0.9), rgba(255,255,255,0) 26%),
+        radial-gradient(circle at 70% 82%, #2f8f4e 0 14%, transparent 14.5%),
+        radial-gradient(circle at 32% 66%, #38a15a 0 20%, transparent 20.5%),
+        radial-gradient(circle at 64% 30%, #2f8f4e 0 12%, transparent 12.5%),
+        radial-gradient(circle at 16% 42%, #e0eef7 0 6%, transparent 6.5%),
+        linear-gradient(180deg,#4aa3df, #1d5aa8);
+    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.35), inset 1px 1px 3px rgba(255,255,255,0.35);
+}
+#page-translate-root .pt-orbit {
+    position:absolute; top:50%; left:50%; width:24px; height:24px;
+    transform:translate(-50%,-50%) rotateX(62deg) rotate(12deg);
+    border:1px solid rgba(120,180,255,0.5); border-radius:50%;
+    animation:pt-orbit-spin 2.8s linear infinite;
+}
+#page-translate-root .pt-sat {
+    position:absolute; top:-1.5px; left:50%; width:7px; height:7px; margin-left:-3.5px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff, #9fd4ff 60%, #4c8cff);
+    box-shadow:0 0 7px rgba(120,180,255,0.9);
+}
+@keyframes pt-orbit-spin { to { transform:translate(-50%,-50%) rotateX(62deg) rotate(372deg); } }
 #page-translate-root .pt-spinner {
     width:11px; height:11px; border-radius:50%;
     border:2px solid rgba(255,255,255,0.25); border-top-color:var(--accent);

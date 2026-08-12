@@ -277,7 +277,10 @@
 
         var globe = document.createElement('span');
         globe.className = 'pt-globe';
-        globe.textContent = '🌐';
+        globe.setAttribute('aria-hidden', 'true');
+        globe.innerHTML =
+            '<span class="pt-earth"></span>' +
+            '<span class="pt-orbit"><span class="pt-sat"></span></span>';
 
         spinnerEl = document.createElement('span');
         spinnerEl.className = 'pt-spinner';
