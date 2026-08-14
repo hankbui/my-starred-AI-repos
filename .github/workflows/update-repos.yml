@@ -94,6 +94,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+          TG_THREADS: ${{ secrets.TG_THREADS }}
         continue-on-error: true
         run: |
           python scripts/notify_telegram.py

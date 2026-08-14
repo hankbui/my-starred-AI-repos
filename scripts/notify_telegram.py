@@ -37,6 +37,25 @@ CHANNEL = os.getenv("TELEGRAM_CHANNEL", "").strip()
 API = "https://api.telegram.org/bot{token}/{method}"
 
 
+def load_threads():
+    """Return {section_key: message_thread_id} from the TG_THREADS JSON secret."""
+    raw = os.getenv("TG_THREADS", "").strip()
+    if not raw:
+        return {}
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        print("[telegram] TG_THREADS is not valid JSON — ignoring.")
+        return {}
+    threads = {}
+    for key, value in data.items():
+        try:
+            threads[key] = int(value)
+        except (TypeError, ValueError):
+            print(f"[telegram] TG_THREADS key '{key}' is not a number — ignoring.")
+    return threads
+
+
 def esc(text: str) -> str:
     return html.escape(html.unescape(str(text)))
 
@@ -238,16 +257,19 @@ def subscriber_count():
     return None
 
 
-def send(text: str) -> bool:
+def send(text: str, thread_id=None) -> bool:
+    payload = {
+        "chat_id": CHANNEL,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": False,
+    }
+    if thread_id is not None:
+        payload["message_thread_id"] = thread_id
     try:
         resp = requests.post(
             API.format(token=TOKEN, method="sendMessage"),
-            json={
-                "chat_id": CHANNEL,
-                "text": text,
-                "parse_mode": "HTML",
-                "disable_web_page_preview": False,
-            },
+            json=payload,
             timeout=20,
         )
         data = resp.json()
@@ -343,16 +365,19 @@ def build_report_pdf(data: dict, out_dir: Path) -> Path:
     return path
 
 
-def send_document(path: Path, caption: str) -> bool:
+def send_document(path: Path, caption: str, thread_id=None) -> bool:
+    payload = {
+        "chat_id": CHANNEL,
+        "caption": caption,
+        "parse_mode": "HTML",
+    }
+    if thread_id is not None:
+        payload["message_thread_id"] = thread_id
     try:
         with open(path, "rb") as handle:
             resp = requests.post(
                 API.format(token=TOKEN, method="sendDocument"),
-                data={
-                    "chat_id": CHANNEL,
-                    "caption": caption,
-                    "parse_mode": "HTML",
-                },
+                data=payload,
                 files={"document": (path.name, handle)},
                 timeout=60,
             )
@@ -371,18 +396,19 @@ def main():
         return
 
     today = datetime.now(timezone.utc).date().isoformat()
-    messages = [build_header(today)]
+    threads = load_threads()
+    messages = [(build_header(today), None)]
 
     sections = (
-        ("daily-top.json", build_daily_top),
-        ("hf-daily.json", build_hf_daily),
-        ("report.json", build_report),
-        ("ideas.json", partial(build_ideas, today=today)),
-        ("automation.json", build_automation),
-        ("agent-skills.json", build_agent_skills),
-        ("research/json/latest.json", build_tech_radar),
+        ("daily-top.json", build_daily_top, "github"),
+        ("hf-daily.json", build_hf_daily, "hf"),
+        ("report.json", build_report, "report"),
+        ("ideas.json", partial(build_ideas, today=today), "ideas"),
+        ("automation.json", build_automation, "automation"),
+        ("agent-skills.json", build_agent_skills, "agentskills"),
+        ("research/json/latest.json", build_tech_radar, "techradar"),
     )
-    for filename, builder in sections:
+    for filename, builder, key in sections:
         data = load(filename)
         if data is None:
             print(f"[telegram] {filename} missing — section skipped.")
@@ -393,12 +419,12 @@ def main():
             print(f"[telegram] failed building section from {filename}: {exc}")
             continue
         if section:
-            messages.append(section)
+            messages.append((section, threads.get(key)))
 
-    messages.append(build_footer(subscriber_count()))
+    messages.append((build_footer(subscriber_count()), None))
 
-    for text in messages:
-        if not send(text):
+    for text, thread_id in messages:
+        if not send(text, thread_id=thread_id):
             print("Aborting — stop posting remaining sections to avoid a broken digest.")
             sys.exit(1)
 
@@ -406,7 +432,7 @@ def main():
     if report:
         tmp = Path(tempfile.gettempdir())
         pdf_path = build_report_pdf(report, tmp)
-        if pdf_path is not None and not send_document(pdf_path, "📄 Full AI Opportunity Report (PDF) — đọc ngay trong Telegram"):
+        if pdf_path is not None and not send_document(pdf_path, "📄 Full AI Opportunity Report (PDF) — đọc ngay trong Telegram", thread_id=threads.get("report")):
             sys.exit(1)
 
 
