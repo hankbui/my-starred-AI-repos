@@ -18,6 +18,7 @@ import html
 import json
 import os
 import sys
+import tempfile
 from datetime import datetime, timezone
 from functools import partial
 from pathlib import Path
@@ -26,6 +27,7 @@ import requests
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / "website" / "data"
+WEBSITE_DIR = REPO_ROOT / "website"
 SITE_URL = "https://hankbui.github.io/my-starred-AI-repos/"
 TOP_N = 5
 
@@ -47,10 +49,11 @@ def truncate(text: str, limit: int = 220) -> str:
 
 
 def load(name: str):
-    path = DATA_DIR / name
-    if not path.exists():
-        return None
-    return json.loads(path.read_text(encoding="utf-8"))
+    for base in (DATA_DIR, WEBSITE_DIR):
+        path = base / name
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+    return None
 
 
 def section_header(title: str) -> str:
@@ -159,6 +162,58 @@ def build_automation(data: dict) -> str:
     return "\n".join(lines)
 
 
+def build_agent_skills(data: dict) -> str:
+    stats = data.get("stats") or {}
+    agents = data.get("agents") or []
+    skills = data.get("skills") or []
+
+    def key(item):
+        return int(item.get("trend_score") or 0)
+
+    top_agents = sorted(agents, key=key, reverse=True)[:3]
+    top_skills = sorted(skills, key=key, reverse=True)[:3]
+    lines = [section_header("🤖 Agent & Skills")]
+    lines.append(
+        f"• {int(stats.get('agents') or 0):,} agents · {int(stats.get('skills') or 0):,} skills · "
+        f"{int(stats.get('use_cases') or 0):,} use cases"
+    )
+    lines.append("")
+    lines.append("<b>Agents:</b>")
+    for item in top_agents:
+        lines.append(
+            f"• <a href='{esc(item['url'])}'>{esc(item['name'])}</a> "
+            f"— {int(item.get('stars') or 0):,}⭐ (+{int(item.get('delta_7d') or 0):,}/7d)"
+        )
+    lines.append("")
+    lines.append("<b>Skills:</b>")
+    for item in top_skills:
+        lines.append(
+            f"• <a href='{esc(item['url'])}'>{esc(item['name'])}</a> "
+            f"— {esc(truncate(item.get('description') or '', 100))}"
+        )
+    return "\n".join(lines)
+
+
+def build_tech_radar(data: dict) -> str:
+    brief = data.get("brief") or []
+    top_cards = data.get("top_cards") or []
+    techs = data.get("technologies") or []
+    opps = data.get("product_opportunities") or []
+    lines = [section_header("🛰️ Tech Radar")]
+    if brief:
+        lines.append(esc(truncate(brief[0], 280)))
+    rising = [t for t in techs if (t.get("trend") or "") == "rising"][:5]
+    if rising:
+        lines.append("")
+        lines.append("<b>Công nghệ đang lên:</b> " + " · ".join(esc(t.get("name") or "") for t in rising))
+    if opps:
+        lines.append("")
+        lines.append("<b>Cơ hội sản phẩm:</b>")
+        for o in opps[:3]:
+            lines.append(f"• {esc(truncate(o.get('idea') or '', 140))} <i>(value {o.get('business_value')}/10)</i>")
+    return "\n".join(lines)
+
+
 def build_footer(member_count) -> str:
     lines = ["", "—", "✅ Subscribe: nhấn Join để nhận tin mỗi ngày."]
     if member_count is not None:
@@ -204,6 +259,112 @@ def send(text: str) -> bool:
     return False
 
 
+def _pdf_clean(text: str) -> str:
+    text = str(text)
+    for before, after in (
+        ("—", "-"), ("–", "-"), ("…", "..."), ("·", ". "),
+        ("‘", "'"), ("’", "'"), ("“", '"'), ("”", '"'),
+        ("•", "- "), ("›", ">"), ("»", ">>"), ("«", "<<"),
+    ):
+        text = text.replace(before, after)
+    return "".join(ch for ch in text if ord(ch) < 0x2FFF and ch not in "\x00")
+
+
+def build_report_pdf(data: dict, out_dir: Path) -> Path:
+    """Render the full market report to a PDF that Telegram previews inline."""
+    try:
+        from fpdf import FPDF
+    except ImportError:
+        print("[telegram] fpdf2 not installed — skipping PDF attachment.")
+        return None
+
+    pdf = FPDF(format="A4", unit="mm")
+    pdf.set_auto_page_break(auto=True, margin=15)
+
+    font = None
+    for candidate in (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/dejavu/DejaVuSans.ttf",
+    ):
+        if Path(candidate).exists():
+            font = candidate
+            break
+    if font:
+        pdf.add_font("sans", "", font, uni=True)
+        pdf.add_font("sans", "B", str(font).replace("DejaVuSans.ttf", "DejaVuSans-Bold.ttf"), uni=True)
+    else:
+        pdf.set_font("helvetica", size=11)
+
+    def f(size, style="B"):
+        pdf.set_font("sans" if font else "helvetica", style=style, size=size)
+        pdf.set_x(pdf.l_margin)
+
+    pdf.add_page()
+    f(18)
+    pdf.multi_cell(0, 9, _pdf_clean(f"AI Opportunity Report — {data.get('date') or ''}"))
+    f(10, "")
+    pdf.multi_cell(0, 5, _pdf_clean("Model: %s  |  Backend: %s" % (data.get("model") or "-", data.get("backend") or "-")))
+    pdf.ln(3)
+
+    for brief in (data.get("brief") or []):
+        f(11, "")
+        pdf.multi_cell(0, 6, _pdf_clean(brief))
+        pdf.ln(2)
+
+    for item in (data.get("items") or []):
+        pdf.add_page()
+        f(13)
+        pdf.multi_cell(0, 8, _pdf_clean(item.get("name") or ""))
+        f(9, "")
+        pdf.cell(0, 5, _pdf_clean(
+            f"{int(item.get('stars') or 0):,} stars  ·  +{int(item.get('delta_7d') or 0):,} in 7d  ·  "
+            f"timing: {item.get('timing') or 'n/a'}"), new_x="LMARGIN", new_y="NEXT")
+        pdf.ln(2)
+        if item.get("one_liner"):
+            f(10, "")
+            pdf.multi_cell(0, 5, _pdf_clean("One-liner: " + item["one_liner"]))
+        if item.get("pain_point"):
+            f(10, "")
+            pdf.multi_cell(0, 5, _pdf_clean("Pain point: " + item["pain_point"]))
+        ideas = item.get("app_ideas") or []
+        if ideas:
+            f(10, "")
+            pdf.multi_cell(0, 5, _pdf_clean("App ideas:"))
+            for idea in ideas[:3]:
+                f(10, "")
+                pdf.multi_cell(0, 5, _pdf_clean("  • " + str(idea)))
+        if item.get("monetization"):
+            f(10, "")
+            pdf.multi_cell(0, 5, _pdf_clean("Monetization: " + str(item["monetization"])))
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"ai-opportunity-report-{data.get('date') or 'latest'}.pdf"
+    pdf.output(str(path))
+    return path
+
+
+def send_document(path: Path, caption: str) -> bool:
+    try:
+        with open(path, "rb") as handle:
+            resp = requests.post(
+                API.format(token=TOKEN, method="sendDocument"),
+                data={
+                    "chat_id": CHANNEL,
+                    "caption": caption,
+                    "parse_mode": "HTML",
+                },
+                files={"document": (path.name, handle)},
+                timeout=60,
+            )
+        data = resp.json()
+        if data.get("ok"):
+            return True
+        print(f"[telegram] sendDocument error: {data.get('description')}")
+    except Exception as exc:  # noqa: BLE001
+        print(f"[telegram] sendDocument failed: {exc}")
+    return False
+
+
 def main():
     if not TOKEN or not CHANNEL:
         print("Telegram not configured (TELEGRAM_BOT_TOKEN / TELEGRAM_CHANNEL). Skipping.")
@@ -218,6 +379,8 @@ def main():
         ("report.json", build_report),
         ("ideas.json", partial(build_ideas, today=today)),
         ("automation.json", build_automation),
+        ("agent-skills.json", build_agent_skills),
+        ("research/json/latest.json", build_tech_radar),
     )
     for filename, builder in sections:
         data = load(filename)
@@ -237,6 +400,13 @@ def main():
     for text in messages:
         if not send(text):
             print("Aborting — stop posting remaining sections to avoid a broken digest.")
+            sys.exit(1)
+
+    report = load("report.json")
+    if report:
+        tmp = Path(tempfile.gettempdir())
+        pdf_path = build_report_pdf(report, tmp)
+        if pdf_path is not None and not send_document(pdf_path, "📄 Full AI Opportunity Report (PDF) — đọc ngay trong Telegram"):
             sys.exit(1)
 
 
