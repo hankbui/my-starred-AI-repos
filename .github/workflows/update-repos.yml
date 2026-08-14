@@ -89,3 +89,11 @@ jobs:
           git add data/ website/data/
           git commit -m "chore: update repos & ideas data [skip ci]" || echo "No changes to commit"
           git push
+
+      - name: Notify Telegram channel
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+        continue-on-error: true
+        run: |
+          python scripts/notify_telegram.py
