@@ -22,11 +22,35 @@
   <a href="https://hankbui.github.io/my-starred-AI-repos/find-ideas.html">
     <img src="https://img.shields.io/badge/💡_Find_Startup_Ideas-Explore-c084fc?style=for-the-badge" alt="Find Ideas">
   </a>
+  <a href="https://t.me/ai_repos_daily">
+    <img src="https://img.shields.io/badge/📨_Telegram_Daily_Digest-Join-26A5E4?style=for-the-badge&logo=telegram" alt="Telegram Daily Digest">
+  </a>
 </p>
 
 ---
 
-[**Browse**](https://hankbui.github.io/my-starred-AI-repos/) · [Weekly Top Movers](https://hankbui.github.io/my-starred-AI-repos/weekly-rank.html) · [Find Ideas](https://hankbui.github.io/my-starred-AI-repos/find-ideas.html) · [Market Report](https://hankbui.github.io/my-starred-AI-repos/report.html) · [Tech Radar](https://hankbui.github.io/my-starred-AI-repos/research/index.html)
+[**Browse**](https://hankbui.github.io/my-starred-AI-repos/) · [Weekly Top Movers](https://hankbui.github.io/my-starred-AI-repos/weekly-rank.html) · [Find Ideas](https://hankbui.github.io/my-starred-AI-repos/find-ideas.html) · [Market Report](https://hankbui.github.io/my-starred-AI-repos/report.html) · [Tech Radar](https://hankbui.github.io/my-starred-AI-repos/research/index.html) · [Telegram](https://t.me/ai_repos_daily)
+
+</div>
+
+## 📨 Telegram Daily Digest
+
+Get the freshest picks delivered straight to your Telegram — **free, no sign-up, like a newsletter.**
+
+👉 **Join the channel: [t.me/ai_repos_daily](https://t.me/ai_repos_daily)**
+
+One tap to join, then every day you automatically receive a compact digest:
+
+| What you get | Source |
+|---|---|
+| ⭐ Top GitHub repos of the day | Daily Top Picks |
+| 🚀 Product Hunt winner of the day | Daily Top Picks |
+| 🧠 Top paper + trending models | Hugging Face Daily |
+| 📈 Breakout picks from the market report | AI Opportunity Report |
+| 💡 Fresh startup ideas | Find Ideas |
+| ⚙️ Automation radar stats | Automation Radar |
+
+No spam, no noise — just one daily summary of what's heating up in AI.
 
 </div>
 
