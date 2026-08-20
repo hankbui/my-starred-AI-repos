@@ -1,65 +1,85 @@
 {
   "meta": {
-    "date": "2026-08-19",
+    "date": "2026-08-20",
     "papers_tracked": 15,
-    "technologies_discovered": 60,
+    "technologies_discovered": 55,
     "opportunities_identified": 15,
-    "last_update": "2026-08-19 05:55 UTC",
+    "last_update": "2026-08-20 05:53 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Gaussian Splatting is advancing 3D scene understanding and generation, offering opportunities for immersive, interactive experiences in robotics, creative industries, and enterprise applications.",
-    "LLM Agents with Chain-of-Thought Prompting and Memory-Augmented Planning are enabling complex, autonomous decision-making in robotics and enterprise systems, creating opportunities for AI-driven automation and control.",
-    "The Segment Anything Model and multimodal learning are revolutionizing image and video analysis, with applications in healthcare, science, and creative industries, particularly in segmentation and understanding tasks.",
-    "Multi-Agent Reinforcement Learning is addressing challenges in simulator collapse and population-based training, offering opportunities for scalable, adaptive AI systems in enterprise, education, and healthcare.",
-    "Tool-Augmented Agents and Budget-Aware Planning are enabling efficient, scalable AI agents, creating opportunities for cost-effective, high-performance solutions in enterprise, finance, and science."
+    {
+      "technology": "Saliency-Driven Attention Redistribution",
+      "why_it_matters": "This technology aims to mitigate hallucinations in Large Vision-Language Models (LVLMs) by focusing on perceptually relevant regions, which is crucial for applications requiring high accuracy and reliability.",
+      "opportunity": "Product builders can leverage this technology to create more reliable and accurate vision-language applications in domains like education, healthcare, and accessibility."
+    },
+    {
+      "technology": "Gaussian Splatting",
+      "why_it_matters": "This technology enables efficient 3D scene representation and manipulation, which is essential for applications requiring realistic and interactive 3D environments.",
+      "opportunity": "Product builders can use Gaussian Splatting to create immersive and interactive 3D applications in domains like robotics, creative industries, and enterprise."
+    },
+    {
+      "technology": "bitsandbytes Quantization",
+      "why_it_matters": "This technology allows for efficient model quantization, which is crucial for deploying large language models in resource-constrained environments.",
+      "opportunity": "Product builders can leverage bitsandbytes Quantization to create efficient and scalable language model applications in domains like enterprise, science, and other."
+    },
+    {
+      "technology": "Reinforcement Learning from Human Feedback",
+      "why_it_matters": "This technology enables the creation of more human-like and effective AI agents by incorporating human feedback into the learning process.",
+      "opportunity": "Product builders can use Reinforcement Learning from Human Feedback to create more effective and user-friendly AI agents in domains like education, enterprise, and science."
+    },
+    {
+      "technology": "Graph-Guided Reasoning",
+      "why_it_matters": "This technology enables more efficient and effective search and reasoning by leveraging the structure of knowledge graphs.",
+      "opportunity": "Product builders can use Graph-Guided Reasoning to create more efficient and effective search and reasoning applications in domains like education, enterprise, and science."
+    }
   ],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "60",
+      "value": "55",
       "label": "discovered this scan",
-      "detail": "Gaussian Splatting, Multimodal Learning, Vision Transformer, Diffusion Models, Cross-Attention, Knowledge Distillation, Open-Vocabulary Learning, 3D Scene Understanding",
+      "detail": "Saliency-Driven Attention Redistribution, Saliency-Driven Cache Alignment, Prior-Constrained Contrastive Decoding, Knowledge Graph Representation, Auto-encoding Framework, Multimodal Learning, Video Representation Learning, Knowledge Distillation",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "60",
+      "value": "55",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Diffusion Models, Knowledge Distillation, Reinforcement Learning from Human Feedback, Knowledge Graph Representation",
+      "detail": "Saliency-Driven Attention Redistribution, Saliency-Driven Cache Alignment, Prior-Constrained Contrastive Decoding, Segment Anything Model, Vision-Language Models",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.6",
+      "value": "7.7",
       "label": "avg opportunity score",
-      "detail": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Sce",
+      "detail": "Look Clearly Before Answering: Mitigating Hallucinations in LVLMs via Saliency-D",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "GaussianDWM++: Language-Ground",
-      "label": "confidence 70%",
+      "value": "Look Clearly Before Answering:",
+      "label": "confidence 85%",
       "detail": "",
       "color": "purple"
     },
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Prompt Engineering in Segment ",
+      "value": "Look Clearly Before Answering:",
       "label": "highest confidence paper",
-      "detail": "Automated medical image analysis tool for radiologists, Industrial defect detection system for quality control",
+      "detail": "Enhanced multimodal AI assistants with reduced hallucinations, Improved visual question answering systems for education and accessibility",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "38",
+      "value": "8",
       "label": "early-stage technologies",
       "detail": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Sce",
       "color": "blue"
@@ -67,169 +87,34 @@
   ],
   "papers": [
     {
-      "id": "2608.16234",
-      "title": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Scene Understanding, Editing, and Multi-Modal Generation",
+      "id": "2607.16841",
+      "title": "Look Clearly Before Answering: Mitigating Hallucinations in LVLMs via Saliency-Driven Perceptual Realignment",
       "authors": [],
       "categories": [
         "cs.CV"
       ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2608.16234v1 Announce Type: new Abstract: Driving World Models (DWMs) have recently advanced rapidly with generative models, yet most existing methods mainly focus on conditional scene generation and lack explicit 3D scene understanding, language-grounded reasoning, and controllable 4D editing capabilities. Moreover, commonly used point cloud, occupancy, or BEV representations make it difficult to achieve fine-grained alignment between textual information and the underlying 3D scene structure. To address these limitations, we propose a foundation-feature Gaussian driving world model that unifies scene understanding, language-grounded reasoning, controllable 4D editing, and multi-modal generation within a single framework. Specifically, we introduce a foundation-feature Gaussian tokenizer that directly distills Qwen/SigLIP visual-language features into 3D Gaussian primitives, building a compact open-vocabulary Gaussian semantic field. We further design a geometry-aware Gaussian adapter that combines importance-aware hierarchical selection with text-conditioned Perceiver-style cross-attention to aggregate dense Gaussian primitives into compact world tokens. To improve representation compatibility, we introduce a KL-based Gaussian--image distribution alignment objective that aligns Gaussian world tokens with foundation image tokens. Based on the aligned Gaussian representation, our framework further supports instruction-controllable scene editing, including weather-conditioned generation and dynamic vehicle manipulation. Extensive experiments on broader driving benchmarks demonstrate that our method achieves state-of-the-art performance across scene understanding, visual grounding, planning-oriented reasoning, and controllable 4D generation tasks. We will release the code and datasets publicly on Github.",
-      "pdf_url": "https://arxiv.org/abs/2608.16234",
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2607.16841v2 Announce Type: replace Abstract: Large vision-language models (LVLMs) have demonstrated remarkable capabilities in multimodal understanding. However, they remain prone to hallucinations, generating responses that are inconsistent with the visual evidence. Existing mitigation methods largely address language-prior bias or cross-modal imbalance, while progressive visual degradation across perception and memory remains underexplored. In this work, we propose Saliency-Driven Perceptual Realignment (SDPR), a training-free framework that mitigates the degradation of visual awareness throughout inference. Specifically, we first introduce saliency-driven attention redistribution to release attention hijacked by non-semantic sink tokens, thereby recovering critical visual evidence. Second, we identify spatial distortion in the KV cache and propose saliency-driven cache alignment to preserve query-relevant visual features during generation. Finally, we introduce prior-constrained contrastive decoding to penalize unfaithful predictions induced by dominant language priors. Our proposed SDPR is robust against hallucinations due to its holistic alignment of visual awareness across the entire generative trajectory. Extensive experiments across diverse LVLM architectures show that SDPR outperforms state-of-the-art methods on both hallucination and general-purpose benchmarks, requiring no additional training and incurring minimal runtime overhead. The code is available \\href{https://github.com/PengSyuChen/SDPR}{\\color{blue}{here}}.",
+      "pdf_url": "https://arxiv.org/abs/2607.16841",
       "comment": "",
       "technologies": [
-        "Gaussian Splatting",
-        "Multimodal Learning",
-        "Vision Transformer",
-        "Diffusion Models",
-        "Cross-Attention",
-        "Knowledge Distillation",
-        "Open-Vocabulary Learning",
-        "3D Scene Understanding",
-        "4D Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.2,
-      "product_potential": [
-        "Autonomous vehicle simulation platform for realistic weather and traffic scenario generation and editing",
-        "Interactive 3D scene editing tool for creative industries (film, gaming) with language-based control",
-        "Advanced driver assistance system (ADAS) with language-grounded scene understanding and reasoning"
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.15175",
-      "title": "LAPF: LLM-Agent-Based Path Finder Using the UAVScenes Dataset",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2608.15175v1 Announce Type: cross Abstract: Uncrewed aerial vehicles (UAVs) are increasingly deployed for autonomous navigation in complex outdoor environments, where dynamic conditions and mission requirements require intelligent adaptive decision-making. Existing optimization-based, Machine Learning (ML), and Reinforcement Learning (RL) approaches often rely on predefined models or task-specific training, limiting their generalization and adaptability in uncertain scenarios. Recent Large Language Model (LLM)-assisted approaches offer promising reasoning capabilities but remain constrained by limited agentic functionality, including insufficient memory, planning, and tool interaction mechanisms.This paper proposes an LLM-Agent-Based Path Finder (LAPF) framework for autonomous UAV navigation in town-scale outdoor environments. LAPF extends LLM-assisted navigation by integrating perception, memory, planning, and action modules into a closed-loop cognitive architecture. The proposed agent leverages prior navigation experiences, performs Chain-of-Thought (CoT) reasoning, couples each detected hazard to a bounded corrective action, and dynamically refines waypoint decisions based on environmental feedback.The three independent trials per method demonstrate that LAPF achieves mean path lengths of 512.83 m and 506.37 m, compared to the straight-line optimum of 497.33 m, corresponding to path length reductions of 17.2% and 15.6% relative to CoT prompting and absolute path efficiencies of 97.1% and 98.1% in open-field and obstacle-injected scenarios, respectively. Furthermore, LAPF is the only evaluated approach that couples every detected hazard to a bounded, metric-neutral corrective action while maintaining near-goal stability, with zero clamp events in both scenarios, whereas CoT prompting increases from 9.7 to 14.0 events.",
-      "pdf_url": "https://arxiv.org/abs/2608.15175",
-      "comment": "",
-      "technologies": [
-        "Chain-of-Thought Prompting",
-        "LLM Agent",
-        "Memory-Augmented Planning",
-        "Tool Interaction",
-        "Closed-Loop Control"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Autonomous UAV navigation system for delivery and inspection in dynamic outdoor environments",
-        "LLM-based mission planning assistant for drone fleet management in logistics and agriculture",
-        "Adaptive pathfinding module for autonomous ground vehicles in off-road or disaster response scenarios"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2507.09562",
-      "title": "Prompt Engineering in Segment Anything Model: Methodologies, Applications, and Emerging Challenges",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2507.09562v2 Announce Type: replace-cross Abstract: The Segment Anything Model (SAM) has transformed image segmentation by introducing a prompt-based paradigm that enables strong zero-shot generalization. In this framework, prompts serve as a semantic interface between human intent and machine perception, making prompt engineering a central factor in model performance. Despite its importance, prompt engineering within SAM and its variants has not yet been systematically reviewed in the literature. This survey addresses that gap by providing a structured and comprehensive overview of prompt engineering techniques developed for SAM and its rapidly growing ecosystem. We introduce a hierarchical taxonomy that organizes methods into geometric prompts, textual semantic prompts, and multimodal fusion prompts, and analyze how these categories reflect different design principles and application goals. In addition, we examine the transition from manually crafted prompts to more advanced, automated approaches based on detector outputs, prototype learning, reinforcement learning, and vision-language models. Beyond categorizing existing work, we trace how prompt engineering has enabled SAM to generalize across domains such as medical imaging, remote sensing, industrial inspection, and anomaly detection. We further identify key challenges---including prompt sensitivity, cross-modal misalignment, and computational inefficiency---and highlight promising research directions such as causal prompt reasoning, collaborative multi-agent prompting, and diffusion-based progressive refinement. By consolidating these developments into a unified perspective, our survey provides a timely reference for understanding the role of prompt engineering in segmentation foundation models and lays the groundwork for future advances in this evolving field.",
-      "pdf_url": "https://arxiv.org/abs/2507.09562",
-      "comment": "",
-      "technologies": [
-        "Segment Anything Model",
-        "Multimodal Learning",
-        "Vision-Language Models",
-        "Reinforcement Learning from Human Feedback"
+        "Saliency-Driven Attention Redistribution",
+        "Saliency-Driven Cache Alignment",
+        "Prior-Constrained Contrastive Decoding"
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 6.0,
+      "curator_score": 6.2,
       "product_potential": [
-        "Automated medical image analysis tool for radiologists",
-        "Industrial defect detection system for quality control",
-        "Interactive image editing application for designers"
+        "Enhanced multimodal AI assistants with reduced hallucinations",
+        "Improved visual question answering systems for education and accessibility",
+        "Advanced image analysis tools for healthcare diagnostics"
       ],
       "domain_applications": [
+        "education",
         "healthcare",
-        "science",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2510.08759",
-      "title": "Dissecting Embodied Abilities in Multimodal Language Models through Skill-level Evaluation and Diagnosis",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2510.08759v3 Announce Type: replace Abstract: Understanding the capability bottlenecks of embodied multimodal large language models (MLLMs) is crucial for improving embodied agents. However, existing embodied benchmarks mainly focus on task-level evaluation and fail to provide actionable insights into the underlying causes of model failures. To address this limitation, we introduce BEAR, a benchmark that decomposes embodied tasks into 14 atomic skills for fine-grained skill-level evaluation. BEAR comprises 4,469 interleaved image-video-text samples spanning 14 skills across 6 categories, ranging from low-level perception to high-level planning. We evaluate 20 MLLMs on BEAR under a hierarchical skill-level diagnosis framework and uncover two key findings: (1) perceptual capabilities are major bottlenecks behind reasoning failures, and (2) current models suffer from unstable spatiotemporal modeling that remains largely unexposed in prior benchmarks. Motivated by these findings, we further propose BEAR-Agent, a multimodal conversational agent that augments MLLMs with visual and spatial reasoning tools. BEAR-Agent substantially improves performance across embodied skills, achieving a relative improvement of 17.5% on GPT-5 over the base model on BEAR, while also outperforming strong baselines in both simulation and real-world robotic experiments. Project page: https://bear-official66.github.io/",
-      "pdf_url": "https://arxiv.org/abs/2510.08759",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Skill-level Evaluation",
-        "Spatiotemporal Modeling"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "A multimodal conversational agent that can assist users in real-world tasks by providing visual and spatial reasoning tools.",
-        "A diagnostic tool for developers to identify and address perceptual and spatiotemporal modeling bottlenecks in embodied multimodal language models."
-      ],
-      "domain_applications": [
-        "robotics",
-        "education",
         "accessibility"
-      ]
-    },
-    {
-      "id": "2608.12253",
-      "title": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2608.12253v2 Announce Type: replace-cross Abstract: Multi-agent reinforcement learning for human-AI interaction typically relies on a single large language model to simulate user behavior. We show that this approach systematically fails to generalize, and trace the failure to simulator collapse: because the simulator LLM is mode-collapsed, an LLM policy trained against it overfits to narrow strategies that exploit the simulator's dominant mode, and such a policy transfers poorly to unseen simulators and real users. We formalize this collapse theoretically and propose two complementary solutions, one at inference time and one at training time. The inference-time solution, Verbalized Sampling, broadens the simulator's behavior by sampling from a verbalized response distribution, reducing mode collapse. The training-time solution, Co-Training, jointly optimizes the policy against a population of trainable simulators, preventing it from overfitting to any single simulator's mode. We validate both solutions on three multi-turn benchmarks: Persuasion for Good, $\\tau^2$-bench, and CooperBench. Verbalized Sampling improves held-out success by up to 9% over single-simulator RL, and Co-Training pushes gains further to 14%; the human study shows similar gain on real users. Both solutions preserve the policy diversity that collapses under single-simulator RL. To support further work in this direction, we release SCOPE, an open-source framework for Population Co-Training multi-agent RL. More broadly, our results suggest that the diversity of the training environment, not only the policy, is critical to the generalization of multi-turn RL to real-world deployment.",
-      "pdf_url": "https://arxiv.org/abs/2608.12253",
-      "comment": "",
-      "technologies": [
-        "Multi-Agent Reinforcement Learning",
-        "Population-Based Training",
-        "Verbalized Sampling",
-        "Co-Training",
-        "Simulator Collapse"
-      ],
-      "maturity": "early",
-      "confidence": 0.85,
-      "curator_score": 5.9,
-      "product_potential": [
-        "Robust AI training pipelines for conversational agents that generalize to diverse user behaviors",
-        "Simulation-as-a-service for evaluating human-AI interaction systems before deployment",
-        "Adaptive user simulation for personalized AI coaching or tutoring systems"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "education",
-        "healthcare"
       ]
     },
     {
@@ -269,32 +154,27 @@
       ]
     },
     {
-      "id": "2608.15459",
-      "title": "Not All Attention Is Equal: A Quantitative Survey of the EEI Trade-off",
+      "id": "2608.18578",
+      "title": "Compress and Forget: bitsandbytes Quantization Amplifies Proactive Interference in LLMs",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CL"
       ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2608.15459v1 Announce Type: cross Abstract: Attention mechanisms have driven machine learning for a decade, from neural machine translation to language models that do general-purpose reasoning. This survey covers four connected threads: their formulation for sequence-to-sequence tasks, adaptation to computer vision, efficiency innovations that address the quadratic bottleneck, and advances in interpretability. We define three criteria: efficiency, expressiveness, and interpretability, and compare twenty-one methods using an EEI scoring framework. Scores come from a single rater with an assumed +/-1-point perturbation range. A deterministic Monte Carlo analysis with 200,000 samples shows that, under this perturbation model, rank changes of more than one position occur in 67-70% of samples on average. A rank-matched null model reproduces a similar stability profile, so the results support coarse tier-level comparisons rather than fine-grained rankings. The survey traces attention from Bahdanau-Luong alignment through the Transformer and into vision architectures. It reviews fixed and learned sparse attention, linear attention, IO-aware exact algorithms including FlashAttention, and state-space alternatives including Mamba. It also covers induction heads, superposition, and the attention-SSM duality. We further provide a structured narrative review, a benchmark synthesis with cross-study caveats, a five-problem research gap analysis, and a 2015-2026 evolution timeline. We conclude by framing attention research as an expansion of the efficiency-expressiveness-interpretability frontier and identifying future directions including unified efficiency benchmarks, learned routing for hybrid architectures, length generalization, and scalable mechanistic interpretability.",
-      "pdf_url": "https://arxiv.org/abs/2608.15459",
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2608.18578v1 Announce Type: new Abstract: Proactive interference (PI) is a documented failure mode in large language models in which retrieval of a repeatedly overwritten value degrades as prior overwrites accumulate, mirroring a classical phenomenon in human working memory. Post-training quantization (PTQ) is now the default deployment path for open-weight models, yet its effect on this failure mode has not been tested. We evaluate three precision levels (FP16, INT8, INT4/NF4, via bitsandbytes) across three architecturally distinct instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct), holding the retrieval task fixed. INT4 quantization significantly reduces accuracy under high interference in every model (e.g., from 81.0% to 68.3% for Qwen), confirmed by paired McNemar's tests ($p \\le 2.6 \\times 10^{-6}$) and a mixed-effects regression spanning all interference levels; INT8, often assumed safe, also carries a smaller but real penalty in two of three models. The effect is specific to semantically similar (word-type) distractors and reverses sign under a numeric control condition, and is mechanistically linked to a rise in same-key intrusion errors under INT4 (from 21.5% to 24.6% of trials, $p = 4.8 \\times 10^{-7}$). A follow-up ablation shows the effect originates in the quantized transformer backbone rather than the output projection layer. These results suggest that bitsandbytes 4-bit quantization can impose an additional cost on applications relying on long, updatable, semantically dense contexts, even when aggregate benchmark accuracy appears largely unaffected. We release our code and tokenizer-verified vocabulary construction method at https://github.com/ShayanShahrabi/compress-and-forget",
+      "pdf_url": "https://arxiv.org/abs/2608.18578",
       "comment": "",
       "technologies": [
-        "Sparse Attention",
-        "Linear Attention",
-        "FlashAttention",
-        "State Space Models",
-        "Mixture of Experts",
-        "Mechanistic Interpretability"
+        "bitsandbytes Quantization",
+        "Proactive Interference"
       ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.7,
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.9,
       "product_potential": [
-        "An AI model selection tool that uses the EEI scoring framework to recommend optimal attention architectures for specific deployment constraints (e.g., latency, memory, interpretability).",
-        "A benchmarking platform for standardized efficiency-expressiveness-interpretability evaluation of attention-based models, enabling fair comparisons across vendors.",
-        "A hybrid model router that dynamically switches between sparse attention, linear attention, and state-space layers based on input length and task complexity, optimizing for efficiency and accuracy."
+        "Optimized LLM deployment with reduced memory footprint and improved performance under high interference conditions",
+        "Enhanced context management systems for applications requiring long, updatable, semantically dense contexts"
       ],
       "domain_applications": [
         "enterprise",
@@ -303,131 +183,39 @@
       ]
     },
     {
-      "id": "2511.17006",
-      "title": "Budget-Aware Tool Use Enables Effective Agent Scaling",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2511.17006v2 Announce Type: replace Abstract: Scaling test-time computation has been extended from language model reasoning to tool-augmented agents, where scaling involves not only thinking in tokens but also acting via tool calls that directly constrain environmental interaction. However, we found that simply increasing the tool-call budget fails to improve performance, as agents lack \"budget awareness\" and quickly hit a performance ceiling. We study how to scale such agents effectively under explicit tool-call budgets, focusing on web search agents. We first introduce the Budget Tracker, a lightweight plug-in that provides the agent with continuous budget awareness, enabling simple yet effective scaling. We further develop BATS (Budget-Aware Test-time Scaling), an advanced framework that leverages this awareness to dynamically adapt its planning and verification strategy. To analyze cost-performance scaling in a controlled manner, we formalize a unified cost metric that jointly accounts for token and tool consumption. We provide the first systematic study on budget-constrained agents, showing that budget-aware methods produce more favorable scaling curves and push the cost-performance Pareto frontier. Our work offers empirical insights toward a more transparent and principled understanding of scaling in tool-augmented agents. Our code is available at https://github.com/google-research/budget-aware-agent.",
-      "pdf_url": "https://arxiv.org/abs/2511.17006",
-      "comment": "",
-      "technologies": [
-        "Tool-Augmented Agents",
-        "Test-Time Scaling",
-        "Budget-Aware Planning",
-        "Adaptive Verification",
-        "Cost-Performance Pareto Optimization"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Enterprise AI agent orchestration platform with dynamic budget allocation for search and reasoning tasks",
-        "Cost-optimized customer support chatbot that intelligently limits tool calls based on query complexity",
-        "Developer tool for benchmarking and optimizing agent cost-performance trade-offs in production"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "finance",
-        "science"
-      ]
-    },
-    {
-      "id": "2607.06008",
-      "title": "PolyWorkBench: Benchmarking LLM Agents for Cross-Lingual Long-Horizon Workflows",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2607.06008v3 Announce Type: replace Abstract: While Large Language Model (LLM) agents excel at monolingual long-horizon planning and tool use, enterprise workflows inherently require processing multilingual resources across extended trajectories. The interaction between multilinguality and long-horizon execution, however, remains underexplored. We introduce PolyWorkBench, a benchmark designed to evaluate LLM agents on multilingual, long-horizon workplace workflows. PolyWorkBench features 67 tasks across five core domains: commerce, knowledge work, legal analysis, localization, and manufacturing. Tasks are authored by the paper's authors from real-world data seeds and independently verified through a second-author audit. Agents must integrate heterogeneous multilingual inputs, execute iterative tool-use trajectories, and produce structured domain artifacts. To rigorously assess performance, we adopt Grade, a task-specific structural scoring rubric, as our primary ranking metric, and complement it with Pytest for executable state verification and LLM-as-Judge for semantic quality diagnostics. Benchmark evaluations reveal that agent performance varies substantially across languages and drops sharply on the harder cross-lingual tasks, and our analysis shows that multilingual execution exposes systematic failure modes across planning, tool interaction, and decision-making in long-horizon agents.",
-      "pdf_url": "https://arxiv.org/abs/2607.06008",
-      "comment": "",
-      "technologies": [
-        "LLM Agents",
-        "Multilingual Processing",
-        "Long-Horizon Workflows",
-        "Tool Use",
-        "Structural Scoring Rubric",
-        "LLM-as-Judge"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Multilingual AI assistant for enterprise workflows",
-        "Cross-lingual task automation platform",
-        "AI-powered multilingual document processing system"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2508.09521",
-      "title": "PEER: Unified Process-Outcome Reinforcement Learning for Structured Empathetic Reasoning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2508.09521v3 Announce Type: replace-cross Abstract: Emotional support conversations require more than fluent responses. Supporters need to understand the seeker's situation and emotions, adopt an appropriate strategy, and respond in a natural, human-like manner. Despite advances in large language models, current systems often lack structured, psychology-informed reasoning. Additionally, it is challenging to enhance these systems through reinforcement learning because of unreliable reward signals. Moreover, reinforcement fine-tuning can amplify repetitive response patterns. We propose structured empathetic reasoning, which breaks support into three steps: conversation history analysis, multimodal emotional state inference, and strategy selection, prior to generating the final reply. To implement this, we introduce SER, a fine-grained dataset with step-level correctness labels and pairwise response preferences. We then present PEER, which uses GRPO with UnifiReward, a unified process-outcome reward model for evaluating both reasoning steps and final responses in multi-turn interactions. To reduce repetition, we enhance data with personality-based rewriting and down-weight redundant outputs. Comprehensive experiments show improved empathy, strategy alignment, and human-likeness without sacrificing diversity. Code and data are available at https://github.com/Yunxiao-Wang/PEER.",
-      "pdf_url": "https://arxiv.org/abs/2508.09521",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered empathetic chatbots for mental health support",
-        "Personalized emotional support systems for social media platforms"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "id": "2509.14104",
-      "title": "CSMoE: An Efficient Remote Sensing Foundation Model with Soft Mixture-of-Experts",
+      "id": "2608.16234",
+      "title": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Scene Understanding, Editing, and Multi-Modal Generation",
       "authors": [],
       "categories": [
         "cs.CV"
       ],
       "published": "2026-08-18",
       "updated": "2026-08-18",
-      "summary": "arXiv:2509.14104v2 Announce Type: replace Abstract: Self-supervised learning (SSL) through masked autoencoders (MAEs) has recently attracted great attention for remote sensing (RS) foundation model (FM) development, enabling improved representation learning across diverse sensors and downstream tasks. However, existing RS FMs often either suffer from substantial computational complexity during both training and inference or exhibit limited representational capacity. In addition, their pretraining datasets can contain redundant images, which increases training cost without improving the learned representations. These issues restrict their practical applicability in RS. To address these limitations, we improve the computational efficiency of RS FMs along two axes: i) model efficiency; and ii) training-data efficiency. Model efficiency is achieved by integrating the Soft mixture-of-experts (MoE) mechanism into the FM, which allows modality-specific expert processing alongside shared cross-sensor representation learning while reducing computational complexity at both training and inference time. We apply this adaptation to the Cross-Sensor Masked Autoencoder (CSMAE) model, which serves as our main baseline, resulting in the Cross-Sensor Mixture-of-Experts (CSMoE) model. Training-data efficiency is achieved by a thematic-climatic descriptor-driven sampling strategy, which constructs a reduced training set from a large-scale image archive while retaining its geographic and thematic-climatic diversity, and thus reduces pretraining cost. Extensive experiments on scene classification, semantic segmentation, and content-based image retrieval (CBIR) show that CSMoE remains competitive with state-of-the-art RS FMs while requiring substantially fewer floating-point operations (FLOPs). The associated code for the model and the training set creation, as well as the pretrained model weights, will be available at https://git.tu-berlin.de/rsim/csmoe.",
-      "pdf_url": "https://arxiv.org/abs/2509.14104",
+      "summary": "arXiv:2608.16234v1 Announce Type: new Abstract: Driving World Models (DWMs) have recently advanced rapidly with generative models, yet most existing methods mainly focus on conditional scene generation and lack explicit 3D scene understanding, language-grounded reasoning, and controllable 4D editing capabilities. Moreover, commonly used point cloud, occupancy, or BEV representations make it difficult to achieve fine-grained alignment between textual information and the underlying 3D scene structure. To address these limitations, we propose a foundation-feature Gaussian driving world model that unifies scene understanding, language-grounded reasoning, controllable 4D editing, and multi-modal generation within a single framework. Specifically, we introduce a foundation-feature Gaussian tokenizer that directly distills Qwen/SigLIP visual-language features into 3D Gaussian primitives, building a compact open-vocabulary Gaussian semantic field. We further design a geometry-aware Gaussian adapter that combines importance-aware hierarchical selection with text-conditioned Perceiver-style cross-attention to aggregate dense Gaussian primitives into compact world tokens. To improve representation compatibility, we introduce a KL-based Gaussian--image distribution alignment objective that aligns Gaussian world tokens with foundation image tokens. Based on the aligned Gaussian representation, our framework further supports instruction-controllable scene editing, including weather-conditioned generation and dynamic vehicle manipulation. Extensive experiments on broader driving benchmarks demonstrate that our method achieves state-of-the-art performance across scene understanding, visual grounding, planning-oriented reasoning, and controllable 4D generation tasks. We will release the code and datasets publicly on Github.",
+      "pdf_url": "https://arxiv.org/abs/2608.16234",
       "comment": "",
       "technologies": [
-        "Mixture of Experts",
-        "Masked Autoencoders",
-        "Self-Supervised Learning",
-        "Vision Transformer",
+        "Gaussian Splatting",
         "Multimodal Learning",
-        "Object Detection"
+        "Vision Transformer",
+        "Diffusion Models",
+        "Cross-Attention",
+        "Knowledge Distillation",
+        "Open-Vocabulary Learning",
+        "3D Scene Understanding",
+        "4D Generation"
       ],
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.7,
       "curator_score": 5.7,
       "product_potential": [
-        "Real-time satellite imagery analysis platform for rapid disaster response and infrastructure monitoring",
-        "Edge-deployed remote sensing analytics for autonomous drone navigation and environmental surveying",
-        "Automated large-scale land-use classification and change detection service for urban planning"
+        "Autonomous vehicle simulation platform for realistic weather and traffic scenario generation and editing",
+        "Interactive 3D scene editing tool for creative industries (film, gaming) with language-based control",
+        "Advanced driver assistance system (ADAS) with language-grounded scene understanding and reasoning"
       ],
       "domain_applications": [
-        "science",
-        "climate",
+        "robotics",
+        "creative",
         "enterprise"
       ]
     },
@@ -553,14 +341,319 @@
         "robotics",
         "automotive"
       ]
+    },
+    {
+      "id": "2512.02473",
+      "title": "WorldPack: Dynamic Frame Compression for Long-context Video World Modeling",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2512.02473v3 Announce Type: replace Abstract: Video world models have attracted significant attention for their ability to produce high-fidelity future visual observations conditioned on past observations and navigation actions. However, achieving temporally and spatially consistent generation over long horizons remains an open challenge: existing approaches either compress past frames without explicitly accounting for 3D viewpoint geometry or retrieve only a handful of spatially relevant frames without increasing the total amount of retained history. In this paper, we propose WorldPack, a video world model that introduces spatially-aware compressed memory to address both limitations simultaneously. The key insight is that compression rates should not be uniform or temporally determined, but should instead be dynamically allocated based on 3D spatial relevance to the current viewpoint. WorldPack achieves this through two tightly coupled mechanisms: trajectory packing, which fits substantially more historical frames into a fixed-length context through hierarchical frame compression, and geometric selection, which leverages camera pose information and field-of-view overlap to assign lower compression to spatially important frames and higher compression to less relevant ones. Together, these mechanisms expand the effective context from 4 to 22 frames with moderate computational overhead: trajectory packing increases diffusion-model inference time by 16%, while FoV-based geometric selection introduces an additional cost. We evaluate WorldPack on LoopNav, a Minecraft benchmark for long-horizon spatial consistency, and conduct comprehensive experiments on the RECON, real-world navigation dataset, across multiple metrics. WorldPack outperforms strong baselines, including Oasis, Mineworld, DIAMOND, and NWM, with pronounced gains on spatial reasoning tasks that require recall of distant observations.",
+      "pdf_url": "https://arxiv.org/abs/2512.02473",
+      "comment": "",
+      "technologies": [
+        "Dynamic Frame Compression",
+        "Spatially-aware Compressed Memory",
+        "Trajectory Packing",
+        "Geometric Selection"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Enhanced video editing tools with improved temporal and spatial consistency over long durations",
+        "Advanced virtual reality and augmented reality applications with extended context for more immersive experiences",
+        "Improved autonomous navigation systems for robots and vehicles with better recall of distant observations"
+      ],
+      "domain_applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2608.01324",
+      "title": "G-ReAct: Graph-Guided Deep Search via Structure-State Co-Evolution",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2608.01324v3 Announce Type: replace Abstract: Deep search has become a fundamental capability of large language models (LLMs) for solving open-domain complex tasks. However, existing approaches typically rely on linear sequential reasoning for both trajectory generation and inference, making it difficult to consistently preserve intermediate states and constraints throughout long-horizon multi-hop search. Consequently, they often suffer from context forgetting, search drift, and inefficient exploration. To address these limitations, we propose $\\textbf{G-ReAct}$, a reasoning framework for deep search that organizes reasoning as $\\textbf{state evolution over a fixed-topology query graph}$. The evolving graph state explicitly tracks search progress and guides subsequent decisions, transforming exploratory search driven by textual history into graph-guided reasoning under explicit constraints. G-ReAct supports both training and inference: it generates high-quality deep-search trajectories for supervised fine-tuning and provides structured guidance for inference-time search without additional fine-tuning. Experiments demonstrate that with only 1.9K generated trajectories for fine-tuning, Qwen3-30B-A3B-Thinking-2507 achieves $52.6\\%$ accuracy on BrowseComp-ZH and $79.0\\%$ on XBench, outperforming comparable open-source methods trained on substantially larger datasets, including RL-enhanced methods. Furthermore, when applied at inference time, G-ReAct consistently improves the performance of existing strong LLMs on deep-search tasks. We will publicly release all code and model weights.",
+      "pdf_url": "https://arxiv.org/abs/2608.01324",
+      "comment": "",
+      "technologies": [
+        "Graph-Guided Reasoning",
+        "State Evolution in Search"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "A graph-guided AI assistant for complex problem-solving tasks that can maintain context and constraints over long-horizon searches.",
+        "An enterprise search and discovery tool that leverages graph-guided reasoning to improve the accuracy and efficiency of information retrieval."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.15175",
+      "title": "LAPF: LLM-Agent-Based Path Finder Using the UAVScenes Dataset",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "summary": "arXiv:2608.15175v1 Announce Type: cross Abstract: Uncrewed aerial vehicles (UAVs) are increasingly deployed for autonomous navigation in complex outdoor environments, where dynamic conditions and mission requirements require intelligent adaptive decision-making. Existing optimization-based, Machine Learning (ML), and Reinforcement Learning (RL) approaches often rely on predefined models or task-specific training, limiting their generalization and adaptability in uncertain scenarios. Recent Large Language Model (LLM)-assisted approaches offer promising reasoning capabilities but remain constrained by limited agentic functionality, including insufficient memory, planning, and tool interaction mechanisms.This paper proposes an LLM-Agent-Based Path Finder (LAPF) framework for autonomous UAV navigation in town-scale outdoor environments. LAPF extends LLM-assisted navigation by integrating perception, memory, planning, and action modules into a closed-loop cognitive architecture. The proposed agent leverages prior navigation experiences, performs Chain-of-Thought (CoT) reasoning, couples each detected hazard to a bounded corrective action, and dynamically refines waypoint decisions based on environmental feedback.The three independent trials per method demonstrate that LAPF achieves mean path lengths of 512.83 m and 506.37 m, compared to the straight-line optimum of 497.33 m, corresponding to path length reductions of 17.2% and 15.6% relative to CoT prompting and absolute path efficiencies of 97.1% and 98.1% in open-field and obstacle-injected scenarios, respectively. Furthermore, LAPF is the only evaluated approach that couples every detected hazard to a bounded, metric-neutral corrective action while maintaining near-goal stability, with zero clamp events in both scenarios, whereas CoT prompting increases from 9.7 to 14.0 events.",
+      "pdf_url": "https://arxiv.org/abs/2608.15175",
+      "comment": "",
+      "technologies": [
+        "Chain-of-Thought Prompting",
+        "LLM Agent",
+        "Memory-Augmented Planning",
+        "Tool Interaction",
+        "Closed-Loop Control"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Autonomous UAV navigation system for delivery and inspection in dynamic outdoor environments",
+        "LLM-based mission planning assistant for drone fleet management in logistics and agriculture",
+        "Adaptive pathfinding module for autonomous ground vehicles in off-road or disaster response scenarios"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2507.09562",
+      "title": "Prompt Engineering in Segment Anything Model: Methodologies, Applications, and Emerging Challenges",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "summary": "arXiv:2507.09562v2 Announce Type: replace-cross Abstract: The Segment Anything Model (SAM) has transformed image segmentation by introducing a prompt-based paradigm that enables strong zero-shot generalization. In this framework, prompts serve as a semantic interface between human intent and machine perception, making prompt engineering a central factor in model performance. Despite its importance, prompt engineering within SAM and its variants has not yet been systematically reviewed in the literature. This survey addresses that gap by providing a structured and comprehensive overview of prompt engineering techniques developed for SAM and its rapidly growing ecosystem. We introduce a hierarchical taxonomy that organizes methods into geometric prompts, textual semantic prompts, and multimodal fusion prompts, and analyze how these categories reflect different design principles and application goals. In addition, we examine the transition from manually crafted prompts to more advanced, automated approaches based on detector outputs, prototype learning, reinforcement learning, and vision-language models. Beyond categorizing existing work, we trace how prompt engineering has enabled SAM to generalize across domains such as medical imaging, remote sensing, industrial inspection, and anomaly detection. We further identify key challenges---including prompt sensitivity, cross-modal misalignment, and computational inefficiency---and highlight promising research directions such as causal prompt reasoning, collaborative multi-agent prompting, and diffusion-based progressive refinement. By consolidating these developments into a unified perspective, our survey provides a timely reference for understanding the role of prompt engineering in segmentation foundation models and lays the groundwork for future advances in this evolving field.",
+      "pdf_url": "https://arxiv.org/abs/2507.09562",
+      "comment": "",
+      "technologies": [
+        "Segment Anything Model",
+        "Multimodal Learning",
+        "Vision-Language Models",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Automated medical image analysis tool for radiologists",
+        "Industrial defect detection system for quality control",
+        "Interactive image editing application for designers"
+      ],
+      "domain_applications": [
+        "healthcare",
+        "science",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2510.08759",
+      "title": "Dissecting Embodied Abilities in Multimodal Language Models through Skill-level Evaluation and Diagnosis",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "summary": "arXiv:2510.08759v3 Announce Type: replace Abstract: Understanding the capability bottlenecks of embodied multimodal large language models (MLLMs) is crucial for improving embodied agents. However, existing embodied benchmarks mainly focus on task-level evaluation and fail to provide actionable insights into the underlying causes of model failures. To address this limitation, we introduce BEAR, a benchmark that decomposes embodied tasks into 14 atomic skills for fine-grained skill-level evaluation. BEAR comprises 4,469 interleaved image-video-text samples spanning 14 skills across 6 categories, ranging from low-level perception to high-level planning. We evaluate 20 MLLMs on BEAR under a hierarchical skill-level diagnosis framework and uncover two key findings: (1) perceptual capabilities are major bottlenecks behind reasoning failures, and (2) current models suffer from unstable spatiotemporal modeling that remains largely unexposed in prior benchmarks. Motivated by these findings, we further propose BEAR-Agent, a multimodal conversational agent that augments MLLMs with visual and spatial reasoning tools. BEAR-Agent substantially improves performance across embodied skills, achieving a relative improvement of 17.5% on GPT-5 over the base model on BEAR, while also outperforming strong baselines in both simulation and real-world robotic experiments. Project page: https://bear-official66.github.io/",
+      "pdf_url": "https://arxiv.org/abs/2510.08759",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Skill-level Evaluation",
+        "Spatiotemporal Modeling"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "A multimodal conversational agent that can assist users in real-world tasks by providing visual and spatial reasoning tools.",
+        "A diagnostic tool for developers to identify and address perceptual and spatiotemporal modeling bottlenecks in embodied multimodal language models."
+      ],
+      "domain_applications": [
+        "robotics",
+        "education",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2608.03502",
+      "title": "Hybrid LLM-Augmented Reinforcement Learning Agents for Complex Sequential Decision Tasks",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2608.03502v2 Announce Type: replace Abstract: Large Language Models (LLMs) have recently shown strong capabilities in reasoning, planning, and tool-use, enabling new forms of autonomous agents. However, LLM-based agents struggle with long-horizon sequential decision tasks that require precise action optimization and environment interaction. Reinforcement Learning (RL), while effective for sequential control, often lacks the high-level abstraction and task decomposition abilities needed for complex scenarios. This paper introduces an LLM-Augmented Reinforcement Learning Agent that integrates LLM-driven planning with RL-based action optimization. The proposed architecture leverages the LLM to generate subgoals, structured plans, and contextual guidance, while the RL agent refines low-level actions through interaction with the environment. Experiments on sequential decision tasks demonstrate improved sample efficiency, higher success rates, and more coherent action trajectories compared to RL-only and LLM-only baselines. This hybrid paradigm highlights a promising direction for building more capable autonomous systems.",
+      "pdf_url": "https://arxiv.org/abs/2608.03502",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "LLM-Augmented Reinforcement Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Autonomous trading agents that leverage LLM-driven market analysis and RL-based execution for optimized trading strategies",
+        "Personalized healthcare assistants that use LLM-driven diagnosis and RL-based treatment planning for patient-specific care"
+      ],
+      "domain_applications": [
+        "finance",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2608.12253",
+      "title": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "summary": "arXiv:2608.12253v2 Announce Type: replace-cross Abstract: Multi-agent reinforcement learning for human-AI interaction typically relies on a single large language model to simulate user behavior. We show that this approach systematically fails to generalize, and trace the failure to simulator collapse: because the simulator LLM is mode-collapsed, an LLM policy trained against it overfits to narrow strategies that exploit the simulator's dominant mode, and such a policy transfers poorly to unseen simulators and real users. We formalize this collapse theoretically and propose two complementary solutions, one at inference time and one at training time. The inference-time solution, Verbalized Sampling, broadens the simulator's behavior by sampling from a verbalized response distribution, reducing mode collapse. The training-time solution, Co-Training, jointly optimizes the policy against a population of trainable simulators, preventing it from overfitting to any single simulator's mode. We validate both solutions on three multi-turn benchmarks: Persuasion for Good, $\\tau^2$-bench, and CooperBench. Verbalized Sampling improves held-out success by up to 9% over single-simulator RL, and Co-Training pushes gains further to 14%; the human study shows similar gain on real users. Both solutions preserve the policy diversity that collapses under single-simulator RL. To support further work in this direction, we release SCOPE, an open-source framework for Population Co-Training multi-agent RL. More broadly, our results suggest that the diversity of the training environment, not only the policy, is critical to the generalization of multi-turn RL to real-world deployment.",
+      "pdf_url": "https://arxiv.org/abs/2608.12253",
+      "comment": "",
+      "technologies": [
+        "Multi-Agent Reinforcement Learning",
+        "Population-Based Training",
+        "Verbalized Sampling",
+        "Co-Training",
+        "Simulator Collapse"
+      ],
+      "maturity": "early",
+      "confidence": 0.85,
+      "curator_score": 5.4,
+      "product_potential": [
+        "Robust AI training pipelines for conversational agents that generalize to diverse user behaviors",
+        "Simulation-as-a-service for evaluating human-AI interaction systems before deployment",
+        "Adaptive user simulation for personalized AI coaching or tutoring systems"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "education",
+        "healthcare"
+      ]
     }
   ],
   "technologies": [
     {
-      "name": "Gaussian Splatting",
+      "name": "Saliency-Driven Attention Redistribution",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "healthcare",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Saliency-Driven Cache Alignment",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "healthcare",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Prior-Constrained Contrastive Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "healthcare",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Knowledge Graph Representation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Auto-encoding Framework",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 4,
+      "maturity": "medium",
+      "confidence": 0.75,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "Video Representation Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Knowledge Distillation",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.75,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -569,63 +662,106 @@
       ]
     },
     {
-      "name": "Multimodal Learning",
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 5,
+      "maturity": "medium",
+      "confidence": 0.75,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "science",
+        "healthcare",
+        "finance"
+      ]
+    },
+    {
+      "name": "Agentic AI",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "climate",
-        "healthcare",
-        "enterprise",
-        "robotics",
-        "accessibility",
-        "science",
         "creative",
-        "education"
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Structured Representation Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "bitsandbytes Quantization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Proactive Interference",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Gaussian Splatting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise"
       ]
     },
     {
       "name": "Vision Transformer",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "climate",
-        "enterprise",
-        "robotics",
-        "science",
-        "creative"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "robotics",
-        "automotive",
         "creative",
         "enterprise"
       ]
     },
     {
-      "name": "Cross-Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "name": "Diffusion Models",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.75,
       "trend": "rising",
       "applications": [
         "robotics",
         "creative",
-        "enterprise"
+        "enterprise",
+        "automotive"
       ]
     },
     {
-      "name": "Knowledge Distillation",
+      "name": "Cross-Attention",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
@@ -639,8 +775,8 @@
     {
       "name": "Open-Vocabulary Learning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -651,8 +787,8 @@
     {
       "name": "3D Scene Understanding",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -663,502 +799,58 @@
     {
       "name": "4D Generation",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "LLM Agent",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Memory-Augmented Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Tool Interaction",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Closed-Loop Control",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Segment Anything Model",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "healthcare",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 4,
+      "maturity": "medium",
+      "confidence": 0.75,
+      "trend": "rising",
+      "applications": [
+        "education",
         "enterprise",
-        "robotics",
         "science",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Skill-level Evaluation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Spatiotemporal Modeling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-Agent Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
         "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Population-Based Training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Verbalized Sampling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Co-Training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Simulator Collapse",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Knowledge Graph Representation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Auto-encoding Framework",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Video Representation Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Agentic AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Structured Representation Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Sparse Attention",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "education",
-        "science",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Linear Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "FlashAttention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "State Space Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "other",
-        "enterprise"
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "climate",
-        "enterprise",
         "education",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Mechanistic Interpretability",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Tool-Augmented Agents",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Test-Time Scaling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Budget-Aware Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Adaptive Verification",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Cost-Performance Pareto Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "finance",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "LLM Agents",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Multilingual Processing",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Long-Horizon Workflows",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Tool Use",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Structural Scoring Rubric",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "LLM-as-Judge",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Masked Autoencoders",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "climate",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Self-Supervised Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "climate",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Object Detection",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "climate",
-        "enterprise"
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Large Language Models",
-      "papers": 1,
+      "papers": 2,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.725,
       "trend": "rising",
       "applications": [
         "education",
@@ -1168,8 +860,8 @@
     {
       "name": "Tokenization",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1179,8 +871,8 @@
     {
       "name": "Transformer Architecture",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1190,8 +882,8 @@
     {
       "name": "Prompt Engineering",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1201,8 +893,8 @@
     {
       "name": "Retrieval Augmented Generation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1212,8 +904,8 @@
     {
       "name": "Production Deployment",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1223,8 +915,8 @@
     {
       "name": "Gamification-based Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1234,8 +926,8 @@
     {
       "name": "Scaffolded Learning Pathways",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "education",
@@ -1244,14 +936,15 @@
     },
     {
       "name": "Multi-agent Reinforcement Learning",
-      "papers": 1,
+      "papers": 3,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.825,
       "trend": "rising",
       "applications": [
         "education",
         "creative",
-        "enterprise"
+        "enterprise",
+        "healthcare"
       ]
     },
     {
@@ -1275,128 +968,383 @@
         "robotics",
         "automotive"
       ]
+    },
+    {
+      "name": "Dynamic Frame Compression",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Spatially-aware Compressed Memory",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Trajectory Packing",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Geometric Selection",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Graph-Guided Reasoning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "State Evolution in Search",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "LLM Agent",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Memory-Augmented Planning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Tool Interaction",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Closed-Loop Control",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Segment Anything Model",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "science",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "science",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Skill-level Evaluation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "education",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Spatiotemporal Modeling",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "education",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "LLM-Augmented Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Population-Based Training",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Verbalized Sampling",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Co-Training",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Simulator Collapse",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Multi-Agent Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "healthcare",
+        "education"
+      ]
     }
   ],
   "product_opportunities": [
     {
-      "technology": "Multimodal Learning",
-      "idea": "ClimateSense: AI-driven climate change monitoring and reporting tool using satellite imagery, weather data, and social media",
+      "technology": "Saliency-Driven Attention Redistribution",
+      "idea": "FocusFlow: AI-powered tool to optimize attention during online meetings and lectures",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "3-6 months"
+      "development_time": "3-5 months"
     },
     {
-      "technology": "Diffusion Models",
-      "idea": "AutoPilotAI: AI-generated driving simulations for autonomous vehicle training",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "6-12 months"
-    },
-    {
-      "technology": "Knowledge Distillation",
-      "idea": "CreativeMind: AI-powered creative assistant that distills knowledge from various art styles and generates new designs",
+      "technology": "Saliency-Driven Cache Alignment",
+      "idea": "CacheMaster: AI-driven cache management system for educational and healthcare applications",
       "business_value": 7,
       "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "4-8 weeks"
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
     },
     {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "RoboCare: AI-powered robotic assistant for healthcare, trained through human feedback to improve patient care",
+      "technology": "Prior-Constrained Contrastive Decoding",
+      "idea": "PriorGenius: AI tool for generating context-aware content suggestions for educational and healthcare platforms",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "6-12 months"
+      "development_time": "4-6 months"
     },
     {
-      "technology": "Knowledge Graph Representation",
-      "idea": "KnowledgeNest: AI-powered knowledge management platform that organizes and retrieves information using knowledge graphs",
+      "technology": "Segment Anything Model",
+      "idea": "SegmentPro: AI-powered image and video segmentation tool for medical imaging and creative applications",
+      "business_value": 10,
+      "engineering_difficulty": 9,
+      "competitive_advantage": "very high",
+      "development_time": "5-7 months"
+    },
+    {
+      "technology": "Vision-Language Models",
+      "idea": "VisioLingo: AI tool for generating descriptive captions and metadata for images and videos",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "3-6 months"
+      "development_time": "3-5 months"
     },
     {
-      "technology": "Auto-encoding Framework",
-      "idea": "CreativeCoder: AI-powered code generation tool that learns from existing codebases and generates new, optimized code",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "4-8 weeks"
-    },
-    {
-      "technology": "Video Representation Learning",
-      "idea": "VideoSense: AI-powered video analysis tool that understands and describes video content in real-time",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
-    },
-    {
-      "technology": "Agentic AI",
-      "idea": "AgenticAssistant: AI-powered personal assistant that learns from user interactions and performs tasks autonomously",
+      "technology": "Population-Based Training",
+      "idea": "TrainPro: AI-driven training platform for optimizing machine learning models across various applications",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "6-12 months"
+      "development_time": "4-6 months"
     },
     {
-      "technology": "Structured Representation Learning",
-      "idea": "StructuredMind: AI-powered data analysis tool that learns from structured data and generates insights",
+      "technology": "Verbalized Sampling",
+      "idea": "VerboSample: AI tool for generating diverse and representative samples of data for training and analysis",
       "business_value": 7,
       "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Co-Training",
+      "idea": "CoTrain: AI-powered co-training platform for improving the accuracy and robustness of machine learning models",
+      "business_value": 8,
+      "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "4-8 weeks"
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Simulator Collapse",
+      "idea": "SimCollapse: AI tool for detecting and mitigating simulator collapse in training and simulation applications",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Multi-agent Reinforcement Learning",
+      "idea": "MultiAgentPro: AI platform for training and deploying multi-agent reinforcement learning models in various applications",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "bitsandbytes Quantization",
+      "idea": "QuantPro: AI tool for quantizing and optimizing machine learning models for deployment in resource-constrained environments",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Proactive Interference",
+      "idea": "InterferePro: AI tool for optimizing memory and learning processes through proactive interference techniques",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
     },
     {
       "technology": "Sparse Attention",
-      "idea": "SparseMind: AI-powered educational tool that uses sparse attention to focus on relevant information and improve learning",
+      "idea": "SparseAttend: AI tool for optimizing attention mechanisms in machine learning models for improved efficiency and performance",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "3-6 months"
+      "development_time": "3-5 months"
     },
     {
       "technology": "Mixture of Experts",
-      "idea": "ExpertMind: AI-powered enterprise tool that combines the expertise of multiple AI models to generate insights and recommendations",
+      "idea": "ExpertMix: AI platform for training and deploying mixture of experts models for various applications",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "6-12 months"
+      "development_time": "4-6 months"
     },
     {
-      "technology": "Large Language Models",
-      "idea": "LearnMind: AI-powered educational platform that uses large language models to personalize learning and improve student outcomes",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "6-12 months"
-    },
-    {
-      "technology": "Tokenization",
-      "idea": "TokenMind: AI-powered tokenization tool that learns from existing tokenization patterns and generates new, optimized tokenizations",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "4-8 weeks"
-    },
-    {
-      "technology": "Transformer Architecture",
-      "idea": "TransformMind: AI-powered transformer architecture tool that learns from existing transformer architectures and generates new, optimized architectures",
+      "technology": "Dynamic Frame Compression",
+      "idea": "FramePro: AI tool for dynamically compressing and optimizing video frames for improved storage and transmission",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "3-6 months"
-    },
-    {
-      "technology": "Prompt Engineering",
-      "idea": "PromptMind: AI-powered prompt engineering tool that learns from existing prompts and generates new, optimized prompts",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "high",
-      "development_time": "4-8 weeks"
+      "development_time": "3-5 months"
     }
   ]
 }
