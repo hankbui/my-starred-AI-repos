@@ -1,19 +1,19 @@
 {
   "meta": {
-    "date": "2026-08-21",
+    "date": "2026-08-22",
     "papers_tracked": 15,
     "technologies_discovered": 56,
     "opportunities_identified": 15,
-    "last_update": "2026-08-21 05:55 UTC",
+    "last_update": "2026-08-22 05:51 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Saliency-Driven Perceptual Alignment: By forcing LVLMs to focus on relevant visual features before generation, we can drastically reduce hallucinations in high-stakes domains like healthcare and legal document analysis, creating an opportunity for 'High-Fidelity Vision-AI' products.",
-    "Mid-training Synthesis for Tool-Use: Moving beyond fine-tuning, mid-training on synthetic tool-use data allows for specialized agentic capabilities without the overhead of full retraining, enabling enterprise-grade agents that reliably interface with proprietary internal software stacks.",
-    "Quantization-Induced Interference: The discovery that bitsandbytes quantization causes proactive interference suggests a critical product risk for on-device LLMs; builders should prioritize 'interference-aware' model compression techniques to maintain long-term memory and reasoning accuracy in production.",
-    "Dynamic World Modeling for Robotics: The convergence of Gaussian Splatting and dynamic frame compression (WorldPack/GaussianDWM++) creates a new standard for real-time 3D scene understanding, enabling robotics and AR/VR platforms to operate with lower latency and higher spatial awareness.",
-    "Neuro-symbolic Spatial Planning: Integrating rule-compliant visual reasoning with LLMs (Rule-Compliant Planning) allows for deterministic task execution in complex environments, providing a clear path to building autonomous agents that can navigate safety-critical industrial or surgical workflows."
+    "Multimodal Spatial Intelligence is Maturing for Robotics: Papers on egocentric spatial perception (Vision Transformers + GNNs), 4D longitudinal brain modeling, and rule-compliant visual planning signal rapid advances in spatial reasoning for embodied AI. Why it matters: Robots and autonomous systems need precise 3D/4D scene understanding to operate reliably. Opportunity: Build spatial AI toolkits, simulation environments, and perception pipelines for robotics, AR/VR, and autonomous vehicles.",
+    "Hallucination Mitigation in Vision-Language Models is Becoming Production-Ready: Saliency-driven attention redistribution, cache alignment, and contrastive decoding are emerging as practical solutions for LVLM reliability. Why it matters: Enterprise adoption of multimodal AI requires factual accuracy in healthcare, education, and accessibility domains. Opportunity: Ship hallucination-resistant LVLM APIs and evaluation frameworks for mission-critical applications.",
+    "Agentic Tool Use is Advancing via Mid-Training Approaches: The MidTool paper demonstrates that mid-training on tool-use data improves LLM agent capabilities significantly. Why it matters: Reliable tool calling is the backbone of production AI agents. Opportunity: Develop agentic frameworks with improved tool-use training pipelines, evaluation benchmarks, and deployment infrastructure for enterprise automation.",
+    "3D/4D Generative Scene Understanding is Converging: Gaussian splatting + diffusion models (GaussianDWM++) and spatiotemporal attention (4DLoG) enable unified scene generation, editing, and understanding. Why it matters: Digital twins, robotics training, and creative tools need dynamic 3D content. Opportunity: Build unified 3D scene generation APIs, simulation-to-reality pipelines, and multimodal editing tools for creative and robotics domains.",
+    "Quantization Introduces Hidden Reliability Trade-offs: bitsandbytes quantization amplifies proactive interference in LLMs, revealing that efficiency gains come with memory/accuracy costs. Why it matters: Product teams deploying quantized models may face unexpected reliability issues. Opportunity: Develop hybrid quantization methods, interference-aware deployment tools, and monitoring solutions for quantized model serving."
   ],
   "top_cards": [
     {
@@ -21,15 +21,15 @@
       "title": "New Technologies",
       "value": "56",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Retrieval Augmented Generation, Diffusion Models, Agentic AI, Gaussian Splatting, Knowledge Graphs, Vision Transformer",
+      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Diffusion Models, Retrieval Augmented Generation, Agentic AI, Knowledge Graphs, Gaussian Splatting, Reinforcement Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "50",
+      "value": "51",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Retrieval Augmented Generation, Diffusion Models, Vision Transformer",
+      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Retrieval Augmented Generation, Vision Transformer, Diffusion Models",
       "color": "green"
     },
     {
@@ -59,7 +59,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "23",
+      "value": "44",
       "label": "early-stage technologies",
       "detail": "MidTool: Mid-training Data Synthesis for Agentic Tool Use",
       "color": "blue"
@@ -85,7 +85,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "Enhanced multimodal AI assistants with reduced hallucinations",
         "Improved visual question answering systems for education and accessibility",
@@ -133,7 +133,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.78,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "AI agent development platforms that enable LLMs to reliably orchestrate multi-tool workflows for enterprise automation tasks",
         "Intelligent automation systems that teach models to recognize tool affordances, compose tool calls, and recover from errors in complex business processes",
@@ -143,211 +143,6 @@
         "enterprise",
         "science",
         "other"
-      ]
-    },
-    {
-      "id": "2608.18578",
-      "title": "Compress and Forget: bitsandbytes Quantization Amplifies Proactive Interference in LLMs",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-08-20",
-      "updated": "2026-08-20",
-      "summary": "arXiv:2608.18578v1 Announce Type: new Abstract: Proactive interference (PI) is a documented failure mode in large language models in which retrieval of a repeatedly overwritten value degrades as prior overwrites accumulate, mirroring a classical phenomenon in human working memory. Post-training quantization (PTQ) is now the default deployment path for open-weight models, yet its effect on this failure mode has not been tested. We evaluate three precision levels (FP16, INT8, INT4/NF4, via bitsandbytes) across three architecturally distinct instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct), holding the retrieval task fixed. INT4 quantization significantly reduces accuracy under high interference in every model (e.g., from 81.0% to 68.3% for Qwen), confirmed by paired McNemar's tests ($p \\le 2.6 \\times 10^{-6}$) and a mixed-effects regression spanning all interference levels; INT8, often assumed safe, also carries a smaller but real penalty in two of three models. The effect is specific to semantically similar (word-type) distractors and reverses sign under a numeric control condition, and is mechanistically linked to a rise in same-key intrusion errors under INT4 (from 21.5% to 24.6% of trials, $p = 4.8 \\times 10^{-7}$). A follow-up ablation shows the effect originates in the quantized transformer backbone rather than the output projection layer. These results suggest that bitsandbytes 4-bit quantization can impose an additional cost on applications relying on long, updatable, semantically dense contexts, even when aggregate benchmark accuracy appears largely unaffected. We release our code and tokenizer-verified vocabulary construction method at https://github.com/ShayanShahrabi/compress-and-forget",
-      "pdf_url": "https://arxiv.org/abs/2608.18578",
-      "comment": "",
-      "technologies": [
-        "bitsandbytes Quantization",
-        "Proactive Interference"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "Optimized LLM deployment with reduced memory footprint and improved performance under high interference conditions",
-        "Enhanced context management systems for applications requiring long, updatable, semantically dense contexts"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2608.20106",
-      "title": "OenoBench: A Wine-Domain Benchmark for Knowledge-Grounded Evaluation of Large Language Models",
-      "authors": [
-        "Nikita Khudov"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-08-20",
-      "updated": "2026-08-20",
-      "summary": "We introduce OenoBench, a wine-domain knowledge benchmark of 3,266 multiple-choice questions across six pillars (regions, grape varieties, viticulture, winemaking, producers, business) and four difficulty tiers. The corpus is built from 38,104 atomic, source-anchored facts extracted by 35 provenance-verified scrapers from government registries (INAO, TTB, OIV), peer-reviewed journals, and Wikipedia/Wikidata. Our methodological contribution is an LLM-driven pipeline in which language models reformat verified facts and audit the result, but never serve as the source of truth: every claim traces to a URL, every question is generated by one of five strategies across five generator families, and every question is scored by a nine-agent audit calibrated against a human gold sheet via Cohen's $κ$. Evaluating sixteen frontier configurations, we find: (i) overall accuracy spans 53%-84%, led by o3 at 83.6%; (ii) reasoning-mode lift concentrates in DeepSeek R1 (+6.8pp) and is absent in Claude Opus and Gemini Pro; (iii) Anthropic shows +9pp self preference on its own questions while Google shows -8pp inverse preference; (iv) frontier open-weight models share the cost-vs-accuracy Pareto frontier with proprietary reasoning models; and (v) every config gains around 33pp on closed-book solvable items, revealing a parametric-recall ceiling that only the contextual slice avoids. We release corpus, audit findings, human-review app, and construction code under CC-BY-SA-4.0.",
-      "pdf_url": "https://arxiv.org/pdf/2608.20106v1",
-      "comment": "",
-      "technologies": [
-        "Retrieval Augmented Generation",
-        "Chain-of-Thought Prompting",
-        "Multi-Agent Systems",
-        "Knowledge Distillation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.9,
-      "product_potential": [
-        "Domain-specific expert system for automated sommelier services and wine recommendation engines",
-        "Automated compliance and regulatory auditing tool for wine industry supply chain documentation",
-        "Specialized fine-tuning and evaluation framework for vertical-specific LLM knowledge grounding"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2608.16234",
-      "title": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Scene Understanding, Editing, and Multi-Modal Generation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-18",
-      "updated": "2026-08-18",
-      "summary": "arXiv:2608.16234v1 Announce Type: new Abstract: Driving World Models (DWMs) have recently advanced rapidly with generative models, yet most existing methods mainly focus on conditional scene generation and lack explicit 3D scene understanding, language-grounded reasoning, and controllable 4D editing capabilities. Moreover, commonly used point cloud, occupancy, or BEV representations make it difficult to achieve fine-grained alignment between textual information and the underlying 3D scene structure. To address these limitations, we propose a foundation-feature Gaussian driving world model that unifies scene understanding, language-grounded reasoning, controllable 4D editing, and multi-modal generation within a single framework. Specifically, we introduce a foundation-feature Gaussian tokenizer that directly distills Qwen/SigLIP visual-language features into 3D Gaussian primitives, building a compact open-vocabulary Gaussian semantic field. We further design a geometry-aware Gaussian adapter that combines importance-aware hierarchical selection with text-conditioned Perceiver-style cross-attention to aggregate dense Gaussian primitives into compact world tokens. To improve representation compatibility, we introduce a KL-based Gaussian--image distribution alignment objective that aligns Gaussian world tokens with foundation image tokens. Based on the aligned Gaussian representation, our framework further supports instruction-controllable scene editing, including weather-conditioned generation and dynamic vehicle manipulation. Extensive experiments on broader driving benchmarks demonstrate that our method achieves state-of-the-art performance across scene understanding, visual grounding, planning-oriented reasoning, and controllable 4D generation tasks. We will release the code and datasets publicly on Github.",
-      "pdf_url": "https://arxiv.org/abs/2608.16234",
-      "comment": "",
-      "technologies": [
-        "Gaussian Splatting",
-        "Multimodal Learning",
-        "Vision Transformer",
-        "Diffusion Models",
-        "Cross-Attention",
-        "Knowledge Distillation",
-        "Open-Vocabulary Learning",
-        "3D Scene Understanding",
-        "4D Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Autonomous vehicle simulation platform for realistic weather and traffic scenario generation and editing",
-        "Interactive 3D scene editing tool for creative industries (film, gaming) with language-based control",
-        "Advanced driver assistance system (ADAS) with language-grounded scene understanding and reasoning"
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2512.02473",
-      "title": "WorldPack: Dynamic Frame Compression for Long-context Video World Modeling",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-20",
-      "updated": "2026-08-20",
-      "summary": "arXiv:2512.02473v3 Announce Type: replace Abstract: Video world models have attracted significant attention for their ability to produce high-fidelity future visual observations conditioned on past observations and navigation actions. However, achieving temporally and spatially consistent generation over long horizons remains an open challenge: existing approaches either compress past frames without explicitly accounting for 3D viewpoint geometry or retrieve only a handful of spatially relevant frames without increasing the total amount of retained history. In this paper, we propose WorldPack, a video world model that introduces spatially-aware compressed memory to address both limitations simultaneously. The key insight is that compression rates should not be uniform or temporally determined, but should instead be dynamically allocated based on 3D spatial relevance to the current viewpoint. WorldPack achieves this through two tightly coupled mechanisms: trajectory packing, which fits substantially more historical frames into a fixed-length context through hierarchical frame compression, and geometric selection, which leverages camera pose information and field-of-view overlap to assign lower compression to spatially important frames and higher compression to less relevant ones. Together, these mechanisms expand the effective context from 4 to 22 frames with moderate computational overhead: trajectory packing increases diffusion-model inference time by 16%, while FoV-based geometric selection introduces an additional cost. We evaluate WorldPack on LoopNav, a Minecraft benchmark for long-horizon spatial consistency, and conduct comprehensive experiments on the RECON, real-world navigation dataset, across multiple metrics. WorldPack outperforms strong baselines, including Oasis, Mineworld, DIAMOND, and NWM, with pronounced gains on spatial reasoning tasks that require recall of distant observations.",
-      "pdf_url": "https://arxiv.org/abs/2512.02473",
-      "comment": "",
-      "technologies": [
-        "Dynamic Frame Compression",
-        "Spatially-aware Compressed Memory",
-        "Trajectory Packing",
-        "Geometric Selection"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Enhanced video editing tools with improved temporal and spatial consistency over long durations",
-        "Advanced virtual reality and augmented reality applications with extended context for more immersive experiences",
-        "Improved autonomous navigation systems for robots and vehicles with better recall of distant observations"
-      ],
-      "domain_applications": [
-        "creative",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.20237",
-      "title": "Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models",
-      "authors": [
-        "Yu Chen",
-        "Ting Lei",
-        "Yaoyi Li",
-        "Jia Cai",
-        "Zhecen Wu",
-        "Yang Liu"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-08-20",
-      "updated": "2026-08-20",
-      "summary": "Multimodal large language models (MLLMs) combine linguistic reasoning with visual perception, yet their ability to perform visual spatial planning under explicit or previously unseen rule constraints remains underexplored. This setting requires models to jointly understand spatial layouts, interpret natural-language rules, and plan valid actions accordingly. To address this gap, we introduce RuleMaze, a controllable benchmark in which MLLMs must navigate mazes while obeying natural-language rules of varying complexity. RuleMaze isolates rule-compliant spatial planning by requiring accurate perception, rule interpretation, and constrained action planning. To enable scalable and systematic rule construction, we propose Language-Logic-Function Hybridization, which automatically generates natural-language rules and translates them into logical representations and executable validators, eliminating manual rule engineering. To improve rule following and generalization, we introduce Disentangled Multimodal Planning (DMP), which separates perception, execution, and rule verification through interpretable reasoning primitives. By disentangling these components, DMP facilitates systematic generalization to more complex and previously unseen rules, while providing transparent intermediate planning traces. Experiments demonstrate that DMP substantially improves rule compliance and planning success compared to end-to-end textual planning baselines. Overall, RuleMaze establishes a principled benchmark for studying grounded and interpretable rule-based spatial planning in MLLMs. Code is available at https://github.com/oceanflowlab/RuleMaze.",
-      "pdf_url": "https://arxiv.org/pdf/2608.20237v1",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Chain-of-Thought Prompting",
-        "Neuro-symbolic AI",
-        "Task Planning",
-        "Visual Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Autonomous warehouse navigation systems with dynamic safety constraint enforcement",
-        "AI-driven architectural design assistants for building code compliance",
-        "Robotic process automation for complex physical environments requiring rule-based navigation"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2608.19964",
-      "title": "G-MARK: Grounded Multi-Agent Reasoning for Cooperative Driving via Knowledge Graphs",
-      "authors": [
-        "Bhavya Gupta",
-        "Onat Gungor",
-        "Tajana Rosing"
-      ],
-      "categories": [
-        "cs.LG"
-      ],
-      "published": "2026-08-20",
-      "updated": "2026-08-20",
-      "summary": "Autonomous driving systems must operate under partial observability, where safety-critical objects may be occluded or visible only to neighboring connected vehicles. Vehicle-to-vehicle cooperation can reduce this uncertainty, but existing cooperative driving methods often compress multi-agent evidence into latent features or hidden multimodal states. As a result, they obscure which agent observed each object, whether the object is visible to the ego vehicle, and how conflicting evidence affects downstream decisions. We propose G-MARK, a grounded multi-agent reasoning framework that converts cooperative object-centric observations into explicit provenance-aware knowledge graphs (KGs). The resulting KGs preserve object hypotheses together with their source attribution, ego-versus-partner visibility, uncertainty, conflicts, spatial relations, and planning-relevant context. G-MARK then derives a shared feature representation from these KGs, enabling lightweight task heads to support object reasoning, motion prediction, control selection, and trajectory forecasting. Compared with the state-of-the-art baseline, GMARK improves occlusion reasoning accuracy by 42.2%, reduces control-selection error by 13.1%, and achieves comparable trajectory-planning accuracy with a 25.6x smaller structured communication payload. Our code is available at https://github.com/bhavyagupta98/g-mark.",
-      "pdf_url": "https://arxiv.org/pdf/2608.19964v1",
-      "comment": "Accepted for oral presentation at the 25th IEEE International Conference on Machine Learning and Applications (ICMLA'26)",
-      "technologies": [
-        "Knowledge Graphs",
-        "Multimodal Learning",
-        "Object Detection",
-        "Multi-Agent Reinforcement Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "V2X (Vehicle-to-Everything) communication protocol for autonomous fleet coordination",
-        "Explainable AI safety modules for autonomous driving decision-making",
-        "Bandwidth-efficient sensor fusion systems for connected vehicle networks"
-      ],
-      "domain_applications": [
-        "robotics"
       ]
     },
     {
@@ -415,6 +210,211 @@
       ]
     },
     {
+      "id": "2608.18578",
+      "title": "Compress and Forget: bitsandbytes Quantization Amplifies Proactive Interference in LLMs",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2608.18578v1 Announce Type: new Abstract: Proactive interference (PI) is a documented failure mode in large language models in which retrieval of a repeatedly overwritten value degrades as prior overwrites accumulate, mirroring a classical phenomenon in human working memory. Post-training quantization (PTQ) is now the default deployment path for open-weight models, yet its effect on this failure mode has not been tested. We evaluate three precision levels (FP16, INT8, INT4/NF4, via bitsandbytes) across three architecturally distinct instruction-tuned models (Qwen2.5-7B-Instruct, Mistral-7B-Instruct-v0.3, Phi-3.5-mini-instruct), holding the retrieval task fixed. INT4 quantization significantly reduces accuracy under high interference in every model (e.g., from 81.0% to 68.3% for Qwen), confirmed by paired McNemar's tests ($p \\le 2.6 \\times 10^{-6}$) and a mixed-effects regression spanning all interference levels; INT8, often assumed safe, also carries a smaller but real penalty in two of three models. The effect is specific to semantically similar (word-type) distractors and reverses sign under a numeric control condition, and is mechanistically linked to a rise in same-key intrusion errors under INT4 (from 21.5% to 24.6% of trials, $p = 4.8 \\times 10^{-7}$). A follow-up ablation shows the effect originates in the quantized transformer backbone rather than the output projection layer. These results suggest that bitsandbytes 4-bit quantization can impose an additional cost on applications relying on long, updatable, semantically dense contexts, even when aggregate benchmark accuracy appears largely unaffected. We release our code and tokenizer-verified vocabulary construction method at https://github.com/ShayanShahrabi/compress-and-forget",
+      "pdf_url": "https://arxiv.org/abs/2608.18578",
+      "comment": "",
+      "technologies": [
+        "bitsandbytes Quantization",
+        "Proactive Interference"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.4,
+      "product_potential": [
+        "Optimized LLM deployment with reduced memory footprint and improved performance under high interference conditions",
+        "Enhanced context management systems for applications requiring long, updatable, semantically dense contexts"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.20106",
+      "title": "OenoBench: A Wine-Domain Benchmark for Knowledge-Grounded Evaluation of Large Language Models",
+      "authors": [
+        "Nikita Khudov"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "We introduce OenoBench, a wine-domain knowledge benchmark of 3,266 multiple-choice questions across six pillars (regions, grape varieties, viticulture, winemaking, producers, business) and four difficulty tiers. The corpus is built from 38,104 atomic, source-anchored facts extracted by 35 provenance-verified scrapers from government registries (INAO, TTB, OIV), peer-reviewed journals, and Wikipedia/Wikidata. Our methodological contribution is an LLM-driven pipeline in which language models reformat verified facts and audit the result, but never serve as the source of truth: every claim traces to a URL, every question is generated by one of five strategies across five generator families, and every question is scored by a nine-agent audit calibrated against a human gold sheet via Cohen's $κ$. Evaluating sixteen frontier configurations, we find: (i) overall accuracy spans 53%-84%, led by o3 at 83.6%; (ii) reasoning-mode lift concentrates in DeepSeek R1 (+6.8pp) and is absent in Claude Opus and Gemini Pro; (iii) Anthropic shows +9pp self preference on its own questions while Google shows -8pp inverse preference; (iv) frontier open-weight models share the cost-vs-accuracy Pareto frontier with proprietary reasoning models; and (v) every config gains around 33pp on closed-book solvable items, revealing a parametric-recall ceiling that only the contextual slice avoids. We release corpus, audit findings, human-review app, and construction code under CC-BY-SA-4.0.",
+      "pdf_url": "https://arxiv.org/pdf/2608.20106v1",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Chain-of-Thought Prompting",
+        "Multi-Agent Systems",
+        "Knowledge Distillation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.4,
+      "product_potential": [
+        "Domain-specific expert system for automated sommelier services and wine recommendation engines",
+        "Automated compliance and regulatory auditing tool for wine industry supply chain documentation",
+        "Specialized fine-tuning and evaluation framework for vertical-specific LLM knowledge grounding"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.16234",
+      "title": "GaussianDWM++: Language-Grounded 3D Gaussian Driving World Model for Unified Scene Understanding, Editing, and Multi-Modal Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "summary": "arXiv:2608.16234v1 Announce Type: new Abstract: Driving World Models (DWMs) have recently advanced rapidly with generative models, yet most existing methods mainly focus on conditional scene generation and lack explicit 3D scene understanding, language-grounded reasoning, and controllable 4D editing capabilities. Moreover, commonly used point cloud, occupancy, or BEV representations make it difficult to achieve fine-grained alignment between textual information and the underlying 3D scene structure. To address these limitations, we propose a foundation-feature Gaussian driving world model that unifies scene understanding, language-grounded reasoning, controllable 4D editing, and multi-modal generation within a single framework. Specifically, we introduce a foundation-feature Gaussian tokenizer that directly distills Qwen/SigLIP visual-language features into 3D Gaussian primitives, building a compact open-vocabulary Gaussian semantic field. We further design a geometry-aware Gaussian adapter that combines importance-aware hierarchical selection with text-conditioned Perceiver-style cross-attention to aggregate dense Gaussian primitives into compact world tokens. To improve representation compatibility, we introduce a KL-based Gaussian--image distribution alignment objective that aligns Gaussian world tokens with foundation image tokens. Based on the aligned Gaussian representation, our framework further supports instruction-controllable scene editing, including weather-conditioned generation and dynamic vehicle manipulation. Extensive experiments on broader driving benchmarks demonstrate that our method achieves state-of-the-art performance across scene understanding, visual grounding, planning-oriented reasoning, and controllable 4D generation tasks. We will release the code and datasets publicly on Github.",
+      "pdf_url": "https://arxiv.org/abs/2608.16234",
+      "comment": "",
+      "technologies": [
+        "Gaussian Splatting",
+        "Multimodal Learning",
+        "Vision Transformer",
+        "Diffusion Models",
+        "Cross-Attention",
+        "Knowledge Distillation",
+        "Open-Vocabulary Learning",
+        "3D Scene Understanding",
+        "4D Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Autonomous vehicle simulation platform for realistic weather and traffic scenario generation and editing",
+        "Interactive 3D scene editing tool for creative industries (film, gaming) with language-based control",
+        "Advanced driver assistance system (ADAS) with language-grounded scene understanding and reasoning"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2512.02473",
+      "title": "WorldPack: Dynamic Frame Compression for Long-context Video World Modeling",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "arXiv:2512.02473v3 Announce Type: replace Abstract: Video world models have attracted significant attention for their ability to produce high-fidelity future visual observations conditioned on past observations and navigation actions. However, achieving temporally and spatially consistent generation over long horizons remains an open challenge: existing approaches either compress past frames without explicitly accounting for 3D viewpoint geometry or retrieve only a handful of spatially relevant frames without increasing the total amount of retained history. In this paper, we propose WorldPack, a video world model that introduces spatially-aware compressed memory to address both limitations simultaneously. The key insight is that compression rates should not be uniform or temporally determined, but should instead be dynamically allocated based on 3D spatial relevance to the current viewpoint. WorldPack achieves this through two tightly coupled mechanisms: trajectory packing, which fits substantially more historical frames into a fixed-length context through hierarchical frame compression, and geometric selection, which leverages camera pose information and field-of-view overlap to assign lower compression to spatially important frames and higher compression to less relevant ones. Together, these mechanisms expand the effective context from 4 to 22 frames with moderate computational overhead: trajectory packing increases diffusion-model inference time by 16%, while FoV-based geometric selection introduces an additional cost. We evaluate WorldPack on LoopNav, a Minecraft benchmark for long-horizon spatial consistency, and conduct comprehensive experiments on the RECON, real-world navigation dataset, across multiple metrics. WorldPack outperforms strong baselines, including Oasis, Mineworld, DIAMOND, and NWM, with pronounced gains on spatial reasoning tasks that require recall of distant observations.",
+      "pdf_url": "https://arxiv.org/abs/2512.02473",
+      "comment": "",
+      "technologies": [
+        "Dynamic Frame Compression",
+        "Spatially-aware Compressed Memory",
+        "Trajectory Packing",
+        "Geometric Selection"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Enhanced video editing tools with improved temporal and spatial consistency over long durations",
+        "Advanced virtual reality and augmented reality applications with extended context for more immersive experiences",
+        "Improved autonomous navigation systems for robots and vehicles with better recall of distant observations"
+      ],
+      "domain_applications": [
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2608.20237",
+      "title": "Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models",
+      "authors": [
+        "Yu Chen",
+        "Ting Lei",
+        "Yaoyi Li",
+        "Jia Cai",
+        "Zhecen Wu",
+        "Yang Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "Multimodal large language models (MLLMs) combine linguistic reasoning with visual perception, yet their ability to perform visual spatial planning under explicit or previously unseen rule constraints remains underexplored. This setting requires models to jointly understand spatial layouts, interpret natural-language rules, and plan valid actions accordingly. To address this gap, we introduce RuleMaze, a controllable benchmark in which MLLMs must navigate mazes while obeying natural-language rules of varying complexity. RuleMaze isolates rule-compliant spatial planning by requiring accurate perception, rule interpretation, and constrained action planning. To enable scalable and systematic rule construction, we propose Language-Logic-Function Hybridization, which automatically generates natural-language rules and translates them into logical representations and executable validators, eliminating manual rule engineering. To improve rule following and generalization, we introduce Disentangled Multimodal Planning (DMP), which separates perception, execution, and rule verification through interpretable reasoning primitives. By disentangling these components, DMP facilitates systematic generalization to more complex and previously unseen rules, while providing transparent intermediate planning traces. Experiments demonstrate that DMP substantially improves rule compliance and planning success compared to end-to-end textual planning baselines. Overall, RuleMaze establishes a principled benchmark for studying grounded and interpretable rule-based spatial planning in MLLMs. Code is available at https://github.com/oceanflowlab/RuleMaze.",
+      "pdf_url": "https://arxiv.org/pdf/2608.20237v1",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Chain-of-Thought Prompting",
+        "Neuro-symbolic AI",
+        "Task Planning",
+        "Visual Reasoning"
+      ],
+      "maturity": "early",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Autonomous warehouse navigation systems with dynamic safety constraint enforcement",
+        "AI-driven architectural design assistants for building code compliance",
+        "Robotic process automation for complex physical environments requiring rule-based navigation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2608.19964",
+      "title": "G-MARK: Grounded Multi-Agent Reasoning for Cooperative Driving via Knowledge Graphs",
+      "authors": [
+        "Bhavya Gupta",
+        "Onat Gungor",
+        "Tajana Rosing"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "summary": "Autonomous driving systems must operate under partial observability, where safety-critical objects may be occluded or visible only to neighboring connected vehicles. Vehicle-to-vehicle cooperation can reduce this uncertainty, but existing cooperative driving methods often compress multi-agent evidence into latent features or hidden multimodal states. As a result, they obscure which agent observed each object, whether the object is visible to the ego vehicle, and how conflicting evidence affects downstream decisions. We propose G-MARK, a grounded multi-agent reasoning framework that converts cooperative object-centric observations into explicit provenance-aware knowledge graphs (KGs). The resulting KGs preserve object hypotheses together with their source attribution, ego-versus-partner visibility, uncertainty, conflicts, spatial relations, and planning-relevant context. G-MARK then derives a shared feature representation from these KGs, enabling lightweight task heads to support object reasoning, motion prediction, control selection, and trajectory forecasting. Compared with the state-of-the-art baseline, GMARK improves occlusion reasoning accuracy by 42.2%, reduces control-selection error by 13.1%, and achieves comparable trajectory-planning accuracy with a 25.6x smaller structured communication payload. Our code is available at https://github.com/bhavyagupta98/g-mark.",
+      "pdf_url": "https://arxiv.org/pdf/2608.19964v1",
+      "comment": "Accepted for oral presentation at the 25th IEEE International Conference on Machine Learning and Applications (ICMLA'26)",
+      "technologies": [
+        "Knowledge Graphs",
+        "Multimodal Learning",
+        "Object Detection",
+        "Multi-Agent Reinforcement Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "V2X (Vehicle-to-Everything) communication protocol for autonomous fleet coordination",
+        "Explainable AI safety modules for autonomous driving decision-making",
+        "Bandwidth-efficient sensor fusion systems for connected vehicle networks"
+      ],
+      "domain_applications": [
+        "robotics"
+      ]
+    },
+    {
       "id": "2608.01324",
       "title": "G-ReAct: Graph-Guided Deep Search via Structure-State Co-Evolution",
       "authors": [],
@@ -432,7 +432,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.6,
+      "curator_score": 5.1,
       "product_potential": [
         "A graph-guided AI assistant for complex problem-solving tasks that can maintain context and constraints over long-horizon searches.",
         "An enterprise search and discovery tool that leverages graph-guided reasoning to improve the accuracy and efficiency of information retrieval."
@@ -469,7 +469,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 5.6,
+      "curator_score": 5.1,
       "product_potential": [
         "Automated benchmark generation pipeline for stress-testing enterprise RAG systems against massive, non-curated corpora",
         "Agentic search evaluation platform for measuring retrieval robustness in high-noise, large-scale document environments",
@@ -501,7 +501,7 @@
       ],
       "maturity": "early",
       "confidence": 0.7,
-      "curator_score": 5.5,
+      "curator_score": 5.0,
       "product_potential": [
         "Autonomous UAV navigation system for delivery and inspection in dynamic outdoor environments",
         "LLM-based mission planning assistant for drone fleet management in logistics and agriculture",
@@ -533,7 +533,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 5.5,
+      "curator_score": 5.0,
       "product_potential": [
         "Automated medical image analysis tool for radiologists",
         "Industrial defect detection system for quality control",
@@ -565,7 +565,7 @@
       ],
       "maturity": "early",
       "confidence": 0.8,
-      "curator_score": 5.5,
+      "curator_score": 5.0,
       "product_potential": [
         "A multimodal conversational agent that can assist users in real-world tasks by providing visual and spatial reasoning tools.",
         "A diagnostic tool for developers to identify and address perceptual and spatiotemporal modeling bottlenecks in embodied multimodal language models."
@@ -580,10 +580,10 @@
   "technologies": [
     {
       "name": "Multimodal Learning",
-      "papers": 7,
+      "papers": 8,
       "maturity": "high",
       "confidence": 0.95,
-      "trend": "peak",
+      "trend": "maturing",
       "applications": [
         "robotics",
         "healthcare",
@@ -603,6 +603,18 @@
       ]
     },
     {
+      "name": "Diffusion Models",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
       "name": "Retrieval Augmented Generation",
       "papers": 2,
       "maturity": "high",
@@ -610,18 +622,6 @@
       "trend": "maturing",
       "applications": [
         "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 2,
-      "maturity": "high",
-      "confidence": 0.9,
-      "trend": "maturing",
-      "applications": [
-        "creative",
-        "healthcare",
         "science"
       ]
     },
@@ -638,10 +638,21 @@
       ]
     },
     {
+      "name": "Knowledge Graphs",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science"
+      ]
+    },
+    {
       "name": "Gaussian Splatting",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -649,7 +660,7 @@
       ]
     },
     {
-      "name": "Knowledge Graphs",
+      "name": "Reinforcement Learning",
       "papers": 2,
       "maturity": "medium",
       "confidence": 0.8,
@@ -671,14 +682,14 @@
       ]
     },
     {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "high",
-      "confidence": 0.85,
-      "trend": "maturing",
+      "name": "Knowledge Distillation",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
       "applications": [
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "robotics"
       ]
     },
     {
@@ -693,25 +704,27 @@
       ]
     },
     {
-      "name": "bitsandbytes Quantization",
+      "name": "Segment Anything Model",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "confidence": 0.85,
+      "trend": "peak",
       "applications": [
-        "enterprise",
-        "science"
+        "healthcare",
+        "science",
+        "creative"
       ]
     },
     {
       "name": "Saliency-Driven Attention Redistribution",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "accessibility"
+        "accessibility",
+        "education",
+        "healthcare"
       ]
     },
     {
@@ -741,121 +754,179 @@
     {
       "name": "Mid-training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Large Language Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Tool Use",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Tool Calling",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Model Context Protocol",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Supervised Fine-Tuning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Data Synthesis",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Post-training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Agentic Tool-Use Training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
+      ]
+    },
+    {
+      "name": "Spatiotemporal Attention",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Generative Modeling",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Graph Neural Networks",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Spatial Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Visual Question Answering",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "bitsandbytes Quantization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
       ]
     },
     {
@@ -865,33 +936,20 @@
       "confidence": 0.5900000000000001,
       "trend": "emerging",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "enterprise"
+        "science"
       ]
     },
     {
       "name": "Multi-Agent Systems",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Knowledge Distillation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "creative",
-        "enterprise"
+        "enterprise",
+        "other"
       ]
     },
     {
@@ -901,9 +959,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "creative",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -913,9 +971,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "creative",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -925,9 +983,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "creative",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -937,9 +995,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "creative",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -949,9 +1007,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "enterprise",
         "robotics",
-        "creative",
-        "enterprise"
+        "creative"
       ]
     },
     {
@@ -961,9 +1019,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "enterprise",
         "robotics",
-        "creative",
-        "enterprise"
+        "creative"
       ]
     },
     {
@@ -973,9 +1031,9 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "enterprise",
         "robotics",
-        "creative",
-        "enterprise"
+        "creative"
       ]
     },
     {
@@ -985,41 +1043,41 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "enterprise",
         "robotics",
-        "creative",
-        "enterprise"
+        "creative"
       ]
     },
     {
       "name": "Task Planning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "science",
-        "enterprise"
+        "robotics"
       ]
     },
     {
       "name": "Visual Reasoning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "science",
-        "enterprise"
+        "robotics"
       ]
     },
     {
       "name": "Object Detection",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics"
       ]
@@ -1027,69 +1085,11 @@
     {
       "name": "Multi-Agent Reinforcement Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "robotics"
-      ]
-    },
-    {
-      "name": "Spatiotemporal Attention",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Generative Modeling",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Graph Neural Networks",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Spatial Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Visual Question Answering",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility",
-        "enterprise"
       ]
     },
     {
@@ -1099,10 +1099,10 @@
       "confidence": 0.5599999999999999,
       "trend": "emerging",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "education",
-        "enterprise"
+        "science",
+        "education"
       ]
     },
     {
@@ -1112,32 +1112,32 @@
       "confidence": 0.5599999999999999,
       "trend": "emerging",
       "applications": [
-        "science",
+        "enterprise",
         "other",
-        "education",
-        "enterprise"
+        "science",
+        "education"
       ]
     },
     {
       "name": "Automated Data Curation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
       "applications": [
-        "science",
-        "enterprise"
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Information Retrieval",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5599999999999999,
+      "trend": "emerging",
       "applications": [
-        "science",
-        "enterprise"
+        "enterprise",
+        "science"
       ]
     },
     {
@@ -1147,9 +1147,9 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "other",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -1159,9 +1159,9 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "other",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -1171,9 +1171,9 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "other",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -1183,22 +1183,9 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
+        "enterprise",
         "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Segment Anything Model",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "creative",
-        "healthcare",
-        "enterprise"
+        "robotics"
       ]
     },
     {
@@ -1208,10 +1195,23 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
+        "enterprise",
         "science",
         "creative",
-        "healthcare",
-        "enterprise"
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "science",
+        "creative",
+        "healthcare"
       ]
     },
     {
@@ -1221,8 +1221,8 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
         "accessibility",
+        "robotics",
         "education"
       ]
     },
@@ -1233,8 +1233,8 @@
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "robotics",
         "accessibility",
+        "robotics",
         "education"
       ]
     }
@@ -1242,123 +1242,123 @@
   "product_opportunities": [
     {
       "technology": "Multimodal Learning",
-      "idea": "MediAssist: AI-powered medical assistant that interprets patient symptoms, medical images, and doctor notes to provide diagnostic suggestions",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
-    },
-    {
-      "technology": "Chain-of-Thought Prompting",
-      "idea": "ChainThink: AI-powered tool that helps users break down complex problems into manageable steps, with explanations and reasoning",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "idea": "DocuGenius: AI-powered document assistant that retrieves and synthesizes information from a company's knowledge base to generate reports, emails, and presentations",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Diffusion Models",
-      "idea": "DreamLab: AI-powered tool that generates high-quality, customizable 3D models for architects, designers, and engineers",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
-    },
-    {
-      "technology": "Vision Transformer",
-      "idea": "SeeClear: AI-powered accessibility tool that provides real-time descriptions of the user's surroundings for visually impaired individuals",
+      "idea": "MedScan AI: Real-time diagnostic assistant that correlates patient vitals, medical charts, and X-ray imaging for ER triage.",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
-      "development_time": "3-6 months"
+      "development_time": "6-9 months"
+    },
+    {
+      "technology": "Chain-of-Thought Prompting",
+      "idea": "LogicAudit: Automated compliance engine that breaks down complex regulatory requirements into step-by-step verification workflows.",
+      "business_value": 8,
+      "engineering_difficulty": 4,
+      "competitive_advantage": "medium",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Retrieval Augmented Generation",
+      "idea": "LegalCite: Enterprise search tool that cross-references internal case law databases with real-time court filings for litigation support.",
+      "business_value": 9,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Vision Transformer",
+      "idea": "SightGuide: Wearable assistive device for the visually impaired that identifies obstacles and narrates complex scenes in real-time.",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Diffusion Models",
+      "idea": "SynthBio: Generative tool for researchers to create high-fidelity synthetic protein structure visualizations for drug discovery.",
+      "business_value": 7,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "3-5 months"
     },
     {
       "technology": "Agentic AI",
-      "idea": "TaskMaster: AI-powered assistant that can autonomously handle complex tasks, such as managing a project, by breaking it down into smaller subtasks and delegating them to appropriate agents",
-      "business_value": 8,
-      "engineering_difficulty": 7,
+      "idea": "ProcureBot: Autonomous agent that manages vendor outreach, quote comparison, and contract negotiation for mid-market firms.",
+      "business_value": 9,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
-      "development_time": "2-4 weeks"
+      "development_time": "6-8 months"
     },
     {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "FeedbackLoop: AI-powered tool that learns from human feedback to improve its performance in various tasks, such as customer support or content moderation",
-      "business_value": 7,
-      "engineering_difficulty": 6,
+      "technology": "Segment Anything Model",
+      "idea": "AutoAnnotate: Specialized tool for medical imaging labs to instantly segment tumors for radiation therapy planning.",
+      "business_value": 8,
+      "engineering_difficulty": 5,
       "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Saliency-Driven Attention Redistribution",
-      "idea": "FocusFlow: AI-powered tool that helps users with attention deficit hyperactivity disorder (ADHD) by identifying and focusing on the most important information in a given context",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "Gaussian Splatting",
-      "idea": "SplatArt: AI-powered tool that generates high-quality, realistic 3D art and animations for filmmakers, game developers, and virtual reality creators",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
+      "development_time": "2-3 months"
     },
     {
       "technology": "Knowledge Graphs",
-      "idea": "GraphMind: AI-powered tool that creates and visualizes knowledge graphs to help users understand complex relationships and patterns in their data",
+      "idea": "SupplyChainFlow: Dynamic mapping tool that links global supplier dependencies to predict bottleneck risks before they occur.",
+      "business_value": 9,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Reinforcement Learning",
+      "idea": "GridOptimize: AI agent that dynamically balances energy loads in smart buildings to minimize costs and carbon footprint.",
+      "business_value": 8,
+      "engineering_difficulty": 9,
+      "competitive_advantage": "high",
+      "development_time": "6-9 months"
+    },
+    {
+      "technology": "Knowledge Distillation",
+      "idea": "EdgeSense: Deploying high-performance LLMs onto low-power IoT sensors for local, privacy-preserving home automation.",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "1-3 months"
+      "development_time": "3-4 months"
     },
     {
-      "technology": "bitsandbytes Quantization",
-      "idea": "ByteSaver: AI-powered tool that optimizes the performance and efficiency of large language models by reducing their memory footprint and computational requirements",
+      "technology": "Neuro-symbolic AI",
+      "idea": "TaxLogic: Tax preparation software that combines deep learning for document extraction with symbolic logic for strict tax code adherence.",
+      "business_value": 8,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "5-7 months"
+    },
+    {
+      "technology": "Gaussian Splatting",
+      "idea": "RealEstateView: Instant 3D virtual tour generator from simple smartphone video captures for property listings.",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
+      "development_time": "3-4 months"
     },
     {
-      "technology": "Object Detection",
-      "idea": "ObjectTrack: AI-powered tool that detects and tracks objects in real-time for applications such as autonomous vehicles, surveillance, and robotics",
-      "business_value": 8,
+      "technology": "Saliency-Driven Attention Redistribution",
+      "idea": "FocusFlow: Educational software that dynamically highlights key information in dense textbooks based on student gaze patterns.",
+      "business_value": 6,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "1-3 months"
+      "competitive_advantage": "medium",
+      "development_time": "4-5 months"
     },
     {
-      "technology": "Multi-Agent Reinforcement Learning",
-      "idea": "SwarmMind: AI-powered tool that simulates and optimizes the behavior of multiple agents in a shared environment, such as a robot swarm or a team of autonomous vehicles",
-      "business_value": 8,
-      "engineering_difficulty": 7,
+      "technology": "Saliency-Driven Cache Alignment",
+      "idea": "StreamOptimizer: Video streaming infrastructure that prioritizes bandwidth for high-saliency visual regions to reduce latency.",
+      "business_value": 7,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
-      "development_time": "2-4 weeks"
+      "development_time": "5-6 months"
     },
     {
-      "technology": "Spatiotemporal Attention",
-      "idea": "TimeSpace: AI-powered tool that analyzes and predicts spatiotemporal patterns in data, such as traffic flow, weather patterns, or disease outbreaks",
+      "technology": "Prior-Constrained Contrastive Decoding",
+      "idea": "SafeWrite: Enterprise writing assistant that enforces strict brand voice and factual constraints during generation.",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Generative Modeling",
-      "idea": "GenMed: AI-powered tool that generates synthetic medical data for research, training, and testing purposes, while preserving patient privacy and confidentiality",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-6 months"
+      "development_time": "3-4 months"
     }
   ]
 }
