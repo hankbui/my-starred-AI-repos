@@ -1,19 +1,19 @@
 {
   "meta": {
-    "date": "2026-08-22",
+    "date": "2026-08-23",
     "papers_tracked": 15,
     "technologies_discovered": 56,
-    "opportunities_identified": 15,
-    "last_update": "2026-08-22 05:51 UTC",
+    "opportunities_identified": 0,
+    "last_update": "2026-08-23 05:55 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Multimodal Spatial Intelligence is Maturing for Robotics: Papers on egocentric spatial perception (Vision Transformers + GNNs), 4D longitudinal brain modeling, and rule-compliant visual planning signal rapid advances in spatial reasoning for embodied AI. Why it matters: Robots and autonomous systems need precise 3D/4D scene understanding to operate reliably. Opportunity: Build spatial AI toolkits, simulation environments, and perception pipelines for robotics, AR/VR, and autonomous vehicles.",
-    "Hallucination Mitigation in Vision-Language Models is Becoming Production-Ready: Saliency-driven attention redistribution, cache alignment, and contrastive decoding are emerging as practical solutions for LVLM reliability. Why it matters: Enterprise adoption of multimodal AI requires factual accuracy in healthcare, education, and accessibility domains. Opportunity: Ship hallucination-resistant LVLM APIs and evaluation frameworks for mission-critical applications.",
-    "Agentic Tool Use is Advancing via Mid-Training Approaches: The MidTool paper demonstrates that mid-training on tool-use data improves LLM agent capabilities significantly. Why it matters: Reliable tool calling is the backbone of production AI agents. Opportunity: Develop agentic frameworks with improved tool-use training pipelines, evaluation benchmarks, and deployment infrastructure for enterprise automation.",
-    "3D/4D Generative Scene Understanding is Converging: Gaussian splatting + diffusion models (GaussianDWM++) and spatiotemporal attention (4DLoG) enable unified scene generation, editing, and understanding. Why it matters: Digital twins, robotics training, and creative tools need dynamic 3D content. Opportunity: Build unified 3D scene generation APIs, simulation-to-reality pipelines, and multimodal editing tools for creative and robotics domains.",
-    "Quantization Introduces Hidden Reliability Trade-offs: bitsandbytes quantization amplifies proactive interference in LLMs, revealing that efficiency gains come with memory/accuracy costs. Why it matters: Product teams deploying quantized models may face unexpected reliability issues. Opportunity: Develop hybrid quantization methods, interference-aware deployment tools, and monitoring solutions for quantized model serving."
+    "Multimodal spatial reasoning is advancing rapidly via ego scene augmentation, GNNs, and neuro-symbolic planning, enabling LLMs to understand 3D space and plan actions—opportunity: build robotics assistants, accessibility tools, and enterprise spatial analytics that go beyond chat to physical-world interaction.",
+    "Agentic AI with tool use is maturing through mid-training data synthesis, moving from static RAG to dynamic tool calling pipelines—opportunity: create agentic workflow platforms for enterprise automation where LLMs plan, call APIs, and execute multi-step tasks autonomously.",
+    "Generative world models are converging: Gaussian splatting + diffusion models + dynamic compression enable real-time 3D/4D scene understanding and editing—opportunity: build unified creative tools for video production, autonomous driving simulation, and medical imaging that generate and edit 3D worlds.",
+    "Hallucination mitigation in LVLMs is shifting to saliency-driven attention and contrastive decoding, making vision-language systems reliable for high-stakes domains—opportunity: deploy production LVLMs in healthcare diagnostics, education, and accessibility where accuracy is non-negotiable.",
+    "Quantization efficiency vs. model quality tradeoffs are being exposed, with bitsandbytes amplifying proactive interference—opportunity: develop quantization-aware training tools or hybrid precision frameworks that preserve memory savings without degrading task performance."
   ],
   "top_cards": [
     {
@@ -21,15 +21,15 @@
       "title": "New Technologies",
       "value": "56",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Diffusion Models, Retrieval Augmented Generation, Agentic AI, Knowledge Graphs, Gaussian Splatting, Reinforcement Learning",
+      "detail": "Saliency-Driven Attention Redistribution, Saliency-Driven Cache Alignment, Prior-Constrained Contrastive Decoding, Mid-training, Agentic AI, Large Language Models, Tool Use, Tool Calling",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "51",
+      "value": "56",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Chain-of-Thought Prompting, Retrieval Augmented Generation, Vision Transformer, Diffusion Models",
+      "detail": "Saliency-Driven Attention Redistribution, Saliency-Driven Cache Alignment, Prior-Constrained Contrastive Decoding, Mid-training, Agentic AI",
       "color": "green"
     },
     {
@@ -59,7 +59,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "44",
+      "value": "56",
       "label": "early-stage technologies",
       "detail": "MidTool: Mid-training Data Synthesis for Agentic Tool Use",
       "color": "blue"
@@ -146,70 +146,6 @@
       ]
     },
     {
-      "id": "2604.22700",
-      "title": "4DLoG: Generative Modeling of Neurodegenerative Brain Anatomy with 4D Longitudinal Diffusion Model",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-21",
-      "updated": "2026-08-21",
-      "summary": "arXiv:2604.22700v2 Announce Type: replace Abstract: Modeling and predicting neurodegenerative disease progression from medical images remains a major challenge in medical AI, with significant implications for early diagnosis, disease monitoring, and treatment planning. However, most longitudinal neuroimaging datasets are temporally sparse, with substantial gaps and missing follow-up scans for individual subjects. This makes it difficult to learn and accurately capture the continuous anatomical changes associated with disease progression at the level of individual subjects. To address this problem, we propose a novel model named 4DLoG, a full 4D (3DxT) Longitudinal Generative framework that effectively models and synthesizes follow-up brain anatomy over time, conditioned on available clinical and demographic variables. In contrast to previous approaches, our 4DLoG features two main contributions. First, it introduces a full 4D generative diffusion framework that jointly models spatial and temporal dependencies across complete longitudinal sequences through dedicated spatiotemporal attention, with robust spatial patch extraction and temporal alignment. Second, it explicitly learns the distribution of topology-preserving spatiotemporal deformations, which captures realistic geometric changes in brain structures over time. These new components enable a better generation of anatomically plausible future states from an imaging scan at any time point, providing greater flexibility for modeling individual longitudinal brain trajectories. We validate our model through both synthetic sequence generation and downstream longitudinal disease classification, as well as brain segmentation. Experiments on two large-scale longitudinal neuroimage datasets demonstrate that our method outperforms state-of-the-art baselines in generating anatomically accurate, temporally consistent, and clinically meaningful brain trajectories. Our code is available on Github",
-      "pdf_url": "https://arxiv.org/abs/2604.22700",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Spatiotemporal Attention",
-        "Generative Modeling",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Predictive clinical decision support system for visualizing patient-specific neurodegenerative disease progression",
-        "Synthetic data generation engine for training robust medical imaging segmentation and classification models",
-        "Automated longitudinal monitoring tool for clinical trial efficacy analysis in Alzheimer's and dementia research"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "id": "2607.14497",
-      "title": "Reinforcing Egocentric Spatial Perception in Multimodal Large Language Models via Ego Scene Augmentation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-08-21",
-      "updated": "2026-08-21",
-      "summary": "arXiv:2607.14497v2 Announce Type: replace Abstract: Egocentric Visual Question Answering (VQA) has attracted widespread attention as an important task for enabling Multimodal Large Language Models (MLLMs) to interact with the real world. However, existing MLLMs struggle to perform effective spatial reasoning in complex egocentric scenes due to their limited spatial perception capabilities. To this end, we introduce Ego Scene Augmentation (ESA), an egocentric spatial perception framework, which actively enhances the spatial perception capabilities from the egocentric perspective, powered by the proposed Ego-element Graph. Our core insight is leveraging the Ego-element Graph as an intermediary representation to augment the egocentric spatial perception of MLLMs via visual foundational models. Specifically, we 1) construct the Ego-element Graph, which encapsulates and integrates egocentric spatial features enabled by visual foundational models; 2) enhance the spatial perception capabilities of MLLMs via the Ego-element Graph for ego-perspective scenes. Our proposed ESA framework presents significant performance improvement on the EgoTextVQA benchmark. We achieve an 8.14% gain on the indoor setting and an 8.72% gain on the outdoor setting. Furthermore, our ESA shows the most impressive performance improvement in the shopping subset of the indoor setting. The project code is publicly available.",
-      "pdf_url": "https://arxiv.org/abs/2607.14497",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Vision Transformer",
-        "Graph Neural Networks",
-        "Spatial Reasoning",
-        "Visual Question Answering"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AR-based indoor navigation and object retrieval assistants for smart glasses",
-        "Automated inventory management and shelf-stocking systems for retail robotics",
-        "Wearable assistive technology for visually impaired users to interpret spatial layouts"
-      ],
-      "domain_applications": [
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
       "id": "2608.18578",
       "title": "Compress and Forget: bitsandbytes Quantization Amplifies Proactive Interference in LLMs",
       "authors": [],
@@ -269,6 +205,70 @@
       "domain_applications": [
         "enterprise",
         "other"
+      ]
+    },
+    {
+      "id": "2604.22700",
+      "title": "4DLoG: Generative Modeling of Neurodegenerative Brain Anatomy with 4D Longitudinal Diffusion Model",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-21",
+      "updated": "2026-08-21",
+      "summary": "arXiv:2604.22700v2 Announce Type: replace Abstract: Modeling and predicting neurodegenerative disease progression from medical images remains a major challenge in medical AI, with significant implications for early diagnosis, disease monitoring, and treatment planning. However, most longitudinal neuroimaging datasets are temporally sparse, with substantial gaps and missing follow-up scans for individual subjects. This makes it difficult to learn and accurately capture the continuous anatomical changes associated with disease progression at the level of individual subjects. To address this problem, we propose a novel model named 4DLoG, a full 4D (3DxT) Longitudinal Generative framework that effectively models and synthesizes follow-up brain anatomy over time, conditioned on available clinical and demographic variables. In contrast to previous approaches, our 4DLoG features two main contributions. First, it introduces a full 4D generative diffusion framework that jointly models spatial and temporal dependencies across complete longitudinal sequences through dedicated spatiotemporal attention, with robust spatial patch extraction and temporal alignment. Second, it explicitly learns the distribution of topology-preserving spatiotemporal deformations, which captures realistic geometric changes in brain structures over time. These new components enable a better generation of anatomically plausible future states from an imaging scan at any time point, providing greater flexibility for modeling individual longitudinal brain trajectories. We validate our model through both synthetic sequence generation and downstream longitudinal disease classification, as well as brain segmentation. Experiments on two large-scale longitudinal neuroimage datasets demonstrate that our method outperforms state-of-the-art baselines in generating anatomically accurate, temporally consistent, and clinically meaningful brain trajectories. Our code is available on Github",
+      "pdf_url": "https://arxiv.org/abs/2604.22700",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Spatiotemporal Attention",
+        "Generative Modeling",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Predictive clinical decision support system for visualizing patient-specific neurodegenerative disease progression",
+        "Synthetic data generation engine for training robust medical imaging segmentation and classification models",
+        "Automated longitudinal monitoring tool for clinical trial efficacy analysis in Alzheimer's and dementia research"
+      ],
+      "domain_applications": [
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "id": "2607.14497",
+      "title": "Reinforcing Egocentric Spatial Perception in Multimodal Large Language Models via Ego Scene Augmentation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-21",
+      "updated": "2026-08-21",
+      "summary": "arXiv:2607.14497v2 Announce Type: replace Abstract: Egocentric Visual Question Answering (VQA) has attracted widespread attention as an important task for enabling Multimodal Large Language Models (MLLMs) to interact with the real world. However, existing MLLMs struggle to perform effective spatial reasoning in complex egocentric scenes due to their limited spatial perception capabilities. To this end, we introduce Ego Scene Augmentation (ESA), an egocentric spatial perception framework, which actively enhances the spatial perception capabilities from the egocentric perspective, powered by the proposed Ego-element Graph. Our core insight is leveraging the Ego-element Graph as an intermediary representation to augment the egocentric spatial perception of MLLMs via visual foundational models. Specifically, we 1) construct the Ego-element Graph, which encapsulates and integrates egocentric spatial features enabled by visual foundational models; 2) enhance the spatial perception capabilities of MLLMs via the Ego-element Graph for ego-perspective scenes. Our proposed ESA framework presents significant performance improvement on the EgoTextVQA benchmark. We achieve an 8.14% gain on the indoor setting and an 8.72% gain on the outdoor setting. Furthermore, our ESA shows the most impressive performance improvement in the shopping subset of the indoor setting. The project code is publicly available.",
+      "pdf_url": "https://arxiv.org/abs/2607.14497",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Vision Transformer",
+        "Graph Neural Networks",
+        "Spatial Reasoning",
+        "Visual Question Answering"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AR-based indoor navigation and object retrieval assistants for smart glasses",
+        "Automated inventory management and shelf-stocking systems for retail robotics",
+        "Wearable assistive technology for visually impaired users to interpret spatial layouts"
+      ],
+      "domain_applications": [
+        "robotics",
+        "accessibility",
+        "enterprise"
       ]
     },
     {
@@ -579,184 +579,59 @@
   ],
   "technologies": [
     {
-      "name": "Multimodal Learning",
-      "papers": 8,
-      "maturity": "high",
-      "confidence": 0.95,
-      "trend": "maturing",
-      "applications": [
-        "robotics",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 4,
-      "maturity": "high",
-      "confidence": 0.9,
-      "trend": "maturing",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "creative",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 2,
-      "maturity": "high",
-      "confidence": 0.9,
-      "trend": "maturing",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Agentic AI",
-      "papers": 3,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "breakout",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Knowledge Graphs",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Gaussian Splatting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Vision Transformer",
-      "papers": 2,
-      "maturity": "high",
-      "confidence": 0.9,
-      "trend": "maturing",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Knowledge Distillation",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Neuro-symbolic AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.75,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Segment Anything Model",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "peak",
-      "applications": [
-        "healthcare",
-        "science",
-        "creative"
-      ]
-    },
-    {
       "name": "Saliency-Driven Attention Redistribution",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "accessibility",
+        "healthcare",
         "education",
-        "healthcare"
+        "accessibility"
       ]
     },
     {
       "name": "Saliency-Driven Cache Alignment",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "accessibility",
+        "healthcare",
         "education",
-        "healthcare"
+        "accessibility"
       ]
     },
     {
       "name": "Prior-Constrained Contrastive Decoding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "accessibility",
+        "healthcare",
         "education",
-        "healthcare"
+        "accessibility"
       ]
     },
     {
       "name": "Mid-training",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Agentic AI",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -767,8 +642,8 @@
       "name": "Large Language Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -779,8 +654,8 @@
       "name": "Tool Use",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -791,8 +666,8 @@
       "name": "Tool Calling",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -803,8 +678,8 @@
       "name": "Model Context Protocol",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -815,8 +690,20 @@
       "name": "Supervised Fine-Tuning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -827,8 +714,8 @@
       "name": "Data Synthesis",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -839,8 +726,8 @@
       "name": "Post-training",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
@@ -851,12 +738,99 @@
       "name": "Agentic Tool-Use Training",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise",
         "other",
         "science"
+      ]
+    },
+    {
+      "name": "bitsandbytes Quantization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Proactive Interference",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "science"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "robotics",
+        "science"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Knowledge Distillation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.54,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other",
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "science",
+        "enterprise",
+        "creative",
+        "robotics"
       ]
     },
     {
@@ -866,8 +840,8 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "science",
-        "healthcare"
+        "healthcare",
+        "science"
       ]
     },
     {
@@ -877,8 +851,37 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
         "science",
-        "healthcare"
+        "enterprise",
+        "education",
+        "accessibility",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics",
+        "accessibility"
       ]
     },
     {
@@ -918,45 +921,22 @@
       ]
     },
     {
-      "name": "bitsandbytes Quantization",
+      "name": "Gaussian Splatting",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5900000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Proactive Interference",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Multi-Agent Systems",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
+        "creative",
+        "robotics"
       ]
     },
     {
       "name": "Cross-Attention",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -968,7 +948,7 @@
       "name": "Open-Vocabulary Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -980,7 +960,7 @@
       "name": "3D Scene Understanding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -992,7 +972,7 @@
       "name": "4D Generation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1004,71 +984,93 @@
       "name": "Dynamic Frame Compression",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "robotics",
-        "creative"
+        "creative",
+        "robotics"
       ]
     },
     {
       "name": "Spatially-aware Compressed Memory",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "robotics",
-        "creative"
+        "creative",
+        "robotics"
       ]
     },
     {
       "name": "Trajectory Packing",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "robotics",
-        "creative"
+        "creative",
+        "robotics"
       ]
     },
     {
       "name": "Geometric Selection",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Neuro-symbolic AI",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
         "robotics",
-        "creative"
+        "science"
       ]
     },
     {
       "name": "Task Planning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "science",
-        "robotics"
+        "robotics",
+        "science"
       ]
     },
     {
       "name": "Visual Reasoning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "science",
+        "robotics",
+        "science"
+      ]
+    },
+    {
+      "name": "Knowledge Graphs",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
         "robotics"
       ]
     },
@@ -1076,7 +1078,7 @@
       "name": "Object Detection",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "robotics"
@@ -1086,7 +1088,7 @@
       "name": "Multi-Agent Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.52,
       "trend": "emerging",
       "applications": [
         "robotics"
@@ -1096,33 +1098,33 @@
       "name": "Graph-Guided Reasoning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5599999999999999,
+      "confidence": 0.51,
       "trend": "emerging",
       "applications": [
         "enterprise",
+        "education",
         "other",
-        "science",
-        "education"
+        "science"
       ]
     },
     {
       "name": "State Evolution in Search",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5599999999999999,
+      "confidence": 0.51,
       "trend": "emerging",
       "applications": [
         "enterprise",
+        "education",
         "other",
-        "science",
-        "education"
+        "science"
       ]
     },
     {
       "name": "Automated Data Curation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5599999999999999,
+      "confidence": 0.51,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1133,7 +1135,7 @@
       "name": "Information Retrieval",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5599999999999999,
+      "confidence": 0.51,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1144,7 +1146,7 @@
       "name": "LLM Agent",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1156,7 +1158,7 @@
       "name": "Memory-Augmented Planning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1168,7 +1170,7 @@
       "name": "Tool Interaction",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1180,7 +1182,7 @@
       "name": "Closed-Loop Control",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
         "enterprise",
@@ -1189,176 +1191,68 @@
       ]
     },
     {
+      "name": "Segment Anything Model",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5,
+      "trend": "emerging",
+      "applications": [
+        "healthcare",
+        "creative",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
       "name": "Vision-Language Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "enterprise",
-        "science",
+        "healthcare",
         "creative",
-        "healthcare"
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "enterprise",
-        "science",
+        "healthcare",
         "creative",
-        "healthcare"
+        "enterprise",
+        "science"
       ]
     },
     {
       "name": "Skill-level Evaluation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "accessibility",
+        "education",
         "robotics",
-        "education"
+        "accessibility"
       ]
     },
     {
       "name": "Spatiotemporal Modeling",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.55,
+      "confidence": 0.5,
       "trend": "emerging",
       "applications": [
-        "accessibility",
+        "education",
         "robotics",
-        "education"
+        "accessibility"
       ]
     }
   ],
-  "product_opportunities": [
-    {
-      "technology": "Multimodal Learning",
-      "idea": "MedScan AI: Real-time diagnostic assistant that correlates patient vitals, medical charts, and X-ray imaging for ER triage.",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "6-9 months"
-    },
-    {
-      "technology": "Chain-of-Thought Prompting",
-      "idea": "LogicAudit: Automated compliance engine that breaks down complex regulatory requirements into step-by-step verification workflows.",
-      "business_value": 8,
-      "engineering_difficulty": 4,
-      "competitive_advantage": "medium",
-      "development_time": "1-2 months"
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "idea": "LegalCite: Enterprise search tool that cross-references internal case law databases with real-time court filings for litigation support.",
-      "business_value": 9,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "high",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Vision Transformer",
-      "idea": "SightGuide: Wearable assistive device for the visually impaired that identifies obstacles and narrates complex scenes in real-time.",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Diffusion Models",
-      "idea": "SynthBio: Generative tool for researchers to create high-fidelity synthetic protein structure visualizations for drug discovery.",
-      "business_value": 7,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Agentic AI",
-      "idea": "ProcureBot: Autonomous agent that manages vendor outreach, quote comparison, and contract negotiation for mid-market firms.",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "6-8 months"
-    },
-    {
-      "technology": "Segment Anything Model",
-      "idea": "AutoAnnotate: Specialized tool for medical imaging labs to instantly segment tumors for radiation therapy planning.",
-      "business_value": 8,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "medium",
-      "development_time": "2-3 months"
-    },
-    {
-      "technology": "Knowledge Graphs",
-      "idea": "SupplyChainFlow: Dynamic mapping tool that links global supplier dependencies to predict bottleneck risks before they occur.",
-      "business_value": 9,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Reinforcement Learning",
-      "idea": "GridOptimize: AI agent that dynamically balances energy loads in smart buildings to minimize costs and carbon footprint.",
-      "business_value": 8,
-      "engineering_difficulty": 9,
-      "competitive_advantage": "high",
-      "development_time": "6-9 months"
-    },
-    {
-      "technology": "Knowledge Distillation",
-      "idea": "EdgeSense: Deploying high-performance LLMs onto low-power IoT sensors for local, privacy-preserving home automation.",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "3-4 months"
-    },
-    {
-      "technology": "Neuro-symbolic AI",
-      "idea": "TaxLogic: Tax preparation software that combines deep learning for document extraction with symbolic logic for strict tax code adherence.",
-      "business_value": 8,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "5-7 months"
-    },
-    {
-      "technology": "Gaussian Splatting",
-      "idea": "RealEstateView: Instant 3D virtual tour generator from simple smartphone video captures for property listings.",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "3-4 months"
-    },
-    {
-      "technology": "Saliency-Driven Attention Redistribution",
-      "idea": "FocusFlow: Educational software that dynamically highlights key information in dense textbooks based on student gaze patterns.",
-      "business_value": 6,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "medium",
-      "development_time": "4-5 months"
-    },
-    {
-      "technology": "Saliency-Driven Cache Alignment",
-      "idea": "StreamOptimizer: Video streaming infrastructure that prioritizes bandwidth for high-saliency visual regions to reduce latency.",
-      "business_value": 7,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "5-6 months"
-    },
-    {
-      "technology": "Prior-Constrained Contrastive Decoding",
-      "idea": "SafeWrite: Enterprise writing assistant that enforces strict brand voice and factual constraints during generation.",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "3-4 months"
-    }
-  ]
+  "product_opportunities": []
 }
