@@ -1,41 +1,61 @@
 {
   "meta": {
-    "date": "2026-09-10",
+    "date": "2026-09-11",
     "papers_tracked": 15,
-    "technologies_discovered": 35,
+    "technologies_discovered": 29,
     "opportunities_identified": 15,
-    "last_update": "2026-09-10 09:54 UTC",
+    "last_update": "2026-09-11 09:54 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Multimodal Learning is a rapidly advancing technology with applications in healthcare, robotics, accessibility, and education. It enables the integration of various data types, enhancing the capabilities of AI systems in complex environments. Product builders can leverage this to create more intuitive and interactive AI solutions.",
-    "Knowledge Distillation and Low-Rank Adaptation are emerging techniques that can reduce the computational cost of large models. These technologies are particularly relevant for enterprise applications where efficiency and scalability are critical. Product builders can use these to deploy more efficient models without significant loss in performance.",
-    "Reinforcement Learning from Human Feedback (RLHF) is being applied across various domains, including robotics, healthcare, and creative applications. It allows AI systems to learn from human preferences and behaviors, leading to more aligned and effective solutions. Product builders can incorporate RLHF to create personalized and user-friendly AI products.",
-    "Vision Transformers (ViTs) are gaining traction in healthcare and robotics for tasks like image synthesis and navigation. Their ability to handle complex visual data makes them valuable for applications requiring high accuracy and reliability. Product builders can explore ViTs for innovative solutions in these domains.",
-    "Benchmarking and Agent Evaluation are becoming crucial for deploying reliable AI models. Technologies like DAREBench provide frameworks for evaluating models in realistic scenarios. Product builders can use these benchmarks to ensure their AI systems are robust and effective before deployment."
+    {
+      "technology": "Knowledge Distillation",
+      "why_it_matters": "Enables efficient deployment of large models by transferring knowledge to smaller models, reducing computational costs and latency.",
+      "opportunity": "Develop lightweight AI models for edge devices and real-time applications in robotics and enterprise."
+    },
+    {
+      "technology": "Multimodal Learning",
+      "why_it_matters": "Allows AI systems to process and generate content across different modalities (text, images, audio, etc.), enhancing versatility and user interaction.",
+      "opportunity": "Create versatile AI assistants for creative, educational, and enterprise applications."
+    },
+    {
+      "technology": "Reinforcement Learning from Human Feedback",
+      "why_it_matters": "Improves AI alignment with human values and preferences, leading to more user-friendly and effective AI systems.",
+      "opportunity": "Build AI systems that better understand and respond to human needs in various domains."
+    },
+    {
+      "technology": "Multi-Agent Systems",
+      "why_it_matters": "Enables complex problem-solving by leveraging the strengths of multiple AI agents working together.",
+      "opportunity": "Develop collaborative AI systems for urban planning, creative content generation, and enterprise applications."
+    },
+    {
+      "technology": "Hallucination Detection",
+      "why_it_matters": "Improves the reliability and trustworthiness of AI-generated content by detecting and mitigating hallucinations.",
+      "opportunity": "Enhance AI systems for creative and enterprise applications by ensuring accurate and trustworthy outputs."
+    }
   ],
   "top_cards": [
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "35",
+      "value": "29",
       "label": "discovered this scan",
-      "detail": "Knowledge Distillation, Low-Rank Adaptation, Multimodal Learning, Reinforcement Learning from Human Feedback, Vision Transformer, Clinical Framing, Benchmarking, Diffusion Models",
+      "detail": "Knowledge Distillation, Low-Rank Adaptation, Mixture of Experts, Reinforcement Learning from Human Feedback, Sparse Attention, Topological Reasoning, Multimodal Learning, KV Cache Optimization",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "35",
+      "value": "29",
       "label": "active trend clusters",
-      "detail": "Knowledge Distillation, Low-Rank Adaptation, Diffusion Models, Multimodal Learning, Vision Transformer",
+      "detail": "Knowledge Distillation, Low-Rank Adaptation, Mixture of Experts, Sparse Attention, Diffusion Models",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.9",
       "label": "avg opportunity score",
       "detail": "MAVEN-T: Reinforced Heterogeneous Distillation for Real-Time Multi-Agent Traject",
       "color": "amber"
@@ -59,7 +79,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "19",
+      "value": "0",
       "label": "early-stage technologies",
       "detail": "MAVEN-T: Reinforced Heterogeneous Distillation for Real-Time Multi-Agent Traject",
       "color": "blue"
@@ -98,59 +118,83 @@
       ]
     },
     {
-      "id": "2609.06263",
-      "title": "Beyond the Flag: Clinical Framing Closes the Moderation Gap in Suicide Risk Measurement",
-      "authors": [],
+      "id": "2609.11900",
+      "title": "MindTopo: Can Foundation Models Reason in Topological Space?",
+      "authors": [
+        "Yunfei Ge",
+        "Anbang Liu",
+        "Qineng Wang",
+        "Johnalbert Garnica",
+        "Jianwen Lyu",
+        "Zihan Wang",
+        "Reuben Tan",
+        "Jianfeng Gao",
+        "Ruohan Zhang",
+        "Yining Hong",
+        "Jiajun Wu",
+        "Manling Li"
+      ],
       "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.06263v1 Announce Type: new Abstract: Moderation APIs are built to flag policy-violating content, not to measure graded clinical risk. But a platform's duty does not end at detection: the response owed to passive distress differs sharply from the response owed to active planning with means access, and emerging regulation (e.g., California Senate Bill 243) is turning that distinction into a compliance requirement. We therefore ask how well deployed safety signals recover clinically meaningful severity. We release a benchmark of 516 r/SuicideWatch posts rated by a licensed psychiatrist on a four-level ordinal schema (Indicator, Ideation, Behavior, Attempt) grounded in the Columbia Suicide Severity Rating Scale, and evaluate moderation APIs, prompted LLMs, and supervised baselines under seven ordinal-aware metrics. Three findings. Vendor moderation APIs separate low- from high-severity posts well (0.860 high-risk F1) but measure severity poorly (0.395 macro F1), systematically over-predicting the most severe category. Clinically grounded zero-shot prompting recovers much of that gap (0.562 macro F1), and expert-authored framing (not fine-tuning, added reasoning, or naive multi-agent aggregation) is the effective lever. The value of reasoning depends on register: it hurts on long, noisy Reddit posts and helps on short, clinician-authored statements. We argue graded severity, not a binary flag, is what a proportionate duty of care requires, and release our evaluation framework to support that measurement.",
-      "pdf_url": "https://arxiv.org/abs/2609.06263",
-      "comment": "",
-      "technologies": [
-        "Clinical Framing",
-        "Ordinal-aware Metrics"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.9,
-      "product_potential": [
-        "A mental health monitoring platform that uses clinical framing to assess and respond to graded severity of distress signals.",
-        "A moderation tool for online communities that integrates clinical framing to provide nuanced responses to posts indicating suicide risk."
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2609.05596",
-      "title": "Time-Aware Assistive Navigation",
-      "authors": [],
-      "categories": [
+        "cs.AI",
+        "cs.CL",
         "cs.CV"
       ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.05596v1 Announce Type: new Abstract: Can interactive vision-and-language agents learn not just what to say but also \\textbf{\\textit{when}} to say it? Current language models rarely plan over whether and when to realize a real-time response to a user. However, providing accurate and timely support for human decision-making, such as when guiding visually impaired individuals through urban environments, requires careful real-time responsiveness--poorly timed responses can distract users or add unnecessary cognitive load. As a machine intelligence challenge for Multimodal Large Language Model (MLLM)-based agents, we introduce a large-scale multimodal benchmark for an egocentric, assistive navigation task in complex outdoor environments. Using this benchmark, we uncover a fundamental limitation of off-the-shelf MLLMs in delivering safe and time-sensitive navigation instructions, even with model fine-tuning on substantial amounts of data. We then demonstrate that a simple yet effective modification of the model, including direct supervision to predict the underlying reason for each instruction, yields significant performance gains across open-loop, closed-loop, and sim-to-real generalization settings. However, our analysis highlights persistent challenges in temporal reasoning, safety-critical object awareness, and relational and distance understanding. To advance the development of scalable assistive agents, we will release our simulation, benchmark, and code (available at the project website: https://timeli-icra.github.io/).",
-      "pdf_url": "https://arxiv.org/abs/2609.05596",
-      "comment": "",
+      "published": "2026-09-10",
+      "updated": "2026-09-10",
+      "summary": "Spatial reasoning depends not only on metric properties such as distance, angle, and shape, but also on topological relations that remain invariant under continuous deformation. Cognitive science identifies these relations as foundational to spatial understanding, yet foundation-model evaluations largely focus on metric or viewpoint-dependent relations. We introduce MindTopo, a benchmark of topological intuition across five properties grounded in cognitive science and formal topology: continuity, separation, order, enclosure, and knots. MindTopo evaluates each property at two cognitive levels. Reasoning asks a model to identify topological relations or infer how they change. Planning instantiates a foundation model as a closed-loop agent whose policy selects environment actions. MindTopo contains 11,030 instances across 13 procedurally generated task types with controllable difficulty. We benchmark 14 MLLMs and study agent configurations augmented with image and video generation, including 3 video generative models in planning settings. Every MLLM performs better on reasoning than on planning, and the best-performing model remains far below observed human performance. On Qwen3-VL-2B-Instruct, supervised fine-tuning and reinforcement learning improve reasoning more than planning. Generated observations retain local cues and reach plausible endpoints, but audited rollouts do not reliably follow environment dynamics or preserve topology across transitions. Our website is at https://mind-topo.github.io/",
+      "pdf_url": "https://arxiv.org/pdf/2609.11900v1",
+      "comment": "Preprint version",
       "technologies": [
+        "Topological Reasoning",
         "Multimodal Learning",
-        "Vision Transformer",
         "Reinforcement Learning from Human Feedback"
       ],
       "maturity": "early",
       "confidence": 0.7,
-      "curator_score": 5.9,
+      "curator_score": 6.0,
       "product_potential": [
-        "Real-time assistive navigation app for visually impaired individuals",
-        "Smart glasses with time-aware navigation assistance"
+        "AI-powered educational tools for teaching topological concepts",
+        "AI agents for spatial planning and design in architecture and engineering"
       ],
       "domain_applications": [
-        "accessibility",
-        "robotics"
+        "education",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2609.11582",
+      "title": "OmniKVQuant: KV Cache Quantization for Omni-LLMs",
+      "authors": [
+        "Suho Yoo",
+        "Hyunjong Ok",
+        "Jongmin Choi",
+        "Jihoo Jung",
+        "Joon Son Chung"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-10",
+      "updated": "2026-09-10",
+      "summary": "As Omni-modal large language models (Omni-LLMs) take in audio, video and text together, their KV cache memory cost grows. KV cache quantization is the de facto approach in text-only LLMs, but its application to Omni-LLMs remains unexplored. In this paper, we analyze how TurboQuant, a representative rotation-based KV cache quantization method, behaves on multimodal caches and identify two critical issues: temporal key drift and heterogeneous value geometry. To address these, we propose OmniKVQuant, a training-free framework that (i) sets the key quantization range over each short window of the input stream; and (ii) rotates values separately per modality. On Qwen2.5-Omni and Qwen3-Omni, OmniKVQuant enables 2-bit KV caches while substantially preserving performance across seven audio-visual benchmarks. We further provide a fused Triton decode kernel that unpacks the 2-bit cache during attention, so no dense FP16 cache is ever built. Code: https://github.com/kaistmm/OmniKVQuant",
+      "pdf_url": "https://arxiv.org/pdf/2609.11582v1",
+      "comment": "Preprint",
+      "technologies": [
+        "KV Cache Optimization",
+        "Quantization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Developing a multimodal AI assistant that can process and respond to audio, video, and text inputs in real-time with optimized memory usage.",
+        "Creating a mobile application that leverages OmniKVQuant to provide efficient, multimodal interactions on devices with limited memory."
+      ],
+      "domain_applications": [
+        "creative",
+        "enterprise",
+        "other"
       ]
     },
     {
@@ -250,263 +294,31 @@
       ]
     },
     {
-      "id": "2609.06059",
-      "title": "DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents",
-      "authors": [],
+      "id": "2609.11318",
+      "title": "Mr.LHDR: A Benchmark for Multimodal Real-World Long-Horizon Deep Research Agents",
+      "authors": [
+        "Minghao Guo",
+        "Meng Cao",
+        "Sui Zhao",
+        "Siyu Ning",
+        "Xin Wang",
+        "Haoze Zhao",
+        "Jiaxuan Yang",
+        "Haihong Hao",
+        "Mingfei Han",
+        "Shunlin Rong",
+        "Haijun Wu",
+        "Xiaodan Liang",
+        "Xiaojun Chang"
+      ],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.06059v1 Announce Type: new Abstract: As large language models evolve from question-answering systems into general-purpose agents, evaluation must move beyond static answer correctness to assess multimodal perception, multi-step execution, tool use, and artifact delivery. However, existing benchmarks are often tied to specific task types, execution environments, or scoring protocols, limiting their comparability, interpretability, and reliability for deployment decisions. We introduce DAREBench (Deployment-Aware and Reliable Evaluation of Models as Agents), a benchmark designed to capture workload variation and support reliable agent evaluation. Built on a shared OpenClaw execution environment, DAREBench organizes 233 tasks selected and adapted from 22 source benchmarks into a $2\\times3$ workload matrix defined by input modality and execution form, and evaluates them under a unified contract-based protocol with evidence-based score auditing. We evaluate 23 commercial API models and 12 locally deployed open-weight models over 7,587 model--task runs, reporting accuracy and token consumption alongside reference costs for API models. Results show that no single model dominates all workload groups, text and multimodal tasks exhibit distinct accuracy--cost trade-offs, and local open-weight models are competitive in several groups but still trail frontier commercial models overall. These findings suggest that agent deployment and model selection should consider workload profiles, deployment mode, and accuracy--cost trade-offs rather than rely on a single aggregate score.",
-      "pdf_url": "https://arxiv.org/abs/2609.06059",
-      "comment": "",
-      "technologies": [
-        "Benchmarking",
-        "Agent Evaluation",
-        "Multimodal Learning",
-        "Tool Use Evaluation",
-        "Execution Environment"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A deployment-aware AI model selection tool that helps enterprises choose the best model for specific workloads based on accuracy, cost, and deployment mode.",
-        "A benchmarking platform for AI developers to evaluate and compare their models across various multimodal and multi-step execution tasks."
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.06188",
-      "title": "MVFA: A Multi-View Text-Guided Multimodal Fusion LLM Adapter for Sentiment Analysis and Emotion Recognition",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.06188v1 Announce Type: new Abstract: Multimodal sentiment analysis and emotion recognition in conversations demand effective modeling of heterogeneous interactions across textual, acoustic, and visual modalities. Although large language models (LLMs) offer powerful language understanding, adapting them to multimodal affective computing remains challenging: full-model fine-tuning is computationally prohibitive, while many existing lightweight adapters fail to preserve rich textual cues during cross-modal fusion. To address these limitations, we propose the multi-view text-guided multimodal fusion adapter (MVFA), a parameter-efficient framework that augments frozen LLMs with strong multimodal reasoning capability. MVFA first constructs complementary text views via max pooling, mean pooling, and attention pooling; these views then guide cross-modal interactions with audio and visual features. The fused multimodal representations are subsequently compressed into a compact set of learnable pseudo-tokens through an Enhanced Q-Former Fusion Module. Using ChatGLM3-6B-base as the primary backbone, we further validate MVFA on LLaMA2-7B and Qwen3-8B to examine its portability across multiple frozen LLM backbones. MVFA is evaluated on three challenging datasets: CH-SIMS V2.0, MELD, and CHERMA. Experimental results demonstrate that MVFA achieves state-of-the-art performance on key metrics while updating only a small fraction of parameters. Specifically, it attains 84.62\\% Acc2 and 84.59\\% F1 on CH-SIMS V2.0, 67.36\\% Acc and 66.03\\% WF1 on MELD, and 74.66\\% Acc on CHERMA. These findings establish multi-view text-guided fusion as an effective and scalable paradigm for parameter-efficient multimodal LLM adaptation in affective computing. The code is publicly available at https://github.com/Overwhelm1208/MVFA.",
-      "pdf_url": "https://arxiv.org/abs/2609.06188",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Low-Rank Adaptation",
-        "Enhanced Q-Former Fusion Module"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A multimodal sentiment analysis tool for customer service platforms to analyze customer feedback across text, audio, and visual channels.",
-        "An emotion recognition application for mental health monitoring, integrating with wearables and smart devices to provide real-time emotional state analysis."
-      ],
-      "domain_applications": [
-        "healthcare",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "id": "2609.05579",
-      "title": "ViT3Flow: A Test-Time Training Transformer MeanFlow for Postoperative Radiograph Synthesis in Scoliosis",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.05579v1 Announce Type: cross Abstract: Predicting postoperative spinal morphology from preoperative radiographs could provide valuable support for scoliosis surgical planning, but remains challenging because surgical correction induces large spatial changes while anatomical structures must be faithfully retained. We formulate this problem as postoperative scoliosis radiograph synthesis and construct ScoliSurg, the first paired dataset for this task, comprising 632 preoperative--postoperative whole-spine radiograph pairs with structured morphology information. We further propose ViT$^{3}$Flow, a single-NFE conditional MeanFlow framework for efficient postoperative radiograph synthesis. ViT$^{3}$Flow models surgical correction as finite-interval generative transport and replaces conventional self-attention with test-time-training token mixers that perform sample-specific inner adaptation to the anatomy and deformity pattern of each case. In addition, a Spinal Morphology Extraction Agent extracts distributions of dominant-curve region and direction from the preoperative radiograph. These distributions guide Diagnosis-Routed Interval Cross-Attention (DRICA), which performs interval-dependent vertical, horizontal, joint, and global retrieval from a separate preoperative token stream. This design enables the evolving postoperative representation to incorporate spatially corresponding anatomical evidence throughout the transport process. Extensive experiments on ScoliSurg demonstrate that ViT$^{3}$Flow achieves the best performance among the compared methods in perceptual image quality, anatomical fidelity, and clinically relevant geometric accuracy, while requiring only a single network evaluation. These results highlight the potential of ViT$^{3}$Flow for efficient and anatomically faithful postoperative radiograph synthesis in scoliosis surgical planning.",
-      "pdf_url": "https://arxiv.org/abs/2609.05579",
-      "comment": "",
-      "technologies": [
-        "Vision Transformer",
-        "Test-Time Training",
-        "Conditional MeanFlow",
-        "Diagnosis-Routed Interval Cross-Attention"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-assisted surgical planning tool for scoliosis",
-        "Real-time postoperative radiograph synthesis for clinical decision support"
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2609.06226",
-      "title": "Scratchy: Visual-Scratchpad Multimodal Reasoning for Cryptographic Proof Generation in EasyCrypt",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.06226v1 Announce Type: cross Abstract: Large language models (LLMs) have recently made substantial progress in formal proof generation, yet presenting distinctive challenges in cryptographic area. Computational security arguments posit that a valid proof must coordinate probability, adversarial games, invariants, assumptions and bounds, which can be provided by a machine-checked framework named EasyCrypt. Although all objects may appear in available context, LLMs still struggle because proof-theoretic dependencies are typically implicit in a linear representation and distributed across multiple programs. So, this paper presents Scratchy, a visual-scratchpad approach that exposes these dependencies for multimodal generation. Given the natural-language security description, with formal context and target propositions, the proof objects can be normalized into a typed proof-relation graph. Then a structure-preserving visual compiler transforms the graph into the formula-rich visual proof state that guides a multimodal model in generating the EasyCrypt proof. Also, the Scratchy-eval, a 114-task dataset derived from reliable official EasyCrypt files, has been introduced. It contains 64 security-form proof generations and 50 multiple-choice knowledge tests. After a series of evaluations, covering semantic grounding, relational invariants, and game reductions, classical LLMs like GPT-5.6-Sol and Claude-Opus-5 have gained a clear advantage from Scratchy's structured visual proof states. This contrast suggests that explicit proof structure can make the improvement and multimodal proof-state representation as a promising direction for computer-aided cryptography.",
-      "pdf_url": "https://arxiv.org/abs/2609.06226",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Visual-Spatial Reasoning",
-        "Graph Representation Learning",
-        "Structure-Preserving Visualization"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A visual-scratchpad tool for cryptographers to generate and verify cryptographic proofs",
-        "An AI-assisted educational platform for learning cryptographic proof generation"
-      ],
-      "domain_applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "id": "2502.00858",
-      "title": "Inferring the Unspoken: Aligning Embodied Agents with Implicit Preferences",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2502.00858v4 Announce Type: replace Abstract: Natural-language instructions rarely specify every detail required for embodied action. An agent asked to ``prepare an apple,'' for example, must still determine whether to wash or cut it, where to place it, and in what order to perform these actions. Such decisions often reflect user-specific preferences that are demonstrated through behavior but never explicitly stated. We study whether embodied agents can infer these latent preferences from a small number of prior demonstrations and apply them when planning in new situations. To support systematic evaluation, we introduce Preference-based Planning (PbP), a benchmark containing 5,000 evaluation groups and 290 preferences organized into three levels: atomic action parameters, strategic interaction and placement policies, and temporal ordering constraints. We further propose Inferring the Unspoken (InTU), a two-stage framework that first verbalizes the preference inferred from multimodal behavioral demonstrations and then generates an action plan conditioned on that explicit representation. Experiments with video-language and language models reveal a substantial preference-acquisition gap: models plan effectively when given the ground-truth preference, but their performance degrades sharply when the same preference must be inferred from behavior. Explicit verbalization consistently improves alignment over direct end-to-end planning, particularly for strong multimodal models, and provides greater robustness when preferences must transfer across visually distinct scenes. These results identify visual-to-semantic preference acquisition, rather than preference-conditioned planning alone, as a central bottleneck in personalized embodied intelligence. They also demonstrate that language can serve as an interpretable and transferable intermediate representation between observed behavior and personalized action.",
-      "pdf_url": "https://arxiv.org/abs/2502.00858",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Preference-based Planning (PbP)",
-        "Inferring the Unspoken (InTU)"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Personalized Virtual Assistant for Home Automation",
-        "Customizable Robotics for Elderly Care"
-      ],
-      "domain_applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "id": "2602.00288",
-      "title": "TimeBlind: A Spatio-Temporal Compositionality Benchmark for Video LLMs",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2602.00288v4 Announce Type: replace-cross Abstract: Fine-grained spatio-temporal understanding is essential for video reasoning and embodied AI. Yet, while Multimodal Large Language Models (MLLMs) master static semantics, their grasp of temporal dynamics remains brittle. We present TimeBlind, a diagnostic benchmark for compositional spatio-temporal understanding. Inspired by cognitive science, TimeBlind categorizes fine-grained temporal understanding into three levels: recognizing atomic events, characterizing event properties, and reasoning about event interdependencies. Unlike benchmarks that conflate recognition with temporal reasoning, TimeBlind leverages a minimal-pairs paradigm: video pairs share identical static visual content but differ solely in temporal structure, utilizing complementary questions to neutralize language priors. Evaluating over 20 state-of-the-art MLLMs (e.g., GPT-5, Gemini 3 Pro) on 600 curated instances (2400 video-question pairs), reveals that the Instance Accuracy (correctly distinguishing both videos in a pair) of the best performing MLLM is only 48.2%, far below the human performance (98.2%). These results demonstrate that even frontier models rely heavily on static visual shortcuts rather than genuine temporal logic, positioning TimeBlind as a vital diagnostic tool for next-generation video understanding. Dataset and code are available at https://baiqi-li.github.io/timeblind_project/ .",
-      "pdf_url": "https://arxiv.org/abs/2602.00288",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Video Understanding",
-        "Temporal Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Developing advanced video understanding tools for applications like surveillance and autonomous vehicles",
-        "Creating AI-driven video analysis platforms for sports analytics and training",
-        "Building temporal reasoning capabilities into video editing and generation tools"
-      ],
-      "domain_applications": [
-        "robotics",
-        "education",
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.05953",
-      "title": "ProtoRAG: Prototype-Based Retrieval Augmentation for Few-Shot Fine-Grained Remote Sensing Object Detection",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.05953v1 Announce Type: new Abstract: Few-shot fine-grained object detection (FGOD) in remote sensing imagery is challenging because limited annotations must support both object localization and discrimination among visually similar subcategories. Although multimodal large language models (MLLMs) provide strong coarse object localization, they lack explicit visual evidence for reliable fine-grained recognition. To address this limitation, we propose ProtoRAG, a prototype-based retrieval-augmented framework that decouples coarse localization from fine-grained recognition by equipping MLLMs with an external object-level visual memory. To construct a reliable visual memory from limited support samples, we introduce Discriminative Prototype Space Learning (DPSL), which encourages discriminative and prototype-stable representations through supervised contrastive learning and prototype-consistency regularization. We further develop an uncertainty-guided candidate-constrained reasoning strategy that augments MLLMs with retrieved candidate-specific visual references and invokes multimodal reasoning only for ambiguous instances. Extensive experiments show that ProtoRAG consistently surpasses representative baselines in nine few-shot settings, outperforming the strongest baselines by 14.80, 2.27, and 4.04 mAP$_{50}$ on MAR20, HRSC2016, and FAIR1M-2.0, respectively.",
-      "pdf_url": "https://arxiv.org/abs/2609.05953",
-      "comment": "",
-      "technologies": [
-        "Retrieval Augmented Generation",
-        "Discriminative Prototype Space Learning",
-        "Uncertainty-Guided Candidate-Constrained Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Enhanced satellite imagery analysis for environmental monitoring and disaster response",
-        "Improved agricultural monitoring and crop health assessment using drone imagery"
-      ],
-      "domain_applications": [
-        "science",
-        "climate",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.07135",
-      "title": "NutriBench-Kitchen: Benchmarking Embodied AI for Nutrition Management",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2609.07135v1 Announce Type: new Abstract: An embodied kitchen assistant must do more than recognize food in isolated frames. It must track ingredient states over time and integrate visual observations with recipe and nutritional knowledge to support constraint-aware decision-making. We formalize this capability as \\emph{Embodied Nutrition Management}: perceiving nutrition-relevant events, maintaining a persistent food state, and using it for knowledge-grounded planning. Existing benchmarks evaluate static food understanding or embodied cooking actions, but do not measure whether an agent can continuously update and use nutrition-relevant states in dynamic kitchens. To fill this gap, we introduce \\textbf{NutriBench-Kitchen}, a benchmark containing 1,500 manually verified question--answer pairs from 160 cooking videos. It covers five task families: Ingredient Entry, Memory Management, Recipe Query, Long-Term Planning, and Short-Term Planning, spanning food-state construction, maintenance, knowledge retrieval, and decision-making across different planning horizons. Evaluations of proprietary and open-source large vision-language models reveal a substantial gap from human performance, particularly in quantitative ingredient estimation, long-term state tracking, and reasoning under interacting constraints. We further introduce \\textbf{Nutri-Vgent}, a diagnostic long-video agent with separate episodic, food-state, and recipe memories. Its consistent improvements demonstrate the value of explicit state representations and structured memory for nutrition management. Together, NutriBench-Kitchen and Nutri-Vgent provide a testbed for studying persistent state tracking and knowledge-grounded reasoning in dynamic kitchens. Code is available at https://github.com/V1ol1n/NutriBench-Kitchen.",
-      "pdf_url": "https://arxiv.org/abs/2609.07135",
-      "comment": "",
-      "technologies": [
-        "Embodied AI",
-        "Vision-Language Models",
-        "Persistent State Tracking",
-        "Knowledge-Grounded Planning",
-        "Structured Memory"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Smart kitchen assistant that tracks food states and provides nutrition guidance",
-        "Personalized meal planning app with real-time ingredient tracking",
-        "Embodied AI system for healthcare nutrition management"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "id": "2511.22341",
-      "title": "Unexplored flaws in multiple-choice VQA make benchmarking unreliable",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2511.22341v2 Announce Type: replace Abstract: Previous works identify sensitivity to option order as a key issue in multiple-choice VQA (MC-VQA) evaluation and propose protocols to mitigate this effect. We show that such mitigation is insufficient to ensure the validity of MC-VQA as a reliable benchmark for Multimodal Large Language Model (MLLMs): performance remains highly sensitive to semantically neutral prompt format choices that are not controlled by current benchmarks. In a large-scale study spanning seven MLLMs and five MC-VQAs datasets, we find frequent rank reversals even under order-invariant evaluation. These reversals arise when we systematically vary option ID sets, delimiters, and separators, yielding 48 semantically equivalent prompt formats. Mechanistic analyses trace this instability to low-level language modeling effects: tokenizer-induced fusion or removal of option ID tokens introduces corrupted option ID tokens into the input sequence, while the choice of option ID sets directly affects the reliability of attention patterns for option selection. Accordingly, MC-VQA rankings correlate weakly with open-ended evaluation, indicating that MC-VQA reflects option-selection dynamics in addition to multimodal reasoning. These findings identify prompt formatting as a major, previously under-controlled confounder in MC-VQA benchmarking and motivate evaluation protocols that explicitly control prompt format sensitivity.",
-      "pdf_url": "https://arxiv.org/abs/2511.22341",
-      "comment": "",
+      "published": "2026-09-10",
+      "updated": "2026-09-10",
+      "summary": "Deep research agents are increasingly capable of web search, tool use, multimodal evidence analysis, and information synthesis. However, existing benchmarks mainly evaluate medium-horizon exploration and rarely test whether agents can sustain long, dependency-heavy research processes. We introduce Mr.LHDR (Multimodal real-world Long-Horizon Deep Research), a benchmark for evaluating real-world deep research over long, irreducible chains of interdependent evidence across eight categories. Each question is constructed from a hidden Node-Relation graph and requires an average of 12.1 necessary intermediate conclusions with a mean dependency depth of 10.4 before reaching a short, unique, and verifiable answer. Questions incorporate multimodal evidence, including images, maps, PDFs, logos, charts, tables, and video frames, with at least one non-text element that changes the reasoning state. Mr.LHDR evaluates both final answers and the correctness of intermediate conclusions under annotated dependencies. We evaluate general models, deep research systems, and agent frameworks using Overall Accuracy (OA), Strict Accuracy (SA), Checklist Score (CS), and Dependency-Aware Checklist Score (DACS). Results show that even the strongest system achieves only 43.1% OA and 34.3% SA, indicating that final-answer accuracy substantially overestimates complete research success. Removing images reduces DACS by 12.6 points, demonstrating the importance of multimodal evidence, while SA consistently declines as reasoning chains become longer. These findings reveal sustained, dependency-consistent evidence integration, rather than isolated fact retrieval, as a key bottleneck for current deep research agents.",
+      "pdf_url": "https://arxiv.org/pdf/2609.11318v1",
+      "comment": "Code and data are available at https://github.com/minghaoguo20/Mr-LHDR-eval",
       "technologies": [
         "Multimodal Learning"
       ],
@@ -514,38 +326,272 @@
       "confidence": 0.7,
       "curator_score": 5.7,
       "product_potential": [
-        "Developing standardized prompt formatting guidelines for MC-VQA to ensure reliable benchmarking",
-        "Creating tools to automatically generate and test semantically equivalent prompt formats for MLLMs"
+        "Developing AI agents capable of conducting in-depth research tasks that require multimodal evidence analysis and long-horizon reasoning.",
+        "Creating tools for educational purposes that can guide students through complex research processes, providing step-by-step reasoning and evidence integration."
       ],
       "domain_applications": [
+        "education",
         "science",
-        "education"
+        "other"
       ]
     },
     {
-      "id": "2603.25255",
-      "title": "Hyperspectral Trajectory Image for Multi-Month Trajectory Anomaly Detection",
+      "id": "2609.11141",
+      "title": "Can LLMs Normalize Databases? A Benchmark and Multi-Agent Framework for Schema Normalization",
       "authors": [],
       "categories": [
-        "cs.CV"
+        "cs.CL"
       ],
-      "published": "2026-09-09",
-      "updated": "2026-09-09",
-      "summary": "arXiv:2603.25255v2 Announce Type: replace Abstract: Trajectory anomaly detection underpins applications from fraud detection to urban mobility analysis. Dense GPS methods preserve fine-grained evidence such as abnormal speeds and short-duration events, but their quadratic cost makes multi-month analysis intractable; consequently, no existing approach detects anomalies over multi-month dense GPS trajectories. The field instead relies on scalable sparse stay-point methods that discard this evidence, forcing separate architectures for each regime and preventing knowledge transfer. Dense and sparse trajectories share a two-dimensional cyclic structure along within-day and across-day axes. We therefore propose TITAnD (Trajectory Image Transformer for Anomaly Detection), which reformulates trajectory anomaly detection as a vision problem by representing trajectories as a Hyperspectral Trajectory Image (HTI): a day x time-of-day grid whose channels encode spatial, semantic, temporal, and kinematic information from either modality, unifying both under a single representation. Under this formulation, agent-level detection reduces to image classification and temporal localization to semantic segmentation. To model this representation, we introduce the Cyclic Factorized Transformer (CFT), which factorizes attention along the two temporal axes, encoding the cyclic inductive bias of human routines, while reducing attention cost by orders of magnitude and enabling dense multi-month anomaly detection for the first time. Empirically, TITAnD achieves the best AUC-PR across the three primary sparse and dense benchmarks, surpassing vision models like UNet while being 11-75x faster than the Transformer with comparable memory, demonstrating that vision reformulation and structure-aware modeling are jointly essential. Additional evaluation includes PoL, LM-TAD, Chronos-2, and DINOv2+Adapter; TITAnD trails LM-TAD on PoL. Code will be made public soon.",
-      "pdf_url": "https://arxiv.org/abs/2603.25255",
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.11141v1 Announce Type: new Abstract: Large Language Models (LLMs) are increasingly used to generate structured outputs, but their reliability remains unclear when those outputs must satisfy database-level constraints. We study this issue through database normalization, involving reasoning about functional dependencies, lossless join decompositions, and inter-table constraints. We introduce a Database Normalization Benchmark (DNBENCH), comprising 3,275 samples for evaluating LLM-driven database normalization from 1NF to BCNF. DNBENCH uses a three-axis protocol to measure semantic equivalence, structural accuracy, and logical validity. Across Single, Complex, and Real World levels, DNBENCH uncovers recurring failures in dependency inference, schema decomposition, and inter-table constraint reconstruction. We further propose Multi-Agent Reasoning for Schemas (MARS), which separates evidence extraction, violation diagnosis, and decomposition planning from schema generation and verification. MARS improves the DNB-SCORE by 82.0% over the single-prompt baseline. All artifacts will be released upon acceptance.",
+      "pdf_url": "https://arxiv.org/abs/2609.11141",
       "comment": "",
       "technologies": [
-        "Vision Transformer",
-        "Cyclic Factorized Transformer"
+        "Multi-Agent Reasoning for Schemas (MARS)",
+        "Database Normalization Benchmark (DNBENCH)"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Automated database schema design tool for developers",
+        "AI-assisted data modeling for enterprise applications"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2609.11244",
+      "title": "OmniHallu: Unified Hallucination Detection for Cross-Modal Comprehension and Generation in Multimodal Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.11244v1 Announce Type: new Abstract: While Multimodal Large Language Models (MLLMs) have achieved remarkable progress across diverse tasks, they suffer from hallucinations where generated outputs contradict or misrepresent input semantics. Existing research typically addresses hallucination detection within a single modality or task type, limiting generalizability. We introduce OmniHallu, a unified hallucination detection framework spanning both comprehension and generation tasks across image, video, and audio modalities. We contribute OmniHallu-Bench, a 10,000-sample benchmark with claim-level human annotations covering six cross-modal tasks: image-to-text (I2T), video-to-text (V2T), audio-to-text (A2T), text-to-image (T2I), text-to-video (T2V), and text-to-audio (T2A). Our multi-agent architecture decomposes model outputs into atomic claims, verifies them through modality-specific experts, and aggregates evidence via structured reasoning. We further propose a preference-optimized trainable verifier that approximates the multi-agent decision boundary, reducing expert calls by 66% with minimal performance loss. Extensive experiments reveal a consistent modality-dependent performance gradient and provide fine-grained insights into cross-modal hallucination patterns.",
+      "pdf_url": "https://arxiv.org/abs/2609.11244",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Hallucination Detection",
+        "Multi-agent Architecture",
+        "Preference Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "A cross-modal hallucination detection tool for MLLMs, enabling more reliable outputs across image, video, and audio modalities.",
+        "A preference-optimized verifier for MLLMs, reducing expert calls and improving efficiency."
+      ],
+      "domain_applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2605.12227",
+      "title": "A Recipe for Long-Context Reasoning in Large Language Models via On-Policy Optimization and Distillation",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2605.12227v3 Announce Type: replace Abstract: Existing approaches to post-train models for long-context tasks face complementary limitations: (i) supervised fine-tuning (SFT) provides stable supervision but suffers from exposure bias; (ii) reinforcement learning methods such as Group Relative Policy Optimization (GRPO) train on model-generated trajectories but struggle with long-horizon credit assignment and sparse rewards; and (iii) on-policy distillation (OPD) provides dense token-level guidance but does not directly optimize task rewards. We study these complementary strategies for long-context alignment and derive a recipe that combines GRPO with OPD-style teacher guidance: the student learns from its own rollouts using outcome-level rewards, while a stronger teacher provides dense token-level regularization in place of the standard reference policy. This is especially useful when process-level supervision is difficult to obtain. To support this study, we introduce LongBlocks, a synthetic multilingual dataset spanning multi-hop reasoning, contextual grounding, and long-form generation. Through controlled ablations, we isolate the roles of cold-start initialization, teacher anchoring, and data mixing, showing that our recipe yields a more stable and effective path to long-context reasoning than GRPO or OPD while preserving short-context capabilities.",
+      "pdf_url": "https://arxiv.org/abs/2605.12227",
+      "comment": "",
+      "technologies": [
+        "Group Relative Policy Optimization (GRPO)",
+        "On-Policy Distillation (OPD)",
+        "Long-Context Reasoning"
       ],
       "maturity": "medium",
       "confidence": 0.8,
       "curator_score": 5.7,
       "product_potential": [
-        "A real-time anomaly detection system for urban mobility analysis using dense GPS data",
-        "A fraud detection platform for financial institutions leveraging multi-month trajectory data"
+        "Enhanced long-document analysis tools for legal and medical professionals",
+        "Advanced customer support chatbots capable of handling extended conversations",
+        "Improved educational tutoring systems that can analyze and synthesize large amounts of course material"
       ],
       "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2609.10943",
+      "title": "CamPilot: A Multi-Agent Cinematic Assistant for Camera-Controlled Movie Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.10943v1 Announce Type: new Abstract: The integration of large language models (LLMs) into video generation has enabled rapid text-to-video creation and improved visual quality. However, it still falls short of professional filmmaking, where cinematographic language is less refined than human-crafted camera work and multi-shot continuity remains challenging. To address these limitations, we introduce CamPilot, a multi-agent framework that integrates cinematographic planning and camera-work control to produce more coherent, logically structured, and human-aesthetic movies. CamPilot adopts a GRPO-based learning paradigm to learn camera work planning from 14K real-world professional movies, internalizing motion patterns and composition principles that support reasoning over shooting techniques (e.g., camera angle, motion, and focal behavior) and cross-shot relationships for controllable camera-viewpoint generation. Multiple agents further collaborate and evolve to improve overall output quality. To support this work and further studies in this domain, we establish CamEval, a benchmark for evaluating camera work quality and cinematic engagement. Empirical results show that CamPilot outperforms state-of-the-art text-to-movie generation methods on cinematographic control and quality, highlighting the impact of professional camera design on movie generation.",
+      "pdf_url": "https://arxiv.org/abs/2609.10943",
+      "comment": "",
+      "technologies": [
+        "Multi-Agent Systems",
+        "Reinforcement Learning from Human Feedback",
+        "Direct Preference Optimization",
+        "Vision Transformer"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-powered cinematography tool for filmmakers and content creators",
+        "Automated video editing software with professional camera work",
+        "Interactive storytelling platform with AI-generated cinematography"
+      ],
+      "domain_applications": [
+        "creative"
+      ]
+    },
+    {
+      "id": "2609.08977",
+      "title": "Omni Interaction Agent Technical Report",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.08977v2 Announce Type: replace-cross Abstract: In this work, we present Gander, an end-to-end model that unifies omni perception, realtime interaction, and agentic capabilities within a single framework. In contrast to turn-based conventional paradigms, Gander continuously receives streaming inputs across multiple modalities, including video, speech, and text, enabling natural full-duplex interaction in both everyday conversations and complex workflow-oriented agent scenarios. Users can interrupt the model at any time, while the model can also proactively provide intermediate feedback or ask follow up questions. To natively support these capabilities, Gander adopts two key architectural designs: 1) It employs a Cerebellum-Brain collaborative framework, in which the Cerebellum is responsible for realtime interaction and omni conversational capabilities, while the Brain handles complex reasoning and higher-level agentic tasks. The two components interact continuously through tool calling and the agent orchestration runtime. 2) The Cerebellum is built upon a streaming Thinker-Talker architecture, user inputs and model outputs are further flattened into an ordered token stream at the chunk level, providing a unified representation for low latency, continuous interaction. We conduct comprehensive evaluations of Gander across four dimensions: conversational ability, omni understanding, interactive capability, and agentic intelligence. Internal human evaluations demonstrate that Gander maintains the natural and expressive spoken dialogue capabilities of SOTA open source models while achieving competitive performance in omni interaction. Gander also demonstrates robustness in challenging real-world scenarios, including background noise interference, multi-party interactions, and backchannel communication. We release Gander together with its models, code, and data to facilitate further research and development in the community.",
+      "pdf_url": "https://arxiv.org/abs/2609.08977",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Streaming Thinker-Talker Architecture",
+        "Cerebellum-Brain Collaborative Framework"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Real-time multimodal assistant for customer service",
+        "Interactive AI tutor for education",
+        "Proactive AI agent for enterprise workflows"
+      ],
+      "domain_applications": [
+        "healthcare",
+        "education",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2609.10745",
+      "title": "Think Before You Link: Rarity, Reasoning, and Retrieval in Multilingual Entity Linking",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.10745v1 Announce Type: new Abstract: Multimodal entity linking grounds entity mentions in text and images to knowledge-base entries. These systems degrade on rare entities, but prior work measures rarity primarily through popularity-based metrics such as pageviews. We broaden this view using knowledge-graph structural metrics that capture how well an entity is documented and connected. These metrics identify many rare entities that popularity metrics miss. Across the resulting rare-entity slices, state-of-the-art accuracy drops by 15.4-39.9%, showing that different rarity definitions expose different failure modes. To address these failures, we introduce a simple, training-free framework in which a reasoning-capable vision-language model iteratively searches and reasons over Wikipedia, gathering evidence dynamically. Controlled experiments show that reasoning and retrieval are complementary. Reasoning alone does not significantly improve accuracy on rare entities. Retrieval without reasoning improves rare-entity accuracy but can hurt overall accuracy. Their combination performs best. On MERLIN, a multilingual multimodal entity linking benchmark over five languages (Hindi, Indonesian, Japanese, Tamil, Vietnamese), our best system improves over the state of the art by 6.9% overall and by up to 23.3% on rare-entity slices. We release MERLIN-Rare, rare-entity test slices for targeted evaluation, with our framework.",
+      "pdf_url": "https://arxiv.org/abs/2609.10745",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "A multilingual multimodal search engine that can accurately link rare entities across different languages and media types.",
+        "An AI assistant that can provide detailed information about rare entities by dynamically gathering evidence from various sources."
+      ],
+      "domain_applications": [
+        "education",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2609.09766",
+      "title": "CARRE: Counterfactual Action Retrieval and Reason Evaluation for Explainable Churn Prescription",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.09766v2 Announce Type: replace Abstract: Churn models typically identify high-risk customers but do not specify which feasible retention action should be considered or why that action is appropriate. We present CARRE (Counterfactual Action Retrieval and Reason Evaluation), a three-stage framework that combines retrieval-augmented candidate generation, cost-aware counterfactual scoring, and large language model (LLM) reasoning. CARRE retrieves a predefined catalog of retention actions, estimates model-predicted churn-risk changes under explicit feature transformations, and generates a structured churn reason and a profile-grounded explanation for the selected action. On the IBM Telco Customer Churn dataset, CARRE achieves 79.8% greater mean model-predicted risk reduction than the plain SHAP baseline and 80.4% greater reduction than the cost-controlled SHAP+Cost baseline across 313 high-risk test cases; its cost-normalized efficiency is 10.5% higher than that of plain SHAP. On a 136-case reason-stratified evaluation sample, diagnosis-driven prompt refinement increases weak-label agreement from 79.4% to 90.4%, with no auxiliary-plan constraint violations; because the same sample was used for error diagnosis and re-evaluation, the post-refinement result is not an independent estimate of generalization. For 135 explanations generated using the pre-refinement v2 reason outputs, two cross-vendor LLM judges assign mean scores ranging from 4.02 to 5.00 out of 5, although one judge saturates on actionability, and a deterministic audit finds no contradictions among 66 verifiable profile claims. Retrieval ablations show that k=5 provides the best evaluated compromise between high candidate coverage and downstream reasoning agreement in this dataset. These results illustrate how retrieval, model-based counterfactual scoring, and language generation can be separated and jointly evaluated in a prototype churn-prescription pipeline.",
+      "pdf_url": "https://arxiv.org/abs/2609.09766",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Counterfactual Reasoning",
+        "Explainable AI"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.6,
+      "product_potential": [
+        "A customer retention tool for telecom companies that suggests specific actions to reduce churn, along with explanations for why those actions are appropriate.",
+        "An AI-driven churn management system for enterprises that integrates with CRM platforms to provide actionable insights and recommendations for customer retention."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "id": "2603.20278",
+      "title": "OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2603.20278v2 Announce Type: replace-cross Abstract: Training deep research agents requires long-horizon trajectories that interleave search, evidence aggregation, and multi-step reasoning. However, existing data collection pipelines typically rely on proprietary web APIs, making large-scale trajectory synthesis costly, unstable, and difficult to reproduce. We present OpenResearcher, a reproducible pipeline that decouples one-time corpus bootstrapping from multi-turn trajectory synthesis and executes the search-and-browse loop entirely offline using three explicit browser primitives: search, open, and find, over a 15M-document corpus. Using GPT-OSS-120B as the teacher model, we synthesize over 97K trajectories, including a substantial long-horizon tail with 100+ tool calls. Supervised fine-tuning a 30B-A3B backbone on these trajectories achieves 54.8\\% accuracy on BrowseComp-Plus, a +34.0 point improvement over the base model, while remaining competitive on BrowseComp, GAIA, and xbench-DeepSearch. Because the environment is offline and fully instrumented, it also enables controlled analysis, where our study reveals practical insights into deep research pipeline design, including data filtering strategies, agent configuration choices, and how retrieval success relates to final answer accuracy. We release the pipeline, synthesized trajectories, model checkpoints, and the offline search environment at https://github.com/TIGER-AI-Lab/OpenResearcher.",
+      "pdf_url": "https://arxiv.org/abs/2603.20278",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.10177",
+      "title": "Beyond Surface Imitation: Contrastive Modeling for Reasoning Path Alignment in Multimodal In-Context Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-11",
+      "updated": "2026-09-11",
+      "summary": "arXiv:2609.10177v1 Announce Type: new Abstract: In-context learning (ICL) is widely used in multimodal large language models (MLLMs) and achieves strong performance across a wide range of multimodal tasks. However, existing multimodal ICL methods often rely on surface level imitation of in-context demonstrations, making it difficult for MLLMs to align their responses with the reasoning path required by the given multimodal input. This limitation becomes more pronounced in complex multimodal tasks, thereby restricting further improvements in MLLM performance. To address this issue, we propose a new multimodal ICL framework that combines contrastive demonstration modeling with the self-refinement capability of MLLMs. Specifically, our framework reformulates each demonstration by explicitly contrasting a suboptimal response with a better response under the same input, together with a reasoning path that reveals how the response should be refined. This contrastive formulation makes the reasoning path toward the desired response more explicit and guides the MLLM beyond superficial imitation. Furthermore, because effective refinement depends on the current response, we introduce a response-conditioned retrieval mechanism to select demonstrations whose reasoning paths are more relevant to the current response. In addition, we use a lightweight alignment controller to predict response quality and determine whether further refinement is needed. Experiments on three types of multimodal tasks show that the proposed framework consistently improves MLLM performance, with particularly notable gains on visual question answering (VQA).",
+      "pdf_url": "https://arxiv.org/abs/2609.10177",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Contrastive Learning",
+        "Retrieval Augmented Generation",
+        "Chain-of-Thought Prompting"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Enhanced multimodal AI assistants that can provide detailed reasoning paths for their responses",
+        "Advanced educational tools that can explain complex concepts through multimodal reasoning paths"
+      ],
+      "domain_applications": [
+        "education",
+        "creative",
         "enterprise",
         "science"
       ]
@@ -575,62 +621,96 @@
       ]
     },
     {
-      "name": "Multimodal Learning",
-      "papers": 8,
+      "name": "Mixture of Experts",
+      "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "breakout",
+      "confidence": 0.85,
+      "trend": "rising",
       "applications": [
-        "healthcare",
         "robotics",
-        "accessibility",
-        "education",
-        "science"
+        "enterprise"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
-      "papers": 3,
+      "papers": 5,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "creative"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Topological Reasoning",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "accessibility",
+        "education",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 8,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science",
+        "enterprise",
+        "creative",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
         "other"
       ]
     },
     {
-      "name": "Vision Transformer",
-      "papers": 3,
+      "name": "Quantization",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "healthcare",
+        "creative",
         "enterprise",
-        "science"
+        "other"
       ]
     },
     {
-      "name": "Clinical Framing",
+      "name": "Atomic-task Reinforcement Learning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Benchmarking",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
         "other"
       ]
     },
@@ -647,53 +727,149 @@
       ]
     },
     {
-      "name": "Visual-Spatial Reasoning",
+      "name": "Hallucination Detection",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "science",
-        "education"
+        "creative",
+        "enterprise",
+        "other"
       ]
     },
     {
-      "name": "Preference-based Planning (PbP)",
+      "name": "Multi-agent Architecture",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "robotics",
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Group Relative Policy Optimization (GRPO)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation (OPD)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Long-Context Reasoning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative"
+      ]
+    },
+    {
+      "name": "Streaming Thinker-Talker Architecture",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Cerebellum-Brain Collaborative Framework",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education",
+        "enterprise",
         "accessibility"
       ]
     },
     {
       "name": "Retrieval Augmented Generation",
-      "papers": 1,
+      "papers": 3,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "education",
         "science",
-        "climate",
+        "other",
+        "creative",
         "enterprise"
       ]
     },
     {
-      "name": "Embodied AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Cyclic Factorized Transformer",
+      "name": "Multi-Agent Reasoning for Schemas (MARS)",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
@@ -704,263 +880,69 @@
       ]
     },
     {
-      "name": "Mixture of Experts",
+      "name": "Database Normalization Benchmark (DNBENCH)",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "enterprise"
+        "enterprise",
+        "science"
       ]
     },
     {
-      "name": "Sparse Attention",
+      "name": "Counterfactual Reasoning",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.85,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "enterprise"
+        "enterprise",
+        "finance"
       ]
     },
     {
-      "name": "Ordinal-aware Metrics",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Atomic-task Reinforcement Learning",
+      "name": "Explainable AI",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.85,
       "trend": "rising",
       "applications": [
-        "other"
+        "enterprise",
+        "finance"
       ]
     },
     {
-      "name": "Agent Evaluation",
+      "name": "Contrastive Learning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
       "applications": [
-        "other",
+        "education",
+        "creative",
         "enterprise",
         "science"
       ]
     },
     {
-      "name": "Tool Use Evaluation",
+      "name": "Chain-of-Thought Prompting",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
       "applications": [
-        "other",
+        "education",
+        "creative",
         "enterprise",
         "science"
-      ]
-    },
-    {
-      "name": "Execution Environment",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Enhanced Q-Former Fusion Module",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Test-Time Training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Conditional MeanFlow",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Diagnosis-Routed Interval Cross-Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Graph Representation Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Structure-Preserving Visualization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Inferring the Unspoken (InTU)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Video Understanding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "education",
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Temporal Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "education",
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Discriminative Prototype Space Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "climate",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Uncertainty-Guided Candidate-Constrained Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "climate",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Persistent State Tracking",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Knowledge-Grounded Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Structured Memory",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
       ]
     }
   ],
   "product_opportunities": [
     {
       "technology": "Knowledge Distillation",
-      "idea": "DistillLearn: AI model compression tool for edge devices",
+      "idea": "TinyTeacher: AI model compressor for edge devices",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
@@ -968,103 +950,15 @@
     },
     {
       "technology": "Low-Rank Adaptation",
-      "idea": "AdaptAI: Custom AI model adaptation for specific tasks",
+      "idea": "AdaptAI: AI model fine-tuner for specific tasks",
       "business_value": 7,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
       "development_time": "2-4 months"
-    },
-    {
-      "technology": "Diffusion Models",
-      "idea": "DiffuArt: AI-powered image and video generation tool",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Multimodal Learning",
-      "idea": "MultiSense: AI tool for analyzing and interpreting multimodal data",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Vision Transformer",
-      "idea": "VisiScan: AI-powered medical imaging analysis tool",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Benchmarking",
-      "idea": "BenchMark: AI model performance benchmarking and comparison tool",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Visual-Spatial Reasoning",
-      "idea": "SpatialMind: AI-powered educational tool for visual-spatial reasoning",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "idea": "RetrieveGen: AI-powered content generation tool with real-time data retrieval",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Embodied AI",
-      "idea": "EmboBot: AI-powered robot with embodied intelligence for healthcare and education",
-      "business_value": 9,
-      "engineering_difficulty": 9,
-      "competitive_advantage": "very high",
-      "development_time": "6-12 months"
-    },
-    {
-      "technology": "Cyclic Factorized Transformer",
-      "idea": "CycleTrans: AI-powered data analysis and prediction tool for enterprise",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "FeedLearn: AI model training tool using human feedback",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Clinical Framing",
-      "idea": "ClinFrame: AI-powered tool for clinical decision support and patient care",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Preference-based Planning (PbP)",
-      "idea": "PrefPlan: AI-powered tool for preference-based planning and decision-making",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
     },
     {
       "technology": "Mixture of Experts",
-      "idea": "ExpertMix: AI model with a mixture of experts for complex tasks",
+      "idea": "ExpertMind: AI model with specialized modules for complex tasks",
       "business_value": 9,
       "engineering_difficulty": 8,
       "competitive_advantage": "very high",
@@ -1072,7 +966,95 @@
     },
     {
       "technology": "Sparse Attention",
-      "idea": "SparseAttend: AI model with sparse attention for efficient processing",
+      "idea": "SparseFocus: AI model with efficient attention mechanisms",
+      "business_value": 7,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Diffusion Models",
+      "idea": "DreamWeave: AI-generated art and design tool",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Counterfactual Reasoning",
+      "idea": "WhatIf: AI decision-making tool with counterfactual analysis",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Explainable AI",
+      "idea": "ClearMind: AI decision explainer for regulatory compliance",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Reinforcement Learning from Human Feedback",
+      "idea": "FeedbackLoop: AI model trainer using human feedback",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Multimodal Learning",
+      "idea": "MultiSense: AI model for understanding and generating multiple data types",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "KV Cache Optimization",
+      "idea": "CacheMaster: AI model optimizer for faster inference",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Quantization",
+      "idea": "QuantumLeap: AI model quantizer for efficient deployment",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Hallucination Detection",
+      "idea": "TruthGuard: AI model for detecting and mitigating hallucinations",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Multi-agent Architecture",
+      "idea": "AgentSwarm: AI system with multiple interacting agents",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "very high",
+      "development_time": "4-6 months"
+    },
+    {
+      "technology": "Preference Optimization",
+      "idea": "PrefOptimize: AI model optimizer based on user preferences",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "3-5 months"
+    },
+    {
+      "technology": "Group Relative Policy Optimization (GRPO)",
+      "idea": "GroupMind: AI model optimizer for group decision-making",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
