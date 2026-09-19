@@ -1,38 +1,38 @@
 {
   "meta": {
-    "date": "2026-09-18",
+    "date": "2026-09-19",
     "papers_tracked": 15,
     "technologies_discovered": 38,
     "opportunities_identified": 15,
-    "last_update": "2026-09-18 09:57 UTC",
+    "last_update": "2026-09-19 09:38 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
     {
+      "technology": "Sparse Attention and KV Cache Optimization",
+      "why_it_matters": "Improves efficiency in autoregressive image generation, crucial for creative and robotics applications.",
+      "opportunity": "Develop more efficient image generation models for use in creative tools and robotics."
+    },
+    {
       "technology": "Retrieval Augmented Generation",
-      "why_it_matters": "Enhances AI's ability to access and utilize specific, up-to-date information, improving accuracy and relevance in responses.",
-      "opportunity": "Develop AI agents that can dynamically retrieve and integrate scientific and industrial data to provide optimized solutions."
+      "why_it_matters": "Enhances interdisciplinary scientific reasoning, beneficial for science and education domains.",
+      "opportunity": "Create educational tools and scientific research assistants leveraging RAG."
     },
     {
-      "technology": "Multimodal Learning",
-      "why_it_matters": "Allows AI systems to process and understand multiple types of data (text, images, etc.), leading to more comprehensive and context-aware outputs.",
-      "opportunity": "Create AI tools that can analyze and interpret complex, multimodal data in healthcare, education, and creative industries."
+      "technology": "Long-context Pattern Understanding and Simulated Human-Agent Interaction",
+      "why_it_matters": "Enables better human-agent partnerships, important for healthcare, robotics, and enterprise applications.",
+      "opportunity": "Build healthcare and enterprise tools with improved human-agent interaction capabilities."
     },
     {
-      "technology": "Diffusion Models",
-      "why_it_matters": "Offers advanced capabilities in generating high-quality content, making it a powerful tool for creative applications.",
-      "opportunity": "Leverage diffusion models to develop AI systems that can create and refine content in real-time for various industries."
+      "technology": "Skill Blocks and Experience Memory",
+      "why_it_matters": "Facilitates general robot learning, relevant for robotics, education, and enterprise domains.",
+      "opportunity": "Develop robotics platforms and educational tools with advanced learning capabilities."
     },
     {
-      "technology": "Segment Anything Model (SAM) 3",
-      "why_it_matters": "Advances in image segmentation can revolutionize medical imaging and other fields requiring precise image analysis.",
-      "opportunity": "Integrate SAM 3 into healthcare applications for more accurate and efficient medical image analysis and segmentation."
-    },
-    {
-      "technology": "Long-context Pattern Understanding",
-      "why_it_matters": "Enables AI systems to understand and respond to complex, long-term patterns and interactions, crucial for human-agent partnerships.",
-      "opportunity": "Develop AI agents that can understand and predict long-term human behavior patterns, enhancing their ability to assist in various domains."
+      "technology": "Segment Anything Model (SAM) 3 and Promptable Concept Segmentation (PCS)",
+      "why_it_matters": "Advances multimodal learning and agent-in-the-loop workflows, crucial for healthcare applications.",
+      "opportunity": "Create healthcare tools with improved segmentation and multimodal learning capabilities."
     }
   ],
   "top_cards": [
@@ -41,7 +41,7 @@
       "title": "New Technologies",
       "value": "38",
       "label": "discovered this scan",
-      "detail": "Sparse Attention, KV Cache Optimization, Retrieval Augmented Generation, Multi-Agent Systems, Artifact-Grounded Planning, Evidence-Driven Replanning, Persistent Memory, Governed Bioinformatics Skills",
+      "detail": "Sparse Attention, KV Cache Optimization, Retrieval Augmented Generation, Long-context Pattern Understanding, Simulated Human-Agent Interaction, Behavioral Rule Inference, Skill Blocks, Experience Memory",
       "color": "accent"
     },
     {
@@ -49,7 +49,7 @@
       "title": "Emerging Trends",
       "value": "38",
       "label": "active trend clusters",
-      "detail": "Sparse Attention, KV Cache Optimization, Retrieval Augmented Generation, Multimodal Learning, Block-Causal Attention",
+      "detail": "Skill Blocks, Experience Memory, Chain-of-Thought Prompting, Reinforcement Learning from Human Feedback, Direct Preference Optimization",
       "color": "green"
     },
     {
@@ -71,15 +71,15 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Bridging the Gap in Ophthalmic",
+      "value": "Teach and Grow: An Agent-Cente",
       "label": "highest confidence paper",
-      "detail": "AI-powered ophthalmic diagnostic assistant for healthcare professionals, Multimodal AI tool for medical education and training",
+      "detail": "A robotics platform that allows users to teach robots new skills through demonstrations, enabling rapid adaptation to new tasks without retraining., A home automation system that uses multimodal learning to understand and execute complex tasks based on user demonstrations, improving reliability and reducing the need for manual programming.",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "14",
+      "value": "0",
       "label": "early-stage technologies",
       "detail": "Bioinfoysis Technical Report",
       "color": "blue"
@@ -139,222 +139,6 @@
       "domain_applications": [
         "science",
         "education"
-      ]
-    },
-    {
-      "id": "2609.03871",
-      "title": "Bioinfoysis Technical Report",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-15",
-      "updated": "2026-09-15",
-      "summary": "arXiv:2609.03871v2 Announce Type: replace Abstract: Large language model agents have shown promise in bioinformatics, but most existing systems focus primarily on producing final answers, treating planning, tool use, and code execution as transient interactions. This design is poorly suited to long-horizon bioinformatics tasks, where conclusions must remain connected to the data, computations, and intermediate evidence that support them. We introduce \\textbf{Bioinfoysis}, a multi-agent harness that represents each request as a persistent, artifact-grounded analysis run. Bioinfoysis combines global planning with step-wise, evidence-driven replanning: the planner maintains an executable checklist and revises pending steps using structured handoffs returned after each worker execution. These handoffs bind intermediate results to their responsible agent, checklist step, and plan generation, preventing stale evidence from being silently reused after replanning. A controlled runtime validates generated scripts, tables, and figures before they are used in downstream analysis or reporting, while role-specific context, persistent memory, and governed bioinformatics skills support reliable execution over long analysis trajectories. We evaluate Bioinfoysis on BixBench and two question-answering tracks of LAB-Bench 2. On BixBench, Bioinfoysis achieves state-of-the-art accuracy of 82.4\\%. Across four underlying language models, Bioinfoysis increases average accuracy from 27.81\\% to 64.13\\% on SeqQA2 and from 3.13\\% to 31.25\\% on DbQA2. These results demonstrate that reliable bioinformatics automation depends not only on model capability, but also on the harness that governs planning, execution, memory, and evidence flow. We hope that the emergence of Bioinfoysis will play a driving and leading role in the development of the bioinformatics community. Our demo website can be seen in https://report.bioinfoysis.com/.",
-      "pdf_url": "https://arxiv.org/abs/2609.03871",
-      "comment": "",
-      "technologies": [
-        "Multi-Agent Systems",
-        "Artifact-Grounded Planning",
-        "Evidence-Driven Replanning",
-        "Persistent Memory",
-        "Governed Bioinformatics Skills"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Bioinformatics Automation Platform",
-        "AI-driven Bioinformatics Research Assistant"
-      ],
-      "domain_applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2511.19046",
-      "title": "MedSAM3: Delving into Segment Anything with Medical Concepts",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-15",
-      "updated": "2026-09-15",
-      "summary": "arXiv:2511.19046v2 Announce Type: replace-cross Abstract: Medical image segmentation is fundamental for biomedical discovery. Existing methods lack generalizability and demand extensive, time-consuming manual annotation for new clinical application. Here, we propose MedSAM-3, a text promptable medical segmentation model for medical image and video segmentation. By fine-tuning the Segment Anything Model (SAM) 3 architecture on medical images paired with semantic conceptual labels, our MedSAM-3 enables medical Promptable Concept Segmentation (PCS), allowing precise targeting of anatomical structures via open-vocabulary text descriptions rather than solely geometric prompts. We further introduce the MedSAM-3 Agent, a framework that integrates Multimodal Large Language Models (MLLMs) to perform complex reasoning and iterative refinement in an agent-in-the-loop workflow. Comprehensive experiments across diverse medical imaging modalities, including X-ray, MRI, Ultrasound, CT, and video, demonstrate that our approach significantly outperforms existing specialist and foundation models. We will release our code and model at https://github.com/Joey-S-Liu/MedSAM3.",
-      "pdf_url": "https://arxiv.org/abs/2511.19046",
-      "comment": "",
-      "technologies": [
-        "Segment Anything Model (SAM) 3",
-        "Promptable Concept Segmentation (PCS)",
-        "Multimodal Learning",
-        "Agent-in-the-loop workflow"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered medical imaging assistant for radiologists",
-        "Automated medical image annotation tool for researchers",
-        "Interactive medical image segmentation platform for clinicians"
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2508.16129",
-      "title": "Bridging the Gap in Ophthalmic AI: MM-Retinal-Reason Dataset and OphthaReason Model toward Dynamic Multimodal Reasoning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-17",
-      "updated": "2026-09-17",
-      "summary": "arXiv:2508.16129v5 Announce Type: replace Abstract: Multimodal large language models (MLLMs) have recently demonstrated remarkable reasoning abilities under reinforcement learning (RL) paradigm. However, most existing multimodal medical reasoning models focus on basic reasoning, which refers to shallow inference based on visual feature matching. In contrast, real-world clinical diagnosis extends beyond basic reasoning, demanding complex reasoning that integrates heterogeneous clinical information (such as chief complaints and medical history) with multimodal medical imaging data. To bridge this gap, we introduce MM-Retinal-Reason, an ophthalmic multimodal dataset covering the full spectrum of perception and reasoning. Specifically, it is the first dataset in ophthalmology to encompass both basic and complex reasoning tasks with Chain-of-Thought (CoT) trajectories, aiming to enhance visual-centric reasoning and emulate realistic clinical decision-making. Building upon MM-Retinal-Reason, we propose OphthaReason, the first RL-enhanced ophthalmic multimodal reasoning model with step-by-step reasoning traces. To enable flexible adaptation to both basic and complex reasoning tasks, we further introduce Uncertainty-Aware Dynamic Thinking (UADT), which estimates sample-level uncertainty via entropy and dynamically modulates exploration depth through a shaped advantage mechanism. Comprehensive experiments demonstrate the effectiveness of our model on both basic and complex reasoning tasks, outperforming general-purpose MLLMs, medical MLLMs, RL-based medical MLLMs, and ophthalmic MLLMs by at least 15.47\\%. Project Page: \\href{https://github.com/lxirich/OphthaReason}{link}.",
-      "pdf_url": "https://arxiv.org/abs/2508.16129",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Chain-of-Thought Prompting",
-        "Reinforcement Learning from Human Feedback"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered ophthalmic diagnostic assistant for healthcare professionals",
-        "Multimodal AI tool for medical education and training"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "id": "2609.16680",
-      "title": "little m: An AI Agent for Industrial Process Optimization",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-17",
-      "updated": "2026-09-17",
-      "summary": "arXiv:2609.16680v2 Announce Type: replace Abstract: Manufacturing consumes one third of global energy and still has significant room for improvement in terms of energy efficiency. Optimal process control is essential for this purpose. However, synthesizing mathematical optimization models from messy, real-world industrial specifications requires bridging unstructured natural language and spatial diagrams with rigorous mathematical syntax. This poses a profound challenge for general-purpose Large Language Models (LLMs), which may introduce invalid constraints when tasked with modeling continuous multi-physics dynamics. To address this, we introduce little m, an AI agent designed to assist the formulation of industrial process control models. Combining a domain-specific knowledge repository with LLM-driven interaction, the proposed framework formulates real-world optimization problems as mathematical models. For systematic evaluation, we introduce the Industrial Process Control Benchmark (IPC-Bench), a novel multimodal dataset of 50 canonical scenarios requiring joint reasoning over text and process diagrams. Through comprehensive automated structural assessments and double-blind human evaluation, little m substantially outperforms state-of-the-art LLMs, generating semantically correct models. These evaluations assess formulation quality rather than solver feasibility, formal physical validity, or closed-loop industrial performance. The implementation of little m and the IPC-Bench dataset are available at https://github.com/yeyongchao/process-modeling-benchmark.",
-      "pdf_url": "https://arxiv.org/abs/2609.16680",
-      "comment": "",
-      "technologies": [
-        "Retrieval Augmented Generation",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "AI-powered industrial process optimization tool for manufacturing companies",
-        "Automated mathematical model generation from natural language and spatial diagrams for process control"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2606.16847",
-      "title": "Follow the Latent Roadmap: Navigating Revocable Decoding for Diffusion LLMs with Anchor Tokens",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-17",
-      "updated": "2026-09-17",
-      "summary": "arXiv:2606.16847v5 Announce Type: replace-cross Abstract: Diffusion Large Language Models (dLLMs) offer a promising avenue for parallel generation but face a trade-off between decoding speed and quality. While revocable decoding strategies attempt to mitigate errors by verifying and remasking tokens, they typically operate within a mixed-quality context. This leads to two critical failures: \\textit{Error Propagation}, where new tokens absorb toxic information from erroneous context, and \\textit{Local Error Reinforcement}, where errors mutually reinforce each other to evade detection. To alleviate these challenges, we propose ASRD (Anchor Supervised Revocable Decoding), a training-free framework that operates within the embedding space. ASRD explicitly decouples the decoding context into trusted \\textit{Anchor Tokens}, which are identified via temporal consistency, and uncertain candidates. Leveraging a dynamic Anchor Tokens Cache, we introduce two complementary mechanisms: (1) Anchor-Guided Generation, which injects entropy-weighted anchor signals into masked positions to implicitly rectify attention toward the reliable global skeleton; and (2) Anchor-Perturbed Verification, which applies orthogonal perturbations to uncertain candidate tokens, destabilizing and remasking errors driven by fragile local consensus. Extensive experiments on math and coding benchmarks demonstrate that ASRD outperforms recent remasking baselines, achieving accuracy improvements of up to 6.4\\% while accelerating inference throughput by up to 7.2$\\times$.The code is available at https://github.com/preordinary/ASRD.",
-      "pdf_url": "https://arxiv.org/abs/2606.16847",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Revocable Decoding",
-        "Anchor Tokens"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Developing a real-time, high-quality text generation system for creative writing and content creation.",
-        "Creating an AI-powered coding assistant that can generate and verify code snippets in real-time."
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2607.15740",
-      "title": "Debiasing Text-to-Image Evaluation via Implicit Cultural Alignment Reward Modeling",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-17",
-      "updated": "2026-09-17",
-      "summary": "arXiv:2607.15740v3 Announce Type: replace-cross Abstract: As Text-to-Image (T2I) systems rapidly advance, evaluating the cultural authenticity of synthesized content has become increasingly important for fair and trustworthy generative AI. Existing T2I evaluation metrics and multimodal judges often rely on visual-semantic representations that underrepresent implicit cultural norms, leading to biased preference judgments and the omission of fine-grained cultural cues. In addition, visual question answering (VQA)-based evaluators typically depend on autoregressive text generation, which limits their scalability for real-time reward modeling. To address these limitations, we introduce an Implicit Cultural Alignment Reward Model built upon a lightweight 4.2-billion-parameter Multimodal Large Language Model (MLLM). Our framework integrates an Implicit Cultural Probe with a Skip-connection Cross-Attention (SkipCA) mechanism, enabling late-stage semantic features to directly attend to early-stage visual representations and better preserve culturally salient details. Evaluations on 3,323 challenging and carefully curated image pairs from the CulturalFrames benchmark show that our approach achieves 83.49% pairwise accuracy, with Pearson and Kendall correlation coefficients of 0.5268 and 0.3749, respectively, outperforming representative vision-language metrics and MLLM-based evaluators. Moreover, by bypassing autoregressive text generation, our model processes each evaluation in 0.21 seconds under our local inference setup, achieving a $10\\times$ speedup over standard VQA-based evaluators. These results suggest that the proposed reward model can provide an efficient and culturally aware scalar signal for preference optimization pipelines such as Reinforcement Learning from Human Feedback and Direct Preference Optimization. Additional resources are available on our project page at https://bensonch1214.github.io/Implicit_Cultural_Alignment/.",
-      "pdf_url": "https://arxiv.org/abs/2607.15740",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Direct Preference Optimization"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A culturally aware content moderation tool for social media platforms to filter and flag biased or culturally insensitive images generated by AI.",
-        "An AI-powered design assistant that helps creators generate culturally authentic visual content for marketing campaigns and advertisements."
-      ],
-      "domain_applications": [
-        "creative",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.20034",
-      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
-      "authors": [
-        "Xin Zhou",
-        "Cong Miao"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.AI",
-        "cs.RO"
-      ],
-      "published": "2026-09-17",
-      "updated": "2026-09-17",
-      "summary": "We present Astronex-World 1.0, an open controllable video world-model foundation. Given a text prompt (text-to-video) or an initial observation (image-to-video), the model predicts future visual states under frame-aligned camera trajectories, continuous actions, and an embodiment identifier, and accepts text events inserted at a specified position of a rollout. The family provides a bidirectional model for full-context generation and a causal model with block-causal attention and cross-block KV caching for persistent generation, both built on the Wan2.2-TI2V-5B prior. PRoPE injects camera intrinsics and extrinsics, while a 64-dimensional action stream modulates every Transformer layer. A five-stage training path develops bidirectional camera and action control, converts the backbone to block-causal generation, distills a few-step student, restores mixed-domain dynamics, and applies asymmetric DMD/DMD2 distribution matching. The causal model generates 832x480 video at 24 fps. All five training stages run on two NVIDIA L20 48 GB GPUs, and the causal model streams in real time on one. It scores 73.5 on WBench Navi and 70.0 on WBench Full. On Full, this 5B model is above the 13.6B LongCat-Video and the 14B Helios, within one point of the 22B LTX-2.3, and above YUME 1.5, which is post-trained from the same 5B prior on NVIDIA A100 GPUs. The reserved action input and output interfaces allow post-training for embodied intelligence and autonomous driving.",
-      "pdf_url": "https://arxiv.org/pdf/2609.20034v1",
-      "comment": "Technical report. 25 pages, 13 figures, 10 tables. Project page: https://world.astronex.com.cn ; Code: https://github.com/Astronex-Robotics/Astronex-World ; Weights: https://huggingface.co/Astronex-Lab/Astronex-World",
-      "technologies": [
-        "Block-Causal Attention",
-        "Cross-Block KV Caching",
-        "PRoPE",
-        "Asymmetric DMD/DMD2 Distribution Matching"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Real-time interactive virtual environments for gaming and simulation",
-        "Autonomous driving and robotics control systems",
-        "Enhanced video generation and editing tools for creative industries"
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "enterprise",
-        "science"
       ]
     },
     {
@@ -534,6 +318,222 @@
         "enterprise",
         "other"
       ]
+    },
+    {
+      "id": "2609.03871",
+      "title": "Bioinfoysis Technical Report",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-15",
+      "updated": "2026-09-15",
+      "summary": "arXiv:2609.03871v2 Announce Type: replace Abstract: Large language model agents have shown promise in bioinformatics, but most existing systems focus primarily on producing final answers, treating planning, tool use, and code execution as transient interactions. This design is poorly suited to long-horizon bioinformatics tasks, where conclusions must remain connected to the data, computations, and intermediate evidence that support them. We introduce \\textbf{Bioinfoysis}, a multi-agent harness that represents each request as a persistent, artifact-grounded analysis run. Bioinfoysis combines global planning with step-wise, evidence-driven replanning: the planner maintains an executable checklist and revises pending steps using structured handoffs returned after each worker execution. These handoffs bind intermediate results to their responsible agent, checklist step, and plan generation, preventing stale evidence from being silently reused after replanning. A controlled runtime validates generated scripts, tables, and figures before they are used in downstream analysis or reporting, while role-specific context, persistent memory, and governed bioinformatics skills support reliable execution over long analysis trajectories. We evaluate Bioinfoysis on BixBench and two question-answering tracks of LAB-Bench 2. On BixBench, Bioinfoysis achieves state-of-the-art accuracy of 82.4\\%. Across four underlying language models, Bioinfoysis increases average accuracy from 27.81\\% to 64.13\\% on SeqQA2 and from 3.13\\% to 31.25\\% on DbQA2. These results demonstrate that reliable bioinformatics automation depends not only on model capability, but also on the harness that governs planning, execution, memory, and evidence flow. We hope that the emergence of Bioinfoysis will play a driving and leading role in the development of the bioinformatics community. Our demo website can be seen in https://report.bioinfoysis.com/.",
+      "pdf_url": "https://arxiv.org/abs/2609.03871",
+      "comment": "",
+      "technologies": [
+        "Multi-Agent Systems",
+        "Artifact-Grounded Planning",
+        "Evidence-Driven Replanning",
+        "Persistent Memory",
+        "Governed Bioinformatics Skills"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Bioinformatics Automation Platform",
+        "AI-driven Bioinformatics Research Assistant"
+      ],
+      "domain_applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2511.19046",
+      "title": "MedSAM3: Delving into Segment Anything with Medical Concepts",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-15",
+      "updated": "2026-09-15",
+      "summary": "arXiv:2511.19046v2 Announce Type: replace-cross Abstract: Medical image segmentation is fundamental for biomedical discovery. Existing methods lack generalizability and demand extensive, time-consuming manual annotation for new clinical application. Here, we propose MedSAM-3, a text promptable medical segmentation model for medical image and video segmentation. By fine-tuning the Segment Anything Model (SAM) 3 architecture on medical images paired with semantic conceptual labels, our MedSAM-3 enables medical Promptable Concept Segmentation (PCS), allowing precise targeting of anatomical structures via open-vocabulary text descriptions rather than solely geometric prompts. We further introduce the MedSAM-3 Agent, a framework that integrates Multimodal Large Language Models (MLLMs) to perform complex reasoning and iterative refinement in an agent-in-the-loop workflow. Comprehensive experiments across diverse medical imaging modalities, including X-ray, MRI, Ultrasound, CT, and video, demonstrate that our approach significantly outperforms existing specialist and foundation models. We will release our code and model at https://github.com/Joey-S-Liu/MedSAM3.",
+      "pdf_url": "https://arxiv.org/abs/2511.19046",
+      "comment": "",
+      "technologies": [
+        "Segment Anything Model (SAM) 3",
+        "Promptable Concept Segmentation (PCS)",
+        "Multimodal Learning",
+        "Agent-in-the-loop workflow"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AI-powered medical imaging assistant for radiologists",
+        "Automated medical image annotation tool for researchers",
+        "Interactive medical image segmentation platform for clinicians"
+      ],
+      "domain_applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2508.16129",
+      "title": "Bridging the Gap in Ophthalmic AI: MM-Retinal-Reason Dataset and OphthaReason Model toward Dynamic Multimodal Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "summary": "arXiv:2508.16129v5 Announce Type: replace Abstract: Multimodal large language models (MLLMs) have recently demonstrated remarkable reasoning abilities under reinforcement learning (RL) paradigm. However, most existing multimodal medical reasoning models focus on basic reasoning, which refers to shallow inference based on visual feature matching. In contrast, real-world clinical diagnosis extends beyond basic reasoning, demanding complex reasoning that integrates heterogeneous clinical information (such as chief complaints and medical history) with multimodal medical imaging data. To bridge this gap, we introduce MM-Retinal-Reason, an ophthalmic multimodal dataset covering the full spectrum of perception and reasoning. Specifically, it is the first dataset in ophthalmology to encompass both basic and complex reasoning tasks with Chain-of-Thought (CoT) trajectories, aiming to enhance visual-centric reasoning and emulate realistic clinical decision-making. Building upon MM-Retinal-Reason, we propose OphthaReason, the first RL-enhanced ophthalmic multimodal reasoning model with step-by-step reasoning traces. To enable flexible adaptation to both basic and complex reasoning tasks, we further introduce Uncertainty-Aware Dynamic Thinking (UADT), which estimates sample-level uncertainty via entropy and dynamically modulates exploration depth through a shaped advantage mechanism. Comprehensive experiments demonstrate the effectiveness of our model on both basic and complex reasoning tasks, outperforming general-purpose MLLMs, medical MLLMs, RL-based medical MLLMs, and ophthalmic MLLMs by at least 15.47\\%. Project Page: \\href{https://github.com/lxirich/OphthaReason}{link}.",
+      "pdf_url": "https://arxiv.org/abs/2508.16129",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Chain-of-Thought Prompting",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AI-powered ophthalmic diagnostic assistant for healthcare professionals",
+        "Multimodal AI tool for medical education and training"
+      ],
+      "domain_applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "id": "2609.16680",
+      "title": "little m: An AI Agent for Industrial Process Optimization",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "summary": "arXiv:2609.16680v2 Announce Type: replace Abstract: Manufacturing consumes one third of global energy and still has significant room for improvement in terms of energy efficiency. Optimal process control is essential for this purpose. However, synthesizing mathematical optimization models from messy, real-world industrial specifications requires bridging unstructured natural language and spatial diagrams with rigorous mathematical syntax. This poses a profound challenge for general-purpose Large Language Models (LLMs), which may introduce invalid constraints when tasked with modeling continuous multi-physics dynamics. To address this, we introduce little m, an AI agent designed to assist the formulation of industrial process control models. Combining a domain-specific knowledge repository with LLM-driven interaction, the proposed framework formulates real-world optimization problems as mathematical models. For systematic evaluation, we introduce the Industrial Process Control Benchmark (IPC-Bench), a novel multimodal dataset of 50 canonical scenarios requiring joint reasoning over text and process diagrams. Through comprehensive automated structural assessments and double-blind human evaluation, little m substantially outperforms state-of-the-art LLMs, generating semantically correct models. These evaluations assess formulation quality rather than solver feasibility, formal physical validity, or closed-loop industrial performance. The implementation of little m and the IPC-Bench dataset are available at https://github.com/yeyongchao/process-modeling-benchmark.",
+      "pdf_url": "https://arxiv.org/abs/2609.16680",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AI-powered industrial process optimization tool for manufacturing companies",
+        "Automated mathematical model generation from natural language and spatial diagrams for process control"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2606.16847",
+      "title": "Follow the Latent Roadmap: Navigating Revocable Decoding for Diffusion LLMs with Anchor Tokens",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "summary": "arXiv:2606.16847v5 Announce Type: replace-cross Abstract: Diffusion Large Language Models (dLLMs) offer a promising avenue for parallel generation but face a trade-off between decoding speed and quality. While revocable decoding strategies attempt to mitigate errors by verifying and remasking tokens, they typically operate within a mixed-quality context. This leads to two critical failures: \\textit{Error Propagation}, where new tokens absorb toxic information from erroneous context, and \\textit{Local Error Reinforcement}, where errors mutually reinforce each other to evade detection. To alleviate these challenges, we propose ASRD (Anchor Supervised Revocable Decoding), a training-free framework that operates within the embedding space. ASRD explicitly decouples the decoding context into trusted \\textit{Anchor Tokens}, which are identified via temporal consistency, and uncertain candidates. Leveraging a dynamic Anchor Tokens Cache, we introduce two complementary mechanisms: (1) Anchor-Guided Generation, which injects entropy-weighted anchor signals into masked positions to implicitly rectify attention toward the reliable global skeleton; and (2) Anchor-Perturbed Verification, which applies orthogonal perturbations to uncertain candidate tokens, destabilizing and remasking errors driven by fragile local consensus. Extensive experiments on math and coding benchmarks demonstrate that ASRD outperforms recent remasking baselines, achieving accuracy improvements of up to 6.4\\% while accelerating inference throughput by up to 7.2$\\times$.The code is available at https://github.com/preordinary/ASRD.",
+      "pdf_url": "https://arxiv.org/abs/2606.16847",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Revocable Decoding",
+        "Anchor Tokens"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Developing a real-time, high-quality text generation system for creative writing and content creation.",
+        "Creating an AI-powered coding assistant that can generate and verify code snippets in real-time."
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2607.15740",
+      "title": "Debiasing Text-to-Image Evaluation via Implicit Cultural Alignment Reward Modeling",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "summary": "arXiv:2607.15740v3 Announce Type: replace-cross Abstract: As Text-to-Image (T2I) systems rapidly advance, evaluating the cultural authenticity of synthesized content has become increasingly important for fair and trustworthy generative AI. Existing T2I evaluation metrics and multimodal judges often rely on visual-semantic representations that underrepresent implicit cultural norms, leading to biased preference judgments and the omission of fine-grained cultural cues. In addition, visual question answering (VQA)-based evaluators typically depend on autoregressive text generation, which limits their scalability for real-time reward modeling. To address these limitations, we introduce an Implicit Cultural Alignment Reward Model built upon a lightweight 4.2-billion-parameter Multimodal Large Language Model (MLLM). Our framework integrates an Implicit Cultural Probe with a Skip-connection Cross-Attention (SkipCA) mechanism, enabling late-stage semantic features to directly attend to early-stage visual representations and better preserve culturally salient details. Evaluations on 3,323 challenging and carefully curated image pairs from the CulturalFrames benchmark show that our approach achieves 83.49% pairwise accuracy, with Pearson and Kendall correlation coefficients of 0.5268 and 0.3749, respectively, outperforming representative vision-language metrics and MLLM-based evaluators. Moreover, by bypassing autoregressive text generation, our model processes each evaluation in 0.21 seconds under our local inference setup, achieving a $10\\times$ speedup over standard VQA-based evaluators. These results suggest that the proposed reward model can provide an efficient and culturally aware scalar signal for preference optimization pipelines such as Reinforcement Learning from Human Feedback and Direct Preference Optimization. Additional resources are available on our project page at https://bensonch1214.github.io/Implicit_Cultural_Alignment/.",
+      "pdf_url": "https://arxiv.org/abs/2607.15740",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Direct Preference Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A culturally aware content moderation tool for social media platforms to filter and flag biased or culturally insensitive images generated by AI.",
+        "An AI-powered design assistant that helps creators generate culturally authentic visual content for marketing campaigns and advertisements."
+      ],
+      "domain_applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2609.20034",
+      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
+      "authors": [
+        "Xin Zhou",
+        "Cong Miao"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "summary": "We present Astronex-World 1.0, an open controllable video world-model foundation. Given a text prompt (text-to-video) or an initial observation (image-to-video), the model predicts future visual states under frame-aligned camera trajectories, continuous actions, and an embodiment identifier, and accepts text events inserted at a specified position of a rollout. The family provides a bidirectional model for full-context generation and a causal model with block-causal attention and cross-block KV caching for persistent generation, both built on the Wan2.2-TI2V-5B prior. PRoPE injects camera intrinsics and extrinsics, while a 64-dimensional action stream modulates every Transformer layer. A five-stage training path develops bidirectional camera and action control, converts the backbone to block-causal generation, distills a few-step student, restores mixed-domain dynamics, and applies asymmetric DMD/DMD2 distribution matching. The causal model generates 832x480 video at 24 fps. All five training stages run on two NVIDIA L20 48 GB GPUs, and the causal model streams in real time on one. It scores 73.5 on WBench Navi and 70.0 on WBench Full. On Full, this 5B model is above the 13.6B LongCat-Video and the 14B Helios, within one point of the 22B LTX-2.3, and above YUME 1.5, which is post-trained from the same 5B prior on NVIDIA A100 GPUs. The reserved action input and output interfaces allow post-training for embodied intelligence and autonomous driving.",
+      "pdf_url": "https://arxiv.org/pdf/2609.20034v1",
+      "comment": "Technical report. 25 pages, 13 figures, 10 tables. Project page: https://world.astronex.com.cn ; Code: https://github.com/Astronex-Robotics/Astronex-World ; Weights: https://huggingface.co/Astronex-Lab/Astronex-World",
+      "technologies": [
+        "Block-Causal Attention",
+        "Cross-Block KV Caching",
+        "PRoPE",
+        "Asymmetric DMD/DMD2 Distribution Matching"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Real-time interactive virtual environments for gaming and simulation",
+        "Autonomous driving and robotics control systems",
+        "Enhanced video generation and editing tools for creative industries"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "science"
+      ]
     }
   ],
   "technologies": [
@@ -541,7 +541,7 @@
       "name": "Sparse Attention",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "creative",
@@ -552,7 +552,7 @@
       "name": "KV Cache Optimization",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "creative",
@@ -561,252 +561,26 @@
     },
     {
       "name": "Retrieval Augmented Generation",
-      "papers": 1,
+      "papers": 3,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "science",
-        "enterprise",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-Agent Systems",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Artifact-Grounded Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Evidence-Driven Replanning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Persistent Memory",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Governed Bioinformatics Skills",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Segment Anything Model (SAM) 3",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Promptable Concept Segmentation (PCS)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
         "education",
-        "robotics",
-        "other",
-        "creative",
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Agent-in-the-loop workflow",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "other",
-        "creative",
-        "enterprise",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Revocable Decoding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Anchor Tokens",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Direct Preference Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Block-Causal Attention",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "creative",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Cross-Block KV Caching",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "creative",
-        "robotics"
-      ]
-    },
-    {
-      "name": "PRoPE",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "creative",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Asymmetric DMD/DMD2 Distribution Matching",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "creative",
-        "robotics"
+        "enterprise"
       ]
     },
     {
       "name": "Long-context Pattern Understanding",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "healthcare",
         "robotics",
+        "enterprise",
         "other"
       ]
     },
@@ -814,12 +588,12 @@
       "name": "Simulated Human-Agent Interaction",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "healthcare",
         "robotics",
+        "enterprise",
         "other"
       ]
     },
@@ -827,12 +601,12 @@
       "name": "Behavioral Rule Inference",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "healthcare",
         "robotics",
+        "enterprise",
         "other"
       ]
     },
@@ -840,42 +614,44 @@
       "name": "Skill Blocks",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.85,
       "trend": "rising",
       "applications": [
-        "enterprise",
+        "robotics",
         "education",
-        "robotics"
+        "enterprise"
       ]
     },
     {
       "name": "Experience Memory",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.85,
       "trend": "rising",
       "applications": [
-        "enterprise",
+        "robotics",
         "education",
-        "robotics"
+        "enterprise"
       ]
     },
     {
       "name": "Reinforcement Learning",
-      "papers": 1,
+      "papers": 2,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "science"
+        "science",
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Model Parallelism",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
@@ -886,7 +662,7 @@
       "name": "Speculative Decoding",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
@@ -897,7 +673,7 @@
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
@@ -908,55 +684,70 @@
       "name": "Slot Attention",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "robotics",
         "enterprise",
-        "science",
-        "robotics"
+        "science"
       ]
     },
     {
       "name": "BoundaryFormer",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "robotics",
         "enterprise",
-        "science",
-        "robotics"
+        "science"
       ]
     },
     {
       "name": "WAVE",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "robotics",
         "enterprise",
-        "science",
-        "robotics"
+        "science"
       ]
     },
     {
       "name": "WorkZonePlan",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
+        "robotics",
         "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 6,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
         "science",
-        "robotics"
+        "healthcare",
+        "education",
+        "enterprise",
+        "other",
+        "creative"
       ]
     },
     {
       "name": "Tool Hallucination Taxonomy",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
@@ -967,7 +758,7 @@
       "name": "Resolution Rung",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
@@ -978,134 +769,344 @@
       "name": "Hallucinated-Tools Benchmark",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "enterprise",
         "other"
       ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Artifact-Grounded Planning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Evidence-Driven Replanning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Persistent Memory",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Governed Bioinformatics Skills",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Segment Anything Model (SAM) 3",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Promptable Concept Segmentation (PCS)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Agent-in-the-loop workflow",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 2,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education",
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Revocable Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Anchor Tokens",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Block-Causal Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Cross-Block KV Caching",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "PRoPE",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Asymmetric DMD/DMD2 Distribution Matching",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.85,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "science"
+      ]
     }
   ],
   "product_opportunities": [
     {
-      "technology": "Sparse Attention",
-      "idea": "SparseMind: AI tool for efficient processing of large datasets with sparse attention mechanisms",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "KV Cache Optimization",
-      "idea": "CacheMaster: AI-powered optimization tool for KV caches in large-scale applications",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "Retrieval Augmented Generation",
-      "idea": "KnowledgeBoost: AI-powered document retrieval and generation tool for enterprises",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Multimodal Learning",
-      "idea": "MultiMind: AI-powered tool for learning and processing multiple data types (text, images, audio, video)",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Block-Causal Attention",
-      "idea": "BlockMind: AI-powered tool for processing and analyzing large blocks of data with block-causal attention mechanisms",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Cross-Block KV Caching",
-      "idea": "CrossCache: AI-powered tool for optimizing KV caches across multiple blocks of data",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "low",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "PRoPE",
-      "idea": "ProMind: AI-powered tool for processing and analyzing large datasets with PRoPE mechanisms",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Asymmetric DMD/DMD2 Distribution Matching",
-      "idea": "DistroMatch: AI-powered tool for matching and analyzing asymmetric distributions in large datasets",
-      "business_value": 6,
-      "engineering_difficulty": 5,
-      "competitive_advantage": "low",
-      "development_time": "2-4 weeks"
-    },
-    {
-      "technology": "Long-context Pattern Understanding",
-      "idea": "PatternMind: AI-powered tool for understanding and analyzing long-context patterns in large datasets",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "2-4 months"
-    },
-    {
-      "technology": "Simulated Human-Agent Interaction",
-      "idea": "InteractMind: AI-powered tool for simulating and analyzing human-agent interactions in various applications",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
-      "technology": "Behavioral Rule Inference",
-      "idea": "RuleMind: AI-powered tool for inferring and analyzing behavioral rules in large datasets",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "1-3 months"
-    },
-    {
       "technology": "Skill Blocks",
-      "idea": "SkillMind: AI-powered tool for creating, managing, and analyzing skill blocks in various applications",
+      "idea": "SkillSwap: Modular AI skill marketplace where enterprises build custom agents by mixing and matching pre-trained skill blocks for different tasks",
       "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "2-4 months"
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 months"
     },
     {
       "technology": "Experience Memory",
-      "idea": "MemoryMind: AI-powered tool for storing, retrieving, and analyzing experience memory in various applications",
-      "business_value": 7,
+      "idea": "RememberAll: Personal AI assistant that builds persistent memory from every interaction, letting users ask 'what did we discuss about X last month?'",
+      "business_value": 9,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Chain-of-Thought Prompting",
+      "idea": "DiagnoseAI: Medical diagnosis assistant that shows its reasoning chain step-by-step, making recommendations traceable for doctors",
+      "business_value": 9,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "high",
+      "development_time": "3-4 weeks"
+    },
+    {
+      "technology": "Reinforcement Learning from Human Feedback",
+      "idea": "TuneUp: No-code platform letting SMEs train AI models by simply ranking outputs, no ML expertise required",
+      "business_value": 8,
       "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "1-3 months"
+      "development_time": "1-2 months"
     },
     {
-      "technology": "Reinforcement Learning",
-      "idea": "LearnMind: AI-powered tool for reinforcement learning and optimization in various applications",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "high",
-      "development_time": "2-4 months"
+      "technology": "Direct Preference Optimization",
+      "idea": "PersonaBot: One-click tool to give AI assistants distinct personalities by optimizing against preference pairs",
+      "business_value": 7,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "medium",
+      "development_time": "2-3 weeks"
     },
     {
-      "technology": "Model Parallelism",
-      "idea": "ParallelMind: AI-powered tool for model parallelism and optimization in large-scale applications",
+      "technology": "Block-Causal Attention",
+      "idea": "CausaLens: AI audit tool that traces why an AI made a decision by visualizing causal attention flows",
       "business_value": 8,
       "engineering_difficulty": 7,
       "competitive_advantage": "high",
-      "development_time": "2-4 months"
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Cross-Block KV Caching",
+      "idea": "MegaReader: Document analysis AI that maintains perfect context across 10,000+ page legal or financial documents",
+      "business_value": 8,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "high",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "PRoPE",
+      "idea": "LeanLLM: API service that cuts LLM inference costs 40% while maintaining quality using PRoPE optimization",
+      "business_value": 9,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "very high",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Asymmetric DMD/DMD2 Distribution Matching",
+      "idea": "StyleMirror: Transfer any artistic style to generated images in one click using distribution matching",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "3-4 weeks"
+    },
+    {
+      "technology": "Sparse Attention",
+      "idea": "InstantGen: Real-time creative AI that generates images and text with sub-second latency using sparse attention",
+      "business_value": 8,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "high",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "KV Cache Optimization",
+      "idea": "TurboChat: Chatbot API with 10x throughput through intelligent KV cache reuse across conversations",
+      "business_value": 9,
+      "engineering_difficulty": 5,
+      "competitive_advantage": "very high",
+      "development_time": "2-3 weeks"
+    },
+    {
+      "technology": "Long-context Pattern Understanding",
+      "idea": "ContractSense: AI that finds inconsistencies and risky clauses across 500+ page legal document sets",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Simulated Human-Agent Interaction",
+      "idea": "TestLab: Automated testing platform that simulates thousands of realistic user behaviors to stress-test AI agents",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-2 months"
+    },
+    {
+      "technology": "Behavioral Rule Inference",
+      "idea": "ProcessMiner: Auto-discovers business rules from user behavior logs, turning implicit workflows into explicit automation",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "high",
+      "development_time": "2-3 months"
+    },
+    {
+      "technology": "Reinforcement Learning",
+      "idea": "AutoPilot: No-code RL platform for optimizing warehouse robots and supply chain decisions through trial-and-error",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-4 months"
     }
   ]
 }
