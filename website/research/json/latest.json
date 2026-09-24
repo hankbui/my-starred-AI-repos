@@ -1,19 +1,19 @@
 {
   "meta": {
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "papers_tracked": 15,
     "technologies_discovered": 38,
     "opportunities_identified": 15,
-    "last_update": "2026-09-23 10:11 UTC",
+    "last_update": "2026-09-24 10:17 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
   "brief": [
-    "Multimodal Learning is advancing rapidly with technologies like Mixture of Experts and Long-Context Multimodal Reasoning. This matters for product builders as it enables native multimodal co-training, which can be applied in creative, educational, and enterprise domains to create more intuitive and interactive user experiences.",
-    "Reinforcement Learning from Human Feedback (RLHF) is being integrated into various technologies, including multimodal learning and diffusion models. This is significant for product builders as it allows for more human-aligned and efficient learning processes, which can be applied in creative, enterprise, and scientific domains to optimize performance and user satisfaction.",
-    "Retrieval Augmented Generation (RAG) is emerging as a key technology in multimodal learning and medical understanding. Product builders can leverage RAG to enhance the accuracy and relevance of generated content, which is particularly valuable in healthcare and enterprise domains for improved decision-making and efficiency.",
-    "Lightweight Remote Sensing Agents are being developed with environment-feedback-driven evolution. This is important for product builders as it enables more adaptive and efficient remote sensing solutions, which can be applied in scientific, climate, and enterprise domains for better data collection and analysis.",
-    "Discrete Tokenization is being explored for multimodal LLMs, with technologies like Vector Quantization (VQ). This matters for product builders as it can lead to more efficient and effective multimodal learning, which can be applied in healthcare, enterprise, and creative domains to enhance performance and user experience."
+    "Multimodal Learning: Advancements in multimodal learning, particularly in native multimodal co-training and vision-language reasoning, are accelerating progress in creative, educational, and enterprise applications. This technology enables more intuitive and context-aware interactions, creating opportunities for enhanced user experiences in various domains.",
+    "Mixture of Experts: The use of Mixture of Experts in models like Qwen3.8-Omni and Hunyuan-A13B is improving the efficiency and scalability of large language models. This technology allows for specialized sub-models to handle different tasks, reducing computational costs and enhancing performance, which is crucial for enterprise and educational applications.",
+    "Diffusion Models: Optimizing denoising trajectories in diffusion models, as seen in the paper on dLLMs, is enhancing the quality of generated content. This technology is particularly relevant for creative applications, enabling more sophisticated and high-quality outputs.",
+    "3D Foundation Models: The development of 3D foundation models, such as nnFoundation and NV-Reason-CT, is revolutionizing radiology and healthcare applications. These models provide advanced capabilities in depth estimation, object detection, and multimodal learning, offering significant opportunities for improving diagnostic accuracy and patient care.",
+    "Multi-agent Systems: The GroupTravelBench paper highlights the potential of multi-agent systems in group decision-making and conflict resolution. This technology is applicable in enterprise settings, enabling more efficient and fair travel planning and other collaborative tasks."
   ],
   "top_cards": [
     {
@@ -21,7 +21,7 @@
       "title": "New Technologies",
       "value": "38",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Retrieval Augmented Generation, Diffusion Models, Mixture of Experts, Long-Context Multimodal Reasoning, Native Multimodal Co-training, Vision-Language Reasoning",
+      "detail": "Multimodal Learning, Mixture of Experts, Long-Context Multimodal Reasoning, Native Multimodal Co-training, Vision-Language Reasoning, Semantic Segmentation, Remote Sensing, Skill-to-Task Pipeline",
       "color": "accent"
     },
     {
@@ -29,13 +29,13 @@
       "title": "Emerging Trends",
       "value": "38",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Mixture of Experts, Long-Context Multimodal Reasoning, Native Multimodal Co-training",
+      "detail": "Multimodal Learning, Mixture of Experts, Chain-of-Thought Prompting, 3D Foundation Models, Low-Rank Adaptation",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.9",
+      "value": "8.1",
       "label": "avg opportunity score",
       "detail": "Qwen3.8-Omni: Towards Native Omni-Modal Agents",
       "color": "amber"
@@ -59,9 +59,9 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "1",
+      "value": "13",
       "label": "early-stage technologies",
-      "detail": "GroupTravelBench: Benchmarking LLM Agents on Multi-Person Travel Planning",
+      "detail": "SkillGym: Internalizing Human Skills into LLMs for Real-World Problem Solving",
       "color": "blue"
     }
   ],
@@ -130,111 +130,152 @@
       ]
     },
     {
-      "id": "2506.07044",
-      "title": "Lingshu: A Generalist Foundation Model for Unified Multimodal Medical Understanding and Reasoning",
-      "authors": [],
+      "id": "2609.27717",
+      "title": "SkillGym: Internalizing Human Skills into LLMs for Real-World Problem Solving",
+      "authors": [
+        "Zhilong Ge",
+        "Yuting Shao",
+        "Yutao Yang",
+        "Yuxuan Cai",
+        "Jie Zhou",
+        "Kai Chen",
+        "Bo Zhang",
+        "Qin Chen",
+        "Liang He"
+      ],
       "categories": [
         "cs.CL"
       ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2506.07044v5 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have demonstrated impressive capabilities in understanding common visual elements, largely due to their large-scale datasets and advanced training strategies. However, their effectiveness in medical applications remains limited due to the inherent discrepancies between data and tasks in medical scenarios and those in the general domain. Concretely, existing medical MLLMs face the following critical limitations: (1) limited coverage of medical knowledge beyond imaging, (2) heightened susceptibility to hallucinations due to suboptimal data curation processes, (3) lack of reasoning capabilities tailored for complex medical scenarios. To address these challenges, we first propose a comprehensive data curation procedure that (1) efficiently acquires rich medical knowledge data not only from medical imaging but also from extensive medical texts and general-domain data; and (2) synthesizes accurate medical captions, visual question answering (VQA), and reasoning samples. As a result, we build a multimodal dataset enriched with extensive medical knowledge. Building on the curated data, we introduce our medical-specialized MLLM: Lingshu. Lingshu undergoes multi-stage training to embed medical expertise and enhance its task-solving capabilities progressively. Besides, we preliminarily explore the potential of applying reinforcement learning with verifiable rewards paradigm to enhance Lingshu's medical reasoning ability. Additionally, we develop MedEvalKit, a unified evaluation framework that consolidates leading multimodal and textual medical benchmarks for standardized, fair, and efficient model assessment. We evaluate the performance of Lingshu on three fundamental medical tasks, multimodal QA, text-based QA, and medical report generation. The results show that Lingshu consistently outperforms the existing open-source multimodal models on most tasks ...",
-      "pdf_url": "https://arxiv.org/abs/2506.07044",
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "summary": "Human-written agent skills encode rich workflows for real-world problem solving, but are typically used as external inference-time instructions rather than internalized as reusable model capabilities. We introduce \\texttt{SkillGym}, a framework that transforms these skills into executable, verifiable training environments for large language model agents. Its skill-to-task pipeline instantiates concrete tasks, verifies outcomes with code-based checkers, and assesses empirical skill dependence through contrastive executions. We construct and release 2,756 environments across 12 categories and collect 8,364 successful trajectories from multiple models and harnesses, averaging 49 tool calls and over 60k logged text tokens. These resources support supervised fine-tuning on verified workflows and reinforcement learning with outcome-based rewards. Under Claude Code, supervised fine-tuning improves Qwen3.5-35B-A3B by 199 Elo on GDPval-AA v2, 19.10 percentage points on Terminal-Bench 2.1, and 28.13 and 12.38 points on SkillsBench v1.1 with and without skills, respectively. Our 35B \\texttt{SkillGym-Agent} reaches 51.47\\% on skill-assisted SkillsBench, exceeding reported scores for Claude Sonnet 4.6, GPT-5.4 Mini, and DeepSeek V4 Pro. Without skills, it also surpasses skill-assisted bases under Codex and Claude Code, suggesting reusable procedural competence.",
+      "pdf_url": "https://arxiv.org/pdf/2609.27717v1",
       "comment": "",
       "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Retrieval Augmented Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "AI-powered medical diagnosis assistant",
-        "Multimodal medical report generation tool",
-        "Interactive medical learning platform"
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2609.22258",
-      "title": "RS-Claw-Evolution: Environment-Feedback-Driven Evolution for Lightweight Remote Sensing Agents in Long-Horizon Tasks",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2609.22258v1 Announce Type: cross Abstract: Large language model-driven remote sensing (RS) agents offer a promising approach to automating geospatial analysis. However, lightweight RS agents based on compact language models struggle with multi-step interactive tasks due to loss of long-horizon states, inefficient environmental feedback utilization, and sparse optimization signals. We propose RS-Claw-Evolution, an environment-feedback-driven framework that progressively improves lightweight agents through three stages. Interaction evolution uses executable code to control observations, maintain intermediate states, and reduce context redundancy. Experience evolution combines failure-aware trajectory generation with error-turn masking to learn from informative failure-recovery experiences without imitating faulty actions. Decision evolution uses reinforcement learning with multi-dimensional environment rewards and turn-level advantage protection to optimize tool-use behaviors and improve credit assignment in long sequences. On Earth-Bench, the optimized Qwen3-4B-based agent achieves 65.9% accuracy in Autonomous Planning mode, outperforming the untrained Qwen3-32B baseline (43.8%) and DeepSeek-V3.1 (60.8%), while approaching GPT-5 (71.6%). These results demonstrate that learning from environmental feedback can improve lightweight agents and narrow their performance gap with larger models in long-horizon RS tasks.",
-      "pdf_url": "https://arxiv.org/abs/2609.22258",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Environment-Feedback-Driven Evolution",
-        "Lightweight Remote Sensing Agents"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Automated geospatial analysis platform for environmental monitoring",
-        "Lightweight AI-driven remote sensing agents for long-horizon tasks",
-        "Enhanced decision-making tools for climate change research"
-      ],
-      "domain_applications": [
-        "science",
-        "climate",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.26375",
-      "title": "KwaiMind Technical Report",
-      "authors": [
-        "Junlong Wu",
-        "Zijun Li",
-        "Yuting Hu",
-        "Jia Sun",
-        "Pengcheng Wei",
-        "Yimin Zhou",
-        "Honglie Wang",
-        "Huaiqing Wang",
-        "Dewen Fan",
-        "Fei Zuo",
-        "Haixuan Gao",
-        "Lihui Peng",
-        "Tingxuan She",
-        "Yuqing Li",
-        "Boheng Zhang",
-        "Fan Yang",
-        "Wenwu Ou"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "Commercial image editing requires product identity preservation, accurate text rendering, and user appeal alongside general editing quality. We present KwaiMind, an image editing system combining general capabilities with e-commerce specialization. An agent-based data engine maintains approximately 1.8 million high-quality editing pairs. Built on a multimodal diffusion transformer, KwaiMind undergoes continued pre-training and supervised fine-tuning, followed by preference optimization and online reinforcement learning. A general-purpose vision-language judge and specialized rewards for click-through rate (CTR), text rendering, and product consistency guide specialized policies, which are consolidated through on-policy distillation. We introduce Ecom-Bench, covering 11 commercial editing tasks with task-specific visual evaluation and CTR-based ranking. KwaiMind achieves the strongest overall scores among evaluated open-source editors on ImgEdit, GEdit, both language splits of REDEdit, and Ecom-Bench visual quality, and the highest aggregate CTR ranking score among compared systems. Offline, CTR-guided optimization increases the proportion of generated images whose predicted CTR exceeds that of the original product image from 12.16% to 37.41%. In an online A/B experiment, CTR-based selection of product main images yields an approximately 2.44% relative increase in actual CTR. These results demonstrate the value of domain-specific data and reward-driven alignment for commercial image editing.",
-      "pdf_url": "https://arxiv.org/pdf/2609.26375v1",
-      "comment": "KwaiMind Team, Kuaishou Group",
-      "technologies": [
-        "Multimodal Diffusion Transformer",
-        "Reinforcement Learning from Human Feedback",
-        "On-policy Distillation",
-        "Retrieval Augmented Generation"
+        "Skill-to-Task Pipeline",
+        "Code-based Checkers",
+        "Contrastive Executions",
+        "Outcome-based Rewards",
+        "Supervised Fine-tuning with Verified Workflows",
+        "Reinforcement Learning from Human Feedback"
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 6.0,
+      "curator_score": 6.2,
       "product_potential": [
-        "AI-powered e-commerce image editing tool with specialized policies for product identity preservation and text rendering",
-        "Automated product image generation and optimization system for e-commerce platforms"
+        "AI-powered assistant that can internalize and execute human skills for real-world problem solving",
+        "Automated workflow optimization tool that uses verified skills to improve productivity",
+        "Personalized learning platform that adapts to individual learning styles and skills"
       ],
       "domain_applications": [
-        "creative",
-        "enterprise"
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2609.27284",
+      "title": "Hunyuan-A13B Technical Report",
+      "authors": [
+        "Tencent Hunyuan Team",
+        "Ao Liu",
+        "Botong Zhou",
+        "Can Xu",
+        "Chayse Zhou",
+        "ChenChen Zhang",
+        "Chengcheng Xu",
+        "Chenhao Wang",
+        "Decheng Wu",
+        "Dengpeng Wu",
+        "Dian Jiao",
+        "Dong Du",
+        "Dong Wang",
+        "Feng Zhang",
+        "Fengzong Lian",
+        "Guanghui Xu",
+        "Guanwei Zhang",
+        "Hai Wang",
+        "Haipeng Luo",
+        "Han Hu",
+        "Huilin Xu",
+        "Jiajia Wu",
+        "Jianchen Zhu",
+        "Jianfeng Yan",
+        "Jiaqi Zhu",
+        "Jihong Zhang",
+        "Jinbao Xue",
+        "Jun Xia",
+        "Junqiang Zheng",
+        "Kai Liu",
+        "Kai Zhang",
+        "Kai Zheng",
+        "Kejiao Li",
+        "Keyao Wang",
+        "Lan Jiang",
+        "Lixin Liu",
+        "Lulu Wu",
+        "Mengyuan Huang",
+        "Peijie Yu",
+        "Peiqi Wang",
+        "Qian Wang",
+        "Qianbiao Xiang",
+        "Qibin Liu",
+        "Qingfeng Sun",
+        "Richard Guo",
+        "Ruobing Xie",
+        "Saiyong Yang",
+        "Shaohua Chen",
+        "Shihui Hu",
+        "Shuai Li",
+        "Shuaipeng Li",
+        "Shuang Chen",
+        "Suncong Zheng",
+        "Tao Yang",
+        "Tian Zhang",
+        "Tinghao Yu",
+        "Weidong Han",
+        "Weijie Liu",
+        "Weijin Zhou",
+        "Weikang Wang",
+        "Wesleye Chen",
+        "Xiao Feng",
+        "Xiaoqin Ren",
+        "Xingwu Sun",
+        "Xiong Kuang",
+        "Xuemeng Huang",
+        "Xun Cao",
+        "Yanfeng Chen",
+        "Yang Du",
+        "Zhen Yang",
+        "Yangyu Tao",
+        "Yaping Deng",
+        "Yi Shen",
+        "Yigeng Hong",
+        "Yiqi Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "summary": "We present Hunyuan-A13B, an open-source large language model based on a Mixture-of-Experts architecture. It contains 80 billion total parameters but activates only 13 billion during inference, balancing model capability, computational efficiency, and deployment cost. The model is pretrained on a rigorously filtered 20T-token corpus with enhanced STEM data curation, improving factual reliability and reasoning ability. High-quality supervised fine-tuning and large-scale reinforcement learning further enhance its overall performance. Hunyuan-A13B also introduces a dual-mode Chain-of-Thought framework that adapts reasoning depth to task complexity: fast thinking for routine queries and slow thinking for complex, multi-step problems. Evaluations show competitive performance across mathematics, science, programming, general language understanding, and agent tasks, often approaching that of much larger models. Its high inference throughput makes it suitable for latency-sensitive applications. We release Hunyuan-A13B to support open research and practical LLM deployment.",
+      "pdf_url": "https://arxiv.org/pdf/2609.27284",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Chain-of-Thought Prompting"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.2,
+      "product_potential": [
+        "A real-time, low-latency AI assistant for enterprise applications that requires high computational efficiency",
+        "An adaptive educational platform that uses the dual-mode Chain-of-Thought framework to tailor learning experiences based on task complexity"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
       ]
     },
     {
@@ -266,36 +307,6 @@
       ]
     },
     {
-      "id": "2505.12254",
-      "title": "MMS-VPR: A Fine-Grained Multimodal Street-Level Visual Place Recognition Dataset and Evaluation Benchmark for Dense Pedestrian Environments",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2505.12254v3 Announce Type: replace Abstract: Existing visual place recognition (VPR) datasets predominantly rely on vehicle-mounted imagery, offer limited multimodal diversity, and underrepresent dense pedestrian street scenes, particularly in non-Western urban contexts. We present MMS-VPR, a challenging fine-grained multimodal benchmark for pedestrian-level place recognition in dense urban environments. MMS-VPR comprises 110,529 images and 2,527 video clips across 208 fine-grained location classes within a $\\sim$70,800 m$^2$ urban district in Chengdu, China, with adjacent classes separated by as little as 10-20 m. Unlike large-area VPR datasets, MMS-VPR elevates difficulty through visual ambiguity: repetitive storefronts, dense occlusion, and rapid viewpoint changes. Field data were collected in 2024 following a systematic multi-direction, dual-perspective protocol; social media imagery spans seven years (2019-2025), providing long-term appearance change across 31,726 geolocated photographs. Each location features day-night coverage, multiple viewing angles, and multimodal annotations including GPS coordinates, timestamps, semantic text, and an explicit spatial graph with space syntax enrichments. We release MMS-VPRlib, a unified benchmarking platform consolidating 22 baselines spanning shallow ML, CNN, Transformer, graph neural network (GNN), and multimodal architectures under a standardized, reproducible pipeline. Controlled modality ablations show that video temporal features are the most powerful single modality (+15.8% accuracy over image-only), semantic text provides superior coarse retrieval (R@5 = 0.988 alone), and full multimodal fusion achieves 0.981 accuracy, a +19.2% gain over image-only, while graph-structured modeling provides additional signal in fine-grained structural subsets. The dataset is available at https://huggingface.co/datasets/Yiwei-Ou/MMS-VPR and the benchmark at https://github.com/yiasun/MMS-VPRlib.",
-      "pdf_url": "https://arxiv.org/abs/2505.12254",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Visual Place Recognition",
-        "Graph Neural Network",
-        "Transformer"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "Augmented Reality Navigation for Pedestrians in Dense Urban Environments",
-        "Multimodal Urban Exploration Platform for Tourists and Locals"
-      ],
-      "domain_applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
       "id": "2609.25356",
       "title": "TelecomGPT-R1: Unified Post-Training for Reasoning Across Heterogeneous Telecom Tasks",
       "authors": [],
@@ -324,123 +335,63 @@
       ]
     },
     {
-      "id": "2507.22920",
-      "title": "Discrete Tokenization for Multimodal LLMs: A Comprehensive Survey",
+      "id": "2609.26924",
+      "title": "nnFoundation: 3D Foundation Models for Radiology",
       "authors": [],
       "categories": [
-        "cs.CL"
+        "cs.CV"
       ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2507.22920v2 Announce Type: replace Abstract: The rapid advancement of large language models (LLMs) has intensified the need for effective mechanisms to transform continuous multimodal data into discrete representations suitable for language-based processing. Discrete tokenization, with vector quantization (VQ) as a central approach, offers both computational efficiency and compatibility with LLM architectures. Despite its growing importance, there is a lack of a comprehensive survey that systematically examines VQ techniques in the context of LLM-based systems. This work fills this gap by presenting the first structured taxonomy and analysis of discrete tokenization methods designed for LLMs. We categorize 8 representative VQ variants that span classical and modern paradigms and analyze their algorithmic principles, training dynamics, and integration challenges with LLM pipelines. Beyond algorithm-level investigation, we discuss existing research in terms of classical applications without LLMs, LLM-based single-modality systems, and LLM-based multimodal systems, highlighting how quantization strategies influence alignment, reasoning, and generation performance. In addition, we identify key challenges including codebook collapse, unstable gradient estimation, and modality-specific encoding constraints. Finally, we discuss emerging research directions such as dynamic and task-adaptive quantization, unified tokenization frameworks, and biologically inspired codebook learning. This survey bridges the gap between traditional vector quantization and modern LLM applications, serving as a foundational reference for the development of efficient and generalizable multimodal systems. A continuously updated version is available at: https://github.com/jindongli-Ai/LLM-Discrete-Tokenization-Survey.",
-      "pdf_url": "https://arxiv.org/abs/2507.22920",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "summary": "arXiv:2609.26924v1 Announce Type: new Abstract: Radiological artificial intelligence has advanced rapidly, yet most systems remain narrowly task-specific, data-intensive, and fragile under domain shift. Foundation models promise more transferable and data-efficient solutions, but existing approaches are limited in scale, evaluated narrowly, and often assume that a single pretrained model can support diverse downstream tasks. Here we present nnFoundation, complementary convolutional and transformer-based 3D radiological foundation models. Developed within the Human Radiome Project (THRP), nnFoundation is trained on 2.1 million CT, MRI, and PET image volumes from 125 institutional and public datasets. We evaluate them across 108 tasks spanning segmentation, detection, classification, report generation, and image retrieval, including evaluations under domain shift, by external partners and in low-data and low-compute regimes. Across all task types, our convolution- and transformer-based nnFoundation models consistently outperform both prior 3D foundation models and training from scratch, establishing state-of-the-art performance for radiological imaging. However, performance follows a consistent task-dependent structure: the convolutional nnFoundation model dominates spatially localized tasks, whereas the transformer-based nnFoundation model excels in tasks requiring global semantic reasoning and in frozen-feature settings. Dynamically aligning the foundation model topology with the dataset characteristics post-hoc further improves transfer across heterogeneous 3D settings. These results show that transferable 3D radiological performance is governed not by a single universal model, but by the interplay of scalable pretraining, complementary architectures, and dataset-aware adaptation. We release nnFoundation models integrated into nnU-Net and nnDetection, enabling immediate application across established radiology workflows.",
+      "pdf_url": "https://arxiv.org/abs/2609.26924",
       "comment": "",
       "technologies": [
-        "Vector Quantization (VQ)",
-        "Discrete Tokenization",
-        "Multimodal Learning"
+        "3D Foundation Models",
+        "Multimodal Learning",
+        "Low-Rank Adaptation",
+        "Depth Estimation",
+        "Object Detection"
       ],
       "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
+      "confidence": 0.85,
+      "curator_score": 5.9,
       "product_potential": [
-        "Efficient multimodal data processing pipeline for LLMs",
-        "Customizable VQ strategies for different modalities and tasks"
+        "AI-powered radiology assistant for clinical decision support",
+        "Portable medical imaging device with on-device AI for low-resource settings",
+        "Radiology training platform with interactive 3D imaging simulations"
       ],
       "domain_applications": [
         "healthcare",
-        "enterprise",
-        "creative",
         "science"
       ]
     },
     {
-      "id": "2605.25920",
-      "title": "Can LLMs Time Travel? Enhancing Temporal Consistency in Legal Agentic Search through Reinforcement Learning",
+      "id": "2609.27511",
+      "title": "NV-Reason-CT: 3D Visual Language Model for CT Analysis",
       "authors": [],
       "categories": [
-        "cs.CL"
+        "cs.CV"
       ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2605.25920v2 Announce Type: replace Abstract: While large language models (LLMs) augmented with agentic search capabilities show promise for legal reasoning, they overlook a fundamental constraint that applicable law must match the temporal context of each case, as retroactive application of statutes violates core legal principles and leads to erroneous conclusions. Our observations reveal that current legal LLMs suffer from temporal bias anchored to their training cutoff, while search agents rarely incorporate temporal constraints into queries, and that web search alone cannot provide the precise statute and precedent citations that legal reasoning demands. To address these challenges, we propose LegalSearch-R1, an end-to-end reinforcement learning framework that pairs local statute RAG for precise article matching with online web search for broader legal knowledge, trained on temporally-indexed data spanning multiple amendment periods to enforce temporal consistency. Extensive experiments on our benchmark covering 13 legal tasks demonstrate that our 7B-parameter agent outperforms state-of-the-art deep research frameworks and specialized legal LLMs by 12.9% to 29.8%, surpasses baselines by 57.7% to 80.3% on temporal consistency, and exhibits robust out-of-domain generalization. The code and data are available at https://github.com/AlexFanw/LegalSearch-R1.",
-      "pdf_url": "https://arxiv.org/abs/2605.25920",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "summary": "arXiv:2609.27511v1 Announce Type: new Abstract: We present NV-Reason-CT, a generative vision--language model for chest and abdominal CT combining native 3D visual encoding with radiologist-guided reasoning. The model couples a native 3D vision transformer with a language model, passing all visual tokens and their explicit 3D coordinates into language decoding without further spatial token merging. This retains volumetric spatial information within the vision encoder and through the language model's positional encoding during joint processing with text. We train on a curated corpus of approximately 550,000 multimodal instruction examples from 70,111 unique CT image inputs, combining standardized reports, abnormality-focused and anatomy-specific questions, multi-turn interactions, and radiologist-authored reasoning from recorded and transcribed expert CT interpretations. Expert annotations provide direct supervision and guide additional report-grounded synthetic reasoning. End-to-end supervised fine-tuning (SFT) is followed by Group Relative Policy Optimization (GRPO), with verifiable rewards over chest and abdominal abnormality sets. The model supports abnormality classification, report generation, and interactive reasoning with reviewable observations, differential diagnoses, and uncertainty. Evaluation spans public CT benchmarks and a held-out NIH cohort. On CT-RATE, NV-Reason-CT achieves a macro-F1 of 0.614 and macro-AUROC of 0.871 without a task-specific classification head; generated reports achieve a report-derived macro-F1 of 0.592. In a preliminary study with expert radiologists, AI-assisted review received favorable confidence ratings and was associated with a 50% reduction in average reported interpretation and reporting time. We release the model and training code to support reproducible research on explainable AI for volumetric medical imaging.",
+      "pdf_url": "https://arxiv.org/abs/2609.27511",
       "comment": "",
       "technologies": [
-        "Reinforcement Learning",
-        "Retrieval Augmented Generation (RAG)",
-        "Temporal Indexing",
-        "Legal Agentic Search"
+        "Vision Transformer",
+        "Multimodal Learning",
+        "Group Relative Policy Optimization"
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [
-        "Legal Research Assistant: A tool that uses RL to improve legal research by ensuring temporal consistency in retrieved statutes and precedents.",
-        "Legal Time-Travel Simulator: A product that allows lawyers to simulate and analyze legal scenarios across different time periods."
+        "AI-assisted radiology reporting tool for faster and more accurate CT analysis",
+        "Interactive 3D medical imaging platform for radiologists to explore and reason about CT scans"
       ],
       "domain_applications": [
-        "legal",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.23486",
-      "title": "Cognitive Action Reasoning for Proactive Robots from Human-Centered Multimodal Observations",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2609.23486v1 Announce Type: cross Abstract: Robots operating in human-centered environments are typically designed to execute explicit instructions, and most robot-learning datasets likewise pair observations with task instructions or low-level actions. Although recent work has begun to explore proactive embodied assistance, existing resources target different settings and action levels, leaving real-world human-centered multimodal decision-making underexplored. We formulate this problem as \\textit{Proactive Robot Action Reasoning} (\\textit{ProRobo}), an upstream cognitive decision problem in which a robot must determine which action to take based on multimodal human and environmental cues without explicit action instructions. To support ProRobo, we introduce \\textit{ProAction}, a real-world multimodal dataset containing 10K samples of visual observations, audio signals, and text inputs across 12 daily-life scenarios in five common scenes. To construct cognitively grounded high-level action supervision, we develop a two-stage human-in-the-loop pipeline that combines appraisal-guided candidate generation with Affective Theory-of-Mind-guided human refinement, explicitly incorporating contextual judgment about human states, urgency, feasibility, and potential risk into action annotation. Based on this supervision, we benchmark representative Multimodal Large Language Models (MLLMs) and introduce \\textit{MMC2Act}, a reference model that implicitly learns the mapping from multimodal observations to cognitively grounded high-level actions. Experiments across modality settings, subject-disjoint generalization, cross-dataset transfer, and human evaluation show that general-purpose MLLMs struggle with proactively reasoning high-level actions from multimodal cues, whereas training on \\textit{ProAction} substantially improves performance.",
-      "pdf_url": "https://arxiv.org/abs/2609.23486",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Proactive Robot Action Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Development of proactive home robots that can anticipate and assist with daily tasks based on human behavior and environmental cues.",
-        "Creation of smart workplace assistants that can proactively offer help or suggestions based on employee behavior and workspace conditions."
-      ],
-      "domain_applications": [
-        "robotics",
-        "healthcare",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.17209",
-      "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2608.17209v3 Announce Type: replace-cross Abstract: Vision-language-action (VLA) and world-action models typically absorb unfamiliar manipulation tasks through additional robot data collection and policy optimization. This recurring retraining burden slows the acquisition of new behavior. We present Teach-and-Grow Learning (TGL), a training-free architecture that turns a few successful demonstrations into reusable robot skills. Task acquisition requires no gradient updates, fine-tuning, or reinforcement learning: pretrained model weights remain fixed as the robot expands its explicit knowledge. Teaching is an accelerator, not a precondition, because the agent can also drive the robot directly, and demonstrations mainly improve reliability. Our implementation uses OpenAI GPT-6 Astra for multimodal reasoning and Codex to connect the agent to robot tools. The agent identifies subgoals shared across demonstrations, expresses them as closed-loop Skill Blocks, and grounds each block in the current scene. Physical feedback guides the next action and any recovery. Verified behaviors enter a persistent Skill Library; Experience Memory records the conditions and repairs that inform later decisions. TGL reaches 99.9% mean success on four LIBERO suites and 92.4% on seven LIBERO-Plus perturbation categories. Controlled studies show that taught blocks persist and improve related-task execution under the same model weights and executors. We further formulate a scaling hypothesis that relates effective reusable experience to falling future-task error and teaching demand. Code and demonstration videos: https://tgl.changnie.top",
-      "pdf_url": "https://arxiv.org/abs/2608.17209",
-      "comment": "",
-      "technologies": [
-        "Skill Blocks",
-        "Experience Memory",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "A robotics platform that enables users to teach robots new tasks without retraining, using a library of reusable skills.",
-        "An AI-driven assistant for robotics that learns from user demonstrations and improves task execution over time."
-      ],
-      "domain_applications": [
-        "robotics",
-        "education"
+        "healthcare"
       ]
     },
     {
@@ -504,206 +455,356 @@
       ]
     },
     {
-      "id": "2609.22241",
-      "title": "H2LooP Telecom Model v1: From Telecom Comprehension to Autonomous Issue and PR Resolution",
+      "id": "2609.28416",
+      "title": "Agent-Editing World Model: Rethinking World Modeling for LLM Agents",
+      "authors": [
+        "Shuang Sun",
+        "Guoxin Chen",
+        "Fanzhe Meng",
+        "Jia Deng",
+        "Huatong Song",
+        "Jinhao Jiang",
+        "Wayne Xin Zhao",
+        "Hongteng Xu",
+        "Ji-Rong Wen"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "summary": "Recent advances in large language models (LLMs) have enabled agents to tackle long-horizon tasks across diverse environments. To further improve agent performance, existing language world models typically predict environment observations, yet reconstructing high-entropy, execution-dependent tool responses offers limited value when real feedback is available. Meanwhile, agents suffer from \\emph{task-state contamination}, where unsupported assumptions and outdated plans persist in history and distort subsequent decisions. We propose the \\textbf{Agent-Editing World Model (AEWM)}, which models how reasoning and actions shape future task progress rather than simulating tool responses. AEWM combines \\textbf{Action Judge} to distinguish \\textsc{Critical}, \\textsc{Exploratory}, and \\textsc{Noisy} decisions with \\textbf{State Revision} to edit noisy reasoning--action continuations from the same observed history. \\textbf{EditAct} integrates these capabilities with real execution, directly changing the state underlying subsequent decisions rather than merely providing critiques. We train AEWM across Search, Terminal, and Software Engineering through mid-training and supervised fine-tuning. AEWM achieves 70.5\\% macro-F1 on our Action Judge benchmark, exceeding the strongest frontier baseline by 10.6 points. Across six benchmarks and three agent backbones, EditAct improves average scores by 3.2--6.7 points over the strongest baseline. Furthermore, rejection sampling fine-tuning on verified EditAct trajectories, termed \\textbf{AEWM-RFT}, improves over Self-RFT by 2.2--2.6 points across three domains without online AEWM guidance.",
+      "pdf_url": "https://arxiv.org/pdf/2609.28416v1",
+      "comment": "",
+      "technologies": [
+        "Agent-Editing World Model",
+        "Action Judge",
+        "State Revision",
+        "EditAct",
+        "AEWM-RFT"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Developing an AI assistant that can dynamically adjust its actions based on real-time feedback, improving task completion rates in complex environments.",
+        "Creating a system for software engineering that can identify and correct errors in code generation processes, enhancing developer productivity."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2609.28061",
+      "title": "AstraLOD3: Zero-shot multimodal agentic reconstruction of LOD3 building models",
+      "authors": [
+        "Bryan G. Pantoja-Rosero"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "summary": "Automated LOD3 building modeling typically relies on purpose-built geometric or learning-based pipelines, limiting flexibility across heterogeneous buildings and input evidence conditions. This study investigates whether Astra, a general-purpose multimodal foundation model, can address these limitations through zero-shot reconstruction of LOD3 building models within an agentic framework under bounded autonomy. AstraLOD3 combines multi-view images, calibrated cameras, and a filtered sparse SfM point cloud with a natural-language reconstruction specification, while the Astra agent dynamically selects and executes computational procedures using Python and Blender. Across 35 runs, including 24 benchmark buildings, AstraLOD3 achieved a mean FRDS of 0.9647 and geometric agreement comparable to that of previous purpose-built methods. Controlled ablations further revealed the effects of reconstruction guidance, evidence modalities, model configuration, and run-to-run variability. The results demonstrate that structured LOD3 reconstruction can be formulated as a constrained agentic process rather than as a fixed pipeline. Future work will investigate adaptive refinement, user-guided correction, task-specific specialization, and damage-aware reconstruction.",
+      "pdf_url": "https://arxiv.org/pdf/2609.28061v1",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Agentic Reconstruction",
+        "Zero-shot Learning",
+        "Sparse Attention",
+        "Depth Estimation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Automated 3D building model reconstruction for urban planning and architecture",
+        "Interactive building reconstruction tool for architects and urban planners",
+        "AI-powered building reconstruction service for real estate and construction industries"
+      ],
+      "domain_applications": [
+        "creative",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2609.27770",
+      "title": "Improving LLM-based Autonomous Web Agents with Filtering",
       "authors": [],
       "categories": [
         "cs.CL"
       ],
-      "published": "2026-09-22",
-      "updated": "2026-09-22",
-      "summary": "arXiv:2609.22241v1 Announce Type: new Abstract: We present H2LooP Telecom Model v1, a domain-specialized large language models fine-tuned for the telecommunications industry. We release two domain-adapted model variants serving complementary use cases: a comprehension-focused variant for telecom domain question answering and reasoning, and an agentic variant for autonomous telecom code generation, pull request resolution, and code commits on production repositories. H2LooP Telecom achieves strong results on the GSMA Open Telecom Lite (OT-Lite) benchmark and a proprietary telecom code generation benchmark, outperforming frontier closed-source models such as GPT-5 and Claude Opus on independent leaderboard evaluation, while preserving general-purpose capabilities. The Comprehension variant achieves 81.8% weighted average on OT-Lite Pass@3, and, independently, ranks 5th overall on the official community-run Open Telco AI Leaderboard* at only 31B parameters-ahead of frontier closed-source systems including Claude Opus 4.6, GPT-5, Gemini 3 Flash, Grok-4-fast, and Kimi K2.5. Our agentic variant obtains a relative improvement of +8.8% in AST Similarity and +20.0% in Location IoU over the base model on telecom code generation, while maintaining identical MMLU (74.0%) and BFCL v3 multi-turn function calling (79.0%) performance, indicating zero catastrophic forgetting. Domain specialization on curated telecom corpora, spanning 3GPP standards, O-RAN specifications, network telemetry, and real repository commits, yields substantial improvements over general-purpose models of equivalent scale, approaches frontier closed-source models on domain-specific evaluation, and is independently corroborated by our official leaderboard standing.",
-      "pdf_url": "https://arxiv.org/abs/2609.22241",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "summary": "arXiv:2609.27770v1 Announce Type: new Abstract: Autonomous web agents, powered by Large Language Models (LLMs), have garnered significant attention for automating various web-based tasks with multi-step reasoning and decision-making capabilities. An open research question in the development of these agents lies in the format of the webpage input. Raw HTML source code, with its extensive and often irrelevant details, poses difficulties for LLMs with limited context windows. To address this challenge, we first reproduce baseline models such as GPT-3.5 and LLaMA-2-70B on the WebArena (Zhou et al., 2023) benchmark, identifying common failure modes. We then propose two retrieval strategies to filter out irrelevant context for LLM agents. We develop DeBERTa-based and T5-based models that rank HTML elements by their relevance to the task. We fine-tune them on Mind2Web trajectory data and transfer them to WebArena. Experiments show that our DeBERTa-based model improves the success rate of the LLaMA-2-70B LLM agent on WebArena from 1.97% to 2.96%. Moreover, we develop a zero-shot ColBERT-based retriever that is able to retrieve the ground-truth element with a recall of 0.52 on Mind2Web and 0.47 on WebArena.",
+      "pdf_url": "https://arxiv.org/abs/2609.27770",
       "comment": "",
       "technologies": [
-        "Domain-Specialized Large Language Models",
-        "Autonomous Code Generation",
-        "Pull Request Resolution",
-        "Multi-Turn Function Calling"
+        "Retrieval Augmented Generation"
       ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.6,
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.7,
       "product_potential": [
-        "Autonomous telecom issue resolution and PR generation tool",
-        "Domain-specific telecom assistant for developers and engineers"
+        "Automated web-based task automation platform for businesses",
+        "Personalized web browsing assistant for individuals"
       ],
       "domain_applications": [
         "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2603.08166",
+      "title": "RexDrug: Reliable Multi-Drug Combination Extraction through Reasoning-Enhanced LLMs",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "summary": "arXiv:2603.08166v2 Announce Type: replace Abstract: Automated Drug Combination Extraction (DCE) from large-scale biomedical literature is crucial for advancing precision medicine and pharmacological research. However, existing relation extraction methods primarily focus on binary interactions and struggle to model variable-length n-ary drug combinations, where complex compatibility logic and distributed evidence need to be considered. To address these limitations, we propose RexDrug, an end-to-end reasoning-enhanced relation extraction framework for n-ary drug combination extraction based on large language models. RexDrug adopts a two-stage training strategy. First, a multi-agent collaborative mechanism is utilized to automatically generate high-quality expert-like reasoning traces for supervised fine-tuning. Second, reinforcement learning with a multi-dimensional reward function specifically tailored for DCE is applied to further refine reasoning quality and extraction accuracy. Extensive experiments on the DrugComb dataset show that RexDrug consistently outperforms state-of-the-art baselines for n-ary extraction. Additional evaluation on the DDI13 corpus confirms its generalizability to binary drugdrug interaction tasks. Human expert assessment and automatic reasoning metrics further indicates that RexDrug produces coherent medical reasoning while accurately identifying complex therapeutic regimens. These results establish RexDrug as a scalable and reliable solution for complex biomedical relation extraction from unstructured text. The source code and data are available at https://github.com/DUTIR-BioNLP/RexDrug",
+      "pdf_url": "https://arxiv.org/abs/2603.08166",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Chain-of-Thought Prompting"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-powered drug interaction checker for healthcare providers",
+        "Automated literature review tool for pharmaceutical researchers"
+      ],
+      "domain_applications": [
+        "healthcare",
         "science"
+      ]
+    },
+    {
+      "id": "2609.27461",
+      "title": "Invisible in Space, Visible in Time: Motion Vision CAPTCHA against GUI Agents",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "summary": "arXiv:2609.27461v1 Announce Type: new Abstract: Most existing visual CAPTCHAs remain spatially solvable: the required information is exposed by static appearance, local structure, and interface state. This assumption is weakened by advances in multimodal large language models (MLLMs) and Graphical User Interface (GUI) agents, which exhibit strong visual perception, reasoning, and browser interaction capabilities. We propose Motion Vision CAPTCHA (MVCAP), a hierarchical motion-based CAPTCHA framework in which target semantics are instantiated as motion-defined foreground structures and become recoverable only through temporal segregation from a dynamically evolving background. Built on this shared principle, MVCAP is instantiated in three perceptually progressive levels: coherent motion, structural motion, and biological motion. To evaluate this framework, we introduce MVCAP-Bench, a browser-based benchmark with 600 live CAPTCHA instances, together with a matched foreground-only control benchmark, MVCAP-Bench-FG. We evaluate humans, Browser Use agents, native computer use agents, and a supplementary offline VQA setting derived from the same instances. Results reveal a substantial human--agent gap: on the full MVCAP-Bench, human accuracy reaches 99.6%, whereas the best GUI agent achieves only 16.8%, close to the six-way chance level. The foreground-only control further shows that the key difficulty comes from dynamic background camouflage rather than answer format or browser interaction alone. These findings identify a measurable human--agent perception gap and position MVCAP-Bench as a benchmark for studying motion-defined perception in current agents.",
+      "pdf_url": "https://arxiv.org/abs/2609.27461",
+      "comment": "",
+      "technologies": [
+        "Motion Vision CAPTCHA",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Developing a CAPTCHA system that is resistant to GUI agents and MLLMs",
+        "Creating a benchmark for evaluating motion-defined perception in AI agents"
+      ],
+      "domain_applications": [
+        "accessibility",
+        "enterprise",
+        "other"
       ]
     }
   ],
   "technologies": [
     {
       "name": "Multimodal Learning",
-      "papers": 9,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "education",
-        "enterprise",
-        "healthcare",
-        "robotics",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 5,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "enterprise",
-        "healthcare",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 4,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "legal",
-        "other"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "creative",
-        "enterprise"
+        "other",
+        "robotics",
+        "enterprise",
+        "education",
+        "healthcare",
+        "science",
+        "accessibility",
+        "creative"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "creative",
         "education",
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Long-Context Multimodal Reasoning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "creative",
         "education",
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Native Multimodal Co-training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
         "creative",
         "education",
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Vision-Language Reasoning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "robotics",
+        "other",
         "science",
-        "other"
+        "robotics"
       ]
     },
     {
       "name": "Semantic Segmentation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "robotics",
+        "other",
         "science",
-        "other"
+        "robotics"
       ]
     },
     {
       "name": "Remote Sensing",
-      "papers": 2,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "climate",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Environment-Feedback-Driven Evolution",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
+        "other",
         "science",
-        "climate",
-        "enterprise"
+        "robotics"
       ]
     },
     {
-      "name": "Lightweight Remote Sensing Agents",
+      "name": "Skill-to-Task Pipeline",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "science",
-        "climate",
+        "education",
+        "other",
         "enterprise"
       ]
     },
     {
-      "name": "Multimodal Diffusion Transformer",
+      "name": "Code-based Checkers",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "creative",
+        "education",
+        "other",
         "enterprise"
       ]
     },
     {
-      "name": "On-policy Distillation",
+      "name": "Contrastive Executions",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Outcome-based Rewards",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Supervised Fine-tuning with Verified Workflows",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "education",
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "education",
+        "healthcare",
+        "science"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "creative",
@@ -713,268 +814,267 @@
     {
       "name": "Covariance Matrix Adaptation Evolution Strategy (CMA-ES)",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Visual Place Recognition",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Graph Neural Network",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Transformer",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
-      "applications": [
         "enterprise"
       ]
     },
     {
       "name": "Dynamic Sampling Policy Optimization",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.85,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
         "enterprise"
       ]
     },
     {
-      "name": "Vector Quantization (VQ)",
+      "name": "3D Foundation Models",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "enterprise",
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Low-Rank Adaptation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Depth Estimation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
         "creative",
-        "science"
-      ]
-    },
-    {
-      "name": "Discrete Tokenization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
+        "science",
         "healthcare",
-        "enterprise",
-        "creative",
-        "science"
+        "enterprise"
       ]
     },
     {
-      "name": "Reinforcement Learning",
+      "name": "Object Detection",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "legal",
-        "enterprise"
+        "science",
+        "healthcare"
       ]
     },
     {
-      "name": "Temporal Indexing",
+      "name": "Vision Transformer",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "legal",
-        "enterprise"
+        "healthcare"
       ]
     },
     {
-      "name": "Legal Agentic Search",
+      "name": "Group Relative Policy Optimization",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "legal",
-        "enterprise"
+        "healthcare"
       ]
     },
     {
-      "name": "Proactive Robot Action Reasoning",
+      "name": "Retrieval Augmented Generation",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
+        "other",
         "healthcare",
-        "education",
         "enterprise"
-      ]
-    },
-    {
-      "name": "Skill Blocks",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "education"
-      ]
-    },
-    {
-      "name": "Experience Memory",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "education"
       ]
     },
     {
       "name": "Multi-agent Systems",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Multi-turn Dialogue Systems",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Group Decision Making",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Conflict Resolution",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "other"
+        "other",
+        "enterprise"
       ]
     },
     {
       "name": "Fairness in AI",
       "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Agent-Editing World Model",
+      "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "education",
+        "science",
         "enterprise",
         "other"
       ]
     },
     {
-      "name": "Domain-Specialized Large Language Models",
+      "name": "Action Judge",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "education",
+        "science",
         "enterprise",
-        "science"
+        "other"
       ]
     },
     {
-      "name": "Autonomous Code Generation",
+      "name": "State Revision",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "education",
+        "science",
         "enterprise",
-        "science"
+        "other"
       ]
     },
     {
-      "name": "Pull Request Resolution",
+      "name": "EditAct",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "education",
+        "science",
         "enterprise",
-        "science"
+        "other"
       ]
     },
     {
-      "name": "Multi-Turn Function Calling",
+      "name": "AEWM-RFT",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.85,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "education",
+        "science",
         "enterprise",
-        "science"
+        "other"
       ]
     },
     {
-      "name": "Retrieval Augmented Generation (RAG)",
+      "name": "Agentic Reconstruction",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
       "applications": [
-        "legal",
+        "creative",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Zero-shot Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Motion Vision CAPTCHA",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "accessibility",
         "enterprise"
       ]
     }
@@ -982,123 +1082,123 @@
   "product_opportunities": [
     {
       "technology": "Multimodal Learning",
-      "idea": "Multimodal Storyteller: AI-powered app that generates interactive stories from text, images, and audio inputs",
-      "business_value": 8,
-      "engineering_difficulty": 7,
+      "idea": "OmniGuide: AI assistant that processes and responds to text, images, and voice inputs in real-time",
+      "business_value": 9,
+      "engineering_difficulty": 8,
       "competitive_advantage": "high",
-      "development_time": "3-5 months"
-    },
-    {
-      "technology": "Reinforcement Learning from Human Feedback",
-      "idea": "Personalized Fitness Coach: AI trainer that adapts workout plans based on user feedback and progress",
-      "business_value": 7,
-      "engineering_difficulty": 6,
-      "competitive_advantage": "medium",
-      "development_time": "4-6 months"
+      "development_time": "3-6 months"
     },
     {
       "technology": "Mixture of Experts",
-      "idea": "Expert Q&A: AI platform that aggregates answers from multiple domain experts to provide comprehensive responses",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "5-7 months"
-    },
-    {
-      "technology": "Long-Context Multimodal Reasoning",
-      "idea": "Legal Document Analyzer: AI tool that summarizes and extracts key points from lengthy legal documents",
+      "idea": "ExpertLens: AI-powered educational platform that tailors content and teaching methods to individual student needs",
       "business_value": 8,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Native Multimodal Co-training",
-      "idea": "Multimodal Learning Assistant: AI tutor that co-trains students using a combination of text, images, and videos",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "5-7 months"
-    },
-    {
-      "technology": "Vision-Language Reasoning",
-      "idea": "Visual Question Answering: AI system that answers questions about images and videos in real-time",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Semantic Segmentation",
-      "idea": "Autonomous Vehicle Perception: AI system that accurately segments and identifies objects in the environment for self-driving cars",
-      "business_value": 10,
-      "engineering_difficulty": 9,
-      "competitive_advantage": "very high",
-      "development_time": "6-9 months"
-    },
-    {
-      "technology": "Multimodal Diffusion Transformer",
-      "idea": "Creative Content Generator: AI tool that creates high-quality content in various formats (images, videos, text) based on user prompts",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "On-policy Distillation",
-      "idea": "AI Game Master: AI system that learns and adapts to players' strategies in real-time for board and video games",
-      "business_value": 7,
-      "engineering_difficulty": 6,
       "competitive_advantage": "medium",
-      "development_time": "3-5 months"
+      "development_time": "2-4 months"
     },
     {
       "technology": "Chain-of-Thought Prompting",
-      "idea": "Explainable AI Assistant: AI tool that provides step-by-step explanations for its decisions and recommendations",
-      "business_value": 9,
-      "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "5-7 months"
+      "idea": "ThinkStep: AI-driven tool that helps users break down complex problems into manageable steps",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
     },
     {
-      "technology": "Dynamic Sampling Policy Optimization",
-      "idea": "Personalized Recommendation Engine: AI system that dynamically optimizes and personalizes product recommendations for users",
-      "business_value": 8,
-      "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
-    },
-    {
-      "technology": "Domain-Specialized Large Language Models",
-      "idea": "Medical Chatbot: AI-powered healthcare assistant that provides accurate and up-to-date medical information and advice",
+      "technology": "3D Foundation Models",
+      "idea": "MediScan: AI-powered medical imaging tool that analyzes and interprets 3D scans for early disease detection",
       "business_value": 10,
       "engineering_difficulty": 9,
       "competitive_advantage": "very high",
-      "development_time": "6-9 months"
+      "development_time": "6-12 months"
     },
     {
-      "technology": "Autonomous Code Generation",
-      "idea": "AI Code Assistant: AI tool that autonomously generates, tests, and debugs code based on user requirements",
+      "technology": "Low-Rank Adaptation",
+      "idea": "AdaptMed: AI-driven platform that adapts to new medical imaging technologies with minimal retraining",
       "business_value": 9,
       "engineering_difficulty": 8,
-      "competitive_advantage": "very high",
-      "development_time": "5-7 months"
+      "competitive_advantage": "high",
+      "development_time": "4-8 months"
     },
     {
-      "technology": "Pull Request Resolution",
-      "idea": "AI Code Reviewer: AI system that automatically reviews and provides feedback on code changes in pull requests",
+      "technology": "Depth Estimation",
+      "idea": "DepthView: AI-powered tool that creates 3D models from 2D images for virtual reality and gaming",
       "business_value": 8,
       "engineering_difficulty": 7,
-      "competitive_advantage": "high",
-      "development_time": "4-6 months"
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
     },
     {
-      "technology": "Multi-Turn Function Calling",
-      "idea": "AI API Assistant: AI tool that can call multiple APIs in sequence to accomplish complex tasks based on user requests",
+      "technology": "Object Detection",
+      "idea": "SecureScan: AI-powered security system that detects and identifies objects in real-time for surveillance",
       "business_value": 9,
       "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Vision Transformer",
+      "idea": "EyeCheck: AI-driven tool that analyzes retinal scans for early detection of eye diseases",
+      "business_value": 10,
+      "engineering_difficulty": 9,
       "competitive_advantage": "very high",
-      "development_time": "5-7 months"
+      "development_time": "6-12 months"
+    },
+    {
+      "technology": "Group Relative Policy Optimization",
+      "idea": "TeamSync: AI-powered tool that optimizes team performance by analyzing group dynamics",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Skill-to-Task Pipeline",
+      "idea": "TaskMaster: AI-driven platform that helps users develop new skills by breaking them down into manageable tasks",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
+    },
+    {
+      "technology": "Code-based Checkers",
+      "idea": "CodeGuard: AI-powered tool that checks and verifies code for errors and vulnerabilities",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Contrastive Executions",
+      "idea": "ContrastLearn: AI-driven platform that helps users learn by comparing different approaches to solving problems",
+      "business_value": 7,
+      "engineering_difficulty": 6,
+      "competitive_advantage": "medium",
+      "development_time": "1-3 months"
+    },
+    {
+      "technology": "Outcome-based Rewards",
+      "idea": "RewardPath: AI-powered tool that helps users set and achieve goals by rewarding them based on outcomes",
+      "business_value": 8,
+      "engineering_difficulty": 7,
+      "competitive_advantage": "medium",
+      "development_time": "2-4 months"
+    },
+    {
+      "technology": "Supervised Fine-tuning with Verified Workflows",
+      "idea": "WorkflowPro: AI-driven platform that helps users create and optimize workflows with verified best practices",
+      "business_value": 9,
+      "engineering_difficulty": 8,
+      "competitive_advantage": "high",
+      "development_time": "3-6 months"
+    },
+    {
+      "technology": "Reinforcement Learning from Human Feedback",
+      "idea": "FeedbackLoop: AI-powered tool that learns and improves based on user feedback and interactions",
+      "business_value": 10,
+      "engineering_difficulty": 9,
+      "competitive_advantage": "very high",
+      "development_time": "6-12 months"
     }
   ]
 }
