@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-09-30",
+    "date": "2026-10-01",
     "papers_tracked": 15,
-    "technologies_discovered": 36,
+    "technologies_discovered": 23,
     "opportunities_identified": 0,
-    "last_update": "2026-09-30 11:18 UTC",
+    "last_update": "2026-10-01 11:44 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,32 +13,32 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "36",
+      "value": "23",
       "label": "discovered this scan",
-      "detail": "Long-Horizon Sequential Decision Making, Streaming Benchmark, Agent Environment, Signal-Grounded Measurement, Online Learning, Tool-Using Language Models, Multimodal Learning, Automated Scoring",
+      "detail": "Vector-to-Graph Framework, Multimodal Learning, Structural Representation Learning, Long-Horizon Sequential Decision Making, Streaming Benchmark, Agent Environment, Signal-Grounded Measurement, Online Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "36",
+      "value": "23",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Vector-to-Graph Framework, Structural Representation Learning, Video Understanding, Temporal Hierarchy",
+      "detail": "Multimodal Learning, Multi-Agent Systems, Synthetic Data Generation, Sim-to-Real Transfer, Reinforcement Learning",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.6",
       "label": "avg opportunity score",
-      "detail": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interp",
+      "detail": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "ECG-Scroll: A Long-Horizon, St",
-      "label": "confidence 80%",
+      "value": "Beyond Pixels: A Vector-to-Gra",
+      "label": "confidence 85%",
       "detail": "",
       "color": "purple"
     },
@@ -53,74 +53,13 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "24",
+      "value": "14",
       "label": "early-stage technologies",
       "detail": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interp",
       "color": "blue"
     }
   ],
   "papers": [
-    {
-      "id": "2609.33117",
-      "title": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interpretation of Ambulatory Electrocardiograms",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.33117v1 Announce Type: cross Abstract: Multimodal large language models (MLLMs) can now interpret a standard ten-second, twelve-lead electrocardiogram (ECG) with clinically grounded, reward-verified reasoning. Real cardiac monitoring is different. Ambulatory (Holter) and telemetry recordings span hours to days and are read as they stream in, and their clinically decisive findings are paroxysmal, brief episodes buried in an otherwise unremarkable trace. Such a recording cannot be held in one context at diagnostic resolution, and its future has not yet happened, so a reader must work online, deciding what to measure now, committing evidence to memory as it passes, and reporting events as they occur. We recast long-duration ECG interpretation as a long-horizon, online (streaming, causal) sequential decision process and introduce ECG-Scroll. As a benchmark, long ambulatory recordings are streamed to an agent chunk by chunk, and it must localize, quantify, and promptly flag paroxysmal events without access to future signal; because the underlying signal is retained, every answer is checkable against objective ground truth, giving rule-based rather than judge-based rewards, and the streaming formulation adds a metric batch evaluation cannot express, the detection latency between an event's onset and the moment the agent records it. As an agent environment, it is a fixed, gym-style interaction layer that exercises three competencies single-glance ECG models never touch: Memory, Tool use through signal-grounded measurement rather than reading pixels, and Planning of what to measure now and when to commit. We release 390 whole-recording instances spanning 2,536 hours of two-lead ambulatory ECG and evaluate a signal-threshold rule agent alongside off-the-shelf LLM agents online, characterizing how they use memory, tools, and planning and where the benchmark's head-room lies.",
-      "pdf_url": "https://arxiv.org/abs/2609.33117",
-      "comment": "",
-      "technologies": [
-        "Long-Horizon Sequential Decision Making",
-        "Streaming Benchmark",
-        "Agent Environment",
-        "Signal-Grounded Measurement",
-        "Online Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.5,
-      "product_potential": [
-        "Real-time ambulatory ECG monitoring and analysis for healthcare professionals",
-        "Wearable health devices with advanced ECG interpretation capabilities"
-      ],
-      "domain_applications": [
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2609.34195",
-      "title": "PainterBench: A Figural Divergent-Thinking Benchmark for Tool-Using Language Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.34195v1 Announce Type: new Abstract: Figural divergent thinking is the ability to develop a given shape fragment into an original drawing. In humans, this ability is assessed with incomplete-drawing tasks. We introduce PainterBench, a benchmark that ports the incomplete-drawing task to the agentic setting. The agent draws on a canvas through tool calls and observes the result after every turn. The canvas includes a starting shape which cannot be erased, and the agent's goal is to incorporate this shape into the most original drawing it can produce. The task is open-ended, and the agent itself decides when the drawing is finished. The benchmark tests incremental visual planning over a short horizon and the transfer of creative ability from pretraining to multi-turn tool use. We evaluate 14 multimodal language models from small to frontier scale. Across the primary study and six sensitivity analyses, we collect 2,700 drawings and crowdsource creativity and recognizability ratings for every drawing and for 300 human reference drawings. We also present ViDrA-adapted, an automated scorer that predicts human creativity ratings of agent drawings (r = 0.85 on random held-out test split). Figural divergent thinking varies widely across the 14 models, and GPT-6 Astra produces the most creative drawings. Relative to the human drawings, the agent drawings score higher in creativity but lower in recognizability. We release the final drawings, per-round canvas snapshots, tool call traces, stimulus bank, benchmark harness, crowdsourced ratings (N = 72,000), and ViDrA checkpoint.",
-      "pdf_url": "https://arxiv.org/abs/2609.34195",
-      "comment": "",
-      "technologies": [
-        "Tool-Using Language Models",
-        "Multimodal Learning",
-        "Automated Scoring"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.2,
-      "product_potential": [
-        "AI-assisted drawing tool for creative professionals",
-        "Automated creativity evaluation system for educational platforms",
-        "AI-powered design assistant for product designers"
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
     {
       "id": "2602.11678",
       "title": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
@@ -152,274 +91,33 @@
       ]
     },
     {
-      "id": "2609.34072",
-      "title": "PhysFieldBench: Can Multimodal Models Understand Physical Fields?",
+      "id": "2609.33117",
+      "title": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interpretation of Ambulatory Electrocardiograms",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
       "published": "2026-09-29",
       "updated": "2026-09-29",
-      "summary": "arXiv:2609.34072v1 Announce Type: new Abstract: Multimodal large language models (MLLMs) are increasingly envisioned as core components of scientific and engineering agents, yet their ability to interpret physical fields remains poorly understood. Existing physics benchmarks largely emphasize textbook problem solving or intuitive physical reasoning, leaving open whether MLLMs can infer physically meaningful information from continuous field observations. We introduce PhysFieldBench, a benchmark comprising 24 tasks and 1,160 evaluation examples across controlled equation fields, simulated physical fields, and observed physical fields. The tasks assess three forms of inference: identifying physical mechanisms, comparing latent control variables, and predicting outcome properties. Across representative open-source and proprietary MLLMs, zero-shot performance is low: the best model achieves a chance-normalized score of 29.3, while several open-source models remain near chance. In contrast, a task-specific supervised vision transformer performs substantially better, demonstrating that the inputs contain learnable physical information. To diagnose these failures, a structured self-explanation analysis attributes most errors to missed visual patterns and incorrect visual-to-physical mappings. Further, to explore whether post-training can improve physical inference and generalize to unseen tasks, we compare supervised fine-tuning with final answers or chain-of-thought supervision and reinforcement learning. Final-answer supervision performs best overall but transfers less effectively, whereas reinforcement learning after chain-of-thought supervision achieves the best generalization. Together, these findings highlight the need to improve visual-to-physical grounding and cross-task generalization for MLLMs to reliably interpret physical fields in scientific and engineering workflows.",
-      "pdf_url": "https://arxiv.org/abs/2609.34072",
+      "summary": "arXiv:2609.33117v1 Announce Type: cross Abstract: Multimodal large language models (MLLMs) can now interpret a standard ten-second, twelve-lead electrocardiogram (ECG) with clinically grounded, reward-verified reasoning. Real cardiac monitoring is different. Ambulatory (Holter) and telemetry recordings span hours to days and are read as they stream in, and their clinically decisive findings are paroxysmal, brief episodes buried in an otherwise unremarkable trace. Such a recording cannot be held in one context at diagnostic resolution, and its future has not yet happened, so a reader must work online, deciding what to measure now, committing evidence to memory as it passes, and reporting events as they occur. We recast long-duration ECG interpretation as a long-horizon, online (streaming, causal) sequential decision process and introduce ECG-Scroll. As a benchmark, long ambulatory recordings are streamed to an agent chunk by chunk, and it must localize, quantify, and promptly flag paroxysmal events without access to future signal; because the underlying signal is retained, every answer is checkable against objective ground truth, giving rule-based rather than judge-based rewards, and the streaming formulation adds a metric batch evaluation cannot express, the detection latency between an event's onset and the moment the agent records it. As an agent environment, it is a fixed, gym-style interaction layer that exercises three competencies single-glance ECG models never touch: Memory, Tool use through signal-grounded measurement rather than reading pixels, and Planning of what to measure now and when to commit. We release 390 whole-recording instances spanning 2,536 hours of two-lead ambulatory ECG and evaluate a signal-threshold rule agent alongside off-the-shelf LLM agents online, characterizing how they use memory, tools, and planning and where the benchmark's head-room lies.",
+      "pdf_url": "https://arxiv.org/abs/2609.33117",
       "comment": "",
       "technologies": [
-        "Multimodal Learning",
-        "Chain-of-Thought Prompting",
-        "Reinforcement Learning from Human Feedback"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Developing a scientific assistant that can interpret and analyze physical fields from multimodal inputs for researchers and engineers.",
-        "Creating an educational tool for students to learn about physical fields through interactive simulations and explanations."
-      ],
-      "domain_applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "id": "2609.34079",
-      "title": "GenoMorph: Pathway-Grounded Genomic Disease Reasoning via Adaptive Latent Computation",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.34079v1 Announce Type: new Abstract: Large language models (LLMs) have demonstrated strong capabilities in biological reasoning; however, genomic disease inference remains largely dependent on memorized gene-disease associations rather than understanding biological pathways. This shortcut learning undermines robustness and generalization, and breaks down when molecular identifiers are unavailable. We present GenoMorph, a multimodal genomic reasoning framework that shifts disease prediction from associative gene-disease mapping toward pathway-grounded reasoning. GenoMorph couples a frozen DNA foundation model with question-conditioned cross-attention fusion, self-adaptive latent reasoning (LatentSp), a residual reasoning gate for iterative genomic evidence reinjection, and rejection sampling fine-tuning regularized by hierarchical optimal transport (OT). Rather than learning direct gene-disease mappings, GenoMorph aligns genomic sequence representations with latent pathway dynamics, enabling reasoning trajectories that follow molecular interactions before producing disease predictions. LatentSp dynamically allocates computation according to reasoning confidence, reducing unnecessary reasoning steps and improving inference efficiency. We further construct an anonymized benchmark from the Kyoto Encyclopedia of Genes and Genomes (KEGG), replacing every gene and molecular identifier with anonymous symbols while preserving sequences and pathway topology, thereby removing memorization shortcuts. GenoMorph raises the weighted F1 from 0.7863 (BioReason) to 0.9412, and rejection sampling fine-tuning with self-adaptive latent reasoning pushes it to 0.9725 while cutting latency nearly 60%. On the anonymized benchmark it reaches 0.9465 F1, substantially outperforming prior systems and confirming that accurate disease prediction can arise from pathway reasoning rather than memorized gene-disease associations.",
-      "pdf_url": "https://arxiv.org/abs/2609.34079",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Self-Adaptive Latent Reasoning",
-        "Hierarchical Optimal Transport",
-        "Rejection Sampling Fine-Tuning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Personalized genomic disease prediction and reasoning tool for healthcare providers",
-        "AI-driven genomic research assistant for scientists"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "id": "2609.33379",
-      "title": "NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.33379v1 Announce Type: cross Abstract: Large language model agents increasingly rely on compound programs for retrieval, tool use, reasoning, and verification, yet their failures often arise from local procedural decisions. Existing reinforcement-learning and prompt-optimization approaches typically rely on scalar rewards or repeatedly modify entire prompts, making it difficult to capture and reuse procedural improvements while preserving a frozen agent. To address this problem, We propose Natural-Language Policy Gradients (NLPG), an external policy-memory method for improving a fixed agent without changing its model parameters or program structure. NLPG diagnoses execution traces, propagates downstream feedback backward through the module graph, and converts recurring failures into route-local natural-language corrections that are aggregated into bounded policy updates for subsequent executions. Across six benchmarks covering memory, reasoning, instruction following, and evidence verification, NLPG also outperforms the strongest listed baseline for each benchmark by 8.71 percentage points on average. These results provide evidence that evaluated procedural experience can be transformed into local and interpretable policy updates, enabling continual improvement of frozen agents.",
-      "pdf_url": "https://arxiv.org/abs/2609.33379",
-      "comment": "",
-      "technologies": [
-        "Natural-Language Policy Gradients",
-        "Reinforcement Learning from Human Feedback"
+        "Long-Horizon Sequential Decision Making",
+        "Streaming Benchmark",
+        "Agent Environment",
+        "Signal-Grounded Measurement",
+        "Online Learning"
       ],
       "maturity": "early",
       "confidence": 0.8,
       "curator_score": 6.0,
       "product_potential": [
-        "Adaptive AI assistants that can learn and improve from user feedback without changing their core model or program structure",
-        "Self-improving AI agents for enterprise applications that require continuous learning and adaptation"
+        "Real-time ambulatory ECG monitoring and analysis for healthcare professionals",
+        "Wearable health devices with advanced ECG interpretation capabilities"
       ],
       "domain_applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.34661",
-      "title": "Codoku: Renewable Program-Reasoning Challenges for Frontier Coding Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.34661v1 Announce Type: cross Abstract: Existing program-reasoning benchmarks ask large language models to predict a program's behavior on a given input. Coding agents break two assumptions on which these benchmarks rest: an agent can recover the answer by executing the program instead of reasoning about it, and fixed task sets drawn from existing programs are increasingly exposed to contamination, yet costly to renew. We introduce Codoku (code sudoku), a renewable benchmark in which a solver fills typed cells in a partial program to satisfy global static and dynamic constraints, such as a prescribed control-flow graph and execution path. Because a partial program cannot be executed and valid fillings are sparse in an exponentially large space of interdependent choices, neither tool use nor enumeration can substitute for program reasoning. Puzzles are synthesized from scratch via semantic reification, so fresh puzzles of controllable complexity can be generated on demand, each with a witness that guarantees solvability. We evaluate five frontier models on 300 puzzles through a coding agent free to use any tool within a fixed budget. Small puzzles already challenge open-weight models, whereas even proprietary models solve only about half of the large ones. Codoku thus offers a renewable testbed for program reasoning that can keep pace with rapidly improving coding agents. GitHub: https://github.com/connglli/Codoku.",
-      "pdf_url": "https://arxiv.org/abs/2609.34661",
-      "comment": "",
-      "technologies": [
-        "Program Reasoning",
-        "Renewable Benchmarking",
-        "Semantic Reification"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Automated Code Review and Debugging Tools",
-        "AI-Powered Programming Tutors",
-        "Dynamic Programming Challenge Platforms"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2603.11950",
-      "title": "Learning Transferable Sensor Models via Language-Informed Pretraining",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2603.11950v2 Announce Type: replace Abstract: Multimodal language models have demonstrated strong semantic understanding and reasoning over physiological and behavioral signals captured from diverse healthcare sensors. However, existing sensor-language models can only process a fixed number of sensor channels at a fixed sampling rate, making them difficult to adapt to new or different sensor configurations. This inflexibility prevents models from generalizing across heterogeneous health sensing ecosystems, where data spans high-frequency wearable streams to sparse, day-scale clinical signals. To bridge this gap, we introduce SLIP (Sensor Language-Informed Pretraining), an open-source framework for learning language-aligned representations that generalize across diverse sensor setups. SLIP integrates contrastive alignment with sensor-conditioned captioning, facilitating both discriminative understanding and generative reasoning. By repurposing a pretrained decoder-only language model via cross-attention and introducing a flexible patch embedder, SLIP transfers to new sensor configurations at inference without retraining, regardless of their native sampling rate or input length. Across 11 datasets, SLIP demonstrates superior performance in retrieval, signal captioning, and question answering. It achieves a 77.14% average linear-probing accuracy, a 3.56% improvement over the strongest baseline (SensorLM). Beyond classification, SLIP supports open-vocabulary sensor captioning and question answering without any architectural modifications. Our work offers broad implications for the development of sensor-language models, utilizing cross-modal supervision to ensure more robust generalizability in health sensing applications.",
-      "pdf_url": "https://arxiv.org/abs/2603.11950",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Contrastive Learning",
-        "Cross-Attention",
-        "Patch Embedding"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 6.0,
-      "product_potential": [
-        "A universal sensor data interpreter that can adapt to any sensor configuration without retraining, enabling seamless integration across diverse healthcare devices.",
-        "An AI-powered health monitoring system that can generate natural language descriptions of patient data, aiding in diagnosis and treatment planning."
-      ],
-      "domain_applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "id": "2603.01563",
-      "title": "LFPO: Likelihood-Free Policy Optimization for Masked Diffusion Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2603.01563v2 Announce Type: replace-cross Abstract: Reinforcement Learning with Verifiable Rewards (RLVR) has achieved remarkable success in improving autoregressive models, especially in domains requiring correctness like mathematical reasoning and code generation. However, directly applying such paradigms to Diffusion Large Language Models (dLLMs) is fundamentally hindered by the intractability of exact likelihood computation, which forces existing methods to rely on high-variance approximations. To bridge this gap, we propose Likelihood-Free Policy Optimization (LFPO), a native framework that maps the concept of vector field flow matching to the discrete token space. Specifically, LFPO formulates alignment as geometric velocity rectification, which directly optimizes denoising logits via contrastive updates. This design effectively bypasses the errors inherent in likelihood approximation, yielding the precise gradient estimation. Furthermore, LFPO enforce consistency by predicting final solutions from intermediate steps, effectively straightening the probability flow to enable high-quality generation with significantly fewer iterations. Extensive experiments demonstrate that LFPO not only outperforms state-of-the-art baselines on code and reasoning benchmarks but also accelerates inference by approximately 20% through reduced diffusion steps.",
-      "pdf_url": "https://arxiv.org/abs/2603.01563",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Reinforcement Learning",
-        "Policy Optimization"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enhanced code generation tools with improved accuracy and reduced inference time",
-        "Advanced mathematical reasoning and problem-solving applications"
-      ],
-      "domain_applications": [
-        "science",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2606.18363",
-      "title": "Guava: Distilling Frontier VLM Agents into a Compact Model with a Manipulation Harness",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2606.18363v2 Announce Type: replace-cross Abstract: Language models trained on large-scale vision-language data have demonstrated strong potential for embodied agents. Harnessing models through embodied tools use offers a promising alternative to end-to-end vision-language-action systems by combining high-level reasoning with external modules for perception, planning, and control. However, it remains unclear what makes an effective harness for embodied manipulation, and to what extent such a harness can unlock embodied capabilities in a wide range of reasoning models. In this work, we present Guava, a harness framework for embodied tool use developed through systematic exploration of the design space of agent workflows, action spaces, and observation spaces. Our study identifies three key ingredients for effective embodied agents: iterative perception-reasoning-action loops, semantic action abstractions, and multimodal observations. To understand whether these design principles are universal even to small models, we develop an end-to-end training pipeline that distills embodied manipulation capabilities into a 4B open-source model using fewer than 2K trajectories collected entirely in simulation. Experimental results in both simulation and real-world environments show performance comparable to frontier proprietary models while exhibiting strong generalization to unseen objects, novel instructions, and long-horizon tasks. Results suggest that a well-designed harness can serve as a scalable, model-agnostic interface for embodied manipulation, enabling strong emergent embodied capabilities in compact open-source models with minimal training data.",
-      "pdf_url": "https://arxiv.org/abs/2606.18363",
-      "comment": "",
-      "technologies": [
-        "Knowledge Distillation",
-        "Multimodal Learning",
-        "Retrieval Augmented Generation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "A compact, open-source embodied AI assistant for home automation",
-        "A scalable, model-agnostic interface for robotics and automation tasks"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.32781",
-      "title": "CT-OPD: Counterfactual Trace On-Policy Distillation for Diffusion Vision-Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.32781v1 Announce Type: new Abstract: Diffusion vision-language models generate answers by gradually resolving masked tokens, making accurate conditional prediction in partially resolved states central to post-training. Masking completed answers yields coherent contexts and targets, but prescribed masks do not reflect the model's reveal decisions. Its trajectories capture these decisions, yet their provisional visible tokens can conflict with the target response. Outcome-based reinforcement learning follows these trajectories but provides only response-level feedback, which loses contrast when sampled rewards tie. To align coherent token-level supervision with the model's reveal decisions, we introduce Counterfactual Trace On-Policy Distillation (CT-OPD), which combines completed teacher responses with trajectory masks from the current student. CT-OPD retokenizes each teacher response in the student's vocabulary and extracts unresolved-position masks at successive stages of the student's reverse process. For each mask, it discards provisional rollout values and reconstructs the partial state from the teacher endpoint, so the supervised positions follow the current trajectory while the visible context and targets remain consistent with the same response. The student is trained on these reconstructed states with its native categorical loss, and trajectories are refreshed as the model evolves. Across dense and sparse diffusion architectures, CT-OPD consistently enhances multimodal understanding and reasoning capabilities, with gains of up to 9.80 points on the nine-benchmark average. On the unified understanding-and-generation architecture, it also improves both visual understanding and image generation, showing that the same principle transfers across architectures and modalities. Ablations further attribute these gains to coherent reconstruction and current-model trajectory masks.",
-      "pdf_url": "https://arxiv.org/abs/2609.32781",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Knowledge Distillation",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enhanced multimodal AI assistants that can generate and understand images and text in a coherent manner",
-        "Improved image generation and understanding capabilities for creative applications"
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.05592",
-      "title": "Beyond Frame Selection: Rethinking Long-Video Understanding with MLLMs",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2608.05592v3 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have made strong progress in video understanding, yet long videos remain difficult: the visual token budget grows with video length, so temporally sparse evidence is easily lost. Existing methods, whether frame selection or agent-based exploration, ultimately rely on a single frame set that must trade off broad temporal coverage against fine-grained, question-relevant evidence: mixing both dilutes decisive evidence, while focusing on either sacrifices the other. We propose VideoRouter (VR), which rethinks long-video understanding as coordinating complementary evidence views rather than selecting a single subset of frames. VideoRouter first organizes each video into a question-agnostic temporal hierarchy that partitions it into coarse-to-fine temporally coherent segments. Upper-level nodes capture broad storyline context and event progression, while lower-level nodes preserve fine-grained local details and evidence-bearing moments. This gives rise to two complementary views: a global view for coverage-oriented reasoning and a local view for detail-oriented evidence recovery. We further introduce a verification-guided router that judges which view is better supported by its own selected evidence and decides the final answer. Across six backbones, routing improves over both views in all settings, and the choice of view is shown to be dataset-dependent, confirming that no single evidence granularity is universally preferable. On VideoMME and LongVideoBench, our method outperforms state-of-the-art frame-selection methods by 2.5 and 1.3 points, respectively, under the LLaVA-Video-7B backbone. We will release the code.",
-      "pdf_url": "https://arxiv.org/abs/2608.05592",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Video Understanding",
-        "Temporal Hierarchy",
-        "Evidence Views",
-        "Verification-Guided Routing"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enhanced video analysis tools for content creators and marketers",
-        "Improved video search and retrieval systems",
-        "Advanced video editing and summarization applications"
-      ],
-      "domain_applications": [
-        "creative",
-        "enterprise",
-        "other"
+        "healthcare"
       ]
     },
     {
@@ -496,15 +194,289 @@
       "summary": "arXiv:2609.37655v1 Announce Type: new Abstract: Advancing spatial intelligence in Multimodal Large Language Models (MLLMs) is bottlenecked by the scarcity of complex, scalable 3D question-answer (QA) data. While manual annotation is labor-intensive, directly utilizing LLMs to synthesize these QA pairs often fails due to their inherent deficiencies in spatial and geometric computation. We introduce Exemplar2VQA, a scalable exemplar-driven visual question answering generation framework that rapidly synthesizes large-scale spatial QA pairs in simulated environments via multi-agent coding. By equipping collaborative agents with a meticulously designed library of geometric utilities, Exemplar2VQA bypasses LLMs' spatial reasoning flaws through deterministic code execution. Crucially, the framework exhibits remarkable versatility: taking diverse static object-centric spatial query templates as exemplars, it seamlessly and autonomously scales them into massive, high-fidelity synthetic datasets. Fine-tuning Qwen2.5-VL (3B/7B) exclusively on Exemplar2VQA-generated synthetic indoor data yields significant performance improvements across various diverse benchmarks. Furthermore, its effectiveness is not limited to in-domain indoor datasets but also robustly extends to outdoor and mixed-scene benchmarks. These results establish Exemplar2VQA as a scalable and powerful paradigm for bridging the sim-to-real gap in Embodied AI. Our code is at https://github.com/yingjiayu12/Exemplar2VQA",
       "pdf_url": "https://arxiv.org/abs/2609.37655",
       "comment": "",
+      "technologies": [
+        "Multi-Agent Systems",
+        "Synthetic Data Generation",
+        "Multimodal Learning",
+        "Sim-to-Real Transfer"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "AI-powered virtual assistants for real estate that can answer complex spatial questions about properties",
+        "Automated quality control systems in manufacturing that can inspect and answer questions about 3D product designs"
+      ],
+      "domain_applications": [
+        "robotics",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2608.06197",
+      "title": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2608.06197v2 Announce Type: replace Abstract: Training large language model agents for long-horizon tool use typically relies on interactions with real or synthesized executable environments, whose construction and verification are costly, or on external simulators that are difficult to ground. We introduce EnvACE, an agentic reinforcement learning method that replaces external environment interaction during training with world rehearsal. The policy alternates between acting and rehearsal: it first generates a tool call, then plays the role of the environment to produce the response induced by that action, and conditions subsequent decisions on the rehearsed response. Both roles are jointly optimized end-to-end using task-success rewards. Through world rehearsal, the policy internalizes the relationship between actions and their environment responses in its parameters, yielding an agent world model that directly supports decision making. Across BFCL-v4, tau^2-Bench, VitaBench, and FinMCP-Bench, EnvACE achieves strong and transferable performance, outperforming environment-scaling baselines in the overall evaluation. Controlled studies further show that world rehearsal consistently improves policy learning across model scales. At test time, the internalized world model enables private rehearsal before committed execution, yielding further gains under a moderate rehearsal budget without additional external interaction. Our findings establish world rehearsal as a new path toward scaling LLM agent training beyond the constraints of external environments. Our code is publicly available at https://github.com/Within-yao/EnvACE.",
+      "pdf_url": "https://arxiv.org/abs/2608.06197",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "World Rehearsal",
+        "Agentic Reinforcement Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Developing AI agents that can learn and adapt to new environments without requiring constant interaction with external systems, reducing the need for extensive real-world testing.",
+        "Creating AI-driven tools for educational purposes that can simulate various scenarios and provide feedback, enhancing the learning experience."
+      ],
+      "domain_applications": [
+        "education",
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2602.08005",
+      "title": "ResidualKV: Residual-Based KV Cache Compression for Efficient Long-Context Inference",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2602.08005v2 Announce Type: replace-cross Abstract: Efficient long-context inference faces two coupled bottlenecks: KV-cache memory grows linearly with context length, while attention computation grows quadratically. Existing approaches typically address one at the expense of irreversible token eviction, full-cache retention, or full-history reconstruction, limiting their effectiveness for multi-turn interaction and long-form reasoning. Motivated by two empirical properties, Long-Range Inter-Token Similarity and Smooth Residual Distribution, we propose ResidualKV, which factorizes the KV cache into a sparse set of globally retrieved references and compact, quantized residual codes for the remaining tokens. This representation preserves token-specific information without permanent eviction and, when combined with sparse attention, reconstructs only the selected states on demand. Dynamic-stride scheduling further reduces reference growth from linear to approximately logarithmic at ultra-long contexts. Across Llama, Qwen, LLaVA-OV, and Qwen3-VL backbones, ResidualKV maintains near-full-cache performance using only 13%-16% KV storage and 30% attention computation on LongBench, and 8%-10% storage and 10% computation in matched-budget multimodal evaluation. It also accelerates decoding by up to $1.5\\times$ with KV-cache quantization and $3.4\\times$ without it. These results show that global cross-token redundancy supports accurate, memory-efficient, and computation-efficient long-context inference. The source code is available at https://github.com/CURRENTF/ResidualKV.",
+      "pdf_url": "https://arxiv.org/abs/2602.08005",
+      "comment": "",
+      "technologies": [
+        "KV Cache Optimization",
+        "Sparse Attention"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Developing AI-powered chatbots and virtual assistants capable of handling extended conversations with minimal memory overhead.",
+        "Creating efficient long-form content generation tools for writers, journalists, and researchers."
+      ],
+      "domain_applications": [
+        "education",
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2604.20348",
+      "title": "Bimanual Robot Manipulation via Multi-Agent In-Context Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2604.20348v3 Announce Type: replace-cross Abstract: Large Language Models (LLMs) have emerged as powerful reasoning engines for embodied control. In particular, In-Context Learning (ICL) enables off-the-shelf, text-only LLMs to predict robot actions without any task-specific training while preserving their generalization capabilities. Applying ICL to bimanual manipulation remains challenging as the high-dimensional joint action space and tight inter-arm coordination constraints rapidly overwhelm standard context windows. To address this, we introduce BiCICLe (Bimanual Coordinated In-Context Learning), the first framework that enables standard LLMs to perform few-shot bimanual manipulation without fine-tuning. BiCICLe frames bimanual control as a multi-agent leader-follower problem, decoupling the action space into sequential, conditioned single-arm predictions. Evaluated on 13 tasks from the TWIN benchmark, BiCICLe achieves 70.5% average success rate, outperforming the best training-free baseline by 6.1 percentage points and surpassing most supervised methods. We also demonstrate superior real-world performance on 3 tasks without hardware-specific retraining. The project page is available at https://alesspalma.github.io/bicicle",
+      "pdf_url": "https://arxiv.org/abs/2604.20348",
+      "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
       "curator_score": 6.0,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2609.02780",
+      "title": "ShallowStream: Index Shallow then Answer Deep for Streaming Video Understanding",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.02780v2 Announce Type: replace Abstract: Streaming video understanding is a critical capability for real-world applications, including embodied intelligence, autonomous driving, industrial monitoring, surveillance and early warning, and wearable assistants. However, processing continuous video streams with multimodal large language models (MLLMs) is computationally expensive. Existing efforts have explored reducing streaming overhead through visual token pruning, token merging, quantization, on-demand frame retrieval, and context offloading. However, most existing methods overlook the dimension of model depth. Repeatedly executing full-depth MLLM prefill over incoming frames is prohibitively expensive, incurring substantial computational overhead and causing the KV cache to grow at a rate directly proportional to the prefill depth. To address these challenges, we propose ShallowStream, a novel framework that leverages the shallow layers of an MLLM to simultaneously perform frame encoding and retrieval index building. During stream processing, ShallowStream maintains an always-on lightweight index using the KV cache of shallow layers. During query-time answering, we leverage the attention scores generated by the shallow layers to score context frames and employ a diversity-aware selection strategy to retrieve precise and comprehensive evidence. ShallowStream achieves performance on par with the strongest existing streaming methods, while reducing per-frame prefill latency and 10-second end-to-end latency by up to 52.1x and 11.9x, respectively. Our code is available at https://github.com/CURRENTF/ShallowStream.",
+      "pdf_url": "https://arxiv.org/abs/2609.02780",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.05224",
+      "title": "First Things First: Teaching LLM-Based Agents to Prioritize Must-Haves before Nice-to-Haves",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.05224v3 Announce Type: replace Abstract: Recent progress in multimodal large language models (MLLMs) has fueled significant enthusiasm in their potential to act as autonomous agents for real-world tasks. However, scenarios requiring agents to fulfill users' complex, structured requirements remain largely underexplored. In this work, we examine reasoning tasks under three distinct requirement scenarios: (i) Must-have requirements uniquely determine a unique feasible solution; (ii) Multiple answers satisfy the must-have requirements and are prioritized via the nice-to-have requirements; and (iii) No candidate solution satisfies the must-have requirements, in which case the agent should abstain from generating a response. We evaluate state-of-the-art MLLMs on 3,649 carefully constructed problems that reflect realistic service scenarios, including e-commerce, booking, and map-based or ride-hailing. Our evaluation reveals that existing MLLMs exhibit catastrophic failures in all scenarios. They frequently misinterpret task requirements, violate must-have requirements, and produce invalid solutions. To address this critical gap, we propose First Things First Reinforcement Learning FTF-rl that explicitly optimizes reasoning over multi-priority user requirements. Experimental results show that our method substantially improves the task success rate compared to strong baselines. Moreover, FTF-rl yields general effectiveness on popular logical and mathematical reasoning tasks, including LogicVista, MathVision, and InfoQA. Our findings suggest that enhancing requirement-aware reasoning capability provides a simple yet effective pathway to improve generalization of MLLM agents. Code and dataset are available at https://github.com/claire62/FTF-RL.",
+      "pdf_url": "https://arxiv.org/abs/2609.05224",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.38409",
+      "title": "ArgGYM: A Procedural, Engine-Verified Benchmark for Structured Defeasible Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.38409v1 Announce Type: new Abstract: Recent progress in large language model reasoning has been driven by benchmarks and reinforcement learning environments with automatically verifiable rewards, particularly in mathematics, code, and formal logic. These settings make model accuracy easier to evaluate and optimize, but it remains unclear how far success under fixed problem specifications and stable evaluation criteria transfers to reasoning outside such domains. Real-world reasoning often proceeds under incomplete and revisable information: conclusions may be supported provisionally, defeated by counter-evidence, reinstated by further arguments, or revised when stronger reasons become available. Reasoning of this kind is generally referred to as defeasible reasoning. We introduce ArgGYM, a procedural benchmark and RLVR-compatible training environment for structured defeasible reasoning. ArgGYM decomposes this reasoning into twelve tasks and grounds task-specific scoring in a symbolic argumentation engine that computes the formal states used to evaluate model outputs. It includes a frozen benchmark of 1,440 verified instances across fifteen curriculum configurations, two argument preference orderings (weakest-link and last-link), and two set orderings (elitist and democratic), while the same generators and verifiers can produce fresh instances for evaluation that reduces dependence on static test sets and for verifiable-reward training. On the frozen benchmark, frontier and open-weight models show sharply different reasoning profiles: they can recover substantial parts of structured answers without solving the complete task, and performance declines in later curriculum configurations with longer dependencies and more interacting structures. We release the benchmark, generators, and verifiers for reproducible evaluation and RLVR training.",
+      "pdf_url": "https://arxiv.org/abs/2609.38409",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.34195",
+      "title": "PainterBench: A Figural Divergent-Thinking Benchmark for Tool-Using Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-29",
+      "updated": "2026-09-29",
+      "summary": "arXiv:2609.34195v1 Announce Type: new Abstract: Figural divergent thinking is the ability to develop a given shape fragment into an original drawing. In humans, this ability is assessed with incomplete-drawing tasks. We introduce PainterBench, a benchmark that ports the incomplete-drawing task to the agentic setting. The agent draws on a canvas through tool calls and observes the result after every turn. The canvas includes a starting shape which cannot be erased, and the agent's goal is to incorporate this shape into the most original drawing it can produce. The task is open-ended, and the agent itself decides when the drawing is finished. The benchmark tests incremental visual planning over a short horizon and the transfer of creative ability from pretraining to multi-turn tool use. We evaluate 14 multimodal language models from small to frontier scale. Across the primary study and six sensitivity analyses, we collect 2,700 drawings and crowdsource creativity and recognizability ratings for every drawing and for 300 human reference drawings. We also present ViDrA-adapted, an automated scorer that predicts human creativity ratings of agent drawings (r = 0.85 on random held-out test split). Figural divergent thinking varies widely across the 14 models, and GPT-6 Astra produces the most creative drawings. Relative to the human drawings, the agent drawings score higher in creativity but lower in recognizability. We release the final drawings, per-round canvas snapshots, tool call traces, stimulus bank, benchmark harness, crowdsourced ratings (N = 72,000), and ViDrA checkpoint.",
+      "pdf_url": "https://arxiv.org/abs/2609.34195",
+      "comment": "",
+      "technologies": [
+        "Tool-Using Language Models",
+        "Multimodal Learning",
+        "Automated Scoring"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-assisted drawing tool for creative professionals",
+        "Automated creativity evaluation system for educational platforms",
+        "AI-powered design assistant for product designers"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2609.38652",
+      "title": "AgBench: Agentic AI Benchmarks for Personal AI Devices",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.38652v1 Announce Type: new Abstract: Agentic AI systems increasingly rely on cloud-hosted large language models for planning, tool use, and iterative execution, raising concerns about API cost and data exposure. Advances in personal AI devices enable agents to execute locally, but limited resources on device may affect task success and performance. Existing benchmarks are inadequate for systematically characterizing these trade-offs across devices, workloads, and deployment architectures. We present AgBench, a benchmark suite and open artifacts for reproducible evaluation of agentic AI on personal devices. Using AgBench, we evaluate local, hybrid, and cloud execution across agentic workloads, examining task success, latency, cloud API cost, and data exposure. Our results, drawn from over 162.07 million data points, show that personal AI devices can complete many agent tasks locally, but local-only execution generally has lower task success and longer completion times than cloud-only execution, especially as concurrency increases. Local-only execution eliminates cloud model API costs and sensitive-information exposure to cloud agents. Hybrid execution can improve task success, but its cloud cost and data exposure depend on how agents divide work and share information. No single architecture performs best across task success, goodput, cloud cost, and data exposure; deployment choices should reflect the intended workload and device capabilities. AgBench is available at https://anonymous.4open.science/r/AgBench-2777.",
+      "pdf_url": "https://arxiv.org/abs/2609.38652",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.39382",
+      "title": "SkillFM: Generating Skills for LLM Agents via Latent Flow Matching",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.39382v1 Announce Type: new Abstract: Textual skills provide reusable guidance for large language model agents, but existing approaches often rely on manually curated skill banks or reinforcement learning with indirect and delayed feedback. We introduce SkillFM (Skill Flow Matching), a generative framework that synthesizes task-conditioned textual skills directly without test-time skill retrieval. Our framework combines a codec for encoding and reconstructing textual skills in a continuous latent space with a conditional flow model trained using improved MeanFlow. At inference time, the learned velocity field enables single-step latent sampling, and an LLM-based decoder converts the sampled representation into textual guidance for a frozen downstream agent. We evaluate the framework on embodied tasks, question answering, and web shopping. On ALFWorld and Search-QA, our method achieves the best overall performance among the compared vector-based skill approaches. Our analyses further demonstrate that latent skill generation is an effective alternative to retrieval-based skill augmentation. Our code and training skill libraries are available at https://github.com/lulushang999/SkillFM.",
+      "pdf_url": "https://arxiv.org/abs/2609.39382",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.39964",
+      "title": "AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "arXiv:2609.39964v1 Announce Type: new Abstract: Multi-modal integrated sensing and communication (ISAC) enables environmental perception and reliable connectivity for intelligent wireless networks. Data-driven multi-modal ISAC models depend heavily on annotated real-world data to learn relationships across sensing and wireless observations, thereby constraining scalable deployment. Although synthetic data generation reduces the burden, adapting existing simulation pipelines to a target deployment requires consistent scene, sensing, wireless, and learning configurations, while mismatches among these coupled components impair sim-to-real transferability. To address the challenge, we propose an agentic artificial intelligence (AI) framework for sim-to-real multi-modal ISAC, named AIMS. Given a natural-language deployment request specifying the target task, deployment conditions, and real-data budget, AIMS derives a deployment-specific sim-to-real configuration and coordinates its execution to produce a deployment-specific task model. A two-agent architecture coordinates scene construction with task learning. A scene construction agent generates geographically grounded, synchronized sensing and wireless records from shared physical states, while a scene understanding agent configures task-relevant modalities and mixture-of-experts (MoE) learning for zero-shot inference or few-shot adaptation. Structured domain knowledge guides dependency-aware planning, while validation evidence supports feedback-driven revision of affected decisions. Experiments on the real-world DeepSense~6G dataset demonstrate improved vehicle detection and beam prediction over the considered simulation and fusion baselines. A separate orchestration benchmark evaluates task interpretation, dependency reasoning, and feedback-driven replanning across diverse deployment requests, showing improved plan correctness with structured domain knowledge and validation feedback.",
+      "pdf_url": "https://arxiv.org/abs/2609.39964",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
+    {
+      "name": "Vector-to-Graph Framework",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "engineering",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education",
+        "robotics",
+        "creative",
+        "enterprise",
+        "engineering"
+      ]
+    },
+    {
+      "name": "Structural Representation Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "engineering",
+        "enterprise"
+      ]
+    },
     {
       "name": "Long-Horizon Sequential Decision Making",
       "papers": 1,
@@ -556,32 +528,178 @@
       ]
     },
     {
+      "name": "Counterfactual Contrastive Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Spatiotemporal Localization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Emotion Routing",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Hierarchical Emotional Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "creative",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Contrastive Discriminative Pruning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "creative",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Synthetic Data Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Sim-to-Real Transfer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "World Rehearsal",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Agentic Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "other",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other",
+        "creative"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other",
+        "creative"
+      ]
+    },
+    {
       "name": "Tool-Using Language Models",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "education",
+        "enterprise",
         "creative"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "engineering",
-        "education",
-        "science",
-        "enterprise",
-        "creative",
-        "healthcare",
-        "other"
       ]
     },
     {
@@ -591,339 +709,8 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "name": "Vector-to-Graph Framework",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "engineering"
-      ]
-    },
-    {
-      "name": "Structural Representation Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "engineering"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "other",
         "education",
         "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Self-Adaptive Latent Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Hierarchical Optimal Transport",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Rejection Sampling Fine-Tuning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Natural-Language Policy Gradients",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "other",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Program Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Renewable Benchmarking",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Semantic Reification",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Contrastive Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Cross-Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Patch Embedding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "science"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Policy Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Knowledge Distillation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
-        "enterprise",
-        "education"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Video Understanding",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "creative"
-      ]
-    },
-    {
-      "name": "Temporal Hierarchy",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "creative"
-      ]
-    },
-    {
-      "name": "Evidence Views",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "creative"
-      ]
-    },
-    {
-      "name": "Verification-Guided Routing",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "creative"
-      ]
-    },
-    {
-      "name": "Counterfactual Contrastive Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Spatiotemporal Localization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Emotion Routing",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Hierarchical Emotional Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "name": "Contrastive Discriminative Pruning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "enterprise",
-        "education",
         "creative"
       ]
     }
