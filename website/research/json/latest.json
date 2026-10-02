@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "papers_tracked": 15,
-    "technologies_discovered": 23,
+    "technologies_discovered": 25,
     "opportunities_identified": 0,
-    "last_update": "2026-10-01 11:44 UTC",
+    "last_update": "2026-10-02 11:14 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,17 +13,17 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "23",
+      "value": "25",
       "label": "discovered this scan",
-      "detail": "Vector-to-Graph Framework, Multimodal Learning, Structural Representation Learning, Long-Horizon Sequential Decision Making, Streaming Benchmark, Agent Environment, Signal-Grounded Measurement, Online Learning",
+      "detail": "Retrieval Augmented Generation, Mixture of Experts, Low-Rank Adaptation, Long-Horizon Sequential Decision Making, Streaming Benchmark, Agent Environment, Signal-Grounded Measurement, Online Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "23",
+      "value": "25",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Multi-Agent Systems, Synthetic Data Generation, Sim-to-Real Transfer, Reinforcement Learning",
+      "detail": "Retrieval Augmented Generation, Mixture of Experts, Low-Rank Adaptation, In-Context Learning, Multi-Agent Systems",
       "color": "green"
     },
     {
@@ -31,14 +31,14 @@
       "title": "Highest Potential",
       "value": "7.6",
       "label": "avg opportunity score",
-      "detail": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
+      "detail": "MOMAT: Mixture of Multiple Atlases for Low-Power Jailbreak Defense of Quantized ",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "Beyond Pixels: A Vector-to-Gra",
-      "label": "confidence 85%",
+      "value": "MOMAT: Mixture of Multiple Atl",
+      "label": "confidence 70%",
       "detail": "",
       "color": "purple"
     },
@@ -53,41 +53,41 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "14",
+      "value": "15",
       "label": "early-stage technologies",
-      "detail": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interp",
+      "detail": "AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC",
       "color": "blue"
     }
   ],
   "papers": [
     {
-      "id": "2602.11678",
-      "title": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
+      "id": "2610.01058",
+      "title": "MOMAT: Mixture of Multiple Atlases for Low-Power Jailbreak Defense of Quantized LLMs",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-09-30",
-      "updated": "2026-09-30",
-      "summary": "arXiv:2602.11678v2 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have shown remarkable progress in visual understanding, yet they suffer from a critical limitation: structural blindness. Even state-of-the-art models fail to capture topology and symbolic logic in engineering schematics, as their pixel-driven paradigm discards the explicit vector-defined relations needed for reasoning. To overcome this, we propose a Vector-to-Graph (V2G) pipeline that converts CAD diagrams into property graphs where nodes represent components and edges encode connectivity, making structural dependencies explicit and machine-auditable. On a diagnostic benchmark of electrical compliance checks, V2G yields large accuracy gains across all error categories, while leading MLLMs remain near chance level. These results highlight the systemic inadequacy of pixel-based methods and demonstrate that structure-aware representations provide a reliable path toward practical deployment of multimodal AI in engineering domains. To facilitate further research, we release our benchmark and implementation at https://github.com/gm-embodied/V2G-Audit.",
-      "pdf_url": "https://arxiv.org/abs/2602.11678",
+      "published": "2026-10-02",
+      "updated": "2026-10-02",
+      "summary": "arXiv:2610.01058v1 Announce Type: cross Abstract: Quantized large language models are increasingly deployed on edge devices for their low latency and energy efficiency. However, model quantization weakens alignment safeguards, leaving qLLMs (quantized large language models) highly vulnerable to jailbreak attacks. To address this challenge, we present MOMAT (Mixture of Multiple Atlases), a hardware-enhanced safety framework that combines structured knowledge retrieval with low-power defense acceleration. Each atlas represents a semantic cluster of harmful or benign sample sets and policy templates, enabling domain-localized Retrieval-Augmented Generation guarding that mitigates the curse of dimensionality and the resulting semantic sparsity problem in large, heterogeneous safety databases. MOMAT retrieves top-$k$ similarity features from all atlases for each prompt and evaluates them using a lightweight MoE (Mixture of Experts) detector, while a CiM (Compute-in-Memory)-accelerated similarity engine performs fast, low-power atlas-local retrieval. MOMAT's CiM-based retrieval accelerates a 100-query batch from 15,052.44 ms to 3,207.21 ns (a $4.69 \\times 10^6\\times$ speedup) and reduces energy from $8.1 \\times 10^7$ $\\mu$J to 3.32 $\\mu$J, yielding an approximately $2.5 \\times 10^5\\times$ energy reduction over DRAM-based (Raspberry Pi) baselines. Red-team evaluations across standard benchmarks show that MOMAT matches the defense performance of state-of-the-art methods while avoiding benign overkill and providing substantial efficiency gains, demonstrating that CiM-based modular defenses can make edge-deployed qLLMs both safer and more energy-efficient. We will release the full 223.2k-sample dataset to foster future research.",
+      "pdf_url": "https://arxiv.org/abs/2610.01058",
       "comment": "",
       "technologies": [
-        "Vector-to-Graph Framework",
-        "Multimodal Learning",
-        "Structural Representation Learning"
+        "Retrieval Augmented Generation",
+        "Mixture of Experts",
+        "Low-Rank Adaptation"
       ],
-      "maturity": "medium",
-      "confidence": 0.85,
+      "maturity": "early",
+      "confidence": 0.7,
       "curator_score": 6.2,
       "product_potential": [
-        "Automated schematic design verification tool for electrical engineers",
-        "AI-powered CAD assistant for structural compliance checks",
-        "Multimodal engineering documentation system with structural understanding"
+        "Edge device security framework for quantized LLMs",
+        "Low-power AI safety module for edge deployments"
       ],
       "domain_applications": [
-        "engineering",
-        "enterprise"
+        "enterprise",
+        "accessibility",
+        "other"
       ]
     },
     {
@@ -118,99 +118,6 @@
       ],
       "domain_applications": [
         "healthcare"
-      ]
-    },
-    {
-      "id": "2609.36776",
-      "title": "Causal-EVC: Breaking Emotional Spurious Causality via Spatiotemporal Grounding and Counterfactual Intervention",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-30",
-      "updated": "2026-09-30",
-      "summary": "arXiv:2609.36776v1 Announce Type: new Abstract: Emotional Video Captioning aims to generate factually accurate and emotionally empathetic descriptions. While recent methods have recognized the importance of visual causes to guide emotion perception and caption generation, they fundamentally rely on simple attention matching, which inevitably suffers from {causal redundancy and spurious correlations} in co-occurrence bias (e.g., misclassifying ``sadness'' as ``joy'' on a sunny beach), leading to severe shortcut learning from confusing backgrounds. Furthermore, existing evaluations fail to verify whether models have genuinely mastered causal reasoning or merely exploited background confounders. To address these limitations, we first construct {EVC-CauseGround}, a comprehensive benchmark with dense spatio-temporal causal annotations. Crucially, it introduces a carefully selected {Causal-Faithfulness Subset} to explicitly quantify genuine emotion-cause attribution. Second, we propose {Causal-EVC}, an emotion-grounding captioning framework, which introduces a Motion-guided Causal Spatiotemporal Localization module to precisely decouple causal triggers from background confounders. Besides, we introduce an Interpretable Sparse Emotion Routing module. By synthesizing counterfactual representations and formulating a novel counterfactual contrastive objective, we enforce the model to anchor its emotion predictions strictly on authentic causal triggers instead of confusing background. Extensive experiments show that Causal-EVC not only achieves the best performance on semantic metrics but also exhibits significant advantages in the causal-faithfulness subset, which demonstrates that our model could mine emotional cues from genuine visual causes and mitigate co-occurrence bias for interpretable multimodal emotion understanding.",
-      "pdf_url": "https://arxiv.org/abs/2609.36776",
-      "comment": "",
-      "technologies": [
-        "Counterfactual Contrastive Learning",
-        "Spatiotemporal Localization",
-        "Emotion Routing"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "AI-driven emotion analysis for mental health monitoring and therapy",
-        "Interpretable emotion recognition for creative industries like film and advertising",
-        "Emotion-aware content recommendation systems for social media platforms"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.36782",
-      "title": "Decoding Affective Nuances: Enhancing MLLMs via Hierarchical Emotion Reasoning and Contrastive Discriminative Pruning",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-30",
-      "updated": "2026-09-30",
-      "summary": "arXiv:2609.36782v1 Announce Type: new Abstract: While multimodal large language models (MLLMs) have demonstrated exceptional capabilities in objective understanding tasks, their performance in affective reasoning still falls significantly short of human standards. We attribute it to a central capability gap: MLLMs are difficult to reliably distinguish semantically proximal emotions based on fine-grained visual evidence, which could be decoupled as two limitations: 1) Insufficient Attribution. The global reasoning paradigm of conventional MLLMs severely dilutes fine-grained emotion cues, where subtle emotional states are usually implicitly encoded, thereby generating emotional misjudgments in complex scenarios. 2) Insufficient Discrimination. Existing methods could only identify regions generally associated with emotions, which fails to distinguish discriminative regions between semantically similar emotions, leading to ambiguous emotion judgements. To overcome these limitations, we present a training-free inference-time optimization framework, named Decoding Affective Nuances (DAN). Specifically, we propose a Hierarchical Emotional Reasoning Chain (HERC) that enhances the insufficient attribution by harmonizing fine-grained scene/object-level cues and performing a soft-gated reasoning. Furthermore, to discriminate between semantically proximal emotions, we design a Contrastive Discriminative Visual Pruning (CDVP), which isolates discriminative visual tokens to reason the final emotion category by computing the absolute discrepancy between the attention distributions of similar emotions. Performances on several benchmarks demonstrate that DAN significantly improves discrimination for affective nuances without consuming additional training resources, especially achieving +10.47% improvements with Qwen3-VL-8B-Instruct on WebEmo25 dataset that contains 25 fine-grained emotion categories.",
-      "pdf_url": "https://arxiv.org/abs/2609.36782",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Hierarchical Emotional Reasoning",
-        "Contrastive Discriminative Pruning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Emotion-aware AI assistants that can provide personalized responses based on user's emotional state",
-        "AI-powered mental health tools that can detect subtle emotional cues in user interactions"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "education",
-        "creative",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.37655",
-      "title": "Exemplar2VQA: A Scalable Exemplar-Driven Visual Question Answering Generation Framework via Multi-Agent Coding",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-09-30",
-      "updated": "2026-09-30",
-      "summary": "arXiv:2609.37655v1 Announce Type: new Abstract: Advancing spatial intelligence in Multimodal Large Language Models (MLLMs) is bottlenecked by the scarcity of complex, scalable 3D question-answer (QA) data. While manual annotation is labor-intensive, directly utilizing LLMs to synthesize these QA pairs often fails due to their inherent deficiencies in spatial and geometric computation. We introduce Exemplar2VQA, a scalable exemplar-driven visual question answering generation framework that rapidly synthesizes large-scale spatial QA pairs in simulated environments via multi-agent coding. By equipping collaborative agents with a meticulously designed library of geometric utilities, Exemplar2VQA bypasses LLMs' spatial reasoning flaws through deterministic code execution. Crucially, the framework exhibits remarkable versatility: taking diverse static object-centric spatial query templates as exemplars, it seamlessly and autonomously scales them into massive, high-fidelity synthetic datasets. Fine-tuning Qwen2.5-VL (3B/7B) exclusively on Exemplar2VQA-generated synthetic indoor data yields significant performance improvements across various diverse benchmarks. Furthermore, its effectiveness is not limited to in-domain indoor datasets but also robustly extends to outdoor and mixed-scene benchmarks. These results establish Exemplar2VQA as a scalable and powerful paradigm for bridging the sim-to-real gap in Embodied AI. Our code is at https://github.com/yingjiayu12/Exemplar2VQA",
-      "pdf_url": "https://arxiv.org/abs/2609.37655",
-      "comment": "",
-      "technologies": [
-        "Multi-Agent Systems",
-        "Synthetic Data Generation",
-        "Multimodal Learning",
-        "Sim-to-Real Transfer"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "AI-powered virtual assistants for real estate that can answer complex spatial questions about properties",
-        "Automated quality control systems in manufacturing that can inspect and answer questions about 3D product designs"
-      ],
-      "domain_applications": [
-        "robotics",
-        "education",
-        "enterprise"
       ]
     },
     {
@@ -286,12 +193,23 @@
       "summary": "arXiv:2604.20348v3 Announce Type: replace-cross Abstract: Large Language Models (LLMs) have emerged as powerful reasoning engines for embodied control. In particular, In-Context Learning (ICL) enables off-the-shelf, text-only LLMs to predict robot actions without any task-specific training while preserving their generalization capabilities. Applying ICL to bimanual manipulation remains challenging as the high-dimensional joint action space and tight inter-arm coordination constraints rapidly overwhelm standard context windows. To address this, we introduce BiCICLe (Bimanual Coordinated In-Context Learning), the first framework that enables standard LLMs to perform few-shot bimanual manipulation without fine-tuning. BiCICLe frames bimanual control as a multi-agent leader-follower problem, decoupling the action space into sequential, conditioned single-arm predictions. Evaluated on 13 tasks from the TWIN benchmark, BiCICLe achieves 70.5% average success rate, outperforming the best training-free baseline by 6.1 percentage points and surpassing most supervised methods. We also demonstrate superior real-world performance on 3 tasks without hardware-specific retraining. The project page is available at https://alesspalma.github.io/bicicle",
       "pdf_url": "https://arxiv.org/abs/2604.20348",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "In-Context Learning",
+        "Multi-Agent Systems"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.7,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Automated bimanual robot manipulation systems for industrial applications",
+        "Collaborative robotics in healthcare for surgical assistance",
+        "Enhanced robotics in education for interactive learning experiences"
+      ],
+      "domain_applications": [
+        "robotics",
+        "healthcare",
+        "education"
+      ]
     },
     {
       "id": "2609.02780",
@@ -349,6 +267,36 @@
       "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2602.11678",
+      "title": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-30",
+      "updated": "2026-09-30",
+      "summary": "arXiv:2602.11678v2 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have shown remarkable progress in visual understanding, yet they suffer from a critical limitation: structural blindness. Even state-of-the-art models fail to capture topology and symbolic logic in engineering schematics, as their pixel-driven paradigm discards the explicit vector-defined relations needed for reasoning. To overcome this, we propose a Vector-to-Graph (V2G) pipeline that converts CAD diagrams into property graphs where nodes represent components and edges encode connectivity, making structural dependencies explicit and machine-auditable. On a diagnostic benchmark of electrical compliance checks, V2G yields large accuracy gains across all error categories, while leading MLLMs remain near chance level. These results highlight the systemic inadequacy of pixel-based methods and demonstrate that structure-aware representations provide a reliable path toward practical deployment of multimodal AI in engineering domains. To facilitate further research, we release our benchmark and implementation at https://github.com/gm-embodied/V2G-Audit.",
+      "pdf_url": "https://arxiv.org/abs/2602.11678",
+      "comment": "",
+      "technologies": [
+        "Vector-to-Graph Framework",
+        "Multimodal Learning",
+        "Structural Representation Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Automated schematic design verification tool for electrical engineers",
+        "AI-powered CAD assistant for structural compliance checks",
+        "Multimodal engineering documentation system with structural understanding"
+      ],
+      "domain_applications": [
+        "engineering",
+        "enterprise"
+      ]
     },
     {
       "id": "2609.34195",
@@ -431,6 +379,81 @@
       "summary": "arXiv:2609.39964v1 Announce Type: new Abstract: Multi-modal integrated sensing and communication (ISAC) enables environmental perception and reliable connectivity for intelligent wireless networks. Data-driven multi-modal ISAC models depend heavily on annotated real-world data to learn relationships across sensing and wireless observations, thereby constraining scalable deployment. Although synthetic data generation reduces the burden, adapting existing simulation pipelines to a target deployment requires consistent scene, sensing, wireless, and learning configurations, while mismatches among these coupled components impair sim-to-real transferability. To address the challenge, we propose an agentic artificial intelligence (AI) framework for sim-to-real multi-modal ISAC, named AIMS. Given a natural-language deployment request specifying the target task, deployment conditions, and real-data budget, AIMS derives a deployment-specific sim-to-real configuration and coordinates its execution to produce a deployment-specific task model. A two-agent architecture coordinates scene construction with task learning. A scene construction agent generates geographically grounded, synchronized sensing and wireless records from shared physical states, while a scene understanding agent configures task-relevant modalities and mixture-of-experts (MoE) learning for zero-shot inference or few-shot adaptation. Structured domain knowledge guides dependency-aware planning, while validation evidence supports feedback-driven revision of affected decisions. Experiments on the real-world DeepSense~6G dataset demonstrate improved vehicle detection and beam prediction over the considered simulation and fusion baselines. A separate orchestration benchmark evaluates task interpretation, dependency reasoning, and feedback-driven replanning across diverse deployment requests, showing improved plan correctness with structured domain knowledge and validation feedback.",
       "pdf_url": "https://arxiv.org/abs/2609.39964",
       "comment": "",
+      "technologies": [
+        "Multi-modal Learning",
+        "Mixture of Experts",
+        "Sim-to-Real Transfer",
+        "Agentic AI",
+        "Dependency-Aware Planning",
+        "Feedback-Driven Revision"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Automated deployment configuration for multi-modal ISAC systems",
+        "Intelligent wireless network optimization through agentic AI",
+        "Enhanced environmental perception and connectivity for intelligent systems"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2610.02196",
+      "title": "InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation",
+      "authors": [
+        "Zhuo Lin",
+        "Sirui Xu",
+        "Liuyu Bian",
+        "Yu-Xiong Wang",
+        "Liang-Yan Gui"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.GR"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "We study test-time evolution for humanoid loco-manipulation: solving tasks that a controller was never trained for by repurposing its existing skills, improving from its own attempts, and retaining what it learns, without retraining. Our key insight is that a broad controller already holds much of the competence a new task needs, and that this competence becomes accessible through an interface between planning and control that is expressive enough to specify contact-rich, multi-stage interactions, yet executable and measurable enough that execution feedback can guide planning from experience. InterEvolve realizes this interface with two components. First, we develop an object-aware forward-backward (FB) behavioral foundation model, whose object residuals on a frozen body prior turn a new reward about the body or objects into loco-manipulation behavior at test time. Second, we specify tasks as reward programs: staged rewards with completion conditions and tunable constants. A large language model (LLM) agent revises the program structure in context, drawing on execution feedback and a skill library of verified programs, while a numerical optimizer tunes its constants. With every candidate verified across parallel simulation scenarios, the program explores new ways to induce, repurpose, and compose the controller's existing motor competence for the task at hand, and thus improves over iterations. Experiments show that human-designed rewards leave much of the FB model's loco-manipulation competence untapped, whereas the programs InterEvolve evolves release it, sometimes through novel strategies. It further produces behaviors for diverse tasks, complex scenes, and long-horizon compositions in simulation, and evolved skills run autonomously on a physical Unitree G1 from egocentric onboard perception.",
+      "pdf_url": "https://arxiv.org/pdf/2610.02196v1",
+      "comment": "Project page: https://sirui-xu.github.io/InterEvolve",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.01892",
+      "title": "Selection-Based Structured Reasoning: Toward Efficient Multimodal Search Agents",
+      "authors": [
+        "Feiyu Gavin Zhu",
+        "Xiaoyu Zhu",
+        "Jiqi Yang",
+        "Rui Yang",
+        "Arnab Kumar Mondal",
+        "Yancheng Wang",
+        "Xinke Deng",
+        "Jean Oh",
+        "Reid Simmons",
+        "Joerg Liebelt",
+        "Xiang Kong",
+        "Zhongyu Jiang"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-10-01",
+      "updated": "2026-10-01",
+      "summary": "Multimodal agents commonly generate free-form reasoning before each action. For small models, limited model capacity can result in lengthy reasoning that provides little useful guidance for action generation while incurring substantial inference cost. To address this challenge, we introduce Selection-based Structured Reasoning (SSR), a framework that reformulates reasoning as selection instead of open-ended generation. SSR represents recurring high-level reasoning as pre-specified, reusable natural-language candidates. At each turn, the model selects from these reasoning candidates based on their likelihoods given the current context, without requiring an auxiliary task head. Using pre-specified reasoning traces enables parallel scoring, where teacher-forced prefilling computes token likelihoods concurrently within and across candidates using a shared context KV cache. We evaluate SSR on seven multimodal search benchmarks using 2B and 4B models. Across multiple reinforcement learning objectives and supervised fine-tuning, SSR delivers significant efficiency gains without sacrificing task performance. SSR achieves an average success rate competitive with leading search agents of the same scale, while reducing per-turn reasoning latency by over 90% and total per-question model inference latency by 28-54%. Project page: https://zfy0314.github.io/ssr-webpage/.",
+      "pdf_url": "https://arxiv.org/pdf/2610.01892v1",
+      "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
@@ -441,47 +464,48 @@
   ],
   "technologies": [
     {
-      "name": "Vector-to-Graph Framework",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "engineering",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
+      "name": "Retrieval Augmented Generation",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "education",
-        "robotics",
-        "creative",
+        "other",
         "enterprise",
-        "engineering"
+        "accessibility"
       ]
     },
     {
-      "name": "Structural Representation Learning",
+      "name": "Mixture of Experts",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "engineering",
-        "enterprise"
+        "accessibility",
+        "enterprise",
+        "other",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Low-Rank Adaptation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "accessibility"
       ]
     },
     {
       "name": "Long-Horizon Sequential Decision Making",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "healthcare"
@@ -491,7 +515,7 @@
       "name": "Streaming Benchmark",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "healthcare"
@@ -501,7 +525,7 @@
       "name": "Agent Environment",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "healthcare"
@@ -511,7 +535,7 @@
       "name": "Signal-Grounded Measurement",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "healthcare"
@@ -521,72 +545,87 @@
       "name": "Online Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "healthcare"
       ]
     },
     {
-      "name": "Counterfactual Contrastive Learning",
+      "name": "Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "creative",
-        "healthcare"
+        "education",
+        "robotics",
+        "other"
       ]
     },
     {
-      "name": "Spatiotemporal Localization",
+      "name": "World Rehearsal",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "creative",
-        "healthcare"
+        "education",
+        "robotics",
+        "other"
       ]
     },
     {
-      "name": "Emotion Routing",
+      "name": "Agentic Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "creative",
-        "healthcare"
+        "education",
+        "robotics",
+        "other"
       ]
     },
     {
-      "name": "Hierarchical Emotional Reasoning",
+      "name": "KV Cache Optimization",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other",
+        "creative"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other",
+        "creative"
+      ]
+    },
+    {
+      "name": "In-Context Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "education",
-        "enterprise",
-        "creative",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Contrastive Discriminative Pruning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "creative",
-        "healthcare"
+        "healthcare",
+        "robotics"
       ]
     },
     {
@@ -597,20 +636,79 @@
       "trend": "rising",
       "applications": [
         "education",
-        "robotics",
-        "enterprise"
+        "healthcare",
+        "robotics"
       ]
     },
     {
-      "name": "Synthetic Data Generation",
+      "name": "Vector-to-Graph Framework",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "engineering"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "engineering",
+        "creative"
+      ]
+    },
+    {
+      "name": "Structural Representation Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "engineering"
+      ]
+    },
+    {
+      "name": "Tool-Using Language Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "education",
+        "creative"
+      ]
+    },
+    {
+      "name": "Automated Scoring",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "education",
+        "creative"
+      ]
+    },
+    {
+      "name": "Multi-modal Learning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
-        "robotics",
-        "enterprise"
+        "enterprise",
+        "science",
+        "robotics"
       ]
     },
     {
@@ -620,98 +718,45 @@
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "World Rehearsal",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Agentic Reinforcement Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "KV Cache Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
         "enterprise",
-        "other",
-        "creative"
+        "science",
+        "robotics"
       ]
     },
     {
-      "name": "Sparse Attention",
+      "name": "Agentic AI",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
         "enterprise",
-        "other",
-        "creative"
+        "science",
+        "robotics"
       ]
     },
     {
-      "name": "Tool-Using Language Models",
+      "name": "Dependency-Aware Planning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
         "enterprise",
-        "creative"
+        "science",
+        "robotics"
       ]
     },
     {
-      "name": "Automated Scoring",
+      "name": "Feedback-Driven Revision",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "education",
         "enterprise",
-        "creative"
+        "science",
+        "robotics"
       ]
     }
   ],
