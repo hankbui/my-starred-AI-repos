@@ -137,7 +137,7 @@
             entry.current = entry.node.nodeValue;
         }
         totalPending--;
-        updateSpinner();
+        setBusy(totalPending > 0);
     }
 
     function drainQueue() {
@@ -150,18 +150,18 @@
         }
         if (!fresh.length) {
             state.active = false;
-            updateSpinner();
+            setBusy(false);
             return;
         }
         var texts = fresh.map(function (t) { return t.text; });
         var startIndex = state.entries.indexOf(fresh[0]);
         totalPending += fresh.length;
-        updateSpinner(true);
+        setBusy(true);
         translateBatch(texts, state.targetLang)
             .then(function (values) { applyValues(startIndex, values); })
             .catch(function () {
                 totalPending = Math.max(0, totalPending - fresh.length);
-                updateSpinner();
+                setBusy(totalPending > 0);
             })
             .then(function () {
                 // continue until nothing left to do
@@ -169,7 +169,7 @@
                     setTimeout(drainQueue, 60);
                 } else {
                     state.active = false;
-                    updateSpinner();
+                    setBusy(false);
                 }
             });
     }
@@ -206,7 +206,7 @@
         var fresh = collect();
         state.entries = fresh;
         updateMenu();
-        updateSpinner(fresh.length > 0);
+        setBusy(fresh.length > 0);
         startObserver();
         drainQueue();
     }
@@ -222,7 +222,7 @@
         state.entries = [];
         state.tracked = new WeakSet();
         updateMenu();
-        updateSpinner(false);
+        setBusy(false);
     }
 
     function applyTarget(lang) {
@@ -238,12 +238,15 @@
 
     var root = null;
     var menu = null;
-    var spinnerEl = null;
+    var toggleBtn = null;
 
-    function updateSpinner(show) {
-        if (!spinnerEl) return;
-        var busy = !!show;
-        spinnerEl.style.display = busy ? 'inline-block' : 'none';
+    function setBusy(busy) {
+        if (!toggleBtn) return;
+        if (busy) {
+            toggleBtn.classList.add('busy');
+        } else {
+            toggleBtn.classList.remove('busy');
+        }
     }
 
     function updateMenu() {
@@ -283,12 +286,8 @@
             '<span class="pt-orbit"></span>' +
             '<span class="pt-orbit-spin"><span class="pt-sat"></span></span>';
 
-        spinnerEl = document.createElement('span');
-        spinnerEl.className = 'pt-spinner';
-        spinnerEl.style.display = 'none';
-
         btn.appendChild(globe);
-        btn.appendChild(spinnerEl);
+        toggleBtn = btn;
 
         menu = document.createElement('div');
         menu.className = 'pt-menu';
