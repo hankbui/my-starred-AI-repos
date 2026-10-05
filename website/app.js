@@ -3,6 +3,7 @@ const STAR_HISTORY_URL = 'data/star_history.json?v=20260701-1';
 const state = {
     starredRepos: [],
     trendingRepos: [],
+    globalRepos: [],
     filteredRepos: [],
     currentPage: 1,
     perPage: 50,
@@ -115,7 +116,7 @@ function restoreStateFromUrl() {
         'name_asc',
     ]);
 
-    if (requestedView === 'starred' || requestedView === 'trending') {
+    if (requestedView === 'starred' || requestedView === 'trending' || requestedView === 'global') {
         state.view = requestedView;
     }
 
@@ -355,21 +356,28 @@ function normalizeRepo(repo) {
 }
 
 function getActiveRepos() {
-    return state.view === 'trending' ? state.trendingRepos : state.starredRepos;
+    if (state.view === 'trending') return state.trendingRepos;
+    if (state.view === 'global') return state.globalRepos;
+    return state.starredRepos;
 }
 
 function getActiveViewLabel() {
-    return state.view === 'trending' ? 'trending repos' : 'repos';
+    if (state.view === 'trending') return 'trending repos';
+    if (state.view === 'global') return 'global ranking';
+    return 'repos';
 }
 
 function getActiveViewSlug() {
-    return state.view === 'trending' ? 'trending-repos' : 'repos';
+    if (state.view === 'trending') return 'trending-repos';
+    if (state.view === 'global') return 'global-ranking';
+    return 'repos';
 }
 
 function getRepoById(repoId) {
     const targetId = Number(repoId);
     return state.starredRepos.find((repo) => repo.id === targetId)
         || state.trendingRepos.find((repo) => repo.id === targetId)
+        || state.globalRepos.find((repo) => repo.id === targetId)
         || null;
 }
 
@@ -519,10 +527,14 @@ function renderDatasetTabs() {
 
     document.getElementById('starred-tab-count').textContent = state.starredRepos.length.toLocaleString();
     document.getElementById('trending-tab-count').textContent = state.trendingRepos.length.toLocaleString();
+    const globalEl = document.getElementById('global-tab-count');
+    if (globalEl) globalEl.textContent = state.globalRepos.length.toLocaleString();
 
     const caption = state.view === 'trending'
         ? 'Trending is ranked from your own starred-repo history and recent activity.'
-        : 'All starred repositories, with filters and growth columns.';
+        : state.view === 'global'
+            ? 'All repos ranked by total stars — the global leaderboard.'
+            : 'All starred repositories, with filters and growth columns.';
     document.getElementById('dataset-caption').textContent = caption;
 }
 
@@ -556,6 +568,12 @@ function renderHistoryNote() {
             return;
         }
 
+        note.hidden = true;
+        note.textContent = '';
+        return;
+    }
+
+    if (state.view === 'global') {
         note.hidden = true;
         note.textContent = '';
         return;
@@ -733,7 +751,9 @@ function renderTable() {
             const metaTopics = repo.topics.slice(0, 3).map((topic) => `<span class="topic-pill">${escapeHtml(topic)}</span>`).join('');
             const repoNumberLabel = state.view === 'trending' && repo.trend_rank
                 ? `#${repo.trend_rank}`
-                : `${rowNumber}`;
+                : state.view === 'global' && repo.global_rank
+                    ? `#${repo.global_rank}`
+                    : `${rowNumber}`;
 
             return `
                 <tr class="repo-row" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
@@ -1340,6 +1360,10 @@ function openDrawer(repo, fromHistory = false) {
                 <strong>${repo.stars.toLocaleString()}</strong>
             </div>
             <div class="drawer-metric">
+                <span class="drawer-metric-label">Global Rank</span>
+                <strong>#${repo.global_rank?.toLocaleString() || '-'}</strong>
+            </div>
+            <div class="drawer-metric">
                 <span class="drawer-metric-label">Forks</span>
                 <strong>${repo.forks.toLocaleString()}</strong>
             </div>
@@ -1387,6 +1411,15 @@ function openDrawer(repo, fromHistory = false) {
                 <div class="drawer-readme-wrap">
                     <div class="drawer-readme-path">${escapeHtml(repo.readme_path || 'README cache')}</div>
                     <div class="drawer-readme"></div>
+                </div>
+            </section>
+
+            <section class="drawer-section">
+                <h5>Topics</h5>
+                <div class="drawer-topics">
+                    ${repo.topics?.length
+                        ? repo.topics.map(t => `<span class="drawer-topic">${escapeHtml(t)}</span>`).join('')
+                        : '<span class="drawer-muted">No topics</span>'}
                 </div>
             </section>
 
@@ -1700,6 +1733,9 @@ function bindDatasetTabs() {
             } else if (state.view === 'starred' && state.sort === 'trend_desc') {
                 state.sort = 'stars_desc';
                 document.getElementById('sort-select').value = state.sort;
+            } else if (state.view === 'global') {
+                state.sort = 'stars_desc';
+                document.getElementById('sort-select').value = 'stars_desc';
             }
 
             applyFilters();
@@ -1914,6 +1950,19 @@ async function loadData() {
     state.historyStartAt = data.history_start_at || '';
     state.historyPoints = data.history_points || 0;
     state.trendingMode = data.trending_mode || 'bootstrap';
+
+    // Build global ranking — merge starred + trending, deduplicate, sort by stars desc
+    const seen = new Set();
+    const merged = [];
+    for (const r of [...state.starredRepos, ...state.trendingRepos]) {
+        if (!seen.has(r.name)) {
+            seen.add(r.name);
+            merged.push({ ...r });
+        }
+    }
+    merged.sort((a, b) => b.stars - a.stars);
+    merged.forEach((r, i) => { r.global_rank = i + 1; });
+    state.globalRepos = merged;
 
     // Build star history map
     if (historyResp && historyResp.ok) {
