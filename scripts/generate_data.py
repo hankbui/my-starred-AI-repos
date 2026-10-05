@@ -634,6 +634,98 @@ def fetch_starred_repos():
     return repos
 
 
+def fetch_global_rank(star_count: int) -> int:
+    """Get the approximate global rank for a star count via GitHub Search API.
+    
+    Returns the number of repos with MORE stars than the given count (rank = result + 1).
+    """
+    url = f"{GITHUB_API_URL}/search/repositories?q=stars:%3E{star_count}&per_page=1&sort=stars"
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=15)
+        if resp.status_code == 200:
+            data = resp.json()
+            return data.get("total_count", 0)
+        if resp.status_code == 403:
+            print(f"  [rate-limit] stars>{star_count}")
+        else:
+            print(f"  [HTTP {resp.status_code}] stars>{star_count}")
+    except (requests.RequestException, ValueError) as e:
+        print(f"  [error] stars>{star_count}: {e}")
+    return 0
+
+
+def attach_global_ranks(payload: dict) -> dict:
+    """Compute global ranks for all repos using GitHub Search API.
+    
+    Uses strategic threshold queries to build a star→rank mapping,
+    then interpolates ranks for every repo.
+    """
+    all_repos = list(payload.get("starred_repos", [])) + list(payload.get("trending_repos", []))
+    if not all_repos:
+        return payload
+
+    # Collect unique star counts for threshold queries
+    star_counts = sorted(set(r["stars"] for r in all_repos), reverse=True)
+    
+    # Only query every Nth star count to stay within rate limits
+    # For >1000 repos, query ~40 strategic thresholds
+    step = max(1, len(star_counts) // 40)
+    thresholds = [star_counts[i] for i in range(0, len(star_counts), step)]
+    # Always include the highest and lowest
+    if star_counts[0] not in thresholds:
+        thresholds.insert(0, star_counts[0])
+    if star_counts[-1] not in thresholds:
+        thresholds.append(star_counts[-1])
+
+    print(f"  Fetching global ranks ({len(thresholds)} thresholds)...")
+    star_to_rank = {}
+    for sc in thresholds:
+        count = fetch_global_rank(sc)
+        if count:
+            star_to_rank[sc] = count + 1  # +1 because rank = repos with MORE stars + 1
+        print(f"    stars>{sc:,} → rank ~#{count + 1 if count else '?'}")
+
+    if not star_to_rank:
+        print("  [WARN] No global rank data fetched, skipping")
+        return payload
+
+    # Sort thresholds for interpolation
+    sorted_thresholds = sorted(star_to_rank.keys())
+
+    def interpolate_rank(stars):
+        """Linearly interpolate rank between known star thresholds."""
+        if stars >= sorted_thresholds[-1]:
+            return star_to_rank[sorted_thresholds[-1]]
+        if stars <= sorted_thresholds[0]:
+            return star_to_rank[sorted_thresholds[0]]
+        for i in range(len(sorted_thresholds) - 1):
+            lo, hi = sorted_thresholds[i], sorted_thresholds[i + 1]
+            if lo <= stars <= hi:
+                r_lo, r_hi = star_to_rank[lo], star_to_rank[hi]
+                if hi == lo:
+                    return r_lo
+                frac = (stars - lo) / (hi - lo)
+                return round(r_lo + (r_hi - r_lo) * frac)
+        return star_to_rank[sorted_thresholds[0]]
+
+    seen = set()
+    for repo in all_repos:
+        if repo["name"] in seen:
+            continue
+        seen.add(repo["name"])
+        repo["global_rank"] = interpolate_rank(repo["stars"])
+
+    # Also assign to the payload's lists
+    repo_map = {r["name"]: r for r in all_repos}
+    for key in ("starred_repos", "trending_repos"):
+        for repo in payload.get(key, []):
+            if repo["name"] in repo_map:
+                repo["global_rank"] = repo_map[repo["name"]]["global_rank"]
+
+    print(f"  Assigned global ranks to {len(seen)} repos")
+    return payload
+
+
 def build_payload(starred_repos, history, today):
     """Build the full payload used by the website."""
     starred_repos = attach_growth_metrics(starred_repos, history, today)
@@ -643,7 +735,7 @@ def build_payload(starred_repos, history, today):
     trending_repos = build_trending_repos(starred_repos)
     trending_mode = detect_trending_mode(starred_repos)
 
-    return {
+    payload = {
         "updated_at": today.isoformat(),
         "history_start_at": min(history.keys()) if history else today.isoformat(),
         "history_points": len(history),
@@ -652,6 +744,9 @@ def build_payload(starred_repos, history, today):
         "starred_repos": starred_repos,
         "trending_repos": trending_repos,
     }
+
+    payload = attach_global_ranks(payload)
+    return payload
 
 
 def save_data(starred_repos):
