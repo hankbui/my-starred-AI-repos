@@ -1,4 +1,5 @@
 const STAR_HISTORY_URL = 'data/star_history.json?v=20260701-1';
+const TOP_REPOS_URL = 'data/top-repos.json?v=20261005-1';
 
 const state = {
     starredRepos: [],
@@ -1934,9 +1935,10 @@ function bindViewToggle() {
 }
 
 async function loadData() {
-    const [reposResp, historyResp] = await Promise.all([
+    const [reposResp, historyResp, topResp] = await Promise.all([
         fetch(DATA_URL),
         fetch(STAR_HISTORY_URL).catch(() => null),
+        fetch(TOP_REPOS_URL).catch(() => null),
     ]);
 
     if (!reposResp.ok) {
@@ -1951,17 +1953,30 @@ async function loadData() {
     state.historyPoints = data.history_points || 0;
     state.trendingMode = data.trending_mode || 'bootstrap';
 
-    // Build global ranking — merge starred + trending, deduplicate, sort by stars desc
+    // Build global ranking — top-repos.json merged with starred + trending
     const seen = new Set();
     const merged = [];
+    if (topResp && topResp.ok) {
+        try {
+            const topData = await topResp.json();
+            const topItems = topData.items || [];
+            for (const r of topItems) {
+                if (!seen.has(r.name)) {
+                    seen.add(r.name);
+                    merged.push({ ...normalizeRepo(r), global_rank: r.global_rank || (merged.length + 1) });
+                }
+            }
+        } catch (e) {
+            console.warn('Failed to load top-repos:', e);
+        }
+    }
     for (const r of [...state.starredRepos, ...state.trendingRepos]) {
         if (!seen.has(r.name)) {
             seen.add(r.name);
             merged.push({ ...r });
         }
     }
-    merged.sort((a, b) => b.stars - a.stars);
-    merged.forEach((r, i) => { r.global_rank = i + 1; });
+    merged.sort((a, b) => (a.global_rank || Infinity) - (b.global_rank || Infinity));
     state.globalRepos = merged;
 
     // Build star history map
