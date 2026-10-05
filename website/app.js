@@ -107,6 +107,7 @@ function restoreStateFromUrl() {
     const requestedPage = Number(params.get('page'));
     const requestedPreset = params.get('preset');
     const allowedSorts = new Set([
+        'rank_asc', 'rank_desc',
         'stars_desc', 'stars_asc',
         'trend_desc', 'trend_asc',
         'growth_1d_desc', 'growth_1d_asc',
@@ -601,6 +602,11 @@ function sortRepos(repos) {
     const dir = state.sort.endsWith('_asc') ? 1 : -1;
 
     sorted.sort((left, right) => {
+        if (state.sort.startsWith('rank')) {
+            const lr = left.trend_rank || left.global_rank || 0;
+            const rr = right.trend_rank || right.global_rank || 0;
+            return (lr - rr) * dir;
+        }
         if (state.sort.startsWith('stars')) return (left.stars - right.stars) * dir;
         if (state.sort.startsWith('trend')) return (left.trend_score - right.trend_score) * dir;
         if (state.sort.startsWith('growth_1d')) return ((left.star_delta_1d ?? 0) - (right.star_delta_1d ?? 0)) * dir;
@@ -1736,8 +1742,8 @@ function bindDatasetTabs() {
                 state.sort = 'stars_desc';
                 document.getElementById('sort-select').value = state.sort;
             } else if (state.view === 'global') {
-                state.sort = 'stars_desc';
-                document.getElementById('sort-select').value = 'stars_desc';
+                state.sort = 'rank_asc';
+                document.getElementById('sort-select').value = 'rank_asc';
             }
 
             applyFilters();
