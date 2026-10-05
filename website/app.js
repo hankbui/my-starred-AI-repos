@@ -107,14 +107,14 @@ function restoreStateFromUrl() {
     const requestedPage = Number(params.get('page'));
     const requestedPreset = params.get('preset');
     const allowedSorts = new Set([
-        'stars_desc',
-        'trend_desc',
-        'growth_1d_desc',
-        'growth_7d_desc',
-        'forks_desc',
-        'updated_desc',
-        'created_desc',
-        'name_asc',
+        'stars_desc', 'stars_asc',
+        'trend_desc', 'trend_asc',
+        'growth_1d_desc', 'growth_1d_asc',
+        'growth_7d_desc', 'growth_7d_asc',
+        'forks_desc', 'forks_asc',
+        'updated_desc', 'updated_asc',
+        'created_desc', 'created_asc',
+        'name_asc', 'name_desc',
     ]);
 
     if (requestedView === 'starred' || requestedView === 'trending' || requestedView === 'global') {
@@ -598,16 +598,17 @@ function renderHistoryNote() {
 
 function sortRepos(repos) {
     const sorted = [...repos];
+    const dir = state.sort.endsWith('_asc') ? 1 : -1;
 
     sorted.sort((left, right) => {
-        if (state.sort === 'stars_desc') return right.stars - left.stars;
-        if (state.sort === 'trend_desc') return right.trend_score - left.trend_score;
-        if (state.sort === 'growth_1d_desc') return (right.star_delta_1d ?? Number.NEGATIVE_INFINITY) - (left.star_delta_1d ?? Number.NEGATIVE_INFINITY);
-        if (state.sort === 'growth_7d_desc') return (right.star_delta_7d ?? Number.NEGATIVE_INFINITY) - (left.star_delta_7d ?? Number.NEGATIVE_INFINITY);
-        if (state.sort === 'forks_desc') return right.forks - left.forks;
-        if (state.sort === 'updated_desc') return new Date(right.updated_at) - new Date(left.updated_at);
-        if (state.sort === 'created_desc') return new Date(right.created_at) - new Date(left.created_at);
-        return left.name.localeCompare(right.name);
+        if (state.sort.startsWith('stars')) return (left.stars - right.stars) * dir;
+        if (state.sort.startsWith('trend')) return (left.trend_score - right.trend_score) * dir;
+        if (state.sort.startsWith('growth_1d')) return ((left.star_delta_1d ?? 0) - (right.star_delta_1d ?? 0)) * dir;
+        if (state.sort.startsWith('growth_7d')) return ((left.star_delta_7d ?? 0) - (right.star_delta_7d ?? 0)) * dir;
+        if (state.sort.startsWith('forks')) return (left.forks - right.forks) * dir;
+        if (state.sort.startsWith('updated')) return (new Date(left.updated_at) - new Date(right.updated_at)) * dir;
+        if (state.sort.startsWith('created')) return (new Date(left.created_at) - new Date(right.created_at)) * dir;
+        return left.name.localeCompare(right.name) * dir;
     });
 
     return sorted;
