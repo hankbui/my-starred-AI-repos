@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Employee Radar — Daily Intelligence for Autonomous AI Business</title>
+    <meta name="description" content="Daily intelligence report on AI employees, autonomous agents, and business automation. Ranked discoveries, AI employee roles, what to build, and important repositories.">
+    <meta property="og:title" content="AI Employee Radar — Autonomous Agent Intelligence">
+    <meta property="og:description" content="Daily discoveries ranked by business impact. AI employee roles, what to build, important repos — for building an AI-operated business.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/ai-employees.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260723-3">
+    <style>
+        .ae-back { display:inline-flex; align-items:center; gap:6px; color:var(--text-secondary); text-decoration:none; font-weight:600; font-size:0.9rem; margin-bottom:10px; }
+        .ae-back:hover { color:var(--accent); }
+
+        .ae-report-header { margin:0 0 6px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+        .ae-report-header h1 { font-family:"Space Grotesk",sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:-0.03em; margin:0; }
+        .ae-report-header small { font-size:0.55em; font-weight:600; color:var(--text-muted); letter-spacing:0; }
+        .ae-report-desc { color:var(--text-secondary); font-size:0.92rem; line-height:1.55; max-width:680px; margin:8px 0 16px; }
+
+        .ae-stats { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
+        .ae-stat { padding:8px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); min-width:80px; text-align:center; }
+        .ae-stat-val { font-family:"Space Grotesk",sans-serif; font-size:1.3rem; font-weight:700; color:var(--text-primary); }
+        .ae-stat-lbl { font-size:0.62rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); margin-top:1px; }
+
+        .ae-bar { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:0 0 16px; padding:8px 14px; border:1px solid var(--border-strong); border-radius:var(--radius-lg); background:rgba(99,207,255,0.04); }
+        .ae-search { flex:1 1 200px; min-height:34px; padding:0 12px; border:1px solid var(--border); border-radius:10px; background:#0a0e13; color:var(--text-primary); font:inherit; font-size:0.85rem; }
+
+        .ae-section { margin-bottom:28px; }
+        .ae-section-header { display:flex; align-items:center; gap:10px; margin:0 0 8px; }
+        .ae-section-header h2 { margin:0; font-size:1.15rem; font-family:"Space Grotesk",sans-serif; display:flex; align-items:center; gap:6px; }
+        .ae-section-header span { font-size:0.82rem; color:var(--text-muted); font-weight:600; }
+        .ae-section-desc { font-size:0.83rem; color:var(--text-secondary); margin:-2px 0 12px; }
+
+        .ae-score { display:inline-flex; align-items:center; justify-content:center; min-width:40px; height:32px; padding:0 8px; border-radius:8px; font-family:"Space Grotesk",sans-serif; font-size:0.85rem; font-weight:800; }
+        .ae-score-critical { background:rgba(255,86,33,0.18); color:#ff8a5e; }
+        .ae-score-high { background:rgba(99,207,255,0.14); color:var(--accent); }
+        .ae-score-medium { background:rgba(255,184,87,0.12); color:var(--warning); }
+        .ae-score-low { background:rgba(156,169,184,0.1); color:var(--text-muted); }
+
+        .ae-badge { padding:2px 8px; border-radius:999px; font-size:0.64rem; font-weight:700; border:1px solid transparent; white-space:nowrap; }
+        .ae-badge-impact { background:rgba(99,207,255,0.1); color:var(--accent); border-color:rgba(99,207,255,0.15); }
+        .ae-badge-maturity { background:rgba(156,169,184,0.1); color:var(--text-secondary); }
+        .ae-badge-action { background:rgba(77,224,168,0.1); color:var(--success); border-color:rgba(77,224,168,0.15); }
+        .ae-badge-action-adopt { background:rgba(77,224,168,0.14); color:var(--success); border-color:rgba(77,224,168,0.25); }
+        .ae-badge-action-fork { background:rgba(140,111,255,0.14); color:#c4b5fd; border-color:rgba(167,139,250,0.2); }
+
+        .ae-list { display:grid; gap:10px; }
+        .ae-item { display:flex; flex-direction:column; gap:6px; padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); transition:140ms ease; }
+        .ae-item:hover { border-color:var(--border-strong); }
+        .ae-item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+        .ae-item-name { font-weight:700; color:var(--text-primary); text-decoration:none; font-size:0.93rem; word-break:break-all; }
+        .ae-item-name:hover { color:var(--accent); }
+        .ae-item-stars { font-size:0.78rem; color:var(--text-muted); white-space:nowrap; font-weight:600; }
+        .ae-item-desc { font-size:0.83rem; color:var(--text-secondary); line-height:1.45; }
+        .ae-item-badges { display:flex; flex-wrap:wrap; gap:4px; }
+        .ae-item-reason { font-size:0.82rem; color:var(--text-secondary); line-height:1.4; padding:6px 10px; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); }
+        .ae-item-growth { font-size:0.72rem; color:var(--text-muted); display:flex; gap:10px; }
+        .ae-item-growth .up { color:var(--success); }
+        .ae-item-tech { font-size:0.74rem; color:var(--text-muted); }
+
+        .ae-card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+
+        .ae-role-card { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:8px; transition:140ms ease; }
+        .ae-role-card:hover { border-color:var(--border-strong); }
+        .ae-role-head { display:flex; align-items:center; gap:10px; }
+        .ae-role-icon { font-size:1.3rem; }
+        .ae-role-name { font-weight:700; font-size:0.95rem; color:var(--text-primary); }
+        .ae-role-count { font-size:0.75rem; color:var(--text-muted); margin-left:auto; font-weight:600; }
+        .ae-role-desc { font-size:0.83rem; color:var(--text-secondary); line-height:1.45; }
+        .ae-role-use { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+
+        .ae-build-card { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:8px; transition:140ms ease; }
+        .ae-build-card:hover { border-color:var(--border-strong); }
+        .ae-build-name { font-weight:700; font-size:1rem; color:var(--text-primary); }
+        .ae-build-problem { font-size:0.84rem; color:var(--text-secondary); line-height:1.5; }
+        .ae-build-meta { display:flex; flex-wrap:wrap; gap:6px; }
+        .ae-build-tag { padding:2px 8px; border-radius:999px; font-size:0.68rem; font-weight:700; background:rgba(99,207,255,0.08); color:var(--accent); }
+        .ae-build-tag.rev { background:rgba(77,224,168,0.1); color:var(--success); }
+        .ae-build-tag.hard { background:rgba(255,120,120,0.1); color:#ff7878; }
+        .ae-build-tag.easy { background:rgba(77,224,168,0.12); color:var(--success); }
+        .ae-build-arch { font-size:0.83rem; color:var(--text-secondary); line-height:1.45; }
+        .ae-build-detail { font-size:0.81rem; color:var(--text-secondary); line-height:1.4; }
+        .ae-build-detail b { color:var(--text-primary); font-weight:700; }
+
+        .ae-changed-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+        .ae-changed-card { padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); }
+        .ae-changed-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:.06em; font-weight:700; }
+        .ae-changed-label.new { color:var(--success); }
+        .ae-changed-label.rising { color:var(--accent); }
+        .ae-changed-label.updated { color:var(--warning); }
+        .ae-changed-label.breakthrough { color:#ff8a5e; }
+        .ae-changed-label.stalled { color:#ff7878; }
+        .ae-changed-count { font-family:"Space Grotesk",sans-serif; font-size:1.2rem; font-weight:700; color:var(--text-primary); margin:2px 0; }
+        .ae-changed-items { font-size:0.73rem; color:var(--text-secondary); line-height:1.6; }
+
+        .ae-filter-btn { min-height:30px; padding:0 11px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,0.02); color:var(--text-secondary); font:inherit; font-size:0.76rem; font-weight:700; cursor:pointer; transition:120ms ease; white-space:nowrap; }
+        .ae-filter-btn:hover { border-color:var(--border-strong); color:var(--text-primary); }
+        .ae-filter-btn.active { border-color:var(--accent); background:rgba(99,207,255,0.1); color:var(--accent); }
+
+        .ae-empty { padding:40px; text-align:center; color:var(--text-secondary); font-size:0.92rem; }
+
+        .ae-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+        .ae-nav-btn { padding:6px 14px; border-radius:999px; border:1px solid var(--border); background:transparent; color:var(--text-secondary); font:inherit; font-size:0.82rem; font-weight:600; cursor:pointer; transition:140ms ease; }
+        .ae-nav-btn:hover { border-color:var(--border-strong); color:var(--text-primary); background:rgba(99,207,255,0.06); }
+        .ae-nav-btn.active { background:rgba(167,139,250,0.15); border-color:rgba(167,139,250,0.3); color:#c4b5fd; }
+
+        .ae-use-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px; }
+        .ae-use-card { padding:14px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:6px; }
+        .ae-use-head { display:flex; align-items:center; gap:8px; }
+        .ae-use-icon { font-size:1.1rem; }
+        .ae-use-label { font-weight:700; font-size:0.9rem; color:var(--text-primary); }
+        .ae-use-count { font-size:0.7rem; color:var(--text-muted); margin-left:auto; font-weight:600; }
+
+        .ae-imp-row { display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg-elevated); transition:120ms ease; }
+        .ae-imp-row:hover { border-color:var(--border-strong); }
+        .ae-imp-rank { font-family:"Space Grotesk",sans-serif; font-size:0.9rem; font-weight:800; color:var(--text-muted); min-width:24px; }
+        .ae-imp-name { font-weight:600; color:var(--text-primary); text-decoration:none; font-size:0.88rem; flex:1; }
+        .ae-imp-name:hover { color:var(--accent); }
+        .ae-imp-stars { font-size:0.75rem; color:var(--text-muted); white-space:nowrap; }
+        .ae-imp-detail { font-size:0.78rem; color:var(--text-secondary); }
+
+        .ae-footer { font-size:0.78rem; color:var(--text-muted); text-align:center; padding:20px 0; border-top:1px solid var(--border); margin-top:28px; }
+
+        @media (max-width:640px) {
+            .ae-card-grid, .ae-use-grid { grid-template-columns:1fr; }
+            .ae-changed-grid { grid-template-columns:1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="ae-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="ae-report-header">
+                    <h1>
+                        <span>🤖 AI Employee Radar</span>
+                        <small id="ae-updated"></small>
+                    </h1>
+                </div>
+                <p class="ae-report-desc">
+                    Daily intelligence for building autonomous AI employees, agentic systems, and an AI-operated business.
+                    Every discovery is scored by business impact, mapped to an AI employee role, and ranked by what you should build next.
+                </p>
+            </div>
+            <div class="ae-stats" id="ae-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <nav class="ae-nav" id="ae-nav">
+                    <button class="ae-nav-btn active" data-view="developments">🚨 Top Developments</button>
+                    <button class="ae-nav-btn" data-view="roles">👤 AI Employee Roles</button>
+                    <button class="ae-nav-btn" data-view="build">🧠 What to Build</button>
+                    <button class="ae-nav-btn" data-view="business">💼 By Business Use</button>
+                    <button class="ae-nav-btn" data-view="changes">📊 What Changed</button>
+                    <button class="ae-nav-btn" data-view="important">🏆 Important Repos</button>
+                </nav>
+
+                <div class="ae-bar" id="ae-bar">
+                    <button class="ae-filter-btn active" data-impact="all" type="button">📋 All</button>
+                    <button class="ae-filter-btn" data-impact="critical" type="button">🔥 Critical</button>
+                    <button class="ae-filter-btn" data-impact="high" type="button">⚡ High</button>
+                    <button class="ae-filter-btn" data-impact="medium" type="button">📈 Medium</button>
+                    <input type="search" class="ae-search" id="ae-search" placeholder="Search repos, roles, descriptions..." autocomplete="off" spellcheck="false">
+                    <span style="flex:1"></span>
+                    <button class="action-btn ask-ai-btn" id="ae-ask-ai" type="button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                        <span>Ask AI</span>
+                    </button>
+                    <span id="ae-count" style="font-size:0.8rem;color:var(--text-muted);font-weight:600"></span>
+                </div>
+
+                <div id="ae-content"></div>
+
+                <div class="ae-footer">
+                    Auto-generated daily from automation repos · Scores computed from stars, growth, and category · <a href="automation.html" style="color:var(--accent)">Browse automation repos</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="ask-ai-shared.js?v=20260723-2"></script>
+    <script src="ai-employees.js?v=20261005-1"></script>
+    <script src="translate.js?v=20260723-3"></script>
+</body>
+</html>
