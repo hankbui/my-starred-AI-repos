@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-04",
+    "date": "2026-10-05",
     "papers_tracked": 15,
-    "technologies_discovered": 38,
+    "technologies_discovered": 16,
     "opportunities_identified": 0,
-    "last_update": "2026-10-04 11:12 UTC",
+    "last_update": "2026-10-05 12:28 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,53 +13,110 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "38",
+      "value": "16",
       "label": "discovered this scan",
-      "detail": "Retrieval Augmented Generation, Mixture of Experts, Low-Rank Adaptation, Long-Horizon Sequential Decision Making, Streaming Benchmark, Agent Environment, Signal-Grounded Measurement, Online Learning",
+      "detail": "Symbolic Planning, Reinforcement Learning, Multimodal Learning, Reinforcement Learning from Human Feedback, Direct Preference Optimization, Retrieval Augmented Generation, Mixture of Experts, Low-Rank Adaptation",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "38",
+      "value": "16",
       "label": "active trend clusters",
-      "detail": "On-device AI, Latent Flow Matching, Conditional Flow Model, MeanFlow, Textual Skill Generation",
+      "detail": "Symbolic Planning, Reinforcement Learning, Multimodal Learning, Reinforcement Learning from Human Feedback, Direct Preference Optimization",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.4",
+      "value": "7.9",
       "label": "avg opportunity score",
-      "detail": "MOMAT: Mixture of Multiple Atlases for Low-Power Jailbreak Defense of Quantized ",
+      "detail": "Novelty Adaptation Through Hybrid Large Language Model (LLM)-Symbolic Planning a",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "MOMAT: Mixture of Multiple Atl",
-      "label": "confidence 70%",
+      "value": "Novelty Adaptation Through Hyb",
+      "label": "confidence 80%",
       "detail": "",
       "color": "purple"
     },
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Beyond Pixels: A Vector-to-Gra",
+      "value": "WebFovea: When the Model Is Ri",
       "label": "highest confidence paper",
-      "detail": "Automated schematic design verification tool for electrical engineers, AI-powered CAD assistant for structural compliance checks",
+      "detail": "Automated web interaction systems for customer service and support, AI-powered web scraping and data extraction tools",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "30",
+      "value": "8",
       "label": "early-stage technologies",
-      "detail": "AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC",
+      "detail": "ECG-Scroll: A Long-Horizon, Streaming Benchmark and Agent Environment for Interp",
       "color": "blue"
     }
   ],
   "papers": [
+    {
+      "id": "2603.11351",
+      "title": "Novelty Adaptation Through Hybrid Large Language Model (LLM)-Symbolic Planning and LLM-guided Reinforcement Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2603.11351v3 Announce Type: replace-cross Abstract: In dynamic open-world environments, autonomous agents often encounter novelties that hinder their ability to find plans to achieve their goals. Specifically, traditional symbolic planners fail to generate plans when the robot's planning domain lacks the operators that enable it to interact appropriately with novel objects in the environment. We propose a neuro-symbolic architecture that integrates symbolic planning, reinforcement learning, and a large language model (LLM) to learn how to handle novel objects. In particular, we leverage the common sense reasoning capability of the LLM to identify missing operators, generate plans with the symbolic AI planner, and write reward functions to guide the reinforcement learning agent in learning control policies for newly identified operators. Our method outperforms the state-of-the-art methods in operator discovery as well as operator learning in continuous robotic domains.Our webpage and code can be access here: https://helenlu66.github.io/hybridLLMguided/",
+      "pdf_url": "https://arxiv.org/abs/2603.11351",
+      "comment": "",
+      "technologies": [
+        "Symbolic Planning",
+        "Reinforcement Learning",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Adaptive robotic assistants for dynamic environments",
+        "AI-driven personal assistants with real-time learning capabilities"
+      ],
+      "domain_applications": [
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2610.02444",
+      "title": "Counterexample Generation via Per-Theorem Symbolic Verifiers: When Imitation Hurts and Reinforcement Repairs",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2610.02444v1 Announce Type: cross Abstract: Large language models often solve a theorem forward yet fail to disprove a closely related false one: a falsification gap that supervised fine-tuning does not close and can actively worsen. We frame counterexample generation as constrained witness emission against a deterministic per-theorem Python verifier, and release SymCE, a corpus of 4,707 false undergraduate-algebra and real-analysis conjectures, each paired with executable verifiers. The verifier also serves as the reward function, making SymCE a training environment. Training Qwen3-4B with SFT followed by GRPO under this oracle reveals an imitation trap: counterexample-only SFT collapses true-theorem recognition from 0.27 to 0.00, while RLVR with a sparse outcome-only reward repairs this and exceeds the base, to 0.66. The collapse replicates across four seeds and on Gemma-3-4B. Sparse and dense rewards yield statistically indistinguishable in-domain success yet diverge by 33 points on a held-out calibration probe, a dissociation we trace to the partial-credit term. Our 4B model outperforms every evaluated 7B open-weights math specialist, remains competitive with six frontier commercial APIs, and transfers under unchanged prompting to GSM8K, MATH-500 and MMLU-college-math. A human audit of 177 verifier decisions finds 97.7% accuracy. Code, data, verifier modules and annotations: https://github.com/ce-rlvr/SymCE.",
+      "pdf_url": "https://arxiv.org/abs/2610.02444",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Direct Preference Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "An AI-powered theorem prover that can generate and verify counterexamples, aiding in mathematical research and education.",
+        "A tutoring system for mathematics that uses the technology to provide personalized feedback and identify common mistakes."
+      ],
+      "domain_applications": [
+        "education",
+        "science"
+      ]
+    },
     {
       "id": "2610.01058",
       "title": "MOMAT: Mixture of Multiple Atlases for Low-Power Jailbreak Defense of Quantized LLMs",
@@ -89,6 +146,133 @@
         "accessibility",
         "other"
       ]
+    },
+    {
+      "id": "2610.03036",
+      "title": "WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2610.03036v1 Announce Type: cross Abstract: We present WebFovea, a vision-based web agent that placed 2nd in the WebRetriever Challenge 2026 with a final score of 57.0 out of 100. The challenge evaluates agents end to end on Protocol III of the WebRetriever benchmark (arXiv:2607.06118): starting from an entry URL on a live website, the agent must operate the site's own interface and return a verifiable answer. A capable multimodal large language model (LLM) is necessary for this, but not sufficient. The model's decisions reach the browser through the harness, the code between the model and the page. At every step, four things must go right: the model's reply must be parsed into the intended action, the action must take effect on the page, the result must be reported back accurately, and the model must be shown the information it needs. On real websites, many of the failures we observed occurred at one of these four stages rather than in the model's reasoning. A coordinate-space mismatch placed every click at 3/4 of its intended coordinates; actions on native dropdowns, inside iframes, and in text boxes failed silently; and self-generated chat-template tokens contaminated 4.9% of task episodes. WebFovea hardens each stage and surrounds the loop with guardrails that keep the agent within the rules and its budget. The four-stage view does not depend on the model, although some individual fixes do. Because we used the same model in all four submissions, the rise of our official hidden-set score from 31.0 to 57.0 reflects changes to the harness, up to run-to-run variance on live sites. We describe the design, the evidence for each component (including negative results), a failure analysis, the limitations, and a roadmap that includes routing different steps to different models.",
+      "pdf_url": "https://arxiv.org/abs/2610.03036",
+      "comment": "",
+      "technologies": [
+        "Vision-Based Web Agents",
+        "Multimodal Learning",
+        "Coordinate-Space Mismatch Handling",
+        "Action Execution on Live Websites"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Automated web interaction systems for customer service and support",
+        "AI-powered web scraping and data extraction tools",
+        "Intelligent web navigation assistants for accessibility"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.03099",
+      "title": "Beyond Single Videos: Benchmarking and Active Evidence Seeking for E-Commerce Cross-Video Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2610.03099v1 Announce Type: cross Abstract: E-commerce videos are information-dense and frequently compared by consumers evaluating products and merchants assessing marketing strategies. However, existing multimodal models mainly focus on single-video understanding and have limited ability to compare information across videos. We introduce AdsCVR, the first e-commerce cross-video reasoning benchmark, containing 2,483 videos and 6,110 question-answer pairs across six reasoning dimensions. Cross- video reasoning requires models to locate fine-grained evidence among many redundant frames and integrate visual details, speech, and on-screen text. We therefore propose AdSeek, an agentic framework that dynamically selects visual and audio tools during multi-turn exploration, replacing static uniform sampling with active evidence acquisition. To address the sparse credit assignment of reinforcement learning, we develop an offline trajectory rectification mechanism that identifies reasoning errors and missing multimodal evidence in RL-generated trajectories. The corrected trajectories provide supervised fine-tuning signals that reduce biases learned during RL. This mechanism supports a rectified bootstrapping pipeline in which initial RL exposes reasoning bottlenecks, supervised fine-tuning corrects them, and a final RL stage further improves the policy. AdSeek achieves 74.30 percent accuracy on the AdsCVR test split, outperforming its Qwen3-VL-8B-Instruct backbone by 27.90 percentage points. It also generalizes to the open- domain CrossVid benchmark, demonstrating effective active evidence gathering.",
+      "pdf_url": "https://arxiv.org/abs/2610.03099",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.02970",
+      "title": "A Guideline-Augmented Multi-Agent Framework for Schema-as-Code Biomedical Named Entity Recognition",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2610.02970v1 Announce Type: new Abstract: Large language models (LLMs) have shown promising potential for biomedical named entity recognition (BioNER) through instruction following and in-context learning. However, existing LLM-based BioNER methods still face two key limitations. First, retrieved demonstrations and external biomedical knowledge provide limited support for dataset-specific annotation semantics, leaving entity boundaries, type scopes, and annotation conventions ambiguous. Second, free-form generation lacks sufficient structural control, often leading to invalid formats, hallucinated mentions, duplicated entities, and boundary errors. To address these limitations, we propose GAMA, a guideline-augmented multi-agent framework for schema-as-code BioNER. GAMA first induces candidate annotation rules from labeled training instances and verifies them against annotated data to construct reliable dataset-specific guideline memory. Guided by these verified rules, a planning component generates ranked span-type hypotheses with rationales, and a coding component converts them into schema-constrained entity objects. A verification module then checks span grounding, type validity, and structural compliance, and performs dual-loop refinement to correct invalid or low-confidence predictions. Experiments on five widely used BioNER datasets with multiple LLM backbones show that GAMA consistently outperforms strong LLM-based baselines. Ablation and parameter analyses further verify the effectiveness of the proposed components.",
+      "pdf_url": "https://arxiv.org/abs/2610.02970",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2506.05766",
+      "title": "BioMol-MQA: A Multi-Modal Question Answering Dataset For LLM Reasoning Over Bio-Molecular Interactions",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2506.05766v2 Announce Type: replace Abstract: Retrieval augmented generation (RAG) has shown great power in improving Large Language Models (LLMs). However, most existing RAG-based LLMs are dedicated to retrieving single modality information, mainly text; while for many real-world problems, such as healthcare, information relevant to queries can manifest in various modalities such as knowledge graph, text (clinical notes), and complex molecular structure. Thus, being able to retrieve relevant multi-modality domain-specific information, and reason and synthesize diverse knowledge to generate an accurate response is important. To address the gap, we present BioMol-MQA, a new question-answering (QA) dataset on polypharmacy, which is composed of two parts (i) a multimodal knowledge graph (KG) with text and molecular structure for information retrieval; and (ii) challenging questions that designed to test LLM capabilities in retrieving and reasoning over multimodal KG to answer questions. Our benchmarks indicate that existing LLMs struggle to answer these questions and do well only when given the necessary background data, signaling the necessity for strong RAG frameworks.",
+      "pdf_url": "https://arxiv.org/abs/2506.05766",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.39378",
+      "title": "EgoTools: Towards Tool-Centric Reasoning in Real-World Egocentric Videos",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2609.39378v2 Announce Type: replace Abstract: Real-world embodied tasks, from everyday activities to professional procedures, require agents to act under physical constraints while tracking evolving object and task states. Tool use sits at the heart of such tasks, as many everyday and professional activities are tool-mediated. Understanding them requires reasoning about affordances, hand-tool-object geometry, procedural progress, and causal effects on target objects. Yet despite strong performance on perception-oriented video tasks such as captioning and general video QA, current multimodal video models remain limited in this form of tool-centric embodied reasoning. Progress in this direction has been limited by the lack of real-world egocentric data and diagnostic benchmarks. To address this gap, we introduce EgoTools, the first comprehensive suite for egocentric tool-use understanding. It consists of two complementary components: EgoTools-Data, a large-scale corpus of 100 hours of tool-centric egocentric recordings with synchronized audio, dense captions, reasoning-heavy narrations, and supplementary 3D information; and EgoTools-Bench, a diagnostic benchmark of 1,000 QA pairs across four tracks that cover tool-use understanding from perception and geometry to procedure and causal reasoning. Experimental results show that current models still struggle to ground tool use in visual evidence: Gemini-3.1-Pro achieves 66.9% overall accuracy but only 51.7% on Perception & Grounding. Beyond evaluation, we validate EgoTools-Data as a training resource. On the full 1,000-question benchmark, full supervised fine-tuning improves Qwen3-VL-8B-Instruct from 50.0% to 60.9%, under strict source-video separation. Together, these results establish EgoTools as a unified resource for both training and diagnostic evaluation of real-world egocentric tool-use understanding.",
+      "pdf_url": "https://arxiv.org/abs/2609.39378",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.03136",
+      "title": "Investigating the Role of Reasoning-Language Alignment in Monolingual Retrieval-Augmented Generation",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2610.03136v1 Announce Type: new Abstract: Reasoning traces improve large language models (LLMs), but current models are trained to reason mostly in English. It has been shown that forcing a model to reason in another language degrades accuracy, even when the reasoning language matches the language of the prompt -- but only for a setting where the model reasons over a short prompt. Here, we ask whether the same holds for retrieval-augmented generation (RAG), where the model must read and integrate a large amount of retrieved evidence in the target language. To study this, we build a fully monolingual German RAG question-answering testbed over the fictional world of the tabletop role-playing game The Dark Eye, a domain that is richly documented in German but too niche for the model to answer from memory, so that it has to rely on retrieval. Varying the forced reasoning language of an agentic RAG system on this testbed, we find that aligning the reasoning language with the language of the query and the retrieved documents helps. Forced German reasoning outperforms forced French, although the model benchmarks higher in French, so the benefit comes from alignment and not from language proficiency. The advantage grows when the retrieved context is richer and structure-aware. However, forced German only reaches the level of the model's native, unconstrained English reasoning without surpassing it, showing that native multilingual reasoning is needed. We publicly release the testbed and QA benchmark.",
+      "pdf_url": "https://arxiv.org/abs/2610.03136",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
       "id": "2609.33117",
@@ -121,421 +305,168 @@
       ]
     },
     {
-      "id": "2608.06197",
-      "title": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning",
+      "id": "2604.06995",
+      "title": "What's Missing in Screen-to-Action? Towards a UI-in-the-Loop Paradigm for Multimodal GUI Reasoning",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2608.06197v2 Announce Type: replace Abstract: Training large language model agents for long-horizon tool use typically relies on interactions with real or synthesized executable environments, whose construction and verification are costly, or on external simulators that are difficult to ground. We introduce EnvACE, an agentic reinforcement learning method that replaces external environment interaction during training with world rehearsal. The policy alternates between acting and rehearsal: it first generates a tool call, then plays the role of the environment to produce the response induced by that action, and conditions subsequent decisions on the rehearsed response. Both roles are jointly optimized end-to-end using task-success rewards. Through world rehearsal, the policy internalizes the relationship between actions and their environment responses in its parameters, yielding an agent world model that directly supports decision making. Across BFCL-v4, tau^2-Bench, VitaBench, and FinMCP-Bench, EnvACE achieves strong and transferable performance, outperforming environment-scaling baselines in the overall evaluation. Controlled studies further show that world rehearsal consistently improves policy learning across model scales. At test time, the internalized world model enables private rehearsal before committed execution, yielding further gains under a moderate rehearsal budget without additional external interaction. Our findings establish world rehearsal as a new path toward scaling LLM agent training beyond the constraints of external environments. Our code is publicly available at https://github.com/Within-yao/EnvACE.",
-      "pdf_url": "https://arxiv.org/abs/2608.06197",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning",
-        "World Rehearsal",
-        "Agentic Reinforcement Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Developing AI agents that can learn and adapt to new environments without requiring constant interaction with external systems, reducing the need for extensive real-world testing.",
-        "Creating AI-driven tools for educational purposes that can simulate various scenarios and provide feedback, enhancing the learning experience."
-      ],
-      "domain_applications": [
-        "education",
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2602.08005",
-      "title": "ResidualKV: Residual-Based KV Cache Compression for Efficient Long-Context Inference",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2602.08005v2 Announce Type: replace-cross Abstract: Efficient long-context inference faces two coupled bottlenecks: KV-cache memory grows linearly with context length, while attention computation grows quadratically. Existing approaches typically address one at the expense of irreversible token eviction, full-cache retention, or full-history reconstruction, limiting their effectiveness for multi-turn interaction and long-form reasoning. Motivated by two empirical properties, Long-Range Inter-Token Similarity and Smooth Residual Distribution, we propose ResidualKV, which factorizes the KV cache into a sparse set of globally retrieved references and compact, quantized residual codes for the remaining tokens. This representation preserves token-specific information without permanent eviction and, when combined with sparse attention, reconstructs only the selected states on demand. Dynamic-stride scheduling further reduces reference growth from linear to approximately logarithmic at ultra-long contexts. Across Llama, Qwen, LLaVA-OV, and Qwen3-VL backbones, ResidualKV maintains near-full-cache performance using only 13%-16% KV storage and 30% attention computation on LongBench, and 8%-10% storage and 10% computation in matched-budget multimodal evaluation. It also accelerates decoding by up to $1.5\\times$ with KV-cache quantization and $3.4\\times$ without it. These results show that global cross-token redundancy supports accurate, memory-efficient, and computation-efficient long-context inference. The source code is available at https://github.com/CURRENTF/ResidualKV.",
-      "pdf_url": "https://arxiv.org/abs/2602.08005",
-      "comment": "",
-      "technologies": [
-        "KV Cache Optimization",
-        "Sparse Attention"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Developing AI-powered chatbots and virtual assistants capable of handling extended conversations with minimal memory overhead.",
-        "Creating efficient long-form content generation tools for writers, journalists, and researchers."
-      ],
-      "domain_applications": [
-        "education",
-        "creative",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2604.20348",
-      "title": "Bimanual Robot Manipulation via Multi-Agent In-Context Learning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2604.20348v3 Announce Type: replace-cross Abstract: Large Language Models (LLMs) have emerged as powerful reasoning engines for embodied control. In particular, In-Context Learning (ICL) enables off-the-shelf, text-only LLMs to predict robot actions without any task-specific training while preserving their generalization capabilities. Applying ICL to bimanual manipulation remains challenging as the high-dimensional joint action space and tight inter-arm coordination constraints rapidly overwhelm standard context windows. To address this, we introduce BiCICLe (Bimanual Coordinated In-Context Learning), the first framework that enables standard LLMs to perform few-shot bimanual manipulation without fine-tuning. BiCICLe frames bimanual control as a multi-agent leader-follower problem, decoupling the action space into sequential, conditioned single-arm predictions. Evaluated on 13 tasks from the TWIN benchmark, BiCICLe achieves 70.5% average success rate, outperforming the best training-free baseline by 6.1 percentage points and surpassing most supervised methods. We also demonstrate superior real-world performance on 3 tasks without hardware-specific retraining. The project page is available at https://alesspalma.github.io/bicicle",
-      "pdf_url": "https://arxiv.org/abs/2604.20348",
-      "comment": "",
-      "technologies": [
-        "In-Context Learning",
-        "Multi-Agent Systems"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Automated bimanual robot manipulation systems for industrial applications",
-        "Collaborative robotics in healthcare for surgical assistance",
-        "Enhanced robotics in education for interactive learning experiences"
-      ],
-      "domain_applications": [
-        "robotics",
-        "healthcare",
-        "education"
-      ]
-    },
-    {
-      "id": "2609.02780",
-      "title": "ShallowStream: Index Shallow then Answer Deep for Streaming Video Understanding",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.02780v2 Announce Type: replace Abstract: Streaming video understanding is a critical capability for real-world applications, including embodied intelligence, autonomous driving, industrial monitoring, surveillance and early warning, and wearable assistants. However, processing continuous video streams with multimodal large language models (MLLMs) is computationally expensive. Existing efforts have explored reducing streaming overhead through visual token pruning, token merging, quantization, on-demand frame retrieval, and context offloading. However, most existing methods overlook the dimension of model depth. Repeatedly executing full-depth MLLM prefill over incoming frames is prohibitively expensive, incurring substantial computational overhead and causing the KV cache to grow at a rate directly proportional to the prefill depth. To address these challenges, we propose ShallowStream, a novel framework that leverages the shallow layers of an MLLM to simultaneously perform frame encoding and retrieval index building. During stream processing, ShallowStream maintains an always-on lightweight index using the KV cache of shallow layers. During query-time answering, we leverage the attention scores generated by the shallow layers to score context frames and employ a diversity-aware selection strategy to retrieve precise and comprehensive evidence. ShallowStream achieves performance on par with the strongest existing streaming methods, while reducing per-frame prefill latency and 10-second end-to-end latency by up to 52.1x and 11.9x, respectively. Our code is available at https://github.com/CURRENTF/ShallowStream.",
-      "pdf_url": "https://arxiv.org/abs/2609.02780",
-      "comment": "",
-      "technologies": [
-        "KV Cache Optimization",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Real-time video analytics for industrial monitoring and surveillance",
-        "Enhanced wearable assistant capabilities with real-time video processing"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "accessibility",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.05224",
-      "title": "First Things First: Teaching LLM-Based Agents to Prioritize Must-Haves before Nice-to-Haves",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.05224v3 Announce Type: replace Abstract: Recent progress in multimodal large language models (MLLMs) has fueled significant enthusiasm in their potential to act as autonomous agents for real-world tasks. However, scenarios requiring agents to fulfill users' complex, structured requirements remain largely underexplored. In this work, we examine reasoning tasks under three distinct requirement scenarios: (i) Must-have requirements uniquely determine a unique feasible solution; (ii) Multiple answers satisfy the must-have requirements and are prioritized via the nice-to-have requirements; and (iii) No candidate solution satisfies the must-have requirements, in which case the agent should abstain from generating a response. We evaluate state-of-the-art MLLMs on 3,649 carefully constructed problems that reflect realistic service scenarios, including e-commerce, booking, and map-based or ride-hailing. Our evaluation reveals that existing MLLMs exhibit catastrophic failures in all scenarios. They frequently misinterpret task requirements, violate must-have requirements, and produce invalid solutions. To address this critical gap, we propose First Things First Reinforcement Learning FTF-rl that explicitly optimizes reasoning over multi-priority user requirements. Experimental results show that our method substantially improves the task success rate compared to strong baselines. Moreover, FTF-rl yields general effectiveness on popular logical and mathematical reasoning tasks, including LogicVista, MathVision, and InfoQA. Our findings suggest that enhancing requirement-aware reasoning capability provides a simple yet effective pathway to improve generalization of MLLM agents. Code and dataset are available at https://github.com/claire62/FTF-RL.",
-      "pdf_url": "https://arxiv.org/abs/2609.05224",
-      "comment": "",
-      "technologies": [
-        "First Things First Reinforcement Learning (FTF-rl)"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Developing a personalized assistant that can handle complex user requests by prioritizing must-have requirements before nice-to-haves, ensuring user satisfaction and task completion.",
-        "Creating a decision-support system for enterprises that can process and prioritize multiple requirements, aiding in strategic planning and resource allocation."
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.38409",
-      "title": "ArgGYM: A Procedural, Engine-Verified Benchmark for Structured Defeasible Reasoning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.38409v1 Announce Type: new Abstract: Recent progress in large language model reasoning has been driven by benchmarks and reinforcement learning environments with automatically verifiable rewards, particularly in mathematics, code, and formal logic. These settings make model accuracy easier to evaluate and optimize, but it remains unclear how far success under fixed problem specifications and stable evaluation criteria transfers to reasoning outside such domains. Real-world reasoning often proceeds under incomplete and revisable information: conclusions may be supported provisionally, defeated by counter-evidence, reinstated by further arguments, or revised when stronger reasons become available. Reasoning of this kind is generally referred to as defeasible reasoning. We introduce ArgGYM, a procedural benchmark and RLVR-compatible training environment for structured defeasible reasoning. ArgGYM decomposes this reasoning into twelve tasks and grounds task-specific scoring in a symbolic argumentation engine that computes the formal states used to evaluate model outputs. It includes a frozen benchmark of 1,440 verified instances across fifteen curriculum configurations, two argument preference orderings (weakest-link and last-link), and two set orderings (elitist and democratic), while the same generators and verifiers can produce fresh instances for evaluation that reduces dependence on static test sets and for verifiable-reward training. On the frozen benchmark, frontier and open-weight models show sharply different reasoning profiles: they can recover substantial parts of structured answers without solving the complete task, and performance declines in later curriculum configurations with longer dependencies and more interacting structures. We release the benchmark, generators, and verifiers for reproducible evaluation and RLVR training.",
-      "pdf_url": "https://arxiv.org/abs/2609.38409",
-      "comment": "",
-      "technologies": [
-        "Structured Defeasible Reasoning",
-        "Symbolic Argumentation Engine",
-        "Procedural Benchmark",
-        "Reinforcement Learning from Verifiable Rewards (RLVR)"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.4,
-      "product_potential": [
-        "A defeasible reasoning assistant for legal and medical domains",
-        "A training environment for AI models to improve structured reasoning capabilities",
-        "A benchmarking tool for evaluating AI models on defeasible reasoning tasks"
-      ],
-      "domain_applications": [
-        "science",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2602.11678",
-      "title": "Beyond Pixels: A Vector-to-Graph Framework for Reliable Schematic Auditing",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-30",
-      "updated": "2026-09-30",
-      "summary": "arXiv:2602.11678v2 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have shown remarkable progress in visual understanding, yet they suffer from a critical limitation: structural blindness. Even state-of-the-art models fail to capture topology and symbolic logic in engineering schematics, as their pixel-driven paradigm discards the explicit vector-defined relations needed for reasoning. To overcome this, we propose a Vector-to-Graph (V2G) pipeline that converts CAD diagrams into property graphs where nodes represent components and edges encode connectivity, making structural dependencies explicit and machine-auditable. On a diagnostic benchmark of electrical compliance checks, V2G yields large accuracy gains across all error categories, while leading MLLMs remain near chance level. These results highlight the systemic inadequacy of pixel-based methods and demonstrate that structure-aware representations provide a reliable path toward practical deployment of multimodal AI in engineering domains. To facilitate further research, we release our benchmark and implementation at https://github.com/gm-embodied/V2G-Audit.",
-      "pdf_url": "https://arxiv.org/abs/2602.11678",
-      "comment": "",
-      "technologies": [
-        "Vector-to-Graph Framework",
-        "Multimodal Learning",
-        "Structural Representation Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Automated schematic design verification tool for electrical engineers",
-        "AI-powered CAD assistant for structural compliance checks",
-        "Multimodal engineering documentation system with structural understanding"
-      ],
-      "domain_applications": [
-        "engineering",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.34195",
-      "title": "PainterBench: A Figural Divergent-Thinking Benchmark for Tool-Using Language Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-09-29",
-      "updated": "2026-09-29",
-      "summary": "arXiv:2609.34195v1 Announce Type: new Abstract: Figural divergent thinking is the ability to develop a given shape fragment into an original drawing. In humans, this ability is assessed with incomplete-drawing tasks. We introduce PainterBench, a benchmark that ports the incomplete-drawing task to the agentic setting. The agent draws on a canvas through tool calls and observes the result after every turn. The canvas includes a starting shape which cannot be erased, and the agent's goal is to incorporate this shape into the most original drawing it can produce. The task is open-ended, and the agent itself decides when the drawing is finished. The benchmark tests incremental visual planning over a short horizon and the transfer of creative ability from pretraining to multi-turn tool use. We evaluate 14 multimodal language models from small to frontier scale. Across the primary study and six sensitivity analyses, we collect 2,700 drawings and crowdsource creativity and recognizability ratings for every drawing and for 300 human reference drawings. We also present ViDrA-adapted, an automated scorer that predicts human creativity ratings of agent drawings (r = 0.85 on random held-out test split). Figural divergent thinking varies widely across the 14 models, and GPT-6 Astra produces the most creative drawings. Relative to the human drawings, the agent drawings score higher in creativity but lower in recognizability. We release the final drawings, per-round canvas snapshots, tool call traces, stimulus bank, benchmark harness, crowdsourced ratings (N = 72,000), and ViDrA checkpoint.",
-      "pdf_url": "https://arxiv.org/abs/2609.34195",
-      "comment": "",
-      "technologies": [
-        "Tool-Using Language Models",
-        "Multimodal Learning",
-        "Automated Scoring"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.2,
-      "product_potential": [
-        "AI-assisted drawing tool for creative professionals",
-        "Automated creativity evaluation system for educational platforms",
-        "AI-powered design assistant for product designers"
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2609.38652",
-      "title": "AgBench: Agentic AI Benchmarks for Personal AI Devices",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.38652v1 Announce Type: new Abstract: Agentic AI systems increasingly rely on cloud-hosted large language models for planning, tool use, and iterative execution, raising concerns about API cost and data exposure. Advances in personal AI devices enable agents to execute locally, but limited resources on device may affect task success and performance. Existing benchmarks are inadequate for systematically characterizing these trade-offs across devices, workloads, and deployment architectures. We present AgBench, a benchmark suite and open artifacts for reproducible evaluation of agentic AI on personal devices. Using AgBench, we evaluate local, hybrid, and cloud execution across agentic workloads, examining task success, latency, cloud API cost, and data exposure. Our results, drawn from over 162.07 million data points, show that personal AI devices can complete many agent tasks locally, but local-only execution generally has lower task success and longer completion times than cloud-only execution, especially as concurrency increases. Local-only execution eliminates cloud model API costs and sensitive-information exposure to cloud agents. Hybrid execution can improve task success, but its cloud cost and data exposure depend on how agents divide work and share information. No single architecture performs best across task success, goodput, cloud cost, and data exposure; deployment choices should reflect the intended workload and device capabilities. AgBench is available at https://anonymous.4open.science/r/AgBench-2777.",
-      "pdf_url": "https://arxiv.org/abs/2609.38652",
-      "comment": "",
-      "technologies": [
-        "On-device AI"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Developing AI agents that can operate efficiently on personal devices, reducing reliance on cloud services and enhancing privacy.",
-        "Creating hybrid AI systems that leverage both local and cloud resources to optimize task success, performance, and cost."
-      ],
-      "domain_applications": [
-        "other"
-      ]
-    },
-    {
-      "id": "2609.39382",
-      "title": "SkillFM: Generating Skills for LLM Agents via Latent Flow Matching",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.39382v1 Announce Type: new Abstract: Textual skills provide reusable guidance for large language model agents, but existing approaches often rely on manually curated skill banks or reinforcement learning with indirect and delayed feedback. We introduce SkillFM (Skill Flow Matching), a generative framework that synthesizes task-conditioned textual skills directly without test-time skill retrieval. Our framework combines a codec for encoding and reconstructing textual skills in a continuous latent space with a conditional flow model trained using improved MeanFlow. At inference time, the learned velocity field enables single-step latent sampling, and an LLM-based decoder converts the sampled representation into textual guidance for a frozen downstream agent. We evaluate the framework on embodied tasks, question answering, and web shopping. On ALFWorld and Search-QA, our method achieves the best overall performance among the compared vector-based skill approaches. Our analyses further demonstrate that latent skill generation is an effective alternative to retrieval-based skill augmentation. Our code and training skill libraries are available at https://github.com/lulushang999/SkillFM.",
-      "pdf_url": "https://arxiv.org/abs/2609.39382",
-      "comment": "",
-      "technologies": [
-        "Latent Flow Matching",
-        "Conditional Flow Model",
-        "MeanFlow",
-        "Textual Skill Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.2,
-      "product_potential": [
-        "AI-powered personal assistants with dynamic skill generation",
-        "Automated task automation systems with adaptive skill learning",
-        "Customizable AI agents for specific domains with on-the-fly skill adaptation"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "id": "2609.39964",
-      "title": "AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "arXiv:2609.39964v1 Announce Type: new Abstract: Multi-modal integrated sensing and communication (ISAC) enables environmental perception and reliable connectivity for intelligent wireless networks. Data-driven multi-modal ISAC models depend heavily on annotated real-world data to learn relationships across sensing and wireless observations, thereby constraining scalable deployment. Although synthetic data generation reduces the burden, adapting existing simulation pipelines to a target deployment requires consistent scene, sensing, wireless, and learning configurations, while mismatches among these coupled components impair sim-to-real transferability. To address the challenge, we propose an agentic artificial intelligence (AI) framework for sim-to-real multi-modal ISAC, named AIMS. Given a natural-language deployment request specifying the target task, deployment conditions, and real-data budget, AIMS derives a deployment-specific sim-to-real configuration and coordinates its execution to produce a deployment-specific task model. A two-agent architecture coordinates scene construction with task learning. A scene construction agent generates geographically grounded, synchronized sensing and wireless records from shared physical states, while a scene understanding agent configures task-relevant modalities and mixture-of-experts (MoE) learning for zero-shot inference or few-shot adaptation. Structured domain knowledge guides dependency-aware planning, while validation evidence supports feedback-driven revision of affected decisions. Experiments on the real-world DeepSense~6G dataset demonstrate improved vehicle detection and beam prediction over the considered simulation and fusion baselines. A separate orchestration benchmark evaluates task interpretation, dependency reasoning, and feedback-driven replanning across diverse deployment requests, showing improved plan correctness with structured domain knowledge and validation feedback.",
-      "pdf_url": "https://arxiv.org/abs/2609.39964",
-      "comment": "",
-      "technologies": [
-        "Multi-modal Learning",
-        "Mixture of Experts",
-        "Sim-to-Real Transfer",
-        "Agentic AI",
-        "Dependency-Aware Planning",
-        "Feedback-Driven Revision"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Automated deployment configuration for multi-modal ISAC systems",
-        "Intelligent wireless network optimization through agentic AI",
-        "Enhanced environmental perception and connectivity for intelligent systems"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2610.02196",
-      "title": "InterEvolve: Test-Time Evolution of Reward Programs for Humanoid Loco-Manipulation",
-      "authors": [
-        "Zhuo Lin",
-        "Sirui Xu",
-        "Liuyu Bian",
-        "Yu-Xiong Wang",
-        "Liang-Yan Gui"
-      ],
-      "categories": [
-        "cs.RO",
-        "cs.CV",
-        "cs.GR"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "We study test-time evolution for humanoid loco-manipulation: solving tasks that a controller was never trained for by repurposing its existing skills, improving from its own attempts, and retaining what it learns, without retraining. Our key insight is that a broad controller already holds much of the competence a new task needs, and that this competence becomes accessible through an interface between planning and control that is expressive enough to specify contact-rich, multi-stage interactions, yet executable and measurable enough that execution feedback can guide planning from experience. InterEvolve realizes this interface with two components. First, we develop an object-aware forward-backward (FB) behavioral foundation model, whose object residuals on a frozen body prior turn a new reward about the body or objects into loco-manipulation behavior at test time. Second, we specify tasks as reward programs: staged rewards with completion conditions and tunable constants. A large language model (LLM) agent revises the program structure in context, drawing on execution feedback and a skill library of verified programs, while a numerical optimizer tunes its constants. With every candidate verified across parallel simulation scenarios, the program explores new ways to induce, repurpose, and compose the controller's existing motor competence for the task at hand, and thus improves over iterations. Experiments show that human-designed rewards leave much of the FB model's loco-manipulation competence untapped, whereas the programs InterEvolve evolves release it, sometimes through novel strategies. It further produces behaviors for diverse tasks, complex scenes, and long-horizon compositions in simulation, and evolved skills run autonomously on a physical Unitree G1 from egocentric onboard perception.",
-      "pdf_url": "https://arxiv.org/pdf/2610.02196v1",
-      "comment": "Project page: https://sirui-xu.github.io/InterEvolve",
-      "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Object Detection",
-        "Depth Estimation"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Autonomous humanoid robots for household tasks",
-        "Customizable humanoid robots for industrial applications",
-        "Personalized humanoid robots for healthcare assistance"
-      ],
-      "domain_applications": [
-        "robotics",
-        "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2610.01892",
-      "title": "Selection-Based Structured Reasoning: Toward Efficient Multimodal Search Agents",
-      "authors": [
-        "Feiyu Gavin Zhu",
-        "Xiaoyu Zhu",
-        "Jiqi Yang",
-        "Rui Yang",
-        "Arnab Kumar Mondal",
-        "Yancheng Wang",
-        "Xinke Deng",
-        "Jean Oh",
-        "Reid Simmons",
-        "Joerg Liebelt",
-        "Xiang Kong",
-        "Zhongyu Jiang"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.AI"
-      ],
-      "published": "2026-10-01",
-      "updated": "2026-10-01",
-      "summary": "Multimodal agents commonly generate free-form reasoning before each action. For small models, limited model capacity can result in lengthy reasoning that provides little useful guidance for action generation while incurring substantial inference cost. To address this challenge, we introduce Selection-based Structured Reasoning (SSR), a framework that reformulates reasoning as selection instead of open-ended generation. SSR represents recurring high-level reasoning as pre-specified, reusable natural-language candidates. At each turn, the model selects from these reasoning candidates based on their likelihoods given the current context, without requiring an auxiliary task head. Using pre-specified reasoning traces enables parallel scoring, where teacher-forced prefilling computes token likelihoods concurrently within and across candidates using a shared context KV cache. We evaluate SSR on seven multimodal search benchmarks using 2B and 4B models. Across multiple reinforcement learning objectives and supervised fine-tuning, SSR delivers significant efficiency gains without sacrificing task performance. SSR achieves an average success rate competitive with leading search agents of the same scale, while reducing per-turn reasoning latency by over 90% and total per-question model inference latency by 28-54%. Project page: https://zfy0314.github.io/ssr-webpage/.",
-      "pdf_url": "https://arxiv.org/pdf/2610.01892v1",
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2604.06995v3 Announce Type: replace Abstract: Existing Graphical User Interface (GUI) reasoning tasks remain challenging, particularly in UI understanding. Current methods typically rely on direct screen-based decision-making, which lacks interpretability and overlooks a comprehensive understanding of UI elements, ultimately leading to task failure. To enhance the understanding and interaction with UIs, we propose an innovative GUI reasoning paradigm called UI-in-the-Loop (UILoop). Our approach treats the GUI reasoning task as a cyclic Screen-UI elements-Action process. By enabling Multimodal Large Language Models (MLLMs) to explicitly learn the localization, semantic functions, and practical usage of key UI elements, UILoop achieves precise element discovery and performs interpretable reasoning. Furthermore, we introduce a more challenging UI Comprehension task centered on UI elements with three evaluation metrics. Correspondingly, we contribute a benchmark of 26K samples (UI Comprehension-Bench) to comprehensively evaluate existing methods' mastery of UI elements. Extensive experiments demonstrate that UILoop achieves state-of-the-art UI understanding performance while yielding superior results in GUI reasoning tasks.",
+      "pdf_url": "https://arxiv.org/abs/2604.06995",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2605.31370",
+      "title": "One Hypothesis Is Not Enough: Abductive Reasoning with Agentic Hypothesis Refinement over Knowledge Graphs",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2605.31370v2 Announce Type: replace Abstract: Abductive reasoning over knowledge graphs (KGs) seeks a first-order logic hypothesis whose answer set explains a given set of observed entities. Since many hypotheses can explain the same observations, controllable hypothesis generators condition generation on entities, relations, or logical patterns, but they treat generation as a single step. A generated hypothesis may be well-formed and satisfy the given conditions yet still fail to explain the observations, and the model has no mechanism to detect or correct this mismatch. Closing the abductive cycle requires revising a discrete, structured hypothesis, which large language models cannot do reliably, even though they iterate readily in natural language. We propose HypoAgent, an agentic hypothesis refinement framework that treats condition signals not only as expressions of user intent but also as operators that steer generation. A Hypothesis Proposal Agent calls a small trained generator to propose a hypothesis. Root-cause analysis then uses fragment-level coverage to locate branches worth inspecting and gathers neighborhood evidence from the training graph. A Hypothesis Refiner Agent combines this diagnosis with previously generated hypotheses to produce updated conditions and directly revised hypotheses. HypoAgent outperforms one-shot generation in single-turn and multi-turn settings on BioKG, PharmKG8k, and DBpedia50, and in the unconditional setting on DBpedia50. Our code is available at https://github.com/HKUST-KnowComp/HypoAgent.",
+      "pdf_url": "https://arxiv.org/abs/2605.31370",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2606.01810",
+      "title": "Planning Takes More Than Token Prediction: Causal Plan for Benchmarking and Building Physically Grounded Embodied Reasoners",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2606.01810v3 Announce Type: replace Abstract: Current benchmarks for embodied vision-language planning inadvertently favor linguistic next-token prediction over physically grounded next-state reasoning. This rewards models that mimic statistical language priors rather than track true causal dependencies, reducing complex physical planning to shallow sequence modeling. Hence, achieving genuine physical autonomy requires a fundamental shift from linguistically grounded token prediction toward physically grounded causal reasoning. To this end, we introduce Causal-Plan-Bench, a high-fidelity diagnostic suite spanning four causal dimensions, curated via multi-stage verification. To endow models with this capability, a four-stage annotation pipeline extracts structured interaction records from egocentric videos to construct Causal-Plan-1M, a dense million-scale corpus of explicit causal reasoning traces. Extensive evaluation reveals a striking gap: leading models struggle to demonstrate genuine physical agency -- even GPT-6-astra scores only 43.04. In contrast, our tailored training recipe enables Causal Planner to internalize the complex physical logic required for accurate next-state estimation. Built upon Qwen3-VL-8B, Causal Planner raises its backbone's score from 33.23 to 45.28, a 36.3% relative gain, and improves on three external benchmarks without benchmark-specific adaptation. We further observe an empirical Causal-Supervision Scaling Trend. Paired no-vision controls also reveal substantial visual dependence, while cross-judge comparisons and human scoring assess the reliability of automated evaluation. More importantly, we initiate the first effort to turn agents from superficial token predictors into physically grounded causal reasoners, bridging language modeling and world modeling.",
+      "pdf_url": "https://arxiv.org/abs/2606.01810",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.38743",
+      "title": "Learning to Route in Visual Space via Multi-Step Embedding Retrieval",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2609.38743v2 Announce Type: replace Abstract: LLM agents rely on retrieval tools to access external knowledge, yet visual agentic search remains severely bottlenecked by standard single-step retrievers. In current pipelines, the agent must issue text queries for every intermediate step, struggling when visual clues are difficult to describe or when the retriever fails to surface necessary intermediate evidence within its top results. We hypothesize that offloading multi-step navigation across the entire embedding space directly to the retrieval tool resolves this performance bottleneck. To study this systematically, we introduce VHOP, a flexible data generation framework and benchmark with five core difficulty levels testing both visual matching and search planning. Using this framework, we develop VHOP-Router, an end-to-end training pipeline---combining supervised fine-tuning, online imitation learning, and reinforcement learning---that transforms a standard embedding model into an autoregressive multi-step retriever. Operating directly in the visual latent space, VHOP-Router retrieves linked image chains in a single tool call without requiring the agent to formulate intermediate text queries. Experiments show VHOP-Router boosts retrieval performance from under 5\\% to 76.3\\%. In agentic search, it improves task success rates by 52.7\\% and reduces the average token length by 61\\% from 1886 to 728, whereas upgrading the agent yields only a 3.7\\% gain. Compared to a strong baseline where the agent retrieves the top 50 results per step, VHOP-Router maintains superior performance while reducing in-context images by $23\\times$ and cutting the cumulative API payload by $35\\times$. The models also generalize robustly to unseen difficulty levels and realistic test sets. Ultimately, VHOP and VHOP-Router provide an efficient and effective solution for visual agentic search that leaves native LLM capabilities entirely intact.",
+      "pdf_url": "https://arxiv.org/abs/2609.38743",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2505.21870",
+      "title": "Evaluating the Retrieval Robustness of Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-05",
+      "updated": "2026-10-05",
+      "summary": "arXiv:2505.21870v2 Announce Type: replace-cross Abstract: Retrieval-augmented generation (RAG) generally enhances large language models' (LLMs) ability to solve knowledge-intensive tasks. But RAG could also lead to performance degradation due to imperfect retrieval and the model's limited ability to leverage retrieved content. In this work, we evaluate the robustness of LLMs in practical RAG setups (henceforth retrieval robustness). We focus on three research questions: (1) whether RAG is always better than non-RAG; (2) whether more retrieved documents always lead to better performance; and (3) whether document order impacts results. To facilitate this study, we establish a benchmark of 1,891 samples spanning five datasets across three task categories, each with documents retrieved using both sparse and dense retrievers. We introduce three robustness metrics, each corresponding to one research question. Our experiments across 11 LLMs show that models achieve generally high retrieval robustness, but robustness varies substantially across tasks, suggesting that the decision to adopt RAG remains a case-by-case consideration. We further examine four additional prompting strategies that vary how models interact with retrieved documents. We find that Qwen and GPT models suffer notable robustness declines when reasoning is disabled, even on single-hop QA tasks, and that providing retrieved documents as tool responses improves Claude models but hurts Qwen and GPT models, highlighting potential issues of the GPT models regardless of their best overall robustness under vanilla prompting.",
+      "pdf_url": "https://arxiv.org/abs/2505.21870",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     }
   ],
   "technologies": [
     {
+      "name": "Symbolic Planning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "enterprise",
+        "other",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
       "name": "Retrieval Augmented Generation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "accessibility",
+        "enterprise",
         "other"
       ]
     },
@@ -543,25 +474,59 @@
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
         "accessibility",
-        "other",
         "enterprise",
-        "robotics"
+        "other"
       ]
     },
     {
       "name": "Low-Rank Adaptation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "accessibility",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Vision-Based Web Agents",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "accessibility",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Coordinate-Space Mismatch Handling",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Action Execution on Live Websites",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "enterprise",
         "other"
       ]
     },
@@ -613,374 +578,6 @@
       "trend": "emerging",
       "applications": [
         "healthcare"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "World Rehearsal",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Agentic Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "KV Cache Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "creative",
-        "education",
-        "accessibility",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Sparse Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "In-Context Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multi-Agent Systems",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "creative",
-        "education",
-        "accessibility",
-        "other",
-        "enterprise",
-        "engineering"
-      ]
-    },
-    {
-      "name": "First Things First Reinforcement Learning (FTF-rl)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "Structured Defeasible Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Symbolic Argumentation Engine",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Procedural Benchmark",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Verifiable Rewards (RLVR)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Vector-to-Graph Framework",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "engineering"
-      ]
-    },
-    {
-      "name": "Structural Representation Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "engineering"
-      ]
-    },
-    {
-      "name": "Tool-Using Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "Automated Scoring",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "education",
-        "enterprise",
-        "creative"
-      ]
-    },
-    {
-      "name": "On-device AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "other"
-      ]
-    },
-    {
-      "name": "Latent Flow Matching",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Conditional Flow Model",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "MeanFlow",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Textual Skill Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Multi-modal Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Sim-to-Real Transfer",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Agentic AI",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Dependency-Aware Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Feedback-Driven Revision",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Object Detection",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Depth Estimation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics"
       ]
     }
   ],
