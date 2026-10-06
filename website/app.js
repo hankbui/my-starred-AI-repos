@@ -457,6 +457,8 @@ function syncFilterAvailability(repos) {
 function populateCategoryFilter(repos = getActiveRepos()) {
     const select = document.getElementById('category-filter');
     const categoryStats = getCategoryStats(repos);
+    // Sort ABC
+    categoryStats.sort((a, b) => a.name.localeCompare(b.name));
 
     select.innerHTML = [
         `<option value="all">All categories (${repos.length.toLocaleString()})</option>`,
@@ -466,11 +468,14 @@ function populateCategoryFilter(repos = getActiveRepos()) {
     ].join('');
 
     select.value = state.category;
+    buildCustomSelectOptions('category', categoryStats, repos.length);
 }
 
 function populateTopicFilter(repos = getActiveRepos()) {
     const select = document.getElementById('topic-filter');
     const topicStats = getTopicStats(repos);
+    // Sort ABC
+    topicStats.sort((a, b) => a.topic.localeCompare(b.topic));
 
     select.innerHTML = [
         `<option value="all">All topics</option>`,
@@ -480,6 +485,63 @@ function populateTopicFilter(repos = getActiveRepos()) {
     ].join('');
 
     select.value = state.topic;
+    buildCustomSelectOptions('topic', topicStats, null);
+}
+
+function buildCustomSelectOptions(kind, items, total) {
+    const optEl = document.getElementById(kind + '-options');
+    const labelEl = document.getElementById(kind + '-label');
+    const filterInput = document.getElementById(kind + '-filter-input');
+    if (!optEl) return;
+
+    const selected = state[kind === 'category' ? 'category' : 'topic'];
+    const q = (filterInput?.value || '').trim().toLowerCase();
+
+    let html = '';
+    if (kind === 'category' && total !== null) {
+        const active = selected === 'all' ? ' active' : '';
+        html += `<div class="custom-select-opt${active}" data-value="all"><span>All categories (${total.toLocaleString()})</span><span class="opt-check">✓</span></div>`;
+    } else if (kind === 'topic') {
+        const active = selected === 'all' ? ' active' : '';
+        html += `<div class="custom-select-opt${active}" data-value="all"><span>All topics</span><span class="opt-check">✓</span></div>`;
+    }
+
+    let count = 0;
+    for (const item of items) {
+        const name = kind === 'category' ? item.name : item.topic;
+        const c = item.count;
+        if (q && !name.toLowerCase().includes(q)) continue;
+        if (count >= 100) break;
+        count++;
+        const active = selected === name ? ' active' : '';
+        html += `<div class="custom-select-opt${active}" data-value="${escapeHtml(name)}"><span>${escapeHtml(name)} (${c.toLocaleString()})</span><span class="opt-check">✓</span></div>`;
+    }
+
+    if (!count && (kind === 'topic' || (kind === 'category' && items.some(i => i.name.toLowerCase().includes(q))))) {
+        html += '<div class="custom-select-opt-empty">No matches</div>';
+    }
+
+    optEl.innerHTML = html;
+
+    // Bind click on each option
+    optEl.querySelectorAll('.custom-select-opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const val = opt.dataset.value;
+            if (kind === 'category') {
+                document.getElementById('category-filter').value = val;
+                state.category = val;
+                state.currentPage = 1;
+                state.activePreset = 'custom';
+            } else {
+                document.getElementById('topic-filter').value = val;
+                state.topic = val;
+                state.currentPage = 1;
+                state.activePreset = 'custom';
+            }
+            closeAllCustomSelects();
+            applyFilters();
+        });
+    });
 }
 
 function populateActivityFilter(repos = getActiveRepos()) {
@@ -519,6 +581,13 @@ function renderCategoryGrid() {
             state.currentPage = 1;
             state.activePreset = 'custom';
             document.getElementById('category-filter').value = state.category;
+            // Update custom select label
+            const labelEl = document.getElementById('category-label');
+            if (labelEl) {
+                const sel = document.getElementById('category-filter');
+                const opt = Array.from(sel.querySelectorAll('option')).find(o => o.value === state.category);
+                labelEl.textContent = opt ? opt.textContent : state.category;
+            }
             applyFilters();
             document.getElementById('repos-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
@@ -1744,6 +1813,118 @@ function bindFilters() {
         resetFilters({ keepView: true, preset: 'all' });
         applyFilters();
     });
+
+    // Custom select dropdowns
+    bindCustomSelect('category');
+    bindCustomSelect('topic');
+}
+
+function bindCustomSelect(kind) {
+    const container = document.getElementById(kind + '-select');
+    const drop = document.getElementById(kind + '-drop');
+    const filterInput = document.getElementById(kind + '-filter-input');
+    const selectEl = document.getElementById(kind + '-filter');
+    const labelEl = document.getElementById(kind + '-label');
+
+    // Toggle open/close
+    container.addEventListener('click', (e) => {
+        if (e.target.closest('.custom-select-drop')) return;
+        if (container.classList.contains('open')) {
+            closeAllCustomSelects();
+        } else {
+            closeAllCustomSelects();
+            container.classList.add('open');
+            if (filterInput) {
+                filterInput.value = '';
+                filterInput.focus();
+            }
+            rebuildCustomOptions(kind);
+        }
+    });
+
+    // Filter input
+    if (filterInput) {
+        filterInput.addEventListener('input', () => {
+            rebuildCustomOptions(kind);
+        });
+        filterInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { closeAllCustomSelects(); container.focus(); }
+            if (e.key === 'Enter') {
+                const active = drop.querySelector('.custom-select-opt:not(.custom-select-opt-empty)');
+                if (active) { active.click(); closeAllCustomSelects(); }
+            }
+        });
+    }
+
+    // Update label when selection changes
+    selectEl.addEventListener('change', () => {
+        const val = selectEl.value;
+        const opt = selectEl.querySelector(`option[value="${escapeHtml(val)}"]`);
+        labelEl.textContent = opt ? opt.textContent : (val === 'all' ? (kind === 'category' ? 'All categories' : 'All topics') : val);
+    });
+
+    // Close on blur
+    container.addEventListener('blur', (e) => {
+        // Delay to allow click on option
+        setTimeout(() => {
+            if (!container.contains(document.activeElement)) closeAllCustomSelects();
+        }, 150);
+    });
+}
+
+function rebuildCustomOptions(kind) {
+    const selectEl = document.getElementById(kind + '-filter');
+    const labelEl = document.getElementById(kind + '-label');
+    const optEl = document.getElementById(kind + '-options');
+    const filterInput = document.getElementById(kind + '-filter-input');
+    if (!optEl) return;
+
+    const q = (filterInput?.value || '').trim().toLowerCase();
+    const selected = kind === 'category' ? state.category : state.topic;
+
+    // Build from the hidden select's options
+    const allOpts = Array.from(selectEl.querySelectorAll('option'));
+    let html = '';
+
+    // "All" option first
+    const allLabel = allOpts[0]?.textContent || (kind === 'category' ? 'All categories' : 'All topics');
+    const allActive = selected === 'all' ? ' active' : '';
+    if (!q || 'all'.includes(q)) {
+        html += `<div class="custom-select-opt${allActive}" data-value="all"><span>${escapeHtml(allLabel)}</span><span class="opt-check">✓</span></div>`;
+    }
+
+    let count = 0;
+    for (let i = 1; i < allOpts.length && count < 100; i++) {
+        const opt = allOpts[i];
+        const val = opt.value;
+        const text = opt.textContent;
+        if (q && !text.toLowerCase().includes(q)) continue;
+        count++;
+        const active = selected === val ? ' active' : '';
+        html += `<div class="custom-select-opt${active}" data-value="${escapeHtml(val)}"><span>${escapeHtml(text)}</span><span class="opt-check">✓</span></div>`;
+    }
+
+    if (!count && q) {
+        html += '<div class="custom-select-opt-empty">No matches</div>';
+    }
+
+    optEl.innerHTML = html;
+
+    // Bind clicks
+    optEl.querySelectorAll('.custom-select-opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const val = opt.dataset.value;
+            selectEl.value = val;
+            // Trigger the change event
+            const event = new Event('change');
+            selectEl.dispatchEvent(event);
+            closeAllCustomSelects();
+        });
+    });
+}
+
+function closeAllCustomSelects() {
+    document.querySelectorAll('.custom-select').forEach(el => el.classList.remove('open'));
 }
 
 function bindDatasetTabs() {
