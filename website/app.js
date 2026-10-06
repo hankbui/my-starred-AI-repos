@@ -511,7 +511,6 @@ function buildCustomSelectOptions(kind, items, total) {
         const name = kind === 'category' ? item.name : item.topic;
         const c = item.count;
         if (q && !name.toLowerCase().includes(q)) continue;
-        if (count >= 100) break;
         count++;
         const active = selected === name ? ' active' : '';
         html += `<div class="custom-select-opt${active}" data-value="${escapeHtml(name)}"><span>${escapeHtml(name)} (${c.toLocaleString()})</span><span class="opt-check">✓</span></div>`;
@@ -1894,7 +1893,7 @@ function rebuildCustomOptions(kind) {
     }
 
     let count = 0;
-    for (let i = 1; i < allOpts.length && count < 100; i++) {
+    for (let i = 1; i < allOpts.length; i++) {
         const opt = allOpts[i];
         const val = opt.value;
         const text = opt.textContent;
