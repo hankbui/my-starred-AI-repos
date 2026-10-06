@@ -17,6 +17,8 @@ const state = {
     minStars: 0,
     sort: 'stars_desc',
     search: '',
+    searchRepo: true,
+    searchDesc: true,
     activePreset: 'all',
     updatedAt: '',
     historyStartAt: '',
@@ -207,6 +209,16 @@ function escapeHtml(value) {
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#39;');
+}
+
+function highlightHtml(text, query) {
+    if (!query || !text) return escapeHtml(text);
+    const safe = escapeHtml(text);
+    const terms = query.trim().toLowerCase().split(',').map(t => t.trim()).filter(t => t.length > 0);
+    const q = terms[0];
+    if (!q) return safe;
+    const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return safe.replace(re, '<mark class="search-hit">$1</mark>');
 }
 
 function formatCompactNumber(value) {
@@ -661,19 +673,15 @@ function applyFilters() {
                 return true;
             }
 
-            const haystack = [
-                repo.name,
-                repo.owner,
-                repo.repo_name,
-                repo.description,
-                repo.category,
-                repo.language,
-                repo.activity,
-                repo.license,
-                repo.topics.join(' '),
-            ]
-                .join(' ')
-                .toLowerCase();
+            const haystackParts = [];
+            if (state.searchRepo) {
+                haystackParts.push(repo.name, repo.owner, repo.repo_name);
+            }
+            if (state.searchDesc) {
+                haystackParts.push(repo.description);
+            }
+            haystackParts.push(repo.category, repo.language, repo.activity, repo.license, repo.topics.join(' '));
+            const haystack = haystackParts.join(' ').toLowerCase();
 
             const terms = query.split(',').map(t => t.trim()).filter(t => t.length > 0);
             return terms.length === 0 || terms.every(term => haystack.includes(term));
@@ -767,9 +775,9 @@ function renderTable() {
                 <tr class="repo-row" data-repo-id="${repo.id}" tabindex="0" role="button" aria-label="Open details for ${escapeHtml(repo.name)}">
                     <td class="col-num" data-label="#">${repoNumberLabel}</td>
                     <td class="col-repo" data-label="Repo">
-                        <div class="repo-primary">${escapeHtml(repo.owner)}</div>
+                        <div class="repo-primary">${highlightHtml(repo.owner, state.search)}</div>
                         <div class="repo-title-row">
-                            <span class="repo-link">${escapeHtml(repo.repo_name)}</span>
+                            <span class="repo-link">${highlightHtml(repo.repo_name, state.search)}</span>
                             <a class="repo-open-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(repo.name)} on GitHub">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
                             </a>
@@ -788,7 +796,7 @@ function renderTable() {
                     <td class="col-forks" data-label="Forks">${repo.forks.toLocaleString()}</td>
                     <td class="col-desc" data-label="Description">
                         <div class="desc-wrap">
-                            <div class="desc-text">${escapeHtml(repo.description)}</div>
+                            <div class="desc-text">${highlightHtml(repo.description, state.search)}</div>
                             <button class="desc-expand" type="button" aria-label="Show more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
                         </div>
                     </td>
@@ -1527,6 +1535,8 @@ function closeDrawer() {
 function resetFilters({ keepView = true, preset = 'all' } = {}) {
     const currentView = state.view;
     state.search = '';
+    state.searchRepo = true;
+    state.searchDesc = true;
     state.category = 'all';
     state.topic = 'all';
     state.activity = 'all';
@@ -1673,6 +1683,18 @@ function bindFilters() {
         state.search = event.target.value;
         state.currentPage = 1;
         state.activePreset = 'custom';
+        applyFilters();
+    });
+
+    document.getElementById('search-name').addEventListener('change', (event) => {
+        state.searchRepo = event.target.checked;
+        state.currentPage = 1;
+        applyFilters();
+    });
+
+    document.getElementById('search-desc').addEventListener('change', (event) => {
+        state.searchDesc = event.target.checked;
+        state.currentPage = 1;
         applyFilters();
     });
 

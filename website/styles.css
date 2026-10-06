@@ -401,6 +401,13 @@ a {
 .nav-link.active {
     color: var(--text-primary);
     border-color: var(--border-strong);
+
+.search-hit {
+    background: rgba(255,230,50,0.22);
+    color: var(--text-primary);
+    border-radius: 3px;
+    padding: 0 1px;
+}
     background: rgba(99, 207, 255, 0.08);
 }
 
@@ -642,6 +649,45 @@ a {
 
 .control input::placeholder {
     color: var(--text-muted);
+}
+
+.control-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.control-search > input {
+    flex: 1 1 160px;
+    min-width: 80px;
+}
+.search-scope {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: 120ms ease;
+    user-select: none;
+}
+.search-scope:hover {
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.04);
+}
+.search-scope input {
+    width: 13px;
+    height: 13px;
+    min-height: unset;
+    padding: 0;
+    border-radius: 3px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+.search-scope input:checked + span {
+    color: var(--accent);
 }
 
 .control input:focus,
