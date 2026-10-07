@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-06",
+    "date": "2026-10-07",
     "papers_tracked": 15,
-    "technologies_discovered": 17,
+    "technologies_discovered": 21,
     "opportunities_identified": 0,
-    "last_update": "2026-10-06 12:10 UTC",
+    "last_update": "2026-10-07 11:55 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,17 +13,17 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "17",
+      "value": "21",
       "label": "discovered this scan",
-      "detail": "Graph Neural Networks, Benchmarking, Evaluation Protocols, Plan-then-Code Paradigm, Symbolic Planning, Reinforcement Learning, Multimodal Learning, Latent Visual Memory",
+      "detail": "Graph Neural Networks, Benchmarking, Evaluation Protocols, Plan-then-Code Paradigm, Multimodal Learning, Latent Visual Memory, Reinforcement Learning from Human Feedback, Sparse Attention",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "17",
+      "value": "21",
       "label": "active trend clusters",
-      "detail": "Graph Neural Networks, Benchmarking, Evaluation Protocols, Plan-then-Code Paradigm, Multimodal Learning",
+      "detail": "Multimodal Learning, Vision Transformer, Diffusion Models, CrossDiT Architecture, Graph Neural Networks",
       "color": "green"
     },
     {
@@ -53,9 +53,9 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "6",
+      "value": "17",
       "label": "early-stage technologies",
-      "detail": "ReMAP: Restoring the Perceptual Cycle with Reasoning-Time Latent Visual Memory",
+      "detail": "MedHorizon: Towards Long-context Medical Video Understanding in the Wild",
       "color": "blue"
     }
   ],
@@ -89,35 +89,6 @@
         "education",
         "science",
         "other"
-      ]
-    },
-    {
-      "id": "2603.11351",
-      "title": "Novelty Adaptation Through Hybrid Large Language Model (LLM)-Symbolic Planning and LLM-guided Reinforcement Learning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2603.11351v3 Announce Type: replace-cross Abstract: In dynamic open-world environments, autonomous agents often encounter novelties that hinder their ability to find plans to achieve their goals. Specifically, traditional symbolic planners fail to generate plans when the robot's planning domain lacks the operators that enable it to interact appropriately with novel objects in the environment. We propose a neuro-symbolic architecture that integrates symbolic planning, reinforcement learning, and a large language model (LLM) to learn how to handle novel objects. In particular, we leverage the common sense reasoning capability of the LLM to identify missing operators, generate plans with the symbolic AI planner, and write reward functions to guide the reinforcement learning agent in learning control policies for newly identified operators. Our method outperforms the state-of-the-art methods in operator discovery as well as operator learning in continuous robotic domains.Our webpage and code can be access here: https://helenlu66.github.io/hybridLLMguided/",
-      "pdf_url": "https://arxiv.org/abs/2603.11351",
-      "comment": "",
-      "technologies": [
-        "Symbolic Planning",
-        "Reinforcement Learning",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Adaptive robotic assistants for dynamic environments",
-        "AI-driven personal assistants with real-time learning capabilities"
-      ],
-      "domain_applications": [
-        "robotics",
-        "accessibility"
       ]
     },
     {
@@ -183,31 +154,38 @@
       ]
     },
     {
-      "id": "2610.02444",
-      "title": "Counterexample Generation via Per-Theorem Symbolic Verifiers: When Imitation Hurts and Reinforcement Repairs",
+      "id": "2605.06537",
+      "title": "MedHorizon: Towards Long-context Medical Video Understanding in the Wild",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CV"
       ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2610.02444v1 Announce Type: cross Abstract: Large language models often solve a theorem forward yet fail to disprove a closely related false one: a falsification gap that supervised fine-tuning does not close and can actively worsen. We frame counterexample generation as constrained witness emission against a deterministic per-theorem Python verifier, and release SymCE, a corpus of 4,707 false undergraduate-algebra and real-analysis conjectures, each paired with executable verifiers. The verifier also serves as the reward function, making SymCE a training environment. Training Qwen3-4B with SFT followed by GRPO under this oracle reveals an imitation trap: counterexample-only SFT collapses true-theorem recognition from 0.27 to 0.00, while RLVR with a sparse outcome-only reward repairs this and exceeds the base, to 0.66. The collapse replicates across four seeds and on Gemma-3-4B. Sparse and dense rewards yield statistically indistinguishable in-domain success yet diverge by 33 points on a held-out calibration probe, a dissociation we trace to the partial-credit term. Our 4B model outperforms every evaluated 7B open-weights math specialist, remains competitive with six frontier commercial APIs, and transfers under unchanged prompting to GSM8K, MATH-500 and MMLU-college-math. A human audit of 177 verifier decisions finds 97.7% accuracy. Code, data, verifier modules and annotations: https://github.com/ce-rlvr/SymCE.",
-      "pdf_url": "https://arxiv.org/abs/2610.02444",
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "summary": "arXiv:2605.06537v2 Announce Type: replace Abstract: Medical multimodal large language models (MLLMs) have advanced image understanding and short-video analysis, but real clinical review often requires full-procedure video understanding. Unlike general long videos, medical procedures contain highly redundant anatomical views, while decisive evidence is temporally sparse, spatially subtle, and context dependent. Existing benchmarks often assume this evidence has already been localized through images, short clips, or pre-segmented videos, leaving the retrieval-before-reasoning problem under-tested. We introduce MedHorizon, an in-the-wild benchmark for long-context medical video understanding. MedHorizon preserves 759 hours of full-length clinical procedures and provides 1,253 evidence-grounded multiple-choice questionsthat jointly evaluate sparse evidence understanding and multi-hop clinical reasoning. Its evidence is extremely sparse, with only 0.166% evidence frames on average, requiring models to search noisy procedural streams before interpreting and aggregating findings. We evaluate representative general-domain, medical-domain, and long-video MLLMs. The best model reaches only 41.1% accuracy, showing that current systems remain far from robust full-procedure understanding. Further analysis yields four key findings: performance does not scale reliably with more frames, evidence retrieval and clinical interpretation remain primary bottlenecks; these bottlenecks are rooted in weak procedural reasoning and attention drift under redundancy, and generic sampling methods only partially balances local detail with global coverage. MedHorizon provides a rigorous testbed for MLLMs that retrieve sparse evidence and reason over complete clinical workflows.",
+      "pdf_url": "https://arxiv.org/abs/2605.06537",
       "comment": "",
       "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Direct Preference Optimization"
+        "Multimodal Learning",
+        "Long Video Understanding",
+        "Video Question Answering",
+        "Temporal Grounding",
+        "Video Moment Retrieval",
+        "Multi-hop Reasoning",
+        "Vision-Language Models",
+        "Benchmark Evaluation"
       ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.9,
+      "maturity": "early",
+      "confidence": 0.85,
+      "curator_score": 6.0,
       "product_potential": [
-        "An AI-powered theorem prover that can generate and verify counterexamples, aiding in mathematical research and education.",
-        "A tutoring system for mathematics that uses the technology to provide personalized feedback and identify common mistakes."
+        "Clinical video review assistant that automatically retrieves sparse decisive moments from hours-long procedure recordings (endoscopy, surgery) and surfaces evidence-grounded findings for physicians",
+        "Medical education platform that auto-generates quiz questions and annotated key-frame highlights from full-length procedural videos for residency training",
+        "Quality assurance and compliance auditing tool that scans complete clinical workflow videos to verify protocol adherence and flag missed critical steps"
       ],
       "domain_applications": [
-        "education",
-        "science"
+        "healthcare",
+        "education"
       ]
     },
     {
@@ -222,12 +200,24 @@
       "summary": "arXiv:2610.04301v1 Announce Type: new Abstract: Large datasets and high capacity models have accelerated progress in vision and language. This work introduces a platform aimed at bringing comparable gains to embodied learning, world models, and robotics. We present EnvDreamer, a framework that uses large language and vision language models to generate Unreal Engine 5 environments for embodied AI and robot training. EnvDreamer enables sampling of large, diverse, interactive, customizable, and validator passed virtual environments for training and evaluation across navigation, interaction, and manipulation. We illustrate the platform with a large set of generated scenes and simple baselines. Policies trained on EnvDreamer generated environments, without explicit mapping or human task supervision, achieve competitive results on multiple embodied benchmarks spanning navigation, rearrangement, and manipulation. EnvDreamer also supports image-conditioned reconstruction for real-to-sim studies. Finally, we release EnvDreamer-20k, a dataset of 20,000 validator passed environments with task programs, scene graphs, trajectories, and metadata to support reproducible benchmarking.",
       "pdf_url": "https://arxiv.org/abs/2610.04301",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Multimodal Learning",
+        "Vision Transformer",
+        "Diffusion Models"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Virtual training environments for robotics and embodied AI",
+        "Real-to-sim studies for robotics and autonomous systems",
+        "Customizable and diverse environments for VR/AR applications"
+      ],
+      "domain_applications": [
+        "robotics",
+        "science",
+        "creative"
+      ]
     },
     {
       "id": "2610.05608",
@@ -241,118 +231,41 @@
       "summary": "arXiv:2610.05608v1 Announce Type: cross Abstract: We present Kandinsky 6.0 Video, a family of foundation diffusion models for synchronized text-to-audio-video generation, comprising Kandinsky 6.0 Video Lite (3B parameters) and Kandinsky 6.0 Video Pro (29B parameters). Both models generate 5-second video clips with synchronized 44 kHz audio, including lip-sync, in text-to-audio-video (T2AV) and image-to-audio-video (I2AV) modes; a built-in super-resolution model raises the output resolution to Full-HD (1920$\\times$1080). Building on the video generation capabilities of Kandinsky 5.0, Kandinsky 6.0 Video employs a dual-stream CrossDiT architecture that connects a pretrained video stream and a newly trained audio stream through bidirectional cross-attention for temporal and semantic alignment. Our continuous pretraining strategy first trains the audio stream from scratch on large-scale audio corpora and then trains both streams jointly on paired audio-video data while preserving unimodal fidelity; pretraining is followed by supervised fine-tuning, reinforcement-learning-based post-training, and distillation. In side-by-side human evaluation, Kandinsky 6.0 Video Pro clearly outperforms its predecessor, Kandinsky 5.0 Video Pro, and remains competitive with leading audio-video generation models, particularly in speech quality. To accelerate open research and deployment in multimedia generation, we release the code, model checkpoints, and diffusers integration under the MIT license.",
       "pdf_url": "https://arxiv.org/abs/2610.05608",
       "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "CrossDiT Architecture",
+        "Multimodal Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "AI-powered video editing tools for content creators",
+        "Virtual avatars for customer service and entertainment",
+        "Automated video generation for educational content and training materials"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2512.23065",
+      "title": "TabiBERT: A Large-Scale ModernBERT Foundation Model and A Unified Benchmark for Turkish",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "summary": "arXiv:2512.23065v4 Announce Type: replace Abstract: The introduction of BERT established encoder-only transformer models as a foundational paradigm in natural language processing. Encoder-only models remain the standard tool for classification, tagging and retrieval, where contextual representations and low inference cost matter more than text generation, yet Turkish lacks a monolingual encoder trained from scratch with the advances consolidated in ModernBERT (rotary positional embeddings, FlashAttention, refined normalization). We introduce TabiBERT, a monolingual Turkish encoder based on the ModernBERT architecture, pretrained from scratch for one trillion tokens sampled from an 86.58B-token multi-domain corpus of web text (72%), scientific publications (19%), source code (6%) and mathematical content (0.3%). The model supports a context length of 8,192 tokens, sixteen times that of existing Turkish BERT models, and inherits the ModernBERT architecture's efficiency at long context. For rigorous and reproducible evaluation we introduce TabiBench, a benchmark of 27 datasets across eight task categories with standardized splits and evaluation protocols, summarized as a GLUE-style macro-average on a 0-100 scale. TabiBERT leads the Turkish models in five of eight categories and BERTurk, the previous best, in six of eight; the gains concentrate on question answering (+9.55 F1) and code retrieval (+2.41 NDCG@10), while the four short-text categories are near saturation. Its average of 77.28 exceeds BERTurk's 75.66; the multilingual mmBERT reaches 78.98 with twice the parameters and three times the training tokens, at 41% more tokens per Turkish input. We release model weights, training configurations and evaluation code as a transparent and reproducible foundation for future Turkish encoder research.",
+      "pdf_url": "https://arxiv.org/abs/2512.23065",
+      "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.03036",
-      "title": "WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2610.03036v1 Announce Type: cross Abstract: We present WebFovea, a vision-based web agent that placed 2nd in the WebRetriever Challenge 2026 with a final score of 57.0 out of 100. The challenge evaluates agents end to end on Protocol III of the WebRetriever benchmark (arXiv:2607.06118): starting from an entry URL on a live website, the agent must operate the site's own interface and return a verifiable answer. A capable multimodal large language model (LLM) is necessary for this, but not sufficient. The model's decisions reach the browser through the harness, the code between the model and the page. At every step, four things must go right: the model's reply must be parsed into the intended action, the action must take effect on the page, the result must be reported back accurately, and the model must be shown the information it needs. On real websites, many of the failures we observed occurred at one of these four stages rather than in the model's reasoning. A coordinate-space mismatch placed every click at 3/4 of its intended coordinates; actions on native dropdowns, inside iframes, and in text boxes failed silently; and self-generated chat-template tokens contaminated 4.9% of task episodes. WebFovea hardens each stage and surrounds the loop with guardrails that keep the agent within the rules and its budget. The four-stage view does not depend on the model, although some individual fixes do. Because we used the same model in all four submissions, the rise of our official hidden-set score from 31.0 to 57.0 reflects changes to the harness, up to run-to-run variance on live sites. We describe the design, the evidence for each component (including negative results), a failure analysis, the limitations, and a roadmap that includes routing different steps to different models.",
-      "pdf_url": "https://arxiv.org/abs/2610.03036",
-      "comment": "",
-      "technologies": [
-        "Vision-Based Web Agents",
-        "Multimodal Learning",
-        "Coordinate-Space Mismatch Handling",
-        "Action Execution on Live Websites"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Automated web interaction systems for customer service and support",
-        "AI-powered web scraping and data extraction tools",
-        "Intelligent web navigation assistants for accessibility"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "accessibility",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.03099",
-      "title": "Beyond Single Videos: Benchmarking and Active Evidence Seeking for E-Commerce Cross-Video Reasoning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2610.03099v1 Announce Type: cross Abstract: E-commerce videos are information-dense and frequently compared by consumers evaluating products and merchants assessing marketing strategies. However, existing multimodal models mainly focus on single-video understanding and have limited ability to compare information across videos. We introduce AdsCVR, the first e-commerce cross-video reasoning benchmark, containing 2,483 videos and 6,110 question-answer pairs across six reasoning dimensions. Cross- video reasoning requires models to locate fine-grained evidence among many redundant frames and integrate visual details, speech, and on-screen text. We therefore propose AdSeek, an agentic framework that dynamically selects visual and audio tools during multi-turn exploration, replacing static uniform sampling with active evidence acquisition. To address the sparse credit assignment of reinforcement learning, we develop an offline trajectory rectification mechanism that identifies reasoning errors and missing multimodal evidence in RL-generated trajectories. The corrected trajectories provide supervised fine-tuning signals that reduce biases learned during RL. This mechanism supports a rectified bootstrapping pipeline in which initial RL exposes reasoning bottlenecks, supervised fine-tuning corrects them, and a final RL stage further improves the policy. AdSeek achieves 74.30 percent accuracy on the AdsCVR test split, outperforming its Qwen3-VL-8B-Instruct backbone by 27.90 percentage points. It also generalizes to the open- domain CrossVid benchmark, demonstrating effective active evidence gathering.",
-      "pdf_url": "https://arxiv.org/abs/2610.03099",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.02970",
-      "title": "A Guideline-Augmented Multi-Agent Framework for Schema-as-Code Biomedical Named Entity Recognition",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2610.02970v1 Announce Type: new Abstract: Large language models (LLMs) have shown promising potential for biomedical named entity recognition (BioNER) through instruction following and in-context learning. However, existing LLM-based BioNER methods still face two key limitations. First, retrieved demonstrations and external biomedical knowledge provide limited support for dataset-specific annotation semantics, leaving entity boundaries, type scopes, and annotation conventions ambiguous. Second, free-form generation lacks sufficient structural control, often leading to invalid formats, hallucinated mentions, duplicated entities, and boundary errors. To address these limitations, we propose GAMA, a guideline-augmented multi-agent framework for schema-as-code BioNER. GAMA first induces candidate annotation rules from labeled training instances and verifies them against annotated data to construct reliable dataset-specific guideline memory. Guided by these verified rules, a planning component generates ranked span-type hypotheses with rationales, and a coding component converts them into schema-constrained entity objects. A verification module then checks span grounding, type validity, and structural compliance, and performs dual-loop refinement to correct invalid or low-confidence predictions. Experiments on five widely used BioNER datasets with multiple LLM backbones show that GAMA consistently outperforms strong LLM-based baselines. Ablation and parameter analyses further verify the effectiveness of the proposed components.",
-      "pdf_url": "https://arxiv.org/abs/2610.02970",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2506.05766",
-      "title": "BioMol-MQA: A Multi-Modal Question Answering Dataset For LLM Reasoning Over Bio-Molecular Interactions",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2506.05766v2 Announce Type: replace Abstract: Retrieval augmented generation (RAG) has shown great power in improving Large Language Models (LLMs). However, most existing RAG-based LLMs are dedicated to retrieving single modality information, mainly text; while for many real-world problems, such as healthcare, information relevant to queries can manifest in various modalities such as knowledge graph, text (clinical notes), and complex molecular structure. Thus, being able to retrieve relevant multi-modality domain-specific information, and reason and synthesize diverse knowledge to generate an accurate response is important. To address the gap, we present BioMol-MQA, a new question-answering (QA) dataset on polypharmacy, which is composed of two parts (i) a multimodal knowledge graph (KG) with text and molecular structure for information retrieval; and (ii) challenging questions that designed to test LLM capabilities in retrieving and reasoning over multimodal KG to answer questions. Our benchmarks indicate that existing LLMs struggle to answer these questions and do well only when given the necessary background data, signaling the necessity for strong RAG frameworks.",
-      "pdf_url": "https://arxiv.org/abs/2506.05766",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2609.39378",
-      "title": "EgoTools: Towards Tool-Centric Reasoning in Real-World Egocentric Videos",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-05",
-      "updated": "2026-10-05",
-      "summary": "arXiv:2609.39378v2 Announce Type: replace Abstract: Real-world embodied tasks, from everyday activities to professional procedures, require agents to act under physical constraints while tracking evolving object and task states. Tool use sits at the heart of such tasks, as many everyday and professional activities are tool-mediated. Understanding them requires reasoning about affordances, hand-tool-object geometry, procedural progress, and causal effects on target objects. Yet despite strong performance on perception-oriented video tasks such as captioning and general video QA, current multimodal video models remain limited in this form of tool-centric embodied reasoning. Progress in this direction has been limited by the lack of real-world egocentric data and diagnostic benchmarks. To address this gap, we introduce EgoTools, the first comprehensive suite for egocentric tool-use understanding. It consists of two complementary components: EgoTools-Data, a large-scale corpus of 100 hours of tool-centric egocentric recordings with synchronized audio, dense captions, reasoning-heavy narrations, and supplementary 3D information; and EgoTools-Bench, a diagnostic benchmark of 1,000 QA pairs across four tracks that cover tool-use understanding from perception and geometry to procedure and causal reasoning. Experimental results show that current models still struggle to ground tool use in visual evidence: Gemini-3.1-Pro achieves 66.9% overall accuracy but only 51.7% on Perception & Grounding. Beyond evaluation, we validate EgoTools-Data as a training resource. On the full 1,000-question benchmark, full supervised fine-tuning improves Qwen3-VL-8B-Instruct from 50.0% to 60.9%, under strict source-video separation. Together, these results establish EgoTools as a unified resource for both training and diagnostic evaluation of real-world egocentric tool-use understanding.",
-      "pdf_url": "https://arxiv.org/abs/2609.39378",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
@@ -412,77 +325,172 @@
       "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2610.08761",
+      "title": "VeriFine: Scaling Verification for Self-Improvement in Embodied Reasoning",
+      "authors": [
+        "Zewei Zhou",
+        "Rachel Luo",
+        "Yulong Cao",
+        "Chaowei Xiao",
+        "Chensheng Peng",
+        "Boyi Li",
+        "Thomas Tian",
+        "Zheng Lian",
+        "Yan Wang",
+        "Jiaqi Ma",
+        "Boris Ivanovic",
+        "Marco Pavone",
+        "Wenhao Ding"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-10-06",
+      "updated": "2026-10-06",
+      "summary": "Self-improving policies continually expose new failure patterns, changing what their judges must be able to verify. However, current fixed judges constrain both optimization feedback and the discovery of useful training examples, limiting further self-improvement. This challenge is even more acute in embodied reasoning, where reliable evaluation must account for spatial grounding, causal reasoning, and safety-aware decision-making. We introduce VeriFine, an agent harness framework that scales verification through the co-evolution of the policy, training curriculum, and judge. The Policy Improvement Loop uses a rubric judge to diagnose recurring failures, construct an adaptive curriculum, and optimize the policy. When progress plateaus and verification becomes a bottleneck, the Judge Improvement Loop selectively queries human guidance on informative failure cases and refines the judge through coactive calibration, in which humans and agents resolve disagreements and converge toward the objective rubric of physical reasoning. The revised judge then guides the next stage of data selection and policy optimization. Experiments on driving and robot navigation tasks demonstrate continuous self-improvement in both policy and judge capability across reinforcement and supervised fine-tuning. These results show how scaling verification supports continuous self-improvement as policy failure patterns evolve.",
+      "pdf_url": "https://arxiv.org/pdf/2610.08761v1",
+      "comment": "Project Website: https://veri-fine.github.io/",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.08539",
+      "title": "RSJEV: Discriminative Remote Sensing Scene Classification with Multimodal Large Language Models",
+      "authors": [
+        "Dongchen Si",
+        "Di Wang",
+        "Mingzhen Xu",
+        "Jing Zhang",
+        "Bo Du",
+        "Liangpei Zhang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-06",
+      "updated": "2026-10-06",
+      "summary": "Remote sensing scene classification is a fundamental task in Earth observation and geospatial analysis. Existing approaches mainly follow three paradigms: task-specific visual classification, vision-language similarity matching, and autoregressive multimodal generation. However, visual classifiers rely on predefined label spaces, CLIP-based methods perform recognition through static image-text alignment, and multimodal large language models (MLLMs) introduce unnecessary token-level generation for classification tasks with explicit candidate categories. To address these limitations, we propose RSJEV, a one-pass multimodal decision framework for remote sensing scene classification. Unlike conventional MLLMs that formulate classification as autoregressive text generation, RSJEV reformulates scene classification as a candidate-conditioned multimodal discriminative decision process, where visual representations, task instructions, and candidate category semantics are jointly modeled. Specifically, we introduce a OnePass Decider that extracts multimodal decision states and directly estimates category probabilities within the candidate category space, eliminating autoregressive decoding while preserving vision-language interactions. Extensive experiments on three widely used remote sensing scene classification benchmarks, including UC Merced, AID, and NWPU-RESISC45, demonstrate that RSJEV achieves superior classification performance compared with representative CNN-, Transformer-, Mamba-, CLIP-, and MLLM-based methods. Moreover, RSJEV significantly reduces inference costs and achieves a better accuracy-efficiency trade-off with only a compact 0.8B-parameter model. These results demonstrate the effectiveness of state-conditioned multimodal decision making for efficient remote sensing image understanding. The code will be available at https://github.com/Dongtcs/RSJEV.",
+      "pdf_url": "https://arxiv.org/pdf/2610.08539v1",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2503.14858",
+      "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "summary": "arXiv:2503.14858v5 Announce Type: replace-cross Abstract: Scaling up self-supervised learning has driven breakthroughs in language and vision, yet comparable progress has remained elusive in reinforcement learning (RL). In this paper, we study building blocks for self-supervised RL that unlock substantial improvements in scalability, with network depth serving as a critical factor. Whereas most RL papers in recent years have relied on shallow architectures (around 2 - 5 layers), we demonstrate that increasing the depth up to 1024 layers can significantly boost performance. Our experiments are conducted in an unsupervised goal-conditioned setting, where no demonstrations or rewards are provided, so an agent must explore (from scratch) and learn how to maximize the likelihood of reaching commanded goals. Evaluated on simulated locomotion and manipulation tasks, our approach increases performance on the self-supervised contrastive RL algorithm by $2\\times$ - $50\\times$, outperforming other goal-conditioned baselines. Increasing the model depth not only increases success rates but also qualitatively changes the behaviors learned. The project webpage and code can be found here: https://wang-kevin3290.github.io/scaling-crl/.",
+      "pdf_url": "https://arxiv.org/abs/2503.14858",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2603.04364",
+      "title": "Dual-Modality Multi-Stage Adversarial Safety Training: Robustifying Multimodal Web Agents Against Cross-Modal Attacks",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "summary": "arXiv:2603.04364v2 Announce Type: replace-cross Abstract: Multimodal web agents that process both screenshots and accessibility trees are increasingly deployed to interact with web interfaces, yet their dual-stream architecture opens an underexplored attack surface: an adversary who injects content into the webpage DOM simultaneously corrupts both observation channels with a consistent deceptive narrative. Our vulnerability analysis on MiniWob++ reveals that attacks including a visual component far outperform text-only injections, exposing critical gaps in text-centric VLM safety training. Motivated by this finding, we propose Dual-Modality Multi-Stage Adversarial Safety Training (DMAST), a framework that formalizes the agent-attacker interaction as a two-player general-sum Markov game and co-trains both players through a three-stage pipeline: (1) imitation learning from a strong teacher model, (2) oracle-guided supervised fine-tuning that uses a novel zero-acknowledgment strategy to instill task-focused reasoning under adversarial noise, and (3) adversarial reinforcement learning via Group Relative Policy Optimization (GRPO) self-play. On out-of-distribution tasks, DMAST nearly halves the attack success rate (41.2\\%$\\rightarrow$21.4\\%) while raising task completion by over 60\\% relative (6.2\\%$\\rightarrow$10.2\\%). Our approach outperforms established training-based defenses and complements prompt-based defenses, demonstrating genuine co-evolutionary progress and robust generalization to complex, unseen environments. Code is available at https://github.com/huajianduzhuo-code/DMAST_official.",
+      "pdf_url": "https://arxiv.org/abs/2603.04364",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.07868",
+      "title": "CueRator: Agentic Search for Symbolic Rules to Adapt Frozen Multimodal Encoders",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "summary": "arXiv:2610.07868v1 Announce Type: new Abstract: Large language model agents have been used to search over symbolic structures such as programs and equations. We propose CueRator, an agentic framework for policy-aware decision-rule discovery, which adapts frozen contrastive multimodal encoders by searching for the decision rule that converts their cross-modal similarities into predictions. We validate it on open-vocabulary audio-visual event perception, where existing methods involve a trade-off between adaptivity and generalization to unseen categories: trained modules adapt at the cost of generalization, and fixed rules the reverse. The framework pairs a symbolic formulation for generalization with a lightweight policy that predicts its parameters per video for adaptivity. A report-guided multi-agent loop discovers the formulation offline, evaluating each candidate on its expressive ceiling and on whether a trained policy can realize it. On OV-AVEBench, CueRator raises the total average from 57.8 to 60.2 and unseen-category performance from 55.8 to 59.9 over the best existing method, reducing the seen-unseen gap from 7.1 to 1.2. Ablations attribute the gains to both the formulation and the policy and show that both feedback signals are necessary for effective search. CueRator also improves over the respective baselines on two further audio-visual event perception tasks, and the discovered rule remains competitive across encoders with only the policy retrained. Code is available at https://github.com/cvsp-lab/cuerator.",
+      "pdf_url": "https://arxiv.org/abs/2610.07868",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
     {
       "name": "Graph Neural Networks",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
         "science",
-        "other"
+        "other",
+        "education"
       ]
     },
     {
       "name": "Benchmarking",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
         "science",
-        "other"
+        "other",
+        "education"
       ]
     },
     {
       "name": "Evaluation Protocols",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
         "science",
-        "other"
+        "other",
+        "education"
       ]
     },
     {
       "name": "Plan-then-Code Paradigm",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
         "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Symbolic Planning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "accessibility"
+        "other",
+        "education"
       ]
     },
     {
@@ -493,64 +501,62 @@
       "trend": "rising",
       "applications": [
         "enterprise",
-        "robotics",
         "education",
-        "accessibility",
+        "robotics",
         "creative",
         "healthcare",
-        "other"
+        "science"
       ]
     },
     {
       "name": "Latent Visual Memory",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "education",
-        "science",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Sparse Attention",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Retrieval Augmented Generation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "education",
-        "healthcare"
+        "healthcare",
+        "education"
       ]
     },
     {
       "name": "Tool-Augmented Reinforcement Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -561,8 +567,8 @@
     {
       "name": "Causal-Transition Reasoning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
         "robotics",
@@ -571,49 +577,117 @@
       ]
     },
     {
-      "name": "Direct Preference Optimization",
+      "name": "Long Video Understanding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
+      "confidence": 0.6,
+      "trend": "rising",
       "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Video Question Answering",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Temporal Grounding",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Video Moment Retrieval",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Multi-hop Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Benchmark Evaluation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "education"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "creative"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
         "education",
+        "robotics",
+        "creative",
         "science"
       ]
     },
     {
-      "name": "Vision-Based Web Agents",
+      "name": "CrossDiT Architecture",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
       "applications": [
-        "accessibility",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Coordinate-Space Mismatch Handling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Action Execution on Live Websites",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "other",
+        "creative",
+        "education",
         "enterprise"
       ]
     }
