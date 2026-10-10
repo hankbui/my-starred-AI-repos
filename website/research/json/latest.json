@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-09",
+    "date": "2026-10-10",
     "papers_tracked": 15,
-    "technologies_discovered": 30,
+    "technologies_discovered": 22,
     "opportunities_identified": 0,
-    "last_update": "2026-10-09 12:03 UTC",
+    "last_update": "2026-10-10 11:18 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,7 +13,7 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "30",
+      "value": "22",
       "label": "discovered this scan",
       "detail": "Group Relative Policy Optimization (GRPO), Agentic Benchmarks, Long-Horizon Planning, Reinforcement Learning Environments, Reward Hardening, Scripted Anchor Policies, Autonomous Agent Evaluation, Simulated Commerce Environments",
       "color": "accent"
@@ -21,15 +21,15 @@
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "30",
+      "value": "22",
       "label": "active trend clusters",
-      "detail": "Group Relative Policy Optimization (GRPO), Agentic Benchmarks, Long-Horizon Planning, Reinforcement Learning Environments, Reward Hardening",
+      "detail": "Spiking Neural Networks (SNNs), Quantized ANN2SNN Conversion, Spike-Driven-Max (SDM) Depth Distribution (Spike-3D-Lift), Spiking Query Transformer (Spike-QFormer), Deformable Spike-Cross-Attention",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "8.2",
+      "value": "8.1",
       "label": "avg opportunity score",
       "detail": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous O",
       "color": "amber"
@@ -53,7 +53,7 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "17",
+      "value": "13",
       "label": "early-stage technologies",
       "detail": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous O",
       "color": "blue"
@@ -129,75 +129,6 @@
       ]
     },
     {
-      "id": "2610.08959",
-      "title": "GraphOPD: Graph-Augmented On-Policy Distillation for LLM Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2610.08959v1 Announce Type: cross Abstract: On-policy distillation post-trains large language model agents by supplying dense, step-level guidance from a teacher policy when the reinforcement-learning reward is sparse and arrives only once per trajectory. Existing instantiations allocate this guidance by the size of the teacher-student divergence at each step, on the single-turn intuition that a large disagreement marks a mistake worth correcting. Once decisions chain over many turns, that rule misfires, since an early drift enters every later context both policies condition on, leaving the teacher consistent with the drifted trajectory instead of flagging its cause, while interchangeable steps register large but outcome-irrelevant divergences. We demonstrate this on an agentic benchmark, where distilling the highest-divergence steps brings no consistent benefit over random selection. To this end, we introduce GraphOPD, the first method to bring graph-based structural augmentation into on-policy distillation for agent capabilities. It reads which steps enabled which later ones from the environment's own record of state changes, immune to the drift that corrupts the teacher-student gap, organizes them into a dependency graph, scores each step by a random-walk stationary distribution over it, and fuses that structural credit with the divergence signal into a trajectory-relative mask concentrating supervision on each rollout's highest-aptitude steps. Across three model scales and eleven baselines on ALFWorld, WebShop, and SearchQA, GraphOPD shows competitive performance throughout, improving over the strongest baseline by up to +5.8 pp. An executed-replay audit further shows that this structural credit score tracks true causal impact far above chance, that both fused signals are independently necessary, and that the same signal transfers to out-of-domain tool-integrated reasoning.",
-      "pdf_url": "https://arxiv.org/abs/2610.08959",
-      "comment": "",
-      "technologies": [
-        "On-Policy Distillation",
-        "Knowledge Distillation",
-        "Reinforcement Learning",
-        "LLM Agents",
-        "Graph-based Credit Assignment",
-        "Random Walk Analysis",
-        "Teacher-Student Distillation",
-        "Trajectory-level Supervision"
-      ],
-      "maturity": "early",
-      "confidence": 0.75,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enterprise workflow automation systems with improved multi-step reasoning and error recovery",
-        "Autonomous AI assistants for complex task completion in customer service and technical support",
-        "Research and development agents capable of systematic scientific investigation and tool orchestration"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2505.08854",
-      "title": "Generative AI for Autonomous Driving: Frontiers and Opportunities",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2505.08854v2 Announce Type: replace-cross Abstract: Generative Artificial Intelligence (GenAI) constitutes a transformative technological wave that reconfigures industries through its unparalleled capabilities for content creation, reasoning, planning, and multimodal understanding. This revolutionary force offers the most promising path yet toward solving one of engineering's grandest challenges: achieving reliable, fully autonomous driving, particularly the pursuit of Level 5 autonomy. This survey delivers a comprehensive and critical synthesis of the emerging role of GenAI across the autonomous driving stack. We begin by distilling the principles and trade-offs of modern generative modeling, encompassing VAEs, GANs, Diffusion Models, and Large Language Models (LLMs). We then map their frontier applications in image, LiDAR, trajectory, occupancy, video generation as well as LLM-guided reasoning and decision making. We categorize practical applications, such as synthetic data workflows, end-to-end driving strategies, high-fidelity digital twin systems, smart transportation networks, and cross-domain transfer to embodied AI. We identify key obstacles and possibilities such as comprehensive generalization across rare cases, evaluation and safety checks, budget-limited implementation, regulatory compliance, ethical concerns, and environmental effects, while proposing research plans across theoretical assurances, trust metrics, transport integration, and socio-technical influence. By unifying these threads, the survey provides a forward-looking reference for researchers, engineers, and policymakers navigating the convergence of generative AI and advanced autonomous mobility. An actively maintained repository of cited works is available at https://github.com/taco-group/GenAI4AD.",
-      "pdf_url": "https://arxiv.org/abs/2505.08854",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Large Language Models",
-        "Multimodal Learning",
-        "Depth Estimation",
-        "Object Detection"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Autonomous driving simulation and training platform",
-        "Generative AI-powered digital twin for smart transportation networks",
-        "LLM-guided decision-making system for autonomous vehicles"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
       "id": "2610.11583",
       "title": "SDPAD: A Fully Spike-Driven Pipeline for End-to-End Autonomous Driving",
       "authors": [],
@@ -209,12 +140,24 @@
       "summary": "arXiv:2610.11583v1 Announce Type: cross Abstract: End-to-end autonomous driving demands trajectory planners that are both highly accurate and cheap enough for edge deployment. State-of-the-art artificial neural network (ANN) planners meet the accuracy requirement at the cost of heavy dense computation, while spiking neural networks (SNNs)---though promising orders-of-magnitude energy savings through sparse, event-driven arithmetic---still lag far behind in planning accuracy. We present \\textbf{SDPAD}, a fully spike-driven end-to-end planning pipeline that closes this gap. SDPAD converts a pre-trained ANN perception stack into integer-spike form via quantized ANN2SNN conversion, lifts multi-view images into the bird's-eye-view (BEV) space with a spike-driven-max (SDM) depth distribution (Spike-3D-Lift), and plans through the Spike-QFormer, a spiking query transformer in which ego, agent, and map queries distilled from the BEV scene are fused by learnable waypoint queries via cross-attention, followed by deformable spike-cross-attention refinement. Every operation is gated by integer spikes and inference is a single feed-forward pass without temporal simulation loops. On the nuScenes open-loop benchmark, SDPAD achieves an average $L_2$ error of 0.40\\,m and a collision rate of 0.12\\%, on par with strong ANN planners while consuming 69.9\\,mJ---less than 2\\% of recent ANN baselines. In closed-loop evaluation on the NAVSIM navtest split, SDPAD reaches 86.3 PDMS, surpassing the previous SNN planner SAD by 4.3 points and matching mainstream ANN planners at a fraction of their energy. To our knowledge, SDPAD is the first fully spike-driven planner evaluated in end-to-end autonomous driving, demonstrating that SNNs can rival dense ANNs in complex driving tasks.",
       "pdf_url": "https://arxiv.org/abs/2610.11583",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Spiking Neural Networks (SNNs)",
+        "Quantized ANN2SNN Conversion",
+        "Spike-Driven-Max (SDM) Depth Distribution (Spike-3D-Lift)",
+        "Spiking Query Transformer (Spike-QFormer)",
+        "Deformable Spike-Cross-Attention"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Energy-efficient autonomous driving systems for edge devices",
+        "Real-time, low-power end-to-end trajectory planning for autonomous vehicles"
+      ],
+      "domain_applications": [
+        "robotics",
+        "automotive"
+      ]
     },
     {
       "id": "2610.11918",
@@ -228,317 +171,24 @@
       "summary": "arXiv:2610.11918v1 Announce Type: cross Abstract: Recent multimodal large language models (MLLMs) increasingly incorporate explainable reasoning for emotion understanding. However, reasoning based mainly on observable affective cues can reduce emotion understanding to superficial cue-label associations, giving rise to the Clever Hans effect. Such shortcuts become unreliable when affective cues are implicit, conflicting across modalities, linguistically misleading, or obscured by redundant details. In contrast, human emotions are shaped by how individuals interpret and evaluate surrounding events beyond observable cues. Inspired by appraisal theories of emotion, we formulate multimodal emotion understanding as a progression from perception to cognitive appraisal, and introduce a dataset, a model, and a benchmark to support this novel paradigm. CogEmo-40K is a large-scale instruction-tuning dataset constructed through a perception-to-appraisal pipeline to elicit evidence-grounded reasoning across six cognitive appraisal dimensions underlying emotion. CogEmo-MoE is a compact sparse MLLM that introduces interleaved MoE blocks for appraisal-specific adaptation, enabling effective appraisal reasoning at a substantially smaller scale than typical emotion MLLMs. CogEmo-Bench introduces an Appraisal Evidence Quality Score (AEQS) to assess cognitive-affective understanding across six complementary appraisal dimensions, addressing the limitation of conventional emotion metrics that evaluate what emotion is predicted but not why it arises. Extensive experiments show that our paradigm not only leads CogEmo-Bench, but also exhibits strong cross-domain generalization. Our findings suggest that perception-to-appraisal reasoning can move beyond surface-level cue-label associations toward more reliable multimodal emotion understanding and closer cognitive alignment between MLLMs and humans.",
       "pdf_url": "https://arxiv.org/abs/2610.11918",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.05387",
-      "title": "GNN-CB: A Graph Neural Network Competition Benchmark for Human and LLM Evaluation",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-06",
-      "updated": "2026-10-06",
-      "summary": "arXiv:2610.05387v1 Announce Type: cross Abstract: Large language models (LLMs) have demonstrated strong performance on coding and reasoning benchmarks; however, their ability to solve graph-structured machine learning problems remains largely unexplored. In particular, no benchmark currently evaluates whether LLMs can autonomously solve end-to-end Graph Neural Network (GNN) coding tasks under realistic competition settings. To address this gap, this paper introduces GNN-CB, the first competition-based benchmark for evaluating both humans and LLMs on GNN coding tasks. GNN-CB consists of 18 curated competitions spanning node-, edge-, and graph-level prediction across diverse graph categories, domains, and difficulty tiers. All submissions are evaluated through a unified automated pipeline with hidden test sets and standardized scoring. Human participants solve tasks under controlled competition constraints, while LLMs are evaluated using a frozen zero-shot prompting protocol based on a plan-then-code paradigm with bounded execute-and-repair loops. The benchmark additionally supports both non-agent and autonomous agent-based evaluation within the same protocol. Under our evaluated protocol, LLMs rarely match Human Top performance and show less stable performance across competitions. No single model dominates: a few competitions are won by LLMs, yet humans still hold the top score on most tasks. We release GNN-CB as a living benchmark with automated evaluation infrastructure, dynamic leaderboards, and reproducible execution pipelines. Beyond benchmarking, GNN-CB provides a practice-oriented resource for studying GNN implementation across progressively diverse graph-learning tasks. The benchmark and evaluation framework are publicly available at https://basiralab.github.io/GNN-CB/.",
-      "pdf_url": "https://arxiv.org/abs/2610.05387",
-      "comment": "",
       "technologies": [
-        "Graph Neural Networks",
-        "Benchmarking",
-        "Evaluation Protocols",
-        "Plan-then-Code Paradigm"
+        "Multimodal Learning",
+        "Mixture of Experts",
+        "Cognitive Appraisal Reasoning"
       ],
       "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.7,
+      "confidence": 0.7,
+      "curator_score": 6.0,
       "product_potential": [
-        "An interactive educational platform for learning GNN implementation through competitive coding challenges.",
-        "A benchmarking tool for AI researchers to evaluate the performance of LLMs and humans on graph-structured tasks."
+        "Affective computing platform for mental health monitoring and support",
+        "Multimodal emotion analysis tool for customer experience improvement in enterprises",
+        "AI-driven educational assistant that adapts to student emotional states"
       ],
       "domain_applications": [
+        "healthcare",
         "education",
-        "science",
-        "other"
+        "enterprise"
       ]
-    },
-    {
-      "id": "2610.08813",
-      "title": "Pre-training, Reasoning, Benchmarking: X-ray Report Generation on CheXpert Plus Dataset",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2610.08813v1 Announce Type: cross Abstract: X-ray image-based Radiology Report Generation (RRG) constitutes a critical research direction within medical artificial intelligence, with great potential to alleviate clinicians' diagnostic workload and shorten patient waiting periods. Despite substantial advances over recent years, the field faces evident bottlenecks stemming from insufficient standardized benchmarks and inadequate domain adaptation of generic large models. Notably, the newly released CheXpert Plus dataset is provided without accompanying baseline implementations and evaluation results, which impedes standardized training, quantitative evaluation and fair comparison among follow-up algorithms. To mitigate this limitation, we establish a comprehensive benchmark encompassing prevailing X-ray report generation models and Large Language Models on CheXpert Plus. This benchmark delivers a reliable comparative foundation for upcoming methods and enables researchers to rapidly identify state-of-the-art approaches within this domain. Beyond benchmark construction, we rethink X-ray RRG under the paradigm of large models and propose a novel framework termed MambaXray-PRB. Our framework improves report generation performance and enhances model interpretability via multi-stage large-model pre-training and multi-modal Chain-of-Thought reasoning. The pipeline consists of three successive phases: self-supervised auto-regressive modeling, X-ray-report contrastive learning, and post-training optimization for reasoning and report generation. Extensive experiments on IU X-ray, MIMIC-CXR, and CheXpert Plus datasets validate the effectiveness of MambaXray-PRB for radiology report generation. The source code of this paper is available on https://github.com/Event-AHU/Medical_Image_Analysis",
-      "pdf_url": "https://arxiv.org/abs/2610.08813",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.09858",
-      "title": "Training Advisors for LLM Agents from Task Outcomes",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2610.09858v1 Announce Type: cross Abstract: Large language model agents tackle multi-step tasks by interleaving reasoning and tool calls with observations from the environment. Prior work has shown that natural-language feedback can help these agents revise their decisions during task execution. We introduce Caddie, a method for training critics to provide natural-language analysis and advice as agents work through a task. Unlike approaches that rely on step-level labels or reference critiques, Caddie learns from whether the agent ultimately succeeds after receiving the critic's feedback. We optimize the critic through reinforcement learning while keeping the base model frozen. Trained on multi-hop question answering with a single base model, our Qwen3-4B critic improves success rates across four base models of different scales and architectures, including three not used during critic training. On the MuSiQue benchmark, the trained critic improves Qwen3-4B's success rate by more than 25 percentage points, surpassing the performance of Kimi K3 without a critic. The same critic also yields gains on out-of-domain interactive benchmarks, including $\\tau^3$ and DeepDive, with no additional training. Our results show that agents can decide when to seek help from a critic at inference time and that outcome-based critic training can produce guidance that transfers across base models and task domains.",
-      "pdf_url": "https://arxiv.org/abs/2610.09858",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2607.10286",
-      "title": "Can Agentic Trading Systems Pay for Their Own Intelligence?",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2607.10286v3 Announce Type: replace Abstract: Large language model (LLM) agents are increasingly used in trading systems, where model reasoning, tool use, and continual decisions incur costs that are expected to produce trading value. Existing evaluations typically report performance metrics, but rarely examine agentic viability: whether dynamic LLM-mediated decisions convert their induced costs into measurable incremental profit. To apply this criterion, we introduce TradeLens, a trace-grounded diagnostic toolkit for evaluating agentic trading systems from their trading records, runtime traces, and deployment configurations. It reconstructs trading trajectories, attributes profit and cost to interpretable evidence, and diagnoses whether and why an agent pays for its own intelligence. We conduct extensive analysis across backbone models, capital scales, trading frequencies, and system architectures, together with deployment discussion. Our results show that viability hinges on intelligence-to-profit conversion: models exhibit different failure patterns, such as poor asset selection in DeepSeek-V3.2 and negative timing in GLM-4.7, while capital scale, trading frequency, and architecture matter primarily in these runs, especially through their effects on decision-attributed timing value. These findings reframe the evaluation of LLMbased trading agents from capability-centric performance ranking to trace-grounded diagnosis of intelligence-to-profit conversion. Our code is available at https://github.com/ParadooxAI/TradeLens.",
-      "pdf_url": "https://arxiv.org/abs/2607.10286",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.03036",
-      "title": "WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "arXiv:2610.03036v2 Announce Type: replace-cross Abstract: We present WebFovea, a vision-based web agent that placed 2nd in the WebRetriever Challenge 2026 with a final score of 57.0 out of 100. The challenge evaluates agents end to end on Protocol III of the WebRetriever benchmark (arXiv:2607.06118): starting from an entry URL on a live website, the agent must operate the site's own interface and return a verifiable answer. A capable multimodal large language model (LLM) is necessary for this, but not sufficient. The model's decisions reach the browser through the harness, the code between the model and the page. At every step, four things must go right: the model's reply must be parsed into the intended action, the action must take effect on the page, the result must be reported back accurately, and the model must be shown the information it needs. On real websites, many of the failures we observed occurred at one of these four stages rather than in the model's reasoning. A coordinate-space mismatch placed every click at 3/4 of its intended coordinates; actions on native dropdowns, inside iframes, and in text boxes failed silently; and self-generated chat-template tokens contaminated 4.9% of task episodes. WebFovea hardens each stage and surrounds the loop with guardrails that keep the agent within the rules and its budget. The four-stage view does not depend on the model, although some individual fixes do. Because we used the same model in all four submissions, the rise of our official hidden-set score from 31.0 to 57.0 reflects changes to the harness, up to run-to-run variance on live sites. We describe the design, the evidence for each component (including negative results), a failure analysis, the limitations, and a roadmap that includes routing different steps to different models. Code is available at https://github.com/jianganghan/WebFovea.",
-      "pdf_url": "https://arxiv.org/abs/2610.03036",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.12310",
-      "title": "Is In-Domain Training Enough for Fine-Grained Industrial Anomaly Understanding?",
-      "authors": [
-        "Xingwu Zhang",
-        "Duanyang Du",
-        "Huiling Zhu",
-        "Jiayue Dai",
-        "Yixiao Liu",
-        "Guozhi Liu",
-        "Zhihan Zhang",
-        "Zijun Long"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "A single multimodal large language model (MLLM) struggles to excel simultaneously at detection, localization, description, and reasoning in multimodal industrial anomaly understanding (MM-IAU). We show that in-domain training does not close this gap. On MMAD, a widely adopted MM-IAU benchmark, trained specialists reach at most 75.5% accuracy in defect localization, against 92.3% for human experts, and even detect anomalies less accurately than their untrained base model. Meanwhile, different MLLMs offer complementary strengths but share this weakness in fine-grained perception, so combining them alone cannot remove it. We therefore propose SiGMA, a spatially grounded multi-agent framework that divides labor between heterogeneous MLLM agents and a dedicated visual defect expert. A multimodal searcher supplies industrial knowledge and normal references, the defect expert turns query-reference comparison into calibrated anomaly evidence, and a label-free reliability controller weighs each source by task-wise competence and query-level evidence quality. SiGMA reaches 85.2% average accuracy on MMAD, 4.0% above the strongest trained specialist and Gemini-2.5-Pro and within 1.5% of human experts. Even with three agents of at most 9B parameters, it reaches 84.4%, and new MLLMs join without retraining.",
-      "pdf_url": "https://arxiv.org/pdf/2610.12310v1",
-      "comment": "21 pages, 5 figures, 8 tables",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.11959",
-      "title": "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement",
-      "authors": [
-        "Xiaomi LLM-Core Team",
-        ":",
-        "Zongming Qiao",
-        "Ziyue Hua",
-        "Zirui Ou",
-        "Zihao Yue",
-        "Zihan Jiang",
-        "Zhuo Huang",
-        "Zhiyang Chen",
-        "Zhixian Zheng",
-        "Zhipeng Xu",
-        "Zhengrui Ma",
-        "Yuyang Hu",
-        "Yuhang Dong",
-        "Yuechen Zhang",
-        "Yudong Wang",
-        "Yuanxin Liu",
-        "Yixin Yang",
-        "Yishuo Cai",
-        "Yikai Zhao",
-        "Yihan Yan",
-        "Yifan Zhang",
-        "Yifan Song",
-        "Xiyu Wei",
-        "Xing Zhang",
-        "Xin Zhang",
-        "Xiaoqian Liu",
-        "Xiaodong Ji",
-        "Xiangwei Deng",
-        "Xueyu Guo",
-        "Wenhan Ma",
-        "Weimin Xiong",
-        "Weikun Wang",
-        "Weiji Zhuang",
-        "Shuo Liu",
-        "Shuhuai Ren",
-        "Shuhao Gu",
-        "Shimao Chen",
-        "Shijie Cao",
-        "Shihua Yu",
-        "Shicheng Li",
-        "Shengjie Zhou",
-        "Shaolei Zhang",
-        "Rang Li",
-        "Qiying Wang",
-        "Qingkai Fang",
-        "Qianli Chen",
-        "Minzheng Wang",
-        "Liwen Wang",
-        "Linli Yao",
-        "Linghao Zhang",
-        "Liangyu Cheng",
-        "Liang Zhao",
-        "Lei Li",
-        "Jinhao Dong",
-        "Jinyu Xiang",
-        "Jianyu Wei",
-        "Jiangshan Duo",
-        "Huaqiu Liu",
-        "Huanjie Fan",
-        "Hongyi Guan",
-        "Hongshen Xu",
-        "Hao Tian",
-        "Hanyu Li",
-        "Hailin Zhang",
-        "Gang Wang",
-        "Fuli Luo",
-        "Feng Wei",
-        "Dong Zhang",
-        "Dawei Zhu",
-        "Chiheng Lou",
-        "Chenhong He",
-        "Chenhao He",
-        "Chenghua Liu",
-        "Bowen Ye",
-        "Bowen Shen",
-        "Boshen Xu",
-        "Bo Yang",
-        "Bingquan Xia",
-        "Bangjun Xiao",
-        "Baixuan Xu",
-        "Zhouxiang Mao",
-        "Zhiyang Zhang",
-        "Zhixiang Xu",
-        "Zhenru Lin",
-        "Zhengju Tang",
-        "Zhaojun Huang",
-        "Yuzhe Weng",
-        "Yuxing Xiang",
-        "Yuxiao Li",
-        "Yuheng Yang",
-        "Yuhang Wang",
-        "Yuchen Liu",
-        "Yuanyuan Tian",
-        "Yuanliang Dong",
-        "Yu Cheng",
-        "Yongzhe He",
-        "Yongshun Liang",
-        "Yong Wang",
-        "Yiyan Wang",
-        "Yitian Gong",
-        "Yijie Zhang",
-        "Yanshu Xin",
-        "Xun Zhang",
-        "Xingjian Zhao",
-        "Wenyu Yang",
-        "Wenshan Huang",
-        "Wenhao Li",
-        "Tingwei Huang",
-        "Tianyu Yu",
-        "Tianyang Lu",
-        "Taoyu Yang",
-        "Sinan Du",
-        "Shutong Tian",
-        "Shulin Du",
-        "Shengfan Wang",
-        "Shanchuan Fang",
-        "Qihao Zhang",
-        "Qibin Yang",
-        "Qian Yu",
-        "Qian Tu",
-        "Pengrong Xie",
-        "Peipei Wang",
-        "Peidian Li",
-        "Minkun Guo",
-        "Mingchen Shao",
-        "Luohan Gao",
-        "Lijie Wang",
-        "Liang Shi",
-        "Kaiqi Chen",
-        "Kaiming Liu",
-        "Kaifei Wang",
-        "Kai Yang",
-        "Jinlong Xue",
-        "Jiechen Zhang",
-        "Jiaxuan Liu",
-        "Hongxu An",
-        "Hao Peng",
-        "Hanglong Lü",
-        "Guonan Wang",
-        "Feiyu Yang",
-        "Fanyu Cao",
-        "Fangyue Liu",
-        "Fan Cui",
-        "Cong Wang",
-        "Chun Chen",
-        "Chenxu Bai",
-        "Chengxuan Zhu",
-        "Chenghua Wang",
-        "Boyi Zeng"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-08",
-      "updated": "2026-10-08",
-      "summary": "Reinforcement learning (RL) is the central training paradigm for advancing large foundation models towards self-improvement. This report introduces the MiMo-V2.6 series, an omni-modal family that pushes the frontier of model intelligence by scaling RL compute. Prior to RL, we conduct mid-training on a broad multimodal corpus to provide ample exploration space, and build a solid infrastructure on the pretrained hybrid-SWA architecture to support subsequent scale-up. We scale RL compute along three dimensions: (1) larger batches and higher throughput, with an asynchronous training that consumes 1,568 samples and 2.7-3.7B tokens per step at context lengths of up to 1M; (2) more diverse and complex environments, spanning code, general, visual, and cyber domains under a mixture of agent harnesses; and (3) more grader compute, via groupwise agentic grading that yields more accurate reward signals for long-horizon tasks and steers the model towards shorter, more token-efficient solutions. To keep training stable at scale, we freeze the MoE router and establish a multi-layer defense against reward hacking. We further build infrastructure for mixed-task agentic RL, including a unified trajectory representation, high-concurrency multi-framework rollout, decoupled control and data planes, and training-inference consistency. We open-source the training dynamics, RL environments, and RL framework to facilitate reproduction and further research on scaled RL and model self-improvement.",
-      "pdf_url": "https://arxiv.org/pdf/2610.11959v1",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
     },
     {
       "id": "2610.11317",
@@ -552,12 +202,23 @@
       "summary": "arXiv:2610.11317v1 Announce Type: new Abstract: Mixture-of-Experts (MoE) architectures have become essential for scaling large language models, with recent work demonstrating the benefits of fine-grained expert designs. Training such models from scratch is expensive, and sparse upcycling from pre-trained dense models is an attractive alternative. However, we identify a structural pathology of fine-grained upcycling: when fine-grained experts are derived from a single source model, naive routing collapses and downstream accuracy drops to near-random (e.g., on Qwen3-1.7B, Drop-Upcycling-fine-grained reaches only 23.2% average accuracy across 15 benchmarks, essentially matching from-scratch training at 22.2%, while the same method's coarse-grained variant reaches 50.2%). We propose DivMoE, the first framework achieving fine-grained MoE Upcycling with structurally-balanced routing. DivMoE introduces domain-specialized fine-grained expert initialization, deriving experts from dense models that have undergone domain-adaptive continual pre-training, and diversity-constrained routing, a hard structural constraint guaranteeing that each token activates experts from distinct domain groups. Across two base models and 15 benchmarks, DivMoE consistently outperforms six upcycling baselines (55.6% vs. 51.6% for the strongest baseline on Qwen3-1.7B) and strictly improves over the dense base model on every benchmark after Stage 2 continual pre-training -- closing the regression gap that has plagued prior fine-grained upcycling. After supervised fine-tuning on a public reasoning mixture, our 12B-parameter DivMoE model matches Moonlight-MoE (16B) at 64.5% average accuracy while outperforming a controlled NVIDIA-Upcycling baseline by 6.1 percentage points.",
       "pdf_url": "https://arxiv.org/abs/2610.11317",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Mixture of Experts",
+        "Knowledge Distillation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Domain-specific AI assistants that leverage fine-grained MoE upcycling for specialized tasks",
+        "Enhanced large language models with improved accuracy and efficiency through fine-grained expert composition"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
     },
     {
       "id": "2610.11502",
@@ -577,358 +238,431 @@
       "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2610.11696",
+      "title": "A 3D Characterization Framework for Intelligent Sequential Decision Making",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.11696v1 Announce Type: new Abstract: Puzzles are widely used to evaluate the reasoning capabilities of artificial intelligence (AI) systems for sequential decision making, yet approaches originating from different paradigms are rarely compared under unified conditions. To address this gap, we introduce a three-dimensional characterization framework that enables the analysts of AI methods by 1) projecting them to the Markov decision process (MDP) sequential decision making formalism, 2) degree of autonomy through human prior ranking of their designs and, 3) skill and computational cost. Using this framework, we analyze how representative graph-based, reinforcement learning, and large language model (LLM)-based approaches differ in their design choices and performance characteristics, instantiated respectively by Neurosolver, forward-backward reinforcement learning (FBRL), and automated thought-of-search (AutoToS), including a double-agent extension of thought-of-search (DA-ToS). The analysis relies on the Tower of Hanoi puzzle that provides a controlled benchmark with well-defined rules and scalable complexity, enabling consistent comparison across increasing problem sizes. The 3D characterization reveals that LLM-based methods, due to their weakly constrained action-space design, shift complexity from architecture to inference-time verification, leading to substantially higher memory and runtime costs than Neurosolver and FBRL.",
+      "pdf_url": "https://arxiv.org/abs/2610.11696",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.10563",
+      "title": "SLVR: Structured Latent Visual Reasoning via Human-like Reasoning Flows",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.10563v1 Announce Type: cross Abstract: Multimodal large language models (MLLMs) often answer visual reasoning questions by relying on linguistic priors rather than task-relevant visual evidence. Textual chain-of-thought reasoning can partially mitigate this issue by encouraging models to decompose visual questions into intermediate evidence-seeking steps, but generating these steps autoregressively increases inference cost. Latent reasoning avoids explicit rationale generation, but existing approaches provide limited control over what intermediate states encode, making it difficult to impose separate supervision for planning, grounding, and evidence selection. We propose Structured Latent Visual Reasoning (SLVR), a training framework that bridges explicit chain-of-thought and latent reasoning by organizing multimodal reasoning into typed latent stages for planning, grounding, evidence selection, and reasoning integration. SLVR first trains the model to rely on the image by masking answer-revealing text and contrasting the correct answer with visually plausible distractors. It then organizes reasoning into latent stages for planning, grounding, evidence selection, and integration, supervising each stage with the corresponding signal: plans, boxes, visual evidence, and final rationales. This gives latent reasoning an explicit functional structure while avoiding generated textual chains at inference time. Built on Qwen2.5-VL-7B, SLVR improves consistently across multimodal reasoning benchmarks, with absolute gains of +9.4 on MMVP and +14.2 on BLINK Relation, as well as improvements on V*, MathVista, and ChartQA. These results suggest that structured latent supervision can improve fine-grained visual reasoning without the decoding overhead of textual CoT. Project page is available \\href{https://bogao-code.github.io/SLVR/}{here}.",
+      "pdf_url": "https://arxiv.org/abs/2610.10563",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.10608",
+      "title": "From Investigation Failures to Reliable SOC Agents: Understanding and Improving LLM-Based Alert Triage",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.10608v1 Announce Type: cross Abstract: Security operations centers (SOCs) must triage large volumes of alerts, most of which are benign, while missed attacks can remain uninvestigated. Tool-using large language model (LLM) agents can retrieve evidence during triage, but it remains unclear how reasoning strategies determine what to gather and when an investigation is sufficient to close an alert. We study five representative approaches spanning single-pass tool use, iterative retrieval, sampled investigations, self-review, and explicit verification. To support this study, we build ALERT-BENCH, an interactive benchmark that replays enterprise telemetry through a live SIEM and requires each system to retrieve evidence. Across 1,247 alerts from a multi-stage attack scenario, every approach missed at least 40.4% of attack-related alerts. Trace analysis shows that attack alerts are more likely to be dismissed when searches return no records, same-context review has negative net correction, and dismissal receives no consistently stronger investigation than escalation. Based on these findings, we further design AIDA (Adversarial Investigation and Dialectical Analysis), a multi-agent framework that requires an explicit proposed decision before independent challenge and stronger evidentiary requirements before dismissal. AIDA preserves investigation history in an append-only Investigation Ledger and keeps the challenge in a separate reasoning context. A separate Judge adjudicates the proposed decision and challenge against evidence, resolving the alert or requesting another round when evidence is missing. On the same alerts, AIDA achieves an F1 score of 0.958, compared with 0.371-0.744 for the studied approaches, and reduces the false-negative rate from 40.4% to 3.1% while escalating 18.4% of alerts to analysts. These results show that structuring evidence retrieval and decision review can substantially improve agentic SOC triage.",
+      "pdf_url": "https://arxiv.org/abs/2610.10608",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.10641",
+      "title": "Coverage-Aware Reasoning with Medical Tokens for Diagnosis Prediction",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.10641v1 Announce Type: cross Abstract: Large language models (LLMs) offer promising potential for next-visit diagnosis prediction, owing to their ability to integrate longitudinal clinical evidence and reason over it in natural language. However, reinforcement learning for LLM reasoning commonly rewards each trajectory according to the correctness of its final answer. In next-visit diagnosis prediction, multiple diagnoses can be simultaneously valid, but independently rewarding one diagnosis per trajectory does not distinguish repeated hits from coverage of different diagnoses. The policy can therefore concentrate on a few correct diagnoses, leaving others uncovered. Meanwhile, LLM tokenizers can split ICD codes into several generic tokens with limited clinical meaning, requiring multiple decoding steps to predict each diagnosis and hindering reasoning over a large disease vocabulary. To address both challenges, we propose CARing, a framework that represents diagnoses with compositional Semantic IDs (SIDs) and optimizes reasoning trajectories for multi-label coverage. Concretely, we first encode ontology-enriched disease semantics into compact SIDs through residual quantization, and ground the resulting SID tokens in natural language and longitudinal EHR contexts through multi-task alignment and reasoning-enriched training to unlock transferable LLM reasoning. CARing further improves unordered multi-label prediction through a coverage reward for reinforcement learning and multi-positive supervision. At inference time, the model supports both efficient direct constrained decoding and multi-chain reasoning with rank fusion. On MIMIC-III and MIMIC-IV, CARing exceeds all EHR-trained baselines in weighted F1 and attains the highest top-k recall at every reported cutoff, including R@30 of 46.04% and 46.52% in reasoning mode. Our codes and logs are available at https://github.com/zmlxzyh/CARing-Codes-Logs.",
+      "pdf_url": "https://arxiv.org/abs/2610.10641",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.10962",
+      "title": "iAm.md: Robot Skill Self-Assessment through Agentic Introspection for Unknown Open-Vocabulary Domains",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.10962v1 Announce Type: cross Abstract: Agentic AI based on Large Language Model generalization capabilities offers a wide range of potential applications, including planning for embodied tasks. For example, embodied agents based on Foundation models can generate plausible plans in autonomous robotics scenarios. Due to limited context windows or hallucinatory phenomena in the next-token prediction formulation, behaviors may be generated without establishing whether the deployed robot and the observed environment actually support the requested operation, in what we call a \"grounding failure\". Thanks to the recent improvements in reasoning capabilities of foundation models, autonomous robot behavior generation problem can be formulated as a code generation problem. We present iAm.md, a Markdown standard and generation framework, that allows anchoring this process in complementary forms of deployment evidence. Through open-vocabulary semantic mapping, we combine local vision-language detections and object segmentation and refer them to persistent object records in this intermediate standardized representation, allowing agentic introspection. We then study this new technique on a simulated TIAGo, on navigation-and-manipulation tasks, showing how this standardized representation jointly supports skill self-assessment and executable task generalization.",
+      "pdf_url": "https://arxiv.org/abs/2610.10962",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.11482",
+      "title": "Evaluating Local Language Model Agents for Reproducible Data Engineering: An Empirical Software Engineering Study of Mobility Workflows",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.11482v1 Announce Type: cross Abstract: Context: Large language model (LLM) agents are increasingly used as software and data-engineering assistants, yet evidence about locally deployable open-weight agents remains limited. Existing evaluations often emphasize textual responses or isolated code generation rather than the validity of complete engineering artifacts. Objectives: We evaluate whether local LLM agents can produce correct and reproducible data-engineering artifacts, quantify the effect of a closed-loop workspace condition, and examine trade-offs in model scale, architecture, quantization, runtime, tool use, and failure. Methods: We introduce a benchmark of fifteen mobility-workflow tasks covering data discovery, connectors, transport-feed processing, semantic enrichment, feature engineering, validation, visualization, and reporting. Deterministic checkers assess generated scripts, tables, structured files, figures, and reports. Ten local configurations are evaluated in one-shot and closed-loop conditions, with five repetitions per model, mode, and task, yielding 1,500 scored attempts on a consumer-grade GPU. Results: Among models larger than two billion parameters, the workspace condition increases pass rates by 26.7-52.0 percentage points over one-shot generation. The strongest configuration reaches 85.3% artifact-level success, and a quantized 9-billion-parameter model reaches 69.3% with an approximately 6.5 GB memory footprint. Gains are largest when intermediate artifacts expose errors the agent can inspect and repair. Conclusion: Local open-weight agents can support a meaningful subset of software-intensive data-engineering work, but reliability depends on model capability, task verifiability, and deterministic validation. The benchmark provides a reproducible method for evaluating complete agent configurations before adoption in engineering workflows.",
+      "pdf_url": "https://arxiv.org/abs/2610.11482",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.11526",
+      "title": "MSGAT: Multi-Head Spiking Graph Attention with Similarity-Space Fusion for Image-Text Retrieval",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2610.11526v1 Announce Type: cross Abstract: Spiking neural networks (SNNs) offer an energy-efficient computing paradigm through sparse event-driven computation, showing great potential for efficient multimodal learning. However, applying SNNs to high-level multimodal tasks, such as image-text retrieval (ITR), remains challenging, since sparse spike representations make it difficult to capture semantic structures required for cross-modal alignment. Existing spiking ITR methods rely on local alignment and additional soft-label supervision during training, while lacking awareness of structural and multi-granularity relationships. To address these issues, we propose a Multi-head Spiking Graph Attention Network (\\textbf{MSGAT}) for structural modeling and equip it with dynamic attention heads to capture complementary relational patterns and enable spike-driven graph reasoning and aggregation. However, within a two-branch multi-granularity fusion framework, the fine-grained spike representations generated by MSGAT are sparse and discrete, whereas the global representations are continuous, making conventional feature-level fusion susceptible to interference across heterogeneous representations. Therefore, we introduce \\textbf{Sim-Fuse}, a similarity-space fusion alignment strategy integrating coarse- and fine-grained matching relations while avoiding direct fusion of heterogeneous representations. Experiments on Flickr30K and MSCOCO show our method outperforms ANN methods under matched settings and existing SNN retrieval baselines. Moreover, with only two time steps, our SNN achieves comparable or superior performance to its ANN counterpart while reducing theoretical module-level energy by 55\\%. The code is provided in the Supplementary Materials.",
+      "pdf_url": "https://arxiv.org/abs/2610.11526",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2510.04532",
+      "title": "More Than Meets the Eye? Uncovering the Reasoning-Planning Disconnect in Training Vision-Language Driving Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2510.04532v2 Announce Type: replace Abstract: Vision-Language Model (VLM) driving agents promise explainable end-to-end autonomy by first producing natural-language reasoning and then predicting trajectory planning. However, whether planning is causally driven by this reasoning remains a critical but unverified assumption. To investigate this, we build DriveMind, a large-scale driving Visual Question Answering corpus with plan-aligned Chain-of-Thought (CoT), automatically generated from nuPlan. Our data generation process converts sensors and annotations into structured inputs and, crucially, separates priors from to-be-reasoned signals, enabling clean information ablations. Using DriveMind, we train representative VLM agents with Supervised Fine-Tuning and Group Relative Policy Optimization and evaluate them with nuPlan's metrics. Our results, unfortunately, indicate a consistent causal disconnect in reasoning-planning: removing ego/navigation priors causes large drops in planning scores, whereas removing CoT produces only minor changes. Attention analysis further shows that planning primarily focuses on priors rather than the CoT. Based on this evidence, we propose the Reasoning-Planning Decoupling Hypothesis, positing that the training-yielded reasoning is an ancillary byproduct rather than a causal mediator. To enable efficient diagnosis, we introduce a novel, training-free probe that measures an agent's reliance on priors by evaluating its planning robustness against minor input perturbations. In summary, we provide the community with a new dataset and a diagnostic tool to evaluate the causal fidelity of future models.",
+      "pdf_url": "https://arxiv.org/abs/2510.04532",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2607.16204",
+      "title": "Masked Diffusion Language Models are Strong and Steerable Text-Based World Models for Agentic RL",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-10",
+      "updated": "2026-10-10",
+      "summary": "arXiv:2607.16204v2 Announce Type: replace Abstract: Recent growth in reinforcement learning (RL) has surfaced a need for diverse, specialized training environments. Hand-curated environments with fixed task and reward difficulties become ineffective signals as model performance improves, and sparse rewards over long horizons induce mode collapse on specific workflows or tool structures. World models that simulate environment states have matched pure rollout performance, making them promising for scaling diversity on-demand. However, autoregressive (AR) world models suffer from a left-to-right bias preventing conditioning on globally interdependent state anchors such as tool schemas, prior turns, and expected outcomes. We (i) formalize text-based world modeling as a steerable transition-dynamics problem decomposed into initial state, task context, tool schemas, domain rules, and steering directives, and (ii) curate 239,403 grounded state-action trajectories spanning nine open-source environments and twelve frontier model families. We compare AR LMs and masked diffusion language models (MDLMs), showing MDLMs, via bidirectional anchor-aware denoising, achieve better coherence, groundedness, and empirically validated rollout diversity than LLMs over 4x their parameter size, at comparable inference latency. We introduce a plug-and-play GRPO training framework with deterministic state checks, and perform zero-shot transfer ablations on three OOD environments (ScienceWorld, ALFWorld, AppWorld) across three 1.2B-7B agent backbones (LFM2.5, Qwen3, Mistral), achieving up to 47% absolute gains over baselines without environment-specific fine-tuning. We further conduct behavioral analysis of failure modes under adversarial scenarios and human evaluation on realism, outcome correctness, and training utility. We open-source our work to encourage research in this direction.",
+      "pdf_url": "https://arxiv.org/abs/2607.16204",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
     {
       "name": "Group Relative Policy Optimization (GRPO)",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Agentic Benchmarks",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Long-Horizon Planning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Reinforcement Learning Environments",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Reward Hardening",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Scripted Anchor Policies",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Autonomous Agent Evaluation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Simulated Commerce Environments",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "LLM Post-Training",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "finance"
+        "finance",
+        "enterprise"
       ]
     },
     {
       "name": "Hierarchical Navigation Runtime",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
+        "accessibility",
         "robotics",
-        "accessibility"
+        "enterprise"
       ]
     },
     {
       "name": "Action Policy",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
+        "accessibility",
         "robotics",
-        "accessibility"
+        "enterprise"
       ]
     },
     {
       "name": "Codec Allocation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
+        "accessibility",
         "robotics",
-        "accessibility"
+        "enterprise"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Spiking Neural Networks (SNNs)",
+      "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "robotics",
-        "accessibility"
+        "automotive",
+        "robotics"
       ]
     },
     {
-      "name": "On-Policy Distillation",
+      "name": "Quantized ANN2SNN Conversion",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
+        "automotive",
+        "robotics"
       ]
     },
     {
-      "name": "Knowledge Distillation",
+      "name": "Spike-Driven-Max (SDM) Depth Distribution (Spike-3D-Lift)",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
+        "automotive",
+        "robotics"
       ]
     },
     {
-      "name": "Reinforcement Learning",
+      "name": "Spiking Query Transformer (Spike-QFormer)",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
+        "automotive",
+        "robotics"
       ]
     },
     {
-      "name": "LLM Agents",
+      "name": "Deformable Spike-Cross-Attention",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Graph-based Credit Assignment",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Random Walk Analysis",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Teacher-Student Distillation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Trajectory-level Supervision",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Large Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
+        "automotive",
+        "robotics"
       ]
     },
     {
       "name": "Multimodal Learning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "robotics",
-        "science"
+        "science",
+        "education",
+        "other",
+        "healthcare"
       ]
     },
     {
-      "name": "Depth Estimation",
+      "name": "Cognitive Appraisal Reasoning",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "robotics",
-        "science"
+        "education",
+        "healthcare",
+        "enterprise"
       ]
     },
     {
-      "name": "Object Detection",
+      "name": "Knowledge Distillation",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Graph Neural Networks",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
         "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Benchmarking",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
+        "other",
         "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Evaluation Protocols",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Plan-then-Code Paradigm",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "education",
-        "other"
+        "enterprise"
       ]
     }
   ],
