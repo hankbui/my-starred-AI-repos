@@ -1,0 +1,594 @@
+{
+  "meta": {
+    "date": "2026-10-14",
+    "papers_tracked": 15,
+    "technologies_discovered": 15,
+    "opportunities_identified": 0,
+    "last_update": "2026-10-14 10:27 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "15",
+      "label": "discovered this scan",
+      "detail": "Vision-Language-Action Models, Code-as-Policy, Agent-as-Policy, Sim-to-Real Transfer, Autonomous Skill Acquisition, Agentic AI, Self-Evolving Systems, Reinforcement Learning",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "15",
+      "label": "active trend clusters",
+      "detail": "Visual Geometry Foundation Models, Multimodal Learning, Depth Estimation, Vision-Language-Action Models, Code-as-Policy",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "8.0",
+      "label": "avg opportunity score",
+      "detail": "SEAR: Self-Evolving Agentic Robotics",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "SEAR: Self-Evolving Agentic Ro",
+      "label": "confidence 85%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "SEAR: Self-Evolving Agentic Ro",
+      "label": "highest confidence paper",
+      "detail": "Self-optimizing industrial robot systems that autonomously write, test, and retain control code for new manufacturing tasks, Autonomous robot training platform for research labs that generates practice scenarios and fine-tunes policies without human intervention",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "0",
+      "label": "early-stage technologies",
+      "detail": "SEAR: Self-Evolving Agentic Robotics",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2610.18792",
+      "title": "SEAR: Self-Evolving Agentic Robotics",
+      "authors": [
+        "Xinyi Wang",
+        "Bangzheng Li",
+        "Hanyu Wang",
+        "Lin Zhang",
+        "Andrea Yaoyun Cui",
+        "Zhenggang Tang",
+        "Shyamal Buch",
+        "Dejia Xu"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-10-13",
+      "updated": "2026-10-13",
+      "summary": "Frontier language-model agents can now improve robots on their own: they write control code, test it, and keep what works as skills and memories for the next task. We introduce SEAR (Self-Evolving Agentic Robotics), a framework and benchmark built around two questions. Is the agent really learning, or just trying more often? And does what it learns still help on new tasks, in a new simulator, and on a real robot? The framework runs an agent in three modes: it writes code that becomes the policy (code-as-policy), acts live in the control loop (agent-as-policy), or works as a researcher that fine-tunes a vision-language-action model (auto-research). The benchmark adds controls that separate retained experience from repeated attempts, familiar tasks, privileged simulator state, larger budgets, and luck. Across seven frontier language models, 330 simulated and five physical tasks, and over four years of agent runtime, we highlight three findings. First, the learning curve of a robotic agent depends both on the overall time budget and the task difficulty relative to model capability. Harder tasks make longer sessions worthwhile; on easier tasks, re-rolling short attempts does just as well. Second, control code and shared routines transfer across tasks and simulators, while task-specific solutions do not. On a real robot, we observe a performance gap between agent-designed practice and novel human-designed scenes. Third, different models evolve more effectively in different ways. Some do best acting live, others writing code first. And a text-only model keeps pace with a comparable multimodal one: perception helps with error assessment, but agentic reasoning and tool use can matter more. We release the benchmark and codebase to support future research.",
+      "pdf_url": "https://arxiv.org/pdf/2610.18792v1",
+      "comment": "16 pages",
+      "technologies": [
+        "Vision-Language-Action Models",
+        "Code-as-Policy",
+        "Agent-as-Policy",
+        "Sim-to-Real Transfer",
+        "Autonomous Skill Acquisition",
+        "Agentic AI",
+        "Self-Evolving Systems",
+        "Reinforcement Learning",
+        "Transfer Learning",
+        "Benchmark Development"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.2,
+      "product_potential": [
+        "Self-optimizing industrial robot systems that autonomously write, test, and retain control code for new manufacturing tasks",
+        "Autonomous robot training platform for research labs that generates practice scenarios and fine-tunes policies without human intervention",
+        "Adaptive home/service robot framework that learns new household tasks by writing code, testing in simulation, and transferring skills to physical hardware"
+      ],
+      "domain_applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2607.08964",
+      "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2607.08964v3 Announce Type: replace Abstract: AI agents have become capable of autonomously completing short, well-specified tasks. However, existing terminal benchmarks largely focus on simple problems that finish within minutes and are evaluated only by their final outcome. This setup overlooks intermediate progress and partial solutions, yielding sparse reward signals and an incomplete picture of agent capability. We introduce Long-Horizon-Terminal-Bench, a terminal benchmark of 46 long-horizon tasks spanning nine categories, including experiment reproduction, software engineering, multimodal analysis, interactive games, and scientific computing. Each task follows a Terminal-Bench-style setup with a reference solution or simulation engine, but is further decomposed into fine-grained graded subtasks. This design enables dense intermediate rewards and partial credit, allowing evaluation to capture not only whether an agent reaches the final goal, but also how far it progresses on open-ended workflows. Tasks in Long-Horizon-Terminal-Bench typically require hundreds of episodes and minutes to hours of execution, stressing long-horizon planning, long-context management, and iterative debugging rather than one-shot problem solving. We evaluate 15 frontier models and find that agents consume on average 9.9M tokens per task, with roughly 231 episodes and 85.3 minutes of execution time per run, making Long-Horizon-Terminal-Bench more demanding than prior terminal-based benchmarks. Even the strongest tested model achieves 15.2% pass@1 at a partial-reward threshold of 0.95 and 10.9% at a perfect-reward threshold of 1.0, while the mean pass rate across models is 4.3% and 1.7% under the two thresholds, respectively. These results reveal headroom for improvement. We further analyze failure modes and error patterns, and release Long-Horizon-Terminal-Bench to support future progress on long-horizon terminal agents.",
+      "pdf_url": "https://arxiv.org/abs/2607.08964",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Long-Context Management"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 6.2,
+      "product_potential": [
+        "AI-powered long-horizon task automation for enterprise workflows",
+        "Interactive AI tutors for complex educational tasks",
+        "AI-driven scientific research assistants for iterative experimentation"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2610.16945",
+      "title": "UniMetric: Universal Metric Scale Recovery for Visual Geometry Foundation Models",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.16945v1 Announce Type: new Abstract: Recent advances in multimodal foundation models, exemplified by GPT-6 Astra, raise the prospect of general-purpose embodied reasoning and planning. Using Internet videos for embodied pretraining calls for reliable physical-scale annotations. Yet visual geometry foundation models often recover scene structure and camera motion without reliable metric scale. We show that uncertain size priors of familiar objects can jointly constrain a reconstruction's shared scale. Building on this insight, we present UniMetric, a universal and training-free metric scale recovery framework for geometry foundation models, without additional sensors or task-specific metric supervision. Specifically, Metric Prior Acquisition elicits object height intervals from a vision-language model. Semantic-Geometric Alignment measures reconstructed object heights along the estimated support-surface normal in each frame and converts the priors into scale intervals. Global Scale Recovery reconciles these intervals through a convex objective, yielding a jointly feasible scale when they overlap and a unique compromise otherwise. The estimated sequence-level scale is applied uniformly to reconstructed points and camera translations. Controlled experiments with real VLM priors show that combining observations improves scale accuracy with exact relative object heights. To evaluate metric accuracy on GFM reconstructions without ground-truth scale alignment, we introduce MetricBench, covering twelve embodied, driving, and roadside subsets with sensor-derived ground truth. Across nine geometry foundation models, UniMetric reduces mean depth Abs Rel, reconstruction Chamfer distance, and trajectory error by 54.2%, 83.8%, and 65.6%, respectively, improving every model on all three tasks at the suite level. We release the UniMetric code and MetricBench data.",
+      "pdf_url": "https://arxiv.org/abs/2610.16945",
+      "comment": "",
+      "technologies": [
+        "Visual Geometry Foundation Models",
+        "Multimodal Learning",
+        "Depth Estimation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.2,
+      "product_potential": [
+        "Augmented Reality applications with accurate spatial mapping and object recognition",
+        "Autonomous vehicles with improved depth perception and trajectory planning",
+        "Virtual reality environments with precise spatial understanding and interaction"
+      ],
+      "domain_applications": [
+        "robotics",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.08959",
+      "title": "GraphOPD: Graph-Augmented On-Policy Distillation for LLM Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.08959v2 Announce Type: replace-cross Abstract: On-policy distillation post-trains large language model agents by supplying dense, step-level guidance from a teacher policy when the reinforcement-learning reward is sparse and arrives only once per trajectory. Existing instantiations allocate this guidance by the size of the teacher-student divergence at each step, on the single-turn intuition that a large disagreement marks a mistake worth correcting. Once decisions chain over many turns, that rule misfires, since an early drift enters every later context both policies condition on, leaving the teacher consistent with the drifted trajectory instead of flagging its cause, while interchangeable steps register large but outcome-irrelevant divergences. We demonstrate this on an agentic benchmark, where distilling the highest-divergence steps brings no consistent benefit over random selection. To this end, we introduce GraphOPD, the first method to bring graph-based structural augmentation into on-policy distillation for agent capabilities. It reads which steps enabled which later ones from the environment's own record of state changes, immune to the drift that corrupts the teacher-student gap, organizes them into a dependency graph, scores each step by a random-walk stationary distribution over it, and fuses that structural credit with the divergence signal into a trajectory-relative mask concentrating supervision on each rollout's highest-aptitude steps. Across three model scales and eleven baselines on ALFWorld, WebShop, and SearchQA, GraphOPD shows competitive performance throughout, improving over the strongest baseline by up to +5.8 pp. An executed-replay audit further shows that this structural credit score tracks true causal impact far above chance, that both fused signals are independently necessary, and that the same signal transfers to out-of-domain tool-integrated reasoning.",
+      "pdf_url": "https://arxiv.org/abs/2610.08959",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.17552",
+      "title": "FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.17552v1 Announce Type: cross Abstract: Recent video super-resolution (VSR) models achieve efficient one-step generation through diffusion distillation. However, high-resolution inference remains costly, and distilled models are difficult to align with human preferences. These challenges call for improvements in both model architecture and training strategy. We present \\textbf{FlashVSR+} to address both limitations. On the architecture side, we introduce hybrid attention based on the strong locality observed in pretrained VSR models, while retaining sparse global interaction for long-range consistency. It achieves up to $2\\times$ DiT speedup and 45\\% lower peak memory, enabling spatially untiled 4K VSR on a single 24GB RTX 4090. On the training side, we propose Reward-Yield Distribution Matching Distillation (Ry-DMD) for preference-aligned one-step generation. Ry-DMD uses reward-weighted teacher rollouts to incorporate black-box rewards into distribution matching, without backpropagating through the reward model. We further show that Ry-DMD generalizes beyond VSR to T2I generation. Together, FlashVSR+ delivers stronger restoration quality and substantially improves high-resolution efficiency, with consistent gains in user preference. We release our code, models, and training data at \\href{https://www.flashvsr.tech}{\\textcolor{FlashBlue}{\\textbf{www.flashvsr.tech}}}.",
+      "pdf_url": "https://arxiv.org/abs/2610.17552",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.03874",
+      "title": "STAIR (STructure Aware Information Retriever): A novel dataset and LLM based retriever for document structure augmentation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2609.03874v2 Announce Type: replace Abstract: Retrieval Augmented Generation (RAG) is a key component for generating accurate and hallucination free answers using Large Language Models (LLMs). LLMs are improving at handling long context, but still suffer from \"lost in the middle\" problem. Thus, precise and accurate retrieval is important. Current retrievers chunk long context into length-based manageable chunks - in the process throwing away rich and informative semantic global structure in the corpus. We introduce a novel retrieval system STAIR that empowers an LLM to exploit global structure in a corpus such as a Table of Contents (ToC) to efficiently store and retrieve information from its model parameters. Our thorough and careful ablation studies with a finetuned Differentiable Search Index (DSI) system show that ToC helps build a low hallucination (less than 0.05%) generative Information Retrieval (IR) system and can generalize to examples where very few training samples are available. To further research in this novel direction of ToC based retrieval we release SearchTome - a diverse benchmark created from 18 books across 6 diverse domains to further research in this novel direction. STAIR achieves a high Recall@1 score of 82.6% on SearchTome as compared to DSI (76.9%), where the difference is found to be statistically significant. STAIR easily beats other strong baselines such as BM25 (59.5%), DPR (68.7%) and out-of-the-box Mistral (13.8%).",
+      "pdf_url": "https://arxiv.org/abs/2609.03874",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.15542",
+      "title": "Apertus 1.5: From Open Text Models to Open Multimodal Reasoners",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.15542v1 Announce Type: new Abstract: Language models are becoming infrastructure, and infrastructure built in the open, by public institutions, on documented data, is the alternative to dependence on a few providers; Apertus shows this is viable at scale. Apertus 1.5 extends the fully open Apertus family from text to multimodal reasoning. Continued pretraining of the Apertus 1.0 models, on 4T additional tokens for the 8B and 2T for the 70B, adds image and audio understanding and extends the context window fourfold to 262,144 tokens; multimodality enters through the tokenizer, the language-model head remains restricted to text, and the architecture is unchanged. Supervised finetuning, long-context finetuning, reinforcement learning with verifiable rewards, and preference alignment complete the released models. Thinking is a flag of the chat template rather than a separate model, and lifts mathematical reasoning by up to 20 points on the 8B model. The released models improve over their predecessors on nearly every benchmark; among fully open models of its class, the 8B leads on knowledge, instruction following, and cultural benchmarks, and its instruction following surpasses all compared models, including open-weight ones. On image and audio understanding, a first for the family, the models are competitive with fully open multimodal models, strongest on document understanding and long-form and lower-resource speech recognition, while specialized vision and audio models remain ahead on perception and transcription of English and other high-resource languages. As in Apertus 1.0, we train only on openly available data, respect crawler opt-outs retroactively, and exclude restrictively licensed material. We release the model weights, data preparation and training recipes, and evaluation suites under permissive licenses; openness extends to values, with the Apertus charter guiding alignment stages published alongside the models.",
+      "pdf_url": "https://arxiv.org/abs/2610.15542",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.16533",
+      "title": "Spectral-Driven Adaptive-Rank Optimizer for Large Language Model Reinforcement Learning with Verifiable Rewards",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.16533v1 Announce Type: new Abstract: Reinforcement learning with verifiable rewards (RLVR) is reshaping how large language models (LLMs) acquire reasoning capabilities, yet the optimizers used remain largely inherited from teacher-forcing training. This raises a fundamental question: does RLVR induce a distinct optimization geometry that calls for a different optimizer? We investigate this question through the spectral structure of LLM gradients and find that gradient energy progressively concentrates into a shrinking effective subspace, which is characteristic of RLVR, as it is absent under supervised fine-tuning (SFT) and is largely removed when the verifiable reward is replaced by a random one. Moreover, the rank required to capture a fixed fraction of gradient energy steadily decreases over training, revealing that the effective dimensionality of useful updates itself evolves with training. These findings motivate a new optimization principle: rather than prescribing the update rank externally, an optimizer should adapt its rank to the evolving spectral structure of the gradient. We introduce Ares (Adaptive Rank-Effective Spectral Optimization), which estimates the effective update rank from the gradient's spectral energy distribution, tracks its evolution, and confines the gradient signal driving each update to the resulting low-rank subspace. Across LLMs of different scales, Ares improves accuracy over widely used optimizers and generalizes across RLVR algorithms and tasks. Results suggest that effective optimization may require optimizers to be designed around the geometry and dynamics of the training process. We release the code and data at https://github.com/RUCAIBox/Ares.",
+      "pdf_url": "https://arxiv.org/abs/2610.16533",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2506.03278",
+      "title": "FailureSensorIQ: A Multi-Choice QA Dataset for Understanding Sensor Relationships and Failure Modes",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2506.03278v2 Announce Type: replace Abstract: We introduce FailureSensorIQ, a novel Multi-Choice Question-Answering (MCQA) benchmarking system designed to assess the ability of Large Language Models (LLMs) to reason and understand complex, domain-specific scenarios in Industry 4.0. Unlike traditional QA benchmarks, our system focuses on multiple aspects of reasoning through failure modes, sensor data, and the relationships between them across various industrial assets. Through this work, we envision a paradigm shift where modeling decisions are not only data-driven using statistical tools like correlation analysis and significance tests, but also domain-driven by specialized LLMs which can reason about the key contributors and useful patterns that can be captured with feature engineering. We evaluate the Industrial knowledge of over a dozen LLMs-including GPT-4, Llama, and Mistral-on FailureSensorIQ from different lens using Perturbation-Uncertainty-Complexity analysis, Expert Evaluation study, Asset-Specific Knowledge Gap analysis, ReAct agent using external knowledge-bases. Even though closed-source models with strong reasoning capabilities approach expert-level performance, the comprehensive benchmark reveals a significant drop in performance that is fragile to perturbations, distractions, and inherent knowledge gaps in the models. We also provide a real-world case study of how LLMs can drive the modeling decisions on 3 different failure prediction datasets related to various assets. We release: (a) expert-curated MCQA for various industrial assets, (b) FailureSensorIQ benchmark and Hugging Face leaderboard based on MCQA built from non-textual data found in ISO documents, and (c) LLMFeatureSelector, an LLM-based feature selection scikit-learn pipeline. The software is available at https://github.com/IBM/FailureSensorIQ.",
+      "pdf_url": "https://arxiv.org/abs/2506.03278",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2603.01714",
+      "title": "TopoCurate:Modeling Interaction Topology for Tool-Use Agent Training",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2603.01714v2 Announce Type: replace-cross Abstract: Training tool-use agents typically relies on outcome-based filtering: Supervised Fine-Tuning (SFT) on successful trajectories and Reinforcement Learning (RL) on pass-rate-selected tasks. However, this paradigm ignores interaction dynamics: successful trajectories may lack error recovery or exhibit redundancy, while pass rates fail to distinguish structurally informative tasks from trivial ones. We propose \\textbf{TopoCurate}, an interaction-aware framework that projects multi-trial rollouts from the same task into a unified semantic quotient topology. By merging equivalent action-observation states, this projection transforms scattered linear trajectories into a structured manifold that explicitly captures how tool invocations and environmental responses drive the divergence between effective strategies and failure modes. Leveraging this representation, we introduce a dual-selection mechanism: for SFT, we prioritize trajectories demonstrating reflective recovery, semantic efficiency, and strategic diversity to mitigate covariate shift and mode collapse; for RL, we select tasks with high error branch ratios and strategic heterogeneity, maximizing gradient Signal-to-Noise Ratio to address vanishing signals in sparse-reward settings. Evaluations on BFCLv3 and Tau2 Bench show that TopoCurate achieves consistent gains of 4.2\\% (SFT) and 6.9\\% (RL) over state-of-the-art baselines. We will release the code and data soon for further investigations.",
+      "pdf_url": "https://arxiv.org/abs/2603.01714",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.30761",
+      "title": "Timo: Taming Multimodal Diffusion Transformers for Human Motion Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2609.30761v2 Announce Type: replace Abstract: Most existing human motion generation (HMG) methods use cross-attention modules to inject text semantics, but ignore the importance of bidirectional modeling between motion and text tokens, which limits text comprehension. A straightforward idea is introducing multimodal diffusion transformers (MMDiT), which have shown effective joint text--visual modeling in vision generation, into HMG. However, we find that articulated motion is temporally coherent but weakly correlated across joints, in which directly applying an MMDiT with flow matching produces poorly coordinated and jerky motion. In this work, we propose Timo, a novel kinematics-aware MMDiT framework tailored for HMG. Timo combines fully shared multimodal attention for bidirectional text--motion modeling with flow matching, geometric and rotational-kinematics supervision that compares actual rotations and their changes over time, and a two-stage curriculum progressing from broad motion learning to detailed caption alignment. Further, we construct a benchmark of $40{,}025$ held-out clips from six public datasets spanning diverse actions, assessing six complementary dimensions under a common evaluator and scoring protocol. Our model substantially outperforms state-of-the-art methods in both quantitative and qualitative evaluations. Remarkably, Timo surpasses Kimodo on five of six dimensions, achieving a $40.8$% relative improvement in the average benchmark score. Project page: https://kyfafyd.wang/projects/timo. Demo page: https://timo.kyfafyd.wang.",
+      "pdf_url": "https://arxiv.org/abs/2609.30761",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.18642",
+      "title": "MultiAlloc: Budget-Aware Precision Allocation for KV Cache Quantization",
+      "authors": [
+        "Yangchengyu Zhou",
+        "Zhiping Wu",
+        "Runchang Jiang",
+        "Dongdong Ren",
+        "Youfang Han",
+        "Wei Zhao",
+        "Dongqi Cai",
+        "Wenbin Li"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-10-13",
+      "updated": "2026-10-13",
+      "summary": "The Key-Value (KV) cache constitutes a dominant source of memory consumption during large language model (LLM) inference, particularly in long-context and complex reasoning scenarios. Existing KV cache quantization methods have explored different compression granularities, including layer-wise precision adjustment and token-level information preservation. In practical deployment, however, the key challenge is not merely compression, but how to allocate limited quantization resources among heterogeneous precision preservation strategies under a fixed KV cache memory budget. We propose MultiAlloc, a profiling-guided precision allocation framework for KV cache quantization that adaptively distributes limited quantization resources between layer-wise precision enhancement and token-wise preservation. MultiAlloc employs lightweight offline profiling to characterize layer sensitivity and token importance, enabling adaptive precision allocation under a fixed memory constraint. Guided by the profiled memory--accuracy trade-off, it automatically derives an effective precision allocation strategy without online allocation search, and applies the resulting policy during inference. Extensive experiments on reasoning and long-context benchmarks demonstrate that MultiAlloc consistently improves over layer-wise, token-wise, and recent multi-granularity KV cache quantization methods under matched memory budgets across diverse models, including Mistral, Llama, DeepSeek-Qwen, and QwQ.",
+      "pdf_url": "https://arxiv.org/pdf/2610.18642v1",
+      "comment": "Code: https://github.com/RL-MIND/MultiAlloc",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.14574",
+      "title": "CB-Agent: Concept-Based In-Context Learning for Sequential Action Selection",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.14574v1 Announce Type: new Abstract: In-context learning (ICL) allows large language models to use demonstrations without updating their parameters. For interactive agents, demonstrations are trajectories of reasoning, actions, and observations that illustrate how to complete a task. Reusing demonstrations in new situations is challenging: directly inputting full trajectories consumes limited prompt space and constrains the overall effectiveness, while natural-language summaries require the agent to translate general guidance into specific action choices. Therefore, we study whether expert action choices can directly supervise a reusable scoring rule. We propose CB-Agent, which extends concept-based ICL to sequential action selection. We extract environment-action decisions from expert trajectories and fit a concept vector by maximum likelihood to model the conditional distribution over candidate actions given the context. This model combines the concept with frozen language-model features and priors. During ReAct interaction, the agent uses this distribution to select environment actions without including demonstrations in the action-scoring context. Across TextWorld, ALFWorld, and ScienceWorld, CB-Agent achieves the highest cross-benchmark average among the evaluated methods at all three tested model sizes and ranks first on TextWorld and ScienceWorld at each size. ALFWorld experiments support the learned concept's contribution beyond prior-only scoring and show further gains when combined with Reflexion. Code is available at https://anonymous.4open.science/r/CB-Agent-DFF9/.",
+      "pdf_url": "https://arxiv.org/abs/2610.14574",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.15956",
+      "title": "ADAPT: Audio-Depth Action Planning with Transition-Aware Rewards for Lights-Out Industrial Navigation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.15956v1 Announce Type: new Abstract: Vision-language-action models for embodied navigation typically rely on RGB observations, limiting their applicability in lights-out industrial environments where visible illumination may be unavailable. We study illumination-independent navigation using spatial audio for target localization and depth for obstacle-aware geometry. To support this setting, we introduce DarkNav-Bench, a benchmark with 24 industrial scenes and four progressively challenging acoustic conditions. We further propose ADAPT, an audio-depth action-planning framework equipped with spatial-audio perception and optimized for closed-loop navigation through reinforcement learning (RL). Our key RL contribution, transition-aware reward shaping (TARS), defines a pose-aware shortest-action potential over a position-heading graph. Unlike conventional geodesic-progress rewards, TARS accounts for both feasible movements and in-place rotations, providing action-consistent feedback for policy optimization. Experiments show that ADAPT consistently outperforms training-based navigation baselines and zero-shot multimodal models on both seen and unseen scenes. On unseen environments, it achieves 90.6% success under Clean conditions and retains 60.0% success under the most challenging Localized Noise setting. These results demonstrate the potential of spatial audio and depth as complementary modalities for reliable RGB-free navigation in lights-out industrial environments.",
+      "pdf_url": "https://arxiv.org/abs/2610.15956",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.18176",
+      "title": "Neuro-Symbolic Graph Transformers for Hierarchical Intention Recognition from Multimodal Human Activity Sequences",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "summary": "arXiv:2610.18176v1 Announce Type: new Abstract: Proactive human-robot collaboration requires autonomous systems to infer not only immediate actions but also the underlying hierarchical intentions governing human behavior. Current deep learning approaches predominantly focus on flat action classification, failing to capture the structural dependencies connecting kinematic motion to high-level goals. A Neuro-Symbolic Graph Transformer (NSGT) is proposed within this multimodal framework, a Human Reasoning Graph (HR-G) is integrated into the self-attention mechanism via learnable topological biases. Furthermore, the architecture is augmented with a differentiable First-Order Logic (FOL) loss, acting as a structural regularizer by which ontological consistency is enforced across four levels: atomic actions, composite activities, Low-Level Intentions, and High-Level Intentions. Evaluation is performed on the synthesized NTU-Hierarchy dataset, a four-level ontological extension of NTU RGB+D 120, wherein existing sequences were mapped into 119,383 complex hierarchical episodes (85 actions, 16 activities, 8 LLIs, 4 HLIs). To prevent circular supervision, strict isolation between label generation and FOL constraints was maintained. In the base configuration, 91.65% top-1 action accuracy is achieved by the NSGT. When the FOL loss is incorporated into the baseline, logic consistency is improved by 3.26 percentage points to 96.67%. Through the HR-G biases, a tunable trade-off between accuracy and structural coherence is established. In the primary consistency-maximizing configuration ($\\lambda$ = 0.5), a logic consistency of 94.59% is reached and ontological contradictions are reduced by 33%, while a robust 89.90% top-1 action accuracy is retained. Finally, interpretable reasoning evidence is provided by the learned HR-G weights, wherein transition edges are strongly exploited ($\\beta$ trans $\\approx$ +2.6) without explicit supervision.",
+      "pdf_url": "https://arxiv.org/abs/2610.18176",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Vision-Language-Action Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Code-as-Policy",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Agent-as-Policy",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Sim-to-Real Transfer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Autonomous Skill Acquisition",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Agentic AI",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Self-Evolving Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Transfer Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Benchmark Development",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Long-Context Management",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Visual Geometry Foundation Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "name": "Depth Estimation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "other"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
