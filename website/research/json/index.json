@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-16",
+    "date": "2026-10-17",
     "papers_tracked": 15,
-    "technologies_discovered": 28,
+    "technologies_discovered": 25,
     "opportunities_identified": 0,
-    "last_update": "2026-10-16 10:02 UTC",
+    "last_update": "2026-10-17 09:36 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,31 +13,31 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "28",
+      "value": "25",
       "label": "discovered this scan",
-      "detail": "Hierarchical Navigation Runtime, Action Policy, Codec Allocation, Reinforcement Learning from Human Feedback, Reinforcement Learning, Agentic AI, Off-Policy Learning, Reward Modeling",
+      "detail": "Diffusion Models, Reinforcement Learning from Human Feedback, Reward-driven Trajectory Optimization, Diffusion Trajectory Optimization, Reward Engineering, Multimodal Learning, Post-training Mechanisms, Goal-directed Generation",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "28",
+      "value": "25",
       "label": "active trend clusters",
-      "detail": "Reinforcement Learning, Agentic AI, Off-Policy Learning, Reward Modeling, LLM Fine-tuning",
+      "detail": "Diffusion Models, Reinforcement Learning from Human Feedback, Reward-driven Trajectory Optimization, Diffusion Trajectory Optimization, Reward Engineering",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "8.2",
       "label": "avg opportunity score",
-      "detail": "NavGPT-3: Harnessing Context in a Hierarchical Navigation Runtime",
+      "detail": "Reinforcement Learning-driven Diffusion Models: Language, Vision, and Beyond",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "NavGPT-3: Harnessing Context i",
+      "value": "Reinforcement Learning-driven ",
       "label": "confidence 85%",
       "detail": "",
       "color": "purple"
@@ -45,159 +45,21 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "NavGPT-3: Harnessing Context i",
+      "value": "Reinforcement Learning-driven ",
       "label": "highest confidence paper",
-      "detail": "Autonomous robotic navigation systems with real-time event handling, Embodied AI agents for interactive tasks in dynamic environments",
+      "detail": "AI content creation platforms with human-aligned generation for marketing, design, and media production, Autonomous scientific discovery systems for drug molecule generation and materials science applications",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "8",
+      "value": "6",
       "label": "early-stage technologies",
-      "detail": "N/A",
+      "detail": "ME-VLM: A Unified VLM for Embodied Cognition and Agent Coordination",
       "color": "blue"
     }
   ],
   "papers": [
-    {
-      "id": "2610.10787",
-      "title": "NavGPT-3: Harnessing Context in a Hierarchical Navigation Runtime",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "arXiv:2610.10787v2 Announce Type: replace-cross Abstract: Language models trained with long-horizon agentic reinforcement learning can generalize knowledge through reasoning, express precise actions, and pursue goals over many steps, raising the ceiling on what an embodied agent can understand and decide. Physical interaction, however, remains the domain of action policies, which provide dense, low-latency control. We present NavGPT-3, a harness that connects the two models, with an OS-like runtime built above it: reasoning, acting, and monitoring run as threads with their own context, tools, and permissions, while the runtime schedules them and decides which thread controls the robot's motion, so that the robot can react to sudden real-world events through interruption and thread switching. Beneath it, our action policy NavGPT VLA, trained on 19.28M examples, allocates visual tokens using codec allocation, in proportion to scene change; its 8B model alone reaches 76.94 SR on R2R-CE and leads RxR-CE with 82.39 SR. With the complete harness, NavGPT-3 sets the state of the art on R2R-CE (81.51 SR) and, for the first time, brings an autonomous agent to human level: on RxR-CE it matches human followers in success (90.43 vs. 90.4 SR) and path fidelity (78.47 vs. 77.7 nDTW) at 1 min 22 s per episode, versus roughly 3 min for a human. We comprehensively ablate the harness design and the interaction between the two models, showing how tools and the action policy shape the path from language-model reasoning to physical control: when NavGPT VLA executes the route, the reasoning loop shortens and the system's minimum reaction time falls from 3-19 s per language-model decision to 0.5-1 s per action-policy step (1-2 Hz). These results show that designing this embodied interface is central to connecting frontier language-model intelligence with low-level physical control. We will release all models, code, and evaluation records.",
-      "pdf_url": "https://arxiv.org/abs/2610.10787",
-      "comment": "",
-      "technologies": [
-        "Hierarchical Navigation Runtime",
-        "Action Policy",
-        "Codec Allocation",
-        "Reinforcement Learning from Human Feedback"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 6.2,
-      "product_potential": [
-        "Autonomous robotic navigation systems with real-time event handling",
-        "Embodied AI agents for interactive tasks in dynamic environments"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.13438",
-      "title": "Rollout-Time Intervention: Unlocking Agentic Reinforcement Learning Beyond Policy Limits",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "arXiv:2610.13438v2 Announce Type: replace Abstract: Reinforcement learning (RL) has emerged as a key paradigm for improving large language model (LLM) agents, enabling stronger reasoning, planning, and tool-use in interactive environments. However, existing agent RL methods remain fundamentally constrained by an on-policy reasoning bottleneck: when tasks exceed the model's current capability boundary, effective trajectories become extremely sparse and training often collapses. We introduce Rollout-Time Intervention (RTI), a technique designed to elicit successful trajectories beyond the policy's intrinsic exploration capacity. RTI operates by leveraging reward-side evidence (i.e., evaluation rubrics) during rollout to convert erroneous trajectories into successful ones, providing effective learning signals for tasks that the policy rarely solves on its own. Although intervention trajectories are inherently off-policy, we find that they can effectively guide policy optimization when trajectories with excessive distributional shifts are filtered out. Extensive experiments across five benchmarks demonstrate that RTI consistently outperforms RL baselines, enabling the post-trained policy to approach the performance of substantially stronger contemporary LLMs and, more importantly, transcend its original capability boundary. The code is available at https://github.com/Alibaba-NLP/qqr.",
-      "pdf_url": "https://arxiv.org/abs/2610.13438",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning",
-        "Agentic AI",
-        "Off-Policy Learning",
-        "Reward Modeling",
-        "LLM Fine-tuning",
-        "Trajectory Filtering",
-        "Capability Boundary Expansion"
-      ],
-      "maturity": "early",
-      "confidence": 0.72,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enterprise autonomous agents with improved task completion rates for complex workflows beyond current model capabilities",
-        "AI research assistants that can self-improve by learning from evaluation rubrics and transcending original capability limits",
-        "Autonomous coding and debugging agents with enhanced problem-solving through intervention-based training"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "id": "2610.19108",
-      "title": "Towards a Data-Centric Understanding of Spatial Reasoning in Multimodal Large Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "arXiv:2610.19108v1 Announce Type: cross Abstract: Multimodal Large Language Models (MLLMs) have been widely applied in embodied agents and robotics for vision tasks. However, MLLMs suffer from limitations in spatial reasoning and perception. Post-training techniques have shown promise for improving these capabilities; yet, there are limited data-driven surveys of such approaches. In this survey, we consider approaches to fine-tuning pretrained MLLMs for spatial reasoning tasks, ranging from supervised to reinforcement learning, with an emphasis on the datasets used. We investigate themes of dataset construction, data modality and annotation, and evaluation of the resulting models. Based on these themes, we categorize research into three groups: dataset design, dataset construction and evaluation. We find four main methods for constructing fixed spatial annotations: rules and templates, LLM prompting, procedural generation, and human-in-the-loop. We also observe substantial variation in evaluation approaches, including different scoring methods, tolerance metrics, and benchmark types. Finally, we identify opportunities for future research in unified dynamic annotation, efficient spatial reasoning, standardization of evaluation, expanded spatial range, and human-centered spatial interactions.",
-      "pdf_url": "https://arxiv.org/abs/2610.19108",
-      "comment": "",
-      "technologies": [
-        "Multimodal Large Language Models",
-        "Supervised Fine-tuning",
-        "Reinforcement Learning",
-        "Spatial Reasoning",
-        "Procedural Generation",
-        "Vision-Language Models",
-        "Chain-of-Thought Prompting",
-        "Human-in-the-Loop Annotation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.82,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Embodied AI agents with enhanced spatial perception for warehouse automation and logistics",
-        "AR/VR systems with improved spatial understanding for immersive navigation and interaction",
-        "Autonomous mobile robots with better environmental awareness for domestic and industrial assistance"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "accessibility",
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2610.19605",
-      "title": "PN-Mix: Pair-Norm Guided Mixed-Precision Key Cache Quantization for Efficient Long-Output LLM Inference",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "arXiv:2610.19605v1 Announce Type: cross Abstract: Long-output inference in large language models suffers from severe KV cache memory and bandwidth bottlenecks. While KV cache quantization alleviates this issue, low-bit quantization (e.g., 2-bit) severely degrades model accuracy. Recent mixed-precision key-cache quantization methods mitigate this degradation by allocating higher precision to important key channels, but estimate channel saliency using only key statistics. Through attention logit perturbation analysis at the RoPE channel-pair level, we show that quantization errors in channel pairs with large query--key pair-norm products contribute significantly to logit variation. Based on this insight, we propose PN-Mix, a mixed-precision key-cache quantization method for RoPE-based decoder-only LLMs, which allocates higher precision to salient channel pairs identified once during the prefill stage and reused throughout decoding. Across standard reasoning, code-generation, and AIME benchmarks, PN-Mix with 2.26-bit average precision achieves comparable or better average accuracy than prior mixed-precision methods using 2.32--2.39 bits. Furthermore, in our Pareto sweep, PN-Mix degrades gracefully down to 1.5 bits, whereas the compared baselines exhibit sharper performance drops below 2.25 bits.",
-      "pdf_url": "https://arxiv.org/abs/2610.19605",
-      "comment": "",
-      "technologies": [
-        "KV Cache Quantization",
-        "Mixed-Precision Quantization",
-        "LLM Inference Optimization",
-        "Rotary Position Embedding",
-        "Long-Context Inference",
-        "Key Cache Optimization"
-      ],
-      "maturity": "early",
-      "confidence": 0.75,
-      "curator_score": 6.0,
-      "product_potential": [
-        "LLM serving infrastructure optimization for reduced GPU memory footprint and higher throughput on long-output tasks",
-        "Edge and mobile LLM deployment enabling longer context windows on resource-constrained hardware",
-        "Cost reduction layer for enterprise LLM APIs by enabling more efficient batch inference processing"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "creative",
-        "robotics"
-      ]
-    },
     {
       "id": "2610.21539",
       "title": "Reinforcement Learning-driven Diffusion Models: Language, Vision, and Beyond",
@@ -210,12 +72,31 @@
       "summary": "arXiv:2610.21539v1 Announce Type: new Abstract: Diffusion models (DMs) have steadily demonstrated outstanding performance in high-fidelity, controllable generation across diverse scenarios, following the \"pretraining-finetuning\" paradigm established in LLMs. Despite these advances, conventional DMs still face critical limitations in sophisticated reasoning, autonomous exploration of generation pathways, and adaptability to complex, human-aligned objectives. Inspired by RLHF's success in LLMs, RL has recently emerged as a pivotal post-training mechanism to iteratively refine DMs through reward-driven trajectory optimization. This paper presents the first comprehensive review of RL-driven DMs and an empirical analysis of how RL reshapes the diffusion process towards experience-centric, goal-directed generation. We propose a novel technical panorama elucidating RL's multifaceted roles in diffusion-based language, multimodal, robotic, and scientific models, with a granular focus on diffusion trajectory optimization and reward engineering. Through extensive experiments on multiple task-specific benchmarks, we systematically evaluate representative methods to intuitively highlight the advantages of different RL post-training strategies. Furthermore, we reveal and dissect three crucial bottlenecks that currently hinder the real-world deployment of RL-driven DMs: reward design fragility, exploration-exploitation trade-off in high-dimensional generation spaces, and training instability under sparse rewards. Based on these perspectives, we provide a principled roadmap for the integration of RL into DMs and outline promising future research directions for robust, interpretable RL-diffusion systems. We also construct a public repository to continuously track the latest developments in this rapidly evolving field: https://github.com/MAIR-Lab-HUST/Awesome-RL-for-Diffusion-Models.",
       "pdf_url": "https://arxiv.org/abs/2610.21539",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Diffusion Models",
+        "Reinforcement Learning from Human Feedback",
+        "Reward-driven Trajectory Optimization",
+        "Diffusion Trajectory Optimization",
+        "Reward Engineering",
+        "Multimodal Learning",
+        "Post-training Mechanisms",
+        "Goal-directed Generation",
+        "Experience-centric Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "AI content creation platforms with human-aligned generation for marketing, design, and media production",
+        "Autonomous scientific discovery systems for drug molecule generation and materials science applications",
+        "Robotic manipulation systems with improved trajectory planning and goal-directed motor control"
+      ],
+      "domain_applications": [
+        "creative",
+        "science",
+        "robotics",
+        "enterprise"
+      ]
     },
     {
       "id": "2609.24526",
@@ -229,12 +110,34 @@
       "summary": "arXiv:2609.24526v3 Announce Type: replace Abstract: Physical AI requires models to ground visual and linguistic understanding in real-world environments while accounting for environmental constraints and execution feedback. We introduce MachEmbodied-VLM (ME-VLM), a unified vision-language model with two variants, 4B and 35B-A3B, that brings together embodied cognition and multimodal agent capabilities. Our work emphasizes physical perception and spatiotemporal reasoning, together with planning, interaction, and outcome assessment in both digital and physical environments. We construct training data spanning embodied and multimodal agent tasks, including execution observations and feedback to support outcome assessment and decision refinement. The training pipeline comprises embodied capability injection, separate reinforcement learning of embodied and multimodal-agent experts, and multi-teacher on-policy distillation that consolidates their complementary capabilities into a single model. Experiments show competitive performance on both embodied and agent benchmarks, as well as on autonomous-driving and embodied-navigation tasks. For edge deployment, visual token compression, W4A8 quantization, and hardware-software co-optimization enable on-device inference of the 4B variant on the M100, reducing prefill latency from 400 ms to 188 ms. Project Page: https://machembodied.com/ME-Brain/ME-VLM.html Code Repository: https://github.com/MachEmbodied/ME-VLM",
       "pdf_url": "https://arxiv.org/abs/2609.24526",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Vision-Language Model",
+        "Mixture of Experts",
+        "Reinforcement Learning",
+        "On-Policy Distillation",
+        "W4A8 Quantization",
+        "Visual Token Compression",
+        "Hardware-Software Co-optimization",
+        "Multimodal Learning",
+        "Spatiotemporal Reasoning",
+        "On-device AI",
+        "Embodied AI"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Autonomous mobile robots with natural language instruction following for warehouse logistics and home assistance",
+        "Edge-deployed AI systems for real-time autonomous driving and navigation with visual-linguistic understanding",
+        "Industrial robotic arms with outcome assessment and decision refinement capabilities for manufacturing quality control"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science",
+        "healthcare",
+        "accessibility"
+      ]
     },
     {
       "id": "2610.21561",
@@ -273,6 +176,37 @@
       "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2610.10787",
+      "title": "NavGPT-3: Harnessing Context in a Hierarchical Navigation Runtime",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "summary": "arXiv:2610.10787v2 Announce Type: replace-cross Abstract: Language models trained with long-horizon agentic reinforcement learning can generalize knowledge through reasoning, express precise actions, and pursue goals over many steps, raising the ceiling on what an embodied agent can understand and decide. Physical interaction, however, remains the domain of action policies, which provide dense, low-latency control. We present NavGPT-3, a harness that connects the two models, with an OS-like runtime built above it: reasoning, acting, and monitoring run as threads with their own context, tools, and permissions, while the runtime schedules them and decides which thread controls the robot's motion, so that the robot can react to sudden real-world events through interruption and thread switching. Beneath it, our action policy NavGPT VLA, trained on 19.28M examples, allocates visual tokens using codec allocation, in proportion to scene change; its 8B model alone reaches 76.94 SR on R2R-CE and leads RxR-CE with 82.39 SR. With the complete harness, NavGPT-3 sets the state of the art on R2R-CE (81.51 SR) and, for the first time, brings an autonomous agent to human level: on RxR-CE it matches human followers in success (90.43 vs. 90.4 SR) and path fidelity (78.47 vs. 77.7 nDTW) at 1 min 22 s per episode, versus roughly 3 min for a human. We comprehensively ablate the harness design and the interaction between the two models, showing how tools and the action policy shape the path from language-model reasoning to physical control: when NavGPT VLA executes the route, the reasoning loop shortens and the system's minimum reaction time falls from 3-19 s per language-model decision to 0.5-1 s per action-policy step (1-2 Hz). These results show that designing this embodied interface is central to connecting frontier language-model intelligence with low-level physical control. We will release all models, code, and evaluation records.",
+      "pdf_url": "https://arxiv.org/abs/2610.10787",
+      "comment": "",
+      "technologies": [
+        "Hierarchical Navigation Runtime",
+        "Action Policy",
+        "Codec Allocation",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Autonomous robotic navigation systems with real-time event handling",
+        "Embodied AI agents for interactive tasks in dynamic environments"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
     },
     {
       "id": "2607.08964",
@@ -336,87 +270,6 @@
       ]
     },
     {
-      "id": "2610.22324",
-      "title": "Training Reasoning Models to Generate Diverse Scientific Ideas",
-      "authors": [
-        "Manya Wadhwa",
-        "Pranav Narayanan Venkit",
-        "Hiroaki Hayashi",
-        "Yu Li",
-        "Tuhin Chakrabarty",
-        "Chien-Sheng Wu"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "One of the first steps of a research pipeline is generating ideas. Large Language Models (LLMs) are increasingly used to automate this step, but most of this work optimizes the quality of individual ideas, while overlooking diversity. In our work, we study document-grounded ideation, focusing on increasing the diversity of LLM generated ideas and ensuring they are high quality. Given prior papers, a model must propose a set of ideas that are each high-quality and clearly distinct from one another, while also being grounded in the input documents. To optimize for this, we propose training with a set-level reinforcement learning objective. In our setup, in a single generation, the model writes K structured idea cards grounded in the source papers, and the set is scored jointly, where each idea's quality is weighted by its distance from the ideas written before it. This teaches the model to steer each new idea away from its predecessors. We show that our trained 8B model achieves higher creative utility (a measure combining quality and diversity) than Claude Opus 4.8 and GPT-6 Astra on our contamination-free benchmark. In a pilot human study with four experts, our sets are judged as promising as Claude Opus 4.8's and contain marginally more unique ideas. When a coding agent runs proof-of-concept experiments on the ideas, our model's success@k is comparable to Claude Opus 4.8's, so we see that the added diversity does not cost any executability.",
-      "pdf_url": "https://arxiv.org/pdf/2610.22324v1",
-      "comment": "Code and Data at:https://github.com/ManyaWadhwa/diverge_ideation | Under Review",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.22273",
-      "title": "Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries",
-      "authors": [
-        "Anikait Singh",
-        "Teresa Zhang",
-        "Yoonho Lee",
-        "Roshen Sanjay Nair",
-        "Aviral Kumar",
-        "Chelsea Finn"
-      ],
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.CL"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "Reasoning over long document contexts remains a challenge for large language models (LLMs). Standard retrieval methods are inherently reactive, bottlenecking agents with complex, cross-document reasoning at inference time, while precomputed structures like knowledge graphs often fall short because they rely on rigid heuristics. Instead, can we allow agents to perform anticipatory directed curation: learning to proactively reorganize unstructured corpora prior to inference to efficiently serve diverse future queries. We build on a key asymmetry in modern agentic harnesses (e.g., Claude Code): while LLM agents are adept at navigating existing filesystems to solve an immediate task, they are rarely trained to construct reusable workspaces for future use. To instantiate this capability, we introduce Librarian Agents, a framework in which a builder agent transforms raw documents into a hierarchical filesystem of synthetic files and reference links, which forms a workspace tailored for a downstream answering agent. We formulate workspace construction as a Markov decision process and optimize the builder policy via reinforcement learning to directly maximize downstream answering accuracy. Empirically, Librarian Agents outperforms the strongest retrieval and precomputation baselines by 33 percentage points on BrowseComp-Plus, amortizes upfront construction costs across repeated queries, and generalizes zero-shot to unseen domains on BRIGHT with a 31-point average accuracy improvement.",
-      "pdf_url": "https://arxiv.org/pdf/2610.22273v1",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.22056",
-      "title": "Progress Reward Model for Reinforcement Learning via Large Language Models",
-      "authors": [
-        "Xiuhui Zhang",
-        "Ning Gao",
-        "Xingyu Jiang",
-        "Yihui Chen",
-        "Yuheng Pan",
-        "Mohan Zhang",
-        "Yue Deng"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "Traditional reinforcement learning (RL) algorithms face significant limitations in handling long-term tasks with sparse rewards. Recent advancements have leveraged large language models (LLMs) to enhance RL by utilizing their world knowledge for task planning and reward generation. However, planning-based approaches often depend on pre-defined skill libraries and fail to optimize low-level control policies, while reward-based methods require extensive human feedback or exhaustive searching due to the complexity of tasks. In this paper, we propose the Progress Reward Model for RL (PRM4RL), a novel framework that integrates task planning and dense reward to enhance RL. For high-level planning, a complex task is decomposed into a series of simple manageable subtasks, with a subtask-oriented, fine-grained progress function designed to monitor task execution progress. For low-level reward generation, inspired by potential-based reward shaping, we use the progress function to construct a Progress Reward Model (PRM), providing theoretically grounded optimality and convergence guarantees, thereby enabling effective policy optimization. Experimental results on robotics control tasks demonstrate that our approach outperforms both LLM-based planning and reward methods, achieving state-of-the-art performance. Code is available at https://github.com/deng-ai-lab/PRM4RL.",
-      "pdf_url": "https://arxiv.org/pdf/2610.22056v1",
-      "comment": "20 pages, 10 figures. Published at NeurIPS 2025",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
       "id": "2610.21218",
       "title": "AutoOnboarder: Autonomously Onboarding LLM Agents",
       "authors": [],
@@ -453,56 +306,270 @@
       "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2606.27161",
+      "title": "TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient MLLM Inference",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2606.27161v3 Announce Type: replace Abstract: Multimodal large language models (MLLMs) have achieved strong multimodal reasoning capabilities, but their efficiency is limited by the large number of visual tokens, which introduces substantial computational overhead. Visual token pruning offers a natural solution, yet existing methods are imperfect: attention-based criteria tend to retain redundant tokens, while diversity-based criteria are often agnostic to user instructions. Even methods that combine multiple criteria still lack a principled formulation of the intrinsic objective of token pruning. In this paper, we revisit visual token pruning from a first-principles perspective and formulate it as constructing Token Optimal Preservation Sets. Through a top-down information-theoretic analysis, we identify three fundamental principles for effective token selection: Task Relevance, Information Coverage, and Semantic Diversity. Based on these principles, we propose TOPS, a training-free and model-agnostic pruning module that can be applied to various MLLMs. Extensive experiments on 7 MLLM backbones and 14 benchmarks demonstrate that TOPS outperforms prior methods under diverse pruning settings. Notably, on LLaVA-NeXT, TOPS removes 77.8% of visual tokens while preserving 100.0% and 100.6% performance on its 7B and 13B models, respectively, suggesting that pruning redundant visual tokens can sometimes mitigate hallucination and inspire future lightweight MLLM design. Our code is available at https://github.com/MAX-7237/TOPS.",
+      "pdf_url": "https://arxiv.org/abs/2606.27161",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.21805",
+      "title": "CIM-Embed: Learning Instruction-Conditioned Multimodal Embeddings for Clustering",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2610.21805v1 Announce Type: new Abstract: Multimodal objects can require different partitions under different instructions, as when products in an e-commerce catalog are grouped by color, material, or both. Retrieval-oriented embeddings may not recover these partitions, while generative clustering often relies on intermediate descriptions or iterative decisions. This paper presents CIM-Embed, a framework for learning instruction-conditioned multimodal embeddings for clustering. Supervised contrastive learning uses same-group positives and negatives from other groups, optionally including other tasks; heterogeneous structured batches accommodate tasks with different group counts. At inference, the model maps each object's image, text, and instruction directly to an embedding; HDBSCAN then forms a partition without the ground-truth cluster count. We construct ProductMIC from product metadata in Amazon Reviews 2023, comprising training data and an evaluation benchmark for instruction-conditioned clustering. The benchmark contains 5,373 products and 449 single-attribute and compositional grouping tasks spanning 50 leaf categories excluded from our training. With full-dimensional embeddings and HDBSCAN, direct within-task SupCon training achieves a mean per-task V-measure of 95.01, compared with 53.06 for WeMM 9B, the strongest general-purpose embedding baseline evaluated. Frozen product-trained encoders also improve out-of-domain conditional grouping, while controlled transfer experiments distinguish partition transfer from instruction response. We will release the code and dataset upon acceptance.",
+      "pdf_url": "https://arxiv.org/abs/2610.21805",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2601.01982",
+      "title": "ChaosBench-Logic: A Benchmark for Logical and Symbolic Reasoning on Chaotic Dynamical Systems",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2601.01982v2 Announce Type: replace Abstract: Large language models (LLMs) excel at natural language tasks but remain brittle in domains requiring precise logical and symbolic reasoning. Chaotic dynamical systems provide an especially demanding test because chaos is deterministic yet often misinterpreted as randomness or complexity. We introduce ChaosBench-Logic, a benchmark that evaluates LLM reasoning across 30 diverse dynamical systems using a unified first-order logic (FOL) ontology. Each system is annotated with truth assignments for 11 semantic predicates, and 621 questions are generated across seven reasoning categories, including multi-hop implications, cross-system analogies, counterfactual reasoning, bias probes, and multi-turn dialogues. We define metrics for logical accuracy, implication consistency, dialogue coherence, and contradiction, and we release an open-source evaluation pipeline. Initial experiments show that frontier LLMs such as GPT-4, Claude 3.5 Sonnet, Gemini 2.5 Flash, and the open-source LLaMA-3 70B achieve 91-94% per-item accuracy, yet still score 0% on compositional items and exhibit fragile global coherence. Dialogue-level accuracy ranges from 53.1% (GPT-4 CoT) to 75.5% (LLaMA-3 zero-shot). ChaosBench-Logic provides a rigorous testbed for diagnosing such failures and a foundation for developing neuro-symbolic approaches that improve scientific reasoning in LLMs.",
+      "pdf_url": "https://arxiv.org/abs/2601.01982",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.20012",
+      "title": "EmbodiedMidtrain: Bridging the Gap between Vision-Language Models and Vision-Language-Action Models via Mid-training",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2604.20012v2 Announce Type: replace-cross Abstract: Vision-Language-Action Models (VLAs) inherit their visual and linguistic capabilities from Vision-Language Models (VLMs), yet most VLAs are built from off-the-shelf VLMs that are not adapted to the embodied domain, limiting their downstream performance. In this work, we propose EmbodiedMidtrain to bridge the gap between VLMs and VLAs. We first characterize the data distribution gap between them, showing that VLA data occupy compact regions that are largely separated from the broader VLM distribution, while the degree of alignment varies substantially both across and within VLM data sources. Then, we build a mid-training data engine that leverages a lightweight learnable proximity estimator to select the most VLA-aligned candidates from a large VLM pool, and produce EmbodiedMidtrain-1M, a VLM dataset that we further use to mid-train the VLM before downstream VLA fine-tuning. Experiments on both simulated robot manipulation benchmarks and real-world tasks show consistent VLA performance gains over off-the-shelf checkpoints across VLM backbones and VLA action heads. These gains extend to downstream tasks not used to guide data selection. Further analysis reveals that mid-training provides a stronger initialization for VLA fine-tuning, with gains emerging from the earliest steps and widening throughout training. Moreover, the data engine captures both dataset-level and sample-level alignment signals, favoring spatial reasoning over text-centric tasks while preserving the diversity of the VLM data. We will release all code, data and models for future research.",
+      "pdf_url": "https://arxiv.org/abs/2604.20012",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2607.22205",
+      "title": "Filling Before Advancing: Capability-Gap-Driven Post-Training for Scenario-Specialized Remote Sensing MLLMs",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2607.22205v3 Announce Type: replace-cross Abstract: Remote sensing multimodal large language models (RS-MLLMs) have advanced aerial-image understanding, but scenario specialization remains constrained by scarce high-quality supervision and incomplete capability coverage. We propose filling before advancing (FBA), a capability-gap-driven post-training route that develops prerequisite capabilities before scenario-specific adaptation. For coastal harbor understanding, we construct CPRS (Coastal-Port Remote Sensing), a three-layer dataset covering RGB, SAR, PAN, and NIR imagery. FBA organizes supervision into RS semantic anchoring, multi-source bridging, and evidence-grounded scenario tuning. We also introduce HarborEval, an eight-track benchmark assessing perception, spatial understanding, robustness, and generation. Using the same final-task supervision pool, FBA raises the HarborEval score from 57.95 to 70.29 on LLaVA-v1.5 and from 81.09 to 83.37 on Qwen3-VL compared with Direct-SFT. It also outperforms collapsed training and leads the evaluated comparisons on harbor-related VRSBench and RSVQA subsets and expert-scored OpenEval. Stage-wise and supervision-replacement analyses examine the contributions of the supervision roles. A lightweight urban instantiation further supports cross-scenario applicability, with the proposed stage order achieving stronger overall performance than the tested alternatives. Project resources and release updates are available at https://github.com/Z0ngL1ng/filling-before-advancing.",
+      "pdf_url": "https://arxiv.org/abs/2607.22205",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.19705",
+      "title": "SoK: Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "summary": "arXiv:2609.19705v2 Announce Type: replace-cross Abstract: Large language model (LLM) agents already trade with real capital, yet agent-security research has mostly treated them as generic agents. Trading changes the threat: a compromised agent's orders move prices that other participants act on, and an attacker who profits from a crash can trigger the shock that a non-robust agent mishandles. We present FARSIGHT (Financial Agent Robustness and Security Investigation and Global Holistic Taxonomy), a systematization that rates trading agents on robustness to market stress and on security against source manipulation, agent compromise, and agents acting as attackers. It also checks paper-level ratings against released code. Across 15 academic schemes, none earns full credit on any robustness metric, no paper describes a way to halt trading without waiting for LLM inference, and none combines source provenance with cross-source corroboration. In the code of the 7 open-source schemes, no release enforces a stop-loss or position limit outside the LLM, 4 lack a component that their paper or documentation describes, and 2 run model-written code on the host. The same gaps appear beyond finance. Restating FARSIGHT as a domain-independent threat model, we map them onto agents in healthcare, law, software, and crypto. We then trace how compromised agents spread harm, as worms and as cascades that need no further compromise. At published injection rates per hop, a channel read by ten agents lets one compromised agent start an outbreak. We derive 14 open problems and urge deployers to corroborate sources, keep interrupts that bypass the model, and enforce loss limits outside it.",
+      "pdf_url": "https://arxiv.org/abs/2609.19705",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
     {
-      "name": "Hierarchical Navigation Runtime",
+      "name": "Diffusion Models",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Action Policy",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Codec Allocation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "other",
-        "enterprise"
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
+      "maturity": "medium",
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "other",
         "education",
         "science",
+        "other",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reward-driven Trajectory Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Diffusion Trajectory Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reward Engineering",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "science",
+        "other",
+        "robotics",
+        "creative",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Post-training Mechanisms",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Goal-directed Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Experience-centric Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "science",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Vision-Language Model",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
@@ -513,260 +580,153 @@
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "accessibility",
+        "science",
         "robotics",
         "healthcare",
-        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
         "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Agentic AI",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
         "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Off-Policy Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
         "robotics",
-        "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reward Modeling",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "LLM Fine-tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Trajectory Filtering",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Capability Boundary Expansion",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Multimodal Large Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
         "healthcare",
-        "robotics",
-        "accessibility",
         "enterprise"
       ]
     },
     {
-      "name": "Supervised Fine-tuning",
+      "name": "W4A8 Quantization",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "robotics",
         "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Spatial Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Procedural Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Human-in-the-Loop Annotation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "robotics",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "KV Cache Quantization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "creative",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
     {
-      "name": "Mixed-Precision Quantization",
+      "name": "Visual Token Compression",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
+        "accessibility",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
     {
-      "name": "LLM Inference Optimization",
+      "name": "Hardware-Software Co-optimization",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
+        "accessibility",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
     {
-      "name": "Rotary Position Embedding",
+      "name": "Spatiotemporal Reasoning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
+        "accessibility",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
     {
-      "name": "Long-Context Inference",
+      "name": "On-device AI",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
+        "accessibility",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
       ]
     },
     {
-      "name": "Key Cache Optimization",
+      "name": "Embodied AI",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "creative",
+        "accessibility",
         "science",
+        "robotics",
+        "healthcare",
         "enterprise"
+      ]
+    },
+    {
+      "name": "Hierarchical Navigation Runtime",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Action Policy",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Codec Allocation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "robotics"
       ]
     },
     {
       "name": "Long-Context Management",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "science",
         "education",
@@ -777,36 +737,24 @@
       "name": "Visual Geometry Foundation Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "science",
-        "other"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "science",
-        "other"
+        "other",
+        "robotics"
       ]
     },
     {
       "name": "Depth Estimation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "science",
-        "other"
+        "other",
+        "robotics"
       ]
     }
   ],
