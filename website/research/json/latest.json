@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "papers_tracked": 15,
-    "technologies_discovered": 45,
+    "technologies_discovered": 29,
     "opportunities_identified": 0,
-    "last_update": "2026-10-18 09:47 UTC",
+    "last_update": "2026-10-19 11:02 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,31 +13,31 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "45",
+      "value": "29",
       "label": "discovered this scan",
-      "detail": "Hierarchical Navigation Runtime, Action Policy, Codec Allocation, Reinforcement Learning from Human Feedback, Visual Token Pruning, Multimodal Large Language Models, Information-Theoretic Analysis, Training-Free Methods",
+      "detail": "Vision Transformer, Self-supervised Learning, DINO Self-distillation, iBOT Masked Patch Reconstruction, KoLeo Uniformity Regularization, Multimodal Learning, Cross-Modal Consistency Injection, Reinforcement Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "45",
+      "value": "29",
       "label": "active trend clusters",
-      "detail": "Instruction-Conditioned Multimodal Embeddings, Supervised Contrastive Learning, HDBSCAN Clustering, Visual Token Pruning, Multimodal Large Language Models",
+      "detail": "Vision Transformer, Self-supervised Learning, DINO Self-distillation, iBOT Masked Patch Reconstruction, KoLeo Uniformity Regularization",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.9",
+      "value": "8.2",
       "label": "avg opportunity score",
-      "detail": "NavGPT-3: Harnessing Context in a Hierarchical Navigation Runtime",
+      "detail": "A100: A Hybrid Vision Foundation Model for Agricultural Plant Image Analysis",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "NavGPT-3: Harnessing Context i",
+      "value": "A100: A Hybrid Vision Foundati",
       "label": "confidence 85%",
       "detail": "",
       "color": "purple"
@@ -45,15 +45,15 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "NavGPT-3: Harnessing Context i",
+      "value": "A100: A Hybrid Vision Foundati",
       "label": "highest confidence paper",
-      "detail": "Autonomous robotic navigation systems with real-time event handling, Embodied AI agents for interactive tasks in dynamic environments",
+      "detail": "A mobile app for farmers to identify crop diseases and pests using their smartphones, A drone-based agricultural monitoring system that uses A100 to analyze plant health and crop yield",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "25",
+      "value": "19",
       "label": "early-stage technologies",
       "detail": "ME-VLM: A Unified VLM for Embodied Cognition and Agent Coordination",
       "color": "blue"
@@ -61,192 +61,105 @@
   ],
   "papers": [
     {
-      "id": "2610.10787",
-      "title": "NavGPT-3: Harnessing Context in a Hierarchical Navigation Runtime",
+      "id": "2610.22991",
+      "title": "A100: A Hybrid Vision Foundation Model for Agricultural Plant Image Analysis",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CV"
       ],
-      "published": "2026-10-15",
-      "updated": "2026-10-15",
-      "summary": "arXiv:2610.10787v2 Announce Type: replace-cross Abstract: Language models trained with long-horizon agentic reinforcement learning can generalize knowledge through reasoning, express precise actions, and pursue goals over many steps, raising the ceiling on what an embodied agent can understand and decide. Physical interaction, however, remains the domain of action policies, which provide dense, low-latency control. We present NavGPT-3, a harness that connects the two models, with an OS-like runtime built above it: reasoning, acting, and monitoring run as threads with their own context, tools, and permissions, while the runtime schedules them and decides which thread controls the robot's motion, so that the robot can react to sudden real-world events through interruption and thread switching. Beneath it, our action policy NavGPT VLA, trained on 19.28M examples, allocates visual tokens using codec allocation, in proportion to scene change; its 8B model alone reaches 76.94 SR on R2R-CE and leads RxR-CE with 82.39 SR. With the complete harness, NavGPT-3 sets the state of the art on R2R-CE (81.51 SR) and, for the first time, brings an autonomous agent to human level: on RxR-CE it matches human followers in success (90.43 vs. 90.4 SR) and path fidelity (78.47 vs. 77.7 nDTW) at 1 min 22 s per episode, versus roughly 3 min for a human. We comprehensively ablate the harness design and the interaction between the two models, showing how tools and the action policy shape the path from language-model reasoning to physical control: when NavGPT VLA executes the route, the reasoning loop shortens and the system's minimum reaction time falls from 3-19 s per language-model decision to 0.5-1 s per action-policy step (1-2 Hz). These results show that designing this embodied interface is central to connecting frontier language-model intelligence with low-level physical control. We will release all models, code, and evaluation records.",
-      "pdf_url": "https://arxiv.org/abs/2610.10787",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.22991v1 Announce Type: new Abstract: The use of accurate vision models for crop monitoring, disease diagnosis, and plant phenotyping in agriculture is hindered by the lack of expertly annotated data, especially in developing countries. We propose A100, an agricultural vision foundation model that is pre-trained using self-supervised learning on 3 million unlabeled images from fields covering more than 100 crop species. A100 uses a hybrid CNN-Transformer backbone that fuses MBConv stages for local feature extraction with Transformer stages for global contextual representation. A100 uses pre-training with the integration of DINO self-distillation, iBOT masked patch reconstruction, and KoLeo uniformity regularization, resulting in features that are better than ImageNet-12K supervised representations for agricultural applications without any fine-tuning. By utilizing a frozen backbone, the accuracy for crop classification of A100 is 95.37%, which is +2.56% better than ImageNet-12K, and reduces the leaf count error by 10.4% on the GroMo25 phenotyping benchmark, proving that the same backbone can be used for classification and regression tasks. After full fine-tuning, the performance of A100 is 99.90% on 32-class crop identification and 99.02% on 44-class disease detection. On the difficult PlantDoc dataset, A100 outperforms all baselines, such as CvT-13 (64.89% against 63.56%). Remarkably, A100 obtains 98.01% accuracy on plant classification using just 1% of the labelled data (about 284 images per category), showing great label efficiency for use cases with limited labeling. Under an identical protocol, A100 also outperforms the publicly released agricultural foundation models FoMo4Wheat and LeafVision by more than 14 points at 1% labels. We plan to publicly release our pretrained model to allow agricultural professionals to adapt A100 for various plant analysis applications using limited annotations.",
+      "pdf_url": "https://arxiv.org/abs/2610.22991",
       "comment": "",
       "technologies": [
-        "Hierarchical Navigation Runtime",
-        "Action Policy",
-        "Codec Allocation",
-        "Reinforcement Learning from Human Feedback"
+        "Vision Transformer",
+        "Self-supervised Learning",
+        "DINO Self-distillation",
+        "iBOT Masked Patch Reconstruction",
+        "KoLeo Uniformity Regularization"
       ],
       "maturity": "medium",
       "confidence": 0.85,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [
-        "Autonomous robotic navigation systems with real-time event handling",
-        "Embodied AI agents for interactive tasks in dynamic environments"
+        "A mobile app for farmers to identify crop diseases and pests using their smartphones",
+        "A drone-based agricultural monitoring system that uses A100 to analyze plant health and crop yield"
       ],
       "domain_applications": [
-        "robotics",
+        "science",
+        "agriculture",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2610.23307",
+      "title": "MobileInject: Evaluating Reasoning-to-Action Security of MLLM-Based Mobile Agents under Cross-Modal Consistency Injection",
+      "authors": [
+        "Songping Wang",
+        "Peiyang Li",
+        "Yi Huang",
+        "Fengting Li",
+        "Xuhao Ran",
+        "Yueming Lyu",
+        "Chao Feng",
+        "Caifeng Shan"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-10-16",
+      "updated": "2026-10-16",
+      "summary": "Multimodal large language model (MLLM)-based mobile agents are rapidly evolving from conversational assistants into autonomous systems that perceive, reason over, and act on smartphone environments. This capability also exposes a new security risk: adversaries can embed malicious objectives in cross-application mobile content and steer agent behavior through indirect multimodal injection. Although prompt injection has been studied in desktop and web settings, its cross-modal properties in mobile ecosystems remain poorly understood, and existing security analyses are still limited. To close this gap, we introduce MobileInject, the first benchmark for evaluating mobile agents against multimodal injection attacks and reasoning-to-action security risks. MobileInject provides a high-fidelity interactive mobile evaluation framework covering 11 scenarios, 9 security-risk categories, and 108 executable risk instances. It further introduces Cross-Modal Consistency Injection to exploit corroboration across modalities, two enhanced attack methods, Multi-Role Collaborative Deception and Reasoning-Camouflage Injection, to intensify trust manipulation and reasoning hijacking, and a Reasoning Security Diagnosis Framework for fine-grained failure analysis. Systematic experiments show that mobile agents are broadly vulnerable to multimodal injection, and that many failures stem from reasoning hijacking at early stages. These findings establish MobileInject as a systematic cross-modal benchmark for studying and improving the security of mobile agents. Code release details are provided in the Appendix Open Science section.",
+      "pdf_url": "https://arxiv.org/pdf/2610.23307v1",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Cross-Modal Consistency Injection"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Developing secure MLLM-based mobile agents that can resist multimodal injection attacks",
+        "Creating a benchmarking tool for evaluating the security of mobile agents against multimodal injection attacks"
+      ],
+      "domain_applications": [
         "enterprise",
         "other"
       ]
     },
     {
-      "id": "2606.27161",
-      "title": "TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient MLLM Inference",
+      "id": "2610.16352",
+      "title": "LoongSage: A Production-Grade, High-Efficiency Agentic RL Framework for Frontier LLMs with Validated Recipes",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CL"
       ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2606.27161v3 Announce Type: replace Abstract: Multimodal large language models (MLLMs) have achieved strong multimodal reasoning capabilities, but their efficiency is limited by the large number of visual tokens, which introduces substantial computational overhead. Visual token pruning offers a natural solution, yet existing methods are imperfect: attention-based criteria tend to retain redundant tokens, while diversity-based criteria are often agnostic to user instructions. Even methods that combine multiple criteria still lack a principled formulation of the intrinsic objective of token pruning. In this paper, we revisit visual token pruning from a first-principles perspective and formulate it as constructing Token Optimal Preservation Sets. Through a top-down information-theoretic analysis, we identify three fundamental principles for effective token selection: Task Relevance, Information Coverage, and Semantic Diversity. Based on these principles, we propose TOPS, a training-free and model-agnostic pruning module that can be applied to various MLLMs. Extensive experiments on 7 MLLM backbones and 14 benchmarks demonstrate that TOPS outperforms prior methods under diverse pruning settings. Notably, on LLaVA-NeXT, TOPS removes 77.8% of visual tokens while preserving 100.0% and 100.6% performance on its 7B and 13B models, respectively, suggesting that pruning redundant visual tokens can sometimes mitigate hallucination and inspire future lightweight MLLM design. Our code is available at https://github.com/MAX-7237/TOPS.",
-      "pdf_url": "https://arxiv.org/abs/2606.27161",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.16352v2 Announce Type: replace-cross Abstract: Reinforcement learning (RL) has emerged as a critical phase in the post-training pipeline of large language models (LLMs). As the frontier of LLM capabilities shifts from static reasoning to agentic tasks--characterized by external tool invocation, multi-turn interactions, and long-horizon decision-making--existing mainstream RL frameworks have grown increasingly unwieldy, raising the overhead of adoption, usage, and debugging. To address these challenges, we present LoongSage, an agent-native, fully asynchronous RL framework with a lightweight core of roughly 14K lines of code. Built upon Megatron for distributed training and SGLang for high-throughput inference, LoongSage centralizes orchestration within a single controller process and encapsulates all GPU-resident components as Ray actors. It introduces AgentFlow, a unified execution paradigm that orchestrates both white-box and black-box agents. For asynchronous execution, it integrates sliding-window strategies that bound trajectory staleness, and employs TransferMesh, a topology-aware synchronization mechanism that routes weights after each step over the fastest transport available to each receiver. Beyond agentic RL, LoongSage incorporates a memory-efficient Teacher Manager that decouples the scaling of teacher models from GPU memory constraints, natively supporting Multi-Teacher On-Policy Distillation. Extensive evaluations across four complete training runs, spanning complex reinforcement learning and multi-teacher distillation, demonstrate that task rewards improve steadily while the train-inference gap is kept under continuous control, and the fully asynchronous pipeline removes synchronous idle bubbles, sustaining hardware utilization.",
+      "pdf_url": "https://arxiv.org/abs/2610.16352",
       "comment": "",
       "technologies": [
-        "Visual Token Pruning",
-        "Multimodal Large Language Models",
-        "Information-Theoretic Analysis",
-        "Training-Free Methods",
-        "Model-Agnostic Pruning",
-        "KV Cache Optimization",
-        "Sparse Attention",
-        "Vision Transformer"
+        "Reinforcement Learning",
+        "Agentic RL",
+        "Multi-Teacher On-Policy Distillation",
+        "Sliding-window strategies",
+        "TransferMesh"
       ],
       "maturity": "medium",
-      "confidence": 0.75,
+      "confidence": 0.85,
       "curator_score": 5.7,
       "product_potential": [
-        "On-device multimodal AI assistants for mobile/edge deployment with reduced memory footprint and inference latency",
-        "Real-time video understanding systems for surveillance, autonomous vehicles, or live streaming analysis with lower computational cost",
-        "Cloud-based MLLM API services with significantly reduced per-query compute costs enabling cheaper pricing tiers"
+        "A scalable platform for training and deploying agentic LLMs in enterprise environments",
+        "An AI-driven automation tool for complex, multi-step tasks across various industries"
       ],
       "domain_applications": [
         "enterprise",
-        "robotics",
-        "accessibility"
+        "other"
       ]
-    },
-    {
-      "id": "2610.21805",
-      "title": "CIM-Embed: Learning Instruction-Conditioned Multimodal Embeddings for Clustering",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2610.21805v1 Announce Type: new Abstract: Multimodal objects can require different partitions under different instructions, as when products in an e-commerce catalog are grouped by color, material, or both. Retrieval-oriented embeddings may not recover these partitions, while generative clustering often relies on intermediate descriptions or iterative decisions. This paper presents CIM-Embed, a framework for learning instruction-conditioned multimodal embeddings for clustering. Supervised contrastive learning uses same-group positives and negatives from other groups, optionally including other tasks; heterogeneous structured batches accommodate tasks with different group counts. At inference, the model maps each object's image, text, and instruction directly to an embedding; HDBSCAN then forms a partition without the ground-truth cluster count. We construct ProductMIC from product metadata in Amazon Reviews 2023, comprising training data and an evaluation benchmark for instruction-conditioned clustering. The benchmark contains 5,373 products and 449 single-attribute and compositional grouping tasks spanning 50 leaf categories excluded from our training. With full-dimensional embeddings and HDBSCAN, direct within-task SupCon training achieves a mean per-task V-measure of 95.01, compared with 53.06 for WeMM 9B, the strongest general-purpose embedding baseline evaluated. Frozen product-trained encoders also improve out-of-domain conditional grouping, while controlled transfer experiments distinguish partition transfer from instruction response. We will release the code and dataset upon acceptance.",
-      "pdf_url": "https://arxiv.org/abs/2610.21805",
-      "comment": "",
-      "technologies": [
-        "Instruction-Conditioned Multimodal Embeddings",
-        "Supervised Contrastive Learning",
-        "HDBSCAN Clustering"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Multimodal Search Engine with Instruction-Based Clustering",
-        "AI-Assisted Product Categorization for E-commerce Platforms"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "e-commerce"
-      ]
-    },
-    {
-      "id": "2601.01982",
-      "title": "ChaosBench-Logic: A Benchmark for Logical and Symbolic Reasoning on Chaotic Dynamical Systems",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2601.01982v2 Announce Type: replace Abstract: Large language models (LLMs) excel at natural language tasks but remain brittle in domains requiring precise logical and symbolic reasoning. Chaotic dynamical systems provide an especially demanding test because chaos is deterministic yet often misinterpreted as randomness or complexity. We introduce ChaosBench-Logic, a benchmark that evaluates LLM reasoning across 30 diverse dynamical systems using a unified first-order logic (FOL) ontology. Each system is annotated with truth assignments for 11 semantic predicates, and 621 questions are generated across seven reasoning categories, including multi-hop implications, cross-system analogies, counterfactual reasoning, bias probes, and multi-turn dialogues. We define metrics for logical accuracy, implication consistency, dialogue coherence, and contradiction, and we release an open-source evaluation pipeline. Initial experiments show that frontier LLMs such as GPT-4, Claude 3.5 Sonnet, Gemini 2.5 Flash, and the open-source LLaMA-3 70B achieve 91-94% per-item accuracy, yet still score 0% on compositional items and exhibit fragile global coherence. Dialogue-level accuracy ranges from 53.1% (GPT-4 CoT) to 75.5% (LLaMA-3 zero-shot). ChaosBench-Logic provides a rigorous testbed for diagnosing such failures and a foundation for developing neuro-symbolic approaches that improve scientific reasoning in LLMs.",
-      "pdf_url": "https://arxiv.org/abs/2601.01982",
-      "comment": "",
-      "technologies": [
-        "Benchmarking for Logical and Symbolic Reasoning",
-        "Chaotic Dynamical Systems",
-        "First-Order Logic (FOL) Ontology",
-        "Multi-Hop Reasoning",
-        "Cross-System Analogies",
-        "Counterfactual Reasoning",
-        "Bias Probes",
-        "Multi-Turn Dialogues",
-        "Neuro-Symbolic Approaches"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "LLM Reasoning Enhancement Platform: A tool for developers to evaluate and improve LLMs' logical and symbolic reasoning capabilities using ChaosBench-Logic.",
-        "ChaosBench-Logic for Education: An interactive learning platform that uses chaotic dynamical systems to teach logical reasoning and first-order logic."
-      ],
-      "domain_applications": [
-        "education",
-        "science"
-      ]
-    },
-    {
-      "id": "2604.20012",
-      "title": "EmbodiedMidtrain: Bridging the Gap between Vision-Language Models and Vision-Language-Action Models via Mid-training",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2604.20012v2 Announce Type: replace-cross Abstract: Vision-Language-Action Models (VLAs) inherit their visual and linguistic capabilities from Vision-Language Models (VLMs), yet most VLAs are built from off-the-shelf VLMs that are not adapted to the embodied domain, limiting their downstream performance. In this work, we propose EmbodiedMidtrain to bridge the gap between VLMs and VLAs. We first characterize the data distribution gap between them, showing that VLA data occupy compact regions that are largely separated from the broader VLM distribution, while the degree of alignment varies substantially both across and within VLM data sources. Then, we build a mid-training data engine that leverages a lightweight learnable proximity estimator to select the most VLA-aligned candidates from a large VLM pool, and produce EmbodiedMidtrain-1M, a VLM dataset that we further use to mid-train the VLM before downstream VLA fine-tuning. Experiments on both simulated robot manipulation benchmarks and real-world tasks show consistent VLA performance gains over off-the-shelf checkpoints across VLM backbones and VLA action heads. These gains extend to downstream tasks not used to guide data selection. Further analysis reveals that mid-training provides a stronger initialization for VLA fine-tuning, with gains emerging from the earliest steps and widening throughout training. Moreover, the data engine captures both dataset-level and sample-level alignment signals, favoring spatial reasoning over text-centric tasks while preserving the diversity of the VLM data. We will release all code, data and models for future research.",
-      "pdf_url": "https://arxiv.org/abs/2604.20012",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2607.22205",
-      "title": "Filling Before Advancing: Capability-Gap-Driven Post-Training for Scenario-Specialized Remote Sensing MLLMs",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2607.22205v3 Announce Type: replace-cross Abstract: Remote sensing multimodal large language models (RS-MLLMs) have advanced aerial-image understanding, but scenario specialization remains constrained by scarce high-quality supervision and incomplete capability coverage. We propose filling before advancing (FBA), a capability-gap-driven post-training route that develops prerequisite capabilities before scenario-specific adaptation. For coastal harbor understanding, we construct CPRS (Coastal-Port Remote Sensing), a three-layer dataset covering RGB, SAR, PAN, and NIR imagery. FBA organizes supervision into RS semantic anchoring, multi-source bridging, and evidence-grounded scenario tuning. We also introduce HarborEval, an eight-track benchmark assessing perception, spatial understanding, robustness, and generation. Using the same final-task supervision pool, FBA raises the HarborEval score from 57.95 to 70.29 on LLaVA-v1.5 and from 81.09 to 83.37 on Qwen3-VL compared with Direct-SFT. It also outperforms collapsed training and leads the evaluated comparisons on harbor-related VRSBench and RSVQA subsets and expert-scored OpenEval. Stage-wise and supervision-replacement analyses examine the contributions of the supervision roles. A lightweight urban instantiation further supports cross-scenario applicability, with the proposed stage order achieving stronger overall performance than the tested alternatives. Project resources and release updates are available at https://github.com/Z0ngL1ng/filling-before-advancing.",
-      "pdf_url": "https://arxiv.org/abs/2607.22205",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2609.19705",
-      "title": "SoK: Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-17",
-      "updated": "2026-10-17",
-      "summary": "arXiv:2609.19705v2 Announce Type: replace-cross Abstract: Large language model (LLM) agents already trade with real capital, yet agent-security research has mostly treated them as generic agents. Trading changes the threat: a compromised agent's orders move prices that other participants act on, and an attacker who profits from a crash can trigger the shock that a non-robust agent mishandles. We present FARSIGHT (Financial Agent Robustness and Security Investigation and Global Holistic Taxonomy), a systematization that rates trading agents on robustness to market stress and on security against source manipulation, agent compromise, and agents acting as attackers. It also checks paper-level ratings against released code. Across 15 academic schemes, none earns full credit on any robustness metric, no paper describes a way to halt trading without waiting for LLM inference, and none combines source provenance with cross-source corroboration. In the code of the 7 open-source schemes, no release enforces a stop-loss or position limit outside the LLM, 4 lack a component that their paper or documentation describes, and 2 run model-written code on the host. The same gaps appear beyond finance. Restating FARSIGHT as a domain-independent threat model, we map them onto agents in healthcare, law, software, and crypto. We then trace how compromised agents spread harm, as worms and as cascades that need no further compromise. At published injection rates per hop, a channel read by ten agents lets one compromised agent start an outbreak. We derive 14 open problems and urge deployers to corroborate sources, keep interrupts that bypass the model, and enforce loss limits outside it.",
-      "pdf_url": "https://arxiv.org/abs/2609.19705",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
     },
     {
       "id": "2610.21539",
@@ -328,6 +241,25 @@
       ]
     },
     {
+      "id": "2510.08713",
+      "title": "Towards Unified World Models for Visual Navigation via Memory-Augmented Planning and Foresight",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2510.08713v4 Announce Type: replace-cross Abstract: Enabling embodied agents to imagine future states is essential for robust and generalizable visual navigation. Yet, state-of-the-art systems typically rely on modular designs that decouple navigation planning from visual world modeling, which often induces state-action misalignment and weak adaptability in novel or dynamic scenarios. We propose UniWM, a unified, memory-augmented world model that integrates egocentric visual foresight and planning within a single multimodal autoregressive backbone. UniWM explicitly grounds action selection in visually imagined outcomes, tightly aligning prediction with control. Meanwhile, a hierarchical memory mechanism fuses short-term perceptual cues with longer-term trajectory context, supporting stable and coherent reasoning over extended horizons. Extensive experiments on four challenging benchmarks (Go Stanford, ReCon, SCAND, HuRoN) and the 1X Humanoid Dataset show that UniWM improves navigation success rates by up to 30%, substantially reduces trajectory errors against strong baselines, generalizes zero-shot to the unseen TartanDrive dataset, and scales naturally to high-dimensional humanoid navigation. These results position UniWM as a principled step toward unified, imagination-driven embodied navigation. The code and models are available at https://github.com/UWMILab/UniWM.",
+      "pdf_url": "https://arxiv.org/abs/2510.08713",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
       "id": "2610.21561",
       "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
       "authors": [],
@@ -366,434 +298,197 @@
       "domain_applications": []
     },
     {
-      "id": "2607.08964",
-      "title": "Long-Horizon-Terminal-Bench: Testing the Limits of Agents on Long-Horizon Terminal Tasks with Dense Reward-Based Grading",
+      "id": "2610.22924",
+      "title": "Sep-Latent: Separator Tokens as Natural Compression Anchors for Implicit Reasoning",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CL"
       ],
-      "published": "2026-10-14",
-      "updated": "2026-10-14",
-      "summary": "arXiv:2607.08964v3 Announce Type: replace Abstract: AI agents have become capable of autonomously completing short, well-specified tasks. However, existing terminal benchmarks largely focus on simple problems that finish within minutes and are evaluated only by their final outcome. This setup overlooks intermediate progress and partial solutions, yielding sparse reward signals and an incomplete picture of agent capability. We introduce Long-Horizon-Terminal-Bench, a terminal benchmark of 46 long-horizon tasks spanning nine categories, including experiment reproduction, software engineering, multimodal analysis, interactive games, and scientific computing. Each task follows a Terminal-Bench-style setup with a reference solution or simulation engine, but is further decomposed into fine-grained graded subtasks. This design enables dense intermediate rewards and partial credit, allowing evaluation to capture not only whether an agent reaches the final goal, but also how far it progresses on open-ended workflows. Tasks in Long-Horizon-Terminal-Bench typically require hundreds of episodes and minutes to hours of execution, stressing long-horizon planning, long-context management, and iterative debugging rather than one-shot problem solving. We evaluate 15 frontier models and find that agents consume on average 9.9M tokens per task, with roughly 231 episodes and 85.3 minutes of execution time per run, making Long-Horizon-Terminal-Bench more demanding than prior terminal-based benchmarks. Even the strongest tested model achieves 15.2% pass@1 at a partial-reward threshold of 0.95 and 10.9% at a perfect-reward threshold of 1.0, while the mean pass rate across models is 4.3% and 1.7% under the two thresholds, respectively. These results reveal headroom for improvement. We further analyze failure modes and error patterns, and release Long-Horizon-Terminal-Bench to support future progress on long-horizon terminal agents.",
-      "pdf_url": "https://arxiv.org/abs/2607.08964",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning from Human Feedback",
-        "Long-Context Management"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.2,
-      "product_potential": [
-        "AI-powered long-horizon task automation for enterprise workflows",
-        "Interactive AI tutors for complex educational tasks",
-        "AI-driven scientific research assistants for iterative experimentation"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2610.16945",
-      "title": "UniMetric: Universal Metric Scale Recovery for Visual Geometry Foundation Models",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-14",
-      "updated": "2026-10-14",
-      "summary": "arXiv:2610.16945v1 Announce Type: new Abstract: Recent advances in multimodal foundation models, exemplified by GPT-6 Astra, raise the prospect of general-purpose embodied reasoning and planning. Using Internet videos for embodied pretraining calls for reliable physical-scale annotations. Yet visual geometry foundation models often recover scene structure and camera motion without reliable metric scale. We show that uncertain size priors of familiar objects can jointly constrain a reconstruction's shared scale. Building on this insight, we present UniMetric, a universal and training-free metric scale recovery framework for geometry foundation models, without additional sensors or task-specific metric supervision. Specifically, Metric Prior Acquisition elicits object height intervals from a vision-language model. Semantic-Geometric Alignment measures reconstructed object heights along the estimated support-surface normal in each frame and converts the priors into scale intervals. Global Scale Recovery reconciles these intervals through a convex objective, yielding a jointly feasible scale when they overlap and a unique compromise otherwise. The estimated sequence-level scale is applied uniformly to reconstructed points and camera translations. Controlled experiments with real VLM priors show that combining observations improves scale accuracy with exact relative object heights. To evaluate metric accuracy on GFM reconstructions without ground-truth scale alignment, we introduce MetricBench, covering twelve embodied, driving, and roadside subsets with sensor-derived ground truth. Across nine geometry foundation models, UniMetric reduces mean depth Abs Rel, reconstruction Chamfer distance, and trajectory error by 54.2%, 83.8%, and 65.6%, respectively, improving every model on all three tasks at the suite level. We release the UniMetric code and MetricBench data.",
-      "pdf_url": "https://arxiv.org/abs/2610.16945",
-      "comment": "",
-      "technologies": [
-        "Visual Geometry Foundation Models",
-        "Multimodal Learning",
-        "Depth Estimation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Augmented Reality applications with accurate spatial mapping and object recognition",
-        "Autonomous vehicles with improved depth perception and trajectory planning",
-        "Virtual reality environments with precise spatial understanding and interaction"
-      ],
-      "domain_applications": [
-        "robotics",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.21218",
-      "title": "AutoOnboarder: Autonomously Onboarding LLM Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-16",
-      "updated": "2026-10-16",
-      "summary": "arXiv:2610.21218v1 Announce Type: new Abstract: Agentic large language models have been documented to lose reasoning capability when placed inside a harness, the software that mediates their observations and actions. To reconcile these losses, we introduce AutoOnboarder, an autonomous system that adapts an agent to a task the way a trainer onboards a new employee. It places the agent under the supervision of an intelligent ``Onboarder'' coding agent, which iteratively tailors its foundation model, prompt, and harness source code to simultaneously improve performance and decrease cost. Like a real onboarding process, the Onboarder is only given tens of examples, and all evaluation data is isolated on a separate virtual machine to prevent leakage. We report the lessons learned from building and testing AutoOnboarder on genomic-sequencing prior authorization form submission. Autonomously onboarded agents are able to match or exceed the performance of a Gemini 3.5 Flash baseline at up to 29$\\times$ lower costs. However, these agents remain imperfect, and the Onboarding process varies greatly in terms of final performance. We conclude that future Onboarding systems require a robust environment for the Onboarder, including a structured thought interface, (controlled) internet access, and a wide model search space.",
-      "pdf_url": "https://arxiv.org/abs/2610.21218",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.22924v1 Announce Type: cross Abstract: Large Language Models (LLMs) have demonstrated remarkable success in complex reasoning through explicit Chain-of-Thought (CoT), but the associated computational overhead and token verbosity remain significant barriers to efficiency. While implicit reasoning in continuous latent spaces offers a promising alternative, existing methods like Coconut and CODI often rely on fixed-length latent sequences and suffer from representational collapse. In this paper, we propose Sep-Latent, an adaptive implicit reasoning framework that utilizes separator tokens as structural semantic anchors. By introducing an Attention-Decay mechanism, we force the model to aggregate and compress reasoning logic into these anchors during training. We then align explicit and implicit pathways through multi-level distillation across all layers to ensure logical consistency. Crucially, Sep-Latent enables dynamic reasoning depth by adaptively terminating the latent thinking phase based on query complexity. Experimental results on the GSM8k-Aug benchmark show that Sep-Latent achieves an accuracy of 56.8\\% with an average of only 5.4 tokens, significantly outperforming prior fixed-length implicit models in efficiency while narrowing the performance gap with explicit CoT. Further analysis via PCA and symbolic variant testing confirms that our method ensures semantic grounding and exhibits superior robustness to perturbations.",
+      "pdf_url": "https://arxiv.org/abs/2610.22924",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2610.21327",
-      "title": "DocPilot: Interactive Agent Orchestration and Training for Long Visual Document Understanding",
+      "id": "2602.22871",
+      "title": "Test-Time Scaling with Diffusion Language Models via Reward-Guided Stitching",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CL"
       ],
-      "published": "2026-10-16",
-      "updated": "2026-10-16",
-      "summary": "arXiv:2610.21327v1 Announce Type: new Abstract: Multimodal long-document question answering requires models to seek sparse evidence across pages and modalities, understand heterogeneous document content, and reason over the collected evidence. Even advanced vision-language models (VLMs) can overlook sparse evidence and struggle with cross-modal reasoning in a single pass. Existing document agents further introduce multi-step interaction, but some still rely on predefined workflows or coarse-grained actions, limiting the flexibility and granularity of document reasoning. We introduce DocPilot, an agentic document framework that supports expressive orchestration and makes complex document solving learnable by small language models (SLMs). DocPilot orchestrates evidence seeking through page-level navigation and fine-grained evidence localization, and integrates local visual inspection, code-based numerical reasoning, and cross-modal reasoning for multimodal understanding. To transfer these capabilities to small models, we propose curriculum-based agentic training that progresses from single-ability learning to adaptive orchestration through supervision from data-grounded reasoning traces and executable interaction trajectories. Across MMLongBench-Doc, DocBench, FinRAGBench-V, and MADQA, DocPilot achieves strong gains with frontier VLM backbones, while DocPilot-4B delivers competitive performance against substantially larger models, demonstrating strong effectiveness and generalization across diverse long-document reasoning settings. The code is available at https://github.com/HKUSTDial/DocPilot.",
-      "pdf_url": "https://arxiv.org/abs/2610.21327",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2602.22871v3 Announce Type: replace Abstract: Reasoning with large language models often benefits from generating multiple chains-of-thought, but existing aggregation strategies are typically trajectory-level (e.g., selecting the best trace or voting on the final answer), discarding useful intermediate work from partial or \"nearly correct\" attempts. We propose Stitching Noisy Diffusion Thoughts, a self-consistency framework that turns cheap diffusion-sampled reasoning into a reusable pool of step-level candidates. Given a problem, we (i) sample many diverse, low-cost reasoning trajectories using a masked diffusion language model, (ii) score every intermediate step with an off-the-shelf process reward model (PRM), and (iii) stitch these highest-quality steps across trajectories into a composite rationale. This rationale is then used to recompute only the final answer. This modular pipeline separates exploration (diffusion) from evaluation and solution synthesis, avoiding monolithic unified hybrids while preserving broad search. Across math reasoning benchmarks, we find that step-level recombination is most beneficial on harder problems, and ablations highlight the importance of the final solver in converting stitched but imperfect rationales into accurate answers. Using low-confidence diffusion sampling with parallel, independent rollouts, our training-free framework improves average accuracy by up to 23.8% across six math and coding tasks. At the same time, it achieves up to a 1.8x latency reduction relative to both traditional diffusion models (e.g., Dream, LLaDA) and unified architectures (e.g., TiDAR). The code is available https://github.com/roymiles/diffusion-stitching",
+      "pdf_url": "https://arxiv.org/abs/2602.22871",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.17819",
+      "title": "Algorithmic Primitives of Theory of Mind Benchmarks",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2604.17819v2 Announce Type: replace Abstract: Do Theory of Mind (ToM) benchmarks really test theory of mind, or are they actually testing parsing and algorithmic state tracking? While benchmarks vary modality and dialogue length, this paper finds that they re-encode the same few state transition algorithms. We create PDDL-Mind, a neuro-symbolic approach that recovers such algorithms and upstream inductive biases of ToM benchmarks explicitly by parsing narratives into the Planning Domain Definition Language (PDDL) and executes candidate actions against a predefined set of update algorithms. Doing so provides program-verified state traces to the model. We use our method's performance gain to audit how much of a benchmark's difficulty our inductive bias absorbs. Across MMToM, MuMA, and FanToM, outsourcing parsing to programs alone brings performance close to strong agentic pipelines, while outsourcing state tracking to PDDL moves GPT-4o to close-to-human performance. We demonstrate that complex ToM benchmarks primarily punishes Large Language Models' unreliable implicit implementation of state tracking and parsing algorithms rather than limitations in belief and counterfactual reasoning.",
+      "pdf_url": "https://arxiv.org/abs/2604.17819",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2608.17895",
+      "title": "BEAR-Bench: A Bilingual Enterprise and Academic Reasoning Benchmark for Multimodal Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2608.17895v2 Announce Type: replace Abstract: While Multimodal Large Language Models (MLLMs) have made significant strides in visual comprehension, their ability to reason about text-dense, professional documents remains incompletely evaluated. Existing benchmarks emphasize information extraction, require external domain knowledge, or cover professional documents only as one of many settings. They are also largely English- or Chinese-centric, leaving other languages and Russian, in particular, substantially underrepresented. To address these limitations, we introduce BEAR-Bench (Bilingual Enterprise and Academic Reasoning), a self-contained, complex English-and-Russian benchmark comprising 1000 human-annotated questions based on text-rich business and scientific documents. We evaluate 16 proprietary and open-weight MLLMs, including Gemini 3.1 Pro and Qwen3.5-397B, on BEAR-Bench and observe clear headroom even for the strongest systems. Finally, we use the resulting model outputs to compare existing hallucination detection methods, evaluating not only how often models fail on BEAR-Bench but also how reliably those failures can be identified.",
+      "pdf_url": "https://arxiv.org/abs/2608.17895",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.19869",
+      "title": "SEA-HELM Audio: Evaluating Multilingual ASR-LLM Pipeline Performance Across SEA-HELM Subsets",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.19869v2 Announce Type: replace-cross Abstract: We introduce SEA-HELM Audio, a Southeast Asian (SEA) multilingual evaluation framework that extends the text-based SEA-HELM benchmark to assess performance degradation in cascaded automatic speech recognition and large language model (ASR-LLM) pipelines. Using synthesized speech, we compare speech-input and text-input performance across five languages (Chinese, English, Malay, Indonesian, and Tamil) on multiple-choice reasoning and instruction-following tasks. We evaluate open-weight and commercial ASR-LLM systems using identical verifiers and quantify the speech gap as the difference between text and speech accuracy. Results show substantial degradation, with accuracy drops of 9.00 to 18.50 percentage points for multiple-choice reasoning and 20.00 to 42.86 points for instruction following. Tamil exhibits the largest degradation, exceeding 40 percentage points. Our findings highlight the limitations of text-only benchmarks in predicting voice-agent reliability and demonstrate the value of SEA-HELM Audio for evaluating multilingual voice-agent systems.",
+      "pdf_url": "https://arxiv.org/abs/2610.19869",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.22444",
+      "title": "Event-STVG: Spatio-Temporal Video Grounding for Long-Form Event Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.22444v1 Announce Type: new Abstract: Spatio-Temporal Video Grounding (STVG) aims to jointly localize a target in space and time given a natural-language query. Despite continued advances, existing STVG benchmarks remain largely centered on localizing targets through instance-specific descriptions, leaving them largely decoupled from long-form reasoning increasingly emphasized in multimodal large language models (MLLMs). In this paper, we introduce Event-STVG, a task that shifts STVG from locating what is described toward event-level reasoning by unifying long-form context, repeated-event reasoning, event localization, role inference, and multi-target grounding. To facilitate research on Event-STVG, we construct a large-scale benchmark comprising 4,016 annotated event occurrences across soccer and seven additional domains. Experiments with state-of-the-art MLLMs reveal substantial difficulty, with the strongest model achieving only 5.4% m-vIoU at the 10-minute horizon. Across domains, we consistently observe confusion among repeated same-type events, spatial grounding bottlenecks, and rare success in jointly grounding all required roles. Event-STVG establishes a new challenge for visual understanding in MLLMs, calling for future models that can jointly reason about complex events across space and time. Code and annotations are available at https://github.com/THU-KEG/EventSTVG",
+      "pdf_url": "https://arxiv.org/abs/2610.22444",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.22964",
+      "title": "ANCHOR: Audio-Visually Grounded Chain-of-Thought Reasoning Benchmark",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "summary": "arXiv:2610.22964v1 Announce Type: new Abstract: Multimodal large language models (MLLMs) perform well on audio-visual question answering, but correct answers do not necessarily imply that their stated reasoning is grounded in relevant perceptual evidence. Existing benchmarks mainly evaluate final-answer accuracy, offering limited insight into whether model-generated rationales correctly identify visual regions, temporal intervals, and audio events supporting predictions. We introduce ANCHOR, a benchmark and evaluation framework for measuring grounded-rationale alignment in multimodal reasoning, comprising 2,319 videos and 8,272 question-answer pairs with structured reasoning traces, temporal evidence, spatial bounding boxes, and salient audio cues, including a human-refined test set of 224 videos and 975 question-answer pairs. We separately measure answer correctness, hallucination, logical divergence, and conciseness, with direct spatial and temporal grounding measurements on a focused subset. Across the full benchmark, twelve contemporary MLLMs show a substantial alignment gap: models with comparable answer performance can differ markedly in whether their explanations are supported by annotated evidence. On a matched subset of 100 videos and 446 question-answer pairs, rankings remain highly stable across human-refined, Gemini-generated, and GPT-generated references (mean Pearson r=0.99), providing evidence against model-reference circularity within this subset. Grounding-cue ablations of three MLLMs on the full human-refined test set reveal a consistent modality hierarchy: removing video reduces accuracy by 38.4-41.8 points, while removing bounding boxes (3.2-7.7 points) and audio (4.2-5.6 points) causes smaller, complementary, model-dependent drops. These findings show answer-only evaluation obscures important grounding failures and position ANCHOR as a testbed for evaluating accurate and evidence-aligned audio-visual reasoning.",
+      "pdf_url": "https://arxiv.org/abs/2610.22964",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     }
   ],
   "technologies": [
     {
-      "name": "Hierarchical Navigation Runtime",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Action Policy",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Codec Allocation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "other",
-        "creative",
-        "education",
-        "science",
-        "enterprise",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Visual Token Pruning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Multimodal Large Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Information-Theoretic Analysis",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Training-Free Methods",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Model-Agnostic Pruning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "KV Cache Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Sparse Attention",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "accessibility",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
       "name": "Vision Transformer",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "robotics",
+        "science",
+        "agriculture",
         "enterprise"
       ]
     },
     {
-      "name": "Instruction-Conditioned Multimodal Embeddings",
+      "name": "Self-supervised Learning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "e-commerce",
+        "science",
+        "agriculture",
         "enterprise"
       ]
     },
     {
-      "name": "Supervised Contrastive Learning",
+      "name": "DINO Self-distillation",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "e-commerce",
+        "science",
+        "agriculture",
         "enterprise"
       ]
     },
     {
-      "name": "HDBSCAN Clustering",
+      "name": "iBOT Masked Patch Reconstruction",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.8,
       "trend": "rising",
       "applications": [
-        "e-commerce",
+        "science",
+        "agriculture",
         "enterprise"
       ]
     },
     {
-      "name": "Benchmarking for Logical and Symbolic Reasoning",
+      "name": "KoLeo Uniformity Regularization",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "trend": "rising",
       "applications": [
         "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Chaotic Dynamical Systems",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "First-Order Logic (FOL) Ontology",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-Hop Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Cross-System Analogies",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Counterfactual Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Bias Probes",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-Turn Dialogues",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Neuro-Symbolic Approaches",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reward-driven Trajectory Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Diffusion Trajectory Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "robotics",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Reward Engineering",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "creative",
-        "robotics",
+        "agriculture",
         "enterprise"
       ]
     },
@@ -801,28 +496,163 @@
       "name": "Multimodal Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "other",
+        "robotics",
         "healthcare",
-        "accessibility",
-        "creative",
         "science",
         "enterprise",
-        "robotics"
+        "creative",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "name": "Cross-Modal Consistency Injection",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "healthcare",
+        "science",
+        "enterprise",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "name": "Agentic RL",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Multi-Teacher On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Sliding-window strategies",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "TransferMesh",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reward-driven Trajectory Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Diffusion Trajectory Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reward Engineering",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "robotics",
+        "creative",
+        "enterprise"
       ]
     },
     {
       "name": "Post-training Mechanisms",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "science",
-        "creative",
         "robotics",
+        "creative",
         "enterprise"
       ]
     },
@@ -830,12 +660,12 @@
       "name": "Goal-directed Generation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "science",
-        "creative",
         "robotics",
+        "creative",
         "enterprise"
       ]
     },
@@ -843,12 +673,12 @@
       "name": "Experience-centric Generation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "science",
-        "creative",
         "robotics",
+        "creative",
         "enterprise"
       ]
     },
@@ -856,176 +686,126 @@
       "name": "Vision-Language Model",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "accessibility",
-        "science",
-        "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "On-Policy Distillation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "W4A8 Quantization",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "Visual Token Compression",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "Hardware-Software Co-optimization",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "Spatiotemporal Reasoning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "On-device AI",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
+        "accessibility"
       ]
     },
     {
       "name": "Embodied AI",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
+        "robotics",
         "healthcare",
-        "accessibility",
         "science",
         "enterprise",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Long-Context Management",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "science",
-        "enterprise",
-        "education"
-      ]
-    },
-    {
-      "name": "Visual Geometry Foundation Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Depth Estimation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "science",
-        "robotics"
+        "accessibility"
       ]
     }
   ],
