@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-21",
+    "date": "2026-10-22",
     "papers_tracked": 15,
-    "technologies_discovered": 28,
+    "technologies_discovered": 36,
     "opportunities_identified": 0,
-    "last_update": "2026-10-21 10:25 UTC",
+    "last_update": "2026-10-22 10:24 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,31 +13,31 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "28",
+      "value": "36",
       "label": "discovered this scan",
-      "detail": "Embodied AI, Interactive World Models, Reinforcement Learning from Human Feedback, Multimodal Learning, Hierarchical Transformer with Max Pooling, Masked Instance Training, Modality-aware Contrastive Learning, Prototype-based Map Cloning",
+      "detail": "Verifiable Task Synthesis, Long-Horizon Post-Training, Semantic Evidence Selection, Executable Computation Chains, LLM Review and Verification, Cold-Start Supervised Fine-Tuning (SFT), Reinforcement Learning (RL) for Task Execution, Multimodal Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "28",
+      "value": "36",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Adversarial Robustness, Instruction Tuning, Reasoning-oriented Models, Confuse-then-Contrast Fine-Tuning",
+      "detail": "Multimodal Language Models, Benchmarking for Video Generation Models, Reinforcement Learning for Model Fine-tuning, Downstream Evaluation using Multimodal Language Models, Benchmarking",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.7",
+      "value": "7.9",
       "label": "avg opportunity score",
-      "detail": "EmbodiedWorld-200K: Toward Embodied World Agents via Embodied-Planning Dataset a",
+      "detail": "Navalia: Advancing Cowork Agents through Verifiable Task Synthesis and Long-Hori",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "EmbodiedWorld-200K: Toward Emb",
+      "value": "Navalia: Advancing Cowork Agen",
       "label": "confidence 80%",
       "detail": "",
       "color": "purple"
@@ -53,145 +53,13 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "14",
+      "value": "20",
       "label": "early-stage technologies",
-      "detail": "BatchParScale: Sparse Batch-Mixing for Sequence Models",
+      "detail": "SAPD: Learning from Agent Experience without Environment Interaction",
       "color": "blue"
     }
   ],
   "papers": [
-    {
-      "id": "2610.25959",
-      "title": "EmbodiedWorld-200K: Toward Embodied World Agents via Embodied-Planning Dataset and Interactive World Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2610.25959v1 Announce Type: new Abstract: Building embodied agents that can perceive, reason, and act across diverse 3D worlds is a central research direction toward artificial general intelligence. Yet most existing work remains confined to specific tasks in a single scene and transfers poorly to new environments, leaving general embodied agents for open-world settings under-explored. We refer to such agents as Embodied World Agents (EWAs), whose defining property is the ability to understand diverse visual environments and execute general actions in open-world conditions. To advance EWA research, we study open-world embodied navigation-planning and release EmbodiedWorld-200K, a large-scale dataset of over 200K samples spanning diverse scenes. Each example is equipped with multi-level annotations, ranging from low-level camera-motion trajectories to high-level semantic instructions. The dataset also provides unified evaluation splits and task-specific metrics, supporting offline pretraining and fair evaluation of EWAs. Beyond offline supervision, a defining characteristic of an EWA is its interaction with the environment; training solely on offline data is therefore insufficient, especially for generalizing to scenes not covered in the training distribution. Building dedicated real interactive environments, however, is often prohibitively expensive. To address this, we propose a novel training scheme that employs a video world model as a low-cost environment proxy and performs interactive reinforcement-learning (RL) post-training of the EWA within it. Empirically, pretraining on EmbodiedWorld-200K substantially improves the open-world embodied planning ability of the EWA, and further RL post-training inside a world model yields clear gains on out-of-distribution scenes. The dataset, baseline checkpoints, and training and evaluation code are available at https://xiaokunfeng.github.io/EmbodiedWorld-200K/.",
-      "pdf_url": "https://arxiv.org/abs/2610.25959",
-      "comment": "",
-      "technologies": [
-        "Embodied AI",
-        "Interactive World Models",
-        "Reinforcement Learning from Human Feedback",
-        "Multimodal Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 6.2,
-      "product_potential": [
-        "Virtual reality training environments for healthcare professionals",
-        "Autonomous navigation systems for robots in open-world settings",
-        "Interactive virtual assistants for education and entertainment"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "robotics",
-        "education",
-        "creative"
-      ]
-    },
-    {
-      "id": "2511.15308",
-      "title": "Text2Loc++: Generalizing 3D Point Cloud Localization from Natural Language",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2511.15308v2 Announce Type: replace Abstract: We tackle the problem of localizing 3D point cloud submaps using complex and diverse natural language descriptions, and present Text2Loc++, a novel neural network designed for effective cross-modal alignment between language and point clouds in a coarse-to-fine localization pipeline. To support benchmarking, we introduce a new city-scale dataset covering both color and non-color point clouds from diverse urban scenes, and organize location descriptions into three levels of linguistic complexity. In the global place recognition stage, Text2Loc++ combines a pretrained language model with a Hierarchical Transformer with Max Pooling (HTM) for sentence-level semantics, and employs an attention-based point cloud encoder for spatial understanding. We further propose Masked Instance Training (MIT) to filter out non-aligned objects and improve multimodal robustness. To enhance the embedding space, we introduce Modality-aware Contrastive Learning (MCL), incorporating cross-modal, submap-, text-, and instance-level losses. In the fine localization stage, we completely remove explicit text-instance matching and design a lightweight yet powerful framework based on Prototype-based Map Cloning (PMC) and a Cascaded Cross-Attention Transformer (CCAT). Extensive experiments on the KITTI360Pose dataset show that Text2Loc++ outperforms existing methods by up to 15%. In addition, the proposed model exhibits robust generalization when evaluated on the new dataset, effectively handling complex linguistic expressions and a wide variety of urban environments.",
-      "pdf_url": "https://arxiv.org/abs/2511.15308",
-      "comment": "",
-      "technologies": [
-        "Hierarchical Transformer with Max Pooling",
-        "Masked Instance Training",
-        "Modality-aware Contrastive Learning",
-        "Prototype-based Map Cloning",
-        "Cascaded Cross-Attention Transformer"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 6.2,
-      "product_potential": [
-        "Natural language guided autonomous vehicle navigation",
-        "Augmented reality urban exploration apps",
-        "Indoor navigation systems for large buildings"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.25254",
-      "title": "BatchParScale: Sparse Batch-Mixing for Sequence Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2610.25254v1 Announce Type: cross Abstract: Recent test-time scaling methods improve model performance by increasing inference-time compute. One practical form of this is parallel scaling, where a model samples multiple independent reasoning streams and aggregates their answers using methods like voting, reranking, or verification. While effective, this approach leaves the streams uncoordinated, and a discovery made in one rollout cannot influence any other. Multi-Sequence Verifiers jointly score candidate answers after generation, but the reasoning streams remain independent during inference. ParScale takes a step toward model-internal parallel scaling by learning to aggregate multiple forward passes, but its streams still do not exchange information while processing a sequence. We introduce BatchParScale, an attention mechanism that allows parallel streams to exchange information through a small set of communication positions. We evaluate BatchParScale on a new Parallel Needle-in-a-Haystack retrieval benchmark and in pretraining, fine-tuning, and cooperative multi-agent reinforcement learning. Across these settings, BatchParScale outperforms ParScale on language-model loss and remains competitive on coordination-sensitive MARL tasks. Masked pretraining runs beat an unmasked single-sequence baseline despite local sequence corruption, and LoRA fine-tuning shows the mechanism can be added to a pretrained Transformer. At the same time, fact retrieval performance for pretrained and finetuned BatchParScale models remains unclear.",
-      "pdf_url": "https://arxiv.org/abs/2610.25254",
-      "comment": "",
-      "technologies": [
-        "Parallel Scaling",
-        "Sparse Attention",
-        "Multi-Agent Reinforcement Learning",
-        "Low-Rank Adaptation",
-        "KV Cache Optimization",
-        "Multi-Sequence Verifiers",
-        "Chain-of-Thought Prompting"
-      ],
-      "maturity": "early",
-      "confidence": 0.65,
-      "curator_score": 6.0,
-      "product_potential": [
-        "Enhanced LLM reasoning pipelines with coordinated parallel thought streams for higher-quality answers in enterprise knowledge work",
-        "Multi-agent coordination systems for robotics and autonomous vehicles requiring synchronized decision-making",
-        "Efficient inference acceleration using sparse inter-stream communication to reduce compute costs while maintaining quality"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "id": "2512.15933",
-      "title": "Can MLLMs Find Their Way in a City? Exploring Emergent Navigation from Web-Scale Knowledge",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2512.15933v4 Announce Type: replace Abstract: Leveraging multimodal large language models (MLLMs) to develop embodied agents offers significant promise for addressing complex real-world tasks. However, current evaluation benchmarks remain predominantly language-centric or heavily reliant on simulated environments, rarely probing the nuanced, knowledge-intensive reasoning essential for practical, real-world scenarios. To bridge this critical gap, we introduce the task of Sparsely Grounded Visual Navigation, explicitly designed to evaluate the sequential decision-making abilities of MLLMs in challenging, knowledge-intensive real-world environment. We operationalize this task with CityNav, a comprehensive benchmark encompassing four diverse global cities, specifically constructed to assess raw MLLM-driven agents in city navigation. Agents are required to rely solely on visual inputs and internal multimodal reasoning to sequentially navigate 50+ decision points without additional environmental annotations or specialized architectural modifications. Crucially, agents must autonomously achieve localization through interpreting city-specific cues and recognizing landmarks, perform spatial reasoning, and strategically plan and execute routes to their destinations. Through extensive evaluations, we demonstrate that current state-of-the-art MLLMs, reasoning techniques (e.g., GEPA, chain-of-thought, reflection) and competitive baseline PReP significantly underperform in this challenging setting. To address this, we propose Verbalization of Path(VoP), which explicitly grounds the agent's internal reasoning by probing city-scale cognitive maps (key landmarks and directions toward the destination) from the MLLM, substantially enhancing navigation success. Project Webpage: https://dwipddalal.github.io/AgentNav/",
-      "pdf_url": "https://arxiv.org/abs/2512.15933",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Retrieval Augmented Generation",
-        "Chain-of-Thought Prompting"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 6.0,
-      "product_potential": [
-        "AI-powered navigation assistant for visually impaired individuals",
-        "Autonomous delivery robots with real-time city navigation capabilities",
-        "Smart tourism guides that provide interactive, knowledge-intensive navigation experiences"
-      ],
-      "domain_applications": [
-        "accessibility",
-        "robotics",
-        "education"
-      ]
-    },
     {
       "id": "2610.26887",
       "title": "Navalia: Advancing Cowork Agents through Verifiable Task Synthesis and Long-Horizon Post-Training",
@@ -269,88 +137,24 @@
       "summary": "arXiv:2610.27782v1 Announce Type: new Abstract: Video generation models are promising foundations for embodied world models, but only if their generated rollouts are physically valid and faithful to task instructions. Multimodal large language models (MLLMs) are increasingly used to judge these properties, yet their agreement with human judgments on embodied videos has not been systematically evaluated. To address this gap, we introduce RoboJudge-Bench, a benchmark for evaluating MLLMs as judges of embodied video generation. The benchmark measures two fundamental dimensions, Physical Adherence and Instruction Alignment, across 800 human-annotated videos from 8 source corpora and 10 video generators, spanning grippers, human hands, and dexterous hands. Experiments reveal uneven alignment between existing judges and human ratings: general-purpose MLLMs show lower agreement on physical adherence, while specialized video judges designed for general-domain physical reasoning do not consistently transfer to embodied scenarios. Motivated by these findings, we construct RoboJudge-Train, comprising 12K videos annotated with 25K human-verified scores and model-assisted rationales for Physical Adherence and Instruction Alignment. We fine-tune a 9B MLLM on this dataset with supervised learning followed by reinforcement learning, yielding RoboJudge-9B. Among the model judges evaluated on RoboJudge-Bench, RoboJudge-9B achieves the highest overall agreement, reaching a Pearson correlation of 0.719 with a statistically significant 0.089 gain over Gemini-3.7-Flash, the best-performing proprietary baseline in our evaluation. Training on RoboJudge-Train also yields gains on external benchmarks, including VideoPhy2 and Physion-Eval. We further use RoboJudge-9B as a downstream evaluator to benchmark video generation models according to Physical Adherence and Instruction Alignment.",
       "pdf_url": "https://arxiv.org/abs/2610.27782",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Multimodal Language Models",
+        "Benchmarking for Video Generation Models",
+        "Reinforcement Learning for Model Fine-tuning",
+        "Downstream Evaluation using Multimodal Language Models"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.25111",
-      "title": "Explore or Confirm? LLM Agents Misallocate Measurements Under Noise",
-      "authors": [],
-      "categories": [
-        "cs.AI"
+      "product_potential": [
+        "Automated Quality Assessment for Video Generation Models",
+        "Multimodal Language Model Fine-tuning for Specialized Tasks"
       ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2610.25111v1 Announce Type: new Abstract: As model reasoning gets cheaper, the physical experiment becomes the slow and costly step in discovery. Each experiment returns a noisy reading: a high value can mean a good candidate or a lucky draw. With a fixed budget, an AI agent must keep choosing between exploring a new candidate and confirming a promising one by re-testing it. We measure that choice in Wellocate, a simulated assay campaign with known true values. It is built on a generated landscape and on two real protein datasets, GB1 and PhoQ, scrambled so no model can answer from memory. We test five language models as minimal agents, with no tools and no memory beyond the history in each prompt. They misallocate in both directions. Three over-confirm, spending most of the budget re-testing. On the generated landscape one under-confirms, trusting single readings, and there every model ends with a worse final pick than a basic scripted strategy. Each failure has its own cause. The over-confirmers run short of new candidates worth trying: a list of untried candidates cuts their re-testing and, on real protein data, makes two of them pick much better. A running summary of their readings or a description of the landscape changes it by at most five percentage points. For the under-confirmer, re-testing its top candidates in a final round, replayed on its own campaigns, recovers only about a quarter of what it loses by picking the wrong candidate. This suggests confirmation has to run through the whole campaign. We release Wellocate as a benchmark and reinforcement-learning environment with frozen splits and scripted baselines. With it, anyone can measure how an agent splits its budget before trusting it with real experiments, and train agents to split it better. Code, data and the environment are available at https://github.com/Xstendyl/wellocate.",
-      "pdf_url": "https://arxiv.org/abs/2610.25111",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.24628",
-      "title": "Muse Glimmer 30B: An On-Device Agentic Model",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2610.24628v1 Announce Type: cross Abstract: We introduce Muse Glimmer, an open-source 30B parameter causal language model with perception encoder, purpose-built for autonomous agentic tasks on consumer hardware. Muse Glimmer integrates multi-step reasoning, reliable tool use and failure recovery into a single model that runs locally on consumer devices without requiring cloud infrastructure. The model accepts text and image inputs and produces text outputs, was trained on data from over a hundred languages, and is quantized to approximately 4-bit precision for efficient single-GPU inference. Muse Glimmer achieves state-of-the-art performance for its size class on agentic benchmarks, setting a new standard compared to the models of its size: Gemma4-31B and Qwen3.6-27B on tool use, multi-step planning, and agentic task completion. We release the model under the Apache 2.0 license to foster open-source development of capable, safe, local AI agents.",
-      "pdf_url": "https://arxiv.org/abs/2610.24628",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.10118",
-      "title": "EdgeRock: Strong Reasoning at Constant Memory",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2610.10118v2 Announce Type: replace-cross Abstract: We present EdgeRock, a family of multimodal models that deliver strong reasoning at constant memory. Most models keep reasoning history in a key-value (KV) cache that grows with every token, consuming accelerator memory, limiting concurrent requests, and competing with perception and control on edge devices. With fixed history, memory is allocated once and never runs out, however long the model reasons. Constant memory alone is not new: bounded-state models (recurrent, state-space, and sliding-window) already achieve it, but often at the cost of reasoning, because they cannot keep the distant details that later reasoning needs. We therefore introduce Rock Memory Anchors (RMA): the model learns what is worth remembering and stores it as KV records in a fixed-size bank, directly readable however far back the source lies. EdgeRock-4B, our first open-source release, supports text and image reasoning and reaches 82.9% mean pass@1 on AIME 2024-2026, while the bounded-state models we evaluate reach at most 18.8%, even at 14B scale. This result is on par with leading compact models whose memory grows with reasoning. Compared with its source model, EdgeRock-4B uses up to 99.1% less KV cache and delivers up to 6.42$\\times$ higher end-to-end batch throughput.",
-      "pdf_url": "https://arxiv.org/abs/2610.10118",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2604.27620",
-      "title": "SpaAct: Spatially-Activated Transition Learning with Curriculum Adaptation for Vision-Language Navigation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-20",
-      "updated": "2026-10-20",
-      "summary": "arXiv:2604.27620v2 Announce Type: replace Abstract: Vision-and-Language Navigation (VLN) aims to enable an embodied agent to follow natural-language instructions and navigate to a target location in unseen 3D environments. We argue that adapting VLMs to VLN requires endowing them with two complementary capabilities for acquiring such awareness, namely backward action reasoning (why) and forward transition prediction~(how). Based on this insight, we propose SpaAct, a simple yet effective training framework that activates the dynamic spatial awareness in VLMs. Specifically, SpaAct introduces two spatial activation tasks: Action Retrospection, which asks the model to infer the executed action sequence from visual transitions, and Future Frame Selection, which forces the model to predict the visual transitions conditioned on history and action. These two objectives provide lightweight supervision on both backward action reasoning and forward transition prediction, encouraging the model to build dynamic spatial awareness in a VLM-friendly way. To further stabilize adaptation, we design TriPA, a Tri-factor Progressive Adaptive curriculum learning method that organizes training samples from easy to hard, allowing the model to gradually acquire navigation skills from basic locomotion to long-horizon reasoning. Experiments on standard VLN-CE benchmarks show that SpaAct consistently improves VLM-based navigation and achieves state-of-the-art performance. We will release the code and models to support future research.",
-      "pdf_url": "https://arxiv.org/abs/2604.27620",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "enterprise"
+      ]
     },
     {
       "id": "2610.27234",
@@ -364,12 +168,22 @@
       "summary": "arXiv:2610.27234v1 Announce Type: new Abstract: Enterprise adoption of LLMs in agentic workflows is gated by evaluations that span a wide arc of abilities: CRM operations, heterogeneous-document retrieval, personal data understanding, multi-turn planning, tool use, function calling, long-horizon research, and long-context software engineering. These evaluations live today in separate repositories with divergent runners, dependencies, and scoring conventions, which makes cross-benchmark comparison difficult and obscures what a single aggregate number actually represents. We release EGI-BENCH, a unified LLM agent benchmark suite that consolidates eight enterprise facing agent benchmarks (CRMARENA, HERB, PERSONABENCH, USERBENCH, MCP-UNIVERSE, MCPEVAL, BENCHFORCE, LOCOBENCH) behind a single command-line interface with two runtime-budgeted execution modes. On top of the suite we define the Enterprise General Intelligence (EGI) Score, a six-dimensional framework (M1-M6) whose buckets are populated by fine-grained sub-metrics routed from each benchmark rather than by benchmark-level averages. We describe the suite, the sub-metric routing, and the quick/deep budgets, and report results for fourteen frontier and cost-efficient LLMs spanning the GPT, Claude, and Gemini families under quick mode. Top-line EGI ranges from 39.6 (GPT-4o mini) to 65.6 (gpt-5.5), and no single model dominates every capability axis: gpt-5.5 leads task outcome, planning, and retrieval grounding; Claude Sonnet 4.5 leads tool actioning and safety/abstention; and Claude Haiku 4.5 leads engineering quality. Code is available at https://github.com/SalesforceAIResearch/egi-bench.",
       "pdf_url": "https://arxiv.org/abs/2610.27234",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "Benchmarking",
+        "Evaluation Metrics",
+        "Enterprise AI",
+        "LLM Agent Evaluation"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.8,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Enterprise AI Evaluation Platform: A unified platform for evaluating and comparing LLMs in enterprise settings, enabling businesses to select the most suitable models for their specific needs.",
+        "AI Model Performance Dashboard: A dashboard that provides detailed insights into the performance of LLMs across various enterprise-relevant tasks, helping organizations make informed decisions about AI adoption."
+      ],
+      "domain_applications": [
+        "enterprise"
+      ]
     },
     {
       "id": "2610.27847",
@@ -383,12 +197,29 @@
       "summary": "arXiv:2610.27847v1 Announce Type: new Abstract: Scaling the training of Large Language Model (LLM) agents typically requires a large collection of executable environments, whose construction, maintenance, and operation constrain the expansion of training experience. Existing offline trajectories offer an opportunity to reuse interaction experience, yet effectively refining the current policy without revisiting these environments remains challenging: supervised fine-tuning (SFT) can lead to catastrophic forgetting, while online reinforcement learning requires real-time interaction with the environment. To address this challenge, we propose Step-Advantage Policy Distillation (SAPD), a method for learning from offline trajectories using relative step advantages. SAPD decomposes multi-turn trajectories into individual decision contexts for on-policy distillation, allowing the student to generate responses conditioned on recorded histories, and introduces relative step advantage signals to stabilize training. The entire process requires neither new environment observations nor additional multi-turn interactions. Experiments on ALFWorld, WebShop, and Search-based QA show that SAPD improves performance across different teacher configurations, mitigates catastrophic forgetting compared with SFT, and runs at least $4.7\\times$ faster per training step than online OPD. We will release our code soon.",
       "pdf_url": "https://arxiv.org/abs/2610.27847",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "Policy Distillation",
+        "Offline Reinforcement Learning",
+        "LLM Agent Training",
+        "On-Policy Distillation",
+        "Catastrophic Forgetting Mitigation",
+        "Multi-Turn Trajectory Decomposition",
+        "Step-Advantage Estimation",
+        "Relative Advantage Signals"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.7,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "LLM Agent Training Infrastructure Platform - enabling enterprises to train autonomous agents from historical interaction logs without building costly simulation environments",
+        "Offline Agent Fine-Tuning Service - API-based platform allowing businesses to refine agent policies from accumulated customer service or workflow data",
+        "Autonomous Workflow Agent SDK - developer toolkit for building task-completion agents (ALFWorld/WebShop style) using existing operational logs"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "robotics",
+        "science"
+      ]
     },
     {
       "id": "2605.10765",
@@ -427,9 +258,549 @@
       "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2610.30051",
+      "title": "From Reasoning to Action: Benchmarking Frontier AI Models on LIBERO-10 Robot Manipulation Tasks",
+      "authors": [
+        "May Espinola",
+        "Qifan Zhang",
+        "Yu Xiang"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "Recent advances in frontier AI models have demonstrated remarkable capabilities in visual understanding, reasoning, planning, and tool use, raising the possibility of using general-purpose AI models for robot manipulation without task-specific training. However, their manipulation capabilities have not been systematically evaluated on standardized robotics benchmarks. In this report, we present a unified closed-loop manipulation framework for evaluating frontier AI models on the LIBERO-10 benchmark. Our framework enables models to control a robot directly through visual observations, robot proprioception, and structured tool calls, primarily by specifying target end-effector poses and gripper commands, without task-specific fine-tuning or pretrained manipulation skills. We evaluate six frontier AI models, including GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, Claude Opus 5, Claude Opus 5.5, and Gemini-4 Argon, across three reasoning effort levels, resulting in 18 configurations and 1,800 evaluation episodes. Our results show that GPT-6 Astra achieves the highest success rate of 44%, followed by Gemini-4 Argon at 43%. Increasing reasoning effort generally improves manipulation performance, but the benefits vary across models and come at additional inference cost. We also observe substantial differences across tasks, with models performing relatively well on object placement tasks but struggling with precise spatial arrangements and complex multi-step interactions. These findings demonstrate both the potential and limitations of frontier AI models for robot manipulation, highlighting the challenges of translating reasoning capabilities into reliable physical actions. We release our evaluation framework and experimental results to support reproducible benchmarking and future research on reasoning-based robot manipulation.",
+      "pdf_url": "https://arxiv.org/pdf/2610.30051v1",
+      "comment": "17 pages, 6 figures, 8 tables. May Espinola and Qifan Zhang contributed equally. Project page: https://irvlutd.github.io/LLM-LIBERO/ Code: https://github.com/IRVLUTD/LLM_LIBERO",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.28909",
+      "title": "DiffResearch: Accelerating Deep Research with Diffusion Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2610.28909v1 Announce Type: new Abstract: Deep research systems iteratively plan, gather evidence, synthesize, and revise, making end-to-end latency a key bottleneck for interactive use. Almost all production systems are built on autoregressive (AR) language models and inherit left-to-right decoding in planning and long-form writing. We present DiffResearch, an open multi-agent deep research framework that places a diffusion language model (dLLM) at the core of every stage, and measure how a diffusion backbone changes latency and report quality. Holding the agentic scaffold, retrieval code, prompts, and evaluation fixed, we swap the backbone between an open diffusion model and a comparable AR model. Across 100 Deep Research Bench tasks, the diffusion backbone is roughly 6 times faster end-to-end, driven by order-of-magnitude reductions in planning and writing. We further introduce dFast, a decomposition mode that reads intermediate denoising states and extracts subqueries before generation finishes, providing a 1.99 times median speedup for decomposition in isolation with no loss of report quality. On the benchmark's RACE rubric, dFast obtains the best overall score among the three configurations. Finally, in a public system-level leaderboard snapshot, an instance built on a stronger diffusion model ranks above several commercial systems. We release DiffResearch under an Apache-2.0 license.",
+      "pdf_url": "https://arxiv.org/abs/2610.28909",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2511.14130",
+      "title": "PRISM: Prompt-Refined In-Context System Modelling for Financial Retrieval",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2511.14130v3 Announce Type: replace Abstract: Deploying LLMs for financial information retrieval demands accuracy, cost efficiency, and reproducibility, yet most approaches require expensive fine-tuning. PRISM is a training-free framework that composes three deployable modules (prompt engineering, in-context learning, and a candidate refinement module) with a boundary-condition study of multi-agent coordination for financial document retrieval. On FiQA-2018, stacked reranking and $k$-reciprocal encoding raise Recall@100 from 0.7783 to 0.8326. On FinAgentBench, a Cohere-refined top-50 pool yields a higher observed end-to-end NDCG@5, below this evaluation's minimum detectable effect, while cutting per-query cost by about 35%. Added complexity does not always pay off: $k$-reciprocal encoding stops helping once the upstream stage is already high-recall, and multi-agent coordination is not a default for fine-grained chunk ranking. Matched pairs that hold prompt, model, and exemplars fixed lose 0.0702 and 0.0681 combined NDCG@5 to their single-path controls, and the whole gap sits at the chunk stage. We release an expert-annotated FinAgentBench evaluation set, together with a label-robustness sweep over 16 alternative ground-truth constructions, restoring a reproducible evaluation path after the original evaluator went offline. Without fine-tuning, PRISM placed third on the official FinAgentBench private leaderboard (leaderboard basis, NDCG@5 0.71181), reaches NDCG@10 0.6197 on FiQA-2018, and 98% accuracy on FinanceBench. We report per-query latency, token, and dollar accounting across roughly 40 configurations, present the quality-cost-latency Pareto frontier, and introduce FACET, a transparent SLA-specific scalarization for choosing among non-dominated configurations. Code and dataset are released at https://bit.ly/prism-ailens.",
+      "pdf_url": "https://arxiv.org/abs/2511.14130",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.18936",
+      "title": "Fine-Tuning Small Reasoning Models for Quantum Field Theory",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2604.18936v2 Announce Type: replace-cross Abstract: Despite the growing application of large language models (LLMs) to theoretical physics, there has been little academic exploration of how domain-specific physics reasoning ability develops during training. To investigate this, we perform the first academic comparison of reinforcement learning and supervised fine-tuning for LLMs on verifiable problem-solving tasks in theoretical physics. Because the open-source verifiable training data required to develop such capabilities is scarce, we built a robust data generation pipeline that can both create synthetic problems and make existing human-authored problems suitable for model training. Selecting quantum field theory (QFT) as our primary domain, we generated over 2,500 synthetic problems alongside a curated collection of human-adapted problems sourced from arXiv and standard pedagogical resources. We conduct both reinforcement learning (RL) and supervised fine-tuning (SFT) experiments, benchmarking performance gains as well as generalization to other physics domains. Although both methods improve over the base model on every dataset, SFT gains are concentrated on in-distribution synthetic tasks, while RL generalizes better, outperforming SFT on the human-adapted datasets and TPBench. We perform an extensive analysis of model chain-of-thought (CoT) reasoning before and after fine-tuning to understand how reasoning errors evolve during RL and SFT. Finally, we publicly release our data pipeline, verifiable QFT training data, and ~200M tokens of QFT reasoning traces.",
+      "pdf_url": "https://arxiv.org/abs/2604.18936",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.25959",
+      "title": "EmbodiedWorld-200K: Toward Embodied World Agents via Embodied-Planning Dataset and Interactive World Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-20",
+      "updated": "2026-10-20",
+      "summary": "arXiv:2610.25959v1 Announce Type: new Abstract: Building embodied agents that can perceive, reason, and act across diverse 3D worlds is a central research direction toward artificial general intelligence. Yet most existing work remains confined to specific tasks in a single scene and transfers poorly to new environments, leaving general embodied agents for open-world settings under-explored. We refer to such agents as Embodied World Agents (EWAs), whose defining property is the ability to understand diverse visual environments and execute general actions in open-world conditions. To advance EWA research, we study open-world embodied navigation-planning and release EmbodiedWorld-200K, a large-scale dataset of over 200K samples spanning diverse scenes. Each example is equipped with multi-level annotations, ranging from low-level camera-motion trajectories to high-level semantic instructions. The dataset also provides unified evaluation splits and task-specific metrics, supporting offline pretraining and fair evaluation of EWAs. Beyond offline supervision, a defining characteristic of an EWA is its interaction with the environment; training solely on offline data is therefore insufficient, especially for generalizing to scenes not covered in the training distribution. Building dedicated real interactive environments, however, is often prohibitively expensive. To address this, we propose a novel training scheme that employs a video world model as a low-cost environment proxy and performs interactive reinforcement-learning (RL) post-training of the EWA within it. Empirically, pretraining on EmbodiedWorld-200K substantially improves the open-world embodied planning ability of the EWA, and further RL post-training inside a world model yields clear gains on out-of-distribution scenes. The dataset, baseline checkpoints, and training and evaluation code are available at https://xiaokunfeng.github.io/EmbodiedWorld-200K/.",
+      "pdf_url": "https://arxiv.org/abs/2610.25959",
+      "comment": "",
+      "technologies": [
+        "Embodied AI",
+        "Interactive World Models",
+        "Reinforcement Learning from Human Feedback",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Virtual reality training environments for healthcare professionals",
+        "Autonomous navigation systems for robots in open-world settings",
+        "Interactive virtual assistants for education and entertainment"
+      ],
+      "domain_applications": [
+        "healthcare",
+        "robotics",
+        "education",
+        "creative"
+      ]
+    },
+    {
+      "id": "2511.15308",
+      "title": "Text2Loc++: Generalizing 3D Point Cloud Localization from Natural Language",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-20",
+      "updated": "2026-10-20",
+      "summary": "arXiv:2511.15308v2 Announce Type: replace Abstract: We tackle the problem of localizing 3D point cloud submaps using complex and diverse natural language descriptions, and present Text2Loc++, a novel neural network designed for effective cross-modal alignment between language and point clouds in a coarse-to-fine localization pipeline. To support benchmarking, we introduce a new city-scale dataset covering both color and non-color point clouds from diverse urban scenes, and organize location descriptions into three levels of linguistic complexity. In the global place recognition stage, Text2Loc++ combines a pretrained language model with a Hierarchical Transformer with Max Pooling (HTM) for sentence-level semantics, and employs an attention-based point cloud encoder for spatial understanding. We further propose Masked Instance Training (MIT) to filter out non-aligned objects and improve multimodal robustness. To enhance the embedding space, we introduce Modality-aware Contrastive Learning (MCL), incorporating cross-modal, submap-, text-, and instance-level losses. In the fine localization stage, we completely remove explicit text-instance matching and design a lightweight yet powerful framework based on Prototype-based Map Cloning (PMC) and a Cascaded Cross-Attention Transformer (CCAT). Extensive experiments on the KITTI360Pose dataset show that Text2Loc++ outperforms existing methods by up to 15%. In addition, the proposed model exhibits robust generalization when evaluated on the new dataset, effectively handling complex linguistic expressions and a wide variety of urban environments.",
+      "pdf_url": "https://arxiv.org/abs/2511.15308",
+      "comment": "",
+      "technologies": [
+        "Hierarchical Transformer with Max Pooling",
+        "Masked Instance Training",
+        "Modality-aware Contrastive Learning",
+        "Prototype-based Map Cloning",
+        "Cascaded Cross-Attention Transformer"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Natural language guided autonomous vehicle navigation",
+        "Augmented reality urban exploration apps",
+        "Indoor navigation systems for large buildings"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.30108",
+      "title": "Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use",
+      "authors": [
+        "Yanzhe Chen",
+        "Ziyi Yang",
+        "Jifeng Zhu",
+        "Qiming Huang",
+        "Ruihe An",
+        "Peiyao Xu",
+        "Hesen Yang",
+        "Runda Liu",
+        "Chang Gong",
+        "Zhijun Cao",
+        "Zechen Bai",
+        "Wenzheng Zeng",
+        "Yiqi Lin",
+        "Guoqiang Liang",
+        "Kevin Yuchen Ma",
+        "Kevin Qinghong Lin",
+        "Mike Zheng Shou"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV",
+        "cs.MA",
+        "cs.MM"
+      ],
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "Multimodal agents (MMAs) sustain interaction through reasoning, memory, tools, and feedback, most visibly as computer-use agents, while robotic systems (RSs) couple sensing and actuation under physical dynamics. We define multimodal embodied agents (MMEAs) as goal-directed systems that couple multimodal task reasoning with physical action and revise decisions from the resulting feedback. This raises a central question: what changes when a multimodal agent moves from computer-use to robot-use? We introduce PAPAV, a unified capability-centric framework of five recurring functions: Perceive the current state, Anticipate action effects, Plan a feasible course, Act through an interface or body, and Verify the outcome. Defined by function rather than architecture, these capabilities let PAPAV identify what all three share and then compare MMEAs with MMAs and with RSs. Five physical constraints, from partial observability to unverifiable outcomes, leave fewer choices fixed in advance and less room to reverse errors. Across 64 benchmarks, explicit evaluation centers on Act; only 5 assess Anticipate and 3 assess Verify, leaving both largely hidden behind task success. These constraints also frame the open challenges we identify. PAPAV therefore provides a common basis for designing reliable physical agents and measuring progress across all five capabilities rather than task success alone.",
+      "pdf_url": "https://arxiv.org/pdf/2610.30108v1",
+      "comment": "Project website: https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.29552",
+      "title": "Generalized CycleGRPO for Fine-Grained Multimodal Understanding and Grounding",
+      "authors": [
+        "Xin Zhang",
+        "Haochen Wang",
+        "Beibei Lin",
+        "Zhaoxiang Zhang",
+        "Robby T. Tan",
+        "Jason Li",
+        "Dacheng Tao"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "Fine-grained multimodal intelligence requires models to both understand a designated region and localize it from language. Existing methods learn these directions with separate objectives and task-specific annotations. We present Generalized CycleGRPO, the first unified reinforcement learning framework coupling region understanding and localization across spatial, temporal, and spatio-temporal domains. Given a region, a multimodal large language model generates candidate descriptions and then localizes each description to reconstruct the input region. Reconstruction overlap provides a verifiable reward for captioning, while individual localization rewards improve the inverse mapping. A common region-space formulation extends this cycle from image masks and boxes to video intervals and timestamped spatial evidence, without reference captions or an external language-model judge during reinforcement learning. In videos, the cycle encourages descriptions that distinguish a target event from similar recurrences. We introduce DOVE (Distinctive Occurrence-level Video-caption Evaluation), a human-verified contrastive benchmark for this temporal distinctiveness. CycleGRPO improves SAMTok's overall gIoU from 57.5% to 68.2% on GroundingSuite and average gIoU from 71.2% to 78.7% on GRES. For temporal tasks, it achieves 51.9% tIoU on Charades and 33.3% Temporal Evidence Coverage on DOVE, compared with 45.6% and 14.8% for the Qwen3-VL initialization. These results establish region-text cycle consistency as a general self-evaluation principle for multimodal understanding and localization. Models, code, and DOVE are available at https://devinxzhang.github.io/Generalized-CycleGRPO-Page/.",
+      "pdf_url": "https://arxiv.org/pdf/2610.29552v1",
+      "comment": "31 pages, 14 figures, 16 tables",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
+    {
+      "name": "Verifiable Task Synthesis",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Long-Horizon Post-Training",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Semantic Evidence Selection",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Executable Computation Chains",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Review and Verification",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Cold-Start Supervised Fine-Tuning (SFT)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning (RL) for Task Execution",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "healthcare",
+        "education",
+        "climate",
+        "robotics",
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Adversarial Robustness",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "climate",
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Instruction Tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "climate",
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reasoning-oriented Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "climate",
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Confuse-then-Contrast Fine-Tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "climate",
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Benchmarking for Video Generation Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning for Model Fine-tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Downstream Evaluation using Multimodal Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Benchmarking",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Evaluation Metrics",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Enterprise AI",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Agent Evaluation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Offline Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Agent Training",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Catastrophic Forgetting Mitigation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-Turn Trajectory Decomposition",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Step-Advantage Estimation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Relative Advantage Signals",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
     {
       "name": "Embodied AI",
       "papers": 1,
@@ -437,10 +808,10 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
-        "robotics",
         "creative",
-        "healthcare"
+        "healthcare",
+        "education",
+        "robotics"
       ]
     },
     {
@@ -450,10 +821,10 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
-        "robotics",
         "creative",
-        "healthcare"
+        "healthcare",
+        "education",
+        "robotics"
       ]
     },
     {
@@ -463,27 +834,10 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "education",
-        "robotics",
         "creative",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
+        "healthcare",
         "education",
-        "creative",
-        "climate",
-        "finance",
-        "robotics",
-        "enterprise",
-        "accessibility",
-        "healthcare"
+        "robotics"
       ]
     },
     {
@@ -544,229 +898,6 @@
         "enterprise",
         "other",
         "robotics"
-      ]
-    },
-    {
-      "name": "Parallel Scaling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Sparse Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multi-Agent Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Low-Rank Adaptation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "KV Cache Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multi-Sequence Verifiers",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "science",
-        "robotics",
-        "enterprise",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Verifiable Task Synthesis",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Long-Horizon Post-Training",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Semantic Evidence Selection",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Executable Computation Chains",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "LLM Review and Verification",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Cold-Start Supervised Fine-Tuning (SFT)",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning (RL) for Task Execution",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance"
-      ]
-    },
-    {
-      "name": "Adversarial Robustness",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance",
-        "climate"
-      ]
-    },
-    {
-      "name": "Instruction Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance",
-        "climate"
-      ]
-    },
-    {
-      "name": "Reasoning-oriented Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance",
-        "climate"
-      ]
-    },
-    {
-      "name": "Confuse-then-Contrast Fine-Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "finance",
-        "climate"
       ]
     }
   ],
