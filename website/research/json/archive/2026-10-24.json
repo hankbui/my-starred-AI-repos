@@ -1,0 +1,914 @@
+{
+  "meta": {
+    "date": "2026-10-24",
+    "papers_tracked": 15,
+    "technologies_discovered": 38,
+    "opportunities_identified": 0,
+    "last_update": "2026-10-24 09:41 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "38",
+      "label": "discovered this scan",
+      "detail": "Predictive Coupling, Contrastive Learning, Causal Decoder-only LLM, Multi-task Learning, Post-training, Text Embedding, Text Generation, Chain-of-Thought",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "38",
+      "label": "active trend clusters",
+      "detail": "Multi-modal Learning, In-Context Learning, Prompt Injection Detection, Retrieval Augmented Generation, Self-Assessment Reinforcement Learning",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "7.9",
+      "label": "avg opportunity score",
+      "detail": "ULME: Predictive Coupling for Mutually Reinforcing Embedding and Language Modeli",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "ULME: Predictive Coupling for ",
+      "label": "confidence 72%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "MPIDetector: Detecting Multi-m",
+      "label": "highest confidence paper",
+      "detail": "AI-powered security suite for multi-modal applications, Cross-modal threat detection for enterprise applications",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "25",
+      "label": "early-stage technologies",
+      "detail": "ULME: Predictive Coupling for Mutually Reinforcing Embedding and Language Modeli",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2610.30705",
+      "title": "ULME: Predictive Coupling for Mutually Reinforcing Embedding and Language Modeling",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2610.30705v1 Announce Type: cross Abstract: Text embedding and text generation are two of the most useful capabilities of modern large language models, yet they are typically provided by separate specialized models (an embedder and a generator) trained with incompatible objectives and deployed side by side in retrieval-augmented generation and agent systems. Recent unified embedding-generation models such as GritLM share parameters between the two capabilities, but they either switch attention regimes between modes or optimize embedding and language modeling as parallel objectives that never supervise each other. We argue that these designs are only partially unified: the two capabilities coexist on the same weights, but do not shape each other. We propose ULME, a post-training framework that unifies embedding and language modeling on a causal decoder-only LLM through predictive coupling. ULME inserts a chain of learnable slots between the query and the answer, reads a semantic embedding and a reasoning embedding from two designated slots, and trains three objectives on a shared causal backbone: a contrastive loss anchoring the semantic slot to document representations, a language-modeling loss supervising answer generation, and a stop-gradient predictive loss that aligns the reasoning slot with a pooled summary of the answer, so that generation actively shapes what the embedding encodes. Across two model families (Qwen2.5, Qwen3) and eight scales spanning 0.5B-8B parameters, a single ULME checkpoint improves MTEB by 3.3-4.1 points over the strongest open-source baseline, tightens BRIGHT and AdvBench-IR simultaneously, and remains on par with a generation-only fine-tune on standard accuracy benchmarks (MMLU, GSM8K, MMLU-Pro, HumanEval), demonstrating that genuine unification yields mutually reinforcing rather than merely coexisting capabilities.",
+      "pdf_url": "https://arxiv.org/abs/2610.30705",
+      "comment": "",
+      "technologies": [
+        "Predictive Coupling",
+        "Contrastive Learning",
+        "Causal Decoder-only LLM",
+        "Multi-task Learning",
+        "Post-training",
+        "Text Embedding",
+        "Text Generation",
+        "Chain-of-Thought",
+        "Learnable Slots",
+        "Model Unification",
+        "Retrieval-Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.72,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Unified embedding-generation API service replacing separate embedder and generator models in RAG pipelines",
+        "Enterprise knowledge base with single-model semantic search and answer generation",
+        "AI agent framework with unified embedding and generation for reduced inference latency and memory footprint"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2604.07487",
+      "title": "CLEAR: Context Augmentation from Contrastive Learning of Experience via Agentic Reflection",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2604.07487v3 Announce Type: replace Abstract: Large language model agents rely on effective model context to obtain task-relevant information for decision-making. Many existing context engineering approaches primarily rely on the context generated from the past experience and retrieval mechanisms that reuse these context. However, retrieved context from past tasks must be adapted by the execution agent to fit new situations, placing additional reasoning burden on the underlying LLM. To address this limitation, we propose a generative context augmentation framework using Contrastive Learning of Experience via Agentic Reflection (CLEAR). CLEAR first employs a reflection agent to perform contrastive analysis over past execution trajectories and summarize useful context for each observed task. These summaries are then used as supervised fine-tuning data to train a context augmentation model (CAM). Then we further optimize CAM using reinforcement learning, where the reward signal is obtained by running the task execution agent. By learning to generate task-specific knowledge rather than retrieve knowledge from the past, CAM produces context that is better tailored to the current task. We conduct comprehensive evaluations on the AppWorld and WebShop benchmarks. Experimental results show that CLEAR consistently outperforms strong baselines. It improves task completion rate from 72.62% to 81.15% on AppWorld test set and averaged reward from 0.68 to 0.74 on a subset of WebShop, compared with baseline agent. Our code is publicly available at https://github.com/awslabs/CLEAR.",
+      "pdf_url": "https://arxiv.org/abs/2604.07487",
+      "comment": "",
+      "technologies": [
+        "Contrastive Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "AI-powered context-aware assistants for enterprise workflows",
+        "Personalized learning platforms with adaptive content generation",
+        "Automated customer support systems with dynamic context adaptation"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.30202",
+      "title": "MPIDetector: Detecting Multi-modal Prompt Injection via LLM-based Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2610.30202v1 Announce Type: cross Abstract: With the rapid integration of Multi-modal Large Language Models (MLLMs) into real-world applications, Prompt Injection (PI) has emerged as a critical security threat. Attackers can conceal malicious instructions within textual narratives or visual inputs to bypass safety alignment. Existing approaches, such as signature- and perplexity-based methods, rely heavily on pattern matching, making them insufficient to detect sophisticated, cross-modal PI payloads. In this paper, we propose a novel detection framework, called MPIDetector, that leverages LLMs' intrinsic reasoning capabilities via few-shot In-Context Learning (ICL). Instead of fine-tuning, we provide the model with specific prompt templates and representative attack examples, enabling it to scrutinize the semantic intent of input across modalities. We constructed a comprehensive evaluation benchmark comprising eight textual and seven visual malicious categories, supplemented with benign datasets to rigorously test for false positives. Our evaluation across multiple leading LLMs, including Gemini-2.0-Flash, Qwen3-VL-32B-Instruct, and Doubao-seed-1.6-flash, demonstrates the efficacy and generalizability of this approach. The proposed method achieves up to 90.91% accuracy and 100% recall on textual tasks. In the visual domain, it achieves up to 99.28% accuracy while maintaining 100% precision across all evaluated models. Crucially, when evaluated against 500 highly obfuscated environmental web-agent injections (WebInject), MPIDetector achieved a detection rate up to 99.80%. Comparisons with two baseline approaches for detecting textual PI payloads, along with two additional methods for visual input detection, demonstrate MPIDetector's superior accuracy. These results show that LLM-driven reasoning provides a robust, cross-modal defense against advanced prompt injections.",
+      "pdf_url": "https://arxiv.org/abs/2610.30202",
+      "comment": "",
+      "technologies": [
+        "Multi-modal Learning",
+        "In-Context Learning",
+        "Prompt Injection Detection"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-powered security suite for multi-modal applications",
+        "Cross-modal threat detection for enterprise applications",
+        "Real-time prompt injection monitoring for AI-driven platforms"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.30435",
+      "title": "Self-Assessment Reinforcement Learning for Search-State Awareness in Retrieval-Augmented Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2610.30435v1 Announce Type: cross Abstract: Recent advances in search agents have enabled large language models to tackle complex tasks by retrieving and synthesizing external information. However, existing search agents often lack search-state awareness, i.e., the ability to recognize what information has been obtained and what remains missing, leading to hallucinated reasoning and prematurely terminated search. To address this limitation, we propose Self-Assessment Reinforcement Learning (SARL), a reinforcement learning framework in which models learn to recognize their own search state during training and improve their search behavior accordingly, without requiring additional assessment at test time. SARL achieves this through a dual reward design that captures the corrective effect of each assessment while penalizing excessive reliance on it, jointly encouraging effective and efficient search trajectories. Under this setup, SARL achieves a 24.3% relative improvement over the strongest baseline, with average gains of 35.9% on multi-hop reasoning and 27.9% on deep research benchmarks against the strongest per-benchmark baselines. SARL further surpasses methods built on auxiliary supervision or multi-agent coordination, despite operating as a standalone RL framework with no inference-time scaffolding. Beyond final performance, SARL maintains training stability under extended search horizons, a regime where existing methods consistently degrade, enabling sustained gains as task complexity grows.",
+      "pdf_url": "https://arxiv.org/abs/2610.30435",
+      "comment": "",
+      "technologies": [
+        "Self-Assessment Reinforcement Learning",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Enhanced search agents with improved search-state awareness",
+        "More accurate and efficient information retrieval and synthesis in complex tasks"
+      ],
+      "domain_applications": [
+        "education",
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2505.21055",
+      "title": "Agent-Environment Alignment via Automated Interface Generation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2505.21055v3 Announce Type: replace Abstract: Large language model (LLM) agents have shown impressive reasoning capabilities in interactive decision-making tasks. These agents interact with environment through intermediate interfaces, such as predefined action spaces and interaction rules, which mediate the perception and action. However, mismatches often happen between the internal expectations of the agent regarding the influence of its issued actions and the actual state transitions in the environment, a phenomenon referred to as agent-environment misalignment. While prior work has invested substantially in improving agent strategies and environment design, the critical role of the interface still remains underexplored. In this work, we empirically demonstrate that agent-environment misalignment poses a significant bottleneck to agent performance. To mitigate this issue, we propose ALIGN, an Auto-Aligned Interface Generation framework that alleviates the misalignment by enriching the interface. Specifically, the ALIGN-generated interface enhances both the static information of the environment and the step-wise observations returned to the agent. Implemented as a lightweight wrapper, this interface achieves the alignment without modifying either the agent logic or the environment code. Experiments across multiple domains including embodied tasks, web navigation and tool-use, show consistent performance improvements, with up to a 45.67% success rate improvement observed in ALFWorld. Meanwhile, ALIGN-generated interface can generalize across different agent architectures and LLM backbones without interface regeneration. Code and experimental results are available at https://github.com/THUNLP-MT/ALIGN.",
+      "pdf_url": "https://arxiv.org/abs/2505.21055",
+      "comment": "",
+      "technologies": [
+        "LLM Agents",
+        "Interface Generation",
+        "Agent-Environment Alignment",
+        "Multi-Domain Agent Systems",
+        "Wrapper-Based Architecture",
+        "Observation Augmentation",
+        "Action Space Enrichment",
+        "Cross-Architecture Generalization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.78,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Autonomous Agent Development SDK with built-in interface alignment capabilities for enterprise automation",
+        "Web Navigation Agent Framework with automated interface generation for robust browser automation",
+        "Robotics Simulation Interface Generator for improved sim-to-real transfer in embodied AI systems"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2507.21917",
+      "title": "ArtSeek: Deep artwork understanding via multimodal in-context reasoning and late interaction retrieval",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2507.21917v3 Announce Type: replace Abstract: Analyzing digitized artworks requires both visual interpretation and deep artistic, contextual, and historical knowledge. We introduce ArtSeek, a multimodal framework for art analysis that combines multimodal large language models with retrieval-augmented generation. Unlike prior work, our pipeline relies only on image input, so it applies to artworks without links to Wikidata or Wikipedia, common in most digitized collections. ArtSeek integrates three components: a late-interaction multimodal retrieval module, a contrastive multitask network predicting artist, genre, style, media, and tags, and an agentic reasoning strategy enabled through in-context examples. Central to this approach is WikiFragments, a dataset of image-text fragments extracted from the entire English Wikipedia to support knowledge-grounded multimodal reasoning. Our multimodal query encoding raises retrieval NDCG@5 from 33.9 to 44.9 over encoding the full image-text query, and fixed-budget token pooling keeps late-interaction search practical over millions of fragments at under 7% of the cost of full multi-vector retrieval. ArtSeek sets a new state of the art in artwork attribute classification, with +8.4% F1 in style classification over GraphCLIP, and gains +7.1 BLEU@1 on ArtPedia captioning. On five knowledge-grounded question answering benchmarks graded by an LLM judge from a different model family, retrieval helps where the answer is documented in our index or lies inside the classifier's label space (+0.19 mean correctness on two of them) and is neutral where it is not; what separates the two regimes is how much of a benchmark our knowledge base covers. The gain transfers to two non-Qwen backbones (+0.22 to +0.28). A blind human study and a qualitative analysis of successes and failures corroborate this picture and expose where retrieval still misleads. Data and code: https://cilab.di.uniba.it/artseek/",
+      "pdf_url": "https://arxiv.org/abs/2507.21917",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.30277",
+      "title": "Breaking the high-degree barrier in Lehmer's problem with a human-AI discovery loop",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "summary": "arXiv:2610.30277v1 Announce Type: new Abstract: While artificial intelligence has made rapid progress in mathematical reasoning, many open problems depend on structure that is revealed only through large-scale computational exploration and analytical synthesis. One such example is Lehmer's problem from 1933. It asks whether the Mahler measure of an integer polynomial, which measures how far its roots stray from the unit circle, can be made arbitrarily small. Previously, constructing irreducible polynomials with integer coefficients and small Mahler measure has been carried out systematically only for even degrees $d \\le 180$. At higher degrees, Boyd's analytical one-parameter family frequently factors, skipping nearly 50% of target degrees and leaving no general construction for arbitrary $d$. Here, we address the high-degree regime through a human-AI discovery loop, in which we extend the conversational prompting with a fast numerical pipeline, an exact symbolic verifier, and large-scale distributed search. The AI agent prototypes numerical and symbolic solvers locally, launches parallel searches across distributed clusters and works with the human researcher to extract and verify mathematical hypotheses. Through this interactive loop, we derive a five-parameter construction, which we call the Generalized Boyd algorithm. It eliminates degree-skipping and constructs irreducible polynomials with Mahler measure strictly below Boyd's limit point $\\alpha_1 \\approx 1.255434$ for every target degree. Evaluated across all even degrees up to 2000, our approach improves upon six previously published values and holds 99.6% of all best known records. With this work we release the verified dataset of polynomials with minimal Mahler measure across all studied even degrees.",
+      "pdf_url": "https://arxiv.org/abs/2610.30277",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.26887",
+      "title": "Navalia: Advancing Cowork Agents through Verifiable Task Synthesis and Long-Horizon Post-Training",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "arXiv:2610.26887v1 Announce Type: new Abstract: Large language model (LLM) agents are evolving from conversational assistants into Cowork Agents capable of autonomous planning, tool use, and complex task execution. Financial analysis requires these agents to integrate cross-document evidence and perform multistep numerical reasoning, but expert task authoring is costly, while direct LLM synthesis struggles to produce challenging tasks with reliable answers. We introduce Navalia, a framework for Cowork Agents that combines verifiable task synthesis with long-horizon post-training. Using corporate financial reports as its data source, Navalia semantically selects supporting evidence from complete fact sets and constructs executable computation chains to generate analytical tasks with traceable evidence and actual data dependencies between steps. We further use independent LLM review and programmatic checks to verify evidence consistency and answer correctness. The verified tasks are then used for trajectory collection, cold-start supervised fine-tuning (SFT), and reinforcement learning (RL) to improve long-horizon task execution. Navalia, initialized from Qwen3.6-35B-A3B, achieves consistent gains over the base model across all five benchmarks: OfficeQA Pro, FinSearchComp, Finance Agent Benchmark, APEX-Agents-AA, and Workspace-Bench-Lite. These results demonstrate that Navalia improves evidence integration, tool use, and long-horizon task execution capabilities and generalizes to broader Cowork settings, including general office tasks.",
+      "pdf_url": "https://arxiv.org/abs/2610.26887",
+      "comment": "",
+      "technologies": [
+        "Verifiable Task Synthesis",
+        "Long-Horizon Post-Training",
+        "Semantic Evidence Selection",
+        "Executable Computation Chains",
+        "LLM Review and Verification",
+        "Cold-Start Supervised Fine-Tuning (SFT)",
+        "Reinforcement Learning (RL) for Task Execution"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Financial Analysis Assistant: A product that leverages Navalia's capabilities to generate and verify complex financial analysis tasks, improving the accuracy and reliability of LLM-based financial analysis.",
+        "General Cowork Agent Platform: A platform that applies Navalia's techniques to create and train Cowork Agents for various office tasks, enabling improved evidence integration, tool use, and long-horizon task execution."
+      ],
+      "domain_applications": [
+        "finance",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2606.25034",
+      "title": "Yuvion VL: A Multimodal Foundation Model for Adversarial Content and AI Safety",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "arXiv:2606.25034v3 Announce Type: replace-cross Abstract: General-purpose models often struggle to reliably identify and understand real-world multimodal risks, largely due to the inherent multimodal adversarial nature of content and AI safety. We present Yuvion VL, a family of multimodal large language models purpose-built for content and AI safety, with both instruction-tuned and reasoning-oriented variants. Yuvion VL addresses this gap by treating safety as an inherently adversarial and multimodal problem and designing the entire pipeline around adversarial robustness. For data construction, we develop an automated pipeline integrating adversarial-aware data synthesis with multi-stage quality control, producing large-scale, high-quality multimodal samples augmented with domain knowledge and reasoning annotations. For training, we adopt a three-stage pipeline that includes continued pretraining for risk-concept cross-modal alignment, instruct post-training for production-grade safety tasks, and reasoning post-training for enhanced interpretability and performance in complex tasks. We further introduce Confuse-then-Contrast Fine-Tuning, a contrastive framework that mines model-specific confusions and constructs multi-image contrastive groups to enforce explicit discrimination of fine-grained visual-semantic elements, enabling the model to distinguish between visually similar cases with different safety implications in adversarial safety tasks. To support rigorous evaluation, we further introduce Yuvion VL RiskEval (YVRE), a collection of benchmarks covering diverse open and internal evaluations, with a focus on content and AI safety, adversarial robustness, and real-world capability requirements. Experiments show that Yuvion VL-32B achieves industry-leading safety performance, surpassing comparably sized open-source models and best closed-source commercial models, while maintaining comparable general capabilities.",
+      "pdf_url": "https://arxiv.org/abs/2606.25034",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Adversarial Robustness",
+        "Instruction Tuning",
+        "Reasoning-oriented Models",
+        "Confuse-then-Contrast Fine-Tuning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "AI Safety and Risk Assessment Platform",
+        "Adversarial Robustness as a Service"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "climate",
+        "finance"
+      ]
+    },
+    {
+      "id": "2610.28909",
+      "title": "DiffResearch: Accelerating Deep Research with Diffusion Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2610.28909v1 Announce Type: new Abstract: Deep research systems iteratively plan, gather evidence, synthesize, and revise, making end-to-end latency a key bottleneck for interactive use. Almost all production systems are built on autoregressive (AR) language models and inherit left-to-right decoding in planning and long-form writing. We present DiffResearch, an open multi-agent deep research framework that places a diffusion language model (dLLM) at the core of every stage, and measure how a diffusion backbone changes latency and report quality. Holding the agentic scaffold, retrieval code, prompts, and evaluation fixed, we swap the backbone between an open diffusion model and a comparable AR model. Across 100 Deep Research Bench tasks, the diffusion backbone is roughly 6 times faster end-to-end, driven by order-of-magnitude reductions in planning and writing. We further introduce dFast, a decomposition mode that reads intermediate denoising states and extracts subqueries before generation finishes, providing a 1.99 times median speedup for decomposition in isolation with no loss of report quality. On the benchmark's RACE rubric, dFast obtains the best overall score among the three configurations. Finally, in a public system-level leaderboard snapshot, an instance built on a stronger diffusion model ranks above several commercial systems. We release DiffResearch under an Apache-2.0 license.",
+      "pdf_url": "https://arxiv.org/abs/2610.28909",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.4,
+      "product_potential": [
+        "A real-time research assistant that can generate comprehensive reports and analyses faster than current autoregressive models.",
+        "An interactive tool for educators and students to quickly generate research summaries and reports on various topics."
+      ],
+      "domain_applications": [
+        "education",
+        "science"
+      ]
+    },
+    {
+      "id": "2511.14130",
+      "title": "PRISM: Prompt-Refined In-Context System Modelling for Financial Retrieval",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2511.14130v3 Announce Type: replace Abstract: Deploying LLMs for financial information retrieval demands accuracy, cost efficiency, and reproducibility, yet most approaches require expensive fine-tuning. PRISM is a training-free framework that composes three deployable modules (prompt engineering, in-context learning, and a candidate refinement module) with a boundary-condition study of multi-agent coordination for financial document retrieval. On FiQA-2018, stacked reranking and $k$-reciprocal encoding raise Recall@100 from 0.7783 to 0.8326. On FinAgentBench, a Cohere-refined top-50 pool yields a higher observed end-to-end NDCG@5, below this evaluation's minimum detectable effect, while cutting per-query cost by about 35%. Added complexity does not always pay off: $k$-reciprocal encoding stops helping once the upstream stage is already high-recall, and multi-agent coordination is not a default for fine-grained chunk ranking. Matched pairs that hold prompt, model, and exemplars fixed lose 0.0702 and 0.0681 combined NDCG@5 to their single-path controls, and the whole gap sits at the chunk stage. We release an expert-annotated FinAgentBench evaluation set, together with a label-robustness sweep over 16 alternative ground-truth constructions, restoring a reproducible evaluation path after the original evaluator went offline. Without fine-tuning, PRISM placed third on the official FinAgentBench private leaderboard (leaderboard basis, NDCG@5 0.71181), reaches NDCG@10 0.6197 on FiQA-2018, and 98% accuracy on FinanceBench. We report per-query latency, token, and dollar accounting across roughly 40 configurations, present the quality-cost-latency Pareto frontier, and introduce FACET, a transparent SLA-specific scalarization for choosing among non-dominated configurations. Code and dataset are released at https://bit.ly/prism-ailens.",
+      "pdf_url": "https://arxiv.org/abs/2511.14130",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.18936",
+      "title": "Fine-Tuning Small Reasoning Models for Quantum Field Theory",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "arXiv:2604.18936v2 Announce Type: replace-cross Abstract: Despite the growing application of large language models (LLMs) to theoretical physics, there has been little academic exploration of how domain-specific physics reasoning ability develops during training. To investigate this, we perform the first academic comparison of reinforcement learning and supervised fine-tuning for LLMs on verifiable problem-solving tasks in theoretical physics. Because the open-source verifiable training data required to develop such capabilities is scarce, we built a robust data generation pipeline that can both create synthetic problems and make existing human-authored problems suitable for model training. Selecting quantum field theory (QFT) as our primary domain, we generated over 2,500 synthetic problems alongside a curated collection of human-adapted problems sourced from arXiv and standard pedagogical resources. We conduct both reinforcement learning (RL) and supervised fine-tuning (SFT) experiments, benchmarking performance gains as well as generalization to other physics domains. Although both methods improve over the base model on every dataset, SFT gains are concentrated on in-distribution synthetic tasks, while RL generalizes better, outperforming SFT on the human-adapted datasets and TPBench. We perform an extensive analysis of model chain-of-thought (CoT) reasoning before and after fine-tuning to understand how reasoning errors evolve during RL and SFT. Finally, we publicly release our data pipeline, verifiable QFT training data, and ~200M tokens of QFT reasoning traces.",
+      "pdf_url": "https://arxiv.org/abs/2604.18936",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.31274",
+      "title": "PointerBench: A Diagnostic Benchmark for Fine-Grained GUI Grounding",
+      "authors": [
+        "Valentino Sacco",
+        "Saurabh Pandey",
+        "Alexander Florian Jercher",
+        "Maximilian Schilling"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "Multimodal Large Language Models have shown promising performance in computer-use tasks, from planning user workflows to grounding natural-language actions to precise UI targets. Existing end-to-end benchmarks primarily emphasize long-horizon task completion, while GUI grounding benchmarks remain focused on conventional controls and a limited set of professional interfaces. We introduce POINTERBENCH, a diagnostic suite of 1,500 screenshot-instruction pairs probing three complementary capabilities: thin sub-element identification and geometric grounding in spreadsheets (POINTERBENCH-Sheets), character-level grounding in long-text documents (POINTERBENCH-Text), and mixed GUI grounding across 100 professional applications (POINTERBENCH-Pro). We carefully curate each task with pixel-exact target geometry and evaluate both general-purpose multimodal models and 39 specialist GUI grounding configurations. We find text grounding to be the most challenging setting, with Claude Fable 5, GPT-5.6 Sol, and the leading native specialist UI-Venus-2-9B achieving 69.6%, 53.4%, and 25.8% success on POINTERBENCH-Text despite respective 83.2%, 77.7%, and 54.5% average success across POINTERBENCH. These results reveal substantial headroom in fine-grained GUI grounding across frontier and specialist models. We publicly release the benchmark and evaluation code at https://github.com/warmwindOS/pointerbench.",
+      "pdf_url": "https://arxiv.org/pdf/2610.31274v1",
+      "comment": "Accepted at the 2nd Workshop on Agentic AI Benchmarks and Applications for Enterprise Tasks (AABA4ET), NeurIPS 2026",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.30162",
+      "title": "FusionEval: Benchmarking Model Fusion for Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-24",
+      "updated": "2026-10-24",
+      "summary": "arXiv:2610.30162v1 Announce Type: new Abstract: Model fusion aims to integrate the capabilities of multi-expert models into a single model. Existing evaluations offer limited coverage of reasoning with long chains of thought and tool use, while strong average performance can mask substantial losses in individual expert capabilities. We introduce FusionEval, a benchmark that provides controlled expert pools, integrates fusion methods with and without additional training, and offers a unified evaluation suite. The pools contain domain experts independently trained from Qwen3 and Llama base models across math, code, science, instruction following, and tool use. The suite evaluates capability retention and computational cost on eight public benchmarks under comparable data access rules, reporting normalized average and worst performance, runtime, and peak GPU memory usage. Extensive experiments show that training-free methods preserve reasoning performance but substantially degrade tool use at both model scales. In contrast, MOPD preserves tool use and achieves a more balanced capability profile, but requires additional data preparation, inference, and training. Jointly retaining reasoning, instruction following, and tool use at low computational cost remains a challenge. We hope FusionEval supports future research on efficient model fusion that jointly preserves expert capabilities. Our code is available at https://github.com/Baicaihaochi/FusionEval_Benchmark.",
+      "pdf_url": "https://arxiv.org/abs/2610.30162",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.30841",
+      "title": "TRIAD: Benchmarking Omni-Modal Ambiguity in Multimodal Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-24",
+      "updated": "2026-10-24",
+      "summary": "arXiv:2610.30841v1 Announce Type: new Abstract: Ambiguity is a central feature of natural communication: a sentence, image, or sound may remain underspecified until evidence from the other channels is considered. Yet current multimodal benchmarks mostly test perception, recognition, or reasoning over already determinate inputs, leaving unclear whether omni-modal large language models can resolve ambiguity distributed across text, vision, and audio. We introduce TRIAD, a benchmark for omni-modal ambiguity resolution. Each item is a text--image--audio triplet paired with a question and a set of answer options, and is constructed so that the full triplet determines a unique answer while removing any one modality makes the set of consistent options non-unique. TRIAD contains $327$ hand-written queries in $86$ scene groups and covers $18$ ambiguity categories across the three modalities. Evaluating $14$ omni-modal systems reveals that strong item-level performance does not translate into robust scene-level disambiguation: the best model still trails humans by over $20$ points in group accuracy. Removing answer options widens the gap further, driving model group accuracy to the single digits while humans remain robust. Leave-one-out and transcript/description counterfactuals further show that current systems often underuse audio cues when text and image are present. TRIAD reframes omni-modal evaluation around disambiguation rather than recognition, and provides a taxonomy, benchmark, and diagnostic protocol for measuring this capability.",
+      "pdf_url": "https://arxiv.org/abs/2610.30841",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Predictive Coupling",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Contrastive Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility",
+        "other",
+        "education"
+      ]
+    },
+    {
+      "name": "Causal Decoder-only LLM",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Multi-task Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Post-training",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Text Embedding",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Text Generation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Learnable Slots",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Model Unification",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Retrieval-Augmented Generation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "Multi-modal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "In-Context Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Prompt Injection Detection",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Self-Assessment Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "LLM Agents",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Interface Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Agent-Environment Alignment",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multi-Domain Agent Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Wrapper-Based Architecture",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Observation Augmentation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Action Space Enrichment",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Cross-Architecture Generalization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Verifiable Task Synthesis",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Long-Horizon Post-Training",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Semantic Evidence Selection",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Executable Computation Chains",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "LLM Review and Verification",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Cold-Start Supervised Fine-Tuning (SFT)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning (RL) for Task Execution",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance",
+        "climate"
+      ]
+    },
+    {
+      "name": "Adversarial Robustness",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance",
+        "climate"
+      ]
+    },
+    {
+      "name": "Instruction Tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance",
+        "climate"
+      ]
+    },
+    {
+      "name": "Reasoning-oriented Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance",
+        "climate"
+      ]
+    },
+    {
+      "name": "Confuse-then-Contrast Fine-Tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "finance",
+        "climate"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
