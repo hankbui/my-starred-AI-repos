@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "papers_tracked": 15,
-    "technologies_discovered": 17,
+    "technologies_discovered": 19,
     "opportunities_identified": 0,
-    "last_update": "2026-10-26 11:22 UTC",
+    "last_update": "2026-10-27 10:47 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,23 +13,23 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "17",
+      "value": "19",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Retrieval Augmented Generation, Chain-of-Thought Prompting, Low-Rank Adaptation, Diffusion Models, Reinforcement Learning from Human Feedback, Predictive Coupling, Contrastive Learning",
+      "detail": "Multimodal Learning, Retrieval Augmented Generation, Chain-of-Thought Prompting, Low-Rank Adaptation, Diffusion Models, Reinforcement Learning from Human Feedback, Multi-Agent Routing, On-Policy Distillation",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "17",
+      "value": "19",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Retrieval Augmented Generation, Chain-of-Thought Prompting, Low-Rank Adaptation, Diffusion Models",
+      "detail": "Multimodal Learning, Multi-Agent Routing, On-Policy Distillation, Knowledge Distillation, Cost-Aware Reinforcement Learning",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.7",
+      "value": "7.8",
       "label": "avg opportunity score",
       "detail": "MedCaseAgent: From Multimodal Clinical Evidence to Rare Disease Case Reports",
       "color": "amber"
@@ -45,17 +45,17 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "CLEAR: Context Augmentation fr",
+      "value": "RxnExBench: Benchmarking Visio",
       "label": "highest confidence paper",
-      "detail": "AI-powered context-aware assistants for enterprise workflows, Personalized learning platforms with adaptive content generation",
+      "detail": "AI-powered chemical reaction extraction tool for researchers and educators, Automated literature review assistant for synthetic chemists",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "11",
+      "value": "5",
       "label": "early-stage technologies",
-      "detail": "ULME: Predictive Coupling for Mutually Reinforcing Embedding and Language Modeli",
+      "detail": "EvoRouter: Cost-Efficient Multi-Agent Routing via Insight-Guided On-Policy Disti",
       "color": "blue"
     }
   ],
@@ -123,6 +123,53 @@
       ]
     },
     {
+      "id": "2610.35690",
+      "title": "EvoRouter: Cost-Efficient Multi-Agent Routing via Insight-Guided On-Policy Distillation",
+      "authors": [
+        "Yitao Xiao",
+        "Xu Zhang",
+        "Ye Cheng",
+        "Shaoyong Guo",
+        "Yan Sun",
+        "Ziyue Zhu",
+        "Sitao Xie",
+        "Guo Tong",
+        "Haoran Luo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-10-26",
+      "updated": "2026-10-26",
+      "summary": "Serving web queries at scale with multi-agent systems requires jointly configuring large language models, collaboration modes, agent counts, interaction rounds, and skills. However, the resulting configuration space grows combinatorially, while sparse execution rewards provide limited fine-grained supervision for interdependent planning decisions. We propose EvoRouter, a self-evolving multi-agent routing framework driven by insight-guided on-policy distillation. A dedicated expert periodically synthesizes performance-cost feedback from configuration trajectories across tasks into reusable conditional routing insights about capability requirements, returns from resource scaling, and interactions among configuration choices. A privileged teacher combines these evolving insights with current execution feedback to provide dense token-level supervision for the router's own planning trajectories through on-policy distillation. Cost-aware reinforcement learning jointly optimizes task performance and computational cost. Together, these training signals internalize execution insights into the routing policy. The updated policy generates new trajectories that support subsequent insight extraction, forming an execution-driven self-improvement loop. We evaluate EvoRouter on 19 in-domain datasets spanning five domains and two out-of-domain benchmarks. EvoRouter achieves an average in-domain accuracy of 68.69%, outperforming the strongest routing baseline by 7.23 percentage points while reducing inference compute cost by 50.95%. Our code is open-sourced at https://github.com/CenYangtze/EvoRouter.",
+      "pdf_url": "https://arxiv.org/pdf/2610.35690v1",
+      "comment": "13 pages, 12 figures, 4 tables",
+      "technologies": [
+        "Multi-Agent Routing",
+        "On-Policy Distillation",
+        "Knowledge Distillation",
+        "Cost-Aware Reinforcement Learning",
+        "Mixture of Experts",
+        "LLM Routing",
+        "Self-Evolving Systems",
+        "Configuration Space Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.72,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Enterprise LLM infrastructure cost optimizer that automatically routes queries to optimal model configurations balancing accuracy and compute cost",
+        "Multi-agent orchestration platform providing intelligent request routing across heterogeneous AI models with self-improving performance",
+        "API cost management service enabling companies to reduce LLM inference expenses by 50%+ while maintaining quality thresholds"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "finance"
+      ]
+    },
+    {
       "id": "2610.32221",
       "title": "RxnExBench: Benchmarking Vision-Language Models for Structured Chemical Reaction Extraction from Scientific Literature",
       "authors": [],
@@ -134,12 +181,21 @@
       "summary": "arXiv:2610.32221v1 Announce Type: new Abstract: Screen Tables and Substrate Scopes are information-dense figures widely used in synthetic chemistry literature, yet automated extraction of structured reaction data from them remains challenging. We introduce RxnExBench, a multimodal benchmark for fine-grained reaction-level evaluation. Built from high-impact chemistry journals, it contains 3,565 expert-annotated reactions and 2,361 molecular structures. The dataset adopts a unified schema with 15 reaction roles and 26 core fields, supporting downstream AI-for-Chemistry tasks such as retrosynthetic planning, yield prediction, and reaction condition recommendation. RxnExBench further provides a reasoning-driven difficulty taxonomy, a modular annotation pipeline, and the Oracle-MolRec protocol, which disentangles molecular recognition from higher-level reasoning. Evaluation of 9 state-of-the-art VLMs shows that performance degrades substantially as schema complexity and reasoning demands increase. Under the Oracle-MolRec setting, results further reveal that accurate molecular recognition alone is insufficient, with multimodal integration and chemistry-aware reasoning remaining the primary bottlenecks. We release all data and code to facilitate future research in chemistry-aware multimodal understanding and AI-for-Chemistry dataset construction. The dataset and code will be released at https://github.com/opendatalab/RxnExBench.",
       "pdf_url": "https://arxiv.org/abs/2610.32221",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "Multimodal Learning",
+        "Vision-Language Models",
+        "Chemistry-aware Reasoning"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.8,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "AI-powered chemical reaction extraction tool for researchers and educators",
+        "Automated literature review assistant for synthetic chemists"
+      ],
+      "domain_applications": [
+        "science"
+      ]
     },
     {
       "id": "2610.32212",
@@ -153,12 +209,24 @@
       "summary": "arXiv:2610.32212v1 Announce Type: cross Abstract: Large Language Models (LLMs) have gained widespread adoption in various natural language processing tasks, but suffer from hallucination issues where they generate unfaithful or inconsistent content. While Reinforcement Learning with Verifiable Rewards (RLVR) has shown promising applications in reasoning tasks, its application to span-level hallucination detection is challenged by localization ambiguity, reward sparsity on hard examples, and uncontrolled length inflation. To address these issues, we introduce Socratic Guided Policy Optimization (SOPO), a multi-turn RL framework for robust hallucination detection. The key innovation of SOPO is a Socratic feedback mechanism, where a teacher model guides the reasoning trajectories during rollout by providing indirect hints inferred from the ground truth. This teacher-guided approach enables the model to generate more effective reasoning trajectories for hard examples, thus alleviating reward sparsity. Furthermore, we incorporate Turn-based Advantage Scaling to penalize verbosity bias, encouraging the model to develop efficient and autonomous reasoning capabilities. Empirical results on RAGTruth demonstrate that SOPO (4B) achieves state-of-the-art performance, surpassing leading proprietary models (e.g., GPT-5) and standard RL baselines, while obtaining higher reported mean scores than GRPO on four out-of-domain benchmarks, with mixed evidence against CAPO. We release our training and evaluation code alongside the 1.7B and 4B SOPO models at https://github.com/patsnap/SOPO.",
       "pdf_url": "https://arxiv.org/abs/2610.32212",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "Reinforcement Learning with Verifiable Rewards",
+        "Socratic Feedback Mechanism",
+        "Turn-based Advantage Scaling"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "AI-powered content verification tool for journalists and fact-checkers",
+        "Automated fact-checking system for educational content platforms",
+        "AI assistant for medical professionals to verify patient information"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science"
+      ]
     },
     {
       "id": "2610.24628",
@@ -171,6 +239,25 @@
       "updated": "2026-10-26",
       "summary": "arXiv:2610.24628v3 Announce Type: replace-cross Abstract: We introduce Muse Glimmer, an open-source 30B parameter causal language model with perception encoder, purpose-built for autonomous agentic tasks on consumer hardware. Muse Glimmer integrates multi-step reasoning, reliable tool use and failure recovery into a single model that runs locally on consumer devices without requiring cloud infrastructure. The model accepts text and image inputs and produces text outputs, was trained on data from over a hundred languages, and is quantized to approximately 4-bit precision for efficient single-GPU inference. Muse Glimmer achieves state-of-the-art performance for its size class on agentic benchmarks, setting a new standard compared to the models of its size: Gemma4-31B and Qwen3.6-27B on tool use, multi-step planning, and agentic task completion. We release the model under the Apache 2.0 license to foster open-source development of capable, safe, local AI agents.",
       "pdf_url": "https://arxiv.org/abs/2610.24628",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.21561",
+      "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.21561v4 Announce Type: replace Abstract: Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the intended conversational process. We introduce DialFork, the first benchmark to measure this failure mode on raw dialogue text. DialFork is built by forking conformant dialogues at controlled turn positions and injecting one of four hallucination types, yielding 36,278 dialogues across 24 tasks in 12 domains; 30 human annotators validate the construction. We define three evaluation tasks that characterize procedural deviation at three granularities: how far a set of dialogues deviates from conformant ones (monitoring deployed agents), how far a single dialogue does (procedural retrieval), and at which turn a dialogue first goes off-track (real-time guardrails). For the first two, we propose dialog-flow-aware metrics, FlowKL and FlowScore, that compare dialogues by how they unfold rather than their content. At the dialogue level, FlowScore significantly outperforms all baselines across seven encoders, showing that semantic similarity is no substitute for procedural similarity. We release DialFork under open licenses at https://github.com/idiap/dialfork, hoping the community will measure conversational process alongside content.",
+      "pdf_url": "https://arxiv.org/abs/2610.21561",
       "comment": "",
       "technologies": [],
       "maturity": "early",
@@ -275,137 +362,71 @@
       "domain_applications": []
     },
     {
-      "id": "2610.30705",
-      "title": "ULME: Predictive Coupling for Mutually Reinforcing Embedding and Language Modeling",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-23",
-      "updated": "2026-10-23",
-      "summary": "arXiv:2610.30705v1 Announce Type: cross Abstract: Text embedding and text generation are two of the most useful capabilities of modern large language models, yet they are typically provided by separate specialized models (an embedder and a generator) trained with incompatible objectives and deployed side by side in retrieval-augmented generation and agent systems. Recent unified embedding-generation models such as GritLM share parameters between the two capabilities, but they either switch attention regimes between modes or optimize embedding and language modeling as parallel objectives that never supervise each other. We argue that these designs are only partially unified: the two capabilities coexist on the same weights, but do not shape each other. We propose ULME, a post-training framework that unifies embedding and language modeling on a causal decoder-only LLM through predictive coupling. ULME inserts a chain of learnable slots between the query and the answer, reads a semantic embedding and a reasoning embedding from two designated slots, and trains three objectives on a shared causal backbone: a contrastive loss anchoring the semantic slot to document representations, a language-modeling loss supervising answer generation, and a stop-gradient predictive loss that aligns the reasoning slot with a pooled summary of the answer, so that generation actively shapes what the embedding encodes. Across two model families (Qwen2.5, Qwen3) and eight scales spanning 0.5B-8B parameters, a single ULME checkpoint improves MTEB by 3.3-4.1 points over the strongest open-source baseline, tightens BRIGHT and AdvBench-IR simultaneously, and remains on par with a generation-only fine-tune on standard accuracy benchmarks (MMLU, GSM8K, MMLU-Pro, HumanEval), demonstrating that genuine unification yields mutually reinforcing rather than merely coexisting capabilities.",
-      "pdf_url": "https://arxiv.org/abs/2610.30705",
-      "comment": "",
-      "technologies": [
-        "Predictive Coupling",
-        "Contrastive Learning",
-        "Causal Decoder-only LLM",
-        "Multi-task Learning",
-        "Post-training",
-        "Text Embedding",
-        "Text Generation",
-        "Chain-of-Thought",
-        "Learnable Slots",
-        "Model Unification",
-        "Retrieval-Augmented Generation"
-      ],
-      "maturity": "early",
-      "confidence": 0.72,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Unified embedding-generation API service replacing separate embedder and generator models in RAG pipelines",
-        "Enterprise knowledge base with single-model semantic search and answer generation",
-        "AI agent framework with unified embedding and generation for reduced inference latency and memory footprint"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "accessibility"
-      ]
-    },
-    {
-      "id": "2604.07487",
-      "title": "CLEAR: Context Augmentation from Contrastive Learning of Experience via Agentic Reflection",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-23",
-      "updated": "2026-10-23",
-      "summary": "arXiv:2604.07487v3 Announce Type: replace Abstract: Large language model agents rely on effective model context to obtain task-relevant information for decision-making. Many existing context engineering approaches primarily rely on the context generated from the past experience and retrieval mechanisms that reuse these context. However, retrieved context from past tasks must be adapted by the execution agent to fit new situations, placing additional reasoning burden on the underlying LLM. To address this limitation, we propose a generative context augmentation framework using Contrastive Learning of Experience via Agentic Reflection (CLEAR). CLEAR first employs a reflection agent to perform contrastive analysis over past execution trajectories and summarize useful context for each observed task. These summaries are then used as supervised fine-tuning data to train a context augmentation model (CAM). Then we further optimize CAM using reinforcement learning, where the reward signal is obtained by running the task execution agent. By learning to generate task-specific knowledge rather than retrieve knowledge from the past, CAM produces context that is better tailored to the current task. We conduct comprehensive evaluations on the AppWorld and WebShop benchmarks. Experimental results show that CLEAR consistently outperforms strong baselines. It improves task completion rate from 72.62% to 81.15% on AppWorld test set and averaged reward from 0.68 to 0.74 on a subset of WebShop, compared with baseline agent. Our code is publicly available at https://github.com/awslabs/CLEAR.",
-      "pdf_url": "https://arxiv.org/abs/2604.07487",
-      "comment": "",
-      "technologies": [
-        "Contrastive Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Retrieval Augmented Generation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "AI-powered context-aware assistants for enterprise workflows",
-        "Personalized learning platforms with adaptive content generation",
-        "Automated customer support systems with dynamic context adaptation"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.32481",
-      "title": "CASE: Confusion-Aware Skill Evolution for Frozen Multimodal Emotion Models",
+      "id": "2610.35598",
+      "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
       "authors": [
-        "Siyu Wu",
-        "Zeyu Liang",
-        "Linghao Wang",
-        "Qiyun Zheng",
-        "Yi Yao",
-        "Ling Lo",
-        "Hongxia Xie"
+        "Zongyuan Sun",
+        "Shuai Zhao",
+        "Ke Shu",
+        "Ziyue Zhu",
+        "Shangyang Wu",
+        "Yuanlin Lin",
+        "Tao Wang",
+        "Shiyue Li",
+        "Yingjun Du",
+        "Anh Tuan Luu",
+        "Haoran Luo"
       ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-23",
-      "updated": "2026-10-23",
-      "summary": "Multimodal large language models (MLLMs) have substantially advanced Multimodal Emotion Recognition (MER) by enabling fine-grained emotion understanding through reasoning over multimodal evidence. However, they still exhibit systematic confusion between semantically adjacent emotions with highly overlapping multimodal cues. Existing approaches typically address these errors through global parameter adaptation, making confusion correction costly and inflexible. We instead observe that emotion confusion is highly localized and therefore better addressed through reusable pair-specific expertise. Building on this insight, we propose Confusion-Aware Skill Evolution (CASE), the first agent-skill framework for MER. CASE maintains a sparse, self-evolving library of pair-specific EmotionSkills that externalize affective expertise from model parameters, enabling the learned expertise to be continuously refined and readily transferred across diverse frozen MLLM backbones. During inference, CASE dynamically retrieves the appropriate EmotionSkill to reinforce boundary-aware reasoning while keeping the MLLM backbone frozen. Extensive experiments on CA-MER, DFEW, and EMER demonstrate the effectiveness and transferability of CASE across both general-purpose and emotion-specialized MLLMs. Notably, CASE improves the average accuracy of Qwen3-VL-8B on the CA-MER benchmark from 46.80% to 59.13%, while achieving consistent gains across MLLMs.",
-      "pdf_url": "https://arxiv.org/pdf/2610.32481v1",
-      "comment": "9 pages, 6 figures, 4 tables",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.5,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2606.22617",
-      "title": "OmniSpace: Efficient Geometry Awareness for Autonomous Vehicles MLLMs",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2606.22617v3 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) have achieved remarkable performance on 2D visual tasks, yet enhancing their spatial intelligence for real-world applications such as Autonomous Vehicles (AV) remains an open challenge. Existing geometry-aware MLLMs typically rely on auxiliary 3D models at inference time, introducing pipeline complexity and the risk of cascading failures. In this paper, we present OmniSpace, a simple yet effective plug-and-play paradigm for geometry-aware spatial reasoning from purely 2D observations. Motivated by our finding that current MLLMs are bottlenecked by weak cross-view correspondence and depth estimation, OmniSpace introduces a Camera Pose Injector, a Multi-view Epipolar Attention module, and a 3D Geometric Distillation objective that jointly address these two limitations by transferring geometric knowledge into the model. Extensive experiments show that OmniSpace surpasses existing methods on planning benchmarks (nuScenes, Bench2Drive), risk detection (nuInstruct), language (Omnidrive), and generalization (DriveBench).",
-      "pdf_url": "https://arxiv.org/abs/2606.22617",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.5,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.32326",
-      "title": "TGR-EvoDAG: A DAG-based Multi-Agent Code Evolution Framework for Generative Recommendation on Tencent",
-      "authors": [],
       "categories": [
         "cs.AI"
       ],
       "published": "2026-10-26",
       "updated": "2026-10-26",
-      "summary": "arXiv:2610.32326v1 Announce Type: new Abstract: Large Language Model (LLM) agents have enabled automated code evolution for algorithm discovery. However, current recursive self-improvement (RSI) research for sequential recommendation faces a dilemma: general-purpose frameworks lack domain-specific feedback, while recommender-specific frameworks rely on linear evolution. Crucially, naively integrating them fails when applied to Generative Recommendation (GR). Unlike end-to-end models, GR relies on a module-cascaded pipeline (tokenization, pre-training, and alignment). In this paradigm, existing evolution methods suffer from: i) cost blindness, squandering budgets by ignoring stage-asymmetric retraining overheads; and ii) short-sighted evaluation, discarding promising upstream innovations that temporarily regress metrics before downstream adaptation. To bridge these gaps, we propose TGR-EvoDAG, a multi-agent code evolution framework tailored for GR. TGR-EvoDAG models code evolution as a Directed Acyclic Graph (DAG) to maintain multiple evolution branches and merge complementary innovations, unifying advanced search with rich GR diagnostic feedback. We further introduce stage-aware cost planning to optimize GPU-hour budgets, and active downstream co-adaptation to navigate temporary regressions and unlock cross-stage gains. On public Amazon datasets, TGR-EvoDAG enables the first autonomous evolution of a complete GR pipeline, improving offline metrics by up to 37.4% and Agent4Rec simulated user satisfaction by 19.7% over the strongest baseline. Furthermore, in industrial deployment on Tencent's large-scale commercial media platform, the evolved GR achieves a 12.16% relative improvement in offline Hit@1 and a statistically significant 0.40% increase in online click-through rate (CTR).",
-      "pdf_url": "https://arxiv.org/abs/2610.32326",
+      "summary": "Knowledge graphs (KGs) provide reliable external knowledge for multi-hop factual reasoning with large language models (LLMs), yet most KGs in real-world domains such as finance and industry lack question--answer (QA) annotations. Without such annotations, existing methods struggle to improve LLM graph reasoning: training-free agents cannot improve their exploration through interaction; reinforcement learning (RL) agents depend on QA data annotated by humans or synthesized by closed-source models; and training data is typically built offline, so its topology mix is fixed and cannot follow the agent's ability. We propose Evolve on Graph (EoG), a framework that lets an LLM self-evolve its graph reasoning without any QA annotations. Through Graph Self-Play, a single LLM alternates between a Proposer that poses questions and a Solver that answers them. To make questions verifiable, Symbolically Verifiable Topology Synthesis (SVTS) samples reasoning topologies on the KG and executes the corresponding first-order logic queries, yielding topology skeletons with correct and complete answer sets; guided by a skeleton, the Proposer explores the graph to pose a multi-hop question. To let task topologies follow the Solver, a Boundary-Aware Graph Curriculum rewards the Proposer by the Solver's score variance, keeping questions at the Solver's capability boundary so that complex topologies enter training as the Solver improves. On six benchmarks over Freebase, Wikidata, and an industrial KG, EoG consistently outperforms prompting-, retrieval-, and agent-based methods, showing that LLM graph reasoning can improve through self-play without QA annotations. Our code is available at https://github.com/Szy5/EoG",
+      "pdf_url": "https://arxiv.org/pdf/2610.35598v1",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.32483",
+      "title": "When Agents Fail: Model or Harness--Who's to Blame?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.32483v1 Announce Type: new Abstract: LLM agents combine models with execution harnesses, so agentic benchmark performance reflects their joint behavior. We argue that harnesses should therefore be evaluated through their interactions with underlying models. We develop a framework combining five complementary measures: (i) Valid Completion Rate (VCR), how reliably agents finish normally and deliver evaluable results, irrespective of task correctness; (ii) Model-Harness Fit, how well a harness supports task achievement through valid completion for a given model; (iii) Cross-Model Fit, a harness's overall suitability across evaluated models; (iv) Interaction Residuals, pairing-specific execution strengths and weaknesses hidden by component-level summaries; and (v) Token Load, the token demands of agent execution, including failed attempts. We evaluate four general-purpose harnesses (OpenCode, Codex CLI, Pi CLI, and DeepAgents) with four core models, plus two fixed native model-harness systems, on six benchmarks covering context management, tool use, long-context planning, multimodal interaction, and artifact handoff. Including native references and stress conditions, 111 evaluation settings yield 52,168 trajectories. Harness rankings vary across models and benchmarks; task performance and valid completion can favor different pairings, and similar task scores can accompany distinct execution profiles. OpenCode ranks first in cross-model performance, while DeepSeek V4 Flash Preview maintains consistently high Mean VCR across harnesses on the shared four-benchmark panel. These findings support evaluating model-harness interactions, training transferable harness-use capabilities in models, and harness designs adapted to the model and task.",
+      "pdf_url": "https://arxiv.org/abs/2610.32483",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.32978",
+      "title": "SceneBloom: Agentic Indoor Environment Generation with Realistic and Diverse Layouts for Embodied Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.32978v1 Announce Type: cross Abstract: Training generalizable embodied agents requires realistic, varied, and simulation-ready indoor environments. Language-guided methods support semantic planning and object-level reasoning, but precise spatial grounding remains difficult. Visual generative models offer rich priors over plausible arrangements, yet their outputs require geometric reasoning to become physically valid 3D scenes. We introduce SceneBloom, an agentic framework that combines visual layout sampling with contract-guided 3D compilation. A hierarchical sampler uses diffusion priors to generate furniture arrangements within functional zones. A compiler then uses relations extracted from each proposal to guide geometric fitting and local pose correction. Across five room types, SceneBloom attains the highest visual quality and physical stability among the compared methods and is the only method with no detected mesh collisions and out-of-bounds objects. Its layouts are also closer to the distribution of real rooms than those of all compared baselines. Object navigation policies trained in these realistic scenes achieve a higher success rate in held-out real scans than those trained on an equal number of real training scans. Code is available at https://github.com/Tinaliu0123/scenebloom.",
+      "pdf_url": "https://arxiv.org/abs/2610.32978",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     }
@@ -415,208 +436,220 @@
       "name": "Multimodal Learning",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "healthcare",
         "creative",
-        "science"
+        "robotics",
+        "science",
+        "healthcare"
       ]
     },
     {
       "name": "Retrieval Augmented Generation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "healthcare",
         "science",
-        "education",
-        "other"
+        "healthcare"
       ]
     },
     {
       "name": "Chain-of-Thought Prompting",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "science"
+        "science",
+        "healthcare"
       ]
     },
     {
       "name": "Low-Rank Adaptation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "healthcare",
-        "science"
+        "science",
+        "healthcare"
       ]
     },
     {
       "name": "Diffusion Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
         "creative",
+        "robotics",
         "science"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "creative",
         "robotics",
+        "science"
+      ]
+    },
+    {
+      "name": "Multi-Agent Routing",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
         "enterprise",
-        "science",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "On-Policy Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Knowledge Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Cost-Aware Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "LLM Routing",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Self-Evolving Systems",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Configuration Space Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "finance",
+        "science"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science"
+      ]
+    },
+    {
+      "name": "Chemistry-aware Reasoning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning with Verifiable Rewards",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
         "education",
-        "other",
-        "creative"
-      ]
-    },
-    {
-      "name": "Predictive Coupling",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
         "enterprise",
         "science"
       ]
     },
     {
-      "name": "Contrastive Learning",
+      "name": "Socratic Feedback Mechanism",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
       "applications": [
-        "enterprise",
-        "science",
-        "accessibility",
         "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Causal Decoder-only LLM",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
         "enterprise",
         "science"
       ]
     },
     {
-      "name": "Multi-task Learning",
+      "name": "Turn-based Advantage Scaling",
       "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
       "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Post-training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Text Embedding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Text Generation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Learnable Slots",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Model Unification",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Retrieval-Augmented Generation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
+        "education",
         "enterprise",
         "science"
       ]
