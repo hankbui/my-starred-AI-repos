@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "papers_tracked": 15,
-    "technologies_discovered": 19,
+    "technologies_discovered": 22,
     "opportunities_identified": 0,
-    "last_update": "2026-10-27 10:47 UTC",
+    "last_update": "2026-10-28 11:30 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,53 +13,183 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "19",
+      "value": "22",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Retrieval Augmented Generation, Chain-of-Thought Prompting, Low-Rank Adaptation, Diffusion Models, Reinforcement Learning from Human Feedback, Multi-Agent Routing, On-Policy Distillation",
+      "detail": "Diffusion Models, Causal Attention, Vision-Language Models, Multi-stage Curriculum Learning, Diffusion Distillation, Speculative Decoding, Reinforcement Learning, Reinforcement Learning with Verifiable Rewards",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "19",
+      "value": "22",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Multi-Agent Routing, On-Policy Distillation, Knowledge Distillation, Cost-Aware Reinforcement Learning",
+      "detail": "Diffusion Models, Causal Attention, Vision-Language Models, Multi-stage Curriculum Learning, Diffusion Distillation",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.9",
       "label": "avg opportunity score",
-      "detail": "MedCaseAgent: From Multimodal Clinical Evidence to Rare Disease Case Reports",
+      "detail": "Hy-Nomas: Towards Free-form Interactive World Generation",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "MedCaseAgent: From Multimodal ",
-      "label": "confidence 78%",
+      "value": "Hy-Nomas: Towards Free-form In",
+      "label": "confidence 80%",
       "detail": "",
       "color": "purple"
     },
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "RxnExBench: Benchmarking Visio",
+      "value": "TS-DP: Reinforcement Speculati",
       "label": "highest confidence paper",
-      "detail": "AI-powered chemical reaction extraction tool for researchers and educators, Automated literature review assistant for synthetic chemists",
+      "detail": "Real-time robotic control systems with improved efficiency and performance, Enhanced embodied AI applications with reduced latency and increased responsiveness",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "5",
+      "value": "13",
       "label": "early-stage technologies",
       "detail": "EvoRouter: Cost-Efficient Multi-Agent Routing via Insight-Guided On-Policy Disti",
       "color": "blue"
     }
   ],
   "papers": [
+    {
+      "id": "2610.36729",
+      "title": "Hy-Nomas: Towards Free-form Interactive World Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2610.36729v1 Announce Type: new Abstract: Interactive world generation requires models to follow successive commands while preserving relevant history and action consequences. We present Hy-Nomas, a video world model with an 8B diffusion backbone that supports free-form text instructions and continuous camera control across multiple interaction turns. It generates variable-length segments conditioned on current inputs and cached history. Our central design aligns structured video captions with action-aware causal attention: descriptive context remains accessible across segments, while action instructions are restricted to their intended temporal windows. A vision-language Prompt Enhancer (PE) translates user requests and multimodal interaction histories into structured conditions for the next segment. A multi-stage curriculum progressively introduces causal generation, text interaction, camera control, and training on model-generated histories, followed by diffusion distillation. In human evaluation, Hy-Nomas shows superior performance over existing world models. We release model weights, code and benchmarks, together with a lightweight adaptation workflow, to support reproducible research on interactive world generation.",
+      "pdf_url": "https://arxiv.org/abs/2610.36729",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Causal Attention",
+        "Vision-Language Models",
+        "Multi-stage Curriculum Learning",
+        "Diffusion Distillation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.2,
+      "product_potential": [
+        "Interactive virtual reality environments for gaming and training",
+        "AI-powered storytelling platforms with dynamic world generation",
+        "Virtual assistants with real-time, interactive world manipulation capabilities"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "id": "2512.15773",
+      "title": "TS-DP: Reinforcement Speculative Decoding For Temporal Adaptive Diffusion Policy Acceleration",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2512.15773v2 Announce Type: replace-cross Abstract: Diffusion Policy (DP) excels in embodied control but suffers from high inference latency and computational cost due to multiple iterative denoising steps. Existing diffusion model (DMs) acceleration methods improve inference speed by reducing computational overhead, as DMs for image generation are computation-bound. In this work, we reveal that DP are I/O bound, and thus propose using speculative decoding, a parallel computing framework, to accelerate DP for the first time. However, it is non-trivial to address the following challenges: (1) How to preserve the denoising quality of the base model at reduced computational cost under time-varying task difficulty in embodied settings; and (2) How to dynamically allocate computation according to task difficulty in such environments. Therefore, we propose Temporal-aware Reinforcement-based Speculative Diffusion Policy (TS-DP), the first framework that enables speculative decoding for DP with temporal adaptivity. First, to handle dynamic environments where task difficulty varies over time, we distill a Transformer-based drafter to imitate the base model and replace its costly denoising calls. Second, an RL-based scheduler further adapts to the time-varying task difficulty by adjusting speculative parameters to maintain accuracy while improving efficiency. Extensive experiments show that TS-DP achieves up to a 4.17x NFE reduction and a 3.2x wall-clock speedup with a draft acceptance rate of over 85% in simulation. Real-world experiments further demonstrate a 3.8x NFE reduction while improving success rates on real-time tasks (e.g., a 23% gain on the conveyor-belt task), reaching an inference frequency of 26 Hz and enabling real-time control while maintaining comparable task performance. The code is available at https://github.com/ChildTang/TS-DP.",
+      "pdf_url": "https://arxiv.org/abs/2512.15773",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Speculative Decoding",
+        "Reinforcement Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Real-time robotic control systems with improved efficiency and performance",
+        "Enhanced embodied AI applications with reduced latency and increased responsiveness"
+      ],
+      "domain_applications": [
+        "robotics",
+        "science"
+      ]
+    },
+    {
+      "id": "2603.01563",
+      "title": "Efficient Token-Level Policy Optimization for Masked Diffusion Models via Velocity Alignment",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2603.01563v3 Announce Type: replace-cross Abstract: Reinforcement Learning with Verifiable Rewards (RLVR) successfully aligns autoregressive models in rigorous domains like mathematical reasoning and code generation. However, applying RLVR to Diffusion Large Language Models (dLLMs) is hindered by intractable sequence-level likelihoods, forcing existing methods to rely on unstable, high-variance approximations. We propose Sequence Likelihood-Free Policy Optimization (LFPO), an efficient framework that circumvents this bottleneck by formulating policy alignment as discrete velocity alignment. Inspired by continuous flow matching, LFPO eschews trajectory-level estimation and directly optimizes denoising logits via contrastive token-level updates, providing a stable, low-variance surrogate. Furthermore, predicting terminal solutions from intermediate states implicitly straightens the generation trajectory, enabling high-quality sampling with significantly fewer denoising iterations. Extensive experiments on reasoning and coding benchmarks demonstrate that LFPO matches or exceeds the accuracy of likelihood-based baselines while substantially accelerating inference.",
+      "pdf_url": "https://arxiv.org/abs/2603.01563",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning with Verifiable Rewards",
+        "Diffusion Models",
+        "Policy Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Developing a more efficient and accurate AI assistant for mathematical reasoning and code generation tasks.",
+        "Creating a faster and more stable AI model for content generation in creative industries."
+      ],
+      "domain_applications": [
+        "education",
+        "creative",
+        "science"
+      ]
+    },
+    {
+      "id": "2610.21561",
+      "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.21561v4 Announce Type: replace Abstract: Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the intended conversational process. We introduce DialFork, the first benchmark to measure this failure mode on raw dialogue text. DialFork is built by forking conformant dialogues at controlled turn positions and injecting one of four hallucination types, yielding 36,278 dialogues across 24 tasks in 12 domains; 30 human annotators validate the construction. We define three evaluation tasks that characterize procedural deviation at three granularities: how far a set of dialogues deviates from conformant ones (monitoring deployed agents), how far a single dialogue does (procedural retrieval), and at which turn a dialogue first goes off-track (real-time guardrails). For the first two, we propose dialog-flow-aware metrics, FlowKL and FlowScore, that compare dialogues by how they unfold rather than their content. At the dialogue level, FlowScore significantly outperforms all baselines across seven encoders, showing that semantic similarity is no substitute for procedural similarity. We release DialFork under open licenses at https://github.com/idiap/dialfork, hoping the community will measure conversational process alongside content.",
+      "pdf_url": "https://arxiv.org/abs/2610.21561",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.36929",
+      "title": "DocXEval: A Systematic Evaluation of Explainability in Multimodal Document Understanding",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2610.36929v1 Announce Type: new Abstract: Multimodal transformer models have driven unprecedented performance breakthroughs in modern document understanding. However, the inherent black-box nature of these models remains a major obstacle to their safe deployment in high-stakes sectors. Despite significant progress in explainability for vision and language tasks, explainable AI (XAI) research tailored to multimodal document understanding has received little attention. To address this gap, we present \\ourframework{}, the first comprehensive explainability framework that adapts existing XAI methods and evaluation metrics to the multimodal (text, layout, and image) document understanding context, while introducing efficient multi-target adaptations of both methods and metrics for domain-specific tasks such as semantic entity recognition. Using \\ourframework{}, we systematically evaluate 13 XAI methods across 3 document understanding tasks, 8 datasets, 4 models, and 17 evaluation metrics, and find that only a few methods perform consistently across all evaluation criteria, with Occlusion emerging as the most faithful and interpretable method overall. Through a dedicated meta-evaluation, we observe moderate to strong agreement among several faithfulness and complexity metrics while identifying certain ones that produce unreliable results. Finally, through multiple dataset-wide diagnostic analyses, we uncover key insights into model behavior, including the contribution of individual modalities across tasks and labels, spatial attribution patterns around target entities, and potential dataset biases. Overall, this work serves as both a benchmark and a practical guide for future XAI research in multimodal document understanding. To support reproducibility, we publicly release our code at https://github.com/saifullah3396/docxeval/.",
+      "pdf_url": "https://arxiv.org/abs/2610.36929",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
     {
       "id": "2610.32258",
       "title": "MedCaseAgent: From Multimodal Clinical Evidence to Rare Disease Case Reports",
@@ -80,7 +210,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.78,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "Automated generation of rare disease case reports for pharmaceutical research",
         "Clinical evidence synthesis platform for medical researchers",
@@ -90,6 +220,124 @@
         "healthcare",
         "science"
       ]
+    },
+    {
+      "id": "2610.32483",
+      "title": "When Agents Fail: Model or Harness--Who's to Blame?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.32483v1 Announce Type: new Abstract: LLM agents combine models with execution harnesses, so agentic benchmark performance reflects their joint behavior. We argue that harnesses should therefore be evaluated through their interactions with underlying models. We develop a framework combining five complementary measures: (i) Valid Completion Rate (VCR), how reliably agents finish normally and deliver evaluable results, irrespective of task correctness; (ii) Model-Harness Fit, how well a harness supports task achievement through valid completion for a given model; (iii) Cross-Model Fit, a harness's overall suitability across evaluated models; (iv) Interaction Residuals, pairing-specific execution strengths and weaknesses hidden by component-level summaries; and (v) Token Load, the token demands of agent execution, including failed attempts. We evaluate four general-purpose harnesses (OpenCode, Codex CLI, Pi CLI, and DeepAgents) with four core models, plus two fixed native model-harness systems, on six benchmarks covering context management, tool use, long-context planning, multimodal interaction, and artifact handoff. Including native references and stress conditions, 111 evaluation settings yield 52,168 trajectories. Harness rankings vary across models and benchmarks; task performance and valid completion can favor different pairings, and similar task scores can accompany distinct execution profiles. OpenCode ranks first in cross-model performance, while DeepSeek V4 Flash Preview maintains consistently high Mean VCR across harnesses on the shared four-benchmark panel. These findings support evaluating model-harness interactions, training transferable harness-use capabilities in models, and harness designs adapted to the model and task.",
+      "pdf_url": "https://arxiv.org/abs/2610.32483",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.32978",
+      "title": "SceneBloom: Agentic Indoor Environment Generation with Realistic and Diverse Layouts for Embodied Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "arXiv:2610.32978v1 Announce Type: cross Abstract: Training generalizable embodied agents requires realistic, varied, and simulation-ready indoor environments. Language-guided methods support semantic planning and object-level reasoning, but precise spatial grounding remains difficult. Visual generative models offer rich priors over plausible arrangements, yet their outputs require geometric reasoning to become physically valid 3D scenes. We introduce SceneBloom, an agentic framework that combines visual layout sampling with contract-guided 3D compilation. A hierarchical sampler uses diffusion priors to generate furniture arrangements within functional zones. A compiler then uses relations extracted from each proposal to guide geometric fitting and local pose correction. Across five room types, SceneBloom attains the highest visual quality and physical stability among the compared methods and is the only method with no detected mesh collisions and out-of-bounds objects. Its layouts are also closer to the distribution of real rooms than those of all compared baselines. Object navigation policies trained in these realistic scenes achieve a higher success rate in held-out real scans than those trained on an equal number of real training scans. Code is available at https://github.com/Tinaliu0123/scenebloom.",
+      "pdf_url": "https://arxiv.org/abs/2610.32978",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.36444",
+      "title": "RouteDRAG: Learning to Route and Control Agentic Execution for Multimodal Document RAG",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2610.36444v1 Announce Type: new Abstract: Web-based applications increasingly rely on understanding long multimodal documents, where answering questions often requires combining information across pages, tables, and figures. Agentic retrieval-augmented generation addresses these tasks through iterative retrieval and reasoning. However, Agentic execution is not always necessary, introducing additional computation and potentially incorrect answers. Our empirical analysis reveals that Agentic execution provides query-dependent benefits, while additional operations may improve, preserve, or degrade answer accuracy. These findings motivate controlling both Agent invocation and subsequent execution. To address these challenges, we propose RouteDRAG, a learning-based framework comprising four components. Unified Document Index organizes multimodal content into a graph-backed index and derives query representations from initial retrieval. Adaptive Path Routing preserves exact answering and predicts the relative benefit of Agent over shorter execution paths. Dynamic Agent Execution maintains an evolving workspace and refines Planner proposals to control tool use and termination. Sequential Policy Learning first trains operation control from observed outcomes and then trains path routing using the resulting Agent's performance. Across two benchmarks, RouteDRAG achieves an average accuracy improvement of 3.47 percentage points over shorter-path-only execution while assigning only 79.3% of queries to Agent. Notably, it also surpasses uniform Agent execution on both benchmarks while requiring fewer answering calls. Our code is now available at https://github.com/Ereshkigal1/RouteDRAG.",
+      "pdf_url": "https://arxiv.org/abs/2610.36444",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.37567",
+      "title": "Gym-Anything-RT: Scaling Real-Time Environments for Vision-Language Agents",
+      "authors": [
+        "Pranjal Aggarwal",
+        "Sean Welleck"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-10-27",
+      "updated": "2026-10-27",
+      "summary": "AI agents have made substantial progress in domains where they have a non-trivial amount of time to deliberate between actions, such as mathematics, software engineering, and performing tasks on desktop applications. It is less clear how such models fare in settings that demand real-time interaction, such as playing a video game or operating a physical device. In these settings, the environment state may evolve as the agent is reasoning, or even as the underlying model is performing a forward pass. To gain insight into the real-time interaction capabilities of vision-language agents, we introduce Gym-Anything-RT. Our key idea is to construct visual minigames that demand a portfolio of capabilities required for interactive real-time settings. Gym-Anything-RT uses an agentic pipeline to automatically generate such environments based on a taxonomy of six capabilities required for real-time interaction, including the ability to perceive the environment and act under an evolving environment state. A key feature of Gym-Anything-RT is that it allows for controlled comparison of real-time interaction capabilities: we can run the same minigame in real time, or pause or slow down the environment to relax the requirement for real-time actions. We use Gym-Anything-RT to construct 100 real-time minigames and evaluate AI agents on them. We find large capability gaps in real-time interaction. For example, GPT-6 Astra (xHigh) achieves a pass rate of only 9.0% on the real-time minigames, which rises to 75.0% when the environment is paused. We also identify intriguing behaviors by the most powerful frontier agents: for instance, when given the ability to write code, these agents write code that bypasses the need to perceive and act in real time. We publicly release Gym-Anything-RT and the generated minigames to spur further research on AI agents in real-time interactive settings.",
+      "pdf_url": "https://arxiv.org/pdf/2610.37567v1",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.11115",
+      "title": "Benchmark Radar: A Living Database and Search Engine for AI Benchmarks and Evaluation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2609.11115v4 Announce Type: replace Abstract: Benchmark researchers and developers of large language models (LLMs) and other AI systems need to find relevant evaluations, locate their benchmark datasets and code, and understand the settings behind reported scores. We present Benchmark Radar, a living database and search engine for retrieval and discovery of AI benchmarks, covering LLM evaluation, agentic and tool-use benchmarks, coding, reasoning, safety, and domain-specific evaluations. The system combines daily discovery of benchmark papers, repositories, datasets, and releases with a searchable benchmark catalog, mentions in model cards and technical reports, and score histories. It retains source identities and citations so readers can inspect candidate benchmarks and their evaluation evidence. Daily discovery draws on 37 sources: 13 direct connectors and 24 first-party research and engineering feeds. The catalog contains 1,283 source records drawn from 4 benchmark catalogs and 12,916 numeric observations on 790 records. We describe collection and retrieval, audit the full catalog, and examine benchmark saturation, adoption trends, and the limits of score comparisons. A worked example walks through a complete prior-art search, showing how to query the catalog and inspect benchmark evidence when designing a new evaluation. We release the web dashboard with a benchmark leaderboard, a Pareto frontier view of score against measured use, saturation and trend views, daily feeds, downloadable evidence, a command-line interface (CLI) for offline queries, and reproducible analysis.",
+      "pdf_url": "https://arxiv.org/abs/2609.11115",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2605.31217",
+      "title": "TALON: Token-Aligned Lightweight Adapters for 6-DoF Spacecraft Pose Estimation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2605.31217v2 Announce Type: replace Abstract: Monocular 6-DoF spacecraft pose estimation methods predominantly process individual frames, discarding the temporal information present in an image sequence acquired during spacecraft manoeuvres. Few temporal approaches require full backbone fine-tuning or auxiliary optical flow networks, risking catastrophic forgetting or increasing computational cost, respectively. We propose TALON (Token-Aligned Lightweight adapters for Orbital Navigation): spatiotemporal 3D adapters injected before the self-attention layers of a frozen ViT vision transformer, combined with a patch-token alignment loss that geometrically grounds the adapted features to keypoint structure through a prototype-conditioned KL-divergence objective. Pre-attention placement allows the frozen attention to reason over temporally enriched tokens, achieving stronger performance with a single adapter per block than post-attention alternatives. The alignment loss shapes the intermediate representations so that each keypoint induces a spatially precise activation in the token field, while the framework adds less than 5% parameters to the frozen backbone. On SPADES dataset, TALON reduces the pose error by 50% over the prior state-of-the-art, and on SwissCube dataset it surpasses the prior best by 21.8% in ADD-0.1d accuracy. Zero-shot cross-domain evaluation from sim-to-real on SPARK real data reduces pose error by 4.7x, and ablations characterise the role of adapter depth across in-domain and cross-domain settings.",
+      "pdf_url": "https://arxiv.org/abs/2605.31217",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
       "id": "2610.21539",
@@ -110,7 +358,7 @@
       ],
       "maturity": "early",
       "confidence": 0.78,
-      "curator_score": 6.0,
+      "curator_score": 5.5,
       "product_potential": [
         "AI-driven generative design platform for architectural visualization",
         "Autonomous robotic content creation suite for marketing assets",
@@ -157,7 +405,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.72,
-      "curator_score": 6.0,
+      "curator_score": 5.5,
       "product_potential": [
         "Enterprise LLM infrastructure cost optimizer that automatically routes queries to optimal model configurations balancing accuracy and compute cost",
         "Multi-agent orchestration platform providing intelligent request routing across heterogeneous AI models with self-improving performance",
@@ -170,279 +418,144 @@
       ]
     },
     {
-      "id": "2610.32221",
-      "title": "RxnExBench: Benchmarking Vision-Language Models for Structured Chemical Reaction Extraction from Scientific Literature",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.32221v1 Announce Type: new Abstract: Screen Tables and Substrate Scopes are information-dense figures widely used in synthetic chemistry literature, yet automated extraction of structured reaction data from them remains challenging. We introduce RxnExBench, a multimodal benchmark for fine-grained reaction-level evaluation. Built from high-impact chemistry journals, it contains 3,565 expert-annotated reactions and 2,361 molecular structures. The dataset adopts a unified schema with 15 reaction roles and 26 core fields, supporting downstream AI-for-Chemistry tasks such as retrosynthetic planning, yield prediction, and reaction condition recommendation. RxnExBench further provides a reasoning-driven difficulty taxonomy, a modular annotation pipeline, and the Oracle-MolRec protocol, which disentangles molecular recognition from higher-level reasoning. Evaluation of 9 state-of-the-art VLMs shows that performance degrades substantially as schema complexity and reasoning demands increase. Under the Oracle-MolRec setting, results further reveal that accurate molecular recognition alone is insufficient, with multimodal integration and chemistry-aware reasoning remaining the primary bottlenecks. We release all data and code to facilitate future research in chemistry-aware multimodal understanding and AI-for-Chemistry dataset construction. The dataset and code will be released at https://github.com/opendatalab/RxnExBench.",
-      "pdf_url": "https://arxiv.org/abs/2610.32221",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Vision-Language Models",
-        "Chemistry-aware Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "AI-powered chemical reaction extraction tool for researchers and educators",
-        "Automated literature review assistant for synthetic chemists"
-      ],
-      "domain_applications": [
-        "science"
-      ]
-    },
-    {
-      "id": "2610.32212",
-      "title": "SOPO: Socratic Guided Policy Optimization for Span-Level Hallucination Detection",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.32212v1 Announce Type: cross Abstract: Large Language Models (LLMs) have gained widespread adoption in various natural language processing tasks, but suffer from hallucination issues where they generate unfaithful or inconsistent content. While Reinforcement Learning with Verifiable Rewards (RLVR) has shown promising applications in reasoning tasks, its application to span-level hallucination detection is challenged by localization ambiguity, reward sparsity on hard examples, and uncontrolled length inflation. To address these issues, we introduce Socratic Guided Policy Optimization (SOPO), a multi-turn RL framework for robust hallucination detection. The key innovation of SOPO is a Socratic feedback mechanism, where a teacher model guides the reasoning trajectories during rollout by providing indirect hints inferred from the ground truth. This teacher-guided approach enables the model to generate more effective reasoning trajectories for hard examples, thus alleviating reward sparsity. Furthermore, we incorporate Turn-based Advantage Scaling to penalize verbosity bias, encouraging the model to develop efficient and autonomous reasoning capabilities. Empirical results on RAGTruth demonstrate that SOPO (4B) achieves state-of-the-art performance, surpassing leading proprietary models (e.g., GPT-5) and standard RL baselines, while obtaining higher reported mean scores than GRPO on four out-of-domain benchmarks, with mixed evidence against CAPO. We release our training and evaluation code alongside the 1.7B and 4B SOPO models at https://github.com/patsnap/SOPO.",
-      "pdf_url": "https://arxiv.org/abs/2610.32212",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning with Verifiable Rewards",
-        "Socratic Feedback Mechanism",
-        "Turn-based Advantage Scaling"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.9,
-      "product_potential": [
-        "AI-powered content verification tool for journalists and fact-checkers",
-        "Automated fact-checking system for educational content platforms",
-        "AI assistant for medical professionals to verify patient information"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2610.24628",
-      "title": "Muse Glimmer 30B: An On-Device Agentic Model",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.24628v3 Announce Type: replace-cross Abstract: We introduce Muse Glimmer, an open-source 30B parameter causal language model with perception encoder, purpose-built for autonomous agentic tasks on consumer hardware. Muse Glimmer integrates multi-step reasoning, reliable tool use and failure recovery into a single model that runs locally on consumer devices without requiring cloud infrastructure. The model accepts text and image inputs and produces text outputs, was trained on data from over a hundred languages, and is quantized to approximately 4-bit precision for efficient single-GPU inference. Muse Glimmer achieves state-of-the-art performance for its size class on agentic benchmarks, setting a new standard compared to the models of its size: Gemma4-31B and Qwen3.6-27B on tool use, multi-step planning, and agentic task completion. We release the model under the Apache 2.0 license to foster open-source development of capable, safe, local AI agents.",
-      "pdf_url": "https://arxiv.org/abs/2610.24628",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.21561",
-      "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "id": "2610.36013",
+      "title": "OmniBrain-0: A Unified Agentic Model for Embodied Intelligence",
       "authors": [],
       "categories": [
         "cs.CL"
       ],
-      "published": "2026-10-27",
-      "updated": "2026-10-27",
-      "summary": "arXiv:2610.21561v4 Announce Type: replace Abstract: Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the intended conversational process. We introduce DialFork, the first benchmark to measure this failure mode on raw dialogue text. DialFork is built by forking conformant dialogues at controlled turn positions and injecting one of four hallucination types, yielding 36,278 dialogues across 24 tasks in 12 domains; 30 human annotators validate the construction. We define three evaluation tasks that characterize procedural deviation at three granularities: how far a set of dialogues deviates from conformant ones (monitoring deployed agents), how far a single dialogue does (procedural retrieval), and at which turn a dialogue first goes off-track (real-time guardrails). For the first two, we propose dialog-flow-aware metrics, FlowKL and FlowScore, that compare dialogues by how they unfold rather than their content. At the dialogue level, FlowScore significantly outperforms all baselines across seven encoders, showing that semantic similarity is no substitute for procedural similarity. We release DialFork under open licenses at https://github.com/idiap/dialfork, hoping the community will measure conversational process alongside content.",
-      "pdf_url": "https://arxiv.org/abs/2610.21561",
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2610.36013v1 Announce Type: new Abstract: General-purpose embodied intelligence requires robots to coordinate diverse skills over long horizons, track task progress, and recover from failures. Specialist policies alone do not ensure task-level reliability, while powerful multimodal agents rely on costly reasoning and external experience that compact models struggle to reproduce. We introduce OmniBrain-0, a lightweight unified embodied agent that coordinates manipulation and navigation through a shared high-level decision model, integrating task understanding, planning, progress tracking, and feedback-driven recovery. Our progressive training framework combines embodied pretraining, domain-specialized agent distillation, and multi-teacher on-policy distillation (MOPD). It distills powerful teachers' interaction experience into manipulation and navigation experts, then consolidates their decision capabilities into OmniBrain-0. Unification therefore occurs within the learned decision model rather than only at the tool interface. We further introduce Rubric-Guided Recursive Self-Improvement (RSI), a data flywheel in which a Meta-Agent turns execution evidence into refined rubrics, step-level reminders, and verified trajectories for domain-expert updates before their reconsolidation into OmniBrain-0 through MOPD. We evaluate OmniBrain-0 on LIBERO-Pro, LIBERO-Plus, RoboCasa365, RoboTwin 2.0, and R2R-CE Val-Unseen, as well as multiple real-world manipulation tasks. OmniBrain-0 combines strong cross-domain task performance with substantially lower inference and execution overhead than its closed-source teacher, demonstrating efficient transfer and consolidation of embodied capabilities into a compact unified agent.",
+      "pdf_url": "https://arxiv.org/abs/2610.36013",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.32022",
-      "title": "CEMIR vs. FISER: a comparative study of reasoning-based and enrichment-based approaches to pragmatic intent recognition",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.32022v1 Announce Type: new Abstract: Intent recognition in human-robot interaction requires agents to resolve ambiguous natural language instructions by inferring the speaker's underlying goals. Research has increasingly focused on two notable paradigms for addressing this task: structured symbolic reasoning and multimodal input enrichment. However, it remains unclear whether enrichment-based methods provide benefit in settings where the ambiguity concerns unstated human intent rather than missing observable scene information. In this paper, we present a comparative and diagnostic study benchmarking FISER - a framework utilizing structured social and embodied reasoning - against CEMIR (Context-Enriched Multimodal Intent Recognition), a method that performs multimodal enrichment by synthesizing narratives and photorealistic images from textual prompts. By evaluating both approaches across four Large Language Models (LLMs), ranging from Qwen2.5-Omni-3B to GPT-5, on the HandMeThat v2 benchmark, we analyze their capability to resolve pragmatic ambiguities. Our statistical analysis, employing multiple-comparison correction, reveals no statistically significant difference in performance between FISER and CEMIR across any model or difficulty level. This pattern holds across all sixteen model-by-difficulty comparisons, as well as in a targeted ablation isolating CEMIR's narrative and visual components. Instead, performance is primarily associated with backbone capability and the inherent difficulty of the ambiguity. These findings suggest a boundary condition for text-derived multimodal enrichment: when the relevant task constraints are already available in the textual instruction, synthetic multimodal augmentation may not provide measurable benefit over structured reasoning on the same text.",
-      "pdf_url": "https://arxiv.org/abs/2610.32022",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.31945",
-      "title": "Kolibri: A Sovereign European Model on the Pareto Frontier",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.31945v1 Announce Type: cross Abstract: This report introduces Kolibri, an English-German mixture-of-experts transformer with 78.1B total parameters and 3.46B active parameters per token, released as open weights under the Apache 2.0 licence. We built Kolibri for sovereign and specialised deployment, with a particular focus on German and on regulated domains such as public administration, industry, and aerospace. To support these settings, we control the full model-development process, including data, architecture, training infrastructure, post-training, and evaluation. We train Kolibri on 24T tokens across pre-training, mid-training, and long-context extension, with German accounting for more than 20% of the data mix by bytes. To reach this share, we complement German datasets with more than 2T German tokens that we curate from the web with our own pipeline and generate synthetically. Post-training combines supervised fine-tuning on curated German and English data with reinforcement learning on more than 1.2M internally curated tasks, which cover reasoning, tool use, instruction following, code, and retrieval. The model activates 4.4% of its parameters per token, and among the open models evaluated in this report, it lies on the Pareto frontier of quality and serving cost in English and German. Kolibri builds on Kolibri Origin, an earlier iteration that validated our full pipeline at scale. Both models come from our Model Factory, which connects data, experimentation, training, evaluation, and deployment through version-controlled workflows.",
-      "pdf_url": "https://arxiv.org/abs/2610.31945",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2601.03018",
-      "title": "Dementia-R1: Reinforced Pretraining and Reasoning from Unstructured Clinical Notes for Real-World Dementia Prognosis",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2601.03018v3 Announce Type: replace-cross Abstract: While Large Language Models (LLMs) have shown strong performance on clinical text understanding, they struggle with longitudinal prediction tasks such as dementia prognosis, which require reasoning over complex, non-monotonic symptom trajectories across multiple visits. Standard supervised training lacks explicit annotations for symptom evolution, while direct Reinforcement Learning (RL) is hindered by sparse binary rewards. To address this challenge, we introduce Dementia-R1, an RL-based framework for longitudinal dementia prognosis from unstructured clinical notes. Our approach adopts a Cold-Start RL strategy that pre-trains the model to predict verifiable clinical indices extracted from patient histories, enhancing the capability to reason about disease progression before determining the final clinical status. Extensive experiments show that Dementia-R1 achieves the best overall performance on the AMC real-world unstructured cohort, reaching an AUROC of 84.02% and outperforming models up to 10x larger. The framework also generalizes to Parkinson's disease dementia prediction in an independent hospital cohort, achieving an AUROC of 78.37%. On the ADNI benchmark, our 7B model attains the highest AUROC among all LLM baselines at 83.17%, demonstrating strong longitudinal reasoning over fluctuating cognitive trajectories. Code is available at https://anonymous.4open.science/r/dementiar1-CDB5.",
-      "pdf_url": "https://arxiv.org/abs/2601.03018",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.02970",
-      "title": "A Guideline-Augmented Multi-Agent Framework for Schema-as-Code Biomedical Named Entity Recognition",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2610.02970v3 Announce Type: replace Abstract: Large language models (LLMs) have shown promising potential for biomedical named entity recognition (BioNER) through instruction following and in-context learning. However, existing LLM-based BioNER methods still face two key limitations. First, retrieved demonstrations and external biomedical knowledge provide limited support for dataset-specific annotation semantics, leaving entity boundaries, type scopes, and annotation conventions ambiguous. Second, free-form generation lacks sufficient structural control, often leading to invalid formats, hallucinated mentions, duplicated entities, and boundary errors. To address these limitations, we propose GAMA, a guideline-augmented multi-agent framework for schema-as-code BioNER. GAMA first induces candidate annotation rules from labeled training instances and verifies them against annotated data to construct reliable dataset-specific guideline memory. Guided by these verified rules, a planning component generates ranked span-type hypotheses with rationales, and a coding component converts them into schema-constrained entity objects. A verification module then checks span grounding, type validity, and structural compliance, and performs dual-loop refinement to correct invalid or low-confidence predictions. Experiments on three widely used BioNER datasets using two different LLMs demonstrate the effectiveness of GAMA, achieving the best performance in four out of six LLM-dataset combinations. Ablation studies further validate the contributions of its key components.",
-      "pdf_url": "https://arxiv.org/abs/2610.02970",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2607.02220",
-      "title": "DetailAnywhere: Fashion Detail Generation via Cross-Modal Feature Alignment Distillation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "arXiv:2607.02220v2 Announce Type: replace Abstract: Diffusion-based generative AI has achieved remarkable success in e-commerce applications such as virtual try-on, poster generation, and product background synthesis. However, when making online purchasing decisions for apparel, consumers also desire the freedom to examine specific detail regions of interest, such as collars, cuffs, and fabric textures, yet existing methods have not explicitly studied this setting. We therefore formalize a new, non-template task: Fashion Detail Generation with focus conditioning, and release FDBench, the first benchmark comprising 40K+ human-verified reference-detail pairs across 41 different categories. This task poses a unique semantic gap challenge: the model must bridge the correspondence between a focus marker on a product reference image and a photorealistic close-up view of the indicated region, while faithfully preserving the garment's identity, without any precise prompt. To bridge this gap, we propose Cross-modal Feature Alignment Distillation (CFAD), which leverages a fine-tuned DINOv3 teacher to align both branches of a Multimodal Diffusion Transformer in a shared semantic space via dual-branch distillation. To further improve consistency between generated details and reference images, we introduce a consistency reward model that jointly scores image pairs along three quality axes and optimizes generation via reinforcement learning. Experiments show that our model DetailAnywhere significantly outperforms all state-of-the-art opensource methods across all metrics and human evaluations.",
-      "pdf_url": "https://arxiv.org/abs/2607.02220",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.35598",
-      "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
-      "authors": [
-        "Zongyuan Sun",
-        "Shuai Zhao",
-        "Ke Shu",
-        "Ziyue Zhu",
-        "Shangyang Wu",
-        "Yuanlin Lin",
-        "Tao Wang",
-        "Shiyue Li",
-        "Yingjun Du",
-        "Anh Tuan Luu",
-        "Haoran Luo"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-26",
-      "updated": "2026-10-26",
-      "summary": "Knowledge graphs (KGs) provide reliable external knowledge for multi-hop factual reasoning with large language models (LLMs), yet most KGs in real-world domains such as finance and industry lack question--answer (QA) annotations. Without such annotations, existing methods struggle to improve LLM graph reasoning: training-free agents cannot improve their exploration through interaction; reinforcement learning (RL) agents depend on QA data annotated by humans or synthesized by closed-source models; and training data is typically built offline, so its topology mix is fixed and cannot follow the agent's ability. We propose Evolve on Graph (EoG), a framework that lets an LLM self-evolve its graph reasoning without any QA annotations. Through Graph Self-Play, a single LLM alternates between a Proposer that poses questions and a Solver that answers them. To make questions verifiable, Symbolically Verifiable Topology Synthesis (SVTS) samples reasoning topologies on the KG and executes the corresponding first-order logic queries, yielding topology skeletons with correct and complete answer sets; guided by a skeleton, the Proposer explores the graph to pose a multi-hop question. To let task topologies follow the Solver, a Boundary-Aware Graph Curriculum rewards the Proposer by the Solver's score variance, keeping questions at the Solver's capability boundary so that complex topologies enter training as the Solver improves. On six benchmarks over Freebase, Wikidata, and an industrial KG, EoG consistently outperforms prompting-, retrieval-, and agent-based methods, showing that LLM graph reasoning can improve through self-play without QA annotations. Our code is available at https://github.com/Szy5/EoG",
-      "pdf_url": "https://arxiv.org/pdf/2610.35598v1",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.32483",
-      "title": "When Agents Fail: Model or Harness--Who's to Blame?",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-27",
-      "updated": "2026-10-27",
-      "summary": "arXiv:2610.32483v1 Announce Type: new Abstract: LLM agents combine models with execution harnesses, so agentic benchmark performance reflects their joint behavior. We argue that harnesses should therefore be evaluated through their interactions with underlying models. We develop a framework combining five complementary measures: (i) Valid Completion Rate (VCR), how reliably agents finish normally and deliver evaluable results, irrespective of task correctness; (ii) Model-Harness Fit, how well a harness supports task achievement through valid completion for a given model; (iii) Cross-Model Fit, a harness's overall suitability across evaluated models; (iv) Interaction Residuals, pairing-specific execution strengths and weaknesses hidden by component-level summaries; and (v) Token Load, the token demands of agent execution, including failed attempts. We evaluate four general-purpose harnesses (OpenCode, Codex CLI, Pi CLI, and DeepAgents) with four core models, plus two fixed native model-harness systems, on six benchmarks covering context management, tool use, long-context planning, multimodal interaction, and artifact handoff. Including native references and stress conditions, 111 evaluation settings yield 52,168 trajectories. Harness rankings vary across models and benchmarks; task performance and valid completion can favor different pairings, and similar task scores can accompany distinct execution profiles. OpenCode ranks first in cross-model performance, while DeepSeek V4 Flash Preview maintains consistently high Mean VCR across harnesses on the shared four-benchmark panel. These findings support evaluating model-harness interactions, training transferable harness-use capabilities in models, and harness designs adapted to the model and task.",
-      "pdf_url": "https://arxiv.org/abs/2610.32483",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.32978",
-      "title": "SceneBloom: Agentic Indoor Environment Generation with Realistic and Diverse Layouts for Embodied Learning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-27",
-      "updated": "2026-10-27",
-      "summary": "arXiv:2610.32978v1 Announce Type: cross Abstract: Training generalizable embodied agents requires realistic, varied, and simulation-ready indoor environments. Language-guided methods support semantic planning and object-level reasoning, but precise spatial grounding remains difficult. Visual generative models offer rich priors over plausible arrangements, yet their outputs require geometric reasoning to become physically valid 3D scenes. We introduce SceneBloom, an agentic framework that combines visual layout sampling with contract-guided 3D compilation. A hierarchical sampler uses diffusion priors to generate furniture arrangements within functional zones. A compiler then uses relations extracted from each proposal to guide geometric fitting and local pose correction. Across five room types, SceneBloom attains the highest visual quality and physical stability among the compared methods and is the only method with no detected mesh collisions and out-of-bounds objects. Its layouts are also closer to the distribution of real rooms than those of all compared baselines. Object navigation policies trained in these realistic scenes achieve a higher success rate in held-out real scans than those trained on an equal number of real training scans. Code is available at https://github.com/Tinaliu0123/scenebloom.",
-      "pdf_url": "https://arxiv.org/abs/2610.32978",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.5,
       "product_potential": [],
       "domain_applications": []
     }
   ],
   "technologies": [
     {
-      "name": "Multimodal Learning",
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Causal Attention",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "creative",
-        "robotics",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multi-stage Curriculum Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Diffusion Distillation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Speculative Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
         "science",
-        "healthcare"
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning with Verifiable Rewards",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "Policy Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "healthcare",
+        "robotics",
+        "creative"
       ]
     },
     {
@@ -479,179 +592,111 @@
       ]
     },
     {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "creative",
-        "robotics",
-        "science"
-      ]
-    },
-    {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "creative",
-        "robotics",
-        "science"
+        "robotics"
       ]
     },
     {
       "name": "Multi-Agent Routing",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "On-Policy Distillation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "Knowledge Distillation",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "Cost-Aware Reinforcement Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "LLM Routing",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "Self-Evolving Systems",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
+        "finance"
       ]
     },
     {
       "name": "Configuration Space Optimization",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "science",
         "enterprise",
-        "finance",
-        "science"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Chemistry-aware Reasoning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning with Verifiable Rewards",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Socratic Feedback Mechanism",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Turn-based Advantage Scaling",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "education",
-        "enterprise",
-        "science"
+        "finance"
       ]
     }
   ],
