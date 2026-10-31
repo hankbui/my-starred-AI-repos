@@ -1,0 +1,931 @@
+{
+  "meta": {
+    "date": "2026-10-31",
+    "papers_tracked": 15,
+    "technologies_discovered": 38,
+    "opportunities_identified": 0,
+    "last_update": "2026-10-31 11:02 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "38",
+      "label": "discovered this scan",
+      "detail": "Contrastive Learning, Reinforcement Learning, Multimodal Learning, Depth Estimation, Multimodal Large Language Models, 3D Spatiotemporal Reasoning, Active Perception, 6-DoF Pose Estimation",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "38",
+      "label": "active trend clusters",
+      "detail": "System 1 Decision Models, Encoder-Based Classifiers, Reward Models, Non-Autoregressive Decision Engines, Contrastive Decision Models",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "8.1",
+      "label": "avg opportunity score",
+      "detail": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Cont",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "Robust Scene Transfer for Poin",
+      "label": "confidence 80%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "SpaceAct: Benchmarking 3D Spat",
+      "label": "highest confidence paper",
+      "detail": "Autonomous robotic manipulation systems for warehouse logistics and manufacturing requiring precise 3D object pose estimation and collision-free path planning, Surgical robotics platforms needing real-time 3D spatial reasoning for minimally invasive procedures with swept-collision awareness",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "18",
+      "label": "early-stage technologies",
+      "detail": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMs",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2606.05506",
+      "title": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Contrastive Learning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2606.05506v3 Announce Type: replace Abstract: We propose a sensor-guided adaptive contrastive learning framework for visual representation learning in PointGoal navigation. During training, privileged LiDAR sensing guides the contrastive objective through a geometry-aware similarity metric and adaptive temperature scaling, encouraging visual embeddings to capture navigation-relevant structure rather than scene-specific appearance. The resulting encoder is pretrained independently, frozen, and used as the perceptual backbone for reinforcement learning, decoupling representation learning from policy optimization. We further introduce a cross-stage domain mismatch between representation pretraining and policy learning to suppress environment-specific shortcuts and promote reliance on task-relevant features. Extensive experiments in high-fidelity simulation demonstrate that our approach significantly improves policy-level scene transfer across diverse indoor and outdoor environments. At deployment, the agent relies only on monocular RGB observations together with standard task-related inputs such as goal position and proprioceptive signals, without access to LiDAR or other privileged sensors. Our method outperforms large pretrained vision models and standard contrastive baselines under severe appearance and semantic shifts. We also release a multimodal dataset to support future research on privileged-guided visual representation learning for navigation. The code is available at:",
+      "pdf_url": "https://arxiv.org/abs/2606.05506",
+      "comment": "",
+      "technologies": [
+        "Contrastive Learning",
+        "Reinforcement Learning",
+        "Multimodal Learning",
+        "Depth Estimation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 6.2,
+      "product_potential": [
+        "Autonomous delivery robots with improved navigation capabilities in diverse environments",
+        "Augmented reality navigation systems for visually impaired individuals",
+        "Smart home robots with enhanced scene understanding and adaptability"
+      ],
+      "domain_applications": [
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2610.38405",
+      "title": "SpaceAct: Benchmarking 3D Spatial and Temporal Reasoning via Closed-Loop Action and Active Perception",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2610.38405v1 Announce Type: cross Abstract: To solve problems in 3D space rather than merely describe images, multimodal large language models (MLLMs) need 3D spatiotemporal reasoning: reconstructing 3D geometry from occluded 2D views, anticipating physical dynamics, and executing precise, closed-loop actions. Prior studies test passive VQA on static images or symbolic planning, requiring no execution or supplying privileged coordinates while ignoring collision, statics, and timing. We introduce SpaceAct, an interactive benchmark evaluating 3D spatiotemporal reasoning via closed-loop physical action and active perception, with SAPA, a Spatiotemporal Active-Probing Agent framework. Built on interlocking bricks and mechanical puzzles, it has 108 verified instances across 36 task families in six categories, without privileged coordinates, and diagnostic modes (+plan, +state, no-camera, blind, L7 levers). In brick-bridging or aperture-threading, models rotate the camera to resolve occlusion, read in-scene rulers, output 6-DoF poses under swept-collision and statics checks, and self-correct via split-screen rollback feedback (dynamic tasks freeze time during deliberation and give five strobe frames). Across 10 frontier MLLMs on the 44 hardest instances, scores span 4.8-79.1 (seven solve at most 27.3% of 6-DoF tasks); for the top three, a reference plan (+plan) closes 44% of the gap while leaving collisions at 5.2 per episode, whereas adding exact 3D state (+state) closes 90% and cuts collisions to 0.5; for four others, +plan lifts the mean score from 10.9 to 35.3 and +state to 81.8; and 46% of failures are collision or observation loops. SpaceAct and SAPA advance evaluation to closed-loop physical interaction, showing that even with a valid plan, MLLMs remain bottlenecked by 3D visual grounding and action refinement, while offering a testbed for active multi-view exploration and explicit 3D grounding.",
+      "pdf_url": "https://arxiv.org/abs/2610.38405",
+      "comment": "",
+      "technologies": [
+        "Multimodal Large Language Models",
+        "3D Spatiotemporal Reasoning",
+        "Active Perception",
+        "6-DoF Pose Estimation",
+        "Closed-Loop Control",
+        "Visual Grounding",
+        "Collision Detection",
+        "Multi-View Exploration",
+        "Benchmarking Framework",
+        "Action Refinement"
+      ],
+      "maturity": "early",
+      "confidence": 0.88,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Autonomous robotic manipulation systems for warehouse logistics and manufacturing requiring precise 3D object pose estimation and collision-free path planning",
+        "Surgical robotics platforms needing real-time 3D spatial reasoning for minimally invasive procedures with swept-collision awareness",
+        "AR/VR spatial computing applications with physics-aware object interaction and occlusion-resolved 3D reconstruction capabilities"
+      ],
+      "domain_applications": [
+        "robotics",
+        "healthcare",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2610.39282",
+      "title": "What Does \"Now\" Mean to Your Computer-Use Agent? Stale Screenshots, Page Loads, and Which Check to Run Before a Click",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2610.39282v1 Announce Type: new Abstract: Computer-use agents plan on a screenshot for several seconds and then click at a position on the screen; if the page has changed in the meantime, the click lands on an unintended element. Prior work treats the planning interval as the source of this risk. Measuring planned clicks on 31 public web pages, we find that the risk lies in page loading: 0.4% of clicks planned on fully loaded pages became stale within 30 seconds, against 17% of clicks planned in the first second after a page opened. On these pages, waiting about one second for network activity to stop removes most of this risk, yet the wait rules of eight of ten widely used open-source agents leave more than 1% of clicks stale. Commercial pages keep loading for longer: in the HTTP Archive's public crawl, 15% of 65 desktop booking and buying home pages went 500 ms without network requests within 3 seconds of their HTML being parsed, against 63% of 3,028 .gov pages, and 52% shifted their layout within 6.5 seconds of a network-idle wait capped at 3 seconds, against 8% (61% against 26% among pages recorded in full). Where a check before the click is needed, as before irreversible actions and on pages that are still loading, a pixel comparison verifies the target's position as accurately as a frontier vision-language model at one eighth of the latency, and a 4B model matches the frontier model in verifying whether the previous action succeeded. We release a benchmark generator, a break-even formula for when a check pays, and three rules for agent developers: https://github.com/multimodal-ai-engineering/preflight-bench",
+      "pdf_url": "https://arxiv.org/abs/2610.39282",
+      "comment": "",
+      "technologies": [
+        "Vision-Language Models",
+        "Pixel Comparison",
+        "Network Activity Monitoring"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "A real-time web agent that monitors network activity and page loading to minimize stale clicks",
+        "A plugin for web browsers that uses pixel comparison to verify the position of elements before clicks, reducing unintended actions"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.36729",
+      "title": "Hy-Nomas: Towards Free-form Interactive World Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-28",
+      "updated": "2026-10-28",
+      "summary": "arXiv:2610.36729v1 Announce Type: new Abstract: Interactive world generation requires models to follow successive commands while preserving relevant history and action consequences. We present Hy-Nomas, a video world model with an 8B diffusion backbone that supports free-form text instructions and continuous camera control across multiple interaction turns. It generates variable-length segments conditioned on current inputs and cached history. Our central design aligns structured video captions with action-aware causal attention: descriptive context remains accessible across segments, while action instructions are restricted to their intended temporal windows. A vision-language Prompt Enhancer (PE) translates user requests and multimodal interaction histories into structured conditions for the next segment. A multi-stage curriculum progressively introduces causal generation, text interaction, camera control, and training on model-generated histories, followed by diffusion distillation. In human evaluation, Hy-Nomas shows superior performance over existing world models. We release model weights, code and benchmarks, together with a lightweight adaptation workflow, to support reproducible research on interactive world generation.",
+      "pdf_url": "https://arxiv.org/abs/2610.36729",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Causal Attention",
+        "Vision-Language Models",
+        "Multi-stage Curriculum Learning",
+        "Diffusion Distillation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Interactive virtual reality environments for gaming and training",
+        "AI-powered storytelling platforms with dynamic world generation",
+        "Virtual assistants with real-time, interactive world manipulation capabilities"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "id": "2609.26015",
+      "title": "SemantiScene-Edit: Expert-Synthesized Supervision and Dual-Path Source Conditioning for Instruction-Based Video Editing",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2609.26015v2 Announce Type: replace Abstract: Instruction-guided video editing requires executing a requested change while preserving the source video's appearance and temporal structure. We present SemantiScene-Edit, a video editor that couples a multimodal encoder with a pretrained video diffusion transformer. The encoder jointly processes source frames and the editing instruction, and learnable queries convey their semantic context to the generator through a trainable connector and cross-attention. A complementary visual pathway concatenates source-video latents with noisy target latents before patch embedding, supplying dense spatial and temporal information for content preservation. We train the model with flow matching and a three-stage image--video curriculum comprising semantic alignment, joint adaptation, and high-resolution refinement. To support training, we construct over 1.2 million instruction-conditioned video-editing records covering object addition, removal, replacement, and attribute modification. We also construct a 100-case benchmark for evaluating instruction execution, source preservation, temporal consistency, and visual quality. Comparative experiments show that SemantiScene-Edit effectively follows editing instructions while retaining source content. At inference, the model requires only a source video and a natural-language instruction.",
+      "pdf_url": "https://arxiv.org/abs/2609.26015",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Diffusion Models",
+        "Flow Matching",
+        "Cross-Attention",
+        "Patch Embedding"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-powered video editing tool for content creators",
+        "Automated video editing assistant for social media platforms",
+        "Customizable video editing platform for e-commerce product videos"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2610.33775",
+      "title": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMS",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2610.33775v2 Announce Type: replace Abstract: Large Language Models excel at reasoning and generation but their autoregressive, token-by-token inference makes them unnecessarily slow, expensive, and poorly calibrated for the many routine decisions (routing, gating, scoring, classification) that modern AI systems require at sub-second latency. A growing class of models addresses this gap: System 1 decision models, architectures that map an input directly to a typed, structured decision in a single forward pass. This guide provides a comprehensive, practitioner-oriented treatment of the field. We propose a five-family taxonomy covering encoder-based classifiers, reward models, non-autoregressive decision engines, contrastive decision models, and extraction models, and we provide in-depth coverage of each family's architecture, training methodology, and deployment trade-offs. A central theme is calibration: we develop the theory of proper scoring rules, analyze Reinforcement Learning for Calibrated Decisions (RLCD), and examine recently discovered phenomena including IIA violations, ordinal-scale bias, and few-shot recalibration under distribution shift. On the integration side, we describe how System 1 models serve as decision infrastructure within agentic workflows and System 1 + System 2 cascades that route between fast and slow models based on calibrated confidence. The guide covers 18 application domains, maps the rapidly growing open-source ecosystem (over 70 model reproductions in weeks), provides runnable code throughout, and includes a practitioner's checklist, an open-source model zoo, and 22 self-assessment questions with detailed answers. Spanning 190 references, it is intended as a unified entry point for researchers and engineers working at the intersection of fast decision-making, calibration, and production AI systems.",
+      "pdf_url": "https://arxiv.org/abs/2610.33775",
+      "comment": "",
+      "technologies": [
+        "System 1 Decision Models",
+        "Encoder-Based Classifiers",
+        "Reward Models",
+        "Non-Autoregressive Decision Engines",
+        "Contrastive Decision Models",
+        "Extraction Models",
+        "Proper Scoring Rules",
+        "Reinforcement Learning for Calibrated Decisions (RLCD)",
+        "IIA Violations",
+        "Ordinal-Scale Bias",
+        "Few-Shot Recalibration",
+        "System 1 + System 2 Cascades"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Real-time decision support systems for various industries (e.g., finance, healthcare)",
+        "AI-driven workflow automation tools for enterprises"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "finance",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2512.23304",
+      "title": "MedGemma vs GPT-4: Open-Source and Proprietary Zero-shot Medical Disease Classification from Images",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2512.23304v2 Announce Type: replace-cross Abstract: Multimodal Large Language Models (LLMs) introduce an emerging paradigm for medical imaging by interpreting scans through the lens of extensive clinical knowledge, offering a transformative approach to disease classification. This study presents a critical comparison between two fundamentally different AI architectures: the specialized open-source agent MedGemma and the proprietary large multimodal model GPT-4 for diagnosing six different diseases. The MedGemma-4b-it model, fine-tuned using Low-Rank Adaptation (LoRA), demonstrated superior diagnostic capability by achieving a mean test accuracy of 80.37% compared to 69.56% for the untuned GPT-4. Furthermore, MedGemma exhibited notably higher sensitivity in high-stakes clinical tasks, such as cancer and pneumonia detection. Quantitative analysis via confusion matrices and classification reports provides comprehensive insights into model performance across all categories. These results emphasize that domain-specific fine-tuning is essential for minimizing hallucinations in clinical implementation, positioning MedGemma as a sophisticated tool for complex, evidence-based medical reasoning.",
+      "pdf_url": "https://arxiv.org/abs/2512.23304",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2602.10081",
+      "title": "Anagent For Enhancing Scientific Table & Figure Analysis",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2602.10081v3 Announce Type: replace-cross Abstract: In scientific research, analysis requires accurately interpreting complex multimodal knowledge, integrating evidence from different sources, and drawing inferences grounded in domain-specific knowledge. However, current artificial intelligence (AI) systems struggle to consistently demonstrate such capabilities. The complexity and variability of scientific tables and figures, combined with heterogeneous structures and long-context requirements, pose fundamental obstacles to scientific table \\& figure analysis. To quantify these challenges, we introduce AnaBench, a large-scale benchmark featuring $63,178$ instances from nine scientific domains, systematically categorized along seven complexity dimensions. To tackle these challenges, we propose Anagent, a multi-agent framework for enhanced scientific table \\& figure analysis through four specialized agents: Planner decomposes tasks into actionable subtasks, Expert retrieves task-specific information through targeted tool execution, Solver synthesizes information to generate coherent analysis, and Critic performs iterative refinement through five-dimensional quality assessment. We further develop modular training strategies that leverage supervised finetuning and specialized reinforcement learning to optimize individual capabilities while maintaining effective collaboration. Comprehensive evaluation across 170 subdomains demonstrates that Anagent achieves substantial improvements, up to $\\uparrow 13.43\\%$ in training-free settings and $\\uparrow 42.12\\%$ with finetuning, while revealing that task-oriented reasoning and context-aware problem-solving are essential for high-quality scientific table \\& figure analysis. Our project page: https://xhguo7.github.io/Anagent/.",
+      "pdf_url": "https://arxiv.org/abs/2602.10081",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2606.11854",
+      "title": "Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2606.11854v2 Announce Type: replace-cross Abstract: Adapting Large Language Models (LLMs) to specific tasks usually involves fine-tuning: Low-Rank Adaptation (LoRA) edits the weights, while soft prompting prepends trainable virtual tokens. Both change how an already-optimized model is served, so serving many task-specific adapters at high throughput requires adapter-aware infrastructure. We propose Art-Based Reinforcement Training (ART), which optimizes a single auxiliary input image to specialize a frozen Multimodal Large Language Model (MLLM) for a specific task. At inference time, ART simply includes this image in each standard multimodal prompt, requiring no changes to the serving engine. We compare ART with LoRA and soft prompting across five reasoning benchmarks for four small MLLMs from three architectures. While different methods perform best for different tasks, ART ranks first or second in 10 of 20 benchmark-MLLM pairs, with its best results on the two math word problem benchmarks (GSM8k and SVAMP). It is significantly ahead of the next best adapter in 2 cases, within the noise of the next best adapter in 6, and significantly above the text-only baseline in 18. ART therefore reaches accuracy close to LoRA and soft prompts while serving faster than LoRA. In the vLLM serving stack, ART reduces throughput by 6% to 14% relative to text-only requests, compared to LoRA's 13% to 93% slowdown. Beyond efficient serving, ART artifacts are plain images, making them easy to store, distribute, and share. This approach keep task-specific adaptation outside the model weights, so the same frozen model can support different tasks without separate model variants.",
+      "pdf_url": "https://arxiv.org/abs/2606.11854",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.11105",
+      "title": "TKCAM: Text and Keyframe to Camera Trajectory Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2610.11105v2 Announce Type: replace Abstract: Generating high-quality and controllable camera motion is essential for AI-assisted cinematography, video synthesis, and 3D scene understanding. We introduce TKCAM, a Text- and Keyframe-conditioned CAMera-motion synthesis framework based on generative masked modeling. We represent camera dynamics using a 12-dimensional kinematic feature comprising position, velocity, and a continuous rotation representation and discretize them into hierarchical motion tokens via a Residual Vector Quantizer (RVQ). A two-stage masked transformer architecture then learns to reconstruct and refine these tokens, utilizing explicit self- and cross-attention modules for multimodal conditioning. A central feature of our framework is sparse visual keyframe conditioning: users can provide free-form text prompts together with RGB observations at selected timestamps, which provide temporally localized visual guidance for generating coherent in-between trajectories. Furthermore, to advance evaluation standards, we curate RealEstate10K-Cap, a large-scale text-camera dataset, and establish a cross-domain benchmark with a Universal CLaTr Evaluator. Extensive experiments demonstrate that TKCAM surpasses recent state-of-the-art baselines on Fr\\'echet distance (FID), text-motion matching scores, and retrieval metrics (R@K), while additional analyses evaluate temporal smoothness and cross-domain generalization. Code and RealEstate10K-Cap dataset are available at https://github.com/linearalgebrayhz/TKCAM.",
+      "pdf_url": "https://arxiv.org/abs/2610.11105",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.39955",
+      "title": "Mind The Gap (MTG-AD): Dataset and Fine-grained Evaluation for End-to-End Inline Audio Descriptions",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2610.39955v1 Announce Type: cross Abstract: Audio descriptions (AD) are essential for making visual media accessible to blind and low-vision (BLV) users. While Multimodal Large Language Models (MLLMs) offer a scalable solution for generating audio descriptions on-demand, their performance on ``inline'' audio descriptions -- which must fit within existing silences in a video -- remains under-explored, particularly for diverse user-generated content (UGC). We present a comprehensive investigation into MLLM-generated inline audio descriptions. First, we introduce MTG-AD, a professionally annotated dataset of 36 hours of videos, each averaging $\\sim$5 mins. and 8k+ descriptions in total, co-created by paired blind and sighted AD professionals to provide a high-quality benchmark for this task. Second, we propose MTG-AD-Eval, an evaluation framework based on audio description expert guidelines that provides fine-grained, reference-free actionable metrics for model improvement. Crucially, our framework evaluates the end-to-end task: it renders the generated scripts into audio tracks to assess their fit within the original video's natural silences, minimizing disruptive overlaps. Our analysis across frontier MLLMs reveals that while models accurately describe visual events and substantially reduce speech overlaps, gaps persist in narrative pacing and flow. Finally, we empirically validate that our automated and reference-free metrics correlate significantly with human quality ratings from sighted raters and 7 BLV participants, finding that while users narrowly prefer human-authored audio descriptions, they find MLLM-generated audio descriptions highly beneficial for comprehension. We provide actionable system design guidance and release MTG-AD at https://hf.co/datasets/google/mind-the-gap-inline-ad and MTG-AD-Eval at https://github.com/google/mtg-ad.",
+      "pdf_url": "https://arxiv.org/abs/2610.39955",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2602.01532",
+      "title": "PRISM: Festina Lente Proactivity -- Risk-Sensitive, Uncertainty-Aware Deliberation for Proactive Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-30",
+      "updated": "2026-10-30",
+      "summary": "arXiv:2602.01532v2 Announce Type: replace Abstract: Proactive agents must decide not only what to say but also whether and when to intervene. Many current systems rely on brittle heuristics or indiscriminate long reasoning, which offers little control over the benefit-burden tradeoff. We formulate the problem as cost-sensitive selective intervention and present PRISM, a novel framework that couples a decision-theoretic gate with a dual-process reasoning architecture. At inference time, the agent intervenes only when a calibrated probability of user acceptance exceeds a threshold derived from asymmetric costs of missed help and false alarms. Inspired by festina lente (Latin: \"make haste slowly\"), we gate by an acceptance-calibrated, cost-derived threshold and invoke a resource-intensive Slow mode with counterfactual checks only near the decision boundary, concentrating computation on ambiguous and high-stakes cases. Training uses gate-aligned, schema-locked distillation: a teacher running the full PRISM pipeline provides dense, executable supervision on unlabeled interaction traces, while the student learns a response policy that is explicitly decoupled from the intervention gate to enable tunable and auditable control. On ProactiveBench, PRISM reduces false alarms by 22.78% and improves F1 by 20.14% over strong baselines. These results show that principled decision-theoretic gating, paired with selective slow reasoning and aligned distillation, yields proactive agents that are precise, computationally efficient, and controllable. To facilitate reproducibility, we release our code, models, and resources at https://prism-festinalente.github.io/; all experiments use the open-source ProactiveBench benchmark.",
+      "pdf_url": "https://arxiv.org/abs/2602.01532",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.13151",
+      "title": "Exploration and Exploitation Errors Are Measurable for Language Model Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-31",
+      "updated": "2026-10-31",
+      "summary": "arXiv:2604.13151v2 Announce Type: replace Abstract: Language Model (LM) agents are increasingly used in complex decision-making tasks, from AI coding to physical AI, where they must both explore a search space and exploit acquired knowledge effectively. Although exploration and exploitation play different roles in decision-making, it remains challenging to systematically distinguish exploration and exploitation without access to the agent's internal policy, and to determine when either constitutes an error. To address this, we design partially observable 2D grid maps paired with an unknown symbolic task directed acyclic graph (DAG), abstracting practical agentic AI scenarios. We then propose a policy-agnostic metric that detects unproductive traversals, while permitting necessary backtracking. We attribute each error to exploration or exploitation based on whether the current state admits productive exploration, exploitation, or both. Using generated maps and task DAGs with controllable difficulty, we evaluate 35 frontier LM agents and find that even state-of-the-art models struggle to reach the goal within the step budget. $\\log$ exploration and exploitation errors exhibit strong relationships with task success ($R^2 = 0.885$ and $0.875$, respectively), providing empirical evidence that the metric captures behavior relevant to task success. Beyond success rate, the metric reveals distinct exploration and exploitation behaviors among models with similar success rates. We further find that a compact memory harness achieves higher task success than a reasoning baseline that retains its own reasoning traces. Finally, we extend our metric to an iconic video game, Minecraft Clone, beyond our synthetic environment. We release our code at https://github.com/jjj-madison/measurable-explore-exploit.",
+      "pdf_url": "https://arxiv.org/abs/2604.13151",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.14009",
+      "title": "When Log Parsing Removes What Matters: Detecting Failures in Distributed GPU Workloads",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-31",
+      "updated": "2026-10-31",
+      "summary": "arXiv:2610.14009v2 Announce Type: replace-cross Abstract: Large AI models increasingly rely on distributed GPU execution, yet it remains unclear whether established anomaly detection methods transfer effectively to this setting. We introduce GF-Bench, a PyTorch-based framework for generating controlled failures in distributed GPU workloads, and a dataset produced with it. The framework supports extensible workload and fault-injection logic; based on this design, the current release targets failures visible in multi-GPU communication logs and provides 220 labeled two-GPU runs covering normal behavior, CUDA out-of-memory fail-stop faults, and persistent-straggler fail-slow faults. Using GF-Bench, we evaluate three sequence-based methods (DeepLog, LogAnomaly, and LogBERT) and the large language model (LLM)-based LogPrompt with in-context learning (ICL) and chain-of-thought (CoT) prompting strategies on parsed logs, and additionally evaluate LogPrompt on raw logs. On parsed inputs, no method reliably detects both failure classes, and the highest overall F1 score is 0.667. Raw inputs raise the overall F1 score of ICL-LogPrompt to 0.983, at 9.0x its average input-token usage and 8.9x its per-run cost. These results reveal a trade-off between effectiveness and efficiency: parsed inputs reduce LLM token use and inference cost but can discard the distributed execution context required for accurate failure detection. GF-Bench provides a reproducible basis for studying cost-efficient anomaly detection methods and can be extended to additional GPU workloads and failure types.",
+      "pdf_url": "https://arxiv.org/abs/2610.14009",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.40350",
+      "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
+      "authors": [
+        "Zheng Zhu",
+        "Xiaozhuan Liang",
+        "Xi Chen",
+        "Bei Yu",
+        "Jiaya Jia"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "summary": "Agents powered by large language models (LLMs) have demonstrated remarkable progress in solving complex reasoning tasks. However, LLM agents often falter on long-horizon tasks due to cognitive overload, as their working memory becomes cluttered with expanding and irrelevant information, which dilutes their attention and hinders effective planning and reasoning. To mitigate this challenge, we introduce Cognitive Resource Self-Allocation (CORAL), a novel reasoning paradigm that empowers agents to proactively optimize their context. Implemented as an agent-callable working memory management toolset, CORAL allows an agent to checkpoint its task progress and verified facts, and adaptively initiate a new problem-solving episode by resetting cluttered context while preserving only the checkpointed information, enabling it to resume reasoning from a clean state. We further enhance the agent's checkpointing capabilities using a Multi-episode Agentic Reinforced Policy Optimization algorithm. On the GAIA benchmark, CORAL with an 8B model achieves 42.8% average accuracy, with particularly strong gains on the most challenging long-horizon tasks (Level 2 and Level 3). Crucially, these gains come at a substantially lower inference cost: CORAL consumes 6-7$\\times$ fewer input tokens than a ReAct agent. It also generalizes to multi-hop Knowledge QA benchmarks and to the considerably harder BrowseComp, where it improves a strong proprietary agent by 8.0 points.",
+      "pdf_url": "https://arxiv.org/pdf/2610.40350v1",
+      "comment": "Accepted at COLM 2026. Code is available at https://github.com/JIA-Lab-research/CORAL",
+      "technologies": [
+        "Cognitive Resource Self-Allocation",
+        "Multi-episode Agentic Reinforced Policy Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Enhanced long-horizon task management in AI agents",
+        "Optimized context handling for complex reasoning tasks"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Contrastive Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "education",
+        "enterprise",
+        "accessibility",
+        "creative"
+      ]
+    },
+    {
+      "name": "Depth Estimation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Large Language Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "3D Spatiotemporal Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Active Perception",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "6-DoF Pose Estimation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Closed-Loop Control",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Visual Grounding",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Collision Detection",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-View Exploration",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Benchmarking Framework",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Action Refinement",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision-Language Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "other",
+        "enterprise",
+        "education",
+        "accessibility",
+        "creative"
+      ]
+    },
+    {
+      "name": "Pixel Comparison",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Network Activity Monitoring",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "accessibility",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Causal Attention",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "robotics",
+        "education"
+      ]
+    },
+    {
+      "name": "Multi-stage Curriculum Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "robotics",
+        "education"
+      ]
+    },
+    {
+      "name": "Diffusion Distillation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "creative",
+        "robotics",
+        "education"
+      ]
+    },
+    {
+      "name": "Flow Matching",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Cross-Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Patch Embedding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "System 1 Decision Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Encoder-Based Classifiers",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reward Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Non-Autoregressive Decision Engines",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Contrastive Decision Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Extraction Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Proper Scoring Rules",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning for Calibrated Decisions (RLCD)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "IIA Violations",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Ordinal-Scale Bias",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Few-Shot Recalibration",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "System 1 + System 2 Cascades",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "finance",
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Cognitive Resource Self-Allocation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "other",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-episode Agentic Reinforced Policy Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "other",
+        "education",
+        "enterprise"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
