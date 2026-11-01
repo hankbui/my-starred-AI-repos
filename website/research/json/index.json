@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-10-31",
+    "date": "2026-11-01",
     "papers_tracked": 15,
-    "technologies_discovered": 38,
+    "technologies_discovered": 45,
     "opportunities_identified": 0,
-    "last_update": "2026-10-31 11:02 UTC",
+    "last_update": "2026-11-01 11:57 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,17 +13,17 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "38",
+      "value": "45",
       "label": "discovered this scan",
-      "detail": "Contrastive Learning, Reinforcement Learning, Multimodal Learning, Depth Estimation, Multimodal Large Language Models, 3D Spatiotemporal Reasoning, Active Perception, 6-DoF Pose Estimation",
+      "detail": "Contrastive Learning, Reinforcement Learning, Multimodal Learning, Depth Estimation, Exploration-Exploitation Error Metric, Memory Augmentation, Synthetic Grid Map Environment, DeepLog",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "38",
+      "value": "45",
       "label": "active trend clusters",
-      "detail": "System 1 Decision Models, Encoder-Based Classifiers, Reward Models, Non-Autoregressive Decision Engines, Contrastive Decision Models",
+      "detail": "Exploration-Exploitation Error Metric, Memory Augmentation, Synthetic Grid Map Environment, DeepLog, LogBERT",
       "color": "green"
     },
     {
@@ -53,9 +53,9 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "18",
+      "value": "38",
       "label": "early-stage technologies",
-      "detail": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMs",
+      "detail": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMS",
       "color": "blue"
     }
   ],
@@ -80,7 +80,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 6.2,
+      "curator_score": 5.7,
       "product_potential": [
         "Autonomous delivery robots with improved navigation capabilities in diverse environments",
         "Augmented reality navigation systems for visually impaired individuals",
@@ -89,6 +89,69 @@
       "domain_applications": [
         "robotics",
         "accessibility"
+      ]
+    },
+    {
+      "id": "2604.13151",
+      "title": "Exploration and Exploitation Errors Are Measurable for Language Model Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-31",
+      "updated": "2026-10-31",
+      "summary": "arXiv:2604.13151v2 Announce Type: replace Abstract: Language Model (LM) agents are increasingly used in complex decision-making tasks, from AI coding to physical AI, where they must both explore a search space and exploit acquired knowledge effectively. Although exploration and exploitation play different roles in decision-making, it remains challenging to systematically distinguish exploration and exploitation without access to the agent's internal policy, and to determine when either constitutes an error. To address this, we design partially observable 2D grid maps paired with an unknown symbolic task directed acyclic graph (DAG), abstracting practical agentic AI scenarios. We then propose a policy-agnostic metric that detects unproductive traversals, while permitting necessary backtracking. We attribute each error to exploration or exploitation based on whether the current state admits productive exploration, exploitation, or both. Using generated maps and task DAGs with controllable difficulty, we evaluate 35 frontier LM agents and find that even state-of-the-art models struggle to reach the goal within the step budget. $\\log$ exploration and exploitation errors exhibit strong relationships with task success ($R^2 = 0.885$ and $0.875$, respectively), providing empirical evidence that the metric captures behavior relevant to task success. Beyond success rate, the metric reveals distinct exploration and exploitation behaviors among models with similar success rates. We further find that a compact memory harness achieves higher task success than a reasoning baseline that retains its own reasoning traces. Finally, we extend our metric to an iconic video game, Minecraft Clone, beyond our synthetic environment. We release our code at https://github.com/jjj-madison/measurable-explore-exploit.",
+      "pdf_url": "https://arxiv.org/abs/2604.13151",
+      "comment": "",
+      "technologies": [
+        "Exploration-Exploitation Error Metric",
+        "Memory Augmentation",
+        "Synthetic Grid Map Environment"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Diagnostic dashboard for LM agent developers that visualizes exploration vs exploitation errors and suggests policy adjustments",
+        "Auto-tuning platform for robotic or game AI that dynamically balances exploration and exploitation based on real-time metric feedback",
+        "Enterprise AI workflow monitor that flags inefficient agent decision paths and recommends retraining or policy changes"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "enterprise",
+        "education"
+      ]
+    },
+    {
+      "id": "2610.14009",
+      "title": "When Log Parsing Removes What Matters: Detecting Failures in Distributed GPU Workloads",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-31",
+      "updated": "2026-10-31",
+      "summary": "arXiv:2610.14009v2 Announce Type: replace-cross Abstract: Large AI models increasingly rely on distributed GPU execution, yet it remains unclear whether established anomaly detection methods transfer effectively to this setting. We introduce GF-Bench, a PyTorch-based framework for generating controlled failures in distributed GPU workloads, and a dataset produced with it. The framework supports extensible workload and fault-injection logic; based on this design, the current release targets failures visible in multi-GPU communication logs and provides 220 labeled two-GPU runs covering normal behavior, CUDA out-of-memory fail-stop faults, and persistent-straggler fail-slow faults. Using GF-Bench, we evaluate three sequence-based methods (DeepLog, LogAnomaly, and LogBERT) and the large language model (LLM)-based LogPrompt with in-context learning (ICL) and chain-of-thought (CoT) prompting strategies on parsed logs, and additionally evaluate LogPrompt on raw logs. On parsed inputs, no method reliably detects both failure classes, and the highest overall F1 score is 0.667. Raw inputs raise the overall F1 score of ICL-LogPrompt to 0.983, at 9.0x its average input-token usage and 8.9x its per-run cost. These results reveal a trade-off between effectiveness and efficiency: parsed inputs reduce LLM token use and inference cost but can discard the distributed execution context required for accurate failure detection. GF-Bench provides a reproducible basis for studying cost-efficient anomaly detection methods and can be extended to additional GPU workloads and failure types.",
+      "pdf_url": "https://arxiv.org/abs/2610.14009",
+      "comment": "",
+      "technologies": [
+        "DeepLog",
+        "LogBERT",
+        "Chain-of-Thought Prompting",
+        "In-Context Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.6,
+      "product_potential": [
+        "Real-time anomaly detection service for distributed GPU clusters that leverages raw log inputs and LLM-based in-context learning to provide low-latency failure alerts.",
+        "Cost-optimized monitoring tool that uses parsed logs with chain-of-thought prompting to reduce token usage while maintaining high detection accuracy for GPU workload failures.",
+        "Benchmarking and dataset platform for GPU workload failure detection that enables cloud providers and research labs to evaluate and compare anomaly detection methods."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science"
       ]
     },
     {
@@ -117,7 +180,7 @@
       ],
       "maturity": "early",
       "confidence": 0.88,
-      "curator_score": 6.0,
+      "curator_score": 5.5,
       "product_potential": [
         "Autonomous robotic manipulation systems for warehouse logistics and manufacturing requiring precise 3D object pose estimation and collision-free path planning",
         "Surgical robotics platforms needing real-time 3D spatial reasoning for minimally invasive procedures with swept-collision awareness",
@@ -128,6 +191,42 @@
         "healthcare",
         "enterprise",
         "science"
+      ]
+    },
+    {
+      "id": "2610.40350",
+      "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
+      "authors": [
+        "Zheng Zhu",
+        "Xiaozhuan Liang",
+        "Xi Chen",
+        "Bei Yu",
+        "Jiaya Jia"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "summary": "Agents powered by large language models (LLMs) have demonstrated remarkable progress in solving complex reasoning tasks. However, LLM agents often falter on long-horizon tasks due to cognitive overload, as their working memory becomes cluttered with expanding and irrelevant information, which dilutes their attention and hinders effective planning and reasoning. To mitigate this challenge, we introduce Cognitive Resource Self-Allocation (CORAL), a novel reasoning paradigm that empowers agents to proactively optimize their context. Implemented as an agent-callable working memory management toolset, CORAL allows an agent to checkpoint its task progress and verified facts, and adaptively initiate a new problem-solving episode by resetting cluttered context while preserving only the checkpointed information, enabling it to resume reasoning from a clean state. We further enhance the agent's checkpointing capabilities using a Multi-episode Agentic Reinforced Policy Optimization algorithm. On the GAIA benchmark, CORAL with an 8B model achieves 42.8% average accuracy, with particularly strong gains on the most challenging long-horizon tasks (Level 2 and Level 3). Crucially, these gains come at a substantially lower inference cost: CORAL consumes 6-7$\\times$ fewer input tokens than a ReAct agent. It also generalizes to multi-hop Knowledge QA benchmarks and to the considerably harder BrowseComp, where it improves a strong proprietary agent by 8.0 points.",
+      "pdf_url": "https://arxiv.org/pdf/2610.40350v1",
+      "comment": "Accepted at COLM 2026. Code is available at https://github.com/JIA-Lab-research/CORAL",
+      "technologies": [
+        "Cognitive Resource Self-Allocation",
+        "Multi-episode Agentic Reinforced Policy Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Enhanced long-horizon task management in AI agents",
+        "Optimized context handling for complex reasoning tasks"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "science",
+        "other"
       ]
     },
     {
@@ -149,7 +248,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.9,
+      "curator_score": 5.4,
       "product_potential": [
         "A real-time web agent that monitors network activity and page loading to minimize stale clicks",
         "A plugin for web browsers that uses pixel comparison to verify the position of elements before clicks, reducing unintended actions"
@@ -159,6 +258,30 @@
         "accessibility",
         "other"
       ]
+    },
+    {
+      "id": "2610.40565",
+      "title": "Gym-Anything for Robotics: Scaling physical simulations with digital agents",
+      "authors": [
+        "Pranjal Aggarwal",
+        "Sean Welleck"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "summary": "Realistic, fast robotics simulations could enable large-scale training of embodied AI models that transfer to the real world. However, despite decades of progress, available simulations cover only a narrow range of real-world tasks and physical phenomena. The core bottleneck is that creating better simulations requires significant expert effort and therefore does not scale. To address this, we introduce Gym-Anything for Robotics, a framework in which coding agents create realistic robotics simulations. Our core insight is that simulation creation is a coding agent task, so improvements in coding agents translate directly into richer and more faithful simulations. We select simulations based on U.S. GDP data to cover economically valuable physical work, define what makes a good simulation and a good task, and develop an adversarial creation-audit loop that checks each simulation and task against these definitions. Using this pipeline, we build RoboWorld, a set of 25 simulations with 25 test and 175 training RL environments of varying difficulty. Even the best frontier models fail on every RoboWorld test task, achieving an average reward of only 0.06. Building on RoboWorld, we introduce several new ways for frontier models to improve, including in-context learning across repeated attempts, a privileged teacher that reads the simulator state and teaches a student in context, self-assisted learning from the model's own privileged experience, and code policies that generate demonstrations across varied scenes to train vision-language-action models (VLAs) such as $π_{0.5}$. Each of these substantially improves performance. We release our pipeline, RL environments, and benchmark to facilitate future research. Code and data are available at https://gym-anything.github.io/robotics",
+      "pdf_url": "https://arxiv.org/pdf/2610.40565v1",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
       "id": "2610.36729",
@@ -181,7 +304,7 @@
       ],
       "maturity": "early",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [
         "Interactive virtual reality environments for gaming and training",
         "AI-powered storytelling platforms with dynamic world generation",
@@ -214,7 +337,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [
         "AI-powered video editing tool for content creators",
         "Automated video editing assistant for social media platforms",
@@ -254,7 +377,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.8,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [
         "Real-time decision support systems for various industries (e.g., finance, healthcare)",
         "AI-driven workflow automation tools for enterprises"
@@ -280,7 +403,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -299,7 +422,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -318,7 +441,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -337,7 +460,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -356,102 +479,9 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.6,
+      "curator_score": 5.1,
       "product_potential": [],
       "domain_applications": []
-    },
-    {
-      "id": "2602.01532",
-      "title": "PRISM: Festina Lente Proactivity -- Risk-Sensitive, Uncertainty-Aware Deliberation for Proactive Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2602.01532v2 Announce Type: replace Abstract: Proactive agents must decide not only what to say but also whether and when to intervene. Many current systems rely on brittle heuristics or indiscriminate long reasoning, which offers little control over the benefit-burden tradeoff. We formulate the problem as cost-sensitive selective intervention and present PRISM, a novel framework that couples a decision-theoretic gate with a dual-process reasoning architecture. At inference time, the agent intervenes only when a calibrated probability of user acceptance exceeds a threshold derived from asymmetric costs of missed help and false alarms. Inspired by festina lente (Latin: \"make haste slowly\"), we gate by an acceptance-calibrated, cost-derived threshold and invoke a resource-intensive Slow mode with counterfactual checks only near the decision boundary, concentrating computation on ambiguous and high-stakes cases. Training uses gate-aligned, schema-locked distillation: a teacher running the full PRISM pipeline provides dense, executable supervision on unlabeled interaction traces, while the student learns a response policy that is explicitly decoupled from the intervention gate to enable tunable and auditable control. On ProactiveBench, PRISM reduces false alarms by 22.78% and improves F1 by 20.14% over strong baselines. These results show that principled decision-theoretic gating, paired with selective slow reasoning and aligned distillation, yields proactive agents that are precise, computationally efficient, and controllable. To facilitate reproducibility, we release our code, models, and resources at https://prism-festinalente.github.io/; all experiments use the open-source ProactiveBench benchmark.",
-      "pdf_url": "https://arxiv.org/abs/2602.01532",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2604.13151",
-      "title": "Exploration and Exploitation Errors Are Measurable for Language Model Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-31",
-      "updated": "2026-10-31",
-      "summary": "arXiv:2604.13151v2 Announce Type: replace Abstract: Language Model (LM) agents are increasingly used in complex decision-making tasks, from AI coding to physical AI, where they must both explore a search space and exploit acquired knowledge effectively. Although exploration and exploitation play different roles in decision-making, it remains challenging to systematically distinguish exploration and exploitation without access to the agent's internal policy, and to determine when either constitutes an error. To address this, we design partially observable 2D grid maps paired with an unknown symbolic task directed acyclic graph (DAG), abstracting practical agentic AI scenarios. We then propose a policy-agnostic metric that detects unproductive traversals, while permitting necessary backtracking. We attribute each error to exploration or exploitation based on whether the current state admits productive exploration, exploitation, or both. Using generated maps and task DAGs with controllable difficulty, we evaluate 35 frontier LM agents and find that even state-of-the-art models struggle to reach the goal within the step budget. $\\log$ exploration and exploitation errors exhibit strong relationships with task success ($R^2 = 0.885$ and $0.875$, respectively), providing empirical evidence that the metric captures behavior relevant to task success. Beyond success rate, the metric reveals distinct exploration and exploitation behaviors among models with similar success rates. We further find that a compact memory harness achieves higher task success than a reasoning baseline that retains its own reasoning traces. Finally, we extend our metric to an iconic video game, Minecraft Clone, beyond our synthetic environment. We release our code at https://github.com/jjj-madison/measurable-explore-exploit.",
-      "pdf_url": "https://arxiv.org/abs/2604.13151",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.14009",
-      "title": "When Log Parsing Removes What Matters: Detecting Failures in Distributed GPU Workloads",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-31",
-      "updated": "2026-10-31",
-      "summary": "arXiv:2610.14009v2 Announce Type: replace-cross Abstract: Large AI models increasingly rely on distributed GPU execution, yet it remains unclear whether established anomaly detection methods transfer effectively to this setting. We introduce GF-Bench, a PyTorch-based framework for generating controlled failures in distributed GPU workloads, and a dataset produced with it. The framework supports extensible workload and fault-injection logic; based on this design, the current release targets failures visible in multi-GPU communication logs and provides 220 labeled two-GPU runs covering normal behavior, CUDA out-of-memory fail-stop faults, and persistent-straggler fail-slow faults. Using GF-Bench, we evaluate three sequence-based methods (DeepLog, LogAnomaly, and LogBERT) and the large language model (LLM)-based LogPrompt with in-context learning (ICL) and chain-of-thought (CoT) prompting strategies on parsed logs, and additionally evaluate LogPrompt on raw logs. On parsed inputs, no method reliably detects both failure classes, and the highest overall F1 score is 0.667. Raw inputs raise the overall F1 score of ICL-LogPrompt to 0.983, at 9.0x its average input-token usage and 8.9x its per-run cost. These results reveal a trade-off between effectiveness and efficiency: parsed inputs reduce LLM token use and inference cost but can discard the distributed execution context required for accurate failure detection. GF-Bench provides a reproducible basis for studying cost-efficient anomaly detection methods and can be extended to additional GPU workloads and failure types.",
-      "pdf_url": "https://arxiv.org/abs/2610.14009",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.40350",
-      "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
-      "authors": [
-        "Zheng Zhu",
-        "Xiaozhuan Liang",
-        "Xi Chen",
-        "Bei Yu",
-        "Jiaya Jia"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-29",
-      "updated": "2026-10-29",
-      "summary": "Agents powered by large language models (LLMs) have demonstrated remarkable progress in solving complex reasoning tasks. However, LLM agents often falter on long-horizon tasks due to cognitive overload, as their working memory becomes cluttered with expanding and irrelevant information, which dilutes their attention and hinders effective planning and reasoning. To mitigate this challenge, we introduce Cognitive Resource Self-Allocation (CORAL), a novel reasoning paradigm that empowers agents to proactively optimize their context. Implemented as an agent-callable working memory management toolset, CORAL allows an agent to checkpoint its task progress and verified facts, and adaptively initiate a new problem-solving episode by resetting cluttered context while preserving only the checkpointed information, enabling it to resume reasoning from a clean state. We further enhance the agent's checkpointing capabilities using a Multi-episode Agentic Reinforced Policy Optimization algorithm. On the GAIA benchmark, CORAL with an 8B model achieves 42.8% average accuracy, with particularly strong gains on the most challenging long-horizon tasks (Level 2 and Level 3). Crucially, these gains come at a substantially lower inference cost: CORAL consumes 6-7$\\times$ fewer input tokens than a ReAct agent. It also generalizes to multi-hop Knowledge QA benchmarks and to the considerably harder BrowseComp, where it improves a strong proprietary agent by 8.0 points.",
-      "pdf_url": "https://arxiv.org/pdf/2610.40350v1",
-      "comment": "Accepted at COLM 2026. Code is available at https://github.com/JIA-Lab-research/CORAL",
-      "technologies": [
-        "Cognitive Resource Self-Allocation",
-        "Multi-episode Agentic Reinforced Policy Optimization"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Enhanced long-horizon task management in AI agents",
-        "Optimized context handling for complex reasoning tasks"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "science",
-        "other"
-      ]
     }
   ],
   "technologies": [
@@ -462,8 +492,8 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "robotics"
+        "robotics",
+        "accessibility"
       ]
     },
     {
@@ -473,21 +503,21 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "robotics"
+        "robotics",
+        "accessibility"
       ]
     },
     {
       "name": "Multimodal Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "education",
-        "enterprise",
         "accessibility",
+        "education",
+        "robotics",
+        "enterprise",
         "creative"
       ]
     },
@@ -498,8 +528,91 @@
       "confidence": 0.62,
       "trend": "rising",
       "applications": [
-        "accessibility",
-        "robotics"
+        "robotics",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Exploration-Exploitation Error Metric",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "Memory Augmentation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "Synthetic Grid Map Environment",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "DeepLog",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "LogBERT",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Chain-of-Thought Prompting",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "In-Context Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "science"
       ]
     },
     {
@@ -509,10 +622,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -522,10 +635,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -535,10 +648,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -548,10 +661,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -561,10 +674,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -574,10 +687,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -587,10 +700,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -600,10 +713,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -613,10 +726,10 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
       ]
     },
     {
@@ -626,62 +739,88 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "science",
         "robotics",
-        "healthcare",
-        "enterprise"
+        "enterprise",
+        "science",
+        "healthcare"
+      ]
+    },
+    {
+      "name": "Cognitive Resource Self-Allocation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "enterprise",
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Multi-episode Agentic Reinforced Policy Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "enterprise",
+        "science",
+        "education"
       ]
     },
     {
       "name": "Vision-Language Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "other",
-        "enterprise",
-        "education",
         "accessibility",
+        "education",
+        "other",
+        "robotics",
+        "enterprise",
         "creative"
       ]
     },
     {
       "name": "Pixel Comparison",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "accessibility",
         "other",
-        "enterprise"
+        "enterprise",
+        "accessibility"
       ]
     },
     {
       "name": "Network Activity Monitoring",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "accessibility",
         "other",
-        "enterprise"
+        "enterprise",
+        "accessibility"
       ]
     },
     {
       "name": "Diffusion Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "creative",
         "robotics",
-        "education",
-        "enterprise"
+        "enterprise",
+        "creative",
+        "education"
       ]
     },
     {
@@ -691,8 +830,8 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "creative",
         "robotics",
+        "creative",
         "education"
       ]
     },
@@ -703,8 +842,8 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "creative",
         "robotics",
+        "creative",
         "education"
       ]
     },
@@ -715,215 +854,189 @@
       "confidence": 0.5700000000000001,
       "trend": "emerging",
       "applications": [
-        "creative",
         "robotics",
+        "creative",
         "education"
       ]
     },
     {
       "name": "Flow Matching",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
+        "enterprise",
         "creative",
-        "education",
-        "enterprise"
+        "education"
       ]
     },
     {
       "name": "Cross-Attention",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
+        "enterprise",
         "creative",
-        "education",
-        "enterprise"
+        "education"
       ]
     },
     {
       "name": "Patch Embedding",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
+        "enterprise",
         "creative",
-        "education",
-        "enterprise"
+        "education"
       ]
     },
     {
       "name": "System 1 Decision Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Encoder-Based Classifiers",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Reward Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Non-Autoregressive Decision Engines",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Contrastive Decision Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Extraction Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Proper Scoring Rules",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Reinforcement Learning for Calibrated Decisions (RLCD)",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "IIA Violations",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Ordinal-Scale Bias",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "Few-Shot Recalibration",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
+        "finance"
       ]
     },
     {
       "name": "System 1 + System 2 Cascades",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "finance",
+        "enterprise",
         "healthcare",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Cognitive Resource Self-Allocation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "other",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Multi-episode Agentic Reinforced Policy Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "science",
-        "other",
-        "education",
-        "enterprise"
+        "finance"
       ]
     }
   ],
