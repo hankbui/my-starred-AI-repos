@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-01",
+    "date": "2026-11-02",
     "papers_tracked": 15,
-    "technologies_discovered": 45,
+    "technologies_discovered": 22,
     "opportunities_identified": 0,
-    "last_update": "2026-11-01 11:57 UTC",
+    "last_update": "2026-11-02 13:44 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,32 +13,32 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "45",
+      "value": "22",
       "label": "discovered this scan",
-      "detail": "Contrastive Learning, Reinforcement Learning, Multimodal Learning, Depth Estimation, Exploration-Exploitation Error Metric, Memory Augmentation, Synthetic Grid Map Environment, DeepLog",
+      "detail": "FlowKL, FlowScore, Reinforcement Learning with Verifiable Rewards, Socratic Feedback Mechanism, Turn-based Advantage Scaling, Contrastive Learning, Reinforcement Learning, Multimodal Learning",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "45",
+      "value": "22",
       "label": "active trend clusters",
-      "detail": "Exploration-Exploitation Error Metric, Memory Augmentation, Synthetic Grid Map Environment, DeepLog, LogBERT",
+      "detail": "FlowKL, FlowScore, Reinforcement Learning with Verifiable Rewards, Socratic Feedback Mechanism, Turn-based Advantage Scaling",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "8.1",
+      "value": "8.0",
       "label": "avg opportunity score",
-      "detail": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Cont",
+      "detail": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conver",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "Robust Scene Transfer for Poin",
-      "label": "confidence 80%",
+      "value": "DialFork: Going Beyond Factual",
+      "label": "confidence 70%",
       "detail": "",
       "color": "purple"
     },
@@ -53,13 +53,74 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "38",
+      "value": "17",
       "label": "early-stage technologies",
-      "detail": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMS",
+      "detail": "SpaceAct: Benchmarking 3D Spatial and Temporal Reasoning via Closed-Loop Action ",
       "color": "blue"
     }
   ],
   "papers": [
+    {
+      "id": "2610.21561",
+      "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.21561v5 Announce Type: replace-cross Abstract: Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the intended conversational process. We introduce DialFork, the first benchmark to measure this failure mode on raw dialogue text. DialFork is built by forking conformant dialogues at controlled turn positions and injecting one of four hallucination types, yielding 36,278 dialogues across 24 tasks in 12 domains; 30 human annotators validate the construction. We define three evaluation tasks that characterize procedural deviation at three granularities: how far a set of dialogues deviates from conformant ones (monitoring deployed agents), how far a single dialogue does (procedural retrieval), and at which turn a dialogue first goes off-track (real-time guardrails). For the first two, we propose dialog-flow-aware metrics, FlowKL and FlowScore, that compare dialogues by how they unfold rather than their content. At the dialogue level, FlowScore significantly outperforms all baselines across seven encoders, showing that semantic similarity is no substitute for procedural similarity. We release DialFork under open licenses at https://github.com/idiap/dialfork, hoping the community will measure conversational process alongside content.",
+      "pdf_url": "https://arxiv.org/abs/2610.21561",
+      "comment": "",
+      "technologies": [
+        "FlowKL",
+        "FlowScore"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Developing a real-time guardrail system for conversational AI agents to detect and correct procedural hallucinations.",
+        "Creating a benchmarking tool for evaluating the procedural accuracy of conversational AI models across various domains."
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "accessibility",
+        "other"
+      ]
+    },
+    {
+      "id": "2610.32212",
+      "title": "SOPO: Socratic Guided Policy Optimization for Span-Level Hallucination Detection",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.32212v2 Announce Type: replace-cross Abstract: Large Language Models (LLMs) have gained widespread adoption in various natural language processing tasks, but suffer from hallucination issues where they generate unfaithful or inconsistent content. While Reinforcement Learning with Verifiable Rewards (RLVR) has shown promising applications in reasoning tasks, its application to span-level hallucination detection is challenged by localization ambiguity, reward sparsity on hard examples, and uncontrolled length inflation. To address these issues, we introduce Socratic Guided Policy Optimization (SOPO), a multi-turn RL framework for robust hallucination detection. The key innovation of SOPO is a Socratic feedback mechanism, where a teacher model guides the reasoning trajectories during rollout by providing indirect hints inferred from the ground truth. This teacher-guided approach enables the model to generate more effective reasoning trajectories for hard examples, thus alleviating reward sparsity. Furthermore, we incorporate Turn-based Advantage Scaling to penalize verbosity bias, encouraging the model to develop efficient and autonomous reasoning capabilities. Empirical results on RAGTruth demonstrate that SOPO (4B) achieves state-of-the-art performance, surpassing leading proprietary models (e.g., GPT-5) and standard RL baselines, while obtaining higher reported mean scores than GRPO on four out-of-domain benchmarks, with mixed evidence against CAPO. We release our training and evaluation code alongside the 1.7B and 4B SOPO models at https://github.com/patsnap/SOPO.",
+      "pdf_url": "https://arxiv.org/abs/2610.32212",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning with Verifiable Rewards",
+        "Socratic Feedback Mechanism",
+        "Turn-based Advantage Scaling"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "AI-powered content verification tool for journalists and fact-checkers",
+        "Automated fact-checking system for news agencies and social media platforms",
+        "AI assistant for students to detect and correct hallucinations in their research papers"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
     {
       "id": "2606.05506",
       "title": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Contrastive Learning",
@@ -92,67 +153,80 @@
       ]
     },
     {
-      "id": "2604.13151",
-      "title": "Exploration and Exploitation Errors Are Measurable for Language Model Agents",
+      "id": "2604.11811",
+      "title": "M$^\\star$: Every Task Deserves Its Own Memory Harness",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-31",
-      "updated": "2026-10-31",
-      "summary": "arXiv:2604.13151v2 Announce Type: replace Abstract: Language Model (LM) agents are increasingly used in complex decision-making tasks, from AI coding to physical AI, where they must both explore a search space and exploit acquired knowledge effectively. Although exploration and exploitation play different roles in decision-making, it remains challenging to systematically distinguish exploration and exploitation without access to the agent's internal policy, and to determine when either constitutes an error. To address this, we design partially observable 2D grid maps paired with an unknown symbolic task directed acyclic graph (DAG), abstracting practical agentic AI scenarios. We then propose a policy-agnostic metric that detects unproductive traversals, while permitting necessary backtracking. We attribute each error to exploration or exploitation based on whether the current state admits productive exploration, exploitation, or both. Using generated maps and task DAGs with controllable difficulty, we evaluate 35 frontier LM agents and find that even state-of-the-art models struggle to reach the goal within the step budget. $\\log$ exploration and exploitation errors exhibit strong relationships with task success ($R^2 = 0.885$ and $0.875$, respectively), providing empirical evidence that the metric captures behavior relevant to task success. Beyond success rate, the metric reveals distinct exploration and exploitation behaviors among models with similar success rates. We further find that a compact memory harness achieves higher task success than a reasoning baseline that retains its own reasoning traces. Finally, we extend our metric to an iconic video game, Minecraft Clone, beyond our synthetic environment. We release our code at https://github.com/jjj-madison/measurable-explore-exploit.",
-      "pdf_url": "https://arxiv.org/abs/2604.13151",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2604.11811v3 Announce Type: replace-cross Abstract: Large language model agents rely on a memory harness to write, organize, retrieve, and use past experience. A harness that works for one task often fails on another, because conversations, embodied planning, and expert reasoning require different storage and retrieval behavior. To address this limitation, we introduce Mstar, a method that automatically discovers task-optimized memory programs through reflective code evolution. Specifically, Mstar operationalizes a memory harness as an executable Python memory program that defines the Schema, Logic, and Instruction, and optimizes these components jointly. We evaluate Mstar on four tasks covering conversation, embodied planning, and specialized reasoning. Our results demonstrate that Mstar improves performance over existing baselines across all evaluated tasks. Furthermore, the evolved memory programs exhibit structurally distinct processing mechanisms for each evaluated domain. These findings suggest that every task benefits from its own memory harness, and that memory-program search provides a concrete way to discover it.",
+      "pdf_url": "https://arxiv.org/abs/2604.11811",
       "comment": "",
-      "technologies": [
-        "Exploration-Exploitation Error Metric",
-        "Memory Augmentation",
-        "Synthetic Grid Map Environment"
-      ],
+      "technologies": [],
       "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Diagnostic dashboard for LM agent developers that visualizes exploration vs exploitation errors and suggests policy adjustments",
-        "Auto-tuning platform for robotic or game AI that dynamically balances exploration and exploitation based on real-time metric feedback",
-        "Enterprise AI workflow monitor that flags inefficient agent decision paths and recommends retraining or policy changes"
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "enterprise",
-        "education"
-      ]
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
-      "id": "2610.14009",
-      "title": "When Log Parsing Removes What Matters: Detecting Failures in Distributed GPU Workloads",
+      "id": "2605.18421",
+      "title": "EvoMemBench: Benchmarking Agent Memory from a Self-Evolving Perspective",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-31",
-      "updated": "2026-10-31",
-      "summary": "arXiv:2610.14009v2 Announce Type: replace-cross Abstract: Large AI models increasingly rely on distributed GPU execution, yet it remains unclear whether established anomaly detection methods transfer effectively to this setting. We introduce GF-Bench, a PyTorch-based framework for generating controlled failures in distributed GPU workloads, and a dataset produced with it. The framework supports extensible workload and fault-injection logic; based on this design, the current release targets failures visible in multi-GPU communication logs and provides 220 labeled two-GPU runs covering normal behavior, CUDA out-of-memory fail-stop faults, and persistent-straggler fail-slow faults. Using GF-Bench, we evaluate three sequence-based methods (DeepLog, LogAnomaly, and LogBERT) and the large language model (LLM)-based LogPrompt with in-context learning (ICL) and chain-of-thought (CoT) prompting strategies on parsed logs, and additionally evaluate LogPrompt on raw logs. On parsed inputs, no method reliably detects both failure classes, and the highest overall F1 score is 0.667. Raw inputs raise the overall F1 score of ICL-LogPrompt to 0.983, at 9.0x its average input-token usage and 8.9x its per-run cost. These results reveal a trade-off between effectiveness and efficiency: parsed inputs reduce LLM token use and inference cost but can discard the distributed execution context required for accurate failure detection. GF-Bench provides a reproducible basis for studying cost-efficient anomaly detection methods and can be extended to additional GPU workloads and failure types.",
-      "pdf_url": "https://arxiv.org/abs/2610.14009",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2605.18421v3 Announce Type: replace-cross Abstract: Recent benchmarks for Large Language Model (LLM) agents mainly evaluate reasoning, planning, and execution. However, memory is also essential for agents, as it enables them to store, update, and retrieve information over time. This ability remains under-evaluated, largely because existing benchmarks do not provide a systematic way to assess memory mechanisms. In this paper, we study agent memory from a self-evolving perspective and introduce EvoMemBench, a unified benchmark organized along two axes: memory scope (in-episode vs. cross-episode) and memory content (knowledge-oriented vs. execution-oriented). We compare 15 representative memory methods with strong long-context baselines under a standardized protocol. Results show that current memory systems are still far from a general solution: long-context baselines remain highly competitive, memory helps most when the current context is insufficient or tasks are difficult, and no single memory form works consistently across all settings. Retrieval-based methods remain strong for knowledge-intensive settings, whereas procedural and long-term memory methods are more effective for execution-oriented tasks when their stored experience matches the task structure. We hope EvoMemBench facilitates future research on more effective memory systems for LLM-based agents. Our dataset and code are available at https://github.com/DSAIL-Memory/EvoMemBench.",
+      "pdf_url": "https://arxiv.org/abs/2605.18421",
       "comment": "",
-      "technologies": [
-        "DeepLog",
-        "LogBERT",
-        "Chain-of-Thought Prompting",
-        "In-Context Learning"
-      ],
+      "technologies": [],
       "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.6,
-      "product_potential": [
-        "Real-time anomaly detection service for distributed GPU clusters that leverages raw log inputs and LLM-based in-context learning to provide low-latency failure alerts.",
-        "Cost-optimized monitoring tool that uses parsed logs with chain-of-thought prompting to reduce token usage while maintaining high detection accuracy for GPU workload failures.",
-        "Benchmarking and dataset platform for GPU workload failure detection that enables cloud providers and research labs to evaluate and compare anomaly detection methods."
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2508.14880",
+      "title": "MedResearcher-R1: Expert-Level Medical Deep Researcher via A Knowledge-Informed Trajectory Synthesis Framework",
+      "authors": [],
+      "categories": [
+        "cs.CL"
       ],
-      "domain_applications": [
-        "enterprise",
-        "science"
-      ]
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2508.14880v4 Announce Type: replace Abstract: Large Language Model (LLM)-based agents have recently demonstrated remarkable capabilities in deep research tasks, yet their application to the medical domain remains challenging. The leading proprietary systems achieve only modest results on complex medical benchmarks. This exposes two key bottlenecks: (i) limited clinical-reasoning capability in the underlying model, and (ii) unreliable access to authoritative medical evidence when constrained to open-web retrieval. To address these limitations and equip agents with robust clinical reasoning capabilities, we present MedResearcher-R1, a medical deep research agent featuring two core innovations. First, we propose Knowledge-Informed Trajectory Synthesis (KISA), a novel approach that builds medical knowledge graphs to construct complex multi-hop question-answer pairs centered on rare medical entities, overcoming the scarcity of high-quality domain-specific training data. Second, we integrate a medical retrieval engine alongside general-purpose tools, enabling precise and reliable synthesis of medical evidence. Through this methodology, we yield over 2,100 diverse trajectories spanning 12 medical specialties. Trained with supervised fine-tuning and reinforcement learning, our MedResearcher-R1-32B achieves state-of-the-art performance on MedBrowseComp (27.5/50 vs. 25.5/50 for o3-deepresearch) while demonstrating strong general performance on GAIA and xBench benchmarks. To the best of our knowledge, we present the first high-quality, tool-augmented medical dataset paired with a domain-specialized deep-research agent, demonstrating that smaller open-source models can surpass substantially larger proprietary systems on specialized medical tasks.",
+      "pdf_url": "https://arxiv.org/abs/2508.14880",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.21675",
+      "title": "DRT: Dense Reasoning Trace for Efficient and Grounded Multimodal Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2609.21675v2 Announce Type: replace Abstract: Despite the remarkable progress in Multimodal Large Language Models (MLLMs), prevailing Chain-of-Thought (CoT) paradigms remain confined to the natural-language expression space. Consequently, they inherently incur excessive linguistic overhead, leading to information dilution and weak visual grounding. To address this challenge, we propose Dense Reasoning Trace (DRT), a paradigm that departs from natural-language-centered CoT by expressing reasoning as compact structured traces, which include concise intermediate states with symbolic connectors and disentangle visual observations from logical deductions. First, we introduce the Dense Trace Initialization to internalize the DRT reasoning mode into the model, substantially improving token efficiency while preserving visual evidence. To further enable the model to faithfully capture the logical relations within traces, we propose the Trace-Grounded Reinforcement Learning framework, which builds reference traces through a tri-perspective verification pipeline and employs Trace-Grounded GRPO with structured rewards, encouraging the model to generate concise DRT-style traces with reduced hallucination and stronger logical grounding. Extensive experiments on challenging reasoning benchmarks show that DRT achieves 5.5$\\times$ token efficiency improvement while improving 1.3 accuracy points over the Qwen3-VL baseline. These findings suggest that complex multimodal reasoning may not require verbose natural-language traces, opening a more efficient path for next-generation MLLMs. Our code and data are available at: https://github.com/HIT-leaderone/DRT",
+      "pdf_url": "https://arxiv.org/abs/2609.21675",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
       "id": "2610.38405",
@@ -194,42 +268,6 @@
       ]
     },
     {
-      "id": "2610.40350",
-      "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
-      "authors": [
-        "Zheng Zhu",
-        "Xiaozhuan Liang",
-        "Xi Chen",
-        "Bei Yu",
-        "Jiaya Jia"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-10-29",
-      "updated": "2026-10-29",
-      "summary": "Agents powered by large language models (LLMs) have demonstrated remarkable progress in solving complex reasoning tasks. However, LLM agents often falter on long-horizon tasks due to cognitive overload, as their working memory becomes cluttered with expanding and irrelevant information, which dilutes their attention and hinders effective planning and reasoning. To mitigate this challenge, we introduce Cognitive Resource Self-Allocation (CORAL), a novel reasoning paradigm that empowers agents to proactively optimize their context. Implemented as an agent-callable working memory management toolset, CORAL allows an agent to checkpoint its task progress and verified facts, and adaptively initiate a new problem-solving episode by resetting cluttered context while preserving only the checkpointed information, enabling it to resume reasoning from a clean state. We further enhance the agent's checkpointing capabilities using a Multi-episode Agentic Reinforced Policy Optimization algorithm. On the GAIA benchmark, CORAL with an 8B model achieves 42.8% average accuracy, with particularly strong gains on the most challenging long-horizon tasks (Level 2 and Level 3). Crucially, these gains come at a substantially lower inference cost: CORAL consumes 6-7$\\times$ fewer input tokens than a ReAct agent. It also generalizes to multi-hop Knowledge QA benchmarks and to the considerably harder BrowseComp, where it improves a strong proprietary agent by 8.0 points.",
-      "pdf_url": "https://arxiv.org/pdf/2610.40350v1",
-      "comment": "Accepted at COLM 2026. Code is available at https://github.com/JIA-Lab-research/CORAL",
-      "technologies": [
-        "Cognitive Resource Self-Allocation",
-        "Multi-episode Agentic Reinforced Policy Optimization"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Enhanced long-horizon task management in AI agents",
-        "Optimized context handling for complex reasoning tasks"
-      ],
-      "domain_applications": [
-        "education",
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
       "id": "2610.39282",
       "title": "What Does \"Now\" Mean to Your Computer-Use Agent? Stale Screenshots, Page Loads, and Which Check to Run Before a Click",
       "authors": [],
@@ -260,21 +298,16 @@
       ]
     },
     {
-      "id": "2610.40565",
-      "title": "Gym-Anything for Robotics: Scaling physical simulations with digital agents",
-      "authors": [
-        "Pranjal Aggarwal",
-        "Sean Welleck"
-      ],
+      "id": "2610.40970",
+      "title": "Nedimo: An Evidence-Grounded Multilingual Pipeline for AI-Generated Sleep Stories",
+      "authors": [],
       "categories": [
-        "cs.RO",
-        "cs.AI",
-        "cs.LG"
+        "cs.AI"
       ],
-      "published": "2026-10-29",
-      "updated": "2026-10-29",
-      "summary": "Realistic, fast robotics simulations could enable large-scale training of embodied AI models that transfer to the real world. However, despite decades of progress, available simulations cover only a narrow range of real-world tasks and physical phenomena. The core bottleneck is that creating better simulations requires significant expert effort and therefore does not scale. To address this, we introduce Gym-Anything for Robotics, a framework in which coding agents create realistic robotics simulations. Our core insight is that simulation creation is a coding agent task, so improvements in coding agents translate directly into richer and more faithful simulations. We select simulations based on U.S. GDP data to cover economically valuable physical work, define what makes a good simulation and a good task, and develop an adversarial creation-audit loop that checks each simulation and task against these definitions. Using this pipeline, we build RoboWorld, a set of 25 simulations with 25 test and 175 training RL environments of varying difficulty. Even the best frontier models fail on every RoboWorld test task, achieving an average reward of only 0.06. Building on RoboWorld, we introduce several new ways for frontier models to improve, including in-context learning across repeated attempts, a privileged teacher that reads the simulator state and teaches a student in context, self-assisted learning from the model's own privileged experience, and code policies that generate demonstrations across varied scenes to train vision-language-action models (VLAs) such as $π_{0.5}$. Each of these substantially improves performance. We release our pipeline, RL environments, and benchmark to facilitate future research. Code and data are available at https://gym-anything.github.io/robotics",
-      "pdf_url": "https://arxiv.org/pdf/2610.40565v1",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.40970v1 Announce Type: new Abstract: Generative audio systems can produce large libraries of personalized bedtime content, but ordinary media objectives (retention, completion, and novelty) are poorly aligned with the goal of supporting a transition toward sleep. Direct evidence for narrated bedtime audio in adults is mixed, and a recent active-controlled trial did not support such audio as a standalone treatment for sleep disturbance. We translate this uncertain evidence into conservative engineering requirements and present a multilingual pipeline for generating and narrating low-arousal sleep stories. The implemented prototype separates deterministic planning from large language model generation, represents content and delivery parameters explicitly, shapes each script through a four-phase attention taper, validates structural and lexical constraints, performs a bounded error-aware retry, and quarantines unresolved outputs. Provider-agnostic text-to-speech synthesis is followed by paragraph-aware joining, two-pass loudness normalization, and a publication gate that re-measures the saved, encoded file against fixed loudness, loudness-range, and true-peak limits. The product data model records stop position, replay, early abandonment, and completion while treating these events as ambiguous behavioral proxies rather than clinical outcomes. We contribute an evidence-to-requirement mapping, a traceable guardrail architecture with explicit acceptance thresholds, technical evaluation criteria, and a prospective protocol for testing sleep-onset effects. No clinical efficacy is claimed; the system is positioned as a relaxation and attentional-support tool whose benefit and possible reliance must be evaluated empirically.",
+      "pdf_url": "https://arxiv.org/abs/2610.40970",
       "comment": "",
       "technologies": [],
       "maturity": "early",
@@ -284,759 +317,372 @@
       "domain_applications": []
     },
     {
-      "id": "2610.36729",
-      "title": "Hy-Nomas: Towards Free-form Interactive World Generation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-28",
-      "updated": "2026-10-28",
-      "summary": "arXiv:2610.36729v1 Announce Type: new Abstract: Interactive world generation requires models to follow successive commands while preserving relevant history and action consequences. We present Hy-Nomas, a video world model with an 8B diffusion backbone that supports free-form text instructions and continuous camera control across multiple interaction turns. It generates variable-length segments conditioned on current inputs and cached history. Our central design aligns structured video captions with action-aware causal attention: descriptive context remains accessible across segments, while action instructions are restricted to their intended temporal windows. A vision-language Prompt Enhancer (PE) translates user requests and multimodal interaction histories into structured conditions for the next segment. A multi-stage curriculum progressively introduces causal generation, text interaction, camera control, and training on model-generated histories, followed by diffusion distillation. In human evaluation, Hy-Nomas shows superior performance over existing world models. We release model weights, code and benchmarks, together with a lightweight adaptation workflow, to support reproducible research on interactive world generation.",
-      "pdf_url": "https://arxiv.org/abs/2610.36729",
-      "comment": "",
-      "technologies": [
-        "Diffusion Models",
-        "Causal Attention",
-        "Vision-Language Models",
-        "Multi-stage Curriculum Learning",
-        "Diffusion Distillation"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Interactive virtual reality environments for gaming and training",
-        "AI-powered storytelling platforms with dynamic world generation",
-        "Virtual assistants with real-time, interactive world manipulation capabilities"
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "robotics"
-      ]
-    },
-    {
-      "id": "2609.26015",
-      "title": "SemantiScene-Edit: Expert-Synthesized Supervision and Dual-Path Source Conditioning for Instruction-Based Video Editing",
+      "id": "2610.41169",
+      "title": "ImplicitHop: Evaluating knowledge integration across context and memory",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2609.26015v2 Announce Type: replace Abstract: Instruction-guided video editing requires executing a requested change while preserving the source video's appearance and temporal structure. We present SemantiScene-Edit, a video editor that couples a multimodal encoder with a pretrained video diffusion transformer. The encoder jointly processes source frames and the editing instruction, and learnable queries convey their semantic context to the generator through a trainable connector and cross-attention. A complementary visual pathway concatenates source-video latents with noisy target latents before patch embedding, supplying dense spatial and temporal information for content preservation. We train the model with flow matching and a three-stage image--video curriculum comprising semantic alignment, joint adaptation, and high-resolution refinement. To support training, we construct over 1.2 million instruction-conditioned video-editing records covering object addition, removal, replacement, and attribute modification. We also construct a 100-case benchmark for evaluating instruction execution, source preservation, temporal consistency, and visual quality. Comparative experiments show that SemantiScene-Edit effectively follows editing instructions while retaining source content. At inference, the model requires only a source video and a natural-language instruction.",
-      "pdf_url": "https://arxiv.org/abs/2609.26015",
-      "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Diffusion Models",
-        "Flow Matching",
-        "Cross-Attention",
-        "Patch Embedding"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "AI-powered video editing tool for content creators",
-        "Automated video editing assistant for social media platforms",
-        "Customizable video editing platform for e-commerce product videos"
-      ],
-      "domain_applications": [
-        "creative",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2610.33775",
-      "title": "The Hitchhiker's Guide to System 1 Models: Fast Decision-Making Beyond LLMS",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2610.33775v2 Announce Type: replace Abstract: Large Language Models excel at reasoning and generation but their autoregressive, token-by-token inference makes them unnecessarily slow, expensive, and poorly calibrated for the many routine decisions (routing, gating, scoring, classification) that modern AI systems require at sub-second latency. A growing class of models addresses this gap: System 1 decision models, architectures that map an input directly to a typed, structured decision in a single forward pass. This guide provides a comprehensive, practitioner-oriented treatment of the field. We propose a five-family taxonomy covering encoder-based classifiers, reward models, non-autoregressive decision engines, contrastive decision models, and extraction models, and we provide in-depth coverage of each family's architecture, training methodology, and deployment trade-offs. A central theme is calibration: we develop the theory of proper scoring rules, analyze Reinforcement Learning for Calibrated Decisions (RLCD), and examine recently discovered phenomena including IIA violations, ordinal-scale bias, and few-shot recalibration under distribution shift. On the integration side, we describe how System 1 models serve as decision infrastructure within agentic workflows and System 1 + System 2 cascades that route between fast and slow models based on calibrated confidence. The guide covers 18 application domains, maps the rapidly growing open-source ecosystem (over 70 model reproductions in weeks), provides runnable code throughout, and includes a practitioner's checklist, an open-source model zoo, and 22 self-assessment questions with detailed answers. Spanning 190 references, it is intended as a unified entry point for researchers and engineers working at the intersection of fast decision-making, calibration, and production AI systems.",
-      "pdf_url": "https://arxiv.org/abs/2610.33775",
-      "comment": "",
-      "technologies": [
-        "System 1 Decision Models",
-        "Encoder-Based Classifiers",
-        "Reward Models",
-        "Non-Autoregressive Decision Engines",
-        "Contrastive Decision Models",
-        "Extraction Models",
-        "Proper Scoring Rules",
-        "Reinforcement Learning for Calibrated Decisions (RLCD)",
-        "IIA Violations",
-        "Ordinal-Scale Bias",
-        "Few-Shot Recalibration",
-        "System 1 + System 2 Cascades"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Real-time decision support systems for various industries (e.g., finance, healthcare)",
-        "AI-driven workflow automation tools for enterprises"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "finance",
-        "healthcare"
-      ]
-    },
-    {
-      "id": "2512.23304",
-      "title": "MedGemma vs GPT-4: Open-Source and Proprietary Zero-shot Medical Disease Classification from Images",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2512.23304v2 Announce Type: replace-cross Abstract: Multimodal Large Language Models (LLMs) introduce an emerging paradigm for medical imaging by interpreting scans through the lens of extensive clinical knowledge, offering a transformative approach to disease classification. This study presents a critical comparison between two fundamentally different AI architectures: the specialized open-source agent MedGemma and the proprietary large multimodal model GPT-4 for diagnosing six different diseases. The MedGemma-4b-it model, fine-tuned using Low-Rank Adaptation (LoRA), demonstrated superior diagnostic capability by achieving a mean test accuracy of 80.37% compared to 69.56% for the untuned GPT-4. Furthermore, MedGemma exhibited notably higher sensitivity in high-stakes clinical tasks, such as cancer and pneumonia detection. Quantitative analysis via confusion matrices and classification reports provides comprehensive insights into model performance across all categories. These results emphasize that domain-specific fine-tuning is essential for minimizing hallucinations in clinical implementation, positioning MedGemma as a sophisticated tool for complex, evidence-based medical reasoning.",
-      "pdf_url": "https://arxiv.org/abs/2512.23304",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.41169v1 Announce Type: new Abstract: The ability to integrate new information and deduce its consequences is central to learning, understanding, and reasoning in large language models (LLMs). Whether information arrives during training or in-context, models must not only store local facts, but propagate their long-range implications globally. To explore information integration in LLMs, we introduce two complementary natural language benchmarks for large-scale evaluation of deductive reasoning as a function of inference depth. The first is a formal graph benchmark enabling controlled evaluation over a wide range of graph topologies and integration tasks; the second is a knowledge composition benchmark grounded in real-world knowledge graphs. We use these benchmarks to compare knowledge integration from information encoded in context versus information encoded in model weights during pretraining, evaluating a set of open models implicitly, without chain of thought. We find that accuracy decays sharply with increased composition length for both pretrained and in-context knowledge. Information presented in-context, however, substantially outperforms deduction over information encoded in weights. These results quantify a fundamental limitation of current models with direct implications for prompt-based control of agent behavior and for continual learning strategies, and they provide a foundation for developing training, prompting, and integration methods that support deeper reasoning.",
+      "pdf_url": "https://arxiv.org/abs/2610.41169",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2602.10081",
-      "title": "Anagent For Enhancing Scientific Table & Figure Analysis",
+      "id": "2510.12787",
+      "title": "Ax-Prover: A Deep Reasoning Agentic Framework for Theorem Proving in Mathematics and Quantum Physics",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2602.10081v3 Announce Type: replace-cross Abstract: In scientific research, analysis requires accurately interpreting complex multimodal knowledge, integrating evidence from different sources, and drawing inferences grounded in domain-specific knowledge. However, current artificial intelligence (AI) systems struggle to consistently demonstrate such capabilities. The complexity and variability of scientific tables and figures, combined with heterogeneous structures and long-context requirements, pose fundamental obstacles to scientific table \\& figure analysis. To quantify these challenges, we introduce AnaBench, a large-scale benchmark featuring $63,178$ instances from nine scientific domains, systematically categorized along seven complexity dimensions. To tackle these challenges, we propose Anagent, a multi-agent framework for enhanced scientific table \\& figure analysis through four specialized agents: Planner decomposes tasks into actionable subtasks, Expert retrieves task-specific information through targeted tool execution, Solver synthesizes information to generate coherent analysis, and Critic performs iterative refinement through five-dimensional quality assessment. We further develop modular training strategies that leverage supervised finetuning and specialized reinforcement learning to optimize individual capabilities while maintaining effective collaboration. Comprehensive evaluation across 170 subdomains demonstrates that Anagent achieves substantial improvements, up to $\\uparrow 13.43\\%$ in training-free settings and $\\uparrow 42.12\\%$ with finetuning, while revealing that task-oriented reasoning and context-aware problem-solving are essential for high-quality scientific table \\& figure analysis. Our project page: https://xhguo7.github.io/Anagent/.",
-      "pdf_url": "https://arxiv.org/abs/2602.10081",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2510.12787v5 Announce Type: replace Abstract: We present Ax-Prover, a multi-agent system for automated theorem proving in Lean that can solve problems across diverse scientific domains and operate either autonomously or collaboratively with human experts. To achieve this, Ax-Prover approaches scientific problem solving through formal proof generation, a process that demands both creative reasoning and strict syntactic rigor. Ax-Prover meets this challenge by equipping Large Language Models (LLMs), which provide knowledge and reasoning, with Lean tools via the Model Context Protocol (MCP), which ensure formal correctness. To evaluate its performance as an autonomous prover, we benchmark our approach against frontier LLMs and specialized prover models on two public math benchmarks and on two Lean benchmarks we introduce in the fields of abstract algebra and quantum theory. On public datasets, Ax-Prover is competitive with state-of-the-art provers, while it largely outperforms them on the new benchmarks. This shows that, unlike specialized systems that struggle to generalize, our tool-based agentic theorem prover approach offers a generalizable methodology for formal verification across diverse scientific domains. Furthermore, we demonstrate Ax-Prover's assistant capabilities in a practical use case, showing how it enabled an expert mathematician to formalize the proof of a complex cryptography theorem.",
+      "pdf_url": "https://arxiv.org/abs/2510.12787",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2606.11854",
-      "title": "Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training",
+      "id": "2610.15620",
+      "title": "From Stages to States: Unified Iterative Reasoning for MLLMs",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2606.11854v2 Announce Type: replace-cross Abstract: Adapting Large Language Models (LLMs) to specific tasks usually involves fine-tuning: Low-Rank Adaptation (LoRA) edits the weights, while soft prompting prepends trainable virtual tokens. Both change how an already-optimized model is served, so serving many task-specific adapters at high throughput requires adapter-aware infrastructure. We propose Art-Based Reinforcement Training (ART), which optimizes a single auxiliary input image to specialize a frozen Multimodal Large Language Model (MLLM) for a specific task. At inference time, ART simply includes this image in each standard multimodal prompt, requiring no changes to the serving engine. We compare ART with LoRA and soft prompting across five reasoning benchmarks for four small MLLMs from three architectures. While different methods perform best for different tasks, ART ranks first or second in 10 of 20 benchmark-MLLM pairs, with its best results on the two math word problem benchmarks (GSM8k and SVAMP). It is significantly ahead of the next best adapter in 2 cases, within the noise of the next best adapter in 6, and significantly above the text-only baseline in 18. ART therefore reaches accuracy close to LoRA and soft prompts while serving faster than LoRA. In the vLLM serving stack, ART reduces throughput by 6% to 14% relative to text-only requests, compared to LoRA's 13% to 93% slowdown. Beyond efficient serving, ART artifacts are plain images, making them easy to store, distribute, and share. This approach keep task-specific adaptation outside the model weights, so the same frozen model can support different tasks without separate model variants.",
-      "pdf_url": "https://arxiv.org/abs/2606.11854",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.15620v2 Announce Type: replace Abstract: Multimodal Chain-of-Thought (MCoT) substantially enhances the complex reasoning capabilities of Multimodal Large Language Models (MLLMs) by explicitly modeling intermediate reasoning processes. However, most learning-based MCoT methods follow a stage-centric paradigm, where different reasoning behaviors are assigned to predefined stages and optimized separately. This results in fragmented reasoning and a training-inference reasoning-state gap. To address these limitations, we propose ReState, a unified iterative reasoning framework that reformulates multimodal reasoning from a stage-driven pipeline into a state-driven dynamic process. It comprises two complementary components: Unified Reasoning State Modeling (URSM) and Closed-Loop Reasoning-State Learning (CRSL). URSM unifies reasoning construction, correct reasoning preservation, and erroneous reasoning correction as reasoning-state transitions within a shared state space, enabling these heterogeneous reasoning behaviors to be learned jointly. CRSL further incorporates self-generated historical reasoning states during training and recursively updates the current state during inference, thereby mitigating the reasoning-state gap and enabling iterative self-refinement without requiring an additional reflection module, critic, or independent correction stage. Furthermore, we construct VersaCoT-10K, a high-quality CoT dataset spanning eight visual reasoning domains, which provides diverse supervision for multi-domain reasoning and reasoning-state refinement. Extensive experiments demonstrate that ReState exhibits strong adaptability across different MLLM backbones and achieves strong performance on multiple public reasoning benchmarks, supporting the shift from stage-centric reasoning toward state-centric reasoning. Our data and code are available at https://restate-project.github.io",
+      "pdf_url": "https://arxiv.org/abs/2610.15620",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.2,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2610.11105",
-      "title": "TKCAM: Text and Keyframe to Camera Trajectory Generation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2610.11105v2 Announce Type: replace Abstract: Generating high-quality and controllable camera motion is essential for AI-assisted cinematography, video synthesis, and 3D scene understanding. We introduce TKCAM, a Text- and Keyframe-conditioned CAMera-motion synthesis framework based on generative masked modeling. We represent camera dynamics using a 12-dimensional kinematic feature comprising position, velocity, and a continuous rotation representation and discretize them into hierarchical motion tokens via a Residual Vector Quantizer (RVQ). A two-stage masked transformer architecture then learns to reconstruct and refine these tokens, utilizing explicit self- and cross-attention modules for multimodal conditioning. A central feature of our framework is sparse visual keyframe conditioning: users can provide free-form text prompts together with RGB observations at selected timestamps, which provide temporally localized visual guidance for generating coherent in-between trajectories. Furthermore, to advance evaluation standards, we curate RealEstate10K-Cap, a large-scale text-camera dataset, and establish a cross-domain benchmark with a Universal CLaTr Evaluator. Extensive experiments demonstrate that TKCAM surpasses recent state-of-the-art baselines on Fr\\'echet distance (FID), text-motion matching scores, and retrieval metrics (R@K), while additional analyses evaluate temporal smoothness and cross-domain generalization. Code and RealEstate10K-Cap dataset are available at https://github.com/linearalgebrayhz/TKCAM.",
-      "pdf_url": "https://arxiv.org/abs/2610.11105",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.2,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.39955",
-      "title": "Mind The Gap (MTG-AD): Dataset and Fine-grained Evaluation for End-to-End Inline Audio Descriptions",
+      "id": "2510.23482",
+      "title": "On the Faithfulness of Visual Thinking: Measurement and Enhancement",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2610.39955v1 Announce Type: cross Abstract: Audio descriptions (AD) are essential for making visual media accessible to blind and low-vision (BLV) users. While Multimodal Large Language Models (MLLMs) offer a scalable solution for generating audio descriptions on-demand, their performance on ``inline'' audio descriptions -- which must fit within existing silences in a video -- remains under-explored, particularly for diverse user-generated content (UGC). We present a comprehensive investigation into MLLM-generated inline audio descriptions. First, we introduce MTG-AD, a professionally annotated dataset of 36 hours of videos, each averaging $\\sim$5 mins. and 8k+ descriptions in total, co-created by paired blind and sighted AD professionals to provide a high-quality benchmark for this task. Second, we propose MTG-AD-Eval, an evaluation framework based on audio description expert guidelines that provides fine-grained, reference-free actionable metrics for model improvement. Crucially, our framework evaluates the end-to-end task: it renders the generated scripts into audio tracks to assess their fit within the original video's natural silences, minimizing disruptive overlaps. Our analysis across frontier MLLMs reveals that while models accurately describe visual events and substantially reduce speech overlaps, gaps persist in narrative pacing and flow. Finally, we empirically validate that our automated and reference-free metrics correlate significantly with human quality ratings from sighted raters and 7 BLV participants, finding that while users narrowly prefer human-authored audio descriptions, they find MLLM-generated audio descriptions highly beneficial for comprehension. We provide actionable system design guidance and release MTG-AD at https://hf.co/datasets/google/mind-the-gap-inline-ad and MTG-AD-Eval at https://github.com/google/mtg-ad.",
-      "pdf_url": "https://arxiv.org/abs/2610.39955",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2510.23482v2 Announce Type: replace-cross Abstract: Recent large vision-language models (LVLMs) can generate vision-text multimodal chain-of-thought (MCoT) traces after reinforcement fine-tuning (RFT). However, we observe that the visual information in MCoT is often inaccurate even when answers are correct, and task accuracy remains nearly unchanged despite the visual information being corrupted. This indicates a lack of faithfulness in the vision part of MCoT reasoning. We attribute this to the RL reward design in RFT, which solely incentivizes the format of interleaved vision-text cues, encouraging the model to incorporate visual information into its text reasoning steps without considering its correctness. In this paper, we first probe MCoT faithfulness by measuring how much the prediction changes when its visual and textual thoughts are intervened. Surprisingly, the model's predictions remain nearly unchanged under visual intervention but change significantly under textual intervention, indicating that the visual evidence is largely ignored. To further analyze the visual information, we introduce an automated LVLM-based evaluation metric that quantifies the faithfulness of visual cues from two perspectives: relevance and sufficiency. Our evaluation reveals that the visual information in current MCoT traces is simultaneously irrelevant and insufficient. To address this issue, we propose Sufficient-Component Cause Model (SCCM) learning. This approach encourages the MCoT to generate sufficient yet minimal visual components that are independently capable of leading to the correct answer. The proposed SCCM is annotation-free and plug-and-play, compatible with various RFT for MCoT. Empirical results demonstrate that SCCM substantially improves the visual faithfulness across a suite of fine-grained perception and reasoning benchmarks. Code is available at https://github.com/EugeneLiu01/Faithful_Thinking_with_Image.",
+      "pdf_url": "https://arxiv.org/abs/2510.23482",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.1,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.21390",
+      "title": "PriorityFEC: Deadline-Aware Streaming FEC for KV-Cache Handoff in Edge Multi-Agent Systems",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "arXiv:2610.21390v2 Announce Type: replace-cross Abstract: Multi-agent large language model (LLM) systems are increasingly deployed at the edge to support complex tasks that require collaboration and information exchange among multiple agents. However, when task contexts are passed across agents, shared context that has already been processed by upstream agents often needs to be prefilled again, resulting in substantial redundant computation. Reusing an already prefilled key--value (KV) cache can avoid this recomputation, but requires the reusable KV state to be transferred across the network before the receiving agent can begin generation. Under strict time-to-first-token (TTFT) deadlines and unreliable edge links, delivering the complete KV cache may be infeasible, making it necessary to prioritize and protect the most valuable KV information within a limited transmission budget. This paper proposes PriorityFEC, a utility-aware KV-cache handoff scheme that jointly exploits model-side KV importance and transport-side reliability. PriorityFEC first constructs a utility-aware source stream by placing high-utility KV blocks at earlier transmission positions. It then protects the ordered stream using a feedback-adaptive Streaming Forward Erasure Correction (FEC) mechanism, which schedules repair packets according to receiver feedback before the TTFT deadline. We implement PriorityFEC on a distributed edge LLM serving prototype and evaluate it with Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct across multiple datasets. Results show that PriorityFEC achieves superior task quality over the compared transport schemes, with its advantages becoming particularly pronounced under stringent deadline constraints. These results demonstrate the importance of jointly optimizing KV-cache utility and deadline-aware transport reliability when reusable LLM state must be handed off across unreliable edge networks.",
+      "pdf_url": "https://arxiv.org/abs/2610.21390",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     }
   ],
   "technologies": [
     {
+      "name": "FlowKL",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "accessibility",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "FlowScore",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "accessibility",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning with Verifiable Rewards",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "Socratic Feedback Mechanism",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other"
+      ]
+    },
+    {
+      "name": "Turn-based Advantage Scaling",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other"
+      ]
+    },
+    {
       "name": "Contrastive Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "accessibility"
+        "accessibility",
+        "robotics"
       ]
     },
     {
       "name": "Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "accessibility"
+        "accessibility",
+        "robotics"
       ]
     },
     {
       "name": "Multimodal Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
         "accessibility",
-        "education",
-        "robotics",
-        "enterprise",
-        "creative"
+        "robotics"
       ]
     },
     {
       "name": "Depth Estimation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "robotics",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Exploration-Exploitation Error Metric",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Memory Augmentation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Synthetic Grid Map Environment",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "DeepLog",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "LogBERT",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "In-Context Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "science"
+        "accessibility",
+        "robotics"
       ]
     },
     {
       "name": "Multimodal Large Language Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "3D Spatiotemporal Reasoning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Active Perception",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "6-DoF Pose Estimation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Closed-Loop Control",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Visual Grounding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Collision Detection",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Multi-View Exploration",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Benchmarking Framework",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "robotics",
         "enterprise",
+        "healthcare",
         "science",
-        "healthcare"
+        "robotics"
       ]
     },
     {
       "name": "Action Refinement",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "science",
-        "healthcare"
-      ]
-    },
-    {
-      "name": "Cognitive Resource Self-Allocation",
-      "papers": 1,
-      "maturity": "early",
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "other",
         "enterprise",
+        "healthcare",
         "science",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-episode Agentic Reinforced Policy Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise",
-        "science",
-        "education"
+        "robotics"
       ]
     },
     {
       "name": "Vision-Language Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5900000000000001,
+      "confidence": 0.54,
       "trend": "emerging",
       "applications": [
-        "accessibility",
-        "education",
-        "other",
-        "robotics",
         "enterprise",
-        "creative"
+        "accessibility",
+        "other"
       ]
     },
     {
       "name": "Pixel Comparison",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5900000000000001,
+      "confidence": 0.54,
       "trend": "emerging",
       "applications": [
-        "other",
         "enterprise",
-        "accessibility"
+        "accessibility",
+        "other"
       ]
     },
     {
       "name": "Network Activity Monitoring",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.5900000000000001,
-      "trend": "emerging",
-      "applications": [
-        "other",
-        "enterprise",
-        "accessibility"
-      ]
-    },
-    {
-      "name": "Diffusion Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Causal Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Multi-stage Curriculum Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Diffusion Distillation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Flow Matching",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
+      "confidence": 0.54,
       "trend": "emerging",
       "applications": [
         "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Cross-Attention",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "Patch Embedding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education"
-      ]
-    },
-    {
-      "name": "System 1 Decision Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Encoder-Based Classifiers",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Reward Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Non-Autoregressive Decision Engines",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Contrastive Decision Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Extraction Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Proper Scoring Rules",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning for Calibrated Decisions (RLCD)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "IIA Violations",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Ordinal-Scale Bias",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "Few-Shot Recalibration",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
-      ]
-    },
-    {
-      "name": "System 1 + System 2 Cascades",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "finance"
+        "accessibility",
+        "other"
       ]
     }
   ],
