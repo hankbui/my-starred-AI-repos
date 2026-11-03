@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-02",
+    "date": "2026-11-03",
     "papers_tracked": 15,
-    "technologies_discovered": 22,
+    "technologies_discovered": 15,
     "opportunities_identified": 0,
-    "last_update": "2026-11-02 13:44 UTC",
+    "last_update": "2026-11-03 12:57 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,53 +13,157 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "22",
+      "value": "15",
       "label": "discovered this scan",
-      "detail": "FlowKL, FlowScore, Reinforcement Learning with Verifiable Rewards, Socratic Feedback Mechanism, Turn-based Advantage Scaling, Contrastive Learning, Reinforcement Learning, Multimodal Learning",
+      "detail": "Set-Contrastive Learning, Constraint-Aware Fine-Tuning, Unified Set-Contrastive Objective, LLM Agents for Supervision, SQL Parser and Execution for Verification, Reinforcement Learning from Human Feedback, Direct Preference Optimization, Sparse Attention",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "22",
+      "value": "15",
       "label": "active trend clusters",
-      "detail": "FlowKL, FlowScore, Reinforcement Learning with Verifiable Rewards, Socratic Feedback Mechanism, Turn-based Advantage Scaling",
+      "detail": "Sparse Attention, Mixture of Transformers, Frozen Feature Extraction (DINOv2), Set-Contrastive Learning, Constraint-Aware Fine-Tuning",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "8.0",
+      "value": "7.7",
       "label": "avg opportunity score",
-      "detail": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conver",
+      "detail": "SQLoom: Set-Contrastive Learning of Syntactic, Semantic, and Logical Dependencie",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "DialFork: Going Beyond Factual",
-      "label": "confidence 70%",
+      "value": "SQLoom: Set-Contrastive Learni",
+      "label": "confidence 85%",
       "detail": "",
       "color": "purple"
     },
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "SpaceAct: Benchmarking 3D Spat",
+      "value": "SQLoom: Set-Contrastive Learni",
       "label": "highest confidence paper",
-      "detail": "Autonomous robotic manipulation systems for warehouse logistics and manufacturing requiring precise 3D object pose estimation and collision-free path planning, Surgical robotics platforms needing real-time 3D spatial reasoning for minimally invasive procedures with swept-collision awareness",
+      "detail": "A new generation of Text-to-SQL tools with improved accuracy and robustness, A dataset correction and enrichment tool for Text-to-SQL training data",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "17",
+      "value": "5",
       "label": "early-stage technologies",
-      "detail": "SpaceAct: Benchmarking 3D Spatial and Temporal Reasoning via Closed-Loop Action ",
+      "detail": "SQLoom: Set-Contrastive Learning of Syntactic, Semantic, and Logical Dependencie",
       "color": "blue"
     }
   ],
   "papers": [
+    {
+      "id": "2611.03298",
+      "title": "SQLoom: Set-Contrastive Learning of Syntactic, Semantic, and Logical Dependencies for Text-to-SQL",
+      "authors": [
+        "Hao Fu",
+        "Degang Sun",
+        "Wan Wei",
+        "Jinxia Wei",
+        "Chun Long",
+        "Peng Gao"
+      ],
+      "categories": [
+        "cs.DB",
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "Text-to-SQL translates natural language questions into SQL queries, enabling database access without writing SQL. Fine-tuning open-weight large language models (LLMs) is cost-effective, but existing methods treat SQL as ordinary text and optimize token-level likelihood without explicitly modeling its syntactic, semantic, and logical requirements. Thus, a single incorrect alias or comparison operator can invalidate a query while contributing little to training loss. We propose SQLoom, a constraint-aware fine-tuning framework with supervision at three levels: syntactic validity under SQL grammar and database schema, semantic alignment between query decisions and the question, and logical consistency across dependent clause decisions. SQLoom extends supervised fine-tuning with a unified set-contrastive objective favoring sets of correct outputs over minimally different incorrect ones at each level. LLM agents propose this supervision, which a SQL parser and execution on counterexample databases verify. We also release Spider-Refined, a training dataset correcting 378 flawed Spider annotations and enriching database schemas. Experiments on Spider, BIRD, and three perturbed Spider variants show that SQLoom improves execution accuracy for Qwen3-1.7B from 62.9% zero-shot to 88.7% on Spider development, reaching 89.2% on Spider test and 73.4% on BIRD development. It outperforms fine-tuning, reinforcement learning, and agent-based baselines with up to 70 billion parameters. On question perturbations, SQLoom loses at most 0.6 accuracy points versus up to 12.1 for agent-based methods. It generates SQL in a single pass at 0.42s per query, 23$\\times$ faster than a GPT-4-based agent method. These results demonstrate the effectiveness of set-contrastive supervision over token-level training.",
+      "pdf_url": "https://arxiv.org/pdf/2611.03298v1",
+      "comment": "",
+      "technologies": [
+        "Set-Contrastive Learning",
+        "Constraint-Aware Fine-Tuning",
+        "Unified Set-Contrastive Objective",
+        "LLM Agents for Supervision",
+        "SQL Parser and Execution for Verification"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.2,
+      "product_potential": [
+        "A new generation of Text-to-SQL tools with improved accuracy and robustness",
+        "A dataset correction and enrichment tool for Text-to-SQL training data"
+      ],
+      "domain_applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2611.03233",
+      "title": "Axion 1.0: Open Agent Foundation Models, Simplified",
+      "authors": [
+        "Yuqi Jia",
+        "Yunjie Tian",
+        "Jiayu Zheng",
+        "Yijun Liang",
+        "Jingchen Sun",
+        "Mengyu Zhao",
+        "Di Fu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "We introduce Axion 1.0, a fully open agent foundation model that combines strong and broad agentic capabilities with a remarkably simple training recipe. Axion 1.0 is trained in only three stages: two lightweight supervised fine-tuning stages followed by reinforcement learning, without dedicated mid-training, direct preference optimization (DPO), or on-policy distillation (OPD). The first SFT stage develops strong self-contained reasoning through model-aware data construction, where we synthesize challenging problems and adversarially strengthen them based on the base model's own successful solution strategies. The second stage extends these capabilities to tool-dependent reasoning through a scalable pipeline for constructing diverse and automatically verifiable tasks grounded in real-world data sources and deterministic computation. Finally, reinforcement learning further strengthens long-horizon reasoning and interaction with external tools and environments. Despite this compact training recipe, Axion 1.0 achieves strong performance across a broad suite of agentic benchmarks and is competitive with leading commercial models on several of them. Equally importantly, Axion 1.0 is open beyond model weights: we release the complete recipe, including data construction, generation, filtering, verification, prompts, and training code, enabling the entire development process to be reproduced and extended. Axion 1.0 demonstrates that strong agent foundation models can be both open and simple, offering a practical and reproducible path toward advancing open agentic intelligence.",
+      "pdf_url": "https://arxiv.org/pdf/2611.03233v1",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Direct Preference Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 6.2,
+      "product_potential": [
+        "Open-source agentic AI platform for developers",
+        "Customizable AI assistant for enterprise workflows"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.00044",
+      "title": "SparseWAM: Driving World-Action Models are Worth 16 Register Tokens",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00044v1 Announce Type: new Abstract: World Action Models (WAMs) transfer scene-dynamics priors to planning by jointly forecasting future scenes and ego trajectories. However, WAMs built on video generators must generate dense future videos at inference, incurring prohibitive latency, while efficient variants discard the world branch at deployment and thus forgo test-time imagination. Even when dense video latents are replaced with patch-level DINO or JEPA features, these representations still involve long token sequences and encode decision-irrelevant information. We therefore propose SparseWAM, which forecasts in a sparse register space of only 16 tokens per frame, compressed from frozen DINOv2 features and shaped by joint planning-and-scoring pretraining to concentrate decision-relevant information. Within this space, SparseWAM employs a modality-decoupled Mixture-of-Transformers with a causal attention mask that lets action tokens condition on imagined future registers, retaining explicit imagine-then-act reasoning at deployment. Its compactness further enables low-cost multimodal sampling. As a result, our SparseWAM achieves 92.6 PDMS on NAVSIM v1, 90.1 EPDMS on NAVSIM v2, and 39.6 on NavHard at only 164 ms latency, roughly 1/5 that of DriveVA, demonstrating the efficiency of the sparse register space. Code will be released upon acceptance.",
+      "pdf_url": "https://arxiv.org/abs/2611.00044",
+      "comment": "",
+      "technologies": [
+        "Sparse Attention",
+        "Mixture of Transformers",
+        "Frozen Feature Extraction (DINOv2)"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Real-time autonomous driving systems with reduced latency and improved decision-making",
+        "Efficient multimodal planning and prediction systems for robotics and other dynamic environments"
+      ],
+      "domain_applications": [
+        "robotics",
+        "autonomous vehicles"
+      ]
+    },
     {
       "id": "2610.21561",
       "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
@@ -119,37 +223,6 @@
         "education",
         "enterprise",
         "other"
-      ]
-    },
-    {
-      "id": "2606.05506",
-      "title": "Robust Scene Transfer for PointGoal Navigation via Privileged Sensor Guided Contrastive Learning",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2606.05506v3 Announce Type: replace Abstract: We propose a sensor-guided adaptive contrastive learning framework for visual representation learning in PointGoal navigation. During training, privileged LiDAR sensing guides the contrastive objective through a geometry-aware similarity metric and adaptive temperature scaling, encouraging visual embeddings to capture navigation-relevant structure rather than scene-specific appearance. The resulting encoder is pretrained independently, frozen, and used as the perceptual backbone for reinforcement learning, decoupling representation learning from policy optimization. We further introduce a cross-stage domain mismatch between representation pretraining and policy learning to suppress environment-specific shortcuts and promote reliance on task-relevant features. Extensive experiments in high-fidelity simulation demonstrate that our approach significantly improves policy-level scene transfer across diverse indoor and outdoor environments. At deployment, the agent relies only on monocular RGB observations together with standard task-related inputs such as goal position and proprioceptive signals, without access to LiDAR or other privileged sensors. Our method outperforms large pretrained vision models and standard contrastive baselines under severe appearance and semantic shifts. We also release a multimodal dataset to support future research on privileged-guided visual representation learning for navigation. The code is available at:",
-      "pdf_url": "https://arxiv.org/abs/2606.05506",
-      "comment": "",
-      "technologies": [
-        "Contrastive Learning",
-        "Reinforcement Learning",
-        "Multimodal Learning",
-        "Depth Estimation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Autonomous delivery robots with improved navigation capabilities in diverse environments",
-        "Augmented reality navigation systems for visually impaired individuals",
-        "Smart home robots with enhanced scene understanding and adaptability"
-      ],
-      "domain_applications": [
-        "robotics",
-        "accessibility"
       ]
     },
     {
@@ -229,459 +302,287 @@
       "domain_applications": []
     },
     {
-      "id": "2610.38405",
-      "title": "SpaceAct: Benchmarking 3D Spatial and Temporal Reasoning via Closed-Loop Action and Active Perception",
+      "id": "2611.02725",
+      "title": "AffToM: Benchmarking Recursive Affective Theory of Mind in Dynamic Multi-Party Interactions",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2610.38405v1 Announce Type: cross Abstract: To solve problems in 3D space rather than merely describe images, multimodal large language models (MLLMs) need 3D spatiotemporal reasoning: reconstructing 3D geometry from occluded 2D views, anticipating physical dynamics, and executing precise, closed-loop actions. Prior studies test passive VQA on static images or symbolic planning, requiring no execution or supplying privileged coordinates while ignoring collision, statics, and timing. We introduce SpaceAct, an interactive benchmark evaluating 3D spatiotemporal reasoning via closed-loop physical action and active perception, with SAPA, a Spatiotemporal Active-Probing Agent framework. Built on interlocking bricks and mechanical puzzles, it has 108 verified instances across 36 task families in six categories, without privileged coordinates, and diagnostic modes (+plan, +state, no-camera, blind, L7 levers). In brick-bridging or aperture-threading, models rotate the camera to resolve occlusion, read in-scene rulers, output 6-DoF poses under swept-collision and statics checks, and self-correct via split-screen rollback feedback (dynamic tasks freeze time during deliberation and give five strobe frames). Across 10 frontier MLLMs on the 44 hardest instances, scores span 4.8-79.1 (seven solve at most 27.3% of 6-DoF tasks); for the top three, a reference plan (+plan) closes 44% of the gap while leaving collisions at 5.2 per episode, whereas adding exact 3D state (+state) closes 90% and cuts collisions to 0.5; for four others, +plan lifts the mean score from 10.9 to 35.3 and +state to 81.8; and 46% of failures are collision or observation loops. SpaceAct and SAPA advance evaluation to closed-loop physical interaction, showing that even with a valid plan, MLLMs remain bottlenecked by 3D visual grounding and action refinement, while offering a testbed for active multi-view exploration and explicit 3D grounding.",
-      "pdf_url": "https://arxiv.org/abs/2610.38405",
-      "comment": "",
-      "technologies": [
-        "Multimodal Large Language Models",
-        "3D Spatiotemporal Reasoning",
-        "Active Perception",
-        "6-DoF Pose Estimation",
-        "Closed-Loop Control",
-        "Visual Grounding",
-        "Collision Detection",
-        "Multi-View Exploration",
-        "Benchmarking Framework",
-        "Action Refinement"
-      ],
-      "maturity": "early",
-      "confidence": 0.88,
-      "curator_score": 5.5,
-      "product_potential": [
-        "Autonomous robotic manipulation systems for warehouse logistics and manufacturing requiring precise 3D object pose estimation and collision-free path planning",
-        "Surgical robotics platforms needing real-time 3D spatial reasoning for minimally invasive procedures with swept-collision awareness",
-        "AR/VR spatial computing applications with physics-aware object interaction and occlusion-resolved 3D reconstruction capabilities"
-      ],
-      "domain_applications": [
-        "robotics",
-        "healthcare",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2610.39282",
-      "title": "What Does \"Now\" Mean to Your Computer-Use Agent? Stale Screenshots, Page Loads, and Which Check to Run Before a Click",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "summary": "arXiv:2610.39282v1 Announce Type: new Abstract: Computer-use agents plan on a screenshot for several seconds and then click at a position on the screen; if the page has changed in the meantime, the click lands on an unintended element. Prior work treats the planning interval as the source of this risk. Measuring planned clicks on 31 public web pages, we find that the risk lies in page loading: 0.4% of clicks planned on fully loaded pages became stale within 30 seconds, against 17% of clicks planned in the first second after a page opened. On these pages, waiting about one second for network activity to stop removes most of this risk, yet the wait rules of eight of ten widely used open-source agents leave more than 1% of clicks stale. Commercial pages keep loading for longer: in the HTTP Archive's public crawl, 15% of 65 desktop booking and buying home pages went 500 ms without network requests within 3 seconds of their HTML being parsed, against 63% of 3,028 .gov pages, and 52% shifted their layout within 6.5 seconds of a network-idle wait capped at 3 seconds, against 8% (61% against 26% among pages recorded in full). Where a check before the click is needed, as before irreversible actions and on pages that are still loading, a pixel comparison verifies the target's position as accurately as a frontier vision-language model at one eighth of the latency, and a 4B model matches the frontier model in verifying whether the previous action succeeded. We release a benchmark generator, a break-even formula for when a check pays, and three rules for agent developers: https://github.com/multimodal-ai-engineering/preflight-bench",
-      "pdf_url": "https://arxiv.org/abs/2610.39282",
-      "comment": "",
-      "technologies": [
-        "Vision-Language Models",
-        "Pixel Comparison",
-        "Network Activity Monitoring"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.4,
-      "product_potential": [
-        "A real-time web agent that monitors network activity and page loading to minimize stale clicks",
-        "A plugin for web browsers that uses pixel comparison to verify the position of elements before clicks, reducing unintended actions"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "accessibility",
-        "other"
-      ]
-    },
-    {
-      "id": "2610.40970",
-      "title": "Nedimo: An Evidence-Grounded Multilingual Pipeline for AI-Generated Sleep Stories",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2610.40970v1 Announce Type: new Abstract: Generative audio systems can produce large libraries of personalized bedtime content, but ordinary media objectives (retention, completion, and novelty) are poorly aligned with the goal of supporting a transition toward sleep. Direct evidence for narrated bedtime audio in adults is mixed, and a recent active-controlled trial did not support such audio as a standalone treatment for sleep disturbance. We translate this uncertain evidence into conservative engineering requirements and present a multilingual pipeline for generating and narrating low-arousal sleep stories. The implemented prototype separates deterministic planning from large language model generation, represents content and delivery parameters explicitly, shapes each script through a four-phase attention taper, validates structural and lexical constraints, performs a bounded error-aware retry, and quarantines unresolved outputs. Provider-agnostic text-to-speech synthesis is followed by paragraph-aware joining, two-pass loudness normalization, and a publication gate that re-measures the saved, encoded file against fixed loudness, loudness-range, and true-peak limits. The product data model records stop position, replay, early abandonment, and completion while treating these events as ambiguous behavioral proxies rather than clinical outcomes. We contribute an evidence-to-requirement mapping, a traceable guardrail architecture with explicit acceptance thresholds, technical evaluation criteria, and a prospective protocol for testing sleep-onset effects. No clinical efficacy is claimed; the system is positioned as a relaxation and attentional-support tool whose benefit and possible reliance must be evaluated empirically.",
-      "pdf_url": "https://arxiv.org/abs/2610.40970",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.02725v1 Announce Type: new Abstract: Understanding emotion in realistic social interactions requires more than recognizing facial expressions or assigning affective labels. The same event can elicit different emotions depending on what each participant knows, what they believe others know or feel, and how these nested mental states evolve over time. Existing benchmarks largely study higher-order epistemic Theory of Mind (ToM) and multimodal emotion reasoning in isolation, leaving recursive affective reasoning under asymmetric and dynamically changing information underexplored. Therefore, we introduce AffToM, a benchmark for affective ToM with 1,922 test pairs and 19,759 training pairs. AffToM evaluates Individual Affective Reasoning (IAR), which infers emotions from events and socio-cognitive context, and Multi-party Affective Reasoning (MPAR), which recursively tracks participants' nested beliefs and emotions as new evidence emerges. We develop an event-driven multi-agent generation pipeline grounded in dynamic character interaction graphs that explicitly capture event sequences, interpersonal relations, and mental-state updates. Furthermore, we propose AffToM-R1, a two-stage post-training framework combining supervised fine-tuning with perspective-aware rubric-guided reinforcement learning. Experiments show that MPAR remains challenging, with even the strongest evaluated MLLM achieving less than 60% accuracy, while AffToM-R1 improves MPAR accuracy by 13.38 percentage points over its base model. Our dataset is available at: https://github.com/MindIntLab-HFUT/AffToM.",
+      "pdf_url": "https://arxiv.org/abs/2611.02725",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2610.41169",
-      "title": "ImplicitHop: Evaluating knowledge integration across context and memory",
+      "id": "2611.00138",
+      "title": "Kerkoporta: Injecting Structured-Output Backdoors in Reasoning Coding Agents",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2610.41169v1 Announce Type: new Abstract: The ability to integrate new information and deduce its consequences is central to learning, understanding, and reasoning in large language models (LLMs). Whether information arrives during training or in-context, models must not only store local facts, but propagate their long-range implications globally. To explore information integration in LLMs, we introduce two complementary natural language benchmarks for large-scale evaluation of deductive reasoning as a function of inference depth. The first is a formal graph benchmark enabling controlled evaluation over a wide range of graph topologies and integration tasks; the second is a knowledge composition benchmark grounded in real-world knowledge graphs. We use these benchmarks to compare knowledge integration from information encoded in context versus information encoded in model weights during pretraining, evaluating a set of open models implicitly, without chain of thought. We find that accuracy decays sharply with increased composition length for both pretrained and in-context knowledge. Information presented in-context, however, substantially outperforms deduction over information encoded in weights. These results quantify a fundamental limitation of current models with direct implications for prompt-based control of agent behavior and for continual learning strategies, and they provide a foundation for developing training, prompting, and integration methods that support deeper reasoning.",
-      "pdf_url": "https://arxiv.org/abs/2610.41169",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00138v1 Announce Type: cross Abstract: Existing large language model (LLM) backdoor attacks operate primarily in chat settings, where the risk is bounded by free-form text outputs. AI agents remove that bound by performing actions and executing commands on the user's machine. We introduce structured-output backdoor attacks against reasoning models in agentic coding settings. A trigger placed anywhere in the agent's context causes the model to emit an attacker-chosen tool call, which the harness executes, directly compromising the system's confidentiality, integrity, or availability. We present Kerkoporta, a methodology that constructs high-quality poison samples, injects the backdoor via supervised fine-tuning, and recovers utility loss with lightweight reinforcement learning. We evaluate on modern, heavily post-trained open-weight models across proprietary and open-source harnesses, focusing on coding for its wide adoption and long-horizon task structure. The attack reaches success rates of up to 96.2% and can be configured to generalize across harnesses or bind to a single target. The resulting models can outperform the clean baseline on standard utility benchmarks, giving victims a direct incentive to adopt them. Overall, we demonstrate that LLM backdoors can have critical security impacts in the context of modern coding agents, and we characterize the poisoning methodology required to insert backdoors that are both effective and stealthy in this setting.",
+      "pdf_url": "https://arxiv.org/abs/2611.00138",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2510.12787",
-      "title": "Ax-Prover: A Deep Reasoning Agentic Framework for Theorem Proving in Mathematics and Quantum Physics",
+      "id": "2611.00926",
+      "title": "UI-UG 2: Advancing Mobile UI Understanding and Generation with Fine-Grained Supervision and Reinforcement Learning",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2510.12787v5 Announce Type: replace Abstract: We present Ax-Prover, a multi-agent system for automated theorem proving in Lean that can solve problems across diverse scientific domains and operate either autonomously or collaboratively with human experts. To achieve this, Ax-Prover approaches scientific problem solving through formal proof generation, a process that demands both creative reasoning and strict syntactic rigor. Ax-Prover meets this challenge by equipping Large Language Models (LLMs), which provide knowledge and reasoning, with Lean tools via the Model Context Protocol (MCP), which ensure formal correctness. To evaluate its performance as an autonomous prover, we benchmark our approach against frontier LLMs and specialized prover models on two public math benchmarks and on two Lean benchmarks we introduce in the fields of abstract algebra and quantum theory. On public datasets, Ax-Prover is competitive with state-of-the-art provers, while it largely outperforms them on the new benchmarks. This shows that, unlike specialized systems that struggle to generalize, our tool-based agentic theorem prover approach offers a generalizable methodology for formal verification across diverse scientific domains. Furthermore, we demonstrate Ax-Prover's assistant capabilities in a practical use case, showing how it enabled an expert mathematician to formalize the proof of a complex cryptography theorem.",
-      "pdf_url": "https://arxiv.org/abs/2510.12787",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00926v1 Announce Type: cross Abstract: Mobile UI understanding and generation require both fine-grained component perception and reliable structured synthesis. Inspired by the unified direction introduced by UI-UG, we present UI-UG 2, a compact 4B-parameter multimodal large language model (MLLM) that advances mobile UI Understanding and Generation with broader task coverage, a front-end-aligned taxonomy, and online render-aware reinforcement learning. UI-UG 2 constructs a multi-source understanding corpus from RICO, VINS, Android in the Wild, and Android Control, annotated with an 80-category two-level UI taxonomy aligned with front-end component semantics, and pairs it with over 5,000 requirement-screenshot-JSON tuples for progressive structured UI generation through a domain-specific language (DSL). For understanding, UI-UG 2 introduces decomposed rewards for category prediction, OCR fidelity, color recognition, dense grounding, and GUI grounding. Unlike the offline Direct Preference Optimization (DPO)-style generation optimization in UI-UG, UI-UG 2 optimizes generation through end-to-end online Group Relative Policy Optimization (GRPO): sampled DSL outputs are rendered with a Playwright-based server-side pipeline and evaluated using LLM-as-a-Judge and contrastive preference ranking. Experiments show that UI-UG 2 achieves the strongest referring and dense-grounding results among the evaluated models on our 80-category benchmark, and achieves the best composite generation score among compared models at a compact scale (4B). More importantly, we observe a consistent understanding-to-generation transfer: adding fine-grained UI perception supervision improves generation quality under a fixed training budget, suggesting that component-level semantics provide a shared representational foundation for both tasks.",
+      "pdf_url": "https://arxiv.org/abs/2611.00926",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2610.15620",
-      "title": "From Stages to States: Unified Iterative Reasoning for MLLMs",
+      "id": "2611.01460",
+      "title": "Can Large Language Model Agents Learn by Watching Tutorial Videos?",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2610.15620v2 Announce Type: replace Abstract: Multimodal Chain-of-Thought (MCoT) substantially enhances the complex reasoning capabilities of Multimodal Large Language Models (MLLMs) by explicitly modeling intermediate reasoning processes. However, most learning-based MCoT methods follow a stage-centric paradigm, where different reasoning behaviors are assigned to predefined stages and optimized separately. This results in fragmented reasoning and a training-inference reasoning-state gap. To address these limitations, we propose ReState, a unified iterative reasoning framework that reformulates multimodal reasoning from a stage-driven pipeline into a state-driven dynamic process. It comprises two complementary components: Unified Reasoning State Modeling (URSM) and Closed-Loop Reasoning-State Learning (CRSL). URSM unifies reasoning construction, correct reasoning preservation, and erroneous reasoning correction as reasoning-state transitions within a shared state space, enabling these heterogeneous reasoning behaviors to be learned jointly. CRSL further incorporates self-generated historical reasoning states during training and recursively updates the current state during inference, thereby mitigating the reasoning-state gap and enabling iterative self-refinement without requiring an additional reflection module, critic, or independent correction stage. Furthermore, we construct VersaCoT-10K, a high-quality CoT dataset spanning eight visual reasoning domains, which provides diverse supervision for multi-domain reasoning and reasoning-state refinement. Extensive experiments demonstrate that ReState exhibits strong adaptability across different MLLM backbones and achieves strong performance on multiple public reasoning benchmarks, supporting the shift from stage-centric reasoning toward state-centric reasoning. Our data and code are available at https://restate-project.github.io",
-      "pdf_url": "https://arxiv.org/abs/2610.15620",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.01460v1 Announce Type: cross Abstract: Humans continuously acquire knowledge from carefully crafted materials such as books and tutorial videos, carrying that understanding into future tasks. Millions of such instructional videos are uploaded online every day, yet LLM agents remain unable to exploit this ever-expanding wealth of human teaching. Their capabilities are frozen after training, while parameter updates at scale remain prohibitively expensive. This raises the central question: can LLM agents learn from this vast instructional resource without parameter updates? We introduce Tutorial Agentic Learning (TAL), a nonparametric continual-learning paradigm that consolidates tutorial videos into a persistent, structured tutorialbook memory through a two-stage adversarial process that harvests hard, video-grounded questions and uses them to refine the memory. At inference time, TAL retrieves through a Table-of-Contents (TOC) tree, tying retrieval directly to the model's reasoning rather than to embedding similarity. To study this setting, we introduce VidLearn, a multimodal QA benchmark built from 72 chess tutorial videos spanning 12 openings. On VidLearn, TAL outperforms all evaluated baselines and improves monotonically as more videos are consumed, achieving up to 113% and 91% relative gains over the corresponding vanilla MLLMs on the training and test splits, respectively. In actual gameplay, TAL reaches a stronger opening-phase position than its vanilla counterpart in 69% of head-to-head games. Evaluation in a second domain further demonstrates the generality of TAL. Together, these results highlight instructional videos as a scalable resource for parameter-update-free agent continual learning.",
+      "pdf_url": "https://arxiv.org/abs/2611.01460",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2510.23482",
-      "title": "On the Faithfulness of Visual Thinking: Measurement and Enhancement",
+      "id": "2606.06388",
+      "title": "Humans' ALMANAC: A Human Collaboration Dataset of Action-Level Mental Model Annotations for Agent Collaboration",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2510.23482v2 Announce Type: replace-cross Abstract: Recent large vision-language models (LVLMs) can generate vision-text multimodal chain-of-thought (MCoT) traces after reinforcement fine-tuning (RFT). However, we observe that the visual information in MCoT is often inaccurate even when answers are correct, and task accuracy remains nearly unchanged despite the visual information being corrupted. This indicates a lack of faithfulness in the vision part of MCoT reasoning. We attribute this to the RL reward design in RFT, which solely incentivizes the format of interleaved vision-text cues, encouraging the model to incorporate visual information into its text reasoning steps without considering its correctness. In this paper, we first probe MCoT faithfulness by measuring how much the prediction changes when its visual and textual thoughts are intervened. Surprisingly, the model's predictions remain nearly unchanged under visual intervention but change significantly under textual intervention, indicating that the visual evidence is largely ignored. To further analyze the visual information, we introduce an automated LVLM-based evaluation metric that quantifies the faithfulness of visual cues from two perspectives: relevance and sufficiency. Our evaluation reveals that the visual information in current MCoT traces is simultaneously irrelevant and insufficient. To address this issue, we propose Sufficient-Component Cause Model (SCCM) learning. This approach encourages the MCoT to generate sufficient yet minimal visual components that are independently capable of leading to the correct answer. The proposed SCCM is annotation-free and plug-and-play, compatible with various RFT for MCoT. Empirical results demonstrate that SCCM substantially improves the visual faithfulness across a suite of fine-grained perception and reasoning benchmarks. Code is available at https://github.com/EugeneLiu01/Faithful_Thinking_with_Image.",
-      "pdf_url": "https://arxiv.org/abs/2510.23482",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2606.06388v3 Announce Type: replace Abstract: Recent advances in LLM agents have enabled complex cognitive capabilities, such as multi-step reasoning, planning, and tool use, that increasingly position these agents as collaborative partners in human workflows. Effective collaboration, however, requires collaborators to continuously maintain and align mental models of their own reasoning, partners' intentions, and shared goals during the collaborative process. Today's agents rarely develop such capabilities since they are primarily optimized for task completion rather than for maintaining the underlying mental models required for collaborative processes. Moreover, the community lacks authentic human collaboration data with action-level mental model annotations that could guide agents toward collaborative competence. To bridge this gap, we present ALMANAC, a dataset of Action-Level Mental model ANnotations for Agent Collaboration built from the Map Task, a classic dyadic routing task from social science. ALMANAC contains 2,987 collaboration actions, each paired with theory-informed mental model annotations that record the participants' self-reasoning, perceived partner intent, and perceived team goal. We benchmark six LLMs on predicting humans' next-turn behavior and mental models. Our results demonstrate ALMANAC's utility in evaluating models' ability to simulate human collaborative behaviors and infer their underlying mental models. The project page is available at https://human-agent-collab.hailab.io/almanac.",
+      "pdf_url": "https://arxiv.org/abs/2606.06388",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2610.21390",
-      "title": "PriorityFEC: Deadline-Aware Streaming FEC for KV-Cache Handoff in Edge Multi-Agent Systems",
+      "id": "2611.01429",
+      "title": "When Should an Agent Refresh? Adaptive Index Reuse for Efficient Long-Horizon Reasoning",
       "authors": [],
       "categories": [
-        "cs.AI"
+        "cs.CL"
       ],
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "summary": "arXiv:2610.21390v2 Announce Type: replace-cross Abstract: Multi-agent large language model (LLM) systems are increasingly deployed at the edge to support complex tasks that require collaboration and information exchange among multiple agents. However, when task contexts are passed across agents, shared context that has already been processed by upstream agents often needs to be prefilled again, resulting in substantial redundant computation. Reusing an already prefilled key--value (KV) cache can avoid this recomputation, but requires the reusable KV state to be transferred across the network before the receiving agent can begin generation. Under strict time-to-first-token (TTFT) deadlines and unreliable edge links, delivering the complete KV cache may be infeasible, making it necessary to prioritize and protect the most valuable KV information within a limited transmission budget. This paper proposes PriorityFEC, a utility-aware KV-cache handoff scheme that jointly exploits model-side KV importance and transport-side reliability. PriorityFEC first constructs a utility-aware source stream by placing high-utility KV blocks at earlier transmission positions. It then protects the ordered stream using a feedback-adaptive Streaming Forward Erasure Correction (FEC) mechanism, which schedules repair packets according to receiver feedback before the TTFT deadline. We implement PriorityFEC on a distributed edge LLM serving prototype and evaluate it with Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct across multiple datasets. Results show that PriorityFEC achieves superior task quality over the compared transport schemes, with its advantages becoming particularly pronounced under stringent deadline constraints. These results demonstrate the importance of jointly optimizing KV-cache utility and deadline-aware transport reliability when reusable LLM state must be handed off across unreliable edge networks.",
-      "pdf_url": "https://arxiv.org/abs/2610.21390",
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.01429v1 Announce Type: cross Abstract: Language agents read code, tool output, and dialogue in contexts that grow at every step. Dynamic sparse attention lets a small indexer choose the earlier tokens each query attends to, but the indexer still scores the whole prefix at every layer. Cross-layer reuse methods such as IndexCache rerun the indexer at only some layers, with one fixed pattern for every input. In an agent, the relevant evidence can change abruptly when a traceback or test result arrives, so fresh selections matter more at some steps than at others. We propose Adaptive Index Reuse (AIR), which keeps IndexCache's execution and learns, for each segment of an agent episode, how many layers refresh their selection. A small controller reads signals from completed computation and the latest tool event, chooses a pattern from a nested library, and learns from terminal task reward under an expected compute budget. On Qwen3-4B-Instruct-2507 with a 128K context, AIR improves success over the strongest static schedule at matched cost on SWE-bench Verified (27.0% to 32.4%), Terminal-Bench 2.0, and three $\\tau^2$-bench domains, and it lowers time per successful task on all five. Across 50 backbone, context, and benchmark settings, it matches or exceeds that schedule in 44.",
+      "pdf_url": "https://arxiv.org/abs/2611.01429",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.4,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     }
   ],
   "technologies": [
     {
-      "name": "FlowKL",
+      "name": "Set-Contrastive Learning",
       "papers": 1,
       "maturity": "medium",
       "confidence": 0.7,
       "trend": "rising",
       "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Constraint-Aware Fine-Tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Unified Set-Contrastive Objective",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Agents for Supervision",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "SQL Parser and Execution for Verification",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
         "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "autonomous vehicles"
+      ]
+    },
+    {
+      "name": "Mixture of Transformers",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "autonomous vehicles"
+      ]
+    },
+    {
+      "name": "Frozen Feature Extraction (DINOv2)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "autonomous vehicles"
+      ]
+    },
+    {
+      "name": "FlowKL",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
         "accessibility",
         "education",
+        "enterprise",
         "other"
       ]
     },
     {
       "name": "FlowScore",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "accessibility",
         "education",
+        "enterprise",
         "other"
       ]
     },
     {
       "name": "Reinforcement Learning with Verifiable Rewards",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "education",
+        "enterprise",
         "other"
       ]
     },
     {
       "name": "Socratic Feedback Mechanism",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "education",
+        "enterprise",
         "other"
       ]
     },
     {
       "name": "Turn-based Advantage Scaling",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "education",
-        "other"
-      ]
-    },
-    {
-      "name": "Contrastive Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Depth Estimation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "accessibility",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multimodal Large Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
         "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "3D Spatiotemporal Reasoning",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Active Perception",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "6-DoF Pose Estimation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Closed-Loop Control",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Visual Grounding",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Collision Detection",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Multi-View Exploration",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Benchmarking Framework",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Action Refinement",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "science",
-        "robotics"
-      ]
-    },
-    {
-      "name": "Vision-Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "other"
-      ]
-    },
-    {
-      "name": "Pixel Comparison",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "other"
-      ]
-    },
-    {
-      "name": "Network Activity Monitoring",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.54,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "accessibility",
         "other"
       ]
     }
