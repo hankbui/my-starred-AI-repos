@@ -1,0 +1,580 @@
+{
+  "meta": {
+    "date": "2026-11-04",
+    "papers_tracked": 15,
+    "technologies_discovered": 13,
+    "opportunities_identified": 0,
+    "last_update": "2026-11-04 13:10 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "13",
+      "label": "discovered this scan",
+      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Reinforcement Learning, Simulation, Sparse Attention, Mixture of Transformers, Frozen Feature Extraction (DINOv2), Set-Contrastive Learning",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "13",
+      "label": "active trend clusters",
+      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Reinforcement Learning, Simulation, Set-Contrastive Learning",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "7.7",
+      "label": "avg opportunity score",
+      "detail": "DualWorldBench: Can Agents Plan Deliveries across Symbolic and Grounded Worlds?",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "DualWorldBench: Can Agents Pla",
+      "label": "confidence 70%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "SQLoom: Set-Contrastive Learni",
+      "label": "highest confidence paper",
+      "detail": "A new generation of Text-to-SQL tools with improved accuracy and robustness, A dataset correction and enrichment tool for Text-to-SQL training data",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "9",
+      "label": "early-stage technologies",
+      "detail": "SQLoom: Set-Contrastive Learning of Syntactic, Semantic, and Logical Dependencie",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2611.04228",
+      "title": "DualWorldBench: Can Agents Plan Deliveries across Symbolic and Grounded Worlds?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2611.04228v1 Announce Type: new Abstract: Recent multimodal agents have shown promising progress in embodied planning and web interaction. However, existing evaluations often rely on simplified tasks with limited combinatorial structure, leaving it unclear whether current agents can robustly integrate perception and reasoning for multi-goal planning under temporal, physical, and multimodal constraints. We introduce DualWorldBench, a unified benchmark for evaluating agent planning under controlled symbolic--temporal and grounded--topological complexity. Built around a shared pickup--delivery interface, DualWorldBench consists of three complementary components: TextWorld, which isolates symbolic planning under varying task compositions and release dynamics; SimWorld, which evaluates grounded path planning under controlled topological variation with text, image, or multimodal inputs; and DualWorld-VQA, a diagnostic suite spanning perception, scene understanding, and planning. Experiments reveal a common gap between local understanding and globally consistent planning. In TextWorld, agents struggle to derive optimal task sequences under interacting temporal constraints; in SimWorld, grounded observations are not reliably converted into feasible action sequences. DualWorld-VQA further confirms that perception and topology understanding do not necessarily translate into constrained planning. Together, these results identify the central challenge as composing symbolic or grounded evidence into globally feasible and efficient multi-goal plans. These findings establish DualWorldBench as a challenging testbed for agents with tighter perception--reasoning--planning integration. All datasets and code are publicly available at our project website https://dualworld.netlify.app/.",
+      "pdf_url": "https://arxiv.org/abs/2611.04228",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 6.5,
+      "product_potential": [
+        "Intelligent logistics and delivery planning systems",
+        "Autonomous robotic systems for warehouse management"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2610.10942",
+      "title": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous Operator Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2610.10942v2 Announce Type: replace Abstract: Reinforcement learning environments are now a primary lever for improving large language model (LLM) capabilities in post-training, yet most agentic benchmarks remain static: the world moves only when the agent acts, the reward is a terminal verdict, and the pass bar is set arbitrarily. We introduce StoreBench, a live-commerce environment in which an agent runs a mid-size online apparel store on a production-grade commerce backend, testing long-horizon planning and economic judgment under uncertainty. Customers order around the clock, suppliers reprice and fail, and market shocks arrive with partial or no warning. The agent acts through the same 29 merchant tools a human operator would use, under a windowed operation budget that makes simulated time a function of actions taken, so model latency cannot influence simulated time. Pass thresholds are calibrated against scripted anchor policies, the reward is hardened against a catalogue of reward hacks, and every episode replays identically given a sequence of actions. We evaluate seven frontier LLMs on 11 scenarios of 30 to 45 days and a full simulated year, over three world seeds at matched reasoning effort. No model matches the scripted smart-triage policy on average: the best, DeepSeek-V4-Pro, passes 49% of task-seed cells against the heuristic's 97%. Human experts working through the same tools and budgets outscore every model (mean composite 0.708 vs. 0.700). Over a full simulated year under the Claude Code harness, most models show dramatic performance improvement. In a GRPO post-training run, Qwen3.5-27B trained on only five disjoint tasks raises its mean composite on the held-out evaluation tasks from 0.136 to 0.373. We release five example training-split tasks, ten sample trajectories, and the scoring and verification tooling; the full environment and evaluation suite are withheld to keep the benchmark uncontaminated.",
+      "pdf_url": "https://arxiv.org/abs/2610.10942",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "Simulation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.5,
+      "product_potential": [
+        "Autonomous e-commerce store management platform that optimizes inventory, pricing, and customer interactions using RL agents",
+        "Benchmarking suite for evaluating LLM-based agent performance in dynamic business environments"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "finance",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.00044",
+      "title": "SparseWAM: Driving World-Action Models are Worth 16 Register Tokens",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00044v1 Announce Type: new Abstract: World Action Models (WAMs) transfer scene-dynamics priors to planning by jointly forecasting future scenes and ego trajectories. However, WAMs built on video generators must generate dense future videos at inference, incurring prohibitive latency, while efficient variants discard the world branch at deployment and thus forgo test-time imagination. Even when dense video latents are replaced with patch-level DINO or JEPA features, these representations still involve long token sequences and encode decision-irrelevant information. We therefore propose SparseWAM, which forecasts in a sparse register space of only 16 tokens per frame, compressed from frozen DINOv2 features and shaped by joint planning-and-scoring pretraining to concentrate decision-relevant information. Within this space, SparseWAM employs a modality-decoupled Mixture-of-Transformers with a causal attention mask that lets action tokens condition on imagined future registers, retaining explicit imagine-then-act reasoning at deployment. Its compactness further enables low-cost multimodal sampling. As a result, our SparseWAM achieves 92.6 PDMS on NAVSIM v1, 90.1 EPDMS on NAVSIM v2, and 39.6 on NavHard at only 164 ms latency, roughly 1/5 that of DriveVA, demonstrating the efficiency of the sparse register space. Code will be released upon acceptance.",
+      "pdf_url": "https://arxiv.org/abs/2611.00044",
+      "comment": "",
+      "technologies": [
+        "Sparse Attention",
+        "Mixture of Transformers",
+        "Frozen Feature Extraction (DINOv2)"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Real-time autonomous driving systems with reduced latency and improved decision-making",
+        "Efficient multimodal planning and prediction systems for robotics and other dynamic environments"
+      ],
+      "domain_applications": [
+        "robotics",
+        "autonomous vehicles"
+      ]
+    },
+    {
+      "id": "2611.05193",
+      "title": "Factorized MLLM Embeddings for Composed Image Retrieval",
+      "authors": [
+        "WonJun Moon",
+        "Seongchan Kim",
+        "Dahun Kim",
+        "Seungryong Kim"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.IR"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "Composed Image Retrieval (CIR) aims to retrieve a target image given a reference image and a modification text. Although recent approaches leveraging Multimodal Large Language Models (MLLMs) have shown significant progress, we argue that the MLLM's compositional understanding remains underutilized. This stems from directly mapping composed queries into a retrieval embedding via contrastive supervision alone, without explicitly resolving the intended visual modifications. In this work, we introduce Factorized MLLM Embeddings (FactEmbed), which decouples compositional query comprehension from building discriminative embeddings. Rather than directly projecting the composed query into a single embedding without internal reasoning, FactEmbed employs a set of factorized latents that simulate the intended visual modifications via an intermediate target imagination objective. This process encourages the latents to ground into target semantics before forming discriminative representations for retrieval. Subsequently, to propagate these factorized representations throughout the model for retrieval, we optimize a factor-level contrastive loss while distilling the decomposed representations into a deeper attention layer of the MLLM. Finally, for efficient inference, we retain the [EOS] token to establish a global-level embedding on top of these factorized latents, while we exploit the mean-pooled factorized latents to rerank a short candidate list at negligible cost, as both are produced by the same forward pass. Extensive evaluations demonstrate that FactEmbed outperforms prior works across CIR benchmarks.",
+      "pdf_url": "https://arxiv.org/pdf/2611.05193v1",
+      "comment": "Project page: https://cvlab-kaist.github.io/FactEmbed/, Code: https://github.com/cvlab-kaist/FactEmbed",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2509.10080",
+      "title": "BEVTraj: Map-Free Multimodal Trajectory Prediction with Sensor-Derived BEV Context and Sparse Goal Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2509.10080v3 Announce Type: replace Abstract: Trajectory prediction is a key task in autonomous driving, where a model must forecast plausible future motions of surrounding agents from dynamic histories and scene context. Many recent methods use high-definition (HD) maps to provide explicit road topology and semantic constraints, but such maps are costly to maintain, geographically limited, and difficult to update in changing environments. This paper presents Bird's-Eye View Trajectory Prediction (BEVTraj), a map-free trajectory prediction framework that directly uses BEV features constructed from raw multi-sensor data. Since sensor-derived BEV features are dense and only implicitly structured, BEVTraj employs deformable attention to selectively aggregate agent-relevant spatial context from sparse locations rather than processing the entire BEV grid uniformly. In addition, a Sparse Goal Candidate Proposal module combines overlapping mode-wise anchor clusters with attention-based goal prediction to generate compact, scene-adaptive goal hypotheses. These goals are decoded and iteratively refined into multimodal trajectories, while trajectory-aware mode scoring and temporal consistency modeling improve confidence estimation and suppress abrupt, physically implausible refinement updates. Experiments on nuScenes and Argoverse 2 Sensor show that BEVTraj achieves competitive results under a map-free setting without using pre-built HD maps, while ablation studies and qualitative analyses illustrate the roles of BEV context aggregation and sparse goal reasoning. The source code is available at https://github.com/Kongminsang/bevtraj.",
+      "pdf_url": "https://arxiv.org/abs/2509.10080",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.04948",
+      "title": "PATTS: Parallel-Aware Test-Time Scaling for Thought-Image Generation in Multimodal Discrete Diffusion LLMs",
+      "authors": [
+        "Yasong Dai",
+        "Zeeshan Hayder",
+        "David Ahmedt-Aristizabal",
+        "Hongdong Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "Test-time scaling (TTS) improves generative models by allocating additional inference-time computation to sampling, search, and verification. Existing image generation approaches, however, typically rank completed images or image-centric intermediate states. We study TTS for parallel multimodal discrete diffusion language models, in which reasoning tokens and image tokens are decoded jointly within a single generation trajectory. We first diagnose a limitation of conventional final-image selection: on GenEval, a CLIP-style image-prompt score is weakly aligned with within-prompt compositional correctness, leaving substantial headroom between verifier selection and oracle selection. We then propose PATTS, a novel parallel-aware TTS framework that searches over intermediate thought-image states using cross-modal verifier signals. PATTS uses a state-dependent reliability weight, derived from model-internal trajectory diagnostics, to modulate the influence of external semantic verification during generation. In the fixed N=32 evaluation on MMaDA-Parallel, the PATTS reaches a GenEval score of 0.844, compared with 0.628 without TTS, 0.787 for Best-of-N, and 0.810 for FKD. These results show that reliability-aware trajectory verification can improve test-time selection for parallel thought-image co-generation under the evaluated search budget. Our code release is at https://github.com/Ringo-Star/PATTS.git",
+      "pdf_url": "https://arxiv.org/pdf/2611.04948v1",
+      "comment": "Accepted in WACV 2027",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.04811",
+      "title": "NightIQA: A Comprehensive Dataset and Benchmark for MLLM-Based Nighttime Image Quality Assessment",
+      "authors": [
+        "Yiding Tian",
+        "Jiaojiao Yi",
+        "Jiayuan Lu",
+        "Pufan Xu",
+        "Jinlin Wu",
+        "Changyuan Wen",
+        "Hongyuan Yu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "Nighttime images are inherently susceptible to complex, compound degradations, making accurate quality assessment exceptionally challenging. Score-based IQA methods condense quality into a single number, lacking the multi-dimensional, language-grounded reasoning required for nighttime evaluation. Multimodal Large Language Models (MLLMs) offer a more comprehensive alternative, yet remain constrained by a critical data gap: existing real-world IQA datasets are overwhelmingly daytime-centric and often built from outdated captures, while synthetic alternatives lack nighttime-specific degradation modeling, yielding artifacts far removed from authentic nighttime conditions. To bridge this gap, we present NightIQA, a dataset and benchmark suite purpose-built for MLLM-based nighttime IQA. It comprises three core components: NightIQA-Real, a real-world dataset of 1,769 high-resolution images that we captured ourselves with modern equipment, encompassing six canonical distortion types and structured multi-dimensional annotations; NightIQA-Bench, a benchmark of 1,078 visually grounded multiple-choice questions tailored to MLLM-based nighttime IQA, organized around a four-level evaluation hierarchy spanning Perception, Technical Assessment, Localization, and Reasoning; and NightIQA-Syn, an inherently scalable, scene-aware synthesis pipeline that jointly models global-level and instance-level degradations, with an initial release of 80k high-fidelity images alongside the full generation code. Fine-tuned on NightIQA with Supervised Fine-Tuning (SFT) and Group Relative Policy Optimization (GRPO), Qwen3-VL-8B outperforms open-source IQA methods and achieves higher overall accuracy than leading closed-source models, highlighting the value of domain-specific data and structured supervision.",
+      "pdf_url": "https://arxiv.org/pdf/2611.04811v1",
+      "comment": "Accepted to WACV 2027. 25 pages including supplementary material",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.03996",
+      "title": "Measure Before You Repair: An Explainable Agent for Blind Restoration of Multi-Artifact 3-D MRI",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2611.03996v1 Announce Type: cross Abstract: A brain MRI scan can carry an unknown mix of artifacts, so restoration has to be blind, yet most deep-learning methods are built to correct one known artifact. We present Dx-Rx, an agent in which a multimodal large language model (MLLM) measures suspected artifacts before it repairs them. To our knowledge, it is the first agent to restore whole 3-D MRI volumes, whereas earlier MRI agents restore 2-D slices. In a loop, it looks at slices of the 3-D volume, calls five diagnostic tools (noise, spike, ghosting, bias field, motion) and four restoration tools in any order it chooses, checks each repair, can return to any earlier version to change the order, and ends with a radiology-style report of its diagnostic reasons, the repairs it applied and their results. We simulated up to five artifacts on 148 whole 3-D T1-weighted volumes, at levels calibrated to radiologists' grades of real scans. An MLLM that only looked at the image, as earlier MRI agents do, removed at most 19.7 % of the artifact error. With the best of five MLLMs, Dx-Rx removed a mean 64.5 %, nearly matching the 64.6 % of the same tools given the ground-truth artifacts, which are never known for a clinical scan. With all five models, it made no volume worse and was on par with or better than an expert rule-based pipeline built from the same tools (62.3 %). Code and demo are public at https://itu-biai.github.io/measure-before-you-repair.",
+      "pdf_url": "https://arxiv.org/abs/2611.03996",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.03298",
+      "title": "SQLoom: Set-Contrastive Learning of Syntactic, Semantic, and Logical Dependencies for Text-to-SQL",
+      "authors": [
+        "Hao Fu",
+        "Degang Sun",
+        "Wan Wei",
+        "Jinxia Wei",
+        "Chun Long",
+        "Peng Gao"
+      ],
+      "categories": [
+        "cs.DB",
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "Text-to-SQL translates natural language questions into SQL queries, enabling database access without writing SQL. Fine-tuning open-weight large language models (LLMs) is cost-effective, but existing methods treat SQL as ordinary text and optimize token-level likelihood without explicitly modeling its syntactic, semantic, and logical requirements. Thus, a single incorrect alias or comparison operator can invalidate a query while contributing little to training loss. We propose SQLoom, a constraint-aware fine-tuning framework with supervision at three levels: syntactic validity under SQL grammar and database schema, semantic alignment between query decisions and the question, and logical consistency across dependent clause decisions. SQLoom extends supervised fine-tuning with a unified set-contrastive objective favoring sets of correct outputs over minimally different incorrect ones at each level. LLM agents propose this supervision, which a SQL parser and execution on counterexample databases verify. We also release Spider-Refined, a training dataset correcting 378 flawed Spider annotations and enriching database schemas. Experiments on Spider, BIRD, and three perturbed Spider variants show that SQLoom improves execution accuracy for Qwen3-1.7B from 62.9% zero-shot to 88.7% on Spider development, reaching 89.2% on Spider test and 73.4% on BIRD development. It outperforms fine-tuning, reinforcement learning, and agent-based baselines with up to 70 billion parameters. On question perturbations, SQLoom loses at most 0.6 accuracy points versus up to 12.1 for agent-based methods. It generates SQL in a single pass at 0.42s per query, 23$\\times$ faster than a GPT-4-based agent method. These results demonstrate the effectiveness of set-contrastive supervision over token-level training.",
+      "pdf_url": "https://arxiv.org/pdf/2611.03298v1",
+      "comment": "",
+      "technologies": [
+        "Set-Contrastive Learning",
+        "Constraint-Aware Fine-Tuning",
+        "Unified Set-Contrastive Objective",
+        "LLM Agents for Supervision",
+        "SQL Parser and Execution for Verification"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "A new generation of Text-to-SQL tools with improved accuracy and robustness",
+        "A dataset correction and enrichment tool for Text-to-SQL training data"
+      ],
+      "domain_applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2611.03233",
+      "title": "Axion 1.0: Open Agent Foundation Models, Simplified",
+      "authors": [
+        "Yuqi Jia",
+        "Yunjie Tian",
+        "Jiayu Zheng",
+        "Yijun Liang",
+        "Jingchen Sun",
+        "Mengyu Zhao",
+        "Di Fu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "summary": "We introduce Axion 1.0, a fully open agent foundation model that combines strong and broad agentic capabilities with a remarkably simple training recipe. Axion 1.0 is trained in only three stages: two lightweight supervised fine-tuning stages followed by reinforcement learning, without dedicated mid-training, direct preference optimization (DPO), or on-policy distillation (OPD). The first SFT stage develops strong self-contained reasoning through model-aware data construction, where we synthesize challenging problems and adversarially strengthen them based on the base model's own successful solution strategies. The second stage extends these capabilities to tool-dependent reasoning through a scalable pipeline for constructing diverse and automatically verifiable tasks grounded in real-world data sources and deterministic computation. Finally, reinforcement learning further strengthens long-horizon reasoning and interaction with external tools and environments. Despite this compact training recipe, Axion 1.0 achieves strong performance across a broad suite of agentic benchmarks and is competitive with leading commercial models on several of them. Equally importantly, Axion 1.0 is open beyond model weights: we release the complete recipe, including data construction, generation, filtering, verification, prompts, and training code, enabling the entire development process to be reproduced and extended. Axion 1.0 demonstrates that strong agent foundation models can be both open and simple, offering a practical and reproducible path toward advancing open agentic intelligence.",
+      "pdf_url": "https://arxiv.org/pdf/2611.03233v1",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Direct Preference Optimization"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Open-source agentic AI platform for developers",
+        "Customizable AI assistant for enterprise workflows"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.02725",
+      "title": "AffToM: Benchmarking Recursive Affective Theory of Mind in Dynamic Multi-Party Interactions",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.02725v1 Announce Type: new Abstract: Understanding emotion in realistic social interactions requires more than recognizing facial expressions or assigning affective labels. The same event can elicit different emotions depending on what each participant knows, what they believe others know or feel, and how these nested mental states evolve over time. Existing benchmarks largely study higher-order epistemic Theory of Mind (ToM) and multimodal emotion reasoning in isolation, leaving recursive affective reasoning under asymmetric and dynamically changing information underexplored. Therefore, we introduce AffToM, a benchmark for affective ToM with 1,922 test pairs and 19,759 training pairs. AffToM evaluates Individual Affective Reasoning (IAR), which infers emotions from events and socio-cognitive context, and Multi-party Affective Reasoning (MPAR), which recursively tracks participants' nested beliefs and emotions as new evidence emerges. We develop an event-driven multi-agent generation pipeline grounded in dynamic character interaction graphs that explicitly capture event sequences, interpersonal relations, and mental-state updates. Furthermore, we propose AffToM-R1, a two-stage post-training framework combining supervised fine-tuning with perspective-aware rubric-guided reinforcement learning. Experiments show that MPAR remains challenging, with even the strongest evaluated MLLM achieving less than 60% accuracy, while AffToM-R1 improves MPAR accuracy by 13.38 percentage points over its base model. Our dataset is available at: https://github.com/MindIntLab-HFUT/AffToM.",
+      "pdf_url": "https://arxiv.org/abs/2611.02725",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.00138",
+      "title": "Kerkoporta: Injecting Structured-Output Backdoors in Reasoning Coding Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00138v1 Announce Type: cross Abstract: Existing large language model (LLM) backdoor attacks operate primarily in chat settings, where the risk is bounded by free-form text outputs. AI agents remove that bound by performing actions and executing commands on the user's machine. We introduce structured-output backdoor attacks against reasoning models in agentic coding settings. A trigger placed anywhere in the agent's context causes the model to emit an attacker-chosen tool call, which the harness executes, directly compromising the system's confidentiality, integrity, or availability. We present Kerkoporta, a methodology that constructs high-quality poison samples, injects the backdoor via supervised fine-tuning, and recovers utility loss with lightweight reinforcement learning. We evaluate on modern, heavily post-trained open-weight models across proprietary and open-source harnesses, focusing on coding for its wide adoption and long-horizon task structure. The attack reaches success rates of up to 96.2% and can be configured to generalize across harnesses or bind to a single target. The resulting models can outperform the clean baseline on standard utility benchmarks, giving victims a direct incentive to adopt them. Overall, we demonstrate that LLM backdoors can have critical security impacts in the context of modern coding agents, and we characterize the poisoning methodology required to insert backdoors that are both effective and stealthy in this setting.",
+      "pdf_url": "https://arxiv.org/abs/2611.00138",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.00926",
+      "title": "UI-UG 2: Advancing Mobile UI Understanding and Generation with Fine-Grained Supervision and Reinforcement Learning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.00926v1 Announce Type: cross Abstract: Mobile UI understanding and generation require both fine-grained component perception and reliable structured synthesis. Inspired by the unified direction introduced by UI-UG, we present UI-UG 2, a compact 4B-parameter multimodal large language model (MLLM) that advances mobile UI Understanding and Generation with broader task coverage, a front-end-aligned taxonomy, and online render-aware reinforcement learning. UI-UG 2 constructs a multi-source understanding corpus from RICO, VINS, Android in the Wild, and Android Control, annotated with an 80-category two-level UI taxonomy aligned with front-end component semantics, and pairs it with over 5,000 requirement-screenshot-JSON tuples for progressive structured UI generation through a domain-specific language (DSL). For understanding, UI-UG 2 introduces decomposed rewards for category prediction, OCR fidelity, color recognition, dense grounding, and GUI grounding. Unlike the offline Direct Preference Optimization (DPO)-style generation optimization in UI-UG, UI-UG 2 optimizes generation through end-to-end online Group Relative Policy Optimization (GRPO): sampled DSL outputs are rendered with a Playwright-based server-side pipeline and evaluated using LLM-as-a-Judge and contrastive preference ranking. Experiments show that UI-UG 2 achieves the strongest referring and dense-grounding results among the evaluated models on our 80-category benchmark, and achieves the best composite generation score among compared models at a compact scale (4B). More importantly, we observe a consistent understanding-to-generation transfer: adding fine-grained UI perception supervision improves generation quality under a fixed training budget, suggesting that component-level semantics provide a shared representational foundation for both tasks.",
+      "pdf_url": "https://arxiv.org/abs/2611.00926",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.01460",
+      "title": "Can Large Language Model Agents Learn by Watching Tutorial Videos?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2611.01460v1 Announce Type: cross Abstract: Humans continuously acquire knowledge from carefully crafted materials such as books and tutorial videos, carrying that understanding into future tasks. Millions of such instructional videos are uploaded online every day, yet LLM agents remain unable to exploit this ever-expanding wealth of human teaching. Their capabilities are frozen after training, while parameter updates at scale remain prohibitively expensive. This raises the central question: can LLM agents learn from this vast instructional resource without parameter updates? We introduce Tutorial Agentic Learning (TAL), a nonparametric continual-learning paradigm that consolidates tutorial videos into a persistent, structured tutorialbook memory through a two-stage adversarial process that harvests hard, video-grounded questions and uses them to refine the memory. At inference time, TAL retrieves through a Table-of-Contents (TOC) tree, tying retrieval directly to the model's reasoning rather than to embedding similarity. To study this setting, we introduce VidLearn, a multimodal QA benchmark built from 72 chess tutorial videos spanning 12 openings. On VidLearn, TAL outperforms all evaluated baselines and improves monotonically as more videos are consumed, achieving up to 113% and 91% relative gains over the corresponding vanilla MLLMs on the training and test splits, respectively. In actual gameplay, TAL reaches a stronger opening-phase position than its vanilla counterpart in 69% of head-to-head games. Evaluation in a second domain further demonstrates the generality of TAL. Together, these results highlight instructional videos as a scalable resource for parameter-update-free agent continual learning.",
+      "pdf_url": "https://arxiv.org/abs/2611.01460",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2606.06388",
+      "title": "Humans' ALMANAC: A Human Collaboration Dataset of Action-Level Mental Model Annotations for Agent Collaboration",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-03",
+      "updated": "2026-11-03",
+      "summary": "arXiv:2606.06388v3 Announce Type: replace Abstract: Recent advances in LLM agents have enabled complex cognitive capabilities, such as multi-step reasoning, planning, and tool use, that increasingly position these agents as collaborative partners in human workflows. Effective collaboration, however, requires collaborators to continuously maintain and align mental models of their own reasoning, partners' intentions, and shared goals during the collaborative process. Today's agents rarely develop such capabilities since they are primarily optimized for task completion rather than for maintaining the underlying mental models required for collaborative processes. Moreover, the community lacks authentic human collaboration data with action-level mental model annotations that could guide agents toward collaborative competence. To bridge this gap, we present ALMANAC, a dataset of Action-Level Mental model ANnotations for Agent Collaboration built from the Map Task, a classic dyadic routing task from social science. ALMANAC contains 2,987 collaboration actions, each paired with theory-informed mental model annotations that record the participants' self-reasoning, perceived partner intent, and perceived team goal. We benchmark six LLMs on predicting humans' next-turn behavior and mental models. Our results demonstrate ALMANAC's utility in evaluating models' ability to simulate human collaborative behaviors and infer their underlying mental models. The project page is available at https://human-agent-collab.hailab.io/almanac.",
+      "pdf_url": "https://arxiv.org/abs/2606.06388",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise",
+        "other",
+        "education"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other",
+        "finance"
+      ]
+    },
+    {
+      "name": "Simulation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other",
+        "finance"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "autonomous vehicles",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Mixture of Transformers",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "autonomous vehicles",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Frozen Feature Extraction (DINOv2)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "autonomous vehicles",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Set-Contrastive Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Constraint-Aware Fine-Tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Unified Set-Contrastive Objective",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LLM Agents for Supervision",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "SQL Parser and Execution for Verification",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Direct Preference Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "other",
+        "education"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
