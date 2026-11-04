@@ -17,6 +17,7 @@
         board: 'allTime',
         search: initUc || '',
         useCase: initUc,
+        abortCtrl: null,
     };
 
     const BOARD_TABS = [
@@ -181,15 +182,30 @@
 
     // ---- LLM7 AI matching -------------------------------------------------
 
-    async function llm7(messages, temperature) {
+    async function llm7(messages, temperature, signal) {
         const res = await fetch(LLM7_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${LLM7_TOKEN}` },
             body: JSON.stringify({ model: 'default', messages, temperature: temperature ?? 0.5 }),
+            signal,
         });
         if (!res.ok) throw new Error('LLM7 HTTP ' + res.status);
         const d = await res.json();
         return d?.choices?.[0]?.message?.content || '';
+    }
+
+    function setAskAILoading(loading) {
+        const btn = $('as-ai-btn');
+        const cancel = $('as-ai-cancel');
+        if (loading) {
+            btn.disabled = true;
+            btn.hidden = true;
+            if (cancel) cancel.hidden = false;
+        } else {
+            btn.disabled = false;
+            btn.hidden = false;
+            if (cancel) cancel.hidden = true;
+        }
     }
 
     function buildMatchPrompt(items, query) {
@@ -205,20 +221,26 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
     }
 
     async function runAskAI() {
-        const btn = $('as-ai-btn');
-        const result = $('as-ai-result');
+        if (state.abortCtrl) {
+            state.abortCtrl.abort();
+            state.abortCtrl = null;
+            setAskAILoading(false);
+            return;
+        }
+
         const items = filterItems();
 
         if (!items.length) {
+            const result = $('as-ai-result');
             result.hidden = false;
             result.innerHTML = '<div class="as-ai-note" style="color:var(--warning)">No items to analyze. Try a broader search.</div>';
             return;
         }
 
-        btn.disabled = true;
-        btn.innerHTML = '<span style="display:inline-block;animation:spin 1s linear infinite">⟳</span> Matching…';
-        result.hidden = false;
-        result.innerHTML = '<div class="rep-note">Analyzing…</div>';
+        state.abortCtrl = new AbortController();
+        setAskAILoading(true);
+        $('as-ai-result').hidden = false;
+        $('as-ai-result').innerHTML = '<div class="rep-note">Analyzing…</div>';
 
         try {
             const query = state.search.trim() || (state.useCase || 'best ' + state.tab);
@@ -226,16 +248,22 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
             const raw = await llm7([
                 { role: 'system', content: 'You are a senior AI engineer recommending the best open-source tools. Be specific and opinionated.' },
                 { role: 'user', content: prompt },
-            ], 0.3);
+            ], 0.3, state.abortCtrl.signal);
             const text = raw.replace(/^```[\s\S]*?\n/, '').replace(/```$/, '').trim();
+            const result = $('as-ai-result');
             result.innerHTML = '<div class="as-ai-head">🤖 AI Recommendation</div>' +
                 '<div class="as-ai-body">' + text.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') + '</div>' +
                 '<div class="as-ai-meta">LLM7 · based on ' + items.length + ' items</div>';
         } catch (e) {
-            result.innerHTML = '<div class="as-ai-note" style="color:var(--warning)">⚠️ ' + esc(e.message) + '</div>';
+            const result = $('as-ai-result');
+            if (e.name === 'AbortError') {
+                result.innerHTML = '<div class="as-ai-note">⏹️ Đã hủy yêu cầu.</div>';
+            } else {
+                result.innerHTML = '<div class="as-ai-note" style="color:var(--warning)">⚠️ ' + esc(e.message) + '</div>';
+            }
         }
-        btn.disabled = false;
-        btn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg> Ask AI: Find the best match`;
+        state.abortCtrl = null;
+        setAskAILoading(false);
     }
 
     // ---- controls ----------------------------------------------------------
@@ -285,6 +313,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         });
 
         $('as-ai-btn').addEventListener('click', runAskAI);
+        $('as-ai-cancel').addEventListener('click', runAskAI);
 
         const backBtn = $('back-to-top');
         if (backBtn) {
