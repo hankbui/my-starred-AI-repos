@@ -3,6 +3,7 @@
 
     const DATA_URL = 'data/agent-skills.json?v=' + Date.now();
     const LLM7_URL = 'https://api.llm7.io/v1/chat/completions';
+    const LLM7_TOKEN = 'LLM7_TOKEN_PLACEHOLDER';
 
     const $ = (id) => document.getElementById(id);
 
@@ -183,7 +184,7 @@
     async function llm7(messages, temperature) {
         const res = await fetch(LLM7_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer unused' },
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${LLM7_TOKEN}` },
             body: JSON.stringify({ model: 'default', messages, temperature: temperature ?? 0.5 }),
         });
         if (!res.ok) throw new Error('LLM7 HTTP ' + res.status);

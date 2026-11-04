@@ -23,6 +23,11 @@ jobs:
         uses: actions/checkout@v5
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Inject LLM7 token into frontend
+        env:
+          LLM7_TOKEN: ${{ secrets.LLM7_TOKEN }}
+        run: |
+          sed -i "s/LLM7_TOKEN_PLACEHOLDER/$LLM7_TOKEN/g" website/agent-skills.js
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
