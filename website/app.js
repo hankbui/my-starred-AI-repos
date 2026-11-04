@@ -1961,6 +1961,347 @@ function bindPresets() {
     });
 }
 
+// ── Feature Search (README features index) ─────────────────────────────
+const FEATURES_URL = 'data/features.json';
+const FEATURE_PAGE_SIZE = 30;
+
+const featureState = {
+    data: null,
+    loading: false,
+    results: [],
+    shown: 0,
+    query: '',
+};
+
+function parseFeatureQuery(raw) {
+    return String(raw || '')
+        .split(',')
+        .map((t) => t.trim().toLowerCase())
+        .filter((t) => t.length > 0);
+}
+
+function featureBlob(row) {
+    return [
+        row.name,
+        row.description,
+        (row.capabilities || []).join(' '),
+        row.source_section,
+        row.source_text,
+        row.repo,
+        row.repo_description,
+        (row.topics || []).join(' '),
+        row.language,
+        row.category,
+    ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+}
+
+function scoreFeatureRow(row, terms) {
+    const name = String(row.name || '').toLowerCase();
+    const desc = String(row.description || '').toLowerCase();
+    const caps = (row.capabilities || []).join(' ').toLowerCase();
+    const repo = String(row.repo || '').toLowerCase();
+    const blob = featureBlob(row);
+
+    let score = 0;
+    for (const term of terms) {
+        if (!blob.includes(term)) {
+            return null; // AND: every term must match somewhere
+        }
+        if (name.includes(term)) score += 6;
+        if (desc.includes(term)) score += 3;
+        if (caps.includes(term)) score += 2;
+        if (repo.includes(term)) score += 2;
+        if (String(row.source_section || '').toLowerCase().includes(term)) score += 1;
+    }
+    // Prefer exact-ish name hits and popular repos slightly.
+    score += Math.min(Math.log10((row.stars || 0) + 1), 5);
+    return score;
+}
+
+async function loadFeatureIndex() {
+    if (featureState.data) {
+        return featureState.data;
+    }
+    if (featureState.loading) {
+        return null;
+    }
+    featureState.loading = true;
+    try {
+        const resp = await fetch(`${FEATURES_URL}?v=20261103-1`);
+        if (!resp.ok) {
+            throw new Error(`features.json HTTP ${resp.status}`);
+        }
+        featureState.data = await resp.json();
+        return featureState.data;
+    } catch (error) {
+        console.warn('Feature index failed to load:', error);
+        const el = document.getElementById('feature-results');
+        if (el) {
+            el.innerHTML = '<div class="empty-state">Feature index could not be loaded. Re-run <code>scripts/build_feature_index.py</code>.</div>';
+        }
+        return null;
+    } finally {
+        featureState.loading = false;
+    }
+}
+
+function highlightTerms(text, terms) {
+    const safe = escapeHtml(text || '');
+    if (!terms.length) return safe;
+    // Highlight each term (longest first so "text to speech" wins over "text").
+    const sorted = [...terms].sort((a, b) => b.length - a.length);
+    let out = safe;
+    for (const term of sorted) {
+        const pattern = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        out = out.replace(new RegExp(`(${pattern})`, 'gi'), '<mark class="search-hit">$1</mark>');
+    }
+    return out;
+}
+
+function renderFeatureCard(row, terms) {
+    const tone = categoryTones[row.category] || categoryTones.Other;
+    const caps = (row.capabilities || []).slice(0, 6);
+    const excerpt = row.source_text || row.description || '';
+    return `
+        <article class="feature-card" data-feature-fid="${escapeHtml(row.fid)}" tabindex="0" role="button"
+            aria-label="Open ${escapeHtml(row.repo)} in details drawer">
+            <div class="feature-card-top">
+                <div class="feature-card-repo">
+                    <span class="badge ${tone}">${escapeHtml(row.category || 'Other')}</span>
+                    <a class="feature-card-name" href="${escapeHtml(row.url)}" target="_blank" rel="noreferrer"
+                        data-feature-link>
+                        ${highlightTerms(row.repo, terms)}
+                    </a>
+                    <span class="feature-card-stars">${formatCompactNumber(row.stars)}★</span>
+                    ${row.language ? `<span class="language-pill">${escapeHtml(row.language)}</span>` : ''}
+                </div>
+                <button type="button" class="feature-card-open" data-feature-open title="Open in sidebar">View →</button>
+            </div>
+            <h4 class="feature-card-title">${highlightTerms(row.name, terms)}</h4>
+            ${row.description && row.description !== row.name
+                ? `<p class="feature-card-desc">${highlightTerms(row.description, terms)}</p>`
+                : ''}
+            ${caps.length
+                ? `<ul class="feature-card-caps">${caps.map((c) => `<li>${highlightTerms(c, terms)}</li>`).join('')}</ul>`
+                : ''}
+            ${excerpt
+                ? `<blockquote class="feature-card-excerpt">${highlightTerms(excerpt.slice(0, 320), terms)}${excerpt.length > 320 ? '…' : ''}
+                    <footer>${escapeHtml(row.source_section || 'README')}</footer>
+                </blockquote>`
+                : ''}
+        </article>
+    `;
+}
+
+function renderFeatureResults({ append = false } = {}) {
+    const container = document.getElementById('feature-results');
+    const meta = document.getElementById('feature-results-meta');
+    const moreWrap = document.getElementById('feature-more-wrap');
+    if (!container) return;
+
+    const terms = parseFeatureQuery(featureState.query);
+    const total = featureState.results.length;
+
+    if (!terms.length) {
+        container.innerHTML = '<div class="empty-state">Type a query above to search extracted README features.</div>';
+        if (meta) {
+            const stats = featureState.data?.stats;
+            meta.textContent = stats
+                ? `${stats.features.toLocaleString()} features · ${stats.with_features} repos`
+                : '-';
+        }
+        if (moreWrap) moreWrap.hidden = true;
+        return;
+    }
+
+    if (!total) {
+        container.innerHTML = '<div class="empty-state">No features matched. Try fewer or different terms (comma = AND).</div>';
+        if (meta) meta.textContent = '0 results';
+        if (moreWrap) moreWrap.hidden = true;
+        return;
+    }
+
+    const end = Math.min(featureState.shown, total);
+    const slice = featureState.results.slice(append ? container.querySelectorAll('.feature-card').length : 0, end);
+    const html = slice.map((row) => renderFeatureCard(row, terms)).join('');
+
+    if (append) {
+        container.insertAdjacentHTML('beforeend', html);
+    } else {
+        container.innerHTML = html;
+    }
+
+    if (meta) {
+        meta.textContent = `${total.toLocaleString()} result${total === 1 ? '' : 's'} · showing ${end}`;
+    }
+    if (moreWrap) {
+        moreWrap.hidden = end >= total;
+    }
+}
+
+function runFeatureSearch(rawQuery) {
+    featureState.query = rawQuery;
+    const terms = parseFeatureQuery(rawQuery);
+    if (!terms.length) {
+        featureState.results = [];
+        featureState.shown = 0;
+        renderFeatureResults();
+        return Promise.resolve();
+    }
+
+    return loadFeatureIndex().then((data) => {
+        if (!data || !Array.isArray(data.features)) {
+            featureState.results = [];
+            featureState.shown = 0;
+            renderFeatureResults();
+            return;
+        }
+        const scored = [];
+        for (const row of data.features) {
+            const score = scoreFeatureRow(row, terms);
+            if (score !== null) {
+                scored.push({ row, score });
+            }
+        }
+        scored.sort((a, b) => b.score - a.score || b.row.stars - a.row.stars);
+        featureState.results = scored.map((s) => s.row);
+        featureState.shown = Math.min(FEATURE_PAGE_SIZE, featureState.results.length);
+        renderFeatureResults();
+    });
+}
+
+function featureRowByFid(fid) {
+    if (!featureState.data || !Array.isArray(featureState.data.features)) return null;
+    return featureState.data.features.find((f) => f.fid === fid) || null;
+}
+
+function openDrawerFromFeature(row) {
+    if (!row) return;
+    // Prefer live repo object from loaded datasets (full drawer fields).
+    const live =
+        state.starredRepos.find((r) => r.name === row.repo)
+        || state.trendingRepos.find((r) => r.name === row.repo)
+        || state.globalRepos.find((r) => r.name === row.repo);
+
+    if (live) {
+        openDrawer(live);
+        return;
+    }
+
+    // Fall back to a normalized stub built from the feature index row.
+    const stub = normalizeRepo({
+        id: row.rid,
+        name: row.repo,
+        owner: row.owner,
+        repo_name: row.repo_name,
+        url: row.url,
+        description: row.repo_description || '',
+        stars: row.stars || 0,
+        forks: row.forks || 0,
+        language: row.language || '',
+        topics: row.topics || [],
+        category: row.category || 'Other',
+        activity: row.activity || 'Steady',
+        updated_at: row.updated_at || '-',
+        default_branch: row.default_branch || 'main',
+        license: row.license || '',
+        homepage: row.homepage || '',
+        trend_score: 0,
+        trend_source: 'feature-index',
+        star_delta_1d: null,
+        star_delta_7d: null,
+        readme_excerpt: '',
+        readme_status: 'fetched-on-open',
+    });
+    openDrawer(stub);
+}
+
+function bindFeatureSearch() {
+    const input = document.getElementById('feature-search-input');
+    if (!input) return;
+
+    let debounceTimer = null;
+    input.addEventListener('input', () => {
+        window.clearTimeout(debounceTimer);
+        debounceTimer = window.setTimeout(() => {
+            runFeatureSearch(input.value);
+        }, 220);
+    });
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            window.clearTimeout(debounceTimer);
+            runFeatureSearch(input.value);
+        }
+    });
+
+    const chips = document.getElementById('feature-chips');
+    if (chips) {
+        chips.addEventListener('click', (event) => {
+            const chip = event.target.closest('[data-feature-query]');
+            if (!chip) return;
+            input.value = chip.dataset.featureQuery;
+            runFeatureSearch(input.value);
+            input.focus();
+        });
+    }
+
+    const moreBtn = document.getElementById('feature-more-btn');
+    if (moreBtn) {
+        moreBtn.addEventListener('click', () => {
+            featureState.shown = Math.min(
+                featureState.shown + FEATURE_PAGE_SIZE,
+                featureState.results.length,
+            );
+            renderFeatureResults({ append: true });
+        });
+    }
+
+    const results = document.getElementById('feature-results');
+    if (results) {
+        results.addEventListener('click', (event) => {
+            if (event.target.closest('[data-feature-link]')) {
+                return; // let GitHub link work normally
+            }
+            const card = event.target.closest('[data-feature-fid]');
+            if (!card) return;
+            openDrawerFromFeature(featureRowByFid(card.dataset.featureFid));
+        });
+        results.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            const card = event.target.closest('[data-feature-fid]');
+            if (!card || event.target.closest('[data-feature-link]')) return;
+            event.preventDefault();
+            openDrawerFromFeature(featureRowByFid(card.dataset.featureFid));
+        });
+    }
+
+    // Prefetch index when the Features section scrolls into view (cheap after first load).
+    const section = document.getElementById('features-section');
+    if (section && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+            (entries) => {
+                if (entries.some((e) => e.isIntersecting)) {
+                    loadFeatureIndex().then(() => {
+                        const meta = document.getElementById('feature-results-meta');
+                        if (meta && meta.textContent === '-' && featureState.data?.stats) {
+                            const s = featureState.data.stats;
+                            meta.textContent = `${s.features.toLocaleString()} features · ${s.with_features} repos`;
+                        }
+                    });
+                    io.disconnect();
+                }
+            },
+            { rootMargin: '200px' },
+        );
+        io.observe(section);
+    }
+}
+
 function bindTableInteractions() {
     const tbody = document.getElementById('repos-tbody');
 
@@ -2263,6 +2604,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     bindPagination('bottom');
     bindTableInteractions();
     bindDrawer();
+    bindFeatureSearch();
     bindBackToTop();
     bindViewToggle();
     bindAiAsk();

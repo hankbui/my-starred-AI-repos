@@ -13,7 +13,7 @@
     <meta name="twitter:title" content="AI Repositories — Curated Directory of 1,000+ Open Source AI Projects">
     <meta name="twitter:description" content="Discover trending AI/LLM repos with growth signals, sparkline charts, and one-click AI analysis. Updated daily.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20260723-3">
+    <link rel="stylesheet" href="styles.css?v=20261103-1">
 </head>
 <body>
     <div class="site-shell">
@@ -138,6 +138,7 @@
         <nav class="top-nav">
             <button class="nav-link active" data-section="repos">Repos</button>
             <button class="nav-link" data-section="categories">Categories</button>
+            <button class="nav-link" data-section="features">Feature Search</button>
             <a class="nav-link nav-link-anchor" href="cto-letter.html">CTO Letter</a>
             <a class="nav-link nav-link-anchor" href="https://github.com/hankbui/my-starred-AI-repos" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
@@ -448,6 +449,54 @@
                 </div>
                 <div class="category-grid" id="category-grid"></div>
             </section>
+
+            <section id="features-section" class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Feature Search</h2>
+                        <p>Search capabilities extracted from README <em>Features</em> sections across starred repos.
+                            Separate multiple terms with commas — every term must match.</p>
+                    </div>
+                    <div class="results-meta" id="feature-results-meta">-</div>
+                </div>
+
+                <div class="feature-search-bar">
+                    <label class="control search-control" style="flex:1">
+                        <span class="control-label">Search features</span>
+                        <span class="control-field">
+                            <span class="control-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                            </span>
+                            <input
+                                type="search"
+                                id="feature-search-input"
+                                placeholder="e.g. browser automation, text to speech, pdf parse"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                        </span>
+                    </label>
+                    <div class="feature-search-hint" id="feature-search-hint">
+                        Comma = AND · e.g. <code>voice, real-time</code>
+                    </div>
+                </div>
+
+                <div class="feature-chip-row" id="feature-chips">
+                    <button type="button" class="preset-chip" data-feature-query="browser automation">Browser automation</button>
+                    <button type="button" class="preset-chip" data-feature-query="text to speech">Text to speech</button>
+                    <button type="button" class="preset-chip" data-feature-query="pdf, parse">PDF parse</button>
+                    <button type="button" class="preset-chip" data-feature-query="multi-agent">Multi-agent</button>
+                    <button type="button" class="preset-chip" data-feature-query="video generation">Video generation</button>
+                    <button type="button" class="preset-chip" data-feature-query="rag">RAG</button>
+                </div>
+
+                <div class="feature-results" id="feature-results">
+                    <div class="empty-state">Type a query above to search extracted README features.</div>
+                </div>
+                <div class="feature-more-wrap" id="feature-more-wrap" hidden>
+                    <button type="button" class="feature-more-btn" id="feature-more-btn">Show more results</button>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
@@ -570,7 +619,7 @@
         <span>Top</span>
     </button>
 
-    <script src="app.js?v=20260701-10"></script>
+    <script src="app.js?v=20261103-1"></script>
     <script src="translate.js?v=20260723-3"></script>
 </body>
 </html>
