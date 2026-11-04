@@ -13,9 +13,17 @@
     const state = {
         data: null,
         tab: initTab,
+        board: 'allTime',
         search: initUc || '',
         useCase: initUc,
     };
+
+    const BOARD_TABS = [
+        { key: 'allTime', label: 'All Time', icon: 'clock' },
+        { key: 'trending', label: 'Trending', icon: 'trending' },
+        { key: 'hot', label: 'Hot', icon: 'fire' },
+        { key: 'allResource', label: 'All Resource', icon: 'layers' },
+    ];
 
     function esc(s) {
         if (s === null || s === undefined) return '';
@@ -76,10 +84,31 @@
             '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button"' + (state.useCase ? '' : ' hidden') + '>✕ Clear</button>';
     }
 
+    function renderBoardTabs() {
+        const board = $('as-board');
+        board.innerHTML = BOARD_TABS.map(b => {
+            const active = state.board === b.key;
+            return `<button class="as-board-tab${active ? ' active' : ''}" data-board="${esc(b.key)}" type="button" title="${esc(b.label)}">${boardIcon(b.key)} ${esc(b.label)}</button>`;
+        }).join('');
+    }
+
+    function boardIcon(key) {
+        switch (key) {
+            case 'allTime': return '⏱️';
+            case 'trending': return '📈';
+            case 'hot': return '🔥';
+            case 'allResource': return '📦';
+            default: return '•';
+        }
+    }
+
     // ---- filter + render grid ---------------------------------------------
 
     function getItems() {
         if (!state.data) return [];
+        if (state.board === 'allResource') {
+            return [...(state.data.agents || []), ...(state.data.skills || [])];
+        }
         return state.tab === 'agents' ? state.data.agents : state.data.skills;
     }
 
@@ -105,7 +134,13 @@
             items = items.filter(it => Array.isArray(it.use_cases) && it.use_cases.includes(uc));
         }
 
-        return items;
+        const sorted = [...items];
+        if (state.board === 'trending') {
+            sorted.sort((a, b) => (b.delta_7d || 0) - (a.delta_7d || 0));
+        } else if (state.board === 'hot') {
+            sorted.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+        }
+        return sorted;
     }
 
     function renderCard(item) {
@@ -136,7 +171,7 @@
         if (!count) {
             grid.innerHTML = '';
             empty.hidden = false;
-            empty.innerHTML = `<div class="hf-empty">No ${state.tab} match your search. Try a different term or use case.</div>`;
+            empty.innerHTML = `<div class="hf-empty">No ${state.board === 'allResource' ? 'resources' : state.tab} match your search. Try a different term or use case.</div>`;
             return;
         }
         empty.hidden = true;
@@ -221,9 +256,19 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         renderGrid();
     }
 
+    function setBoard(key) {
+        state.board = key;
+        renderBoardTabs();
+        renderGrid();
+    }
+
     function bindControls() {
         document.querySelectorAll('.as-tab').forEach(btn => {
             btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+        });
+
+        document.querySelectorAll('.as-board-tab').forEach(btn => {
+            btn.addEventListener('click', () => setBoard(btn.dataset.board));
         });
 
         $('as-search').addEventListener('input', (e) => {
@@ -260,6 +305,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         }
         renderStats(state.data);
         renderChips(state.data);
+        renderBoardTabs();
         renderGrid();
     }
 
