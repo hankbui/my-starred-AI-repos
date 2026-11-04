@@ -171,7 +171,14 @@ Use only these use_cases: {', '.join(USE_CASES)}
 
 
 def _parse_llm_json(raw: str, repo: Dict[str, Any]) -> Dict[str, Any]:
-    raw = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+    raw = raw.strip()
+    if raw.startswith("```json"):
+        raw = raw[7:]
+    elif raw.startswith("```"):
+        raw = raw[3:]
+    if raw.endswith("```"):
+        raw = raw[:-3]
+    raw = raw.strip()
     try:
         parsed = json.loads(raw)
     except Exception:
