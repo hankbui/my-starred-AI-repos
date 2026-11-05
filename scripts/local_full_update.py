@@ -128,8 +128,28 @@ Use only these use_cases: {', '.join(USE_CASES)}
     if LLM_API_KEY:
         headers["Authorization"] = f"Bearer {LLM_API_KEY}"
 
-    # Thử Ollama /api/chat format trước
     payload = {
+        "model": LLM_MODEL,
+        "messages": [
+            {"role": "system", "content": CLASSIFY_SYSTEM},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.2,
+    }
+
+    # Thử /v1/chat/completions trước (OpenAI-compatible, hoạt động với LLM Studio)
+    try:
+        resp = requests.post(f"{LLM_BASE_URL}/v1/chat/completions", json=payload, headers=headers, timeout=180)
+        if resp.status_code == 200:
+            data = resp.json()
+            raw = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            if raw.strip():
+                return _parse_llm_json(raw, repo)
+    except Exception as e:
+        print(f"    [WARN] /v1/chat/completions failed: {e}")
+
+    # Fallback: Ollama /api/chat
+    payload_ollama = {
         "model": LLM_MODEL,
         "messages": [
             {"role": "system", "content": CLASSIFY_SYSTEM},
@@ -138,33 +158,15 @@ Use only these use_cases: {', '.join(USE_CASES)}
         "stream": False,
         "options": {"temperature": 0.2},
     }
-
     try:
-        resp = requests.post(f"{LLM_BASE_URL}/api/chat", json=payload, headers=headers, timeout=180)
+        resp = requests.post(f"{LLM_BASE_URL}/api/chat", json=payload_ollama, headers=headers, timeout=180)
         if resp.status_code == 200:
             data = resp.json()
             raw = data.get("message", {}).get("content", "")
-            return _parse_llm_json(raw, repo)
+            if raw.strip():
+                return _parse_llm_json(raw, repo)
     except Exception as e:
         print(f"    [WARN] Ollama /api/chat failed: {e}")
-
-    # Fallback: generic /v1/chat/completions (OpenAI-compatible)
-    try:
-        payload2 = {
-            "model": LLM_MODEL,
-            "messages": [
-                {"role": "system", "content": CLASSIFY_SYSTEM},
-                {"role": "user", "content": prompt},
-            ],
-            "temperature": 0.2,
-        }
-        resp2 = requests.post(f"{LLM_BASE_URL}/v1/chat/completions", json=payload2, headers=headers, timeout=180)
-        if resp2.status_code == 200:
-            data2 = resp2.json()
-            raw = data2.get("choices", [{}])[0].get("message", {}).get("content", "")
-            return _parse_llm_json(raw, repo)
-    except Exception as e:
-        print(f"    [WARN] /v1/chat/completions failed: {e}")
 
     # Fallback cuối: trả về mặc định
     return _default_item(repo)
