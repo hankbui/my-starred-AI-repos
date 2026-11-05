@@ -314,7 +314,7 @@ def main() -> None:
         except Exception as e:
             print(f"  [{i}/{len(repos)}] {repo.get('name','?')} ERROR: {e}")
             continue
-        time.sleep(0.4)  # tranh qua tai LLM local
+        time.sleep(0.1)  # tranh qua tai LLM local
 
     # 4. Build payload
     payload = build_payload(classified)
