@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-06",
+    "date": "2026-11-07",
     "papers_tracked": 15,
-    "technologies_discovered": 11,
+    "technologies_discovered": 20,
     "opportunities_identified": 0,
-    "last_update": "2026-11-06 13:07 UTC",
+    "last_update": "2026-11-07 11:51 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,23 +13,23 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "11",
+      "value": "20",
       "label": "discovered this scan",
-      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Reinforcement Learning, Simulation, Generative World Modeling, Tool-Augmented Reinforcement Learning, Retrieval Augmented Generation, Operator Inference",
+      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Reinforcement Learning, Simulation, Retrieval Augmented Generation, KV Cache Optimization, Speculative Decoding, Candidate-Output Ranking from Errors (CORE)",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "11",
+      "value": "20",
       "label": "active trend clusters",
-      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Retrieval Augmented Generation, Operator Inference, Parametric PDE Solving",
+      "detail": "KV Cache Optimization, Speculative Decoding, Candidate-Output Ranking from Errors (CORE), Large Language Model (LLM) Fine-tuning, Symbolic Goal Interpretation",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.5",
+      "value": "7.7",
       "label": "avg opportunity score",
       "detail": "DualWorldBench: Can Agents Plan Deliveries across Symbolic and Grounded Worlds?",
       "color": "amber"
@@ -53,9 +53,9 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "4",
+      "value": "11",
       "label": "early-stage technologies",
-      "detail": "ImagineAgent: What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comp",
+      "detail": "Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Languag",
       "color": "blue"
     }
   ],
@@ -118,37 +118,6 @@
       ]
     },
     {
-      "id": "2602.11499",
-      "title": "ImagineAgent: What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-05",
-      "updated": "2026-11-05",
-      "summary": "arXiv:2602.11499v3 Announce Type: replace Abstract: Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and limited viewpoints of images. To address this, we propose ImagineAgent, an agentic framework that integrates cognitive mapping, tool-augmented reinforcement learning (RL), and generative world modeling for robust OV-HOI understanding. Specifically, we first propose an innovative CoT dataset named hicodet-6K for supervised fine-tuning (SFT), which effectively bridges the perception-to-cognition gap by structuring perceived entities into interaction pairs for comprehensive predictions. Subsequently, we develop a multimodal tool library integrating online retrieval, image cropping, and generative modeling, enabling the agent to dynamically augment reasoning with domain-specific tools to resolve visual-semantic ambiguities and hallucinations during inference. Moreover, we incorporate a generative model to reconstruct alternative viewpoints, enabling the agent to 'imagine' under limited viewpoints. Finally, we propose a composite reward mechanism to jointly optimize prediction accuracy and tool efficiency. Evaluations on both SWIG-HOI and HICO-DET datasets demonstrate that our method achieves state-of-the-art performance while requiring merely 36.7% of the training data compared to existing methods, validating our robustness, empirical effectiveness and efficiency.",
-      "pdf_url": "https://arxiv.org/abs/2602.11499",
-      "comment": "",
-      "technologies": [
-        "Generative World Modeling",
-        "Tool-Augmented Reinforcement Learning",
-        "Multimodal Learning",
-        "Retrieval Augmented Generation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 6.0,
-      "product_potential": [
-        "AI-powered virtual assistants with enhanced visual reasoning capabilities",
-        "Augmented reality applications with improved object interaction understanding"
-      ],
-      "domain_applications": [
-        "robotics",
-        "creative",
-        "other"
-      ]
-    },
-    {
       "id": "2603.01357",
       "title": "ASTRA-bench: Evaluating Tool-Use Agent Reasoning and Action Planning with Personal User Context",
       "authors": [],
@@ -178,103 +147,6 @@
       ]
     },
     {
-      "id": "2602.01493",
-      "title": "OpInf-LLM: Parametric PDE Solving with LLMs via Operator Inference",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-05",
-      "updated": "2026-11-05",
-      "summary": "arXiv:2602.01493v3 Announce Type: replace-cross Abstract: Solving diverse partial differential equations (PDEs) is fundamental in science and engineering. Large language models (LLMs) have demonstrated strong capabilities in code generation, symbolic reasoning, and tool use, but reliably solving PDEs across heterogeneous settings remains challenging. Prior work on LLM-based code generation and transformer-based foundation models for PDE learning has shown promising advances. However, a persistent trade-off between execution success rate and numerical accuracy arises, particularly when generalization to unseen parameters and boundary conditions is required. In this work, we propose OpInf-LLM, an LLM parametric PDE solving framework via operator inference. The proposed framework leverages small amounts of solution data to enable accurate prediction of diverse PDE instances, including unseen parameters and configurations, and provides seamless integration with LLMs for natural language task specification and physics-based reasoning of proper feature parameterization. Its low computational demands and unified solution pipeline further enable a high execution success rate across heterogeneous settings, opening new possibilities for generalizable reduced-order modeling in LLM-based PDE solving.",
-      "pdf_url": "https://arxiv.org/abs/2602.01493",
-      "comment": "",
-      "technologies": [
-        "Operator Inference",
-        "Parametric PDE Solving",
-        "LLM-based PDE Learning"
-      ],
-      "maturity": "early",
-      "confidence": 0.7,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Developing a software tool for engineers and scientists to solve complex PDEs using natural language task specification.",
-        "Creating a platform for educational purposes to teach students about PDE solving and operator inference."
-      ],
-      "domain_applications": [
-        "science",
-        "education"
-      ]
-    },
-    {
-      "id": "2611.05927",
-      "title": "Modality-Aware Expert Pruning for MoE-Based Multimodal Large Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-05",
-      "updated": "2026-11-05",
-      "summary": "arXiv:2611.05927v1 Announce Type: cross Abstract: Mixture-of-Experts (MoE) enables multimodal large language models (MLLMs) to scale capacity efficiently, but expert parameters dominate memory even though only a few experts are activated per token: they account for over 90% of model size in modern MoE-MLLMs (e.g., 54 GB out of about 58 GB in BF16 for InternVL3.5-30B-A3B and Qwen3-VL-30B-A3B). Expert pruning has emerged as an effective compression strategy, but existing methods aggregate importance uniformly across tokens, ignoring that the same expert may serve different roles for vision versus language processing. To address this, we propose MAEP (Modality-Aware Expert Pruning), a training-free framework that decomposes expert importance by modality in a single forward pass. MAEP introduces (1) Delta-H Output ($\\Delta H$), a redistribution-aware metric measuring the MoE output change when an expert is removed, and (2) low-attention vision tokens as a vision-side pruning signal that is dataset-stable: its expert-importance ranking remains stable across different datasets. Text-side importance serves as a preservation signal while vision-side importance serves as a pruning signal, and experts are ranked globally across layers. Experiments on three MoE-based MLLMs across multimodal and text benchmarks show that MAEP outperforms modality-agnostic baselines on the majority of multimodal benchmarks while remaining competitive on text-only tasks, reducing the BF16 expert weight footprint by about 27 GB (about 47% of total memory) so that the full weight footprint of an approximately 58 GB model fits within a single 40 GB GPU. Code is available at https://github.com/nota-github/MAEP.",
-      "pdf_url": "https://arxiv.org/abs/2611.05927",
-      "comment": "",
-      "technologies": [
-        "Mixture of Experts",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Developing a lightweight, multimodal AI assistant that can run on consumer-grade hardware with reduced memory requirements",
-        "Creating a customizable multimodal AI model that can be fine-tuned for specific domains or tasks with minimal computational overhead"
-      ],
-      "domain_applications": [
-        "education",
-        "creative",
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "id": "2606.11552",
-      "title": "Teaching Diffusion to Speculate Left-to-Right",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-05",
-      "updated": "2026-11-05",
-      "summary": "arXiv:2606.11552v3 Announce Type: replace Abstract: Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their autoregressive decoding process incurs substantial inference costs due to inherently sequential token generation. Speculative decoding addresses this bottleneck by employing a lightweight draft model to propose multiple future tokens that are subsequently verified in parallel by a larger target model. Recent work has demonstrated that diffusion language models are well suited for this setting, as they can generate entire blocks of draft tokens in parallel and thereby alleviate the sequential constraints of autoregressive drafting. A subtlety of this regime is that block-diffusion drafters generate tokens bidirectionally within a block, whereas verification is performed by an autoregressive target model that evaluates tokens in a strictly left-to-right manner, leaving a gap between the symmetric training-time objective and the asymmetric verification-time reward. In this work, we offer an empirical analysis of three training-time interventions that narrow this gap: token positional weighting, a first-error focal loss that targets the position that breaks the accepted prefix within each block, and a chain loss term that substitutes a differentiable surrogate for the expected accepted length. The three interventions act along orthogonal axes (position, block-conditional first error, joint prefix) and compose additively; they are likewise orthogonal to test-time alignment mechanisms such as multi-draft self-selection, with which they can in principle be combined. Across four target models and six reasoning, code, and dialogue benchmarks, the three interventions raise accepted draft length by 21-76% per benchmark over a position-uniform baseline, without adding additional forward passes and without changing the inference pipeline or the rejection-sampling exactness contract.",
-      "pdf_url": "https://arxiv.org/abs/2606.11552",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.00892",
-      "title": "Learning to Group and Order: Cross-Instance Self-Supervised RL for Vision-Centric MLLMs",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-05",
-      "updated": "2026-11-05",
-      "summary": "arXiv:2611.00892v2 Announce Type: replace Abstract: Reinforcement learning (RL) post-training has become an important paradigm for improving multimodal large language models (MLLMs), especially with automatically verifiable rewards. Self-supervised visual pretext tasks provide such rewards without human annotations. However, existing methods mainly exploit within-instance structure, offering limited supervision for cross-instance discrimination and fine-grained comparison. We introduce Group-and-Order Self-Supervised Reinforcement Learning (GO-SSL), a cross-instance jigsaw framework for vision-centric MLLM post-training. Given two visual instances, GO-SSL mixes their local elements and trains the model to group them by instance of origin while recovering the order within each group, coupling instance-level comparison with spatial, temporal, or geometric structure recovery. This paired formulation turns the same unlabeled data into richer verifiable supervision through diverse pairings, shuffles, and a random-to-hard curriculum. We instantiate GO-SSL mainly on cross-image jigsaw tasks and further extend it to 3D depth and video temporal ordering. Across diverse benchmarks, GO-SSL consistently improves over the base MLLM and prior self-supervised post-training baselines, with clear gains in fine-grained perception and spatial understanding. Further evaluations across model scales and families support its generality. These results suggest that cross-instance comparison provides a useful self-supervised RL signal for improving transferable visual understanding in MLLMs. Code is available at https://github.com/SEU-VIPGroup/GO-SSL.",
-      "pdf_url": "https://arxiv.org/abs/2611.00892",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
       "id": "2611.07542",
       "title": "FlashOffloading: Low-Latency KV Cache Offloading for Long-Context LLM Serving",
       "authors": [],
@@ -286,12 +158,22 @@
       "summary": "arXiv:2611.07542v1 Announce Type: new Abstract: In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency. Offloading the KV cache to host dynamic random-access memory (DRAM) frees HBM space and raises concurrency, but the additional cache management and host-to-device (H2D) load overhead inflates inference latency, higher concurrency fails to translate into effective throughput. We present FlashOffloading, a host-DRAM-centric inference architecture that fully offloads the KV cache in both the prefill and decode phases. FlashOffloading builds rolling HBM cache for prefill, a hot cache for decode, a reverse sparse index with zero extra miss-lookup overhead, and a compute--load overlapped kernel, optimizing KV offloading latency across the entire pipeline and delivering throughput gains under a time-per-output-token (TPOT) service-level objective (SLO). In experiments deploying GLM-5.2 with multi-token prediction (MTP3) speculative decoding on an Ascend910C prefill--decode (PD)-disaggregated platform, FlashOffloading improves prefill throughput by up to 1.38\\(\\times\\) and decode throughput by up to 1.91\\(\\times\\) under a 30 ms TPOT constraint. FlashOffloading is integrated into an open-source serving framework: https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0.",
       "pdf_url": "https://arxiv.org/abs/2611.07542",
       "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
+      "technologies": [
+        "KV Cache Optimization",
+        "Speculative Decoding"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
       "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "Develop a high-performance LLM serving system that can handle long-context inference with low latency and high concurrency.",
+        "Create an AI-powered document processing tool that can handle large documents with complex structures and provide accurate and efficient responses."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
     },
     {
       "id": "2611.07825",
@@ -305,12 +187,22 @@
       "summary": "arXiv:2611.07825v1 Announce Type: new Abstract: Goal interpretation is to translate a natural language instruction into a formal symbolic goal that a planner can execute. It is critical for embodied agents because any error here propagates to every downstream planning and action step. Doing it well requires both generating suitable candidates and reliably selecting among them. We present a two-stage generate-then-rank approach to Goal Interpretation in the Embodied Agent Interface (EAI). First, supervised fine-tuning adapts a Large Language Model (LLM) to EAI's output convention. Second, Candidate-Output Ranking from Errors (CORE) learns preferences over complete outputs from the model's own generated alternatives. We conducted experiments on the household scenes of the Embodied Agent Interface Benchmark. Multiple open source LLMs including DeepSeek-V3 chat, DeepSeek-Reasoner, and Qwen2.5-7B and Qwen2.5-72B were evaluated. The proposed method outperformed the baseline models including LLMs with simple prompting, chain-of-thought, and knowledge graph based approaches.",
       "pdf_url": "https://arxiv.org/abs/2611.07825",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "Candidate-Output Ranking from Errors (CORE)",
+        "Large Language Model (LLM) Fine-tuning",
+        "Symbolic Goal Interpretation"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.8,
       "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "AI-powered home assistant with natural language understanding and error correction",
+        "Embodied AI agents for industrial automation with robust goal interpretation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise"
+      ]
     },
     {
       "id": "2611.07513",
@@ -324,12 +216,23 @@
       "summary": "arXiv:2611.07513v1 Announce Type: cross Abstract: Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable correspondence to physical displacements, or delegating continuous trajectory generation to a separate action expert whose gradients compete with or are blocked from updating the VLM backbone. We argue that manipulation and cognition should instead be embodied in the same model, shifting from a decoupled VLA to an Embodied Vision-Language Model (eVLM). We introduce Concertina, an eVLM that places continuous trajectory representation, blockwise generation, and physical-coordinate supervision directly on the computation and parameter path of a shared diffusion VLM backbone. Each control timestep is encoded as one continuous latent action token in the backbone hidden space, and the shared Transformer reconstructs temporally ordered action blocks via the same corrupt-and-reconstruct operator used for multimodal pretraining. Active action projections account for only 0.21% of parameters in the 4.46B model with zero separate action-generator layers, compared with 16.5%-35.1% dedicated action-expert capacity in representative continuous VLAs. Using our proposed Action Interface Audit, we confirm that cross-time trajectory coupling emerges in the middle and late layers of the shared backbone rather than at the action interfaces. On standard benchmarks, Concertina achieves 98.15% average success on regular LIBERO, 85.9% on the 10,030-task LIBERO-Plus benchmark, and 4.142 average completed chain length on CALVIN ABC-D. Code: https://github.com/lose4578/Concertina Hugging Face: https://huggingface.co/collections/Traly/concertina",
       "pdf_url": "https://arxiv.org/abs/2611.07513",
       "comment": "",
-      "technologies": [],
+      "technologies": [
+        "Embodied Vision-Language Model",
+        "Diffusion Models",
+        "Vision Transformer",
+        "Action Interface Audit"
+      ],
       "maturity": "early",
-      "confidence": 0.0,
+      "confidence": 0.8,
       "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
+      "product_potential": [
+        "A robotic assistant that can understand and execute complex tasks based on natural language instructions",
+        "An interactive AI system for training and education in robotics and automation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "education"
+      ]
     },
     {
       "id": "2608.07525",
@@ -370,6 +273,134 @@
       "domain_applications": []
     },
     {
+      "id": "2602.11499",
+      "title": "ImagineAgent: What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2602.11499v3 Announce Type: replace Abstract: Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and limited viewpoints of images. To address this, we propose ImagineAgent, an agentic framework that integrates cognitive mapping, tool-augmented reinforcement learning (RL), and generative world modeling for robust OV-HOI understanding. Specifically, we first propose an innovative CoT dataset named hicodet-6K for supervised fine-tuning (SFT), which effectively bridges the perception-to-cognition gap by structuring perceived entities into interaction pairs for comprehensive predictions. Subsequently, we develop a multimodal tool library integrating online retrieval, image cropping, and generative modeling, enabling the agent to dynamically augment reasoning with domain-specific tools to resolve visual-semantic ambiguities and hallucinations during inference. Moreover, we incorporate a generative model to reconstruct alternative viewpoints, enabling the agent to 'imagine' under limited viewpoints. Finally, we propose a composite reward mechanism to jointly optimize prediction accuracy and tool efficiency. Evaluations on both SWIG-HOI and HICO-DET datasets demonstrate that our method achieves state-of-the-art performance while requiring merely 36.7% of the training data compared to existing methods, validating our robustness, empirical effectiveness and efficiency.",
+      "pdf_url": "https://arxiv.org/abs/2602.11499",
+      "comment": "",
+      "technologies": [
+        "Generative World Modeling",
+        "Tool-Augmented Reinforcement Learning",
+        "Multimodal Learning",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "AI-powered virtual assistants with enhanced visual reasoning capabilities",
+        "Augmented reality applications with improved object interaction understanding"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "other"
+      ]
+    },
+    {
+      "id": "2602.01493",
+      "title": "OpInf-LLM: Parametric PDE Solving with LLMs via Operator Inference",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2602.01493v3 Announce Type: replace-cross Abstract: Solving diverse partial differential equations (PDEs) is fundamental in science and engineering. Large language models (LLMs) have demonstrated strong capabilities in code generation, symbolic reasoning, and tool use, but reliably solving PDEs across heterogeneous settings remains challenging. Prior work on LLM-based code generation and transformer-based foundation models for PDE learning has shown promising advances. However, a persistent trade-off between execution success rate and numerical accuracy arises, particularly when generalization to unseen parameters and boundary conditions is required. In this work, we propose OpInf-LLM, an LLM parametric PDE solving framework via operator inference. The proposed framework leverages small amounts of solution data to enable accurate prediction of diverse PDE instances, including unseen parameters and configurations, and provides seamless integration with LLMs for natural language task specification and physics-based reasoning of proper feature parameterization. Its low computational demands and unified solution pipeline further enable a high execution success rate across heterogeneous settings, opening new possibilities for generalizable reduced-order modeling in LLM-based PDE solving.",
+      "pdf_url": "https://arxiv.org/abs/2602.01493",
+      "comment": "",
+      "technologies": [
+        "Operator Inference",
+        "Parametric PDE Solving",
+        "LLM-based PDE Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Developing a software tool for engineers and scientists to solve complex PDEs using natural language task specification.",
+        "Creating a platform for educational purposes to teach students about PDE solving and operator inference."
+      ],
+      "domain_applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "id": "2611.05927",
+      "title": "Modality-Aware Expert Pruning for MoE-Based Multimodal Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2611.05927v1 Announce Type: cross Abstract: Mixture-of-Experts (MoE) enables multimodal large language models (MLLMs) to scale capacity efficiently, but expert parameters dominate memory even though only a few experts are activated per token: they account for over 90% of model size in modern MoE-MLLMs (e.g., 54 GB out of about 58 GB in BF16 for InternVL3.5-30B-A3B and Qwen3-VL-30B-A3B). Expert pruning has emerged as an effective compression strategy, but existing methods aggregate importance uniformly across tokens, ignoring that the same expert may serve different roles for vision versus language processing. To address this, we propose MAEP (Modality-Aware Expert Pruning), a training-free framework that decomposes expert importance by modality in a single forward pass. MAEP introduces (1) Delta-H Output ($\\Delta H$), a redistribution-aware metric measuring the MoE output change when an expert is removed, and (2) low-attention vision tokens as a vision-side pruning signal that is dataset-stable: its expert-importance ranking remains stable across different datasets. Text-side importance serves as a preservation signal while vision-side importance serves as a pruning signal, and experts are ranked globally across layers. Experiments on three MoE-based MLLMs across multimodal and text benchmarks show that MAEP outperforms modality-agnostic baselines on the majority of multimodal benchmarks while remaining competitive on text-only tasks, reducing the BF16 expert weight footprint by about 27 GB (about 47% of total memory) so that the full weight footprint of an approximately 58 GB model fits within a single 40 GB GPU. Code is available at https://github.com/nota-github/MAEP.",
+      "pdf_url": "https://arxiv.org/abs/2611.05927",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Multimodal Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Developing a lightweight, multimodal AI assistant that can run on consumer-grade hardware with reduced memory requirements",
+        "Creating a customizable multimodal AI model that can be fine-tuned for specific domains or tasks with minimal computational overhead"
+      ],
+      "domain_applications": [
+        "education",
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2606.11552",
+      "title": "Teaching Diffusion to Speculate Left-to-Right",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2606.11552v3 Announce Type: replace Abstract: Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their autoregressive decoding process incurs substantial inference costs due to inherently sequential token generation. Speculative decoding addresses this bottleneck by employing a lightweight draft model to propose multiple future tokens that are subsequently verified in parallel by a larger target model. Recent work has demonstrated that diffusion language models are well suited for this setting, as they can generate entire blocks of draft tokens in parallel and thereby alleviate the sequential constraints of autoregressive drafting. A subtlety of this regime is that block-diffusion drafters generate tokens bidirectionally within a block, whereas verification is performed by an autoregressive target model that evaluates tokens in a strictly left-to-right manner, leaving a gap between the symmetric training-time objective and the asymmetric verification-time reward. In this work, we offer an empirical analysis of three training-time interventions that narrow this gap: token positional weighting, a first-error focal loss that targets the position that breaks the accepted prefix within each block, and a chain loss term that substitutes a differentiable surrogate for the expected accepted length. The three interventions act along orthogonal axes (position, block-conditional first error, joint prefix) and compose additively; they are likewise orthogonal to test-time alignment mechanisms such as multi-draft self-selection, with which they can in principle be combined. Across four target models and six reasoning, code, and dialogue benchmarks, the three interventions raise accepted draft length by 21-76% per benchmark over a position-uniform baseline, without adding additional forward passes and without changing the inference pipeline or the rejection-sampling exactness contract.",
+      "pdf_url": "https://arxiv.org/abs/2606.11552",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.00892",
+      "title": "Learning to Group and Order: Cross-Instance Self-Supervised RL for Vision-Centric MLLMs",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2611.00892v2 Announce Type: replace Abstract: Reinforcement learning (RL) post-training has become an important paradigm for improving multimodal large language models (MLLMs), especially with automatically verifiable rewards. Self-supervised visual pretext tasks provide such rewards without human annotations. However, existing methods mainly exploit within-instance structure, offering limited supervision for cross-instance discrimination and fine-grained comparison. We introduce Group-and-Order Self-Supervised Reinforcement Learning (GO-SSL), a cross-instance jigsaw framework for vision-centric MLLM post-training. Given two visual instances, GO-SSL mixes their local elements and trains the model to group them by instance of origin while recovering the order within each group, coupling instance-level comparison with spatial, temporal, or geometric structure recovery. This paired formulation turns the same unlabeled data into richer verifiable supervision through diverse pairings, shuffles, and a random-to-hard curriculum. We instantiate GO-SSL mainly on cross-image jigsaw tasks and further extend it to 3D depth and video temporal ordering. Across diverse benchmarks, GO-SSL consistently improves over the base MLLM and prior self-supervised post-training baselines, with clear gains in fine-grained perception and spatial understanding. Further evaluations across model scales and families support its generality. These results suggest that cross-instance comparison provides a useful self-supervised RL signal for improving transferable visual understanding in MLLMs. Code is available at https://github.com/SEU-VIPGroup/GO-SSL.",
+      "pdf_url": "https://arxiv.org/abs/2611.00892",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
       "id": "2611.07854",
       "title": "Towards Foundation Decision Models: Drex",
       "authors": [
@@ -397,7 +428,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -416,7 +447,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.6,
+      "curator_score": 5.1,
       "product_potential": [],
       "domain_applications": []
     }
@@ -425,27 +456,27 @@
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "enterprise",
+        "other",
         "education",
-        "other"
+        "robotics",
+        "enterprise"
       ]
     },
     {
       "name": "Multimodal Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
+      "maturity": "early",
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "creative",
-        "education",
         "other",
+        "creative",
+        "enterprise",
+        "education",
         "robotics"
       ]
     },
@@ -453,11 +484,11 @@
       "name": "Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "other",
+        "enterprise",
         "finance"
       ]
     },
@@ -465,12 +496,127 @@
       "name": "Simulation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "enterprise",
         "other",
+        "enterprise",
         "finance"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "enterprise",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Speculative Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Candidate-Output Ranking from Errors (CORE)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Large Language Model (LLM) Fine-tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Symbolic Goal Interpretation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Embodied Vision-Language Model",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Action Interface Audit",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "robotics"
       ]
     },
     {
@@ -480,9 +626,9 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
         "creative",
-        "other"
+        "other",
+        "robotics"
       ]
     },
     {
@@ -492,21 +638,7 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
-        "robotics",
         "creative",
-        "other"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "creative",
-        "education",
         "other",
         "robotics"
       ]
@@ -514,47 +646,47 @@
     {
       "name": "Operator Inference",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
-        "education"
+        "education",
+        "science"
       ]
     },
     {
       "name": "Parametric PDE Solving",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
-        "education"
+        "education",
+        "science"
       ]
     },
     {
       "name": "LLM-based PDE Learning",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "science",
-        "education"
+        "education",
+        "science"
       ]
     },
     {
       "name": "Mixture of Experts",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "creative",
+        "other",
         "education",
-        "other"
+        "creative",
+        "enterprise"
       ]
     }
   ],
