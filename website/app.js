@@ -725,7 +725,7 @@ function applyFilters() {
                 return false;
             }
 
-            if (state.activity !== 'all' && repo.activity !== state.activity) {
+            if (state.activity !== 'all' && (!repo.activity || repo.activity !== state.activity)) {
                 return false;
             }
 
