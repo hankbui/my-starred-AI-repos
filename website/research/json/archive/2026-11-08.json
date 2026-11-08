@@ -1,0 +1,751 @@
+{
+  "meta": {
+    "date": "2026-11-08",
+    "papers_tracked": 15,
+    "technologies_discovered": 22,
+    "opportunities_identified": 0,
+    "last_update": "2026-11-08 12:03 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "22",
+      "label": "discovered this scan",
+      "detail": "Reinforcement Learning from Human Feedback, Multimodal Learning, Reinforcement Learning, Simulation, Generative World Modeling, Tool-Augmented Reinforcement Learning, Retrieval Augmented Generation, KV Cache Optimization",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "22",
+      "label": "active trend clusters",
+      "detail": "Multimodal Learning, Retrieval Augmented Generation, Speculative Decoding, Diffusion Models, Self-Adaptive Multimodal Fuzzing",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "7.8",
+      "label": "avg opportunity score",
+      "detail": "DualWorldBench: Can Agents Plan Deliveries across Symbolic and Grounded Worlds?",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "DualWorldBench: Can Agents Pla",
+      "label": "confidence 70%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "StoreBench: A Live-Commerce En",
+      "label": "highest confidence paper",
+      "detail": "Autonomous e-commerce store management platform that optimizes inventory, pricing, and customer interactions using RL agents, Benchmarking suite for evaluating LLM-based agent performance in dynamic business environments",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "16",
+      "label": "early-stage technologies",
+      "detail": "ImagineAgent: What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comp",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2611.04228",
+      "title": "DualWorldBench: Can Agents Plan Deliveries across Symbolic and Grounded Worlds?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2611.04228v1 Announce Type: new Abstract: Recent multimodal agents have shown promising progress in embodied planning and web interaction. However, existing evaluations often rely on simplified tasks with limited combinatorial structure, leaving it unclear whether current agents can robustly integrate perception and reasoning for multi-goal planning under temporal, physical, and multimodal constraints. We introduce DualWorldBench, a unified benchmark for evaluating agent planning under controlled symbolic--temporal and grounded--topological complexity. Built around a shared pickup--delivery interface, DualWorldBench consists of three complementary components: TextWorld, which isolates symbolic planning under varying task compositions and release dynamics; SimWorld, which evaluates grounded path planning under controlled topological variation with text, image, or multimodal inputs; and DualWorld-VQA, a diagnostic suite spanning perception, scene understanding, and planning. Experiments reveal a common gap between local understanding and globally consistent planning. In TextWorld, agents struggle to derive optimal task sequences under interacting temporal constraints; in SimWorld, grounded observations are not reliably converted into feasible action sequences. DualWorld-VQA further confirms that perception and topology understanding do not necessarily translate into constrained planning. Together, these results identify the central challenge as composing symbolic or grounded evidence into globally feasible and efficient multi-goal plans. These findings establish DualWorldBench as a challenging testbed for agents with tighter perception--reasoning--planning integration. All datasets and code are publicly available at our project website https://dualworld.netlify.app/.",
+      "pdf_url": "https://arxiv.org/abs/2611.04228",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning from Human Feedback",
+        "Multimodal Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Intelligent logistics and delivery planning systems",
+        "Autonomous robotic systems for warehouse management"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2610.10942",
+      "title": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous Operator Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-04",
+      "updated": "2026-11-04",
+      "summary": "arXiv:2610.10942v2 Announce Type: replace Abstract: Reinforcement learning environments are now a primary lever for improving large language model (LLM) capabilities in post-training, yet most agentic benchmarks remain static: the world moves only when the agent acts, the reward is a terminal verdict, and the pass bar is set arbitrarily. We introduce StoreBench, a live-commerce environment in which an agent runs a mid-size online apparel store on a production-grade commerce backend, testing long-horizon planning and economic judgment under uncertainty. Customers order around the clock, suppliers reprice and fail, and market shocks arrive with partial or no warning. The agent acts through the same 29 merchant tools a human operator would use, under a windowed operation budget that makes simulated time a function of actions taken, so model latency cannot influence simulated time. Pass thresholds are calibrated against scripted anchor policies, the reward is hardened against a catalogue of reward hacks, and every episode replays identically given a sequence of actions. We evaluate seven frontier LLMs on 11 scenarios of 30 to 45 days and a full simulated year, over three world seeds at matched reasoning effort. No model matches the scripted smart-triage policy on average: the best, DeepSeek-V4-Pro, passes 49% of task-seed cells against the heuristic's 97%. Human experts working through the same tools and budgets outscore every model (mean composite 0.708 vs. 0.700). Over a full simulated year under the Claude Code harness, most models show dramatic performance improvement. In a GRPO post-training run, Qwen3.5-27B trained on only five disjoint tasks raises its mean composite on the held-out evaluation tasks from 0.136 to 0.373. We release five example training-split tasks, ten sample trajectories, and the scoring and verification tooling; the full environment and evaluation suite are withheld to keep the benchmark uncontaminated.",
+      "pdf_url": "https://arxiv.org/abs/2610.10942",
+      "comment": "",
+      "technologies": [
+        "Reinforcement Learning",
+        "Simulation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "Autonomous e-commerce store management platform that optimizes inventory, pricing, and customer interactions using RL agents",
+        "Benchmarking suite for evaluating LLM-based agent performance in dynamic business environments"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "finance",
+        "other"
+      ]
+    },
+    {
+      "id": "2602.11499",
+      "title": "ImagineAgent: What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2602.11499v3 Announce Type: replace Abstract: Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and limited viewpoints of images. To address this, we propose ImagineAgent, an agentic framework that integrates cognitive mapping, tool-augmented reinforcement learning (RL), and generative world modeling for robust OV-HOI understanding. Specifically, we first propose an innovative CoT dataset named hicodet-6K for supervised fine-tuning (SFT), which effectively bridges the perception-to-cognition gap by structuring perceived entities into interaction pairs for comprehensive predictions. Subsequently, we develop a multimodal tool library integrating online retrieval, image cropping, and generative modeling, enabling the agent to dynamically augment reasoning with domain-specific tools to resolve visual-semantic ambiguities and hallucinations during inference. Moreover, we incorporate a generative model to reconstruct alternative viewpoints, enabling the agent to 'imagine' under limited viewpoints. Finally, we propose a composite reward mechanism to jointly optimize prediction accuracy and tool efficiency. Evaluations on both SWIG-HOI and HICO-DET datasets demonstrate that our method achieves state-of-the-art performance while requiring merely 36.7% of the training data compared to existing methods, validating our robustness, empirical effectiveness and efficiency.",
+      "pdf_url": "https://arxiv.org/abs/2602.11499",
+      "comment": "",
+      "technologies": [
+        "Generative World Modeling",
+        "Tool-Augmented Reinforcement Learning",
+        "Multimodal Learning",
+        "Retrieval Augmented Generation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "AI-powered virtual assistants with enhanced visual reasoning capabilities",
+        "Augmented reality applications with improved object interaction understanding"
+      ],
+      "domain_applications": [
+        "robotics",
+        "creative",
+        "other"
+      ]
+    },
+    {
+      "id": "2603.01357",
+      "title": "ASTRA-bench: Evaluating Tool-Use Agent Reasoning and Action Planning with Personal User Context",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2603.01357v2 Announce Type: replace Abstract: Next-generation AI must manage vast personal data, diverse tools, and multi-step reasoning, yet most benchmarks remain context-free and single-turn. We present ASTRA-bench (Assistant Skills in Tool-use, Reasoning \\& Action-planning), a benchmark that uniquely unifies time-evolving personal context with an interactive toolbox and complex user intents. Our event-driven pipeline generates 2,413 scenarios across four protagonists, grounded in longitudinal life events and annotated by referential, functional, and informational complexity. Evaluation of state-of-the-art models (e.g., Claude-4.5-Opus, DeepSeek-V3.2) reveals significant performance degradation under high-complexity conditions, with argument generation emerging as the primary bottleneck. These findings expose critical limitations in current agents' ability to ground reasoning within messy personal context and orchestrate reliable multi-step plans. We release ASTRA-bench with a full execution environment and evaluation scripts to provide a diagnostic testbed for developing truly context-aware AI assistants.",
+      "pdf_url": "https://arxiv.org/abs/2603.01357",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.4,
+      "product_potential": [
+        "Personalized AI assistants that can manage and reason with personal data",
+        "AI-powered productivity tools that can handle complex, multi-step tasks"
+      ],
+      "domain_applications": [
+        "education",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.07542",
+      "title": "FlashOffloading: Low-Latency KV Cache Offloading for Long-Context LLM Serving",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2611.07542v1 Announce Type: new Abstract: In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency. Offloading the KV cache to host dynamic random-access memory (DRAM) frees HBM space and raises concurrency, but the additional cache management and host-to-device (H2D) load overhead inflates inference latency, higher concurrency fails to translate into effective throughput. We present FlashOffloading, a host-DRAM-centric inference architecture that fully offloads the KV cache in both the prefill and decode phases. FlashOffloading builds rolling HBM cache for prefill, a hot cache for decode, a reverse sparse index with zero extra miss-lookup overhead, and a compute--load overlapped kernel, optimizing KV offloading latency across the entire pipeline and delivering throughput gains under a time-per-output-token (TPOT) service-level objective (SLO). In experiments deploying GLM-5.2 with multi-token prediction (MTP3) speculative decoding on an Ascend910C prefill--decode (PD)-disaggregated platform, FlashOffloading improves prefill throughput by up to 1.38\\(\\times\\) and decode throughput by up to 1.91\\(\\times\\) under a 30 ms TPOT constraint. FlashOffloading is integrated into an open-source serving framework: https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0.",
+      "pdf_url": "https://arxiv.org/abs/2611.07542",
+      "comment": "",
+      "technologies": [
+        "KV Cache Optimization",
+        "Speculative Decoding"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Develop a high-performance LLM serving system that can handle long-context inference with low latency and high concurrency.",
+        "Create an AI-powered document processing tool that can handle large documents with complex structures and provide accurate and efficient responses."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.07825",
+      "title": "Generate-then-Rank: Learning Symbolic Goal Interpretation for Embodied Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2611.07825v1 Announce Type: new Abstract: Goal interpretation is to translate a natural language instruction into a formal symbolic goal that a planner can execute. It is critical for embodied agents because any error here propagates to every downstream planning and action step. Doing it well requires both generating suitable candidates and reliably selecting among them. We present a two-stage generate-then-rank approach to Goal Interpretation in the Embodied Agent Interface (EAI). First, supervised fine-tuning adapts a Large Language Model (LLM) to EAI's output convention. Second, Candidate-Output Ranking from Errors (CORE) learns preferences over complete outputs from the model's own generated alternatives. We conducted experiments on the household scenes of the Embodied Agent Interface Benchmark. Multiple open source LLMs including DeepSeek-V3 chat, DeepSeek-Reasoner, and Qwen2.5-7B and Qwen2.5-72B were evaluated. The proposed method outperformed the baseline models including LLMs with simple prompting, chain-of-thought, and knowledge graph based approaches.",
+      "pdf_url": "https://arxiv.org/abs/2611.07825",
+      "comment": "",
+      "technologies": [
+        "Candidate-Output Ranking from Errors (CORE)",
+        "Large Language Model (LLM) Fine-tuning",
+        "Symbolic Goal Interpretation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "AI-powered home assistant with natural language understanding and error correction",
+        "Embodied AI agents for industrial automation with robust goal interpretation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2611.07513",
+      "title": "Concertina: Embodying Manipulation and Cognition in One Diffusion Vision-Language Model",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2611.07513v1 Announce Type: cross Abstract: Most vision-language-action (VLA) policies decouple manipulation from cognition by bolting an external action mechanism onto a vision-language model (VLM)--either quantizing actions into discrete tokens whose errors bear no stable correspondence to physical displacements, or delegating continuous trajectory generation to a separate action expert whose gradients compete with or are blocked from updating the VLM backbone. We argue that manipulation and cognition should instead be embodied in the same model, shifting from a decoupled VLA to an Embodied Vision-Language Model (eVLM). We introduce Concertina, an eVLM that places continuous trajectory representation, blockwise generation, and physical-coordinate supervision directly on the computation and parameter path of a shared diffusion VLM backbone. Each control timestep is encoded as one continuous latent action token in the backbone hidden space, and the shared Transformer reconstructs temporally ordered action blocks via the same corrupt-and-reconstruct operator used for multimodal pretraining. Active action projections account for only 0.21% of parameters in the 4.46B model with zero separate action-generator layers, compared with 16.5%-35.1% dedicated action-expert capacity in representative continuous VLAs. Using our proposed Action Interface Audit, we confirm that cross-time trajectory coupling emerges in the middle and late layers of the shared backbone rather than at the action interfaces. On standard benchmarks, Concertina achieves 98.15% average success on regular LIBERO, 85.9% on the 10,030-task LIBERO-Plus benchmark, and 4.142 average completed chain length on CALVIN ABC-D. Code: https://github.com/lose4578/Concertina Hugging Face: https://huggingface.co/collections/Traly/concertina",
+      "pdf_url": "https://arxiv.org/abs/2611.07513",
+      "comment": "",
+      "technologies": [
+        "Embodied Vision-Language Model",
+        "Diffusion Models",
+        "Vision Transformer",
+        "Action Interface Audit"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A robotic assistant that can understand and execute complex tasks based on natural language instructions",
+        "An interactive AI system for training and education in robotics and automation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "education"
+      ]
+    },
+    {
+      "id": "2608.07525",
+      "title": "Unified Hallucination Fuzzing for Multimodal Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2608.07525v2 Announce Type: replace-cross Abstract: Hallucination remains a persistent challenge for Multimodal Large Language Models (MLLMs), severely limiting their reliability in high-stakes applications. Existing evaluations, predominantly based on static benchmarks, suffer from narrow taxonomical coverage and rapid performance saturation, failing to reflect model robustness in evolving real-world scenarios. To bridge this gap, we present a systematic evaluation framework integrating a comprehensive benchmark with self-evolving stress testing. First, we introduce UniHall, a fine-grained dataset grounded in a unified taxonomy spanning Object, Instruction, and Knowledge dimensions. Second, to address benchmark saturation, we propose Self-Adaptive Multimodal Fuzzing (SAMF), a self-adaptive framework that employs evolutionary mutation strategies to explore the boundaries of model hallucinations. Crucially, to ensure reliable assessment of dynamic inputs, SAMF incorporates a structured metric suite driven by an ensemble of multi-modal oracles. Our extensive experiments reveal that state-of-the-art MLLMs exhibit significant performance degradation under fuzzing compared to conventional settings, exposing a dissociation between reasoning capabilities and factual grounding. Furthermore, we identify a helpfulness-hallucination trade-off, where reinforcement learning alignment inadvertently exacerbates sycophancy in instruction-following tasks. The framework, code and benchmark are available at https://github.com/LanceZPF/EvalHall.",
+      "pdf_url": "https://arxiv.org/abs/2608.07525",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Self-Adaptive Multimodal Fuzzing"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Develop a robust evaluation framework for MLLMs to ensure reliability in high-stakes applications",
+        "Create a self-adaptive stress testing tool for MLLMs to identify and mitigate hallucinations"
+      ],
+      "domain_applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2608.28699",
+      "title": "Beyond Visual Boundaries: Rethinking Scene Segmentation for Movie RAG",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-06",
+      "updated": "2026-11-06",
+      "summary": "arXiv:2608.28699v2 Announce Type: replace Abstract: Understanding long-form video remains a fundamental challenge for multimodal large language models (MLLMs). Sparse frame sampling fails to capture fine-grained visual details, while dense sampling quickly exceeds context length limits. Retrieval-augmented generation (RAG) offers a promising middle ground by selectively retrieving relevant video segments for grounded generation, yet its effectiveness critically depends on the quality of the video segments used as retrieval units. In this paper, we investigate RAG for movie understanding, which demands story-level reasoning over characters, events, and narrative arcs spanning hours of content. Scene segmentation, a long-studied problem that partitions movies into semantically coherent units, is a natural candidate for defining such retrieval units. We reexamine whether existing methods actually serve this role through comprehensive evaluation on downstream movie understanding tasks, and find that they do not provide a consistent or dominant advantage over naive uniform temporal chunking. Our audit of the most standard scene segmentation benchmarks reveals why: current annotations prioritize visually salient transitions over narrative event structure. Motivated by this mismatch, we introduce NarraScene, a narrative-centric scene segmentation dataset annotated with a three-level cognitive taxonomy spanning physical, character, and narrative change, where every valid boundary requires a narrative-level shift. When used as retrieval units, these narrative-grounded segments outperform uniform chunking on downstream movie understanding tasks, suggesting that the central challenge for scene segmentation in movie RAG is not detecting boundaries, but identifying the narrative event units that matter for movie understanding. The dataset is available at https://huggingface.co/datasets/queez0405/NarraScene.",
+      "pdf_url": "https://arxiv.org/abs/2608.28699",
+      "comment": "",
+      "technologies": [
+        "Retrieval Augmented Generation",
+        "Scene Segmentation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "A movie analysis tool that uses RAG to provide detailed insights into character development, event progression, and narrative arcs.",
+        "An educational platform for film studies that leverages scene segmentation to help students understand and analyze movie structure."
+      ],
+      "domain_applications": [
+        "education",
+        "creative"
+      ]
+    },
+    {
+      "id": "2602.01493",
+      "title": "OpInf-LLM: Parametric PDE Solving with LLMs via Operator Inference",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2602.01493v3 Announce Type: replace-cross Abstract: Solving diverse partial differential equations (PDEs) is fundamental in science and engineering. Large language models (LLMs) have demonstrated strong capabilities in code generation, symbolic reasoning, and tool use, but reliably solving PDEs across heterogeneous settings remains challenging. Prior work on LLM-based code generation and transformer-based foundation models for PDE learning has shown promising advances. However, a persistent trade-off between execution success rate and numerical accuracy arises, particularly when generalization to unseen parameters and boundary conditions is required. In this work, we propose OpInf-LLM, an LLM parametric PDE solving framework via operator inference. The proposed framework leverages small amounts of solution data to enable accurate prediction of diverse PDE instances, including unseen parameters and configurations, and provides seamless integration with LLMs for natural language task specification and physics-based reasoning of proper feature parameterization. Its low computational demands and unified solution pipeline further enable a high execution success rate across heterogeneous settings, opening new possibilities for generalizable reduced-order modeling in LLM-based PDE solving.",
+      "pdf_url": "https://arxiv.org/abs/2602.01493",
+      "comment": "",
+      "technologies": [
+        "Operator Inference",
+        "Parametric PDE Solving",
+        "LLM-based PDE Learning"
+      ],
+      "maturity": "early",
+      "confidence": 0.7,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Developing a software tool for engineers and scientists to solve complex PDEs using natural language task specification.",
+        "Creating a platform for educational purposes to teach students about PDE solving and operator inference."
+      ],
+      "domain_applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "id": "2611.05927",
+      "title": "Modality-Aware Expert Pruning for MoE-Based Multimodal Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2611.05927v1 Announce Type: cross Abstract: Mixture-of-Experts (MoE) enables multimodal large language models (MLLMs) to scale capacity efficiently, but expert parameters dominate memory even though only a few experts are activated per token: they account for over 90% of model size in modern MoE-MLLMs (e.g., 54 GB out of about 58 GB in BF16 for InternVL3.5-30B-A3B and Qwen3-VL-30B-A3B). Expert pruning has emerged as an effective compression strategy, but existing methods aggregate importance uniformly across tokens, ignoring that the same expert may serve different roles for vision versus language processing. To address this, we propose MAEP (Modality-Aware Expert Pruning), a training-free framework that decomposes expert importance by modality in a single forward pass. MAEP introduces (1) Delta-H Output ($\\Delta H$), a redistribution-aware metric measuring the MoE output change when an expert is removed, and (2) low-attention vision tokens as a vision-side pruning signal that is dataset-stable: its expert-importance ranking remains stable across different datasets. Text-side importance serves as a preservation signal while vision-side importance serves as a pruning signal, and experts are ranked globally across layers. Experiments on three MoE-based MLLMs across multimodal and text benchmarks show that MAEP outperforms modality-agnostic baselines on the majority of multimodal benchmarks while remaining competitive on text-only tasks, reducing the BF16 expert weight footprint by about 27 GB (about 47% of total memory) so that the full weight footprint of an approximately 58 GB model fits within a single 40 GB GPU. Code is available at https://github.com/nota-github/MAEP.",
+      "pdf_url": "https://arxiv.org/abs/2611.05927",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Multimodal Learning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Developing a lightweight, multimodal AI assistant that can run on consumer-grade hardware with reduced memory requirements",
+        "Creating a customizable multimodal AI model that can be fine-tuned for specific domains or tasks with minimal computational overhead"
+      ],
+      "domain_applications": [
+        "education",
+        "creative",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2606.11552",
+      "title": "Teaching Diffusion to Speculate Left-to-Right",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2606.11552v3 Announce Type: replace Abstract: Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their autoregressive decoding process incurs substantial inference costs due to inherently sequential token generation. Speculative decoding addresses this bottleneck by employing a lightweight draft model to propose multiple future tokens that are subsequently verified in parallel by a larger target model. Recent work has demonstrated that diffusion language models are well suited for this setting, as they can generate entire blocks of draft tokens in parallel and thereby alleviate the sequential constraints of autoregressive drafting. A subtlety of this regime is that block-diffusion drafters generate tokens bidirectionally within a block, whereas verification is performed by an autoregressive target model that evaluates tokens in a strictly left-to-right manner, leaving a gap between the symmetric training-time objective and the asymmetric verification-time reward. In this work, we offer an empirical analysis of three training-time interventions that narrow this gap: token positional weighting, a first-error focal loss that targets the position that breaks the accepted prefix within each block, and a chain loss term that substitutes a differentiable surrogate for the expected accepted length. The three interventions act along orthogonal axes (position, block-conditional first error, joint prefix) and compose additively; they are likewise orthogonal to test-time alignment mechanisms such as multi-draft self-selection, with which they can in principle be combined. Across four target models and six reasoning, code, and dialogue benchmarks, the three interventions raise accepted draft length by 21-76% per benchmark over a position-uniform baseline, without adding additional forward passes and without changing the inference pipeline or the rejection-sampling exactness contract.",
+      "pdf_url": "https://arxiv.org/abs/2606.11552",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Speculative Decoding"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.2,
+      "product_potential": [
+        "Faster AI-powered text generation in real-time applications like chatbots and virtual assistants",
+        "Improved efficiency in AI-driven content creation tools for writers and marketers"
+      ],
+      "domain_applications": [
+        "creative",
+        "education",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2611.00892",
+      "title": "Learning to Group and Order: Cross-Instance Self-Supervised RL for Vision-Centric MLLMs",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2611.00892v2 Announce Type: replace Abstract: Reinforcement learning (RL) post-training has become an important paradigm for improving multimodal large language models (MLLMs), especially with automatically verifiable rewards. Self-supervised visual pretext tasks provide such rewards without human annotations. However, existing methods mainly exploit within-instance structure, offering limited supervision for cross-instance discrimination and fine-grained comparison. We introduce Group-and-Order Self-Supervised Reinforcement Learning (GO-SSL), a cross-instance jigsaw framework for vision-centric MLLM post-training. Given two visual instances, GO-SSL mixes their local elements and trains the model to group them by instance of origin while recovering the order within each group, coupling instance-level comparison with spatial, temporal, or geometric structure recovery. This paired formulation turns the same unlabeled data into richer verifiable supervision through diverse pairings, shuffles, and a random-to-hard curriculum. We instantiate GO-SSL mainly on cross-image jigsaw tasks and further extend it to 3D depth and video temporal ordering. Across diverse benchmarks, GO-SSL consistently improves over the base MLLM and prior self-supervised post-training baselines, with clear gains in fine-grained perception and spatial understanding. Further evaluations across model scales and families support its generality. These results suggest that cross-instance comparison provides a useful self-supervised RL signal for improving transferable visual understanding in MLLMs. Code is available at https://github.com/SEU-VIPGroup/GO-SSL.",
+      "pdf_url": "https://arxiv.org/abs/2611.00892",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.07854",
+      "title": "Towards Foundation Decision Models: Drex",
+      "authors": [
+        "Nischay Dhankhar",
+        "Alisher Amantay",
+        "Zhanibek Datbayev",
+        "Darkhan Akhmetov",
+        "Yash Shah",
+        "Nurmukhamed Ubaidullayev",
+        "Raman Saparkhan",
+        "Dos Baha",
+        "Abulhair Saparov"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.autoregressive_appro",
+        "cs.large_language_model",
+        "cs.long_chain-of-though"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "Autoregressive approaches with large language models, such as long chain-of-thought reasoning, have become the default for new AI applications because they reach higher accuracy on a wide range of tasks. In production, however, they give inconsistent answers, require parsing of outputs, and add cost and latency. Decision models address this: given a question and a set of options supplied by the user, they return a probability distribution over the options without autoregressive decoding. We present Drex, a family of four open decision models with 8B (DLM), 9B (v1.5), 35B with 3B active (v2.0), and 27B (Max) parameters. Each request consists of a state (a document, record, or agent context, optionally with images) and questions about it, each asking for a choice among options, a yes/no judgment, or a score on an ordered scale. Training combines supervised fine-tuning with reinforcement learning from adjusted feedback (RLAF), plus vision tuning for Max. Ablations show that RLAF improves accuracy and that consistency losses improve robustness to option order. On Decision Index 0.4.1, Max sets a new state of the art among the decision models we compare (67.52 on the public suite vs. 60.70 for Jev 1.14.0). On Decision Bench v4, it is statistically tied with d3-turbo and GPT-6 Sol and trails Claude Opus 5.5 by 1.6 points, and it has the highest accuracy among decision models on DecideBench. Max answers a typical request in 183 ms, against about 2.0 s for GPT-6 Sol and 3.5 s for Claude Opus 5.5, and its outputs are stable under option reordering. All four models are open source: https://github.com/nace-ai/drex-decision-models\n\nAI Summary: Drex open decision models return probability distributions over user-supplied options without autoregressive decoding, using supervised fine-tuning, RLAF, and consistency losses to improve accuracy, robustness, and latency.",
+      "pdf_url": "https://arxiv.org/pdf/2611.07854",
+      "comment": "https://github.com/nace-ai/drex-decision-models",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.02459",
+      "title": "CivBench: A Long-Horizon Benchmark for Tool-Mediated Agents in Civilization VI",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-05",
+      "updated": "2026-11-05",
+      "summary": "arXiv:2609.02459v2 Announce Type: replace Abstract: We present CivBench, an open-source benchmark for evaluating language model agents in long-horizon, tool-mediated environments through the Model Context Protocol (MCP). A single episode can span over 300 turns and produces thousands of tool calls over a large action space, requiring sustained planning, state monitoring, and execution under partial observability. The environment exposes 76 MCP tools and a deterministic narration layer that retrieves and formats game state as structured text. We use CivBench to characterise agent behaviour across four model families in 23 admissible runs. The sample is a pilot, not a model ranking: aggregate outcomes do not reliably discriminate models at this scale. Instead, we introduce two interface-level metrics that the environment makes measurable: Proactive Monitoring Rate (PMR), capturing whether agents actively query latent strategic state, and RAG@10, capturing whether commitments stated in structured planning reflections are executed within ten subsequent turns. Across runs we observe two consistent patterns under a shared playbook protocol. Agents under-monitor strategically relevant state that is available but requires explicit querying: despite playbook guidance to query victory progress every 20 turns, agents do so only every 30-75 turns, and in 8 of 20 detectable defeats they failed to query within the 20-turn warning window before game end. Agents also frequently fail to execute near-term commitments stated in their own planning reflections (RAG@10 between 48.2% and 65.8% across models). Both patterns arise despite tool access and explicit guidance, and we interpret them as deviations under instruction rather than absences of capability. We release the environment, scenarios, logs, metrics, and analysis pipeline at https://github.com/lmwilki/civ6-mcp.",
+      "pdf_url": "https://arxiv.org/abs/2609.02459",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.1,
+      "product_potential": [],
+      "domain_applications": []
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "science",
+        "education",
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Simulation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "finance"
+      ]
+    },
+    {
+      "name": "Generative World Modeling",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Tool-Augmented Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.55,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Retrieval Augmented Generation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "education",
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Speculative Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise",
+        "science",
+        "education",
+        "creative"
+      ]
+    },
+    {
+      "name": "Candidate-Output Ranking from Errors (CORE)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Large Language Model (LLM) Fine-tuning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Symbolic Goal Interpretation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "enterprise",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Embodied Vision-Language Model",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "enterprise",
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Action Interface Audit",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Self-Adaptive Multimodal Fuzzing",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "name": "Scene Segmentation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "education"
+      ]
+    },
+    {
+      "name": "Operator Inference",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Parametric PDE Solving",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "LLM-based PDE Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "education"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.52,
+      "trend": "emerging",
+      "applications": [
+        "other",
+        "creative",
+        "enterprise",
+        "education"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
