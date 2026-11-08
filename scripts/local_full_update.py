@@ -92,7 +92,8 @@ def fetch_github_repos() -> List[Dict[str, Any]]:
                 "forks": repo.get("forks_count", 0),
                 "language": repo.get("language") or "",
                 "topics": (repo.get("topics") or [])[:5],
-                "category": "",  # sẽ để LLM suy ra hoặc gán sau
+                "pushed_at": (repo.get("pushed_at") or repo.get("updated_at") or "")[:10],
+                "category": "",  # sẽ gán rule-based sau khi crawl
                 "trend_score": 0,
                 "delta_7d": 0,
             })
@@ -284,6 +285,40 @@ def git_commit_push(files: List[Path]) -> None:
 
 # ---------- Main ----------
 
+
+CATEGORY_RULES = [
+    ("Vision & Media", ["vision","image","video","audio","voice","speech","ocr","transcription","tts","whisper","diffusion"]),
+    ("Data & Evaluation", ["dataset","benchmark","eval","evaluation","synthetic data","label","annotation","leaderboard","scoring"]),
+    ("Infrastructure", ["deployment","infra","infrastructure","runtime","serving","server","docker","kubernetes","serverless","cloud","gpu"]),
+    ("Developer Tools", ["cli","sdk","editor","extension","plugin","debug","testing","monitoring","observability","terminal"]),
+    ("Agents & Automation", ["agent","multi-agent","workflow","automation","browser","scraper","crawler","orchestr","task runner"]),
+    ("AI Engineering", ["llm","rag","embedding","prompt","vector","semantic search","langchain","llamaindex","guardrail","tool calling"]),
+    ("Models & Inference", ["model","transformer","checkpoint","fine-tun","inference","quantiz","llama","mistral","qwen","gemma","deepseek"]),
+    ("Applications", ["assistant","copilot","chatbot","chat","app","studio","workspace","productivity"]),
+    ("Research & Knowledge", ["research","paper","arxiv","knowledge","docs","documentation","tutorial","course","awesome"]),
+]
+
+def categorize_repo(repo):
+    text = ' '.join([repo.get('name',''), repo.get('description','') or '', repo.get('language','') or '', ' '.join(repo.get('topics') or [])]).lower()
+    for cat, kws in CATEGORY_RULES:
+        if any(k in text for k in kws):
+            return cat
+    return 'Other'
+
+def activity_for_repo(repo):
+    pushed = repo.get('pushed_at') or repo.get('updated_at') or ''
+    try:
+        pushed_date = datetime.fromisoformat(pushed[:10]) if pushed else None
+    except Exception:
+        pushed_date = None
+    if not pushed_date:
+        return 'Quiet'
+    days = (datetime.now(timezone.utc).date() - pushed_date.date()).days
+    if days <= 3: return 'Hot'
+    if days <= 14: return 'Active'
+    if days <= 45: return 'Steady'
+    return 'Quiet'
+
 def main() -> None:
     print("=" * 60)
     print("Local Full Update (GitHub crawl + LLM local classify)")
@@ -293,6 +328,15 @@ def main() -> None:
 
     # 1. Crawl GitHub
     repos = fetch_github_repos()
+
+    # Assign category + activity rule-based (fast, no LLM needed)
+    for r in repos:
+        if not r.get('category'):
+            r['category'] = categorize_repo(r)
+        if not r.get('activity'):
+            r['activity'] = activity_for_repo(r)
+        if not r.get('stack_layer'):
+            r['stack_layer'] = 'Other'
 
     # 2. Luu du lieu goc repos.json
     REPOS_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
