@@ -296,13 +296,15 @@ def main() -> None:
 
     # 2. Luu du lieu goc repos.json
     REPOS_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    # repos duoc crawl tu GitHub starred API -> gan cho starred_repos (mac dinh view cua index.html)
+    # cung gan cung cho trending_repos de ca hai view deu co du lieu
     repos_payload = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "trending_repos": repos,
-        "starred_repos": [],
+        "starred_repos": repos,
     }
     REPOS_OUTPUT.write_text(json.dumps(repos_payload, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"  Wrote {REPOS_OUTPUT.relative_to(ROOT)}")
+    print(f"  Wrote {REPOS_OUTPUT.relative_to(ROOT)} (starred={len(repos)}, trending={len(repos)})")
 
     # 3. Classify bang LLM local
     classified: List[Dict[str, Any]] = []
