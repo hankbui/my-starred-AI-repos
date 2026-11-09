@@ -1144,6 +1144,7 @@ function bindAiAsk() {
     document.getElementById('top-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('bottom-ask-ai')?.addEventListener('click', openModal);
     document.getElementById('ai-ask-close')?.addEventListener('click', closeAiAskModal);
+    document.getElementById('ai-ask-backdrop')?.addEventListener('click', closeAiAskModal);
     document.getElementById('ai-ask-count')?.addEventListener('change', renderAiAskPreview);
     document.getElementById('ai-ask-include-desc')?.addEventListener('change', renderAiAskPreview);
     document.getElementById('ai-ask-question')?.addEventListener('input', renderAiAskPreview);
