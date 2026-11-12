@@ -1,0 +1,878 @@
+{
+  "meta": {
+    "date": "2026-11-12",
+    "papers_tracked": 15,
+    "technologies_discovered": 36,
+    "opportunities_identified": 0,
+    "last_update": "2026-11-12 13:55 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "36",
+      "label": "discovered this scan",
+      "detail": "Multimodal Learning, Dynamic Planning, Multi-agent Collaboration, Verification-driven Tool Interaction, Knowledge Distillation, Multi-Teacher On-Policy Distillation (MOPD), Knowledge-Tree-Driven Data Flywheel, Hard-Example Augmentation",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "36",
+      "label": "active trend clusters",
+      "detail": "Multimodal Learning, Graph Attention Networks, Vision Transformer, Depth Estimation, Object Detection",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "7.8",
+      "label": "avg opportunity score",
+      "detail": "ChipOmni: A General-Purpose AI Agent for Electronic Design Automation",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "ChipOmni: A General-Purpose AI",
+      "label": "confidence 85%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "ChipOmni: A General-Purpose AI",
+      "label": "highest confidence paper",
+      "detail": "Autonomous EDA workflow management system, AI-powered design verification and repair tool",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "26",
+      "label": "early-stage technologies",
+      "detail": "Micius-Flash: Lightweight Agentic Intelligence for Engineering",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2611.13020",
+      "title": "ChipOmni: A General-Purpose AI Agent for Electronic Design Automation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-11",
+      "updated": "2026-11-11",
+      "summary": "arXiv:2611.13020v1 Announce Type: new Abstract: Electronic design automation (EDA) workflows remain highly fragmented, requiring engineers to coordinate heterogeneous representations, specialised software tools, and iterative verification across multiple design stages. Although large language models have brought more general reasoning and code-generation capabilities to EDA, many existing approaches remain focused on isolated tasks and struggle to plan, verify, and repair designs autonomously within executable engineering environments. Here we introduce ChipOmni, a knowledge-enhanced, context-evolving AI agent framework for EDA. ChipOmni integrates multimodal understanding, dynamic planning, multi-agent collaboration, and verification-driven tool interaction into a unified autonomous system. By continually incorporating feedback from external engineering tools, the framework maintains an evolving task context, integrates domain knowledge, and iteratively refines intermediate designs. Across benchmarks for analog circuit, RTL, testbench, and formal-assertion generation, ChipOmni improves multiple task-specific measures over the evaluated baselines and solves all 30 AnalogCoder-Pro tasks. In a long-horizon case study, ChipOmni advances a natural-language RISC-V specification through three design levels to a micro-SoC GDSII layout that passes physical sign-off, without human intervention after initialization. Together, these results show that ChipOmni can coordinate verification-driven design across heterogeneous tasks and sustain long-horizon engineering workflows, advancing a shift from fragmented, tool-centred processes towards agent-centred, closed-loop systems.",
+      "pdf_url": "https://arxiv.org/abs/2611.13020",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Dynamic Planning",
+        "Multi-agent Collaboration",
+        "Verification-driven Tool Interaction",
+        "Knowledge Distillation"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 6.0,
+      "product_potential": [
+        "Autonomous EDA workflow management system",
+        "AI-powered design verification and repair tool",
+        "Natural language to hardware design translation platform"
+      ],
+      "domain_applications": [
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2611.10015",
+      "title": "Micius-Flash: Lightweight Agentic Intelligence for Engineering",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.10015v1 Announce Type: cross Abstract: We introduce Micius-Flash, a 27-billion-parameter model for engineering with native multimodal input, deep reasoning and a 256K-token context window. We design the Micius data pipeline as a knowledge-tree-driven data flywheel comprising three stages: knowledge tree construction and expansion, data synthesis, and quality validation with hard-example augmentation. From this data, we train expert models for semiconductor knowledge and reasoning, hardware coding, and semiconductor multimodal understanding, along with agentic experts. Subsequently, we employ Multi-Teacher On-Policy Distillation (MOPD) to supervise training on sequences generated by Micius itself, thereby integrating the capabilities of these expert models into a unified model. On more than 20 datasets with about 15K records, Micius-Flash averages 64.2% on hardware code benchmarks, 15.0 points above a same-size baseline. It scores 62.4% on a semiconductor-specific agent benchmark, exceeding the same-size baseline by 17.2 points. We further develop Micius Harness for industrial applications, connecting the model to specialized tools, including EDA tools and KiCad, as well as execution environments. Case studies in PCB design, chip design workflow automation, and software development demonstrate the model's ability to use tool execution feedback for multi-step planning, code debugging, and iterative verification. We release Micius as an open-source model to advance the development of agents for science and engineering.",
+      "pdf_url": "https://arxiv.org/abs/2611.10015",
+      "comment": "",
+      "technologies": [
+        "Multi-Teacher On-Policy Distillation (MOPD)",
+        "Knowledge-Tree-Driven Data Flywheel",
+        "Hard-Example Augmentation",
+        "Agentic Experts",
+        "Multimodal Learning",
+        "Large Language Models (LLMs) with extended context window"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "AI-driven engineering assistant for hardware design and software development",
+        "Industrial automation tool for workflow automation and debugging"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "id": "2611.06984",
+      "title": "AdaFloor: Adaptive Floor Planning and Rank-Time Reuse for Long-Tail MoE RL Rollouts",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-09",
+      "updated": "2026-11-09",
+      "summary": "arXiv:2611.06984v2 Announce Type: replace Abstract: Synchronous MoE reinforcement-learning post-training suffers from response-length imbalance. Existing methods reduce request tails, yet completed ranks remain bound to Expert Parallelism (EP) collectives and expert ownership. In a representative 16-accelerator Qwen3-30B-A3B rollout, this dummy run traps 32.83% of rank-time. AdaFloor converts this EP-coupled capacity into bounded leases for auxiliary work to improve system resource efficiency through rank-time reuse. Historical prompt-tail prediction and a calibrated guard construct the KV-safe layout. AdaFloor then selects the floor-specific safe quorum schedule with the largest predicted release area. Its runtime shrinks the EP group and leases detached ranks until full-world restoration. Across three updated-policy seeds on DeepScaleR mathematical reasoning rollouts, its capacity-oriented Natural floor2 configuration with TailGuard reduces Vanilla's 29393.9 rank-seconds of dummy run by 96.15%. Rollout shortening eliminates 18693.6 rank-seconds, while coordinated exits convert another 9568.6 rank-seconds into reusable capacity, leaving 1131.7 rank-seconds. For sidecar reuse, its Planned residency floor4 configuration without TailGuard serves 3134 Qwen3-8B GSM8K queries per epoch at 99.46% accuracy and incurs only a 2 to 3% primary throughput reduction against the same configuration with sidecar execution disabled. Its latency-oriented Planned residency floor4 configuration with TailGuard reduces rollout time by 24.09% relative to Vanilla and by 2.31% relative to LengthSort with TailGuard. On public Eurus-2-RL code rollouts with the same model and 16-rank topology, AdaFloor reduces rollout time by 20.56% and dummy run by 89.13% while generated work and mean reward remain stable.",
+      "pdf_url": "https://arxiv.org/abs/2611.06984",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Reinforcement Learning",
+        "Expert Parallelism",
+        "Rank-Time Reuse"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Optimized AI training platforms for large-scale MoE models, reducing training time and costs",
+        "Enhanced AI inference systems with improved resource utilization and reduced latency"
+      ],
+      "domain_applications": [
+        "science",
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.13192",
+      "title": "Multimodal Road Closure Mapping via Cross-Modal Graph Attention",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-11",
+      "updated": "2026-11-11",
+      "summary": "arXiv:2611.13192v1 Announce Type: cross Abstract: Accurate and timely identification of road closures is critical for large-scale navigation and logistics systems, yet remains challenging due to the need to jointly reason over visual evidence, spatial context, and road network topology. Existing approaches either rely on manual map updates or focus on detecting closure-related objects without resolving which road segment is affected. In this work, we introduce a unified multimodal and multitask framework that jointly performs road closure classification (no, partial, complete) and road segment association within a single learning architecture. Our model integrates graph-structured map data, satellite imagery augmented with projected street-level detections, and street-view images using modality-specific encoders and cross-modal transformer attention, enabling explicit reasoning over visual cues and network topology. Evaluated on nearly 20K real-world scenarios collected from a large-scale commercial vehicle fleet, our approach achieves 72.7% closure classification accuracy and 60% road segment association accuracy, outperforming frontier vision-language models by over 28 percentage points on closure classification while being over 4,000x smaller and 100x faster at inference. Extensive ablations demonstrate the importance of cross-modal attention, edge-aware pooling, and graph message passing for accurate geospatial reasoning. This work establishes the first benchmark for joint road closure classification and segment-level attribution, and shows that task-specific architectural inductive biases substantially outperform general-purpose multimodal models for structured geospatial understanding.",
+      "pdf_url": "https://arxiv.org/abs/2611.13192",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Graph Attention Networks",
+        "Vision Transformer",
+        "Depth Estimation",
+        "Object Detection"
+      ],
+      "maturity": "medium",
+      "confidence": 0.85,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Real-time road closure detection and mapping for navigation apps",
+        "Automated updates for logistics and delivery route optimization systems"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "climate"
+      ]
+    },
+    {
+      "id": "2604.06330",
+      "title": "STDec: Spatio-Temporal Stability Guided Decoding for dLLMs",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-11",
+      "updated": "2026-11-11",
+      "summary": "arXiv:2604.06330v2 Announce Type: replace Abstract: Diffusion Large Language Models (dLLMs) have achieved rapid progress, viewed as a promising alternative to the autoregressive paradigm. However, most dLLM decoders still adopt a global confidence threshold, and do not explicitly model local context from neighboring decoded states or temporal consistency of predicted token IDs across steps. To address this issue, we propose a spatio-temporal stability guided decoding approach, named STDec. We observe strong spatio-temporal stability in dLLM decoding: newly decoded tokens tend to lie near decoded neighbors, and their predicted IDs often remain consistent across several denoising steps. Inspired by this stability, our STDec introduces spatial-aware decoding and temporal-aware decoding. The spatial-aware decoding dynamically generates the token-adaptive thresholds by aggregating the decoded states of nearby tokens. The temporal-aware decoding relaxes the decoding thresholds for tokens whose predicted token IDs remain consistent over denoising steps. Our STDec is training-free and remains compatible with cache-based acceleration methods. Across textual reasoning and multimodal understanding benchmarks, STDec achieves improved inference throughput while maintaining comparable generation score. Notably, on MBPP with LLaDA, STDec achieves up to 14.17$\\times$ speedup with a comparable score. The homepage is available at https://yzchen02.github.io/STDec.",
+      "pdf_url": "https://arxiv.org/abs/2604.06330",
+      "comment": "",
+      "technologies": [
+        "Diffusion Models",
+        "Speculative Decoding"
+      ],
+      "maturity": "medium",
+      "confidence": 0.75,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Real-time AI assistants with improved response times and accuracy",
+        "Enhanced multimodal understanding applications for better user interaction"
+      ],
+      "domain_applications": [
+        "education",
+        "robotics",
+        "creative",
+        "enterprise",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "2611.07854",
+      "title": "Towards Foundation Decision Models: Drex",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-11",
+      "updated": "2026-11-11",
+      "summary": "arXiv:2611.07854v2 Announce Type: replace Abstract: Autoregressive approaches with large language models, such as long chain-of-thought reasoning, have become the default for new AI applications because they reach higher accuracy on a wide range of tasks. In production, however, they give inconsistent answers, require parsing of outputs, and add cost and latency. Decision models address this: given a question and a set of options supplied by the user, they return a probability distribution over the options without autoregressive decoding. We present Drex, a family of four open decision models with 8B (DLM), 9B (v1.5), 35B with 3B active (v2.0), and 27B (Max) parameters. Each request consists of a state (a document, record, or agent context, optionally with images) and questions about it, each asking for a choice among options, a yes/no judgment, or a score on an ordered scale. Training combines supervised fine-tuning with reinforcement learning from adjusted feedback (RLAF), plus vision tuning for Max. Ablations show that RLAF improves accuracy and that consistency losses improve robustness to option order. On Decision Index 0.4.1, Max sets a new state of the art among the decision models we compare (67.52 on the public suite vs. 60.70 for Jev 1.14.0). On Decision Bench v4, it is statistically tied with d3-turbo and GPT-6 Sol and trails Claude Opus 5.5 by 1.6 points, and it has the highest accuracy among decision models on DecideBench. Max answers a typical request in 183 ms, against about 2.0 s for GPT-6 Sol and 3.5 s for Claude Opus 5.5, and its outputs are stable under option reordering. All four models are open source: https://github.com/nace-ai/drex-decision-models",
+      "pdf_url": "https://arxiv.org/abs/2611.07854",
+      "comment": "",
+      "technologies": [
+        "Decision Models",
+        "Reinforcement Learning from Adjusted Feedback (RLAF)",
+        "Vision Tuning"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.7,
+      "product_potential": [
+        "A decision-making assistant for enterprise applications that provides consistent, fast, and accurate responses to user queries.",
+        "A healthcare decision support system that helps doctors make informed decisions based on patient data and medical guidelines."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "2608.06931",
+      "title": "Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2608.06931v2 Announce Type: replace Abstract: Large language models (LLMs) are increasingly involved in scientific discovery, yet it remains unclear whether they can support complex real laboratory science. Here we introduce Science Edge Evaluation (SEE), a multimodal benchmark of expert-curated questions grounded in peer-reviewed literature and experimental practice in chemistry, biology, and materials science. Evaluation of 28 multimodal large language models (MLLMs) shows that even the best-performing model reaches only 54.9% accuracy. Moreover, general-purpose models outperform science-specialized models on average. In the visual-agent evaluation, the use of tools increases the best accuracy to 56.1%. Tool use can expand the information available to models, but more information does not necessarily lead to reliable scientific reasoning. The key challenge is whether models can manage tool-derived information within the boundaries of the original experimental evidence. Together, these findings reveal that current MLLMs still cannot reliably make justified and evidence-bounded inferences from experimental results, which is an essential capability in real scientific discovery. Bridging this gap requires MLLMs to transition from explaining established scientific concepts to deriving novel and evidence-based insights from experimental data.",
+      "pdf_url": "https://arxiv.org/abs/2608.06931",
+      "comment": "",
+      "technologies": [
+        "Multimodal Large Language Models (MLLMs)",
+        "Science-Specialized Models",
+        "Visual-Agent Evaluation",
+        "Tool-Use in AI"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "A platform for evaluating and benchmarking AI models in scientific discovery tasks",
+        "A tool that enables AI models to make justified and evidence-bounded inferences from experimental results"
+      ],
+      "domain_applications": [
+        "science"
+      ]
+    },
+    {
+      "id": "2511.08475",
+      "title": "Designing LLM-based Multi-Agent Systems for Software Engineering Tasks: Quality Attributes, Design Patterns and Rationale",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2511.08475v3 Announce Type: replace-cross Abstract: As the complexity of Software Engineering (SE) tasks continues to escalate, Multi-Agent Systems (MASs) have emerged as a focal point of research and practice due to their autonomy and scalability. Furthermore, through leveraging the reasoning and planning capabilities of Large Language Models (LLMs), the application of LLM-based MASs in the field of SE is garnering increasing attention. However, there is no dedicated study that systematically explores the design of LLM-based MASs, including the Quality Attributes (QAs) on which designers mainly focus, the design patterns used by designers, and the rationale guiding the design of LLM-based MASs for SE tasks. To this end, we conducted a study to identify the QAs that LLM-based MASs for SE tasks focus on, the design patterns used in the MASs, and the design rationale for the MASs. We collected 106 papers on LLM-based MASs for SE tasks as the source. Our study shows that: (1) Code Generation is the most common SE task solved by LLM-based MASs among ten identified SE tasks, (2) Functional Suitability is the QA on which designers of LLM-based MASs pay the most attention, (3) Role-Based Cooperation is the design pattern most frequently employed among 16 patterns used to construct LLM-based MASs, and (4) Improving the Quality of Generated Code is the most common rationale behind the design of LLM-based MASs. Building on the study results, we presented the implications for the design of LLM-based MASs to support SE tasks.",
+      "pdf_url": "https://arxiv.org/abs/2511.08475",
+      "comment": "",
+      "technologies": [
+        "Multi-Agent Systems",
+        "Large Language Models"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "AI-assisted software development platform",
+        "LLM-based code generation and review tool"
+      ],
+      "domain_applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "id": "2608.03036",
+      "title": "Understanding Efficient LLM Serving: An Empirical Study of Frameworks, Optimizations Algorithms, and Real-World Adoption",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2608.03036v2 Announce Type: replace-cross Abstract: Large Language Models (LLMs) are integrated into software systems and AI services, making efficient LLM serving a concern for software engineering. Serving LLMs is challenging because inference requires computation, memory, GPU resources, and execution while maintaining latency and throughput. Although prior research has proposed LLM inference, optimization, and serving techniques and frameworks, little is known about how they are adopted in practice. In this study, we investigate the use of LLM serving frameworks and serving methods in open-source software systems. We identify and analyze five LLM-specific frameworks: vLLM, SGLang, TensorRT-LLM, LMDeploy, and FlashInfer. We examine how these frameworks and techniques are adopted individually and in combination, how adoption varies across categories of LLMs, and how repositories differ in intent, focus, use case, and architectural design. Our results show that vLLM is the most visible framework in popularity and adoption, while parallel computation, memory management, and network pruning are the most frequently used serving-method categories. Multi-framework usage is limited, suggesting that developers rely on a single serving framework; however, combined frameworks connect complementary capabilities across the serving stack. Framework adoption varies across model families, modalities, model sizes, domain specializations, and deployment settings. Repository-level analysis shows that LLM serving frameworks support applications and architectures, including Reinforcement Learning (RL)-based reasoning, multimodal generation and understanding, microservices, and cloud infrastructure. Overall, this study provides a large-scale empirical characterization of LLM serving framework adoption in practice and offers insights for researchers, framework maintainers, and practitioners working on LLM systems.",
+      "pdf_url": "https://arxiv.org/abs/2608.03036",
+      "comment": "",
+      "technologies": [
+        "vLLM",
+        "SGLang",
+        "TensorRT-LLM",
+        "LMDeploy",
+        "FlashInfer"
+      ],
+      "maturity": "medium",
+      "confidence": 0.7,
+      "curator_score": 5.5,
+      "product_potential": [
+        "LLM serving optimization and management platform",
+        "LLM-as-a-service marketplace for developers"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.10344",
+      "title": "MaRiO: Multi-agent Collaborative Reasoning via Shared Observations in MLLMs",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.10344v1 Announce Type: new Abstract: Multimodal Large Language Models (MLLMs) show strong visual perception capabilities, but existing evaluations largely focus on single-view or multi-view settings with shared camera parameters, leaving the challenge of multi-agent collaborative scenarios underexplored. In such settings, multiple agents observe a shared environment from independent viewpoints, and reliable decisions require reasoning across these independent observations of the same environment. To study this problem, we introduce MaRiO, a benchmark for evaluating multi-agent collaborative reasoning, and evaluate 23 state-of-the-art MLLMs on it. Our analysis reveals three key findings: (1) tasks governed by static perception are generally easier than tasks that require transformational event sequences; (2) most models struggle to resolve cross-agent correspondences, with errors increasing with scene complexity; and (3) models show limited ability to leverage geometric cues present in the scene. As an initial step toward addressing these challenges, we explore geometry-guided synthetic view augmentation that generates intermediate transition frames between agent observations, providing auxiliary spatial context that improves performance in certain categories. Overall, our results highlight that multi-agent collaborative reasoning remains an open challenge and an important direction for multimodal embodied systems. The code is available on the project page: https://omarftt.github.io/MaRiO-page/.",
+      "pdf_url": "https://arxiv.org/abs/2611.10344",
+      "comment": "",
+      "technologies": [
+        "Multimodal Large Language Models (MLLMs)",
+        "Multi-agent Collaborative Reasoning",
+        "Geometry-guided Synthetic View Augmentation"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.5,
+      "product_potential": [
+        "A collaborative robotics system that leverages MLLMs for multi-agent coordination and decision-making in complex environments.",
+        "A multi-agent simulation platform for training and evaluating MLLMs in collaborative reasoning tasks, with applications in autonomous driving, swarm robotics, and disaster response."
+      ],
+      "domain_applications": [
+        "robotics",
+        "science"
+      ]
+    },
+    {
+      "id": "2611.10477",
+      "title": "PatternBloom: Empowering Agentic RAG with Externalized RL-Distilled Graph Patterns",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.10477v1 Announce Type: new Abstract: Reinforcement-learning-trained agents for retrieval-augmented generation retrieve content (passages, knowledge-graph fragments, or hyperedges) and supervise training with outcome rewards on the final answer. Across these paradigms the reasoning route through retrieved content never leaves the language model's hidden state, conflating declarative knowledge with the procedural knowledge that recurs across queries of the same logical type; content-only methods consequently plateau as reasoning depth grows. We introduce PatternBloom, an agentic RAG framework that shifts the unit of retrieval from content (what to read) to logic (how to reason). A first RL stage scores the agent's constructed evidence graph by a frozen oracle's information gain through the Information-Density Reward (IDR), a size-normalized mutual-information surrogate. High-reward trajectories are distilled into a Graph Pattern Memory (GPM) of type-abstracted reasoning skeletons, and a second RL stage uses the Pattern-Augmented Reward (PAR) to couple policy to memory, turning procedural reasoning into a learnable, externalized structural prior. A 7B PatternBloom outperforms $27$ baselines by $+15.0$ Avg-OOD EM, with the gain compounding with reasoning depth precisely because procedural knowledge, once distilled, is reused rather than re-derived at every query. We release our code at https://github.com/EllenYiGe/PatternBloom.",
+      "pdf_url": "https://arxiv.org/abs/2611.10477",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.11896",
+      "title": "LEGION: Benchmarking Language Agents on Sparse-Signal Investigation Under Adversarial Noise",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.11896v1 Announce Type: new Abstract: Autonomous language-model agents are increasingly deployed on discovery-driven tasks where signal is sparse and most retrieved information is irrelevant. Current benchmarks fail to evaluate this regime due to dense signals, cooperative environments, and ground truth typically being only a few tool calls away. We introduce Legion, a benchmark framework coupling a stochastic enterprise-telemetry simulator (Legion-Sim) with a tiered library of 74 expertly-crafted adversarial scenarios (Legion-Bench) and an evaluation protocol that scores investigation efficiency alongside detection accuracy. Scenarios are injected into freshly simulated companies, allowing independent control over confounder density and event volume. We test five agent architectures on two simulated companies and find that while recall is high (0.82-0.88) precision lags behind (0.61--0.72). They fail to find all of the indicators of compromise of the attack or mistake genuine indicators with attack related ones, which is critical in the context of cybersecurity investigation. Failures are consistent across reasoning tiers and persist across confounder density and event volume. We release Legion, the scenario library, performance on common agent architectures, and pipeline for reproducibility and extension.",
+      "pdf_url": "https://arxiv.org/abs/2611.11896",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.10592",
+      "title": "MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.10592v1 Announce Type: cross Abstract: Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can follow requests that combine spatial, appearance, and temporal requirements. We introduce MotionGraphicsBench, an expert-curated benchmark of 100 instances for animating an input static SVG with a motion edit prompt. By supplying all required visual elements, our editing task reflects a designer-like workflow and isolates motion generation from graphic generation. Derived from real-world Lottie motion designs, our benchmark contains diverse combinations of spatio-temporal animation behaviors. Each benchmark instance pairs its model input with a deterministic, human-readable verification program that accepts different valid implementations and reports which prompt requirements pass or fail, rather than comparing against a reference animation or using a VLM judge. We construct these programs with a multi-agent pipeline using human-labeled animations and synthesized test cases. On a balanced test set of 180 animations, our programs achieve 93.3% raw agreement with human judgments, compared with 83.3% for a GPT-6 Astra VLM baseline, and outperform the baseline in both approval and rejection recall. Across 47 configurations from 32 LLMs and 12 providers, pass@1 ranges from 6.0% to 67.7%. Across 15 models evaluated at their highest available reasoning effort with 32 attempts per instance, additional attempts improve every model, but pass@32 still ranges from 38.0% to 95.0%. Our analysis of verification programs reveals that generated animations often fail to match reference poses, follow requested motion trajectories, or coordinate related events. We release our benchmark at https://huggingface.co/datasets/figma-ai/motion-graphics-bench.",
+      "pdf_url": "https://arxiv.org/abs/2611.10592",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.12175",
+      "title": "GeoMind: A Benchmark for Spatial Understanding in Robotic Manipulation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2611.12175v1 Announce Type: cross Abstract: Robotic manipulation has advanced rapidly in mapping visual observations and language instructions to actions. However, reliable manipulation in open-world environments requires robust spatial understanding: the ability to identify targets in complex layouts (spatial reasoning) and adapt to scenes that continuously evolve through interaction (spatial memory). Yet existing embodied benchmarks fall short in evaluating spatial understanding: they often introduce strong visual cues that bypass spatial reasoning, and focus on static scenes that offer little insight into an agent's capacity for spatial memory. To address this gap, we introduce GeoMind, a systematic benchmark for structured spatial understanding through tabletop manipulation. GeoMind comprises 54 evaluated task variants organized around spatial reasoning and spatial memory. It also incorporates a scalable pipeline that automates the generation and annotation of task instances with verified targets and executable interactions. Extensive evaluations across diverse embodied agents reveal their consistent weaknesses in spatial understanding. Our findings highlight that these agents struggle to track identities after spatial changes and convert relational or geometric constraints into executable actions. We release the GeoMind benchmark at https://github.com/Notfound-JH/GEOMIND-benchmark.git.",
+      "pdf_url": "https://arxiv.org/abs/2611.12175",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.20133",
+      "title": "EvoAgent: An Evolvable Agent Framework with Skill Learning and Multi-Agent Delegation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-10",
+      "updated": "2026-11-10",
+      "summary": "arXiv:2604.20133v5 Announce Type: replace Abstract: Large language model (LLM) agents increasingly rely on reusable skills, but skills are usually written by hand, and letting an agent change them on its own calls for explicit user control. We report on EvoAgent, an evolvable agent framework built for a foreign trade assistant, and share the engineering choices behind it. We organize the agent as a harness of four components (reasoning, context engineering, tools and state) and confine self-improvement to the user's persistent state: profile, memory and skills. Skills are multi-file packages with lazily loaded references, matched in three stages (keyword, embedding, LLM). The main agent can delegate to sub-agents with their own context, and long histories are compressed while an index of recoverable resources is kept. An offline loop reviews completed sessions to update the profile and memory and to propose skills; in the open-source release a skill changes only after the user confirms the proposal. On 172 foreign trade test cases scored by an LLM judge on five dimensions, GPT-5.2 with EvoAgent scored about 28% higher than GPT-5.2 called directly with only the final query. This is a single run judged by the model under test, so it measures the harness as a whole rather than any one mechanism, and swapping in GPT-4.1 or Qwen3.5-35B-A3B lowered the scores relative to calling those models directly. Several mechanisms described here were added after the version we evaluated and are not evaluated. The evaluation data is proprietary, so the results are for reference only. An open-source release of the code, which is not the evaluated business version, is available at https://github.com/Focus-AI-Center/Mentarc-EvoAgent",
+      "pdf_url": "https://arxiv.org/abs/2604.20133",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "climate",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Dynamic Planning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-agent Collaboration",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Verification-driven Tool Interaction",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Knowledge Distillation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-Teacher On-Policy Distillation (MOPD)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Knowledge-Tree-Driven Data Flywheel",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Hard-Example Augmentation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Agentic Experts",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Large Language Models (LLMs) with extended context window",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.62,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Expert Parallelism",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Rank-Time Reuse",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
+      "applications": [
+        "science",
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Graph Attention Networks",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "climate",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "climate",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Depth Estimation",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "climate",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Object Detection",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "climate",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise",
+        "education",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Speculative Decoding",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "creative",
+        "robotics",
+        "enterprise",
+        "education",
+        "accessibility"
+      ]
+    },
+    {
+      "name": "Decision Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Adjusted Feedback (RLAF)",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision Tuning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "healthcare",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multimodal Large Language Models (MLLMs)",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Science-Specialized Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science"
+      ]
+    },
+    {
+      "name": "Visual-Agent Evaluation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science"
+      ]
+    },
+    {
+      "name": "Tool-Use in AI",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science"
+      ]
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Large Language Models",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "enterprise"
+      ]
+    },
+    {
+      "name": "vLLM",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "SGLang",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "TensorRT-LLM",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "LMDeploy",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "FlashInfer",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Multi-agent Collaborative Reasoning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Geometry-guided Synthetic View Augmentation",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "science",
+        "robotics"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
