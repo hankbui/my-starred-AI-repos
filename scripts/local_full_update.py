@@ -375,8 +375,17 @@ def main() -> None:
     SKILLS_OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  Wrote {SKILLS_OUTPUT.relative_to(ROOT)}")
 
+    # 6b. Build video-production data (video / image / automation tabs)
+    VIDEO_OUTPUT = ROOT / "website" / "data" / "video-production.json"
+    vp = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "generate_video_production.py")],
+        cwd=ROOT,
+    )
+    if vp.returncode != 0:
+        print("  [WARN] generate_video_production.py failed — keeping previous data")
+
     # 7. Commit & push
-    git_commit_push([REPOS_OUTPUT, SKILLS_OUTPUT, hist_path])
+    git_commit_push([REPOS_OUTPUT, SKILLS_OUTPUT, VIDEO_OUTPUT, hist_path])
 
 
 if __name__ == "__main__":

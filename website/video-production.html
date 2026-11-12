@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Production — Video, Image & Automation Repos by Use Case</title>
+    <meta name="description" content="Find the right repo for video production — video generation, image generation, editing, avatars, captions, and automated video pipelines. Search descriptions and READMEs. Updated daily.">
+    <meta property="og:title" content="Video Production Directory — Video, Image & Automation Repos">
+    <meta property="og:description" content="Find the best open-source repos for video generation, image generation, editing, avatars, and automated video pipelines. Curated from GitHub, updated daily.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/video-production.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Video Production — Video, Image & Automation Repos">
+    <meta name="twitter:description" content="Find the right repo for any video production job. Search descriptions and READMEs.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20260723-3">
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="hf-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="hf-hero">
+                    <h1>
+                        <span>🎬 Video Production</span>
+                        <small id="vp-updated"></small>
+                    </h1>
+                    <p>
+                        Stop hunting. <b>Find the right repo</b> for any video production job —
+                        video generation, image generation, editing, avatars, captions,
+                        and automated pipelines. Search covers <b>descriptions and READMEs</b>,
+                        curated from GitHub, updated daily.
+                    </p>
+                </div>
+            </div>
+            <div class="as-stats" id="vp-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <!-- Tab bar -->
+                <div class="as-bar">
+                    <button class="as-tab active" data-tab="video" type="button">🎬 Video <span class="count" id="vp-c-video"></span></button>
+                    <button class="as-tab" data-tab="image" type="button">🖼️ Image <span class="count" id="vp-c-image"></span></button>
+                    <button class="as-tab" data-tab="automation" type="button">⚙️ Automation <span class="count" id="vp-c-automation"></span></button>
+                    <button class="as-tab" data-tab="all" type="button">📦 All <span class="count" id="vp-c-all"></span></button>
+                    <input type="search" class="as-search" id="vp-search" placeholder="Search name, description & README (e.g. 'talking avatar', 'upscale 4k')..." autocomplete="off" spellcheck="false">
+                    <span class="as-count" id="vp-count"></span>
+                </div>
+
+                <!-- Use-case chips -->
+                <div class="as-chips" id="vp-chips"></div>
+
+                <!-- Board / sort tabs (All Time, Trending, Hot) -->
+                <div class="as-board" id="vp-board"></div>
+
+                <!-- Ask AI bar -->
+                <div class="as-ai-bar">
+                    <button class="as-ai-btn" id="vp-ai-btn" type="button">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                        Ask AI: Find the best match
+                    </button>
+                    <button class="as-ai-cancel" id="vp-ai-cancel" type="button" hidden>⏹️ Cancel</button>
+                    <span class="as-ai-note">Describe what you need — LLM7 finds the best repo from the data</span>
+                </div>
+                <div class="as-ai-result" id="vp-ai-result" hidden></div>
+
+                <!-- Results grid -->
+                <div class="as-grid" id="vp-grid"></div>
+                <div class="as-empty" id="vp-empty" hidden></div>
+
+                <div class="as-footer">Data from GitHub starred repos · Classified by video / image / automation &amp; use case · Search includes README text · Updated daily via GitHub Actions</div>
+            </section>
+        </main>
+    </div>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="video-production.js?v=20261112-1"></script>
+    <script src="translate.js?v=20260723-3"></script>
+</body>
+</html>
