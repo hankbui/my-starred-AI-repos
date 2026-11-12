@@ -57,9 +57,25 @@ STRONG_KEYWORDS = [
     "gaussian splat", "nerf", "voiceover", "voice-over", "dubbing",
     "faceless", "tts", "video automation", "video pipeline",
     "ai avatar", "avatar generation", "music generation", "auto-edit",
+    "social media scheduling", "social media scheduler",
+    "social media automation", "youtube automation", "viral video",
+    "viral content", "exploding topics", "google trends",
+    "short-form video", "short form video", "content creation",
+    "content creator", "content calendar", "content plan", "stock video",
+    "royalty-free", "royalty free", "b-roll", "cross-post",
+    "cross-posting", "crossposting", "post scheduling", "scheduled post",
+    "scheduled posts", "auto upload", "upload video", "youtube uploader",
+    "trending video", "trending videos", "trend analysis", "niche research",
+    "keyword research", "script writer", "scriptwriting", "screenplay",
+    "storyboard", "content ideas", "idea generation", "topic ideation",
+    "hashtag", "hashtags", "thumbnail generator", "thumbnail maker",
+    "thumbnails", "watch time", "click-through rate", "streamer",
+    "content automation", "faceless channel", "faceless youtube",
+    "social media management", "social media scheduling", "trending topics",
+    "viral finder", "trend finder", "viral video finder",
 ]
 
-# Lower-precision terms — count in metadata, or need >= 2 distinct hits in README.
+# Lower-precision terms — count in metadata, or need >= 3 distinct hits in README.
 WEAK_KEYWORDS = [
     "video", "videos", "film", "movie", "cinematic", "animation", "anime",
     "avatar", "footage", "clip", "clips", "reel", "reels", "shorts",
@@ -72,6 +88,10 @@ WEAK_KEYWORDS = [
     "background removal", "favicon", "music", "audio", "voice", "speech",
     "song", "3d", "mesh", "blender", "screen recording", "screenshot",
     "kling", "veo", "gen-3", "mochi", "hallo", "echomimic", "musev",
+    "creator", "creators", "streamer", "podcast", "influencer", "stock",
+    "template", "font", "sfx", "schedule", "scheduler", "upload",
+    "downloader", "viral", "trend", "trending", "niche", "instagram",
+    "creator economy", "content creator", "content creators",
 ]
 
 AUTOMATION_KEYWORDS = [
@@ -81,7 +101,92 @@ AUTOMATION_KEYWORDS = [
     "schedule", "queue",
 ]
 
+# Strong terms specific to the video-production *workflow* (trends -> ideas ->
+# assets -> publishing -> analytics). These pull in pipeline tools that have no
+# video/image generation keywords of their own (trend finders, schedulers, ...).
+WORKFLOW_STRONG = [
+    "viral video", "viral content", "viral finder", "trend finder",
+    "trend analysis", "trending video", "trending videos", "trending topics",
+    "exploding topics", "google trends", "niche research", "keyword research",
+    "content ideas", "idea generation", "topic ideation", "content ideation",
+    "script writer", "scriptwriting", "screenplay", "storyboard",
+    "content calendar", "content plan", "content creation", "content creator",
+    "content automation", "faceless channel", "faceless youtube",
+    "social media scheduling", "social media scheduler",
+    "social media automation", "social media management", "youtube automation",
+    "cross-post", "cross-posting", "crossposting", "post scheduling",
+    "scheduled post", "scheduled posts", "auto upload", "upload video",
+    "youtube uploader", "stock video", "royalty-free", "royalty free",
+    "b-roll", "thumbnail generator", "thumbnail maker", "thumbnails",
+    "hashtag", "hashtags", "short-form video", "short form video",
+    "watch time", "click-through rate", "shorts", "reels", "tiktok",
+    "instagram", "podcast",
+]
+
+# Context words: a workflow-case match only counts when the repo also clearly
+# operates in the video/content-creator space (keeps metabase/airflow out).
+WF_CONTEXT = [
+    "video", "videos", "youtube", "tiktok", "instagram", "shorts", "reels",
+    "creator", "creators", "content creation", "content creator",
+    "social media", "streamer", "streamers", "podcast", "podcasts",
+    "faceless", "channel", "channels", "niche", "influencer", "influencers",
+    "vlog", "vlogging", "socials", "livestream",
+    "twitch", "film", "movie", "footage", "animation", "creator economy",
+    "video editing", "content automation", "faceless channel",
+]
+
+# Workflow-stage cases (ordered along the production pipeline).
+WORKFLOW_CASES = ["trends", "ideas", "assets", "publish", "thumbnails", "analytics"]
+
 CASE_KEYWORDS = {
+    "trends": [
+        "trend", "trends", "trending", "viral", "niche", "exploding topics",
+        "exploding", "google trends", "trend finder", "trendfinder",
+        "trendspotter", "trend analysis", "keyword research", "keyword tool",
+        "social listening", "buzzsumo", "viral finder", "viral video",
+        "viral content", "hashtag research", "topic research", "ninchi",
+        "1of10", "gpt-trends", "trending topics", "trending videos",
+    ],
+    "ideas": [
+        "ideation", "idea generation", "idea generator", "idea tool",
+        "brainstorm", "content ideas", "content ideation", "topic ideation",
+        "script writer", "scriptwriting", "screenplay", "storyboard",
+        "copywriting", "copywriter", "content plan", "content calendar",
+        "title generator",
+    ],
+    "assets": [
+        "stock footage", "stock video", "stock music", "footage", "b-roll",
+        "broll", "royalty-free", "royalty free", "free music",
+        "music library", "sound effect", "sound effects", "sfx", "pexels",
+        "pixabay", "unsplash", "template", "templates", "screen recording",
+        "screen recorder", "asset library", "media library", "brand kit",
+        "meme template", "public domain", "cc0", "clip art",
+    ],
+    "publish": [
+        "upload", "uploading", "scheduler", "scheduling", "schedule",
+        "post to", "autopost", "auto-post", "cross-post", "crossposting",
+        "cross posting", "buffer", "hootsuite", "social media management",
+        "social media scheduler", "social media scheduling",
+        "social media automation", "publishing", "posting",
+        "content distribution", "distribution", "youtube uploader",
+        "tiktok upload", "auto upload", "upload video", "scheduled post",
+        "scheduled posts", "post scheduling", "socials", "auto poster",
+    ],
+    "thumbnails": [
+        "thumbnail", "thumbnails", "hashtag", "hashtags",
+        "title generator", "tag generator", "description generator",
+        "cover image", "cover photo", "open graph", "meta tag",
+        "thumbnail generator", "thumbnail maker", "thumbnail ai",
+        "ctr", "seo tool", "seo tools", "seo title", "seo description",
+        "seo optimized", "seo optimization",
+    ],
+    "analytics": [
+        "analytics", "engagement", "impressions", "watch time", "retention",
+        "click-through", "click through", "a/b test", "ab test",
+        "performance dashboard", "analytics dashboard",
+        "audience analytics", "channel analytics", "video analytics",
+        "social analytics",
+    ],
     "video-gen": [
         "text-to-video", "video generation", "video-generation", "video gen",
         "sora", "wan2", "wan 2", "cogvideo", "hunyuan", "ltx", "animatediff",
@@ -237,10 +342,6 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
     readme_strong = kw_hits(readme, STRONG_KEYWORDS)
     readme_weak = set(kw_hits(readme, WEAK_KEYWORDS))
 
-    relevant = bool(meta_hits) or bool(readme_strong) or len(readme_weak) >= MIN_WEAK_README_HITS
-    if not relevant:
-        return None
-
     tab_video = bool(
         meta_hits & _set(VIDEO_SIGNS)
         or readme_strong and (set(readme_strong) & _set(VIDEO_SIGNS))
@@ -251,11 +352,23 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
         or readme_strong and (set(readme_strong) & _set(IMAGE_SIGNS))
         or len(readme_weak & _set(IMAGE_SIGNS)) >= MIN_WEAK_README_HITS
     )
-    if not (tab_video or tab_image):
+
+    # Workflow relevance: trend/idea/asset/publish/analytics lifecycle tools
+    # (they may have no video/image generation keywords of their own).
+    # A generic workflow-case word (analytics/publish/...) only counts when the
+    # repo also shows video/content-creator context — keeps metabase/airflow out.
+    wf_meta = kw_match(meta, WORKFLOW_STRONG)
+    wf_readme = len(set(kw_hits(readme, WORKFLOW_STRONG))) >= 2
+    wf_case_meta = kw_match(meta, WF_CONTEXT) and any(
+        kw_match(meta, CASE_KEYWORDS[c]) for c in WORKFLOW_CASES
+    )
+    tab_workflow = wf_meta or wf_readme or wf_case_meta
+
+    if not (tab_video or tab_image or tab_workflow):
         return None
 
     auto_hay = meta + " " + readme
-    tab_automation = kw_match(auto_hay, AUTOMATION_KEYWORDS)
+    tab_automation = kw_match(auto_hay, AUTOMATION_KEYWORDS) and (tab_video or tab_image)
 
     case_hay = auto_hay
     cases = []
@@ -279,7 +392,8 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
         "trend_score": round(repo.get("trend_score", 0) or 0, 1),
         "pushed_at": (repo.get("pushed_at") or "")[:10],
         "tabs": [t for t, ok in (("video", tab_video), ("image", tab_image),
-                                 ("automation", tab_automation)) if ok],
+                                 ("automation", tab_automation),
+                                 ("workflow", tab_workflow)) if ok],
         "cases": cases,
         "readme": readme_text,
     }
@@ -346,8 +460,9 @@ def main():
     video = [r for r in classified if "video" in r["tabs"]]
     image = [r for r in classified if "image" in r["tabs"] and "video" not in r["tabs"]]
     automation = [r for r in classified if "automation" in r["tabs"]]
+    workflow = [r for r in classified if "workflow" in r["tabs"]]
 
-    for lst in (video, image, automation):
+    for lst in (video, image, automation, workflow):
         lst.sort(key=lambda r: r["stars"], reverse=True)
     classified.sort(key=lambda r: r["stars"], reverse=True)
 
@@ -359,12 +474,15 @@ def main():
     print(f"  Video: {len(video)}")
     print(f"  Image: {len(image)}")
     print(f"  Automation: {len(automation)}")
+    print(f"  Workflow: {len(workflow)}")
     print(f"  Total relevant: {len(classified)}")
     print(f"  Cases ({len(all_cases)}): {', '.join(all_cases)}")
     if video:
         print(f"  Top video: {video[0]['name']} ⭐{video[0]['stars']}")
     if image:
         print(f"  Top image: {image[0]['name']} ⭐{image[0]['stars']}")
+    if workflow:
+        print(f"  Top workflow: {workflow[0]['name']} ⭐{workflow[0]['stars']}")
 
     payload = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -372,6 +490,7 @@ def main():
             "video": len(video),
             "image": len(image),
             "automation": len(automation),
+            "workflow": len(workflow),
             "total": len(classified),
             "cases": len(all_cases),
         },
@@ -379,6 +498,7 @@ def main():
         "video": video,
         "image": image,
         "automation": automation,
+        "workflow": workflow,
         "all": classified,
     }
 
