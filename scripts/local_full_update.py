@@ -375,8 +375,15 @@ def main() -> None:
     SKILLS_OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  Wrote {SKILLS_OUTPUT.relative_to(ROOT)}")
 
-    # 6b. Build video-production data (video / image / automation tabs)
+    # 6b. Crawl valuable video tools (append-only pool) then build
+    #     video-production data (video / image / automation / workflow tabs)
     VIDEO_OUTPUT = ROOT / "website" / "data" / "video-production.json"
+    crawl = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "crawl_video_tools.py")],
+        cwd=ROOT,
+    )
+    if crawl.returncode != 0:
+        print("  [WARN] crawl_video_tools.py failed — using existing pool")
     vp = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "generate_video_production.py")],
         cwd=ROOT,

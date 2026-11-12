@@ -34,6 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REPOS_INPUT = ROOT / "website" / "data" / "repos.json"
 AILIST_INPUT = ROOT / "website" / "data" / "ailist.json"
 FEATURES_INPUT = ROOT / "website" / "data" / "features.json"
+POOL_INPUT = ROOT / "data" / "video-tools-pool.json"
 README_FULL = ROOT / "data" / "readme_markdown_cache.json"
 README_CACHE = ROOT / "data" / "readme_cache.json"
 OUTPUT = ROOT / "website" / "data" / "video-production.json"
@@ -137,6 +138,11 @@ WF_CONTEXT = [
 
 # Workflow-stage cases (ordered along the production pipeline).
 WORKFLOW_CASES = ["trends", "ideas", "assets", "publish", "thumbnails", "analytics"]
+
+VIDEO_CASE_SET = {"video-gen", "editing", "avatar", "voice", "captions",
+                  "comfyui", "shorts", "upscaler", "3d", "pipeline"}
+IMAGE_CASE_SET = {"image-gen"}
+WORKFLOW_CASE_SET = set(WORKFLOW_CASES)
 
 CASE_KEYWORDS = {
     "trends": [
@@ -327,6 +333,24 @@ def load_repos() -> list:
                 "pushed_at": f.get("updated_at", ""),
             }
             repos.setdefault(name.lower(), r)
+    if POOL_INPUT.exists():
+        data = json.loads(POOL_INPUT.read_text())
+        for case, entries in data.items():
+            if not isinstance(entries, dict):
+                continue
+            for name, r in entries.items():
+                repos.setdefault(name.lower(), {
+                    "name": r.get("name", name),
+                    "url": r.get("url", ""),
+                    "description": r.get("description", ""),
+                    "stars": r.get("stars", 0),
+                    "forks": r.get("forks", 0),
+                    "language": r.get("language", ""),
+                    "topics": r.get("topics", []),
+                    "pushed_at": r.get("pushed_at", ""),
+                    "_src": "crawl",
+                    "_seed_case": case,
+                })
     return list(repos.values())
 
 
@@ -375,6 +399,17 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
     for case, kws in CASE_KEYWORDS.items():
         if kw_match(case_hay, kws):
             cases.append(case)
+    # Crawled tools are guaranteed the case that found them (and its tab).
+    seed = repo.get("_seed_case")
+    if seed:
+        if seed in VIDEO_CASE_SET:
+            tab_video = True
+        if seed in IMAGE_CASE_SET:
+            tab_image = True
+        if seed in WORKFLOW_CASE_SET:
+            tab_workflow = True
+        if seed not in cases:
+            cases.append(seed)
     if not cases:
         cases = ["editing"] if tab_video else ["image-gen"]
 
@@ -391,6 +426,7 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
         "delta_7d": repo.get("delta_7d", 0) or 0,
         "trend_score": round(repo.get("trend_score", 0) or 0, 1),
         "pushed_at": (repo.get("pushed_at") or "")[:10],
+        "src": repo.get("_src", "starred"),
         "tabs": [t for t, ok in (("video", tab_video), ("image", tab_image),
                                  ("automation", tab_automation),
                                  ("workflow", tab_workflow)) if ok],
@@ -444,7 +480,8 @@ def main():
         return
 
     repos = load_repos()
-    print(f"  Loaded {len(repos)} unique repos")
+    crawled = sum(1 for r in repos if r.get("_src") == "crawl")
+    print(f"  Loaded {len(repos)} unique repos ({crawled} from crawl pool)")
 
     readme_index = build_readme_index()
     print(f"  README index: {len(readme_index)} repos")
