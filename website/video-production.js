@@ -25,7 +25,7 @@
     const CASE_ICONS = {
         'trends': '🔍', 'ideas': '💡', 'assets': '🎞️', 'publish': '🚀',
         'thumbnails': '📸', 'analytics': '📊', 'video-gen': '🎬', 'image-gen': '🖼️',
-        'editing': '✂️', 'avatar': '🗣️', 'voice': '🎙️', 'captions': '💬',
+        'editing': '✂️', 'avatar': '🗣️', 'tts': '🎙️', 'captions': '💬',
         'comfyui': '🧩', 'shorts': '📱', 'pipeline': '⚙️', 'upscaler': '🔍',
         '3d': '🧊',
     };
@@ -63,11 +63,13 @@
         $('vp-stats').innerHTML = `
             <div class="hf-stat"><div class="hf-stat-val">${s.video || 0}</div><div class="hf-stat-lbl">video repos</div></div>
             <div class="hf-stat"><div class="hf-stat-val">${s.image || 0}</div><div class="hf-stat-lbl">image repos</div></div>
+            <div class="hf-stat"><div class="hf-stat-val">${s.tts || 0}</div><div class="hf-stat-lbl">tts engines</div></div>
             <div class="hf-stat"><div class="hf-stat-val">${s.automation || 0}</div><div class="hf-stat-lbl">automation</div></div>
             <div class="hf-stat"><div class="hf-stat-val">${s.workflow || 0}</div><div class="hf-stat-lbl">workflow</div></div>
         `;
         $('vp-c-video').textContent = `(${s.video || 0})`;
         $('vp-c-image').textContent = `(${s.image || 0})`;
+        $('vp-c-tts').textContent = `(${s.tts || 0})`;
         $('vp-c-automation').textContent = `(${s.automation || 0})`;
         $('vp-c-workflow').textContent = `(${s.workflow || 0})`;
         $('vp-c-all').textContent = `(${s.total || 0})`;

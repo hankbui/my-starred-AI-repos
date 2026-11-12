@@ -39,7 +39,7 @@ README_FULL = ROOT / "data" / "readme_markdown_cache.json"
 README_CACHE = ROOT / "data" / "readme_cache.json"
 OUTPUT = ROOT / "website" / "data" / "video-production.json"
 
-READ_EXCERPT_LEN = 1200
+READ_EXCERPT_LEN = 800
 MIN_WEAK_README_HITS = 3
 
 # High-precision terms — count anywhere (name, description, topics, README).
@@ -139,9 +139,10 @@ WF_CONTEXT = [
 # Workflow-stage cases (ordered along the production pipeline).
 WORKFLOW_CASES = ["trends", "ideas", "assets", "publish", "thumbnails", "analytics"]
 
-VIDEO_CASE_SET = {"video-gen", "editing", "avatar", "voice", "captions",
+VIDEO_CASE_SET = {"video-gen", "editing", "avatar", "captions",
                   "comfyui", "shorts", "upscaler", "3d", "pipeline"}
 IMAGE_CASE_SET = {"image-gen"}
+TTS_CASE_SET = {"tts"}
 WORKFLOW_CASE_SET = set(WORKFLOW_CASES)
 
 CASE_KEYWORDS = {
@@ -217,11 +218,18 @@ CASE_KEYWORDS = {
         "digital human", "deepfake", "face swap", "face-swap", "heygen",
         "musev", "echomimic", "hallo", "portrait anim",
     ],
-    "voice": [
-        "tts", "text to speech", "text-to-speech", "voice", "dubbing",
-        "voiceover", "voice-over", "music", "song", "audio", "speech",
-        "f5-tts", "chatterbox", "kokoro", "elevenlabs", "sound effect",
-        "stem separation",
+    "tts": [
+        "tts", "text to speech", "text-to-speech", "speech synthesis",
+        "voice cloning", "voice clone", "vietnamese tts", "chinese tts",
+        "mandarin tts", "cantonese", "kokoro", "piper", "chatterbox",
+        "cosyvoice", "qwen3-tts", "gpt-sovits", "f5-tts", "fish speech",
+        "index-tts", "chattts", "melotts", "vits", "styletts", "xtts",
+        "openvoice", "bark", "parler", "tortoise", "orpheus", "neutts",
+        "espnet", "paddlespeech", "ekho", "mizuoto", "awesome-tts",
+        "dubbing", "voiceover", "voice-over", "audiobook", "voice generator",
+        "ai voice", "speech generation", "tts engine", "tts api",
+        "tts server", "voice synthesis", "realtime tts", "streaming tts",
+        "multilingual tts", "voice design", "vietnamese speech",
     ],
     "captions": [
         "subtitle", "caption", "transcription", "transcribe", "whisper",
@@ -251,6 +259,8 @@ CASE_KEYWORDS = {
         "texture", "lighting", "camera",
     ],
 }
+
+TTS_KEYWORDS = CASE_KEYWORDS["tts"]
 
 
 def kw_match(hay: str, keywords: list) -> bool:
@@ -388,7 +398,11 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
     )
     tab_workflow = wf_meta or wf_readme or wf_case_meta
 
-    if not (tab_video or tab_image or tab_workflow):
+    # TTS station (script -> speech + SRT): dedicated tab for TTS engines,
+    # voice cloning, dubbing and TTS APIs/aggregators.
+    tab_tts = kw_match(meta, TTS_KEYWORDS) or len(set(kw_hits(readme, TTS_KEYWORDS))) >= 2
+
+    if not (tab_video or tab_image or tab_tts or tab_workflow):
         return None
 
     auto_hay = meta + " " + readme
@@ -401,11 +415,15 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
             cases.append(case)
     # Crawled tools are guaranteed the case that found them (and its tab).
     seed = repo.get("_seed_case")
+    if seed == "voice":  # legacy pool key
+        seed = "tts"
     if seed:
         if seed in VIDEO_CASE_SET:
             tab_video = True
         if seed in IMAGE_CASE_SET:
             tab_image = True
+        if seed in TTS_CASE_SET:
+            tab_tts = True
         if seed in WORKFLOW_CASE_SET:
             tab_workflow = True
         if seed not in cases:
@@ -428,7 +446,7 @@ def classify_repo(repo: dict, readme_text: str) -> dict | None:
         "pushed_at": (repo.get("pushed_at") or "")[:10],
         "src": repo.get("_src", "starred"),
         "tabs": [t for t, ok in (("video", tab_video), ("image", tab_image),
-                                 ("automation", tab_automation),
+                                 ("tts", tab_tts), ("automation", tab_automation),
                                  ("workflow", tab_workflow)) if ok],
         "cases": cases,
         "readme": readme_text,
@@ -496,10 +514,11 @@ def main():
 
     video = [r for r in classified if "video" in r["tabs"]]
     image = [r for r in classified if "image" in r["tabs"] and "video" not in r["tabs"]]
+    tts = [r for r in classified if "tts" in r["tabs"]]
     automation = [r for r in classified if "automation" in r["tabs"]]
     workflow = [r for r in classified if "workflow" in r["tabs"]]
 
-    for lst in (video, image, automation, workflow):
+    for lst in (video, image, tts, automation, workflow):
         lst.sort(key=lambda r: r["stars"], reverse=True)
     classified.sort(key=lambda r: r["stars"], reverse=True)
 
@@ -510,6 +529,7 @@ def main():
 
     print(f"  Video: {len(video)}")
     print(f"  Image: {len(image)}")
+    print(f"  TTS: {len(tts)}")
     print(f"  Automation: {len(automation)}")
     print(f"  Workflow: {len(workflow)}")
     print(f"  Total relevant: {len(classified)}")
@@ -518,6 +538,8 @@ def main():
         print(f"  Top video: {video[0]['name']} ⭐{video[0]['stars']}")
     if image:
         print(f"  Top image: {image[0]['name']} ⭐{image[0]['stars']}")
+    if tts:
+        print(f"  Top tts: {tts[0]['name']} ⭐{tts[0]['stars']}")
     if workflow:
         print(f"  Top workflow: {workflow[0]['name']} ⭐{workflow[0]['stars']}")
 
@@ -526,6 +548,7 @@ def main():
         "stats": {
             "video": len(video),
             "image": len(image),
+            "tts": len(tts),
             "automation": len(automation),
             "workflow": len(workflow),
             "total": len(classified),
@@ -534,6 +557,7 @@ def main():
         "cases": all_cases,
         "video": video,
         "image": image,
+        "tts": tts,
         "automation": automation,
         "workflow": workflow,
         "all": classified,

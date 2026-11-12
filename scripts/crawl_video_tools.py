@@ -118,12 +118,25 @@ QUERIES: dict[str, list[str]] = {
         "face swap video in:name,description",
         "talking head generation in:name,description",
     ],
-    "voice": [
-        "topic:tts",
+    "tts": [
         "text to speech in:name,description",
+        "topic:tts",
         "voice cloning in:name,description",
-        "ai voice generator in:name,description",
-        "video dubbing in:name,description",
+        "vietnamese tts in:name,description",
+        "chinese tts in:name,description",
+        "mandarin tts in:name,description",
+        "tts api in:name,description",
+        "openai compatible tts in:name,description",
+        "streaming tts in:name,description",
+        "tts srt subtitle in:name,description",
+        "script to speech in:name,description",
+        "audiobook tts in:name,description",
+        "multilingual tts in:name,description",
+        "awesome tts in:name,description",
+        "voice changer in:name,description",
+        "dubbing in:name,description",
+        "orpheus tts in:name,description",
+        "stable tts in:name,description",
     ],
     "captions": [
         "auto subtitle generator in:name,description",
@@ -167,6 +180,39 @@ QUERIES: dict[str, list[str]] = {
 }
 
 
+# Curated repos per the TTS shortlist (Vietnamese / English / Chinese models,
+# aggregators). Fetched directly via /repos API — bypasses the star filter but
+# still skips archived/forked repos.
+SEED_REPOS = [
+    "pnnbao97/VieNeu-TTS",
+    "NTT123/vietTTS",
+    "hexgrad/kokoro",
+    "resemble-ai/chatterbox",
+    "rhasspy/piper",
+    "neuphonic/neutts-air",
+    "FunAudioLLM/CosyVoice",
+    "QwenLM/Qwen3-TTS",
+    "index-tts/index-tts",
+    "2noise/ChatTTS",
+    "fishaudio/fish-speech",
+    "RVC-Boss/GPT-SoVITS",
+    "myshell-ai/MeloTTS",
+    "SWivid/F5-TTS",
+    "SWivid/E2-TTS",
+    "yl4579/StyleTTS2",
+    "coqui-ai/TTS",
+    "myshell-ai/OpenVoice",
+    "suno-ai/bark",
+    "huggingface/parler-tts",
+    "neonbjb/tortoise-tts",
+    "jaywalnut310/vits",
+    "espnet/espnet",
+    "PaddlePaddle/PaddleSpeech",
+    "BloombergAi/awesome-tts",
+    "licyk/Mizuoto",
+]
+
+
 def load_pool() -> dict:
     if POOL_FILE.exists():
         try:
@@ -203,13 +249,43 @@ def search(query: str) -> list:
     return []
 
 
+def fetch_seed(full_name: str) -> dict | None:
+    r = requests.get(f"https://api.github.com/repos/{full_name}",
+                     headers=HEADERS, timeout=30)
+    if r.status_code != 200:
+        print(f"    seed {full_name}: HTTP {r.status_code}")
+        return None
+    it = r.json()
+    if it.get("archived") or it.get("fork"):
+        return None
+    return {
+        "name": it.get("full_name", full_name),
+        "url": it.get("html_url", f"https://github.com/{full_name}"),
+        "description": (it.get("description") or "").strip() or full_name,
+        "stars": it.get("stargazers_count", 0),
+        "forks": it.get("forks_count", 0),
+        "language": it.get("language") or "",
+        "topics": [t.lower() for t in (it.get("topics") or [])][:8],
+        "pushed_at": (it.get("pushed_at") or "")[:10],
+        "source_query": "seed",
+        "added_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
 def main():
     print("=" * 60)
     print(f"Video Tools Crawler (min {MIN_STARS} stars, < {MAX_AGE_DAYS}d old)")
     print("=" * 60)
 
     pool = load_pool()
-    seen = {name.lower() for name in pool}
+    seen = set()
+    for entries in pool.values():
+        if isinstance(entries, dict):
+            for name in entries:
+                seen.add(name.lower())
+    # one-time migration: legacy "voice" pool key -> "tts"
+    if isinstance(pool.get("voice"), dict):
+        pool.setdefault("tts", {}).update(pool.pop("voice"))
     added = 0
 
     for case, queries in QUERIES.items():
@@ -245,6 +321,23 @@ def main():
             print(f"  [{case}] '{q}' -> +{got}")
             time.sleep(3 if not GITHUB_TOKEN else 1)
         print(f"  [{case}] total: +{len(pool[case]) - before} (pool {len(pool[case])})")
+
+    # Curated TTS seeds (bypass star filter)
+    pool.setdefault("tts", {})
+    seed_added = 0
+    for full in SEED_REPOS:
+        if full.lower() in seen:
+            continue
+        entry = fetch_seed(full)
+        time.sleep(1 if GITHUB_TOKEN else 3)
+        if not entry:
+            continue
+        pool["tts"][full] = entry
+        seen.add(full.lower())
+        seed_added += 1
+        added += 1
+        print(f"  [seed] +{full} ⭐{entry['stars']}")
+    print(f"  [tts] seeds: +{seed_added}")
 
     POOL_FILE.parent.mkdir(parents=True, exist_ok=True)
     POOL_FILE.write_text(json.dumps(pool, indent=2, ensure_ascii=False))
