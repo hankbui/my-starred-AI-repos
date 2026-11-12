@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Auto-run the local AI update (resume-aware):
+    - at login (RunAtLoad)
+    - every 30 minutes (StartInterval) — launchd coalesces missed runs after wake
+  If LM Studio is closed, the wrapper waits for it (up to 45 min) then exits;
+  the next launchd tick retries. local_full_update.py checkpoints per repo, so
+  a sleep/shutdown mid-run resumes where it stopped, and pushes to git on finish.
+
+  Install:
+    cp scripts/com.hankbui.starred-ai-update.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.hankbui.starred-ai-update.plist
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.hankbui.starred-ai-update.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.hankbui.starred-ai-update</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Volumes/Datum/PROJECTAPP/mystarredrepo/my-starred-AI-repos/.venv/bin/python</string>
+        <string>/Volumes/Datum/PROJECTAPP/mystarredrepo/my-starred-AI-repos/scripts/run_local_update.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Volumes/Datum/PROJECTAPP/mystarredrepo/my-starred-AI-repos</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartInterval</key>
+    <integer>1800</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Volumes/Datum/PROJECTAPP/mystarredrepo/my-starred-AI-repos/logs/update.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Volumes/Datum/PROJECTAPP/mystarredrepo/my-starred-AI-repos/logs/update.error.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>

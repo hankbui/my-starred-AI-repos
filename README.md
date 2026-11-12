@@ -104,6 +104,25 @@ A **GitHub Actions pipeline** runs every day:
 4. Generates the AI Opportunity Report
 5. Deploys to **GitHub Pages** — no manual work ever
 
+### Local AI update (Mac Studio / LM Studio)
+
+`scripts/run_local_update.py` crawls GitHub, classifies repos with a **local LLM**
+(LM Studio on port 1234 or Ollama on 11434), rebuilds the agent-skills and
+video-production datasets, then **commits & pushes**.
+
+- **Resume-aware**: every repo is checkpointed (`data/history/local_update_state.json`);
+  if the machine sleeps/shuts down mid-run, re-running continues where it stopped.
+- **LM Studio down**: the wrapper waits up to 45 min for the endpoint, then exits;
+  re-run later resumes. The configured `LLM_MODEL` falls back to any loaded model.
+- **Auto-run** (login + every 30 min, launchd coalesces missed runs after wake):
+
+```bash
+cp scripts/com.hankbui.starred-ai-update.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.hankbui.starred-ai-update.plist
+```
+
+Manual run: `python3 scripts/run_local_update.py` · force now: `--now` · custom wait: `--wait 120`
+
 ---
 
 ## 🌐 SEO &amp; Discoverability
