@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skills — Curated Directory of the Best Open-Source AI Skills & Tools</title>
+    <meta name="description" content="Find the best open-source AI skills, frameworks, SDKs and toolkits for coding, research, marketing, sales, data and more. Ranked by expert value score (stars, momentum, freshness, expert topics). Updated daily.">
+    <meta property="og:title" content="AI Skills — Best Open-Source AI Skills & Tools Directory">
+    <meta property="og:description" content="Discover top AI skills ranked by value score. Curated from GitHub, updated daily.">
+    <meta property="og:url" content="https://hankbui.github.io/my-starred-AI-repos/skills.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Skills — Best Open-Source AI Skills & Tools Directory">
+    <meta name="twitter:description" content="Find the best AI skill for any job. Ranked by value score.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css?v=20261115-1">
+</head>
+<body>
+    <div class="site-shell">
+        <header class="hero" style="padding-bottom:0">
+            <div class="hero-copy">
+                <a class="hf-back" href="index.html">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    Back to starred repos
+                </a>
+                <div class="hf-hero">
+                    <h1>
+                        <span>🛠️ AI Skills</span>
+                        <small id="as-updated"></small>
+                    </h1>
+                    <p>
+                        Stop hunting. <b>Find the right AI skill</b> for any job —
+                        frameworks, SDKs, libraries, and toolkits for coding, research,
+                        marketing, sales, data, and more.
+                        Ranked by <b>expert value score</b> (stars · 7-day growth · freshness · expert topics),
+                        so the most valuable skills show up first.
+                        Curated from GitHub, updated daily.
+                    </p>
+                </div>
+            </div>
+            <div class="as-stats" id="as-stats"></div>
+        </header>
+
+        <main class="content-stack">
+            <section class="panel">
+                <!-- Use-case chips -->
+                <div class="as-chips" id="as-chips"></div>
+
+                <!-- Board / sort tabs (All Time, Trending, Hot, All Resource) -->
+                <div class="as-board" id="as-board"></div>
+
+                <!-- Ask AI bar -->
+                <div class="as-ai-bar">
+                    <input type="search" class="as-search" id="as-search" placeholder="Search skills by name, description, or what you need (e.g. 'framework')..." autocomplete="off" spellcheck="false">
+                    <button class="as-ai-btn" id="as-ai-btn" type="button">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
+                        Ask AI: Find the best skill
+                    </button>
+                    <button class="as-ai-cancel" id="as-ai-cancel" type="button" hidden>⏹️ Cancel</button>
+                    <span class="as-ai-note">Describe what you need — LLM7 finds the best skill from the data</span>
+                </div>
+                <div class="as-ai-result" id="as-ai-result" hidden></div>
+
+                <!-- Results grid -->
+                <span class="as-count" id="as-count"></span>
+                <div class="as-grid" id="as-grid"></div>
+                <div class="as-empty" id="as-empty" hidden></div>
+
+                <div class="as-footer">Data from GitHub starred repos · Classified by category, topics &amp; keywords · Value score ranks stars, growth, freshness &amp; expert signals · Updated daily via GitHub Actions</div>
+            </section>
+        </main>
+    </div>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m6 11 6-6 6 6"/></svg>
+        <span>Top</span>
+    </button>
+
+    <script src="agent-skills.js?v=20261115-1" data-init-tab="skills" data-src="data/skills.json"></script>
+    <script src="translate.js?v=20260723-3"></script>
+</body>
+</html>
