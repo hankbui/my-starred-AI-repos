@@ -2817,6 +2817,45 @@ a {
 .as-tag-agent { background:rgba(99,207,255,0.12); color:var(--accent-strong); }
 .as-tag-skill { background:rgba(140,111,255,0.12); color:#8c6fff; }
 
+.as-select-tick { width:28px; height:28px; border:1px solid var(--border); border-radius:8px; background:#0a0e13; color:var(--text-secondary); font:inherit; font-size:1rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:120ms ease; flex-shrink:0; }
+.as-select-tick:hover { border-color:var(--accent-strong); color:var(--accent); }
+.as-select-tick.selected { border-color:var(--accent); background:var(--accent); color:#001a22; }
+.as-card-selected { border-color:var(--accent-strong); background:rgba(99,207,255,0.08); }
+
+/* ===== Stack (giỏ hàng) ===== */
+.stack-fab { position:fixed; right:20px; bottom:20px; z-index:60; display:none; }
+.stack-fab-btn { width:56px; height:56px; border-radius:50%; border:none; background:var(--accent); color:#001a22; font:inherit; font-weight:800; font-size:1.1rem; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 10px 30px rgba(99,207,255,0.35); transition:120ms ease; }
+.stack-fab-btn:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(99,207,255,0.45); }
+.stack-fab-count { font-size:0.85rem; }
+
+.stack-overlay { position:fixed; inset:0; z-index:65; background:rgba(0,0,0,0.45); backdrop-filter:blur(2px); }
+.stack-sidebar { position:fixed; right:0; top:0; bottom:0; width:min(420px, 92vw); max-height:100vh; z-index:70; background:var(--bg-panel); border-left:1px solid var(--border); box-shadow:-10px 0 40px rgba(0,0,0,0.4); transform:translateX(100%); transition:transform 240ms ease; display:flex; flex-direction:column; overflow-y:auto; }
+.stack-sidebar.open { transform:translateX(0); }
+
+.stack-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+.stack-title { font:inherit; font-weight:800; font-size:1.05rem; letter-spacing:.02em; }
+.stack-title span { font-weight:600; color:var(--accent); }
+.stack-header button { background:transparent; border:none; color:var(--text-secondary); font-size:1.4rem; line-height:1; cursor:pointer; }
+
+.stack-list { padding:12px 8px; flex:1; }
+.stack-item { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#0a0e13; margin-bottom:8px; }
+.stack-item-info { flex:1; min-width:0; }
+.stack-item-name { font-weight:700; color:var(--text-primary); font-size:0.9rem; line-height:1.3; }
+.stack-item-meta { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
+.stack-item-remove { background:transparent; border:none; color:var(--text-muted); font-size:1.1rem; cursor:pointer; flex-shrink:0; }
+.stack-item-remove:hover { color:var(--warning); }
+
+.stack-actions { padding:16px 20px; border-top:1px solid var(--border); flex-shrink:0; display:flex; flex-direction:column; gap:12px; }
+.stack-field { display:flex; flex-direction:column; gap:6px; }
+.stack-field-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); font-weight:700; }
+.stack-field-wrap { display:flex; gap:8px; }
+.stack-field-wrap input { flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:#0a0e13; color:var(--text-primary); font:inherit; font-size:0.82rem; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+.stack-field-wrap button { padding:8px 14px; border:1px solid var(--border-strong); border-radius:8px; background:transparent; color:var(--accent); font:inherit; font-weight:700; font-size:0.82rem; cursor:pointer; white-space:nowrap; }
+.stack-field-wrap button:hover { background:rgba(99,207,255,0.1); }
+.stack-clear { width:100%; padding:10px; border:1px solid var(--border); border-radius:8px; background:transparent; color:var(--warning); font:inherit; font-weight:700; cursor:pointer; }
+.stack-clear:hover { background:rgba(255,184,87,0.1); }
+.stack-empty { padding:16px; color:var(--text-muted); font-size:0.9rem; text-align:center; }
+
 /* ===== Design Skills (curated) ===== */
 .ds-picks { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; margin-bottom:24px; }
 @media (max-width:640px) { .ds-picks { grid-template-columns:1fr; } }

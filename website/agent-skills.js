@@ -22,7 +22,10 @@
         search: INIT_UC || '',
         useCase: INIT_UC || '',
         abortCtrl: null,
+        selected: new Set(), // stack: skill ids selected
     };
+
+    const STORAGE_KEY = `stack_selected_${state.type}`;
 
     const BOARD_TABS = [
         { key: 'allTime', label: 'All Time', icon: '⏱️' },
@@ -31,6 +34,7 @@
         { key: 'allResource', label: 'All Resource', icon: '📦' },
     ];
 
+    // ---------- helpers ----------
     function esc(s) {
         if (s === null || s === undefined) return '';
         const d = document.createElement('div');
@@ -63,8 +67,59 @@
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     }
 
-    // ---- render: stats + chips --------------------------------------------
+    // ---------- stack (selected skills) ----------
+    function loadSelected() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const arr = JSON.parse(raw);
+                if (Array.isArray(arr)) state.selected = new Set(arr);
+            }
+        } catch { /* ignore */ }
+        // support ?stack=base64 in URL (shareable stack link, no backend needed)
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const stack = params.get('stack');
+            if (stack) {
+                const decoded = atob(stack.replace(/-/g, '+').replace(/_/g, '/'));
+                const ids = decoded.split(',').filter(Boolean);
+                ids.forEach(id => state.selected.add(id));
+                // clean url without reloading
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        } catch { /* ignore */ }
+    }
 
+    function saveSelected() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.selected])); } catch {}
+    }
+
+    function toggleSelect(id, checked) {
+        if (checked) state.selected.add(id); else state.selected.delete(id);
+        saveSelected();
+        renderGrid();
+        renderFab();
+        renderStackBadge();
+    }
+
+    function isSelected(id) {
+        return state.selected.has(id);
+    }
+
+    function buildStackData() {
+        const ids = [...state.selected];
+        const items = (state.data && state.data.items) || [];
+        const byId = {};
+        items.forEach(it => { byId[it.name] = it; });
+        const skills = ids.map(id => byId[id]).filter(Boolean);
+        const b64 = btoa(ids.join(','))
+            .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        const stackLink = window.location.origin + window.location.pathname + '?stack=' + b64;
+        const installCmd = `npx claude-code-templates@latest --skill ${ids.join(',')}`;
+        return { ids, skills, stackLink, installCmd };
+    }
+
+    // ---------- render: stats + chips ----------
     function renderStats(d) {
         const s = d.stats || {};
         const updatedEl = $('as-updated');
@@ -82,6 +137,14 @@
         const cSkills = $('as-c-skills');
         if (cAgents) cAgents.textContent = `(${s.agents || 0})`;
         if (cSkills) cSkills.textContent = `(${s.skills || 0})`;
+    }
+
+    function renderStackBadge() {
+        const el = $('stack-badge');
+        if (!el) return;
+        const n = state.selected.size;
+        el.hidden = n === 0;
+        el.textContent = n;
     }
 
     function renderChips(d) {
@@ -107,14 +170,12 @@
         }).join('');
     }
 
-    // ---- filter + render grid ---------------------------------------------
-
+    // ---------- filter + render grid ----------
     function getItems() {
         if (!state.data) return [];
         if (state.data.items) {
             return state.data.items;
         }
-        // legacy combined format
         if (state.type === 'all') {
             return [...(state.data.agents || []), ...(state.data.skills || [])];
         }
@@ -149,7 +210,6 @@
         } else if (state.board === 'hot') {
             sorted.sort((a, b) => (b.stars || 0) - (a.stars || 0));
         } else {
-            // default: expert value score high → low
             sorted.sort((a, b) => (b.value_score || b.stars || 0) - (a.value_score || a.stars || 0));
         }
         return sorted;
@@ -161,6 +221,15 @@
         return `<span class="as-card-value">💎 ${v.toFixed(1)}</span>`;
     }
 
+    function selectTick(id) {
+        const sel = isSelected(id);
+        return `
+            <button class="as-select-tick${sel ? ' selected' : ''}" type="button" aria-label="${sel ? 'Bỏ chọn' : 'Chọn'}" data-id="${esc(id)}">
+                ${sel ? '✓' : '+'}
+            </button>
+        `;
+    }
+
     function renderCard(item) {
         const tags = (item.topics || []).slice(0, 4).map(t => `<span class="as-tag">${esc(t)}</span>`).join('');
         const ucs = (item.use_cases || []).map(uc => `<span class="as-uc-tag">${esc(uc)}</span>`).join('');
@@ -170,13 +239,16 @@
         const popLabel = item.downloads ? '⬇' : '⭐';
         const popVal = item.downloads ? item.downloads : item.stars;
         return `
-            <div class="as-card">
+            <div class="as-card${isSelected(item.name) ? ' as-card-selected' : ''}">
                 <div class="as-card-hd">
                     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
                         <a class="as-card-name" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>
                         ${valueBadge(item)}
                     </div>
-                    <span class="as-card-stars">${popLabel} ${fmtNum(popVal)}</span>
+                    <div style="display:flex;align-items:center;gap:6px">
+                        ${selectTick(item.name)}
+                        <span class="as-card-stars">${popLabel} ${fmtNum(popVal)}</span>
+                    </div>
                 </div>
                 <div class="as-card-desc">${esc(item.description || '')}</div>
                 <div class="as-card-cat">${typeTag}${item.category} ${item.delta_7d > 0 ? `· <span class="as-up">+${fmtNum(item.delta_7d)}/wk</span>` : ''}</div>
@@ -205,10 +277,16 @@
         }
         if (empty) empty.hidden = true;
         grid.innerHTML = items.map(renderCard).join('');
+        // event delegation for select ticks
+        grid.querySelectorAll('.as-select-tick').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                toggleSelect(id, !isSelected(id));
+            });
+        });
     }
 
-    // ---- LLM7 AI matching -------------------------------------------------
-
+    // ---------- LLM7 AI matching ----------
     async function llm7(messages, temperature, signal) {
         const res = await fetch(LLM7_URL, {
             method: 'POST',
@@ -301,11 +379,143 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         setAskAILoading(false);
     }
 
-    // ---- controls ----------------------------------------------------------
+    // ---------- stack UI (fab + sidebar) ----------
+    function ensureStackUI() {
+        if ($('stack-fab')) return;
+        const fab = document.createElement('div');
+        fab.id = 'stack-fab';
+        fab.className = 'stack-fab';
+        fab.innerHTML = `
+            <button id="stack-fab-btn" type="button" aria-label="Xem stack đã chọn">
+                <span class="stack-fab-icon">📦</span>
+                <span id="stack-fab-count" class="stack-fab-count">0</span>
+            </button>
+        `;
+        document.body.appendChild(fab);
 
+        const sidebar = document.createElement('div');
+        sidebar.id = 'stack-sidebar';
+        sidebar.className = 'stack-sidebar';
+        sidebar.innerHTML = `
+            <div class="stack-overlay" id="stack-overlay" onclick="appCloseStack()"></div>
+            <div class="stack-panel" id="stack-panel">
+                <div class="stack-header">
+                    <span class="stack-title">Stack đã chọn <span id="stack-panel-count">0</span></span>
+                    <button id="stack-close" type="button" onclick="appCloseStack()">✕</button>
+                </div>
+                <div class="stack-list" id="stack-list"></div>
+                <div class="stack-actions">
+                    <div class="stack-field">
+                        <label class="stack-field-label">Lệnh cài đặt</label>
+                        <div class="stack-field-wrap">
+                            <input id="stack-install-cmd" readonly>
+                            <button id="stack-copy-cmd" type="button">Sao chép</button>
+                        </div>
+                    </div>
+                    <div class="stack-field">
+                        <label class="stack-field-label">Link stack (chia sẻ)</label>
+                        <div class="stack-field-wrap">
+                            <input id="stack-link" readonly>
+                            <button id="stack-copy-link" type="button">Sao chép</button>
+                        </div>
+                    </div>
+                    <button id="stack-clear" type="button">Xóa tất cả</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(sidebar);
+
+        // wire events
+        $('stack-fab-btn').addEventListener('click', appOpenStack);
+        $('stack-close').addEventListener('click', appCloseStack);
+        $('stack-overlay').addEventListener('click', appCloseStack);
+        $('stack-copy-cmd').addEventListener('click', () => copyText('stack-install-cmd'));
+        $('stack-copy-link').addEventListener('click', () => copyText('stack-link'));
+        $('stack-clear').addEventListener('click', appClearStack);
+    }
+
+    function appToggleSelect(id, checked) {
+        toggleSelect(id, checked);
+    }
+
+    function appOpenStack() {
+        ensureStackUI();
+        const { skills, stackLink, installCmd } = buildStackData();
+        $('stack-panel-count').textContent = skills.length;
+        $('stack-install-cmd').value = installCmd;
+        $('stack-link').value = stackLink;
+
+        const list = $('stack-list');
+        if (!skills.length) {
+            list.innerHTML = '<div class="stack-empty">Chưa có skill nào trong stack.</div>';
+        } else {
+            list.innerHTML = skills.map(it => {
+                const popLabel = it.downloads ? '⬇' : '⭐';
+                const popVal = it.downloads ? it.downloads : it.stars;
+                return `
+                    <div class="stack-item">
+                        <div class="stack-item-info">
+                            <div class="stack-item-name">${esc(it.name)}</div>
+                            <div class="stack-item-meta">${esc(it.category)} · ${popLabel} ${fmtNum(popVal)}</div>
+                        </div>
+                        <button class="stack-item-remove" type="button" aria-label="Xóa" data-id="${esc(it.name)}">✕</button>
+                    </div>
+                `;
+            }).join('');
+            list.querySelectorAll('.stack-item-remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    toggleSelect(id, false);
+                    appOpenStack(); // refresh sidebar
+                });
+            });
+        }
+
+        $('stack-sidebar').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function appCloseStack() {
+        const el = $('stack-sidebar');
+        if (el) el.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function appClearStack() {
+        state.selected = new Set();
+        saveSelected();
+        renderGrid();
+        renderFab();
+        renderStackBadge();
+        appOpenStack(); // refresh sidebar
+    }
+
+    function renderFab() {
+        const fab = $('stack-fab');
+        if (!fab) return;
+        const n = state.selected.size;
+        if (n === 0) { fab.style.display = 'none'; return; }
+        fab.style.display = 'flex';
+        $('stack-fab-count').textContent = n;
+    }
+
+    function copyText(id) {
+        const el = $(id);
+        if (!el) return;
+        el.select();
+        el.setSelectionRange(0, 99999);
+        try {
+            navigator.clipboard.writeText(el.value);
+            const btn = el.parentElement.querySelector('button');
+            const old = btn.textContent;
+            btn.textContent = 'Đã sao chép ✓';
+            setTimeout(() => { btn.textContent = old; }, 1500);
+        } catch { /* fallback */ }
+    }
+
+    // ---------- controls ----------
     function bindControls() {
         if (SINGLE_TYPE) {
-            // hide the tab bar on single-type pages
             const bar = document.querySelector('.as-bar');
             if (bar) bar.style.display = 'none';
         } else {
@@ -367,8 +577,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         }
     }
 
-    // ---- bootstrap ----------------------------------------------------------
-
+    // ---------- bootstrap ----------
     async function load() {
         try {
             const resp = await fetch(DATA_URL);
@@ -383,9 +592,13 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         renderChips(state.data);
         renderBoardTabs();
         renderGrid();
+        renderFab();
+        renderStackBadge();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        loadSelected();
+        ensureStackUI();
         bindControls();
         const searchEl = $('as-search');
         if (searchEl && state.useCase) {
