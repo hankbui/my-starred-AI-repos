@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "papers_tracked": 15,
-    "technologies_discovered": 46,
+    "technologies_discovered": 14,
     "opportunities_identified": 0,
-    "last_update": "2026-11-15 12:54 UTC",
+    "last_update": "2026-11-16 13:54 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,31 +13,31 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "46",
+      "value": "14",
       "label": "discovered this scan",
-      "detail": "Multimodal Learning, Self-Grounded Verification, Agreement Bias Mitigation, Reinforcement Learning from Human Feedback, Direct Preference Optimization, Diffusion Models, Vision-Language Reasoning, Reinforcement Learning",
+      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Sparse Attention, KV Cache Optimization, Human-in-the-Loop Learning, Agentic Pipelines, Self-Grounded Verification, Agreement Bias Mitigation",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "46",
+      "value": "14",
       "label": "active trend clusters",
-      "detail": "Multimodal Learning, Continual Pretraining, Supervised Fine-Tuning, Final Token Preference Optimization, Reinforcement Learning with Verifiable Rewards",
+      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Sparse Attention, KV Cache Optimization, Human-in-the-Loop Learning",
       "color": "green"
     },
     {
       "id": "highest_potential",
       "title": "Highest Potential",
-      "value": "7.8",
+      "value": "7.9",
       "label": "avg opportunity score",
-      "detail": "Let's Think in Two Steps: Mitigating Agreement Bias in MLLMs with Self-Grounded ",
+      "detail": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Rea",
       "color": "amber"
     },
     {
       "id": "biggest_surprise",
       "title": "Biggest Surprise",
-      "value": "Let's Think in Two Steps: Miti",
+      "value": "Gamer: A Generalist Vision-Lan",
       "label": "confidence 80%",
       "detail": "",
       "color": "purple"
@@ -45,21 +45,108 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "Jais 3: Introducing Arabic-cen",
+      "value": "Gamer: A Generalist Vision-Lan",
       "label": "highest confidence paper",
-      "detail": "Arabic-centric AI assistant for enterprise applications, Multilingual agentic AI for customer support and service automation",
+      "detail": "A generalist AI agent for interactive environments, A cloud-edge inference engine for real-time interaction",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "38",
+      "value": "8",
       "label": "early-stage technologies",
-      "detail": "SimRec: Learning to Search, Ask, and Recommend from Simulated Interaction",
+      "detail": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Rea",
       "color": "blue"
     }
   ],
   "papers": [
+    {
+      "id": "2611.18397",
+      "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18397v1 Announce Type: cross Abstract: We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
+      "pdf_url": "https://arxiv.org/abs/2611.18397",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Sparse Attention",
+        "KV Cache Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "A generalist AI agent for interactive environments",
+        "A cloud-edge inference engine for real-time interaction"
+      ],
+      "domain_applications": [
+        "creative",
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.17955",
+      "title": "WebArena-Pro: A Heterogeneous, Multimodal, Reproducible Benchmark for Web Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.17955v1 Announce Type: new Abstract: Web agents powered by large language and vision-language models are increasingly applied to realistic browser work that spans heterogeneous applications, multimodal content, and stateful workflows. However, existing reproducible web-agent benchmarks cover only a small number of web applications drawn from a few software categories, and restrict modality to text and vision. Live benchmarks broaden site coverage but sacrifice reproducibility, since pages and data drift between runs. Moreover, existing benchmarks do not meaningfully evaluate whether agents can understand and use audio and video content embedded within web tasks. To address these gaps, we introduce WebArena-Pro, a benchmark comprising 300 tasks across 20 self-hosted web applications in six domain categories, spanning distinct interface conventions, workflows, and data models. Across the evaluated agents, the best performance is achieved by both Codex with GPT 6.1 Sol and Claude Code with Claude Opus 5.5 at 62.3%, followed by OpenCode with Kimi 3.1 Pro at 60.7%. The strongest GenericAgent configurations, Gemini 3.1 Pro omni and Gemma4 31B, both achieve 30.3%. Among reproducible, human-curated web agent benchmarks, WebArena-Pro provides the broadest application coverage and the most comprehensive multimodal support to date. The benchmark treats audio and video as core observations alongside text and vision, with dedicated actions for extracting information from each. WebArena-Pro runs each task in isolation and supports reproducible, parallel evaluation. Tasks are authored through a dedicated annotator interface, filtered by LLM-assisted triage, and finally validated by humans before release. Project page: https://webarena-pro.github.io",
+      "pdf_url": "https://arxiv.org/abs/2611.17955",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Developing a web agent that can perform complex tasks across various web applications using multimodal inputs.",
+        "Creating a platform for evaluating and improving web agents using a reproducible benchmark."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.18130",
+      "title": "JFinBench: A Continuously Refreshable Japanese Financial Benchmark from the Latest Certification Exams",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18130v1 Announce Type: new Abstract: Large language models (LLMs) are increasingly applied to finance, creating a need for benchmarks that evaluate their capabilities across financial systems with different regulations and practices. However, existing financial benchmarks provide limited coverage of country-specific financial systems, and they are difficult to keep up to date as released questions leak into training data. We introduce JFinBench, a Japanese financial benchmark comprising 321 examples from the 2026 editions of six regularly administered certification exams covering accounting, tax, financial planning, and banking. To construct it, we develop a human-in-the-loop agentic pipeline in which a coding agent writes exam-specific conversion code and a review page, while a human verifies every example and feeds corrections back to the agent. This pipeline adapts to heterogeneous exam formats and reduces the effort of incorporating new exam editions, enabling periodic refreshes that mitigate data contamination. Evaluating 12 recent LLMs, we find that Claude Fable 5 and GPT-6 Astra exceed 93% overall, while even the best open-weight model, Kimi K3.1 Pro, trails Claude Fable 5 by 12 percentage points. When models can additionally use a terminal and web access, they retrieve the knowledge they lack and every model improves. The gap narrows but about 4 points remain, and the ranking of models stays largely the same, suggesting that knowledge held in the model itself remains valuable even with tools. We release the dataset, the evaluation code, and the construction pipeline.",
+      "pdf_url": "https://arxiv.org/abs/2611.18130",
+      "comment": "",
+      "technologies": [
+        "Human-in-the-Loop Learning",
+        "Agentic Pipelines"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "A continuously updated financial education platform for Japanese learners, leveraging the benchmark to provide real-time, accurate, and up-to-date financial knowledge.",
+        "A financial compliance tool for Japanese financial institutions, using the benchmark to ensure that their employees and systems are up-to-date with the latest regulations and practices."
+      ],
+      "domain_applications": [
+        "finance",
+        "education"
+      ]
+    },
     {
       "id": "2507.11662",
       "title": "Let's Think in Two Steps: Mitigating Agreement Bias in MLLMs with Self-Grounded Verification",
@@ -118,6 +205,82 @@
         "enterprise",
         "other"
       ]
+    },
+    {
+      "id": "2602.06008",
+      "title": "From Chats to Markets: AgenticPay for LLM-Powered Negotiation in Multi-Agent Commerce",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2602.06008v2 Announce Type: replace Abstract: Large language model agents are increasingly expected to negotiate and transact autonomously, yet existing benchmarks rarely combine multimodal product grounding, multi-issue bargaining, and competitive multi-agent markets. We introduce AgenticPay, a unified benchmark for evaluating multimodal agents' ability to reach high-welfare, multidimensional agreements in realistic markets. AgenticPay includes 160 multimodal tasks across four business scenarios (E-commerce, Food Delivery, Ride-hailing, and Apartment Rental) and eight market topologies, from bilateral bargaining to many-to-many competition. Agents interpret product images, infer opponents' hidden preferences, and negotiate binding contract terms such as price, lease duration, return policy, and delivery speed through multi-round natural-language dialogue. A utility-based framework evaluates agreement quality and joint welfare. Experiments with proprietary (GPT-5.4, Claude Sonnet 4.6, Gemini 3.1 Pro Preview) and open-weight (Qwen3-VL-32B-Instruct, InternVL3-38B) multimodal models reveal substantial limitations in value creation and market reasoning. Even the strongest model, Gemini 3.1 Pro Preview, achieves a GlobalScore of only 42.3/100. As markets shift from bilateral to multi-sided, average GlobalScore falls by 5.7 points, with open-weight models declining by up to 11.5 points. AgenticPay provides a testbed for evaluating multimodal agents in realistic commerce. Code and data: https://github.com/SAIL-Research-Lab/AgenticPay.",
+      "pdf_url": "https://arxiv.org/abs/2602.06008",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.18261",
+      "title": "Structural Self-Teaching for Compositional Generation in Unified Multimodal Models",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18261v1 Announce Type: new Abstract: We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst",
+      "pdf_url": "https://arxiv.org/abs/2611.18261",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.17440",
+      "title": "Interpreting Coding Agents Through Their Behavioral Trajectories",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.17440v1 Announce Type: cross Abstract: Standard coding-agent benchmarks primarily evaluate binary task success, treating execution as a black box and obscuring the behaviors that produce those outcomes. We analyze a large corpus of 143,209 execution trajectories from 125 agent configurations spanning 117 unique models. To enable comparisons across heterogeneous agent interfaces, we develop a rule-based parser that maps raw execution traces to high-level actions such as repository search, file editing, and test execution, and audit its predictions against a six-model consensus reference on 500 events. We find that agents with similar solve rates can nevertheless differ substantially in how they explore, modify and verify code. Moreover, without using task outcomes, token counts, or tool names as features, aggregate behavioral profiles retrieve the corresponding agent stack across disjoint repository sets and programming languages, although task composition is not fully controlled in the cross-repository setting. Through analyses of frontier models and agent scaffolds, we further show that scaffold choice and reasoning effort systematically shift agents' search, editing, and testing behavior. We release the deterministic parser together with the full annotation and analysis pipeline alongside an annotated trajectory subset.",
+      "pdf_url": "https://arxiv.org/abs/2611.17440",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.17720",
+      "title": "Ego2Flow: Benchmarking the Traffic-System Impact of Autonomous Driving on Maps Distilled from Real-World Roads",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.17720v1 Announce Type: cross Abstract: End-to-end autonomous driving is predominantly evaluated through ego-vehicle safety and task completion. Its deployment in urban traffic, however, creates sustained interactions among vehicles whose collective effects remain insufficiently evaluated. We introduce Ego2Flow, a closed-loop benchmark for assessing the traffic-system impact of autonomous driving on maps distilled from real-world cities. To construct realistic 3D urban environments for sustained closed-loop traffic simulation, we develop an agent-guided map distillation framework that integrates real-world maps and observations with complementary geographic information. Through an iterative feedback mechanism and a traffic information graph that jointly guide scene generation, the framework preserves lane topology, critical road geometry and decision-relevant visual conditions while simplifying nonessential details and completing unobserved regions. Using our proposed framework, we generate and publicly release six CARLA maps from the Argoverse 2 dataset, covering the corresponding real-world regions and enabling paired comparisons of driving behavior under real and simulated observations. On these maps, Ego2Flow evaluates how autonomous driving policies affect traffic efficiency, safety, stability and energy consumption across diverse road structures. Compared with existing construction methods, our framework achieves the lowest average displacement error between planning outputs from paired real and simulated observations. We further benchmark representative driving policies to characterize their system-level impact on urban traffic. Project Page: https://github.com/Fisher-007/Ego2Flow.",
+      "pdf_url": "https://arxiv.org/abs/2611.17720",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
       "id": "2611.15238",
@@ -181,536 +344,80 @@
       ]
     },
     {
-      "id": "2611.15426",
-      "title": "SimRec: Learning to Search, Ask, and Recommend from Simulated Interaction",
+      "id": "2611.18494",
+      "title": "ARCHER: From Rationale Imitation to Executable Reasoning in Small Language Models",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "summary": "arXiv:2611.15426v1 Announce Type: cross Abstract: LLM-based recommendation agents can search catalogs, inspect products, ask users, and revise rejected recommendations. However, these behaviors are often governed by hand-designed workflows, while existing training methods optimize isolated components such as query rewriting or list ranking rather than the interaction policy as a whole. We present SimRec, a reinforcement learning framework that trains the full interaction policy of a tool-integrated recommendation agent. SimRec introduces two components. A task-anchored user simulator provides feedback on every recommendation: conditioned on the current task need rather than on user profile, and it can be an external LLM or the recommender itself under self-play. A task-aligned reward optimizes the whole trajectory with GRPO, crediting natural retrieval quality and valid tool use alongside the final hit, with training-only target injection to handle sparse hits over large catalogs. On ESCI and Amazon C4, SimRec improves the NDCG@100 of a Qwen3-4B agent from 32.23% to 35.42% and from 22.94% to 24.72%}, outperforming training-free agents on far larger backbones and task-aligned baselines on NDCG. Analysis shows that the trained agent verifies candidates, uses preferences, and recovers from rejected recommendations far more often than its untrained counterpart. Our code is available at https://github.com/ZJU-REAL/SimRec .",
-      "pdf_url": "https://arxiv.org/abs/2611.15426",
-      "comment": "",
-      "technologies": [
-        "Reinforcement Learning",
-        "LLM-based Agents",
-        "Tool-Integrated Agents",
-        "User Simulation",
-        "Recommendation Systems",
-        "Self-Play Training",
-        "Trajectory Optimization",
-        "GRPO (Group Relative Policy Optimization)"
-      ],
-      "maturity": "medium",
-      "confidence": 0.75,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Conversational e-commerce recommendation engine with natural language product search and preference learning",
-        "Enterprise knowledge base assistant that searches documentation, asks clarifying questions, and recommends relevant resources",
-        "Personalized content discovery platform with adaptive user preference elicitation and rejection recovery"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "id": "2508.05167",
-      "title": "PhysPatch: A Physically Realizable and Transferable Adversarial Patch Attack for Multimodal Large Language Models-based Autonomous Driving Systems",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "summary": "arXiv:2508.05167v2 Announce Type: replace Abstract: Multimodal Large Language Models (MLLMs) are becoming integral to autonomous driving (AD) systems due to their strong vision-language reasoning capabilities. However, MLLMs are vulnerable to adversarial attacks, particularly adversarial patch attacks, which can pose serious threats in real-world scenarios. Existing patch-based attack methods are primarily designed for object detection models and perform poorly when transferred to MLLM-based systems due to the latter's complex architectures and reasoning abilities. To address these limitations, we propose PhysPatch, a physically realizable and transferable adversarial patch framework tailored for MLLM-based AD systems. PhysPatch jointly optimizes patch location, shape, and content to enhance attack effectiveness and real-world applicability. It introduces a semantic-based mask initialization strategy for realistic placement, an SVD-based local alignment loss with patch-guided crop-resize to improve transferability, and a potential field-based mask refinement method. Extensive experiments across open-source, commercial, and reasoning-capable MLLMs demonstrate that PhysPatch significantly outperforms prior methods in steering MLLM-based AD systems toward target-aligned perception and planning outputs. Moreover, PhysPatch consistently places adversarial patches in physically feasible regions of AD scenes, ensuring strong real-world applicability and deployability.",
-      "pdf_url": "https://arxiv.org/abs/2508.05167",
-      "comment": "",
-      "technologies": [
-        "Adversarial Patch Attack",
-        "Multimodal Learning",
-        "Vision-Language Reasoning"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "Developing adversarial patch detection systems for autonomous vehicles",
-        "Enhancing the robustness of multimodal large language models in autonomous driving systems"
-      ],
-      "domain_applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "id": "2611.10015",
-      "title": "Micius-Flash: Lightweight Agentic Intelligence for Engineering",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "summary": "arXiv:2611.10015v1 Announce Type: cross Abstract: We introduce Micius-Flash, a 27-billion-parameter model for engineering with native multimodal input, deep reasoning and a 256K-token context window. We design the Micius data pipeline as a knowledge-tree-driven data flywheel comprising three stages: knowledge tree construction and expansion, data synthesis, and quality validation with hard-example augmentation. From this data, we train expert models for semiconductor knowledge and reasoning, hardware coding, and semiconductor multimodal understanding, along with agentic experts. Subsequently, we employ Multi-Teacher On-Policy Distillation (MOPD) to supervise training on sequences generated by Micius itself, thereby integrating the capabilities of these expert models into a unified model. On more than 20 datasets with about 15K records, Micius-Flash averages 64.2% on hardware code benchmarks, 15.0 points above a same-size baseline. It scores 62.4% on a semiconductor-specific agent benchmark, exceeding the same-size baseline by 17.2 points. We further develop Micius Harness for industrial applications, connecting the model to specialized tools, including EDA tools and KiCad, as well as execution environments. Case studies in PCB design, chip design workflow automation, and software development demonstrate the model's ability to use tool execution feedback for multi-step planning, code debugging, and iterative verification. We release Micius as an open-source model to advance the development of agents for science and engineering.",
-      "pdf_url": "https://arxiv.org/abs/2611.10015",
-      "comment": "",
-      "technologies": [
-        "Multi-Teacher On-Policy Distillation (MOPD)",
-        "Knowledge-Tree-Driven Data Flywheel",
-        "Hard-Example Augmentation",
-        "Agentic Experts",
-        "Multimodal Learning",
-        "Large Language Models (LLMs) with extended context window"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "AI-driven engineering assistant for hardware design and software development",
-        "Industrial automation tool for workflow automation and debugging"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2611.16956",
-      "title": "Lara Mini Base: Language Diversity as a Resource, Not a Trade-off",
-      "authors": [
-        "Translated",
-        "Maria Pia Adinolfi",
-        "Isabelle Andrieu",
-        "Grazia Fiorella Anfuso",
-        "Melania Annunziata",
-        "Daniele Antonini",
-        "Marta Arena",
-        "Luca Barone",
-        "Dana Barras Franco",
-        "Francesca Basiricò",
-        "Francesca Bee",
-        "Sofia Bertini",
-        "Nicola Bertoldi",
-        "Giorgio Biancini",
-        "Alessandra Bigi",
-        "Giulia Boccalini",
-        "Tommaso Bonomo",
-        "Enrico Boscardi",
-        "Sebastien Bratieres",
-        "Francesco Brigante",
-        "Giulia Brignola",
-        "Romolo Buondestino",
-        "Brenda Patricia Byrne",
-        "Giorgia Campora",
-        "Edoardo Cappelli",
-        "Veronica Carascosi",
-        "Francesca Carducci",
-        "Cody Carlson",
-        "Davide Caroselli",
-        "Ambra Cascio",
-        "Dario Cascio",
-        "Mauro Cassani",
-        "Andrea Castro",
-        "Alessandro Cattelan",
-        "Giulia Ceccacci",
-        "Paola Cellini",
-        "Giulia Chiriatti",
-        "Federico Cialini",
-        "Valentina Ciarlariello",
-        "Daniele Cocozza",
-        "Emanuela Coghe",
-        "Kathleen Compares",
-        "Marco Comunità",
-        "Davide Conti",
-        "Helen Rebecca Corfield",
-        "Michele Cortellessa",
-        "Anna Cracco",
-        "Aurora Cuppone",
-        "Arianna D'Andrea",
-        "Maurizio Davoli",
-        "Andrea De Angelis",
-        "Andrea De Blasi",
-        "Rebecca De Giorgi",
-        "Annalisa De Petra",
-        "Arianna De Pilla",
-        "Joris Demiraj",
-        "Elena Deufemia",
-        "Federica Di Antonio",
-        "Pierluigi Di Cianni",
-        "Vincenzo Di Cicco",
-        "Michela Di Clemente",
-        "Alan Di Francesco",
-        "Ylenia Di Gese",
-        "Federica Di Iulio",
-        "Claudia Di Lorenzo",
-        "Andrea Di Paola",
-        "Giulia Di Pilla",
-        "Jessica Dickson",
-        "Francesco Elefante",
-        "Ilaria Fabrizio",
-        "Alessandro Falappa",
-        "Viviana Fantozzi",
-        "Antonio Farina",
-        "Andrea Fernandez Tostado Ro. Diego Andrea",
-        "Andrea Ferrari",
-        "Sara Ferri",
-        "Simona Ferri",
-        "Fabio Fioramonti",
-        "Stefano Florio",
-        "Mariachiara Fornaro",
-        "Anna Maria Foti",
-        "Niccolò Fransoni",
-        "Alessandro Fusacchia",
-        "Emma Gamba",
-        "Francesco Gasperoni",
-        "Davide Gattini",
-        "Marta Giani",
-        "Claudia Giannetti",
-        "Valerio Giannini",
-        "Antonella Giudici",
-        "Mara Gramendola",
-        "Michele Grandinetti",
-        "Eleonora Graziani",
-        "L'Meese Hope Greaney",
-        "Dario Gubernari",
-        "Filomena Guglielmi",
-        "Jonathan Hammond",
-        "Stephen William Harris",
-        "Rowena Elizabeth Hogg",
-        "Marta Hontanon Del Olmo",
-        "Marco Ilari",
-        "Kenneth Larry Jackson",
-        "Sagar Joshi",
-        "Bartosz Alberto Karman",
-        "Iuliia Khimenko",
-        "Valerio Lanni",
-        "Giulio Leonardi",
-        "Veronica Levco",
-        "Matteo Licci",
-        "Alessio Ligios",
-        "Noemi Lomartire",
-        "Domenico Lupinetti",
-        "Jennifer Mirjam Maechtlen",
-        "Chiara Maggiori",
-        "Maria Luisa Malerba",
-        "Francesco Marconi",
-        "Domenico Marini",
-        "Francesca Marsili",
-        "Andrea Martinelli",
-        "James Mc Groary",
-        "Matteo Menicacci",
-        "Andrew Steven Miller",
-        "Marco Moauro",
-        "Giuliana Molon",
-        "Ilaria Mongelluzzi",
-        "Emiliano Morghen",
-        "Giovanni Moscati",
-        "Filippo Musmeci",
-        "Flavia Napoleoni",
-        "Nicola Giuseppe Ninni",
-        "Beatrice Ottoni",
-        "Federica Pagliani",
-        "Nicolò Palmiero",
-        "Daniele Palumbo",
-        "Chiara Pantani",
-        "Stefano Paolucci",
-        "Deborah Paritario",
-        "Michela Pascale",
-        "Thomas Passera",
-        "Daniele Patrioli",
-        "Chiara Patrizi",
-        "Silvia Patrizi",
-        "Giulia Pelos",
-        "Simone Giovanni Perone",
-        "Cristiano Perrone",
-        "Joshua Peterson",
-        "Katia Piredda",
-        "Francesca Piscitelli",
-        "Alessandra Posca",
-        "Lorenzo Pratesi",
-        "Francesca Prencipe",
-        "Daniela Proietto Cuco",
-        "Mattia Pupino Marangio",
-        "Disheng Qiu",
-        "Mirco Ramo",
-        "Federica Rapagnà",
-        "Waldo Luis Ribeiro",
-        "Federico Ricciuti",
-        "Alessia Ridoni",
-        "Eleonora Risi Valdettaro",
-        "Jon Matthew Ritzdorf",
-        "Serena Rivera",
-        "Federico Roma",
-        "Arianna Ruggiero",
-        "Eleonora Ruggiu",
-        "Mariafrancesca Sagliocco",
-        "Vanessa Salvi",
-        "Alessio Sampieri",
-        "Elena Santanelli",
-        "Roberto Sastre",
-        "Luca Scofano",
-        "Alessandro Sdei",
-        "Giuseppe Sebastiani",
-        "Claudia Nicole Siegenthaler",
-        "Monica Signoretti",
-        "Nicola Sobieski",
-        "Biancamaria Soellner",
-        "Valentina Stati",
-        "Michael Stevens",
-        "Arianna Stissi",
-        "Fabiana Stomaci",
-        "Leonardo Taddei",
-        "Christopher Thomas",
-        "Maurizio Tiberi",
-        "John Tinsley",
-        "Riccardo Tittarelli",
-        "Carla Tocco",
-        "Martina Totaro",
-        "Barbara Veronika Totzauer",
-        "Alessio Tranzocchi",
-        "Letizia Treossi",
-        "Mara Trombetti",
-        "Marco Trombetti",
-        "Andrea Valenzi",
-        "Kirti Vashee",
-        "Giulia Vestita",
-        "Teodosio Vezza",
-        "Giulia Vignola",
-        "Sara Virtuoso",
-        "Valentina Volpini",
-        "Francesca Vurro",
-        "Jolita Zaksauskaite",
-        "Giulia Zanarella",
-        "Paolo Zanotti",
-        "Francesca Zavettieri",
-        "Irene Zorzi"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "published": "2026-11-12",
-      "updated": "2026-11-12",
-      "summary": "General-purpose language models are trained mostly on English: over open models we review, at most, non-English pretraining data makes up only a 12% share. Models built for European languages give them far more, but score well below general-purpose models of the same size. A common concern is that, in small models, languages compete for capacity. We present Lara Mini base, a model trained from scratch on 6T tokens in English and 44 other languages, which together cover all 24 official languages of the European Union. As training progresses, the 44 other languages together come to outweigh English. To give these languages enough capacity at low cost, Lara Mini base uses a mixture of experts architecture with 7.2B total and 0.6B active parameters. Among open base models with up to 2B active parameters, it achieves the highest average score across standard English, multilingual, math, and code benchmarks, ahead of models trained on 4 to 6 times as many tokens. Its margin is largest on multilingual benchmarks in the languages it supports and on math benchmarks. It supports contexts of up to 128k tokens. We find that our MoE architecture reduces capacity competition between languages. For a single user on one GPU, without quantization, it generates text at least 1.8 times faster than any model with a higher average score. We release the weights of Lara Mini base under the CC BY-NC-SA 4.0 license. In addition, we will release T-HellaSwag, a higher-quality machine translation of the commonsense reasoning benchmark HellaSwag into 110 language variants.",
-      "pdf_url": "https://arxiv.org/pdf/2611.16956v1",
-      "comment": "51 pages, 14 figures, 29 tables. Model weights: https://huggingface.co/translated/Lara-4-Mini-Base",
-      "technologies": [
-        "Mixture of Experts"
-      ],
-      "maturity": "medium",
-      "confidence": 0.8,
-      "curator_score": 5.2,
-      "product_potential": [
-        "A multilingual AI assistant that supports all 24 official languages of the European Union, enabling seamless communication and understanding across diverse linguistic backgrounds.",
-        "A language learning platform that leverages the model's multilingual capabilities to provide personalized, context-aware language tutoring and practice sessions."
-      ],
-      "domain_applications": [
-        "education",
-        "accessibility",
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2406.04428",
-      "title": "MoralBench: Moral Evaluation of LLMs",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "summary": "arXiv:2406.04428v3 Announce Type: replace-cross Abstract: In the rapidly evolving field of artificial intelligence, large language models (LLMs) have emerged as powerful tools for a myriad of applications, from natural language processing to decision-making support systems. However, as these models become increasingly integrated into societal frameworks, the imperative to ensure they operate within ethical and moral boundaries has never been more critical. This paper introduces a novel benchmark designed to measure and compare the moral reasoning capabilities of LLMs. We present the first comprehensive dataset specifically curated to probe the moral dimensions of LLM outputs, addressing a wide range of ethical dilemmas and scenarios reflective of real-world complexities. The main contribution of this work lies in the development of benchmark datasets and metrics for assessing the moral identity of LLMs, which accounts for nuance, contextual sensitivity, and alignment with human ethical standards. Our methodology involves a multi-faceted approach, combining quantitative analysis with qualitative insights from ethics scholars to ensure a thorough evaluation of model performance. By applying our benchmark across several leading LLMs, we uncover significant variations in moral reasoning capabilities of different models. These findings highlight the importance of considering moral reasoning in the development and evaluation of LLMs, as well as the need for ongoing research to address the biases and limitations uncovered in our study. We publicly release the benchmark at https://drive.google.com/drive/u/0/folders/1k93YZJserYc2CkqP8d4B3M3sgd3kA8W7 and also open-source the code of the project at https://github.com/agiresearch/MoralBench.",
-      "pdf_url": "https://arxiv.org/abs/2406.04428",
-      "comment": "",
-      "technologies": [
-        "Moral Evaluation Benchmark"
-      ],
-      "maturity": "early",
-      "confidence": 0.8,
-      "curator_score": 5.1,
-      "product_potential": [
-        "AI Ethics Auditing Tool: Develop a tool that uses MoralBench to audit and report on the ethical performance of LLMs, helping organizations ensure their AI systems align with moral standards.",
-        "Moral Reasoning Training Framework: Create a framework that uses MoralBench to train LLMs on moral reasoning, improving their ability to handle ethical dilemmas and scenarios."
-      ],
-      "domain_applications": [
-        "other"
-      ]
-    },
-    {
-      "id": "2611.10224",
-      "title": "Jais 3: Introducing Arabic-centric Agentic AI",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "summary": "arXiv:2611.10224v2 Announce Type: replace-cross Abstract: We present Jais 3, a fleet of six open, Arabic-centric agentic language models ranging from 0.9B to 375B parameters. Jais 3 is built to complete tasks for Arabic speakers, not only to answer questions in plain text: it is trained to plan multi-step tasks, call tools and Model Context Protocol (MCP) servers, operate a terminal, search the web, and read, edit, and produce PDF, spreadsheet, and presentation files, while communicating with the user in Arabic. Instead of pretraining from scratch, we adapt each model of the fully open K2 Horizon fleet to Arabic through continual pretraining, followed by supervised fine-tuning (SFT), final token preference optimization (FTPO), and reinforcement learning with verifiable rewards (RLVR). We combine natural Arabic text with translated, transliterated, and synthetic Arabic, and replay the base model's own training data to keep its reasoning, agentic, and English abilities. Jais 3 covers Modern Standard Arabic and the major regional dialects, follows instructions with Arabic-specific constraints, and inherits the 512K-token context window of K2 Horizon (all models except the 0.9B). To our knowledge, its 375B model is the largest open Arabic-centric language model to date. For evaluation, we revisit how Arabic models are assessed, moving to fully generative evaluation on audited Arabic benchmarks. Across model sizes, Jais 3 matches or outperforms open-weight models of comparable size on Arabic and agentic benchmarks, with particularly strong agentic capabilities and Arabic instruction following, and far fewer hallucinations. We release the weights and the checkpoints from every training stage of all six models, together with samples of the training data, the data recipes and training configurations, the training logs, the audited benchmarks, and the evaluation code.",
-      "pdf_url": "https://arxiv.org/abs/2611.10224",
-      "comment": "",
-      "technologies": [
-        "Continual Pretraining",
-        "Supervised Fine-Tuning",
-        "Final Token Preference Optimization",
-        "Reinforcement Learning with Verifiable Rewards",
-        "Model Context Protocol",
-        "Multimodal Learning"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.1,
-      "product_potential": [
-        "Arabic-centric AI assistant for enterprise applications",
-        "Multilingual agentic AI for customer support and service automation",
-        "AI-powered productivity tools for Arabic-speaking professionals"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "education",
-        "accessibility"
-      ]
-    },
-    {
-      "id": "2611.14953",
-      "title": "RSLiveBench-UAV: A Continually Evolving Vision-Language Benchmark for Aerial Spatial Intelligence",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-13",
-      "updated": "2026-11-13",
-      "summary": "arXiv:2611.14953v1 Announce Type: new Abstract: Aerial spatial intelligence (ASI) requires models to understand objects and spatial relationships across changing viewpoints and scales. Evaluating these abilities as models evolve calls for fresh physical observations, yet producing new aerial spatial questions requires repeatedly establishing entity identities, geometric references, and cross-view correspondences. We introduce \\textbf{RSLiveBench-UAV}, a continually evolving vision-language benchmark driven by recurring acquisition of real UAV imagery. Its update protocol admits images captured after the preceding release and delays answer disclosure. An entity-centered production workflow uses geometry-assisted association to link repeated observations of physical vehicles, reuse human-verified attributes, and combine them with view-specific annotations and spatial references for traceable question generation. All tasks use deterministic scoring without model judges. We evaluate 30 general-purpose, remote-sensing, and embodied models on 35,491 question records from ten scenes, covering 17 tasks across 2D perception, 3D perception, cross-view perception, and reasoning. All 18 tested embodied models outperform the three selected remote-sensing comparators in Overall, although the strongest embodied model scores 43.29 versus 59.88 for GPT-6-Astra. Fine-grained vehicle recognition remains challenging, and performance varies across heights and camera pitches. Retrospective scene-group comparisons and rolling-window replay characterize score-pattern consistency under scene renewal. RSLiveBench-UAV connects fresh physical observations, entity-centered answer production, and systematic model evaluation to support continual assessment of ASI. Benchmark will release at https://rslivebench.space",
-      "pdf_url": "https://arxiv.org/abs/2611.14953",
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18494v1 Announce Type: new Abstract: Small language models are attractive for local, low-cost, and privacy-sensitive deployment, but they remain unreliable on mathematical reasoning tasks that require decomposition, exact computation, tool use, and verification. We introduce \\textbf{ARCHER}: \\textbf{A}ction-trace \\textbf{R}einforcement for \\textbf{C}alculator-grounded \\textbf{H}ierarchical \\textbf{E}xecutable \\textbf{R}easoning, a two-stage framework for training small language models (SLMs) to produce executable and auditable reasoning trajectories. In the first stage, ARCHER compiles free-form chain-of-thought rationales into typed action traces containing reasoning steps, calculator calls, deterministic runtime observations, verification actions, and final answers. This shifts the supervision target from imitating explanatory text to learning a tool-grounded reasoning policy. In the second stage, ARCHER refines this policy through asymmetric hierarchical reinforcement learning, using grouped and conditionally gated trajectory rewards for answer correctness, tool grounding, process discipline, and trace alignment. Across five standard sub-10B backbones, ARCHER improves over the strongest tool-augmented baseline by 5.51 percentage points on macro-average across benchmark accuracies, including gains of 8.95 points on MATH-500 and 5.33 and 5.34 points on AIME-2024 and AIME-2025. Evaluations on two additional reasoning-specialized 7B backbones further show that executable grounding remains beneficial after reasoning-focused reinforcement learning or distillation. These results demonstrate that executable supervision and reward-guided behavioral refinement provide a general and effective training paradigm for compact mathematical reasoners.",
+      "pdf_url": "https://arxiv.org/abs/2611.18494",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.1,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2611.13020",
-      "title": "ChipOmni: A General-Purpose AI Agent for Electronic Design Automation",
+      "id": "2606.05003",
+      "title": "PhysDox: Benchmarking LLMs on Physical Feasibility Auditing of Physiological Sensing Protocols",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-11",
-      "updated": "2026-11-11",
-      "summary": "arXiv:2611.13020v1 Announce Type: new Abstract: Electronic design automation (EDA) workflows remain highly fragmented, requiring engineers to coordinate heterogeneous representations, specialised software tools, and iterative verification across multiple design stages. Although large language models have brought more general reasoning and code-generation capabilities to EDA, many existing approaches remain focused on isolated tasks and struggle to plan, verify, and repair designs autonomously within executable engineering environments. Here we introduce ChipOmni, a knowledge-enhanced, context-evolving AI agent framework for EDA. ChipOmni integrates multimodal understanding, dynamic planning, multi-agent collaboration, and verification-driven tool interaction into a unified autonomous system. By continually incorporating feedback from external engineering tools, the framework maintains an evolving task context, integrates domain knowledge, and iteratively refines intermediate designs. Across benchmarks for analog circuit, RTL, testbench, and formal-assertion generation, ChipOmni improves multiple task-specific measures over the evaluated baselines and solves all 30 AnalogCoder-Pro tasks. In a long-horizon case study, ChipOmni advances a natural-language RISC-V specification through three design levels to a micro-SoC GDSII layout that passes physical sign-off, without human intervention after initialization. Together, these results show that ChipOmni can coordinate verification-driven design across heterogeneous tasks and sustain long-horizon engineering workflows, advancing a shift from fragmented, tool-centred processes towards agent-centred, closed-loop systems.",
-      "pdf_url": "https://arxiv.org/abs/2611.13020",
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2606.05003v2 Announce Type: cross Abstract: Large language models (LLMs) increasingly assist in experimental design, yet fluent protocols often remain physically infeasible. We introduce PhysDox, a physical feasibility auditing benchmark for biomedical protocols comprising a 683-sample expert-curated Gold set and a 5,000-sample Silver set across six sensing domains. We formulate the task as a two-stage evaluation: severity detection classifying protocols as valid, minor, or fatal, followed by the constraint-level diagnosis of fatal violations. Evaluating 6 LLMs across 4 inference strategies yields a peak Stage-1 macro-F1 of only 53.0. Moreover, strong oracle diagnosis collapses during end-to-end evaluation due to correlated cascade errors. Error analysis reveals scaffold bias, where models conflate procedural completeness with physical validity. Consequently, implicit constraints exhibit a 2 times higher miss rate than explicit hardware violations, supported by strong statistical correlation at $\\rho{=}0.81$ and $p{<}0.01$. Trace analysis of false negatives exposes a 54%--46% split between attention and judgment failures, ultimately demonstrating that protocol auditing demands calibrated feasibility reasoning rather than factual recall or longer rationales.",
+      "pdf_url": "https://arxiv.org/abs/2606.05003",
       "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Dynamic Planning",
-        "Multi-agent Collaboration",
-        "Verification-driven Tool Interaction",
-        "Knowledge Distillation"
-      ],
-      "maturity": "medium",
-      "confidence": 0.85,
-      "curator_score": 5.0,
-      "product_potential": [
-        "Autonomous EDA workflow management system",
-        "AI-powered design verification and repair tool",
-        "Natural language to hardware design translation platform"
-      ],
-      "domain_applications": [
-        "science",
-        "enterprise"
-      ]
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
-      "id": "2608.06931",
-      "title": "Science Edge Evaluation: SEE the Missing Step Toward Real Scientific Discovery",
+      "id": "2611.09326",
+      "title": "ABHBench: Evaluating Moral Decision-Making of Foundation Models from an Agentic Perspective",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "summary": "arXiv:2608.06931v2 Announce Type: replace Abstract: Large language models (LLMs) are increasingly involved in scientific discovery, yet it remains unclear whether they can support complex real laboratory science. Here we introduce Science Edge Evaluation (SEE), a multimodal benchmark of expert-curated questions grounded in peer-reviewed literature and experimental practice in chemistry, biology, and materials science. Evaluation of 28 multimodal large language models (MLLMs) shows that even the best-performing model reaches only 54.9% accuracy. Moreover, general-purpose models outperform science-specialized models on average. In the visual-agent evaluation, the use of tools increases the best accuracy to 56.1%. Tool use can expand the information available to models, but more information does not necessarily lead to reliable scientific reasoning. The key challenge is whether models can manage tool-derived information within the boundaries of the original experimental evidence. Together, these findings reveal that current MLLMs still cannot reliably make justified and evidence-bounded inferences from experimental results, which is an essential capability in real scientific discovery. Bridging this gap requires MLLMs to transition from explaining established scientific concepts to deriving novel and evidence-based insights from experimental data.",
-      "pdf_url": "https://arxiv.org/abs/2608.06931",
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.09326v2 Announce Type: replace Abstract: Foundation models are increasingly deployed as agentic systems that perceive context and act autonomously, raising the need to evaluate their moral behavior as active decision-makers. Existing benchmarks, however, largely ask models to judge human actions from third-person textual vignettes, leaving untested how models behave when they themselves become the acting agent. We introduce ABHBench, a multimodal benchmark built from Detroit: Become Human, an interactive narrative game, to evaluate how foundation models make moral decisions in first-person human-android dilemmas. ABHBench places foundation models in branching narrative scenarios with visual observations, dialogue, memory, and action choices. Inspired by Asimov's Three Laws of Robotics, our framework measures Harmlessness, Obedience, and Self-preservation to capture the core tensions in human-AI relations, along with Autonomy, Stability, and Certainty to assess decision-making patterns. Across 12 foundation models, we find that moral behavior changes substantially under situated agentic context: 75% of models shift significantly between a text-only abstraction and the matched multimodal DBH scenario, and reasoning-enhanced models show no monotonic gains in consistency or human-oriented behavior. These results highlight the necessity of evaluating moral behavior in situated agentic contexts rather than relying on third-person judgment alone.",
+      "pdf_url": "https://arxiv.org/abs/2611.09326",
       "comment": "",
-      "technologies": [
-        "Multimodal Large Language Models (MLLMs)",
-        "Science-Specialized Models",
-        "Visual-Agent Evaluation",
-        "Tool-Use in AI"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.0,
-      "product_potential": [
-        "A platform for evaluating and benchmarking AI models in scientific discovery tasks",
-        "A tool that enables AI models to make justified and evidence-bounded inferences from experimental results"
-      ],
-      "domain_applications": [
-        "science"
-      ]
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
     },
     {
-      "id": "2511.08475",
-      "title": "Designing LLM-based Multi-Agent Systems for Software Engineering Tasks: Quality Attributes, Design Patterns and Rationale",
+      "id": "2604.14586",
+      "title": "CPGRec+: A Balance-oriented Framework for Personalized Video Game Recommendations",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "summary": "arXiv:2511.08475v3 Announce Type: replace-cross Abstract: As the complexity of Software Engineering (SE) tasks continues to escalate, Multi-Agent Systems (MASs) have emerged as a focal point of research and practice due to their autonomy and scalability. Furthermore, through leveraging the reasoning and planning capabilities of Large Language Models (LLMs), the application of LLM-based MASs in the field of SE is garnering increasing attention. However, there is no dedicated study that systematically explores the design of LLM-based MASs, including the Quality Attributes (QAs) on which designers mainly focus, the design patterns used by designers, and the rationale guiding the design of LLM-based MASs for SE tasks. To this end, we conducted a study to identify the QAs that LLM-based MASs for SE tasks focus on, the design patterns used in the MASs, and the design rationale for the MASs. We collected 106 papers on LLM-based MASs for SE tasks as the source. Our study shows that: (1) Code Generation is the most common SE task solved by LLM-based MASs among ten identified SE tasks, (2) Functional Suitability is the QA on which designers of LLM-based MASs pay the most attention, (3) Role-Based Cooperation is the design pattern most frequently employed among 16 patterns used to construct LLM-based MASs, and (4) Improving the Quality of Generated Code is the most common rationale behind the design of LLM-based MASs. Building on the study results, we presented the implications for the design of LLM-based MASs to support SE tasks.",
-      "pdf_url": "https://arxiv.org/abs/2511.08475",
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2604.14586v5 Announce Type: replace-cross Abstract: The rapid expansion of gaming industry requires advanced recommender systems tailored to its dynamic landscape. Existing Graph Neural Network (GNN)-based methods primarily prioritize accuracy over diversity, overlooking their inherent trade-off. To address this, we previously proposed CPGRec, a balance-oriented gaming recommender system. However, CPGRec fails to account for critical disparities in player-game interactions, which carry varying significance in reflecting players' personal preferences and may exacerbate over-smoothness issues inherent in GNN-based models. Moreover, existing approaches underutilize the reasoning capabilities and extensive knowledge of large language models (LLMs) in addressing these limitations. To bridge this gap, we propose two new modules. First, Preference-informed Edge Reweighting (PER) module assigns signed edge weights to qualitatively distinguish significant player interests and disinterests while then quantitatively measuring preference strength to mitigate over-smoothing in graph convolutions. Second, Preference-informed Representation Generation (PRG) module leverages LLMs to generate contextualized descriptions of games and players by reasoning personal preferences from comparing global and personal interests, thereby refining representations of players and games. Experiments on \\textcolor{black}{two Steam datasets} demonstrate CPGRec+'s superior accuracy and diversity over state-of-the-art models. The code is accessible at https://github.com/HsipingLi/CPGRec-Plus.",
+      "pdf_url": "https://arxiv.org/abs/2604.14586",
       "comment": "",
-      "technologies": [
-        "Multi-Agent Systems",
-        "Large Language Models"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.0,
-      "product_potential": [
-        "AI-assisted software development platform",
-        "LLM-based code generation and review tool"
-      ],
-      "domain_applications": [
-        "enterprise"
-      ]
-    },
-    {
-      "id": "2608.03036",
-      "title": "Understanding Efficient LLM Serving: An Empirical Study of Frameworks, Optimizations Algorithms, and Real-World Adoption",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-10",
-      "updated": "2026-11-10",
-      "summary": "arXiv:2608.03036v2 Announce Type: replace-cross Abstract: Large Language Models (LLMs) are integrated into software systems and AI services, making efficient LLM serving a concern for software engineering. Serving LLMs is challenging because inference requires computation, memory, GPU resources, and execution while maintaining latency and throughput. Although prior research has proposed LLM inference, optimization, and serving techniques and frameworks, little is known about how they are adopted in practice. In this study, we investigate the use of LLM serving frameworks and serving methods in open-source software systems. We identify and analyze five LLM-specific frameworks: vLLM, SGLang, TensorRT-LLM, LMDeploy, and FlashInfer. We examine how these frameworks and techniques are adopted individually and in combination, how adoption varies across categories of LLMs, and how repositories differ in intent, focus, use case, and architectural design. Our results show that vLLM is the most visible framework in popularity and adoption, while parallel computation, memory management, and network pruning are the most frequently used serving-method categories. Multi-framework usage is limited, suggesting that developers rely on a single serving framework; however, combined frameworks connect complementary capabilities across the serving stack. Framework adoption varies across model families, modalities, model sizes, domain specializations, and deployment settings. Repository-level analysis shows that LLM serving frameworks support applications and architectures, including Reinforcement Learning (RL)-based reasoning, multimodal generation and understanding, microservices, and cloud infrastructure. Overall, this study provides a large-scale empirical characterization of LLM serving framework adoption in practice and offers insights for researchers, framework maintainers, and practitioners working on LLM systems.",
-      "pdf_url": "https://arxiv.org/abs/2608.03036",
-      "comment": "",
-      "technologies": [
-        "vLLM",
-        "SGLang",
-        "TensorRT-LLM",
-        "LMDeploy",
-        "FlashInfer"
-      ],
-      "maturity": "medium",
-      "confidence": 0.7,
-      "curator_score": 5.0,
-      "product_potential": [
-        "LLM serving optimization and management platform",
-        "LLM-as-a-service marketplace for developers"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "other"
-      ]
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
@@ -718,26 +425,87 @@
       "name": "Multimodal Learning",
       "papers": 1,
       "maturity": "medium",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "trend": "rising",
       "applications": [
         "enterprise",
-        "accessibility",
         "education",
-        "science",
         "other",
-        "robotics"
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other",
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "creative",
+        "other"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "enterprise",
+        "education",
+        "other",
+        "robotics",
+        "creative"
+      ]
+    },
+    {
+      "name": "Human-in-the-Loop Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "finance"
+      ]
+    },
+    {
+      "name": "Agentic Pipelines",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.7,
+      "trend": "rising",
+      "applications": [
+        "education",
+        "finance"
       ]
     },
     {
       "name": "Self-Grounded Verification",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "robotics",
+        "enterprise",
         "other"
       ]
     },
@@ -745,44 +513,32 @@
       "name": "Agreement Bias Mitigation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
         "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning from Human Feedback",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
-      "applications": [
         "enterprise",
-        "other",
-        "education"
+        "other"
       ]
     },
     {
       "name": "Direct Preference Optimization",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.62,
-      "trend": "rising",
+      "confidence": 0.5700000000000001,
+      "trend": "emerging",
       "applications": [
+        "education",
         "enterprise",
-        "other",
-        "education"
+        "other"
       ]
     },
     {
       "name": "Diffusion Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "automotive"
@@ -792,11 +548,10 @@
       "name": "Vision-Language Reasoning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "robotics",
-        "other",
         "automotive"
       ]
     },
@@ -804,22 +559,19 @@
       "name": "Reinforcement Learning",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
-        "enterprise",
-        "automotive",
-        "education",
-        "finance",
-        "robotics"
+        "robotics",
+        "automotive"
       ]
     },
     {
       "name": "Dynamic Decoding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
+      "confidence": 0.55,
+      "trend": "emerging",
       "applications": [
         "robotics",
         "automotive"
@@ -829,418 +581,10 @@
       "name": "Low-Rank Adaptation",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "education"
-      ]
-    },
-    {
-      "name": "KV Cache Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.6,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "other",
-        "education"
-      ]
-    },
-    {
-      "name": "LLM-based Agents",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "Tool-Integrated Agents",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "User Simulation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "Recommendation Systems",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "Self-Play Training",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "Trajectory Optimization",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "GRPO (Group Relative Policy Optimization)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "finance",
-        "education"
-      ]
-    },
-    {
-      "name": "Adversarial Patch Attack",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
-      "applications": [
-        "robotics",
-        "other"
-      ]
-    },
-    {
-      "name": "Multi-Teacher On-Policy Distillation (MOPD)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Knowledge-Tree-Driven Data Flywheel",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Hard-Example Augmentation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Agentic Experts",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Large Language Models (LLMs) with extended context window",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.52,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "robotics",
-        "science"
-      ]
-    },
-    {
-      "name": "Mixture of Experts",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Moral Evaluation Benchmark",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "other"
-      ]
-    },
-    {
-      "name": "Continual Pretraining",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Supervised Fine-Tuning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Final Token Preference Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Reinforcement Learning with Verifiable Rewards",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Model Context Protocol",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "accessibility",
-        "education"
-      ]
-    },
-    {
-      "name": "Dynamic Planning",
-      "papers": 1,
-      "maturity": "early",
       "confidence": 0.55,
       "trend": "emerging",
       "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Multi-agent Collaboration",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Verification-driven Tool Interaction",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Knowledge Distillation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.55,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "name": "Multimodal Large Language Models (MLLMs)",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Science-Specialized Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Visual-Agent Evaluation",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Tool-Use in AI",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "science"
-      ]
-    },
-    {
-      "name": "Multi-Agent Systems",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Large Language Models",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise"
-      ]
-    },
-    {
-      "name": "vLLM",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "SGLang",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "TensorRT-LLM",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "LMDeploy",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "enterprise",
-        "other"
-      ]
-    },
-    {
-      "name": "FlashInfer",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
+        "education",
         "enterprise",
         "other"
       ]
