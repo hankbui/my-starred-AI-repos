@@ -1,0 +1,518 @@
+{
+  "meta": {
+    "date": "2026-11-17",
+    "papers_tracked": 15,
+    "technologies_discovered": 9,
+    "opportunities_identified": 0,
+    "last_update": "2026-11-17 14:48 UTC",
+    "backend": "llm7",
+    "model": "Research Curator v1"
+  },
+  "brief": [
+    "The convergence of Vision-Language-Action (VLA) models and long-horizon reasoning (Gamer, K2-Horizon) enables the transition from simple chatbots to autonomous agents capable of real-time execution in complex digital and physical environments.",
+    "The rise of specialized multimodal benchmarks for high-stakes domains like Civil Engineering (CivilBench) and Finance (JFinBench) indicates a shift toward 'vertical AI' where generalist models are tuned for professional-grade accuracy and regulatory compliance.",
+    "Advancements in multi-agent collaborative reasoning for emotion recognition (AffectAgent) and commerce negotiation (AgenticPay) create opportunities for 'Emotional Intelligence' layers in customer-facing AI, moving beyond utility to nuanced human-like interaction.",
+    "The exploration of topological reasoning in foundation models (MindTopo) suggests a frontier for AI in spatial sciences and robotics, allowing models to understand complex structural relationships rather than just pattern recognition.",
+    "The development of heterogeneous web-agent benchmarks (WebArena-Pro, K-BrowseComp) signals a push toward globally localized, multimodal web automation, opening the door for cross-border autonomous procurement and research tools."
+  ],
+  "top_cards": [
+    {
+      "id": "new_technologies",
+      "title": "New Technologies",
+      "value": "9",
+      "label": "discovered this scan",
+      "detail": "Multimodal Learning, Reinforcement Learning from Human Feedback, Sparse Attention, KV Cache Optimization, Human-in-the-Loop Learning, Agentic Pipelines, Mixture of Experts, Diffusion Models",
+      "color": "accent"
+    },
+    {
+      "id": "emerging_trends",
+      "title": "Emerging Trends",
+      "value": "9",
+      "label": "active trend clusters",
+      "detail": "Multimodal Learning, Mixture of Experts, Diffusion Models, Vision Transformer, Reinforcement Learning from Human Feedback",
+      "color": "green"
+    },
+    {
+      "id": "highest_potential",
+      "title": "Highest Potential",
+      "value": "8.4",
+      "label": "avg opportunity score",
+      "detail": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Rea",
+      "color": "amber"
+    },
+    {
+      "id": "biggest_surprise",
+      "title": "Biggest Surprise",
+      "value": "Gamer: A Generalist Vision-Lan",
+      "label": "confidence 80%",
+      "detail": "",
+      "color": "purple"
+    },
+    {
+      "id": "most_practical",
+      "title": "Most Practical",
+      "value": "3D-MoE: Towards Spatial Intell",
+      "label": "highest confidence paper",
+      "detail": "Real-time robotic manipulation system for complex warehouse logistics, AI-powered spatial reasoning assistant for industrial maintenance and repair",
+      "color": "success"
+    },
+    {
+      "id": "most_innovative",
+      "title": "Most Innovative",
+      "value": "5",
+      "label": "early-stage technologies",
+      "detail": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Rea",
+      "color": "blue"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2611.21003",
+      "title": "K2-Horizon: A Frontier Fleet of Open Source Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2611.21003v1 Announce Type: new Abstract: We present K2-Horizon, a fleet of six fully open language models, from a 0.9B dense model to a 375B-A23B MoE, built for general-purpose reasoning and agentic work across math and science, software engineering, deep research, office automation, and beyond. The models lead or are competitive with strong open models of their size on agentic and coding benchmarks. On the modeling side, to strengthen reasoning, we introduce Mixture-of-Value Attention (MoVA), applying MoE to attention value projections, and softplus attention gating, a more flexible, theoretically motivated gate. Our 36B-A4B model uses both and nearly matches a 32B dense model trained on the same data, with one-seventh the active parameters. We also introduce Uno, lossless diffusion adapters that speed up decoding by up to 2.2x without a separate draft model. Our release follows the LLM360 definition of open source for transparency and reproducibility: the full development history, including intermediate checkpoints from every training stage, pre-training data, training logs, and all training, evaluation, and infrastructure code, notably our production-scale xLLM framework for dense and MoE training and the RL360 reinforcement-learning stack. Beyond the data itself, we release and document in detail every pipeline that built it, the part of model development that open releases most rarely disclose. These pipelines produced roughly 10T synthetic pre-training tokens, showing that synthetic data can be a major ingredient of pre-training at scale. Four of the models share one 22T-token pre-training corpus and recipe, revealing consistent scaling behavior and enabling controlled studies of scale and sparsity. All artifacts are available at https://ifm.ai/k2/",
+      "pdf_url": "https://arxiv.org/abs/2611.21003",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.18397",
+      "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18397v1 Announce Type: cross Abstract: We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
+      "pdf_url": "https://arxiv.org/abs/2611.18397",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback",
+        "Sparse Attention",
+        "KV Cache Optimization"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 6.0,
+      "product_potential": [
+        "A generalist AI agent for interactive environments",
+        "A cloud-edge inference engine for real-time interaction"
+      ],
+      "domain_applications": [
+        "creative",
+        "robotics",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.21105",
+      "title": "CivilBench: Benchmarking Vision-Language Models for Multimodal Information Integration in Civil Engineering",
+      "authors": [
+        "Dan Yuan",
+        "Yue Wen",
+        "Zhili He",
+        "Zhenkui Zhou",
+        "Shicen Liu",
+        "Ziqiang Zheng"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "Artificial intelligence (AI), particularly large language models (LLMs) and vision-language models (VLMs), is increasingly applied in civil and structural engineering for disaster assessment, structural analysis, and engineering decision support. However, the extent to which current VLMs possess the reasoning capabilities required for reliable engineering judgments remains unclear. In this work, we introduce CivilBench, a comprehensive benchmark for evaluating VLMs in civil engineering and disaster-related scenarios. CivilBench covers three major task families: Sequential Reasoning, Image-based Structural Understanding, and Open-world Understanding, encompassing numerical reasoning, structural damage assessment, risk inference, causal analysis, and repair planning. The benchmark is constructed through a systematic pipeline of domain-specific data collection, engineering-oriented captioning, expert annotation, question design, and quality verification. Evaluation of representative state-of-the-art VLMs reveals substantial limitations in domain-specific reasoning, with Sequential Reasoning emerging as a major bottleneck, particularly when models must infer numerical relationships from sparse structured observations. Further experiments show that numerical priors and external knowledge can alleviate these limitations, although their effectiveness depends on the model's ability to reliably interpret and use the available evidence. CivilBench provides a capability-oriented testbed for identifying reasoning limitations and evaluating progress toward reliable AI-assisted engineering decision-making. The benchmark will be publicly available at https://huggingface.co/datasets/traceuryuan/CivilBench.",
+      "pdf_url": "https://arxiv.org/pdf/2611.21105v1",
+      "comment": "17 pages, 8 figures",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2609.11900",
+      "title": "MindTopo: Can Foundation Models Reason in Topological Space?",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2609.11900v2 Announce Type: replace Abstract: Spatial reasoning depends not only on metric properties such as distance, angle, and shape, but also on topological relations that remain invariant under continuous deformation. Cognitive science identifies these relations as foundational to spatial understanding, yet foundation-model evaluations largely focus on metric or viewpoint-dependent relations. We introduce MindTopo, a benchmark of topological intuition across five properties grounded in cognitive science and formal topology, namely continuity, separation, order, enclosure, and knots. MindTopo evaluates each property at two cognitive levels. Reasoning asks a model to identify topological relations or infer how they change. Planning instantiates a foundation model as a closed-loop agent whose policy selects environment actions. MindTopo provides a Core Set of 3,900 instances across 13 procedurally generated task types, split into an Easy and a Hard level, and an Extended Set of 11,035 original instances. On the Core Set, we benchmark 13 multimodal large language models (MLLMs) and study agent configurations augmented with image and video generation, covering seven video generative models in planning settings. Every MLLM performs better on reasoning than on planning. On the Easy level, where human scores are available, the strongest model trails humans in both reasoning and planning. On Qwen3-VL-2B-Instruct, supervised fine-tuning and reinforcement learning improve reasoning more than planning. Generated observations retain local cues and reach solved endpoints, yet none of the 1,890 evaluated video rollouts passes all process-validity checks.",
+      "pdf_url": "https://arxiv.org/abs/2609.11900",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.12735",
+      "title": "AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2604.12735v3 Announce Type: replace Abstract: LLM-based multimodal emotion recognition relies on static parametric memory and often hallucinates when interpreting nuanced affective states. In this paper, given that single-round retrieval-augmented generation is highly susceptible to modal ambiguity and therefore struggles to capture complex affective dependencies across modalities, we introduce AffectAgent, an affect-oriented multi-agent retrieval-augmented generation framework that leverages collaborative decision-making among agents for fine-grained affective understanding. Specifically, AffectAgent comprises three jointly optimized specialized agents, namely a query planner, an evidence filter, and an emotion generator, which collaboratively perform analytical reasoning to retrieve cross-modal samples, assess evidence, and generate predictions. These agents are optimized end-to-end using Multi-Agent Proximal Policy Optimization (MAPPO) with a shared affective reward to ensure consistent emotion understanding. Furthermore, we introduce Modality-Balancing Mixture of Experts (MB-MoE) and Retrieval-Augmented Adaptive Fusion (RAAF), where MB-MoE dynamically regulates the contributions of different modalities to mitigate representation mismatch caused by cross-modal heterogeneity, while RAAF enhances semantic completion under missing-modality conditions by incorporating retrieved audiovisual embeddings. Extensive experiments on MER-UniBench demonstrate that AffectAgent achieves superior performance across complex scenarios. Our code will be released at: https://github.com/Wz1h1NG1/AffectAgent.",
+      "pdf_url": "https://arxiv.org/abs/2604.12735",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.17955",
+      "title": "WebArena-Pro: A Heterogeneous, Multimodal, Reproducible Benchmark for Web Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.17955v1 Announce Type: new Abstract: Web agents powered by large language and vision-language models are increasingly applied to realistic browser work that spans heterogeneous applications, multimodal content, and stateful workflows. However, existing reproducible web-agent benchmarks cover only a small number of web applications drawn from a few software categories, and restrict modality to text and vision. Live benchmarks broaden site coverage but sacrifice reproducibility, since pages and data drift between runs. Moreover, existing benchmarks do not meaningfully evaluate whether agents can understand and use audio and video content embedded within web tasks. To address these gaps, we introduce WebArena-Pro, a benchmark comprising 300 tasks across 20 self-hosted web applications in six domain categories, spanning distinct interface conventions, workflows, and data models. Across the evaluated agents, the best performance is achieved by both Codex with GPT 6.1 Sol and Claude Code with Claude Opus 5.5 at 62.3%, followed by OpenCode with Kimi 3.1 Pro at 60.7%. The strongest GenericAgent configurations, Gemini 3.1 Pro omni and Gemma4 31B, both achieve 30.3%. Among reproducible, human-curated web agent benchmarks, WebArena-Pro provides the broadest application coverage and the most comprehensive multimodal support to date. The benchmark treats audio and video as core observations alongside text and vision, with dedicated actions for extracting information from each. WebArena-Pro runs each task in isolation and supports reproducible, parallel evaluation. Tasks are authored through a dedicated annotator interface, filtered by LLM-assisted triage, and finally validated by humans before release. Project page: https://webarena-pro.github.io",
+      "pdf_url": "https://arxiv.org/abs/2611.17955",
+      "comment": "",
+      "technologies": [
+        "Multimodal Learning",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "early",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "Developing a web agent that can perform complex tasks across various web applications using multimodal inputs.",
+        "Creating a platform for evaluating and improving web agents using a reproducible benchmark."
+      ],
+      "domain_applications": [
+        "enterprise",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.18130",
+      "title": "JFinBench: A Continuously Refreshable Japanese Financial Benchmark from the Latest Certification Exams",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18130v1 Announce Type: new Abstract: Large language models (LLMs) are increasingly applied to finance, creating a need for benchmarks that evaluate their capabilities across financial systems with different regulations and practices. However, existing financial benchmarks provide limited coverage of country-specific financial systems, and they are difficult to keep up to date as released questions leak into training data. We introduce JFinBench, a Japanese financial benchmark comprising 321 examples from the 2026 editions of six regularly administered certification exams covering accounting, tax, financial planning, and banking. To construct it, we develop a human-in-the-loop agentic pipeline in which a coding agent writes exam-specific conversion code and a review page, while a human verifies every example and feeds corrections back to the agent. This pipeline adapts to heterogeneous exam formats and reduces the effort of incorporating new exam editions, enabling periodic refreshes that mitigate data contamination. Evaluating 12 recent LLMs, we find that Claude Fable 5 and GPT-6 Astra exceed 93% overall, while even the best open-weight model, Kimi K3.1 Pro, trails Claude Fable 5 by 12 percentage points. When models can additionally use a terminal and web access, they retrieve the knowledge they lack and every model improves. The gap narrows but about 4 points remain, and the ranking of models stays largely the same, suggesting that knowledge held in the model itself remains valuable even with tools. We release the dataset, the evaluation code, and the construction pipeline.",
+      "pdf_url": "https://arxiv.org/abs/2611.18130",
+      "comment": "",
+      "technologies": [
+        "Human-in-the-Loop Learning",
+        "Agentic Pipelines"
+      ],
+      "maturity": "medium",
+      "confidence": 0.8,
+      "curator_score": 5.9,
+      "product_potential": [
+        "A continuously updated financial education platform for Japanese learners, leveraging the benchmark to provide real-time, accurate, and up-to-date financial knowledge.",
+        "A financial compliance tool for Japanese financial institutions, using the benchmark to ensure that their employees and systems are up-to-date with the latest regulations and practices."
+      ],
+      "domain_applications": [
+        "finance",
+        "education"
+      ]
+    },
+    {
+      "id": "2606.02404",
+      "title": "K-BrowseComp: A Web Browsing Agent Benchmark Grounded in Korean Contexts",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2606.02404v2 Announce Type: replace Abstract: Frontier model evaluations are shifting from foundational capabilities (e.g., instruction following and reasoning) toward compositional, agentic ones, but Korean agentic benchmarks remain scarce. We introduce K-BrowseComp, a web-browsing agent benchmark grounded in Korean contexts, consisting of 400 problems. The 300-problem K-BrowseComp-Verified subset is manually constructed and validated by native Korean speakers. On this subset, frontier LLMs, including GPT-5.5, DeepSeek-V4-Pro, and GLM-5.1, reach only 30.00--45.67\\%, a substantial drop from BrowseComp, while Korean LLMs released through Korea's Proprietary AI Foundation Model program obtain only 0.00--10.33\\%. We further construct a 100-problem synthetic split using hard few-shot exemplars and failure-mode-targeted generation to exploit the asymmetry between solving and creating web browsing problems. On the adversarially filtered synthetic diagnostic split, the strongest model reaches only 26.00\\%, and we report this split separately as a targeted stress test. We publicly release our data and code.",
+      "pdf_url": "https://arxiv.org/abs/2606.02404",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.9,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2602.06008",
+      "title": "From Chats to Markets: AgenticPay for LLM-Powered Negotiation in Multi-Agent Commerce",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2602.06008v2 Announce Type: replace Abstract: Large language model agents are increasingly expected to negotiate and transact autonomously, yet existing benchmarks rarely combine multimodal product grounding, multi-issue bargaining, and competitive multi-agent markets. We introduce AgenticPay, a unified benchmark for evaluating multimodal agents' ability to reach high-welfare, multidimensional agreements in realistic markets. AgenticPay includes 160 multimodal tasks across four business scenarios (E-commerce, Food Delivery, Ride-hailing, and Apartment Rental) and eight market topologies, from bilateral bargaining to many-to-many competition. Agents interpret product images, infer opponents' hidden preferences, and negotiate binding contract terms such as price, lease duration, return policy, and delivery speed through multi-round natural-language dialogue. A utility-based framework evaluates agreement quality and joint welfare. Experiments with proprietary (GPT-5.4, Claude Sonnet 4.6, Gemini 3.1 Pro Preview) and open-weight (Qwen3-VL-32B-Instruct, InternVL3-38B) multimodal models reveal substantial limitations in value creation and market reasoning. Even the strongest model, Gemini 3.1 Pro Preview, achieves a GlobalScore of only 42.3/100. As markets shift from bilateral to multi-sided, average GlobalScore falls by 5.7 points, with open-weight models declining by up to 11.5 points. AgenticPay provides a testbed for evaluating multimodal agents in realistic commerce. Code and data: https://github.com/SAIL-Research-Lab/AgenticPay.",
+      "pdf_url": "https://arxiv.org/abs/2602.06008",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.18261",
+      "title": "Structural Self-Teaching for Compositional Generation in Unified Multimodal Models",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-16",
+      "updated": "2026-11-16",
+      "summary": "arXiv:2611.18261v1 Announce Type: new Abstract: We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst",
+      "pdf_url": "https://arxiv.org/abs/2611.18261",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.18637",
+      "title": "ReVision: Selective Intrinsic Reasoning for Tool-Augmented, Reasoning-Intensive VQA",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2611.18637v1 Announce Type: cross Abstract: External tools substantially expand what multimodal large language models (MLLMs) can retrieve and compute on reasoning-intensive visual questions, and aggregate accuracy typically improves when tools are available. Our empirical study across six VQA benchmarks shows that aggregate accuracy gains under tool access can coexist with answer reversals: questions answered correctly without tools but incorrectly with tools. Trajectory analysis reveals substantially shorter reasoning turns under tool access, suggesting a shift from intrinsic visual reasoning toward reliance on external outputs. We propose ReVision, a training-free test-time method that registers intrinsic reconsideration as an optional action alongside search and code execution. When invoked, a separate tool-free multimodal call re-examines the original image, integrates accumulated evidence, and returns a revised analysis. The MLLM chooses if and when to use it, without fixed reflection stages or paired rollouts. ReVision improves over standard tool use on all six benchmarks (1.28--7.51\\%) and outperforms Dual-Rollout Combine on five, with reasoning-token use comparable to standard tool use.",
+      "pdf_url": "https://arxiv.org/abs/2611.18637",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.19072",
+      "title": "Nahual: A Sequence Model for Language and Atoms",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2611.19072v1 Announce Type: cross Abstract: Generative models play a rapidly growing role in the design and simulation of molecules. The most widely used applications of generative models are in large language models (LLMs), owing to the natural flexibility of language for specifying and answering queries. However, generalist LLMs do not effectively handle large sets of 3D coordinates, whereas specialist generative models of 3D molecules cannot reach the controllability afforded by language. To bridge these capabilities, we propose Nahual, a decoder-only autoregressive diffusion model for any sequence of text and 3D molecules. To enable expressive autoregression on continuous coordinates, we propose next-token diffusion, whereby a causal transformer denoises each token while attending to the clean tokens before it, without increasing context size. We train Nahual on a curated set of twelve 3D chemistry tasks ranging from microsolvation to molecular conformer search to adsorption on metal surfaces, with associated evaluation metrics and baselines. The result is a single set of end-to-end-trained weights that simultaneously performs all tasks and surpasses state-of-the-art models specialized for crystal structure prediction and property-conditional molecule generation. Our results demonstrate the viability of scaling generalist decoder-only models for native multimodal understanding and generation across language and chemistry. Code is available at https://github.com/the-matter-lab/nahual.",
+      "pdf_url": "https://arxiv.org/abs/2611.19072",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2604.16723",
+      "title": "Debate as Reward: A Multi-Agent Reward System for Scientific Ideation via RL Post-Training",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2604.16723v2 Announce Type: replace Abstract: Large Language Models (LLMs) have demonstrated potential in automating scientific ideation, yet current approaches relying on iterative prompting or complex multi-agent architectures often suffer from hallucination or computational inefficiency. A critical bottleneck in applying Reinforcement Learning (RL) to this open-ended domain is reward hacking---where models exploit imperfect evaluation proxies to maximize scores without producing genuine scientific innovation. To address these limitations, we propose an RL framework explicitly tailored for high-quality scientific idea generation. We propose the first multi-agent reward function designed to serve as a judge, decoupling methodological validation from implementation details while providing strict binary rewards that are robust to reward hacking. To effectively optimize against this sparse signal, we utilize an unbiased variant of Group Relative Policy Optimization to mitigate artificial length bias. We ground our training in a curated dataset of problem-solution pairs extracted from ICLR 2024 and NeurIPS 2025 proceedings. Experiments demonstrate that our framework significantly outperforms state-of-the-art baselines across expert-evaluated metrics of novelty, feasibility, and effectiveness.",
+      "pdf_url": "https://arxiv.org/abs/2604.16723",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.33012",
+      "title": "Recursive Semantic Divergence for LLM Agent Consistency",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2610.33012v3 Announce Type: replace-cross Abstract: Large Language Model (LLM) agents with tool use can behave inconsistently across independent runs from identical states. They may call different tools, produce contradictory outputs, or follow divergent strategies. This variability compounds over time and undermines deployment reliability. Existing evaluation metrics primarily measure task correctness via completion-based scores and do not capture consistency in agent behavior across executions. Separately, agent behavior is analyzed either at the token level using probability distributions or at the single-response level using semantic clustering, but neither captures how inconsistency propagates across future turns of a trajectory. We introduce Recursive Semantic Divergence (RSD), a trajectory-level consistency metric adapted from bisimulation metrics in reinforcement learning. RSD measures the expected cumulative semantic disagreement between two independent rollouts of the same agent from the same state, using natural language inference to detect logical inconsistency. It is defined recursively over future states and approximated by a neural network trained on independent rollouts. The learned metric estimates future divergence from the current state, providing a consistency score at each turn without requiring the full trajectory to complete. When used as a reward signal for fine-tuning, RSD reduces AUC coefficient of variation (CV) by up to 30.9% on tau2-bench and 50.5% on ToolSandbox. Across Qwen-2.5 and Qwen-3.5 models, RSD reduces AUC CV in seven out of eight model-benchmark settings, while improving the final task progress in all eight settings.",
+      "pdf_url": "https://arxiv.org/abs/2610.33012",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2501.16698",
+      "title": "3D-MoE: Towards Spatial Intelligence with Mixture-of-Experts for 3D Reasoning and Action Generation",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2501.16698v3 Announce Type: replace Abstract: Spatial intelligence, encompassing 3D perception and reasoning, is the essential next frontier of AI. Scaling current 3D vision-language models (VLMs) that rely on dense Transformers for spatial tasks incurs prohibitive computational costs. In this paper, we introduce 3D-MoE, a 3D VLM leveraging an efficient mixture-of-experts architecture with a modality- and spatial-context-aware probabilistic routing scheme, stably cultivated by a novel routing curriculum. To seamlessly extend 3D-MoE to embodied AI, we integrate a diffusion-based action head, Pose-DiT, transforming 3D-MoE into a 3D vision-language-action (VLA) model. By employing a rectified flow framework, Pose-DiT generates precise 6D pose actions in a single sampling step. Extensive experiments demonstrate that 3D-MoE achieves superior performance on diverse 3D vision-language benchmarks with drastically fewer activated parameters and yields higher success rates while enabling real-time inference for robot manipulation tasks. Code is available at https://github.com/yueen-ma/3D-MoE.",
+      "pdf_url": "https://arxiv.org/abs/2501.16698",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Multimodal Learning",
+        "Diffusion Models",
+        "Vision Transformer"
+      ],
+      "maturity": "early",
+      "confidence": 0.95,
+      "curator_score": 5.7,
+      "product_potential": [
+        "Real-time robotic manipulation system for complex warehouse logistics",
+        "AI-powered spatial reasoning assistant for industrial maintenance and repair",
+        "Autonomous 3D scene analysis tool for architectural and interior design automation"
+      ],
+      "domain_applications": [
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Multimodal Learning",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "robotics",
+        "enterprise",
+        "science"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning from Human Feedback",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "robotics",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Sparse Attention",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "KV Cache Optimization",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.6,
+      "trend": "rising",
+      "applications": [
+        "other",
+        "creative",
+        "robotics"
+      ]
+    },
+    {
+      "name": "Human-in-the-Loop Learning",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "finance"
+      ]
+    },
+    {
+      "name": "Agentic Pipelines",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5900000000000001,
+      "trend": "emerging",
+      "applications": [
+        "education",
+        "finance"
+      ]
+    },
+    {
+      "name": "Mixture of Experts",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Diffusion Models",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    },
+    {
+      "name": "Vision Transformer",
+      "papers": 1,
+      "maturity": "medium",
+      "confidence": 0.8,
+      "trend": "rising",
+      "applications": [
+        "robotics",
+        "science",
+        "enterprise"
+      ]
+    }
+  ],
+  "product_opportunities": []
+}
