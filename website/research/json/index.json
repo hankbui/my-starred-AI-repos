@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "papers_tracked": 15,
-    "technologies_discovered": 9,
+    "technologies_discovered": 4,
     "opportunities_identified": 0,
-    "last_update": "2026-11-18 14:25 UTC",
+    "last_update": "2026-11-19 14:36 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,17 +13,17 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "9",
+      "value": "4",
       "label": "discovered this scan",
-      "detail": "Mixture of Experts, Diffusion Models, Speculative Decoding, Reinforcement Learning from Human Feedback, Multimodal Learning, Chain-of-Thought Prompting, Retrieval Augmented Generation, Proximal Policy Optimization",
+      "detail": "Mixture of Experts, Diffusion Models, Speculative Decoding, Reinforcement Learning from Human Feedback",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "9",
+      "value": "4",
       "label": "active trend clusters",
-      "detail": "Mixture of Experts, Diffusion Models, Speculative Decoding, Reinforcement Learning from Human Feedback, Multimodal Learning",
+      "detail": "Mixture of Experts, Diffusion Models, Speculative Decoding, Reinforcement Learning from Human Feedback",
       "color": "green"
     },
     {
@@ -45,17 +45,17 @@
     {
       "id": "most_practical",
       "title": "Most Practical",
-      "value": "3D-MoE: Towards Spatial Intell",
+      "value": "K2-Horizon: A Frontier Fleet o",
       "label": "highest confidence paper",
-      "detail": "Real-time robotic manipulation system for complex warehouse logistics, AI-powered spatial reasoning assistant for industrial maintenance and repair",
+      "detail": "High-throughput agentic software engineering platforms using MoVA for reduced compute costs, Low-latency enterprise reasoning assistants utilizing Uno diffusion adapters for accelerated decoding",
       "color": "success"
     },
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "1",
+      "value": "4",
       "label": "early-stage technologies",
-      "detail": "AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimo",
+      "detail": "K2-Horizon: A Frontier Fleet of Open Source Language Models",
       "color": "blue"
     }
   ],
@@ -80,7 +80,7 @@
       ],
       "maturity": "medium",
       "confidence": 0.9,
-      "curator_score": 6.5,
+      "curator_score": 6.0,
       "product_potential": [
         "High-throughput agentic software engineering platforms using MoVA for reduced compute costs",
         "Low-latency enterprise reasoning assistants utilizing Uno diffusion adapters for accelerated decoding",
@@ -93,130 +93,73 @@
       ]
     },
     {
-      "id": "2609.11900",
-      "title": "MindTopo: Can Foundation Models Reason in Topological Space?",
+      "id": "2611.23388",
+      "title": "QDA: Closed-Loop LLM Quantization Design with Agents",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2609.11900v2 Announce Type: replace Abstract: Spatial reasoning depends not only on metric properties such as distance, angle, and shape, but also on topological relations that remain invariant under continuous deformation. Cognitive science identifies these relations as foundational to spatial understanding, yet foundation-model evaluations largely focus on metric or viewpoint-dependent relations. We introduce MindTopo, a benchmark of topological intuition across five properties grounded in cognitive science and formal topology, namely continuity, separation, order, enclosure, and knots. MindTopo evaluates each property at two cognitive levels. Reasoning asks a model to identify topological relations or infer how they change. Planning instantiates a foundation model as a closed-loop agent whose policy selects environment actions. MindTopo provides a Core Set of 3,900 instances across 13 procedurally generated task types, split into an Easy and a Hard level, and an Extended Set of 11,035 original instances. On the Core Set, we benchmark 13 multimodal large language models (MLLMs) and study agent configurations augmented with image and video generation, covering seven video generative models in planning settings. Every MLLM performs better on reasoning than on planning. On the Easy level, where human scores are available, the strongest model trails humans in both reasoning and planning. On Qwen3-VL-2B-Instruct, supervised fine-tuning and reinforcement learning improve reasoning more than planning. Generated observations retain local cues and reach solved endpoints, yet none of the 1,890 evaluated video rollouts passes all process-validity checks.",
-      "pdf_url": "https://arxiv.org/abs/2609.11900",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.23388v1 Announce Type: cross Abstract: Post-training quantization is the standard way to serve large language models at low cost. However, the best quantization recipe differs across models and precisions. As a result, experts must redesign it for every new model, which is time-consuming and often sub-optimal. Fortunately, an LLM agent can take over this design by refining the recipe over rounds of building and evaluating candidates, so that more rounds lead to better recipes. However, evaluating one quantized reasoning model takes tens of GPU-hours, and combining methods from different codebases means porting each to the new architecture by hand. We present QDA, a system in which an agent designs the recipe for each model and precision. To make evaluation fast, QDA scores each candidate in minutes by its output KL divergence from the original model on reasoning traces that the agent never sees, and checks promising ones with long generations to catch failures such as repetition loops. To make building fast, QDA provides a library of public PTQ methods that are compatible with one another and with new model architectures. Across four reasoning models, QDA improves accuracy over the strongest public recipe by 0.9, 1.4 and 2.2 percentage points on average at W4A16, W4A8 and W3A16, using 64 GPU-hours per search. On the 320B-parameter MoE model GLM-5.3-Flash at NVFP4 W4A4, it recovers 98.3% of the FP8 model's accuracy, against 96.9% for the best vendor checkpoint. Every QDA checkpoint also runs on existing serving kernels with no inference overhead. We will release the library, the evaluator and the harness.",
+      "pdf_url": "https://arxiv.org/abs/2611.23388",
       "comment": "",
-      "technologies": [
-        "Multimodal Learning",
-        "Reinforcement Learning from Human Feedback",
-        "Chain-of-Thought Prompting"
-      ],
+      "technologies": [],
       "maturity": "early",
-      "confidence": 0.85,
+      "confidence": 0.0,
       "curator_score": 6.0,
-      "product_potential": [
-        "Topologically-aware robotic path planning for complex environments",
-        "Automated verification tools for circuit board and network topology design",
-        "Advanced spatial reasoning modules for surgical robotics and medical imaging"
-      ],
-      "domain_applications": [
-        "robotics",
-        "science",
-        "healthcare",
-        "enterprise"
-      ]
+      "product_potential": [],
+      "domain_applications": []
     },
     {
-      "id": "2604.12735",
-      "title": "AffectAgent: Collaborative Multi-Agent Reasoning for Retrieval-Augmented Multimodal Emotion Recognition",
+      "id": "2611.18397",
+      "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
       "authors": [],
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2604.12735v3 Announce Type: replace Abstract: LLM-based multimodal emotion recognition relies on static parametric memory and often hallucinates when interpreting nuanced affective states. In this paper, given that single-round retrieval-augmented generation is highly susceptible to modal ambiguity and therefore struggles to capture complex affective dependencies across modalities, we introduce AffectAgent, an affect-oriented multi-agent retrieval-augmented generation framework that leverages collaborative decision-making among agents for fine-grained affective understanding. Specifically, AffectAgent comprises three jointly optimized specialized agents, namely a query planner, an evidence filter, and an emotion generator, which collaboratively perform analytical reasoning to retrieve cross-modal samples, assess evidence, and generate predictions. These agents are optimized end-to-end using Multi-Agent Proximal Policy Optimization (MAPPO) with a shared affective reward to ensure consistent emotion understanding. Furthermore, we introduce Modality-Balancing Mixture of Experts (MB-MoE) and Retrieval-Augmented Adaptive Fusion (RAAF), where MB-MoE dynamically regulates the contributions of different modalities to mitigate representation mismatch caused by cross-modal heterogeneity, while RAAF enhances semantic completion under missing-modality conditions by incorporating retrieved audiovisual embeddings. Extensive experiments on MER-UniBench demonstrate that AffectAgent achieves superior performance across complex scenarios. Our code will be released at: https://github.com/Wz1h1NG1/AffectAgent.",
-      "pdf_url": "https://arxiv.org/abs/2604.12735",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.18397v3 Announce Type: replace-cross Abstract: We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
+      "pdf_url": "https://arxiv.org/abs/2611.18397",
       "comment": "",
-      "technologies": [
-        "Retrieval Augmented Generation",
-        "Multimodal Learning",
-        "Mixture of Experts",
-        "Proximal Policy Optimization",
-        "Chain-of-Thought Prompting"
-      ],
+      "technologies": [],
       "maturity": "early",
-      "confidence": 0.9,
+      "confidence": 0.0,
       "curator_score": 6.0,
-      "product_potential": [
-        "High-fidelity mental health monitoring systems for remote patient triage",
-        "Emotion-aware customer experience analytics for omnichannel support",
-        "Adaptive AI tutors that adjust pedagogy based on student frustration or engagement"
-      ],
-      "domain_applications": [
-        "healthcare",
-        "education",
-        "enterprise"
-      ]
+      "product_potential": [],
+      "domain_applications": []
     },
     {
-      "id": "2606.02404",
-      "title": "K-BrowseComp: A Web Browsing Agent Benchmark Grounded in Korean Contexts",
+      "id": "2606.25319",
+      "title": "V-Zero: Gating On-Policy Distillation with Contrastive Visual Evidence for Fine-Grained Visual Reasoning",
       "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2606.02404v2 Announce Type: replace Abstract: Frontier model evaluations are shifting from foundational capabilities (e.g., instruction following and reasoning) toward compositional, agentic ones, but Korean agentic benchmarks remain scarce. We introduce K-BrowseComp, a web-browsing agent benchmark grounded in Korean contexts, consisting of 400 problems. The 300-problem K-BrowseComp-Verified subset is manually constructed and validated by native Korean speakers. On this subset, frontier LLMs, including GPT-5.5, DeepSeek-V4-Pro, and GLM-5.1, reach only 30.00--45.67\\%, a substantial drop from BrowseComp, while Korean LLMs released through Korea's Proprietary AI Foundation Model program obtain only 0.00--10.33\\%. We further construct a 100-problem synthetic split using hard few-shot exemplars and failure-mode-targeted generation to exploit the asymmetry between solving and creating web browsing problems. On the adversarially filtered synthetic diagnostic split, the strongest model reaches only 26.00\\%, and we report this split separately as a targeted stress test. We publicly release our data and code.",
-      "pdf_url": "https://arxiv.org/abs/2606.02404",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.23045",
-      "title": "ForecastGym: A Live, Controlled, and Replayable Benchmark for Forecasting Agents",
-      "authors": [
-        "Yicheng Tao",
-        "Yuante Li",
-        "Zipei Fan"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "Agents built on large language models (LLMs) increasingly forecast real-world events by searching the Web and reasoning over what they find. How well such an agent forecasts depends on both the retrieved evidence and the model, making control over that evidence essential for evaluation. Live evaluations can mix retrieval with reasoning when each system searches on its own, while retrospective search can leak later information through date filters or today's ranking of historical pages. Comparing models, search sources, and memory strategies requires both fixed evidence and a record of how it evolved before resolution. We introduce ForecastGym, which records what four commercial web search APIs return for open prediction-market questions every two days and replays this frozen evidence offline once outcomes are known, comparing models, memory, and captured search sources under a fixed evidence-acquisition policy. Its first release covers 150 questions, 614 evidence states, one per question and collection time, and 131k search results. Rerunning the same queries after settlement returns results that all but state the outcome for up to 92% of the questions, despite the tested date filters. On the frozen evidence, all tested LLMs trail the market in forecasting accuracy. Our diagnostic analysis suggests that missed public information contributes more to the gap in high-gap states than misreading does. Switching the search API changes a model's Brier score by up to 0.043, more than the spread across models, while persistent notes score similarly to rereading all evidence at half the input tokens. The evidence a forecaster sees can matter as much as the model that reads it.",
-      "pdf_url": "https://arxiv.org/pdf/2611.23045v1",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.23034",
-      "title": "M3OPD-Reasoner: An Open Recipe for Post-Training Multimodal Reasoning with Multi-Teacher On-Policy Distillation",
-      "authors": [
-        "Nguyen Quang Trung",
-        "Hoang Phan",
-        "Shuo Sun",
-        "Longyin Zhang",
-        "AiTi Aw"
-      ],
       "categories": [
         "cs.CV"
       ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "Multi-Teacher On-Policy Distillation (MOPD) enables a single student to absorb the skills of several domain teachers by learning from its own generated responses. We present Multimodal Model Multi-Teacher On-Policy Distillation Reasoner (M3OPD-Reasoner), a fully open recipe for post-training vision-language models (VLMs) over three reasoning domains: image STEM, image perception, and video. We curate two datasets, M3OPD-SFT-1.35M for supervised fine-tuning (SFT) and M3OPD-RL-193K for reinforcement learning (RL) with verifiable rewards. On these data, we compare post-training recipes that start from Qwen3.5-9B: training one model on the mixed data of all domains (MixSFT and MixRL), and training one teacher per domain with Group Sequence Policy Optimization (GSPO), directly or after an SFT warm-up, and distilling the teachers into one student with MOPD. We evaluate on 21 image STEM, image perception, and video reasoning benchmarks after we decontaminate the training data against them. The comparison establishes MOPD of teachers trained with GSPO directly from Qwen3.5-9B as the best recipe: the student closely matches each teacher on its own domain and is on average above the mixed-training baselines on the same prompts. Since MOPD already merges the domain capabilities that MixRL would otherwise have to learn, its student is a stronger starting point for RL, and we ask whether the same data can carry the model further from there: we add MixRL on top of the MOPD student, on the same prompts and with the same settings, which, to our knowledge, no prior VLM recipe has studied. The same prompts still improve the MOPD student, with no collapse, and give our main model, M3OPD-Reasoner-9B. MOPD and MixRL can therefore work as consecutive stages that get more out of the same data. We release all data, the training code, and the checkpoints of every stage.",
-      "pdf_url": "https://arxiv.org/pdf/2611.23034v1",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2606.25319v2 Announce Type: replace Abstract: Fine-grained visual reasoning requires multimodal large language models (MLLMs) to identify task-relevant visual evidence and ground their reasoning in local image regions. Existing methods typically rely on reinforcement learning with verifiable rewards or supervised fine-tuning on large-scale annotated reasoning traces, resulting in costly exploration, hand-designed verification rules, or heavy dependence on textual supervision. While On-Policy Distillation (OPD) offers a promising alternative via dense teacher supervision, its token-level objective inherently focuses on local token corrections, failing to assess global trajectory quality. In this work, we first reinterpret OPD as a stop-gradient alignment objective, revealing that its potential is limited by the absence of trajectory-level discrimination. Motivated by this observation, we propose V-Zero, which gates on-policy distillation with contrastive visual evidence. Specifically, V-Zero evaluates each trajectory under paired positive and negative visual views; the resulting likelihood contrast forms a trajectory-level gate that selectively amplifies updates from visually well-supported reasoning paths while suppressing ungrounded ones. Experiments on multiple visual reasoning and perception benchmarks show that V-Zero improves the Qwen3.5-4B backbone by 3.9 points on average while preserving strong generalization. Notably, V-Zero achieves more than 3$\\times$ and 6$\\times$ training speedups over representative supervised fine-tuning and reinforcement learning baselines, respectively. It requires neither annotated textual reasoning traces nor external reward signals. Code and dataset are released at https://github.com/eVI-group-SCU/V-Zero.",
+      "pdf_url": "https://arxiv.org/abs/2606.25319",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 6.0,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.24294",
+      "title": "KnowledgeClaw: Towards Agentic Knowledge Engineering via Omnimodal Hypergraphs",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.24294v1 Announce Type: new Abstract: Knowledge engineering (KE) turns raw files into a reasoning-ready knowledge base, a task now within reach of LLM agents. KE has progressed from chunk and graph retrieval-augmented generation (RAG) to memory agents, agentic KE and multimodal KE. However, a live knowledge base needs omnimodality, a closed-loop lifecycle and multi-granular application at once, yet existing systems meet at most two and no benchmark measures all three. We formalize Omnimodal Knowledge Engineering (OmniKE) and release OmniKE-Bench, six tasks with 1,829 model-free items over 3,960 real files in five modalities. We further propose KnowledgeClaw, an agentic system that builds an omnimodal typed hypergraph, keeps it current with a closed-loop lifecycle agent and routes each query to the granularity it needs. Against 30 baselines, it ranks first on all six tasks with an overall OKE of 55.9, +14.6 over the strongest baseline. Our software and data are publicly available at https://github.com/LHRLAB/KnowledgeClaw.",
+      "pdf_url": "https://arxiv.org/abs/2611.24294",
       "comment": "",
       "technologies": [],
       "maturity": "early",
@@ -226,141 +169,40 @@
       "domain_applications": []
     },
     {
-      "id": "2611.18637",
-      "title": "ReVision: Selective Intrinsic Reasoning for Tool-Augmented, Reasoning-Intensive VQA",
+      "id": "2602.23276",
+      "title": "CXReasonAgent: Evidence-Grounded Diagnostic Reasoning Agent for Chest X-rays",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2611.18637v1 Announce Type: cross Abstract: External tools substantially expand what multimodal large language models (MLLMs) can retrieve and compute on reasoning-intensive visual questions, and aggregate accuracy typically improves when tools are available. Our empirical study across six VQA benchmarks shows that aggregate accuracy gains under tool access can coexist with answer reversals: questions answered correctly without tools but incorrectly with tools. Trajectory analysis reveals substantially shorter reasoning turns under tool access, suggesting a shift from intrinsic visual reasoning toward reliance on external outputs. We propose ReVision, a training-free test-time method that registers intrinsic reconsideration as an optional action alongside search and code execution. When invoked, a separate tool-free multimodal call re-examines the original image, integrates accumulated evidence, and returns a revised analysis. The MLLM chooses if and when to use it, without fixed reflection stages or paired rollouts. ReVision improves over standard tool use on all six benchmarks (1.28--7.51\\%) and outperforms Dual-Rollout Combine on five, with reasoning-token use comparable to standard tool use.",
-      "pdf_url": "https://arxiv.org/abs/2611.18637",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2602.23276v3 Announce Type: replace Abstract: Chest X-ray plays a central role in thoracic diagnosis, and its interpretation inherently requires multi-step, evidence-grounded reasoning. However, large vision-language models (LVLMs) often generate plausible responses that are not faithfully grounded in diagnostic evidence and provide limited visual evidence for verification, while also requiring costly retraining to support new diagnostic tasks, limiting their reliability and adaptability in clinical settings. To address these limitations, we present CXReasonAgent, a diagnostic agent that integrates a large language model (LLM) with clinically grounded diagnostic tools to perform evidence-grounded diagnostic reasoning using image-derived diagnostic and visual evidence. To evaluate these capabilities, we introduce CXReasonDail, a multi-turn dialogue benchmark with 1,946 dialogues across 12 diagnostic tasks, and show that CXReasonAgent produces more faithfully grounded responses than LVLMs. These findings highlight the importance of integrating clinically grounded diagnostic tools to enable reliable and verifiable diagnostic reasoning. The demo is available \\href{https://ttumyche.github.io/CXReasonAgent_Demo/}{here}.",
+      "pdf_url": "https://arxiv.org/abs/2602.23276",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2611.19072",
-      "title": "Nahual: A Sequence Model for Language and Atoms",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2611.19072v1 Announce Type: cross Abstract: Generative models play a rapidly growing role in the design and simulation of molecules. The most widely used applications of generative models are in large language models (LLMs), owing to the natural flexibility of language for specifying and answering queries. However, generalist LLMs do not effectively handle large sets of 3D coordinates, whereas specialist generative models of 3D molecules cannot reach the controllability afforded by language. To bridge these capabilities, we propose Nahual, a decoder-only autoregressive diffusion model for any sequence of text and 3D molecules. To enable expressive autoregression on continuous coordinates, we propose next-token diffusion, whereby a causal transformer denoises each token while attending to the clean tokens before it, without increasing context size. We train Nahual on a curated set of twelve 3D chemistry tasks ranging from microsolvation to molecular conformer search to adsorption on metal surfaces, with associated evaluation metrics and baselines. The result is a single set of end-to-end-trained weights that simultaneously performs all tasks and surpasses state-of-the-art models specialized for crystal structure prediction and property-conditional molecule generation. Our results demonstrate the viability of scaling generalist decoder-only models for native multimodal understanding and generation across language and chemistry. Code is available at https://github.com/the-matter-lab/nahual.",
-      "pdf_url": "https://arxiv.org/abs/2611.19072",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2604.16723",
-      "title": "Debate as Reward: A Multi-Agent Reward System for Scientific Ideation via RL Post-Training",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2604.16723v2 Announce Type: replace Abstract: Large Language Models (LLMs) have demonstrated potential in automating scientific ideation, yet current approaches relying on iterative prompting or complex multi-agent architectures often suffer from hallucination or computational inefficiency. A critical bottleneck in applying Reinforcement Learning (RL) to this open-ended domain is reward hacking---where models exploit imperfect evaluation proxies to maximize scores without producing genuine scientific innovation. To address these limitations, we propose an RL framework explicitly tailored for high-quality scientific idea generation. We propose the first multi-agent reward function designed to serve as a judge, decoupling methodological validation from implementation details while providing strict binary rewards that are robust to reward hacking. To effectively optimize against this sparse signal, we utilize an unbiased variant of Group Relative Policy Optimization to mitigate artificial length bias. We ground our training in a curated dataset of problem-solution pairs extracted from ICLR 2024 and NeurIPS 2025 proceedings. Experiments demonstrate that our framework significantly outperforms state-of-the-art baselines across expert-evaluated metrics of novelty, feasibility, and effectiveness.",
-      "pdf_url": "https://arxiv.org/abs/2604.16723",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2610.33012",
-      "title": "Recursive Semantic Divergence for LLM Agent Consistency",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2610.33012v3 Announce Type: replace-cross Abstract: Large Language Model (LLM) agents with tool use can behave inconsistently across independent runs from identical states. They may call different tools, produce contradictory outputs, or follow divergent strategies. This variability compounds over time and undermines deployment reliability. Existing evaluation metrics primarily measure task correctness via completion-based scores and do not capture consistency in agent behavior across executions. Separately, agent behavior is analyzed either at the token level using probability distributions or at the single-response level using semantic clustering, but neither captures how inconsistency propagates across future turns of a trajectory. We introduce Recursive Semantic Divergence (RSD), a trajectory-level consistency metric adapted from bisimulation metrics in reinforcement learning. RSD measures the expected cumulative semantic disagreement between two independent rollouts of the same agent from the same state, using natural language inference to detect logical inconsistency. It is defined recursively over future states and approximated by a neural network trained on independent rollouts. The learned metric estimates future divergence from the current state, providing a consistency score at each turn without requiring the full trajectory to complete. When used as a reward signal for fine-tuning, RSD reduces AUC coefficient of variation (CV) by up to 30.9% on tau2-bench and 50.5% on ToolSandbox. Across Qwen-2.5 and Qwen-3.5 models, RSD reduces AUC CV in seven out of eight model-benchmark settings, while improving the final task progress in all eight settings.",
-      "pdf_url": "https://arxiv.org/abs/2610.33012",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2501.16698",
-      "title": "3D-MoE: Towards Spatial Intelligence with Mixture-of-Experts for 3D Reasoning and Action Generation",
+      "id": "2607.11012",
+      "title": "EasyOPD: An Easy-to-use On-Policy Distillation Framework for Large Language Models",
       "authors": [],
       "categories": [
         "cs.CL"
       ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2501.16698v3 Announce Type: replace Abstract: Spatial intelligence, encompassing 3D perception and reasoning, is the essential next frontier of AI. Scaling current 3D vision-language models (VLMs) that rely on dense Transformers for spatial tasks incurs prohibitive computational costs. In this paper, we introduce 3D-MoE, a 3D VLM leveraging an efficient mixture-of-experts architecture with a modality- and spatial-context-aware probabilistic routing scheme, stably cultivated by a novel routing curriculum. To seamlessly extend 3D-MoE to embodied AI, we integrate a diffusion-based action head, Pose-DiT, transforming 3D-MoE into a 3D vision-language-action (VLA) model. By employing a rectified flow framework, Pose-DiT generates precise 6D pose actions in a single sampling step. Extensive experiments demonstrate that 3D-MoE achieves superior performance on diverse 3D vision-language benchmarks with drastically fewer activated parameters and yields higher success rates while enabling real-time inference for robot manipulation tasks. Code is available at https://github.com/yueen-ma/3D-MoE.",
-      "pdf_url": "https://arxiv.org/abs/2501.16698",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2607.11012v2 Announce Type: replace Abstract: Conventional language-model distillation often relies on fixed teacher-generated data, which may not cover the states encountered by an evolving student policy. On-policy distillation (OPD) instead collects teacher or evaluator supervision on student-generated rollouts. However, existing OPD methods differ substantially in supervision form, tokenizer compatibility, teacher access, and supervision granularity, leading to fragmented implementations that are difficult to reproduce and extend. We present \\textsc{EasyOPD}, an on-policy distillation framework built on verl, a distributed reinforcement-learning framework for large language models. \\textsc{EasyOPD} separates user-side configuration, method-specific supervision logic, and verl-based execution. Its method modules connect to the shared backend through extension boundaries for loss construction, rollout metadata, reward processing, tokenizer alignment, and teacher-side computation. We instantiate representative methods for three OPD settings -- cross-tokenizer OPD, on-policy self-distillation, and step-wise OPD. Experiments on reasoning, code-generation, scientific-knowledge, and tool-use benchmarks show that these implementations can be executed through the same verl-based backend while retaining their method-specific objectives and task-dependent performance profiles. We release \\textsc{EasyOPD} with runnable YAML configurations, documentation, and an installable demonstration package and video.",
+      "pdf_url": "https://arxiv.org/abs/2607.11012",
       "comment": "",
-      "technologies": [
-        "Mixture of Experts",
-        "Multimodal Learning",
-        "Diffusion Models",
-        "Vision Transformer"
-      ],
-      "maturity": "early",
-      "confidence": 0.95,
-      "curator_score": 5.7,
-      "product_potential": [
-        "Real-time robotic manipulation system for complex warehouse logistics",
-        "AI-powered spatial reasoning assistant for industrial maintenance and repair",
-        "Autonomous 3D scene analysis tool for architectural and interior design automation"
-      ],
-      "domain_applications": [
-        "robotics",
-        "enterprise",
-        "science"
-      ]
-    },
-    {
-      "id": "2611.23153",
-      "title": "VIVID: Beyond Static Multi-Image Reasoning with Localized Visual Differences and Textual Entity Dynamics in Video MLLMs",
-      "authors": [
-        "Chengqian Ma",
-        "Yuanze Zeng",
-        "Hongyu Wang",
-        "Mingfeng Lin",
-        "YiCheng Xiao",
-        "Yu Chen",
-        "Pengyu Li",
-        "WenHao Wang",
-        "Yuexiao Ma",
-        "Xiawu Zheng",
-        "Fei Chao"
-      ],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "Video question answering under tight frame budgets requires preserving localized motion and event order, yet current video multimodal large language models (MLLMs) reduce comprehension to static multi-image reasoning by discarding unselected frames and encoding keyframes independently: (1) Spatially, whole-frame pooling dilutes small moving targets into static backgrounds; (2) Temporally, dropping intermediate frames or averaging tokens erases inter-frame motion, confusing direction, speed, and order. We propose VIVID (Visual Inter-frame Variations and Individual Dynamics), which moves beyond static snapshots like human vision: keyframes capture core states while inter-frame Patch Diffs preserve neighboring changes within $K_f$ keyframes. Autonomous Delta-Driven Keyframe Planning (ADKP) selects anchors from a $3\\text{ fps}$ pool and feeds surrounding patch differences into Dual-Road Change Memory (DRCM), forming Dynamic Tokens at zero extra anchor tokens alongside a camera-stabilized Active Motion Region of Interest (ROI) and chronological Entity State Chains. Adding $0.22\\%$ trainable parameters to a frozen $27\\text{B}$ backbone, VIVID-Small ($50$ examples, $\\sim 1.5$ GPU hours) beats all eleven baselines in overall accuracy across $8,083$ questions and trails only VIVID-Large ($3,600$ examples), which leads on MotionBench, Video-MME, and TempCompass.",
-      "pdf_url": "https://arxiv.org/pdf/2611.23153v1",
-      "comment": "14 pages, 2 figures, 5 tables. Code: https://github.com/step-out/VIVID",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
@@ -420,124 +262,152 @@
       "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2506.22992",
+      "title": "MARBLE: An Agentic Benchmark for Spatial Reasoning and Visual Abstraction",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2506.22992v2 Announce Type: replace Abstract: A central challenge for multimodal language models (MLLMs) in real-world tasks is to abstract visual observations into structured spatial states and reason over how those states change under actions over long horizons. Existing multimodal benchmarks often focus on static question answering, where answers can be directly extracted from images, or assume symbolic states are available and bypass the visual-to-spatial abstraction process. We present MARBLE, a diagnostic benchmark for spatially grounded multimodal reasoning and planning across three agent environments: CUBE, MAZE, and BLOX. MARBLE spans 2D and 3D spatial puzzles under geometric constraints, dynamic layouts, and spatial transformations, with difficulty systematically controlled along two axes: observation format and planning horizon. Extensive evaluations show that frontier MLLMs struggle on MARBLE, with the strongest model GPT-5.4 achieving only a 7.3% average success rate across the three environments in the hardest setting. Pairwise ablations on the open-weight models identify visual-to-spatial abstraction as the major bottleneck: when models must infer spatial states from images instead of receiving human-annotated states, success drops from 50.7% to 3.7% for Gemma-4-31B and from 87.9% to 6.5% for Kimi-K2.6. The results indicate that models often fail to construct precise spatial states from visual observations before planning, a task that is straightforward for humans. Overall, MARBLE reveals the gap in reliable visual-to-spatial abstraction for frontier MLLMs and provides a controlled testbed for measuring progress in spatially grounded multimodal reasoning and planning.",
+      "pdf_url": "https://arxiv.org/abs/2506.22992",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2610.16352",
+      "title": "LoongSage: A Production-Grade, High-Efficiency Agentic RL Framework for Frontier LLMs with Validated Recipes",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2610.16352v3 Announce Type: replace-cross Abstract: Reinforcement learning (RL) has emerged as a critical phase in the post-training pipeline of large language models (LLMs). As the frontier of LLM capabilities shifts from static reasoning to agentic tasks--characterized by external tool invocation, multi-turn interactions, and long-horizon decision-making--existing mainstream RL frameworks have grown increasingly unwieldy, raising the overhead of adoption, usage, and debugging. To address these challenges, we present LoongSage, an agent-native, fully asynchronous RL framework with a lightweight core of roughly 14K lines of code. Built upon Megatron for distributed training and SGLang for high-throughput inference, LoongSage centralizes orchestration within a single controller process and encapsulates all GPU-resident components as Ray actors. It introduces AgentFlow, a unified execution paradigm that orchestrates both white-box and black-box agents. For asynchronous execution, it integrates sliding-window strategies that bound trajectory staleness, and employs TransferMesh, a topology-aware synchronization mechanism that routes weights after each step over the fastest transport available to each receiver. Beyond agentic RL, LoongSage incorporates a memory-efficient Teacher Manager that decouples the scaling of teacher models from GPU memory constraints, natively supporting Multi-Teacher On-Policy Distillation. Extensive evaluations across four complete training runs, spanning complex reinforcement learning and multi-teacher distillation, demonstrate that task rewards improve steadily while the train-inference gap is kept under continuous control, and the fully asynchronous pipeline removes synchronous idle bubbles, sustaining hardware utilization.",
+      "pdf_url": "https://arxiv.org/abs/2610.16352",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.24068",
+      "title": "Benchmarking Reasoning Reliability,Prior_Evidence Contrast,and Spectral Discrimination in Remote-Sensing Geological Image Interpretation",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.24068v1 Announce Type: new Abstract: Reliable lithology interpretation requires accurate geological recognition and reasoning grounded in visual evidence. Although Multimodal Large Language Models show promise in remote sensing, their reliability in geological interpretation remains unclear. We introduce HyGeoBench, a diagnostic benchmark of 10,000 questions based on hyperspectral imagery across three dimensions: reasoning reliability, prior_evidence contrast, and spectral discrimination. It covers ten task types, with both multiple-choice and open-ended response formats. Integrating hyperspectral satellite imagery with geological annotations and verified evidence, HyGeoBench examines reasoning errors, conflicts between geological priors and visual evidence, and cross-band inconsistencies. Evaluations reveal limitations in fine-grained recognition and evidence-grounded interpretation. To address these challenges, we propose HyGeoAgent, a tool-augmented framework integrating region observation, text knowledge retrieval, same-band image retrieval, and native PCA analysis through adaptive tool use. Experiments demonstrate consistent improvements over the corresponding base models, improving geological image interpretation across diagnostic dimensions.",
+      "pdf_url": "https://arxiv.org/abs/2611.24068",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2601.13304",
+      "title": "CausalSpatial: A Benchmark for Object-Centric Causal Spatial Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2601.13304v2 Announce Type: replace Abstract: Humans can look at a static scene and instantly predict what happens next -- will moving this object cause a collision? We call this ability Causal Spatial Reasoning. However, current multimodal large language models (MLLMs) cannot do this, as they remain largely restricted to static spatial perception, struggling to answer \"what-if\" questions in a 3D scene. We introduce CausalSpatial, a diagnostic benchmark evaluating whether models can anticipate consequences of object motions across four tasks: Collision, Compatibility, Occlusion, and Trajectory. Results expose a severe gap: humans score 84% while GPT-5 achieves only 54%. Why do MLLMs fail? Our analysis uncovers a fundamental deficiency: models over-rely on textual chain-of-thought reasoning that drifts from visual evidence, producing fluent but spatially ungrounded hallucinations. To address this, we propose the Causal Object World model (COW), a framework that externalizes the simulation process by generating videos of hypothetical dynamics. With explicit visual cues of causality, COW enables models to ground their reasoning in physical reality rather than linguistic priors. We make the dataset and code publicly available here: https://github.com/CausalSpatial/CausalSpatial",
+      "pdf_url": "https://arxiv.org/abs/2601.13304",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.7,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.24936",
+      "title": "Jailbreak Detection on Large Language Models via Contrastive Prototype Structures",
+      "authors": [
+        "Yan Qiu",
+        "Yuanyuan Li"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-18",
+      "updated": "2026-11-18",
+      "summary": "Jailbreak attempts and harmful prompts remain a challenge for the safe deployment of large language models. We study whether contrastively learned representations can support safety detection without training an additional downstream classifier. We propose Jailbreak Detection with Prototype Inference (JDPI), which uses binary safety labels to construct harmful and benign prototypes and makes predictions from relative prototype distances. JDPI uses only binary safety labels for encoder adaptation, prototype construction, and validation. In our setup, it uses fewer labeled examples than the classifier baseline (Method A) by avoiding the separate split used to train the downstream classifier. Across four benchmarks covering different input formats, contrastive fine-tuning improves JDPI's detection accuracy by 9.1-18.0 percentage points. Using the same encoder, JDPI achieves slightly higher ROC-AUC on one benchmark and stays within 0.017 of the baseline across all four. With dataset-specific adaptation, JDPI exceeds the released Llama Guard 3-8B baseline by 0.173-0.310 in ROC-AUC across the four benchmarks. In multi-turn replay on TomGibbs, JDPI uses accumulated user history as the conversation unfolds, achieving higher conversation-level accuracy than when it uses the current turn alone. Across 12 directed transfers, JDPI outperforms the classifier by an average of 1.59 percentage points in accuracy, demonstrating stronger cross-dataset robustness.",
+      "pdf_url": "https://arxiv.org/pdf/2611.24936v1",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
     {
       "name": "Mixture of Experts",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics",
+        "science",
         "other",
-        "education",
-        "science"
+        "enterprise"
       ]
     },
     {
       "name": "Diffusion Models",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "robotics",
-        "other",
         "science",
+        "other",
         "enterprise"
       ]
     },
     {
       "name": "Speculative Decoding",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
+      "maturity": "early",
+      "confidence": 0.65,
       "trend": "rising",
       "applications": [
-        "other",
         "science",
+        "other",
         "enterprise"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.8,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics",
-        "other",
-        "science"
-      ]
-    },
-    {
-      "name": "Multimodal Learning",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics",
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Chain-of-Thought Prompting",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "enterprise",
-        "healthcare",
-        "robotics",
-        "education",
-        "science"
-      ]
-    },
-    {
-      "name": "Retrieval Augmented Generation",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Proximal Policy Optimization",
-      "papers": 1,
-      "maturity": "medium",
-      "confidence": 0.7,
-      "trend": "rising",
-      "applications": [
-        "healthcare",
-        "education",
-        "enterprise"
-      ]
-    },
-    {
-      "name": "Vision Transformer",
-      "papers": 1,
       "maturity": "early",
-      "confidence": 0.5700000000000001,
-      "trend": "emerging",
+      "confidence": 0.65,
+      "trend": "rising",
       "applications": [
-        "robotics",
         "science",
+        "other",
         "enterprise"
       ]
     }
