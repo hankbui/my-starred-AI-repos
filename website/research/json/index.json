@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-19",
+    "date": "2026-11-20",
     "papers_tracked": 15,
     "technologies_discovered": 4,
     "opportunities_identified": 0,
-    "last_update": "2026-11-19 14:36 UTC",
+    "last_update": "2026-11-20 14:15 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -207,59 +207,72 @@
       "domain_applications": []
     },
     {
-      "id": "2611.21690",
-      "title": "EgoLink: Egocentric Language-Vision Interactive Network Knowledge Challenge Summary",
+      "id": "2611.25071",
+      "title": "FinVeriQA: Financial Research Agents for Question Answering: Routing, Retrieval, MCP Tool Use, and Provenance-Aware Evidence Verification",
       "authors": [],
       "categories": [
         "cs.AI"
       ],
-      "published": "2026-11-18",
-      "updated": "2026-11-18",
-      "summary": "arXiv:2611.21690v1 Announce Type: cross Abstract: The EgoLink Challenge at ACM Multimedia 2026 benchmarks egocentric multimodal intelligence linking first-person perception, social reasoning, and interactive action. Unlike benchmarks centered on visible objects and activities, EgoLink evaluates whether models can interpret emotional and social cues, resolve visually grounded references, and convert user requests into verified tool-mediated actions. Its two tracks cover social reasoning in egocentric video and interactive agents that complete service tasks through dialogue, tool use, and closed-loop execution. Together, they test whether perception, reasoning, and decision-making remain coupled under both offline question answering and state-changing interaction. We highlight a multi-stage Track 1 data pipeline for multiple-choice question (MCQ) generation, chain-of-thought generation, automatic quality grading, and video-contribution filtering. We summarize the task design, evaluation metrics, rules, leaderboards, and representative solutions. The benchmark combines objective answer scoring with process- and result-based evaluation, enabling analysis of both final correctness and execution quality. The best Track 1 system achieved 0.9263 accuracy, while the best Track 2 system achieved 0.844 joint success and 0.916 micro accuracy. Participant reports reveal a shared principle: strong systems make intermediate evidence explicit through candidate verification, option-robust reasoning, scenario-aware planning, tool canonicalization, and state-aware correction before answering or acting. These findings highlight the importance of process verification and evidence-grounded reasoning for reliable egocentric multimodal intelligence.",
-      "pdf_url": "https://arxiv.org/abs/2611.21690",
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "summary": "arXiv:2611.25071v1 Announce Type: cross Abstract: Large language models (LLMs) write fluent financial analyses but miscompute ratios, recall stale prices, and route questions to the wrong tool with high confidence. We ask which component should do each job in a financial question-answering assistant, and study it with FinVeriQA, an open-source multi-agent research prototype over SEC filings and live market data: a compact typed-decision model (Laya) routes each question and screens out advice requests, Python computes every number, retrieval and tools fetch evidence, Mistral-7B writes a cited answer, a code validator checks that cited IDs exist and that numbers match computed notes, and a Model Context Protocol (MCP) server exposes the pipeline. In live experiments, Laya routed better than Mistral-7B (0.85 vs. 0.52; overall 0.86 vs. 0.68, McNemar p = 0.0003); a 12B Mistral decided no better, and DeepSeek-R1-8B decided better (0.79 vs. 0.68, p = 0.0192) but about 9.9 times more slowly. Mistral-7B computed 29% of 100 financial calculations correctly against 100% for Python, a live quote cut price error from 210% to 0.00%, and hybrid retrieval reached 76% Hit@5 on 50 filing questions. Yet in a live case study, both agent answers passed validation while describing AMD sample data under NVIDIA's and Alphabet's names. A controlled upper-bound study on the FinRank benchmark explains why: when one figure in the shared evidence is corrupted, self-consistency stays confident (agreement 0.55 to 0.59 while accuracy falls from 0.50 to 0.00), and a shared-evidence check (the kind our validator performs) catches 35% of the errors, whereas a check against the original passage catches 77% ($p = 5.96 \\times 10^{-8}$); for DeepSeek-R1-8B, 68% vs. 90%. Verification must be independent of the evidence the writer saw.",
+      "pdf_url": "https://arxiv.org/abs/2611.25071",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2611.21812",
-      "title": "Sketch, Don't Paint: Allocating Test-Time Compute in Generative Visual Reasoning",
+      "id": "2610.05608",
+      "title": "Kandinsky 6.0 Video: Foundation Models for Synchronized Video and Audio Generation",
       "authors": [],
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-11-18",
-      "updated": "2026-11-18",
-      "summary": "arXiv:2611.21812v1 Announce Type: new Abstract: Multimodal models increasingly reason by synthesizing pixels, sketching maze paths within interleaved chains of thought or rolling out video solutions frame by frame. Each visual thought runs the full diffusion schedule inherited from photorealistic synthesis, so iterative denoising dominates inference cost. We study how to allocate test-time compute along two axes: when to render visual thoughts rather than thinking in text or answering directly, and how many denoising steps each thought requires. Controlled interventions that vary only how the thought is rendered uncover three regimes. Causal thoughts carry the plan and become legible early: an 8-step sketch nearly matches a 50-step render in accuracy, commits to the same plan as often as two independent full renders agree, and in video models mostly fails by stalling short of the goal, so the rollout abstains. Decorative thoughts can be omitted without loss, whereas harmful thoughts lower accuracy. Because the regime depends on both model and task, always drawing is suboptimal. Across 14 model-benchmark pairs of three interleaved reasoners, answering directly, without any thinking, wins 9 pairs, and choosing among direct, text-only, and visual tiers from ten labeled examples per pair raises mean accuracy from 60.7% (always drawing) to 65.1%. Where drawing pays, we propose sketch-and-vote, which samples 8-step sketches (a step count chosen without labels) from independent noises until one answer reaches three votes. With this one setting, sketch-and-vote beats full rendering with fewer denoising steps on an image reasoner and two video reasoners, by 8.6 points on VSP spatial planning and by 9.6 and 22.1 points on mazes.",
-      "pdf_url": "https://arxiv.org/abs/2611.21812",
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "summary": "arXiv:2610.05608v2 Announce Type: replace-cross Abstract: We present Kandinsky 6.0 Video, a family of foundation diffusion models for synchronized text-to-audio-video generation, comprising Kandinsky 6.0 Video Lite (3B parameters) and Kandinsky 6.0 Video Pro (29B parameters). Both models generate 5-second video clips with synchronized 44 kHz audio, including lip-sync, in text-to-audio-video (T2AV) and image-to-audio-video (I2AV) modes; a built-in super-resolution model raises the output resolution to Full-HD (1920x1080). Building on the video generation capabilities of Kandinsky 5.0, Kandinsky 6.0 Video employs a dual-stream CrossDiT architecture that connects a pretrained video stream and a newly trained audio stream through bidirectional cross-attention for temporal and semantic alignment. Our continuous pretraining strategy first trains the audio stream from scratch on large-scale audio corpora and then trains both streams jointly on paired audio-video data while preserving unimodal fidelity; pretraining is followed by supervised fine-tuning, reinforcement-learning-based post-training, and distillation. In side-by-side human evaluation, Kandinsky 6.0 Video Pro clearly outperforms its predecessor, Kandinsky 5.0 Video Pro, and remains competitive with leading audio-video generation models, outperforming LTX 2.5 and Seedance 2.0 in speech quality. To accelerate open research and deployment in multimedia generation, we release the code, model checkpoints, and diffusers integration under the MIT license.",
+      "pdf_url": "https://arxiv.org/abs/2610.05608",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
     {
-      "id": "2611.22415",
-      "title": "SpatialMind: Adaptive Multi-Level Geometric Fusion for Spatial Reasoning in Multimodal Large Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CV"
+      "id": "2611.25387",
+      "title": "TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs",
+      "authors": [
+        "Xuwei Ding",
+        "Skylar Zhai",
+        "Linxin Song",
+        "Jiarui Feng",
+        "Dongqi Fu",
+        "Huajun Xi",
+        "Junnan Li",
+        "Jingcheng Liang",
+        "Jieyu Zhao",
+        "Yinglong Xia",
+        "Hong Li",
+        "Jian Kang"
       ],
-      "published": "2026-11-18",
-      "updated": "2026-11-18",
-      "summary": "arXiv:2611.22415v1 Announce Type: new Abstract: Multimodal Large Language Models (MLLMs) demonstrate promising capabilities in 2D visual understanding, yet remain limited in 3D spatial reasoning. Recent studies explore integrating 3D reconstruction models into MLLMs. However, these approaches either use a single geometric granularity across all tasks or adopt a fixed multi-level fusion scheme, regardless of task-specific reasoning requirements. Through systematic experiments on multi-level geometric fusion, we find that spatial tasks at different cognitive levels (e.g., distance estimation vs. route planning) require geometric representations of different granularities, revealing that fixed fusion cannot accommodate diverse spatial reasoning requirements. To bridge this gap, we propose SpatialMind, a task-adaptive framework for dynamically integrating multi-level geometric representations. SpatialMind employs GeoFus, a multi-layer geometric fusion module built around a gating network jointly conditioned on textual instructions, visual semantics, and geometric representations. This network adaptively modulates the contributions of shallow, intermediate, and deep geometric features across the layers of the LLM decoder. Furthermore, we introduce a negative-entropy regularization loss to mitigate gate collapse. Gate visualizations indicate that GeoFus adapts geometric granularity to task requirements. Experiments demonstrate that SpatialMind achieves competitive performance across spatial benchmarks, attaining a state-of-the-art score of 72.3 on VSI-Bench. The source code is publicly available at https://github.com/zhaosb-star/SpatialMind.",
-      "pdf_url": "https://arxiv.org/abs/2611.22415",
-      "comment": "",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "Humans act in the visual world by inferring the 3D layout behind a 2D view, predicting how an action changes it, and correcting themselves after seeing the result. Can multimodal large language models (MLLMs) do the same? CAPTCHAs offer a natural test, since humans solve them through this very loop, clicking and dragging on the screen and adjusting after each result. Yet existing CAPTCHA benchmarks are largely solved and rarely spatial, while spatial benchmarks rarely require action. We therefore present TuringSpace, a synthetic web environment of 125 interactive CAPTCHAs that span five spatial abilities and must be solved through clicks and drags on the screen. Every task is a program that generates new instances with a checker and an oracle, so the tasks also form a scalable training gym. Humans solve 94.1% of the tasks, whereas the best model, GPT-6 Astra, still fails 25.9% of them, and the best open-weight model, Kimi K3, fails 68.0%. Our further analysis shows that most failures come from misreading the screenshot, and that model reasoning rarely corrects a wrong belief but hallucinates evidence to defend it. To test whether such spatial abilities can be learned, we fine-tune Qwen3.5-9B on this gym. Its success rate rises from 1.6% to 33.1%, above Kimi K3, and it improves on all seven out-of-distribution benchmarks, including a 9.9-point gain on the real-world indoor videos of VSI-Bench. These results show that grounding spatial intelligence in screen actions exposes what MLLMs lack and offers a scalable way to teach it, with gains that transfer to real-world scenes. We will release TuringSpace to support further study.",
+      "pdf_url": "https://arxiv.org/pdf/2611.25387",
+      "comment": "https://github.com/os-cua-framework/TuringSpace",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
@@ -340,24 +353,67 @@
       "domain_applications": []
     },
     {
-      "id": "2611.24936",
-      "title": "Jailbreak Detection on Large Language Models via Contrastive Prototype Structures",
+      "id": "2611.26444",
+      "title": "Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation",
       "authors": [
-        "Yan Qiu",
-        "Yuanyuan Li"
+        "Yuzhi Huang",
+        "Jie Wu",
+        "Fanding Huang",
+        "Junchao Lin",
+        "Weichen Zhang",
+        "Ziyi Xiong",
+        "Yang Li",
+        "Zhengwei Xie",
+        "Zhimin Wang",
+        "Zhen Liu",
+        "Jiazhen Huang",
+        "Yuzheng Zhang",
+        "Yuche Liu",
+        "Hongyi Yang",
+        "Chen Tang",
+        "Shixiang Tang",
+        "Hakan Aktas",
+        "Adam Wu",
+        "Duo Wu",
+        "Kangye Ji",
+        "Shuzhao Xie",
+        "Huanan Liu",
+        "Weijue Bu",
+        "Chenxin Li",
+        "Xinyuan Wang",
+        "Tianyi Bai",
+        "Yinan Mao",
+        "Jiawei Wang",
+        "Minglei Li",
+        "Heng Yu",
+        "Ehsan Adeli",
+        "Minchen Li",
+        "Yong-Lu Li",
+        "Cengiz Öztireli",
+        "Huazhe Xu",
+        "Chao Yu",
+        "Jing Zhang",
+        "Shanghang Zhang",
+        "Weitao Zhou",
+        "Wenwu Zhu",
+        "Cheng Chi",
+        "Jingyan Jiang",
+        "Zhi Wang"
       ],
       "categories": [
-        "cs.CL"
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
       ],
-      "published": "2026-11-18",
-      "updated": "2026-11-18",
-      "summary": "Jailbreak attempts and harmful prompts remain a challenge for the safe deployment of large language models. We study whether contrastively learned representations can support safety detection without training an additional downstream classifier. We propose Jailbreak Detection with Prototype Inference (JDPI), which uses binary safety labels to construct harmful and benign prototypes and makes predictions from relative prototype distances. JDPI uses only binary safety labels for encoder adaptation, prototype construction, and validation. In our setup, it uses fewer labeled examples than the classifier baseline (Method A) by avoiding the separate split used to train the downstream classifier. Across four benchmarks covering different input formats, contrastive fine-tuning improves JDPI's detection accuracy by 9.1-18.0 percentage points. Using the same encoder, JDPI achieves slightly higher ROC-AUC on one benchmark and stays within 0.017 of the baseline across all four. With dataset-specific adaptation, JDPI exceeds the released Llama Guard 3-8B baseline by 0.173-0.310 in ROC-AUC across the four benchmarks. In multi-turn replay on TomGibbs, JDPI uses accumulated user history as the conversation unfolds, achieving higher conversation-level accuracy than when it uses the current turn alone. Across 12 directed transfers, JDPI outperforms the classifier by an average of 1.59 percentage points in accuracy, demonstrating stronger cross-dataset robustness.",
-      "pdf_url": "https://arxiv.org/pdf/2611.24936v1",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "Embodied intelligence aims to let robots perform complex physical tasks with human-like adaptability and reliability, which requires three complementary capabilities: history-based cognitive reasoning, precise and timely physical execution, and the composition of reasoning and execution through environmental feedback. Yet existing benchmarks either evaluate reasoning and execution within the same tasks or assess them separately without their composition, so they reveal little about whether a failure comes from reasoning, execution, or their composition. We introduce Mind2Act World, a diagnostic benchmark of 30 simulated manipulation tasks from five real-world application domains. Each task has three difficulty levels and two scene settings (Clean and Random), yielding 180 configurations. The tasks form three views: Mind tests decisions based on past observations, Act tests precise and timely execution, and Mind2Act combines both in closed-loop tasks where action outcomes guide later decisions. Comparing the three views shows whether a system lacks a capability or fails to compose capabilities it already has. A diagnosis harness further attributes the failed episodes of three representative systems to Mind, Act, or their composition and summarizes each system in a profile card. Our evaluation of multimodal agents, vision-language-action models (VLAs), and world-action models (WAMs) shows that competence in a single view does not carry over to Mind2Act tasks. Even the strongest agent succeeds in 52.7% of Mind and 39.0% of Act episodes but in only 12.0% of Mind2Act episodes. The strongest agent retains task state but struggles with sustained contact, whereas end-to-end policies execute practiced motions but retain little task state. These findings point to composing reasoning and execution through environmental feedback as the main open problem.",
+      "pdf_url": "https://arxiv.org/pdf/2611.26444v1",
       "comment": "",
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.6,
+      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     }
@@ -367,48 +423,48 @@
       "name": "Mixture of Experts",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "enterprise",
         "science",
-        "other",
-        "enterprise"
+        "other"
       ]
     },
     {
       "name": "Diffusion Models",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "enterprise",
         "science",
-        "other",
-        "enterprise"
+        "other"
       ]
     },
     {
       "name": "Speculative Decoding",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "enterprise",
         "science",
-        "other",
-        "enterprise"
+        "other"
       ]
     },
     {
       "name": "Reinforcement Learning from Human Feedback",
       "papers": 1,
       "maturity": "early",
-      "confidence": 0.65,
+      "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "enterprise",
         "science",
-        "other",
-        "enterprise"
+        "other"
       ]
     }
   ],
