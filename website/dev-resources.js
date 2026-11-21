@@ -183,7 +183,7 @@
         { name: 'vLLM', url: 'https://docs.vllm.ai', icon: '🚀', categories: ['ai', 'devops'], description: 'High-throughput LLM serving. The standard for production inference.', tags: ['serving', 'opensource'], flags: ['opensource'] },
         { name: 'Modal', url: 'https://modal.com', icon: '🎛️', categories: ['ai', 'devops'], description: 'Run AI apps in the cloud. Serverless GPU, no infra.', tags: ['serverless', 'gpu'] },
 
-        // ── AI ANALYTICS & BENCHMARKS (your added links) ────────────────────
+        // ── AI ANALYTICS & BENCHMARKS ──────────────────────────────────────
         { name: 'Artificial Analysis', url: 'https://artificialanalysis.ai/leaderboards/models', icon: '📊', categories: ['ai', 'analytics'], description: 'Compare LLM performance, quality, price, and speed across providers.', tags: ['benchmark', 'llm', 'free'], flags: ['free', 'popular'] },
         { name: 'LMArena (Chatbot Arena)', url: 'https://lmarena.ai', icon: '⚔️', categories: ['ai', 'analytics'], description: 'Blind side-by-side LLM battles. The most-cited quality leaderboard.', tags: ['benchmark', 'crowdsourced', 'free', 'popular'], flags: ['free', 'popular'] },
         { name: 'WebDev Arena', url: 'https://arena.ai/leaderboard/code/webdev', icon: '🌐', categories: ['ai', 'analytics'], description: 'Arena-style leaderboard for coding LLMs on web development tasks.', tags: ['benchmark', 'coding', 'free'], flags: ['free'] },
@@ -280,7 +280,7 @@
         { name: 'Lobsters', url: 'https://lobste.rs', icon: '🦞', categories: ['community'], description: 'Computing-focused link aggregator. Invite-only, high quality.', tags: ['news'] },
         { name: 'CSS-Tricks articles', url: 'https://css-tricks.com/articles/', icon: '📰', categories: ['community', 'frontend'], description: 'Front-end articles, news, and snippets.', tags: ['news', 'free'], flags: ['free'] },
 
-        // ── STARTUP (your added link) ───────────────────────────────────────
+        // ── STARTUP ─────────────────────────────────────────────────────────
         { name: 'Y Combinator Companies', url: 'https://www.ycombinator.com/companies', icon: '🎓', categories: ['startup', 'analytics'], description: 'Directory of every YC-backed company. Filter by batch, industry, stage.', tags: ['directory', 'free', 'popular'], flags: ['free', 'popular'] },
         { name: 'AppFigures Leaderboards', url: 'https://appfigures.com/reports/leaderboards', icon: '📲', categories: ['analytics', 'startup'], description: 'Top apps by category, country, and store. Market intelligence.', tags: ['apps', 'market', 'free'], flags: ['free'] },
         { name: 'AngelList / Wellfound', url: 'https://wellfound.com', icon: '😇', categories: ['startup', 'community'], description: 'Startup jobs, companies, and funding data.', tags: ['jobs', 'startups'] },
@@ -308,6 +308,8 @@
     const state = {
         category: 'all',
         search: '',
+        view: 'grid', // 'grid' | 'list'
+        selected: new Set(), // Set of resource URLs
     };
 
     const $ = (id) => document.getElementById(id);
@@ -347,7 +349,7 @@
             <div class="dr-stat"><div class="dr-stat-val">${RESOURCES.length}</div><div class="dr-stat-lbl">resources</div></div>
             <div class="dr-stat"><div class="dr-stat-val">${totalCats}</div><div class="dr-stat-lbl">categories</div></div>
             <div class="dr-stat"><div class="dr-stat-val">${counts.design || 0}</div><div class="dr-stat-lbl">design</div></div>
-            <div class="dr-stat"><div class="dr-stat-val">${counts.ai || 0}</div><div class="dr-stat-lbl">ai &amp; ml</div></div>
+            <div class="dr-stat"><div class="dr-stat-val">${counts.ai || 0}</div><div class="dr-stat-lbl">ai & ml</div></div>
         `;
     }
 
@@ -375,6 +377,104 @@
             favs.map(r => `<a class="dr-fav" href="${esc(r.url)}" target="_blank" rel="noopener"><span>${r.icon}</span><span>${esc(r.name)}</span></a>`).join('');
     }
 
+    // ---- selection helpers --------------------------------------------------
+
+    function getFilteredResources() {
+        const q = state.search.trim().toLowerCase();
+        const cat = state.category;
+        return RESOURCES
+            .filter(r => cat === 'all' || r.categories.includes(cat))
+            .filter(r => matchesSearch(r, q));
+    }
+
+    function updateSelectionUI() {
+        const count = state.selected.size;
+        const selBar = $('dr-selection-bar');
+        const selInfo = $('dr-sel-info');
+        if (count > 0) {
+            selBar.classList.add('visible');
+            selInfo.textContent = `${count} selected`;
+        } else {
+            selBar.classList.remove('visible');
+        }
+        // Update checkboxes
+        document.querySelectorAll('.dr-item-checkbox').forEach(cb => {
+            const url = cb.dataset.url;
+            cb.checked = state.selected.has(url);
+            const item = cb.closest('.dr-item');
+            if (item) item.classList.toggle('selected', state.selected.has(url));
+        });
+    }
+
+    function toggleSelect(url, force) {
+        if (force === true) state.selected.add(url);
+        else if (force === false) state.selected.delete(url);
+        else {
+            if (state.selected.has(url)) state.selected.delete(url);
+            else state.selected.add(url);
+        }
+        updateSelectionUI();
+    }
+
+    function selectAllVisible() {
+        const filtered = getFilteredResources();
+        filtered.forEach(r => state.selected.add(r.url));
+        updateSelectionUI();
+    }
+
+    function clearSelection() {
+        state.selected.clear();
+        updateSelectionUI();
+    }
+
+    function copyToClipboard(text, label = 'Copied') {
+        navigator.clipboard.writeText(text).then(() => {
+            // Show toast feedback
+            const toast = document.createElement('div');
+            toast.textContent = label;
+            toast.style.cssText = 'position:fixed;bottom:20px;right:20px;padding:12px 20px;background:var(--accent);color:#0a0e13;border-radius:8px;font-weight:600;z-index:9999;animation:slideIn 0.2s ease';
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.animation = 'slideOut 0.2s ease'; setTimeout(() => toast.remove(), 200); }, 2000);
+        }).catch(() => alert('Failed to copy'));
+    }
+
+    function copySelectedURLs() {
+        const urls = Array.from(state.selected).join('\n');
+        copyToClipboard(urls, `${state.selected.size} URLs copied`);
+    }
+
+    function copySelectedMarkdown() {
+        const filtered = getFilteredResources().filter(r => state.selected.has(r.url));
+        const md = filtered.map(r => `- [${r.icon} ${r.name}](${r.url}) — ${r.description}`).join('\n');
+        copyToClipboard(md, 'Markdown copied');
+    }
+
+    function askAIWithSelection() {
+        const filtered = getFilteredResources().filter(r => state.selected.has(r.url));
+        if (!filtered.length) return;
+        
+        const prompt = `I've selected these ${filtered.length} developer resources:\n\n` +
+            filtered.map(r => `- **${r.name}** (${r.url}) — ${r.description}`).join('\n') +
+            `\n\nPlease analyze them and provide: 1) Summary of each, 2) Group by purpose, 3) Recommendations on which to try first.`;
+        
+        // Find the ask-ai input and set the prompt
+        const askInput = document.querySelector('#ask-ai-input, textarea[name="question"], .ask-ai-input');
+        if (askInput) {
+            askInput.value = prompt;
+            askInput.dispatchEvent(new Event('input', { bubbles: true }));
+            askInput.focus();
+        } else {
+            // Fallback: open ask-ai modal if it exists
+            const askBtn = $('dr-ask-ai');
+            if (askBtn) askBtn.click();
+            // Try to set after a tick
+            setTimeout(() => {
+                const ta = document.querySelector('#ask-ai-input, textarea[name="question"], .ask-ai-input');
+                if (ta) { ta.value = prompt; ta.dispatchEvent(new Event('input', { bubbles: true })); ta.focus(); }
+            }, 100);
+        }
+    }
+
     // ---- render: grid ------------------------------------------------------
 
     function matchesSearch(r, q) {
@@ -393,6 +493,7 @@
     }
 
     function renderCard(r) {
+        const isSelected = state.selected.has(r.url);
         const flagHtml = (r.flags || []).map(f =>
             `<span class="dr-item-tag ${flagClass(f)}">${esc(flagLabel(f))}</span>`
         ).join('');
@@ -400,7 +501,8 @@
             `<span class="dr-item-tag">${esc(t)}</span>`
         ).join('');
         return `
-            <div class="dr-item">
+            <div class="dr-item${isSelected ? ' selected' : ''}" role="listitem" data-url="${esc(r.url)}">
+                <input type="checkbox" class="dr-item-checkbox" data-url="${esc(r.url)}" ${isSelected ? 'checked' : ''} aria-label="Select ${esc(r.name)}">
                 <div class="dr-item-head">
                     <a class="dr-item-name" href="${esc(r.url)}" target="_blank" rel="noopener">${r.icon} ${esc(r.name)}</a>
                 </div>
@@ -411,26 +513,34 @@
     }
 
     function renderGrid() {
-        const q = state.search.trim().toLowerCase();
-        const cat = state.category;
-        const filtered = RESOURCES
-            .filter(r => cat === 'all' || r.categories.includes(cat))
-            .filter(r => matchesSearch(r, q))
-            .slice(0, MAX_PER_CAT);
-
+        const filtered = getFilteredResources().slice(0, MAX_PER_CAT);
+        const isList = state.view === 'list';
+        const grid = $('dr-grid');
+        grid.classList.toggle('list-view', isList);
+        
         $('dr-count').textContent = `${filtered.length} shown`;
 
         if (!filtered.length) {
-            $('dr-grid').innerHTML = '<div class="dr-empty">No resources match. Try a different search or category.</div>';
+            grid.innerHTML = '<div class="dr-empty">No resources match. Try a different search or category.</div>';
             return;
         }
-        $('dr-grid').innerHTML = filtered.map(renderCard).join('');
+        grid.innerHTML = filtered.map(renderCard).join('');
+        updateSelectionUI();
     }
 
     function setActiveCategory(cat) {
         state.category = cat;
+        state.selected.clear(); // Clear selection when category changes
         document.querySelectorAll('.dr-tab').forEach(b => {
             b.classList.toggle('active', b.dataset.cat === cat);
+        });
+        renderGrid();
+    }
+
+    function setView(view) {
+        state.view = view;
+        document.querySelectorAll('.dr-view-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.view === view);
         });
         renderGrid();
     }
@@ -438,13 +548,49 @@
     // ---- bootstrap ----------------------------------------------------------
 
     function bindControls() {
+        // Category tabs
         document.querySelectorAll('.dr-tab').forEach(btn => {
             btn.addEventListener('click', () => setActiveCategory(btn.dataset.cat));
         });
+        
+        // Search
         $('dr-search').addEventListener('input', (e) => {
             state.search = e.target.value;
+            state.selected.clear();
             renderGrid();
         });
+        
+        // View toggle
+        document.querySelectorAll('.dr-view-btn').forEach(btn => {
+            btn.addEventListener('click', () => setView(btn.dataset.view));
+        });
+        
+        // Selection: checkboxes (event delegation)
+        $('dr-grid').addEventListener('change', (e) => {
+            if (e.target.matches('.dr-item-checkbox')) {
+                toggleSelect(e.target.dataset.url, e.target.checked);
+            }
+        });
+        
+        // Selection: click on item (not link) toggles checkbox
+        $('dr-grid').addEventListener('click', (e) => {
+            const item = e.target.closest('.dr-item');
+            if (item && !e.target.closest('a') && !e.target.matches('.dr-item-checkbox')) {
+                const cb = item.querySelector('.dr-item-checkbox');
+                if (cb) {
+                    cb.checked = !cb.checked;
+                    toggleSelect(cb.dataset.url, cb.checked);
+                }
+            }
+        });
+        
+        // Selection toolbar buttons
+        $('dr-sel-copy')?.addEventListener('click', copySelectedURLs);
+        $('dr-sel-copy-md')?.addEventListener('click', copySelectedMarkdown);
+        $('dr-sel-ask-ai')?.addEventListener('click', askAIWithSelection);
+        $('dr-sel-clear')?.addEventListener('click', clearSelection);
+        
+        // Back to top
         const backBtn = $('back-to-top');
         if (backBtn) {
             window.addEventListener('scroll', () => {
@@ -452,6 +598,19 @@
             });
             backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.matches('input, textarea')) return;
+            if (e.key === 'a' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                selectAllVisible();
+            }
+            if (e.key === 'Escape') {
+                clearSelection();
+                $('dr-search').blur();
+            }
+        });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -474,6 +633,7 @@
             context: () => {
                 const bits = [`Category: ${state.category === 'all' ? 'All' : state.category}`];
                 if (state.search.trim()) bits.push(`Search: ${state.search.trim()}`);
+                if (state.selected.size) bits.push(`Selected: ${state.selected.size}`);
                 return bits.join(' • ');
             },
             contextDetail: (n) => `Asking about ${n} filtered resources.`,

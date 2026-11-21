@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Resources — Curated Developer Tools, Design, AI &amp; Learning Sites</title>
+    <title>Dev Resources — Curated Developer Tools, Design, AI & Learning Sites</title>
     <meta name="description" content="A curated directory of the best websites for developers — design tools, coding references, AI platforms, learning resources, devops, and more. Search and filter by category.">
     <meta property="og:title" content="Dev Resources — Best Websites for Developers">
     <meta property="og:description" content="Curated directory of design tools, coding references, AI platforms, learning resources, and devops essentials. Searchable and categorized.">
@@ -34,10 +34,37 @@
         .dr-search:focus { outline:none; border-color:var(--accent-strong); box-shadow:0 0 0 3px rgba(140,111,255,0.16); }
         .dr-count { font-size:0.8rem; color:var(--text-muted); font-weight:600; }
 
+        /* View toggle */
+        .dr-view-toggle { display:inline-flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:rgba(255,255,255,0.02); }
+        .dr-view-btn { padding:6px 10px; border:none; background:transparent; color:var(--text-secondary); cursor:pointer; font-size:0.85rem; transition:120ms ease; display:flex; align-items:center; gap:4px; }
+        .dr-view-btn:hover { color:var(--text-primary); background:rgba(255,255,255,0.04); }
+        .dr-view-btn.active { background:var(--accent); color:#0a0e13; }
+        .dr-view-btn svg { width:16px; height:16px; }
+
+        /* Selection toolbar */
+        .dr-selection-bar { display:none; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 12px; padding:10px 16px; border:1px solid var(--accent); border-radius:var(--radius-lg); background:rgba(140,111,255,0.08); }
+        .dr-selection-bar.visible { display:flex; }
+        .dr-selection-info { font-size:0.82rem; color:var(--text-primary); font-weight:600; }
+        .dr-selection-actions { display:flex; flex-wrap:wrap; gap:8px; margin-left:auto; }
+        .dr-sel-btn { padding:6px 12px; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); color:var(--text-secondary); font-size:0.78rem; font-weight:600; cursor:pointer; transition:120ms ease; display:inline-flex; align-items:center; gap:5px; }
+        .dr-sel-btn:hover { border-color:var(--accent); color:var(--accent); background:rgba(99,207,255,0.06); }
+        .dr-sel-btn.primary { background:var(--accent); color:#0a0e13; border-color:var(--accent); }
+        .dr-sel-btn.primary:hover { filter:brightness(1.1); }
+        .dr-sel-btn.danger { border-color:rgba(255,80,80,0.3); color:#ff5050; }
+        .dr-sel-btn.danger:hover { background:rgba(255,80,80,0.1); }
+
         /* Grid */
         .dr-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
-        .dr-item { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:6px; transition:140ms ease; }
+        .dr-grid.list-view { grid-template-columns:1fr; }
+        .dr-grid.list-view .dr-item { flex-direction:row; align-items:center; gap:16px; padding:12px 16px; }
+        .dr-grid.list-view .dr-item-head { flex:1; min-width:0; }
+        .dr-grid.list-view .dr-item-desc { max-width:400px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .dr-grid.list-view .dr-item-tags { flex-shrink:0; }
+        .dr-grid.list-view .dr-item-checkbox { flex-shrink:0; margin-right:8px; }
+
+        .dr-item { padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:6px; transition:140ms ease; position:relative; }
         .dr-item:hover { border-color:var(--border-strong); transform:translateY(-1px); box-shadow:0 6px 24px rgba(0,0,0,0.1); }
+        .dr-item.selected { border-color:var(--accent); background:rgba(140,111,255,0.05); box-shadow:0 0 0 2px rgba(140,111,255,0.2); }
         .dr-item-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
         .dr-item-name { font-weight:700; color:var(--accent); text-decoration:none; font-size:0.95rem; line-height:1.3; word-break:break-all; }
         .dr-item-name:hover { color:#a78bfa; text-decoration:underline; }
@@ -50,6 +77,12 @@
         .dr-item-tag.popular { background:rgba(255,184,87,0.1); color:#ffb857; border:1px solid rgba(255,184,87,0.15); }
         .dr-item-tag.opensource { background:rgba(140,111,255,0.1); color:#c4b5fd; }
 
+        .dr-item-checkbox { position:absolute; top:12px; right:12px; width:20px; height:20px; border:2px solid var(--border); border-radius:6px; background:var(--bg-panel); cursor:pointer; appearance:none; transition:120ms ease; display:flex; align-items:center; justify-content:center; }
+        .dr-item-checkbox:hover { border-color:var(--accent); }
+        .dr-item-checkbox:checked { background:var(--accent); border-color:var(--accent); }
+        .dr-item-checkbox:checked::after { content:''; width:6px; height:10px; border:2px solid #0a0e13; border-top:none; border-left:none; transform:rotate(45deg) translateY(-1px); }
+        .dr-grid.list-view .dr-item-checkbox { position:static; margin-right:12px; }
+
         .dr-empty { padding:40px; text-align:center; color:var(--text-secondary); font-size:0.92rem; }
         .dr-footer { font-size:0.78rem; color:var(--text-muted); text-align:center; padding:20px 0; border-top:1px solid var(--border); margin-top:28px; }
 
@@ -58,7 +91,11 @@
         .dr-fav { display:inline-flex; align-items:center; gap:5px; padding:6px 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,0.02); color:var(--text-secondary); font-size:0.78rem; font-weight:600; text-decoration:none; transition:120ms ease; }
         .dr-fav:hover { border-color:var(--accent); color:var(--accent); background:rgba(99,207,255,0.06); }
 
-        @media (max-width:640px) { .dr-grid { grid-template-columns:1fr; } }
+        @media (max-width:640px) { 
+            .dr-grid { grid-template-columns:1fr; }
+            .dr-selection-actions { margin-left:0; width:100%; justify-content:flex-start; }
+            .dr-item-checkbox { width:24px; height:24px; }
+        }
     </style>
 </head>
 <body>
@@ -90,17 +127,28 @@
                     <button class="dr-tab active" data-cat="all" type="button">⭐ All</button>
                     <button class="dr-tab" data-cat="design" type="button">🎨 Design</button>
                     <button class="dr-tab" data-cat="coding" type="button">💻 Coding</button>
-                    <button class="dr-tab" data-cat="ai" type="button">🤖 AI &amp; ML</button>
+                    <button class="dr-tab" data-cat="ai" type="button">🤖 AI & ML</button>
                     <button class="dr-tab" data-cat="frontend" type="button">🌐 Frontend</button>
                     <button class="dr-tab" data-cat="devops" type="button">⚙️ DevOps</button>
                     <button class="dr-tab" data-cat="learning" type="button">📖 Learning</button>
-                    <button class="dr-tab" data-cat="data" type="button">📊 Data &amp; DB</button>
-                    <button class="dr-tab" data-cat="analytics" type="button">📈 Analytics &amp; Benchmarks</button>
-                    <button class="dr-tab" data-cat="api" type="button">🔌 API &amp; Services</button>
+                    <button class="dr-tab" data-cat="data" type="button">📊 Data & DB</button>
+                    <button class="dr-tab" data-cat="analytics" type="button">📈 Analytics & Benchmarks</button>
+                    <button class="dr-tab" data-cat="api" type="button">🔌 API & Services</button>
                     <button class="dr-tab" data-cat="productivity" type="button">⚡ Productivity</button>
                     <button class="dr-tab" data-cat="community" type="button">👥 Community</button>
                     <button class="dr-tab" data-cat="startup" type="button">🚀 Startup</button>
                     <input type="search" class="dr-search" id="dr-search" placeholder="Search name, description, tags..." autocomplete="off" spellcheck="false">
+                    
+                    <!-- View Toggle -->
+                    <div class="dr-view-toggle" role="group" aria-label="View mode">
+                        <button class="dr-view-btn active" data-view="grid" type="button" title="Grid view">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                        </button>
+                        <button class="dr-view-btn" data-view="list" type="button" title="List view">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        </button>
+                    </div>
+
                     <button class="action-btn ask-ai-btn" id="dr-ask-ai" type="button">
                         <svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path d="M12 3a9 9 0 0 0-7.74 13.55L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 11h7"/><path d="M8.5 14h4"/></svg>
                         <span>Ask AI</span>
@@ -108,8 +156,31 @@
                     <span class="dr-count" id="dr-count"></span>
                 </div>
 
+                <!-- Selection Toolbar -->
+                <div class="dr-selection-bar" id="dr-selection-bar" role="status" aria-live="polite">
+                    <span class="dr-selection-info" id="dr-sel-info">0 selected</span>
+                    <div class="dr-selection-actions">
+                        <button class="dr-sel-btn" id="dr-sel-copy" type="button" title="Copy selected URLs">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            Copy URLs
+                        </button>
+                        <button class="dr-sel-btn" id="dr-sel-copy-md" type="button" title="Copy as Markdown">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Copy MD
+                        </button>
+                        <button class="dr-sel-btn primary" id="dr-sel-ask-ai" type="button" title="Ask AI about selected">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="16" r="1"/></svg>
+                            Ask AI
+                        </button>
+                        <button class="dr-sel-btn danger" id="dr-sel-clear" type="button" title="Clear selection">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
                 <div class="dr-fav-strip" id="dr-fav"></div>
-                <div class="dr-grid" id="dr-grid"></div>
+                <div class="dr-grid" id="dr-grid" role="list"></div>
 
                 <div class="dr-footer">
                     Hand-curated by <a href="https://github.com/hankbui" target="_blank" rel="noopener" style="color:var(--accent)">@hankbui</a> · Static site, no signup · Suggestions? <a href="https://github.com/hankbui/my-starred-AI-repos/issues/new" target="_blank" rel="noopener" style="color:var(--accent)">open an issue</a>
@@ -124,7 +195,7 @@
     </button>
 
     <script src="ask-ai-shared.js?v=20260723-2"></script>
-    <script src="dev-resources.js?v=20260719-1"></script>
+    <script src="dev-resources.js?v=20260719-2"></script>
     <script src="translate.js?v=20260723-3"></script>
 </body>
 </html>
