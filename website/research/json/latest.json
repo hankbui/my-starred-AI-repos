@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-20",
+    "date": "2026-11-21",
     "papers_tracked": 15,
     "technologies_discovered": 4,
     "opportunities_identified": 0,
-    "last_update": "2026-11-20 14:15 UTC",
+    "last_update": "2026-11-21 13:40 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -61,152 +61,6 @@
   ],
   "papers": [
     {
-      "id": "2611.21003",
-      "title": "K2-Horizon: A Frontier Fleet of Open Source Language Models",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-17",
-      "updated": "2026-11-17",
-      "summary": "arXiv:2611.21003v1 Announce Type: new Abstract: We present K2-Horizon, a fleet of six fully open language models, from a 0.9B dense model to a 375B-A23B MoE, built for general-purpose reasoning and agentic work across math and science, software engineering, deep research, office automation, and beyond. The models lead or are competitive with strong open models of their size on agentic and coding benchmarks. On the modeling side, to strengthen reasoning, we introduce Mixture-of-Value Attention (MoVA), applying MoE to attention value projections, and softplus attention gating, a more flexible, theoretically motivated gate. Our 36B-A4B model uses both and nearly matches a 32B dense model trained on the same data, with one-seventh the active parameters. We also introduce Uno, lossless diffusion adapters that speed up decoding by up to 2.2x without a separate draft model. Our release follows the LLM360 definition of open source for transparency and reproducibility: the full development history, including intermediate checkpoints from every training stage, pre-training data, training logs, and all training, evaluation, and infrastructure code, notably our production-scale xLLM framework for dense and MoE training and the RL360 reinforcement-learning stack. Beyond the data itself, we release and document in detail every pipeline that built it, the part of model development that open releases most rarely disclose. These pipelines produced roughly 10T synthetic pre-training tokens, showing that synthetic data can be a major ingredient of pre-training at scale. Four of the models share one 22T-token pre-training corpus and recipe, revealing consistent scaling behavior and enabling controlled studies of scale and sparsity. All artifacts are available at https://ifm.ai/k2/",
-      "pdf_url": "https://arxiv.org/abs/2611.21003",
-      "comment": "",
-      "technologies": [
-        "Mixture of Experts",
-        "Diffusion Models",
-        "Speculative Decoding",
-        "Reinforcement Learning from Human Feedback"
-      ],
-      "maturity": "medium",
-      "confidence": 0.9,
-      "curator_score": 6.0,
-      "product_potential": [
-        "High-throughput agentic software engineering platforms using MoVA for reduced compute costs",
-        "Low-latency enterprise reasoning assistants utilizing Uno diffusion adapters for accelerated decoding",
-        "Custom synthetic data generation pipelines for domain-specific pre-training"
-      ],
-      "domain_applications": [
-        "enterprise",
-        "science",
-        "other"
-      ]
-    },
-    {
-      "id": "2611.23388",
-      "title": "QDA: Closed-Loop LLM Quantization Design with Agents",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2611.23388v1 Announce Type: cross Abstract: Post-training quantization is the standard way to serve large language models at low cost. However, the best quantization recipe differs across models and precisions. As a result, experts must redesign it for every new model, which is time-consuming and often sub-optimal. Fortunately, an LLM agent can take over this design by refining the recipe over rounds of building and evaluating candidates, so that more rounds lead to better recipes. However, evaluating one quantized reasoning model takes tens of GPU-hours, and combining methods from different codebases means porting each to the new architecture by hand. We present QDA, a system in which an agent designs the recipe for each model and precision. To make evaluation fast, QDA scores each candidate in minutes by its output KL divergence from the original model on reasoning traces that the agent never sees, and checks promising ones with long generations to catch failures such as repetition loops. To make building fast, QDA provides a library of public PTQ methods that are compatible with one another and with new model architectures. Across four reasoning models, QDA improves accuracy over the strongest public recipe by 0.9, 1.4 and 2.2 percentage points on average at W4A16, W4A8 and W3A16, using 64 GPU-hours per search. On the 320B-parameter MoE model GLM-5.3-Flash at NVFP4 W4A4, it recovers 98.3% of the FP8 model's accuracy, against 96.9% for the best vendor checkpoint. Every QDA checkpoint also runs on existing serving kernels with no inference overhead. We will release the library, the evaluator and the harness.",
-      "pdf_url": "https://arxiv.org/abs/2611.23388",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.18397",
-      "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2611.18397v3 Announce Type: replace-cross Abstract: We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
-      "pdf_url": "https://arxiv.org/abs/2611.18397",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2606.25319",
-      "title": "V-Zero: Gating On-Policy Distillation with Contrastive Visual Evidence for Fine-Grained Visual Reasoning",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2606.25319v2 Announce Type: replace Abstract: Fine-grained visual reasoning requires multimodal large language models (MLLMs) to identify task-relevant visual evidence and ground their reasoning in local image regions. Existing methods typically rely on reinforcement learning with verifiable rewards or supervised fine-tuning on large-scale annotated reasoning traces, resulting in costly exploration, hand-designed verification rules, or heavy dependence on textual supervision. While On-Policy Distillation (OPD) offers a promising alternative via dense teacher supervision, its token-level objective inherently focuses on local token corrections, failing to assess global trajectory quality. In this work, we first reinterpret OPD as a stop-gradient alignment objective, revealing that its potential is limited by the absence of trajectory-level discrimination. Motivated by this observation, we propose V-Zero, which gates on-policy distillation with contrastive visual evidence. Specifically, V-Zero evaluates each trajectory under paired positive and negative visual views; the resulting likelihood contrast forms a trajectory-level gate that selectively amplifies updates from visually well-supported reasoning paths while suppressing ungrounded ones. Experiments on multiple visual reasoning and perception benchmarks show that V-Zero improves the Qwen3.5-4B backbone by 3.9 points on average while preserving strong generalization. Notably, V-Zero achieves more than 3$\\times$ and 6$\\times$ training speedups over representative supervised fine-tuning and reinforcement learning baselines, respectively. It requires neither annotated textual reasoning traces nor external reward signals. Code and dataset are released at https://github.com/eVI-group-SCU/V-Zero.",
-      "pdf_url": "https://arxiv.org/abs/2606.25319",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.24294",
-      "title": "KnowledgeClaw: Towards Agentic Knowledge Engineering via Omnimodal Hypergraphs",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2611.24294v1 Announce Type: new Abstract: Knowledge engineering (KE) turns raw files into a reasoning-ready knowledge base, a task now within reach of LLM agents. KE has progressed from chunk and graph retrieval-augmented generation (RAG) to memory agents, agentic KE and multimodal KE. However, a live knowledge base needs omnimodality, a closed-loop lifecycle and multi-granular application at once, yet existing systems meet at most two and no benchmark measures all three. We formalize Omnimodal Knowledge Engineering (OmniKE) and release OmniKE-Bench, six tasks with 1,829 model-free items over 3,960 real files in five modalities. We further propose KnowledgeClaw, an agentic system that builds an omnimodal typed hypergraph, keeps it current with a closed-loop lifecycle agent and routes each query to the granularity it needs. Against 30 baselines, it ranks first on all six tasks with an overall OKE of 55.9, +14.6 over the strongest baseline. Our software and data are publicly available at https://github.com/LHRLAB/KnowledgeClaw.",
-      "pdf_url": "https://arxiv.org/abs/2611.24294",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2602.23276",
-      "title": "CXReasonAgent: Evidence-Grounded Diagnostic Reasoning Agent for Chest X-rays",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2602.23276v3 Announce Type: replace Abstract: Chest X-ray plays a central role in thoracic diagnosis, and its interpretation inherently requires multi-step, evidence-grounded reasoning. However, large vision-language models (LVLMs) often generate plausible responses that are not faithfully grounded in diagnostic evidence and provide limited visual evidence for verification, while also requiring costly retraining to support new diagnostic tasks, limiting their reliability and adaptability in clinical settings. To address these limitations, we present CXReasonAgent, a diagnostic agent that integrates a large language model (LLM) with clinically grounded diagnostic tools to perform evidence-grounded diagnostic reasoning using image-derived diagnostic and visual evidence. To evaluate these capabilities, we introduce CXReasonDail, a multi-turn dialogue benchmark with 1,946 dialogues across 12 diagnostic tasks, and show that CXReasonAgent produces more faithfully grounded responses than LVLMs. These findings highlight the importance of integrating clinically grounded diagnostic tools to enable reliable and verifiable diagnostic reasoning. The demo is available \\href{https://ttumyche.github.io/CXReasonAgent_Demo/}{here}.",
-      "pdf_url": "https://arxiv.org/abs/2602.23276",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2607.11012",
-      "title": "EasyOPD: An Easy-to-use On-Policy Distillation Framework for Large Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-19",
-      "updated": "2026-11-19",
-      "summary": "arXiv:2607.11012v2 Announce Type: replace Abstract: Conventional language-model distillation often relies on fixed teacher-generated data, which may not cover the states encountered by an evolving student policy. On-policy distillation (OPD) instead collects teacher or evaluator supervision on student-generated rollouts. However, existing OPD methods differ substantially in supervision form, tokenizer compatibility, teacher access, and supervision granularity, leading to fragmented implementations that are difficult to reproduce and extend. We present \\textsc{EasyOPD}, an on-policy distillation framework built on verl, a distributed reinforcement-learning framework for large language models. \\textsc{EasyOPD} separates user-side configuration, method-specific supervision logic, and verl-based execution. Its method modules connect to the shared backend through extension boundaries for loss construction, rollout metadata, reward processing, tokenizer alignment, and teacher-side computation. We instantiate representative methods for three OPD settings -- cross-tokenizer OPD, on-policy self-distillation, and step-wise OPD. Experiments on reasoning, code-generation, scientific-knowledge, and tool-use benchmarks show that these implementations can be executed through the same verl-based backend while retaining their method-specific objectives and task-dependent performance profiles. We release \\textsc{EasyOPD} with runnable YAML configurations, documentation, and an installable demonstration package and video.",
-      "pdf_url": "https://arxiv.org/abs/2607.11012",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
       "id": "2611.25071",
       "title": "FinVeriQA: Financial Research Agents for Question Answering: Routing, Retrieval, MCP Tool Use, and Provenance-Aware Evidence Verification",
       "authors": [],
@@ -245,6 +99,152 @@
       "domain_applications": []
     },
     {
+      "id": "2611.21003",
+      "title": "K2-Horizon: A Frontier Fleet of Open Source Language Models",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-17",
+      "updated": "2026-11-17",
+      "summary": "arXiv:2611.21003v1 Announce Type: new Abstract: We present K2-Horizon, a fleet of six fully open language models, from a 0.9B dense model to a 375B-A23B MoE, built for general-purpose reasoning and agentic work across math and science, software engineering, deep research, office automation, and beyond. The models lead or are competitive with strong open models of their size on agentic and coding benchmarks. On the modeling side, to strengthen reasoning, we introduce Mixture-of-Value Attention (MoVA), applying MoE to attention value projections, and softplus attention gating, a more flexible, theoretically motivated gate. Our 36B-A4B model uses both and nearly matches a 32B dense model trained on the same data, with one-seventh the active parameters. We also introduce Uno, lossless diffusion adapters that speed up decoding by up to 2.2x without a separate draft model. Our release follows the LLM360 definition of open source for transparency and reproducibility: the full development history, including intermediate checkpoints from every training stage, pre-training data, training logs, and all training, evaluation, and infrastructure code, notably our production-scale xLLM framework for dense and MoE training and the RL360 reinforcement-learning stack. Beyond the data itself, we release and document in detail every pipeline that built it, the part of model development that open releases most rarely disclose. These pipelines produced roughly 10T synthetic pre-training tokens, showing that synthetic data can be a major ingredient of pre-training at scale. Four of the models share one 22T-token pre-training corpus and recipe, revealing consistent scaling behavior and enabling controlled studies of scale and sparsity. All artifacts are available at https://ifm.ai/k2/",
+      "pdf_url": "https://arxiv.org/abs/2611.21003",
+      "comment": "",
+      "technologies": [
+        "Mixture of Experts",
+        "Diffusion Models",
+        "Speculative Decoding",
+        "Reinforcement Learning from Human Feedback"
+      ],
+      "maturity": "medium",
+      "confidence": 0.9,
+      "curator_score": 5.5,
+      "product_potential": [
+        "High-throughput agentic software engineering platforms using MoVA for reduced compute costs",
+        "Low-latency enterprise reasoning assistants utilizing Uno diffusion adapters for accelerated decoding",
+        "Custom synthetic data generation pipelines for domain-specific pre-training"
+      ],
+      "domain_applications": [
+        "enterprise",
+        "science",
+        "other"
+      ]
+    },
+    {
+      "id": "2611.23388",
+      "title": "QDA: Closed-Loop LLM Quantization Design with Agents",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.23388v1 Announce Type: cross Abstract: Post-training quantization is the standard way to serve large language models at low cost. However, the best quantization recipe differs across models and precisions. As a result, experts must redesign it for every new model, which is time-consuming and often sub-optimal. Fortunately, an LLM agent can take over this design by refining the recipe over rounds of building and evaluating candidates, so that more rounds lead to better recipes. However, evaluating one quantized reasoning model takes tens of GPU-hours, and combining methods from different codebases means porting each to the new architecture by hand. We present QDA, a system in which an agent designs the recipe for each model and precision. To make evaluation fast, QDA scores each candidate in minutes by its output KL divergence from the original model on reasoning traces that the agent never sees, and checks promising ones with long generations to catch failures such as repetition loops. To make building fast, QDA provides a library of public PTQ methods that are compatible with one another and with new model architectures. Across four reasoning models, QDA improves accuracy over the strongest public recipe by 0.9, 1.4 and 2.2 percentage points on average at W4A16, W4A8 and W3A16, using 64 GPU-hours per search. On the 320B-parameter MoE model GLM-5.3-Flash at NVFP4 W4A4, it recovers 98.3% of the FP8 model's accuracy, against 96.9% for the best vendor checkpoint. Every QDA checkpoint also runs on existing serving kernels with no inference overhead. We will release the library, the evaluator and the harness.",
+      "pdf_url": "https://arxiv.org/abs/2611.23388",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.18397",
+      "title": "Gamer: A Generalist Vision-Language-Action Foundation Model for Long-Horizon Real-Time Game Agent",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.18397v3 Announce Type: replace-cross Abstract: We introduce Gamer, a generalist agent framework built for long-horizon tasks in complex interactive environments. Its end-to-end architecture combines perception, memory management, and multi-step reasoning. A shared training and deployment pipeline supports interaction with both conventional 2D graphical interfaces and complex 3D simulated worlds. We first continue pre-training on a dataset constructed from tens of thousands of hours of device-level keyboard and mouse interaction. These trajectories span simulated games and embodied environments, allowing the model to learn environmental dynamics across both physical and virtual domains. Sparse-thinking instruction tuning then substantially reduces redundant computation while preserving the reasoning needed for complex decisions. We train the policy for long-horizon interaction with a stable multi-turn reinforcement learning method that addresses finite context windows, accumulated rollout errors, and sparse rewards. For real-time interaction, a cloud-edge inference engine serves numerous simulated game environments concurrently, supports unbounded-context execution, and keeps online inference latency low. Across multiple challenging 3D open-world games, Gamer demonstrates solid generalization and operational efficiency comparable to skilled players. It also achieves competitive results on a range of conventional 2D game benchmarks. These results suggest that even repetitive keyboard and mouse trajectories can support substantial gains from scaling data and learning algorithms. Training on these trajectories helps Gamer learn complex skills more steadily in environments with both physical and digital properties. This approach offers a path toward generalist agents that can interact across digital and physical worlds.",
+      "pdf_url": "https://arxiv.org/abs/2611.18397",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2606.25319",
+      "title": "V-Zero: Gating On-Policy Distillation with Contrastive Visual Evidence for Fine-Grained Visual Reasoning",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2606.25319v2 Announce Type: replace Abstract: Fine-grained visual reasoning requires multimodal large language models (MLLMs) to identify task-relevant visual evidence and ground their reasoning in local image regions. Existing methods typically rely on reinforcement learning with verifiable rewards or supervised fine-tuning on large-scale annotated reasoning traces, resulting in costly exploration, hand-designed verification rules, or heavy dependence on textual supervision. While On-Policy Distillation (OPD) offers a promising alternative via dense teacher supervision, its token-level objective inherently focuses on local token corrections, failing to assess global trajectory quality. In this work, we first reinterpret OPD as a stop-gradient alignment objective, revealing that its potential is limited by the absence of trajectory-level discrimination. Motivated by this observation, we propose V-Zero, which gates on-policy distillation with contrastive visual evidence. Specifically, V-Zero evaluates each trajectory under paired positive and negative visual views; the resulting likelihood contrast forms a trajectory-level gate that selectively amplifies updates from visually well-supported reasoning paths while suppressing ungrounded ones. Experiments on multiple visual reasoning and perception benchmarks show that V-Zero improves the Qwen3.5-4B backbone by 3.9 points on average while preserving strong generalization. Notably, V-Zero achieves more than 3$\\times$ and 6$\\times$ training speedups over representative supervised fine-tuning and reinforcement learning baselines, respectively. It requires neither annotated textual reasoning traces nor external reward signals. Code and dataset are released at https://github.com/eVI-group-SCU/V-Zero.",
+      "pdf_url": "https://arxiv.org/abs/2606.25319",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.24294",
+      "title": "KnowledgeClaw: Towards Agentic Knowledge Engineering via Omnimodal Hypergraphs",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2611.24294v1 Announce Type: new Abstract: Knowledge engineering (KE) turns raw files into a reasoning-ready knowledge base, a task now within reach of LLM agents. KE has progressed from chunk and graph retrieval-augmented generation (RAG) to memory agents, agentic KE and multimodal KE. However, a live knowledge base needs omnimodality, a closed-loop lifecycle and multi-granular application at once, yet existing systems meet at most two and no benchmark measures all three. We formalize Omnimodal Knowledge Engineering (OmniKE) and release OmniKE-Bench, six tasks with 1,829 model-free items over 3,960 real files in five modalities. We further propose KnowledgeClaw, an agentic system that builds an omnimodal typed hypergraph, keeps it current with a closed-loop lifecycle agent and routes each query to the granularity it needs. Against 30 baselines, it ranks first on all six tasks with an overall OKE of 55.9, +14.6 over the strongest baseline. Our software and data are publicly available at https://github.com/LHRLAB/KnowledgeClaw.",
+      "pdf_url": "https://arxiv.org/abs/2611.24294",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2602.23276",
+      "title": "CXReasonAgent: Evidence-Grounded Diagnostic Reasoning Agent for Chest X-rays",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2602.23276v3 Announce Type: replace Abstract: Chest X-ray plays a central role in thoracic diagnosis, and its interpretation inherently requires multi-step, evidence-grounded reasoning. However, large vision-language models (LVLMs) often generate plausible responses that are not faithfully grounded in diagnostic evidence and provide limited visual evidence for verification, while also requiring costly retraining to support new diagnostic tasks, limiting their reliability and adaptability in clinical settings. To address these limitations, we present CXReasonAgent, a diagnostic agent that integrates a large language model (LLM) with clinically grounded diagnostic tools to perform evidence-grounded diagnostic reasoning using image-derived diagnostic and visual evidence. To evaluate these capabilities, we introduce CXReasonDail, a multi-turn dialogue benchmark with 1,946 dialogues across 12 diagnostic tasks, and show that CXReasonAgent produces more faithfully grounded responses than LVLMs. These findings highlight the importance of integrating clinically grounded diagnostic tools to enable reliable and verifiable diagnostic reasoning. The demo is available \\href{https://ttumyche.github.io/CXReasonAgent_Demo/}{here}.",
+      "pdf_url": "https://arxiv.org/abs/2602.23276",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2607.11012",
+      "title": "EasyOPD: An Easy-to-use On-Policy Distillation Framework for Large Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "summary": "arXiv:2607.11012v2 Announce Type: replace Abstract: Conventional language-model distillation often relies on fixed teacher-generated data, which may not cover the states encountered by an evolving student policy. On-policy distillation (OPD) instead collects teacher or evaluator supervision on student-generated rollouts. However, existing OPD methods differ substantially in supervision form, tokenizer compatibility, teacher access, and supervision granularity, leading to fragmented implementations that are difficult to reproduce and extend. We present \\textsc{EasyOPD}, an on-policy distillation framework built on verl, a distributed reinforcement-learning framework for large language models. \\textsc{EasyOPD} separates user-side configuration, method-specific supervision logic, and verl-based execution. Its method modules connect to the shared backend through extension boundaries for loss construction, rollout metadata, reward processing, tokenizer alignment, and teacher-side computation. We instantiate representative methods for three OPD settings -- cross-tokenizer OPD, on-policy self-distillation, and step-wise OPD. Experiments on reasoning, code-generation, scientific-knowledge, and tool-use benchmarks show that these implementations can be executed through the same verl-based backend while retaining their method-specific objectives and task-dependent performance profiles. We release \\textsc{EasyOPD} with runnable YAML configurations, documentation, and an installable demonstration package and video.",
+      "pdf_url": "https://arxiv.org/abs/2607.11012",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
       "id": "2611.25387",
       "title": "TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs",
       "authors": [
@@ -272,7 +272,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.9,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
@@ -291,7 +291,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -310,7 +310,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -329,7 +329,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -348,7 +348,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     },
@@ -413,7 +413,7 @@
       "technologies": [],
       "maturity": "early",
       "confidence": 0.0,
-      "curator_score": 5.7,
+      "curator_score": 5.2,
       "product_potential": [],
       "domain_applications": []
     }
@@ -426,9 +426,9 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "other",
         "enterprise",
-        "science",
-        "other"
+        "science"
       ]
     },
     {
@@ -438,9 +438,9 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "other",
         "enterprise",
-        "science",
-        "other"
+        "science"
       ]
     },
     {
@@ -450,9 +450,9 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "other",
         "enterprise",
-        "science",
-        "other"
+        "science"
       ]
     },
     {
@@ -462,9 +462,9 @@
       "confidence": 0.6,
       "trend": "rising",
       "applications": [
+        "other",
         "enterprise",
-        "science",
-        "other"
+        "science"
       ]
     }
   ],
