@@ -2588,6 +2588,10 @@ async function initPageViewer() {
 
     countEl.innerHTML = `<span class="viewer-local">${count.toLocaleString()} views</span>` +
         (stars ? ` · <span class="viewer-stars">⭐ ${stars.toLocaleString()}</span>` : ' • <span class="viewer-offline">offline</span>');
+    
+    // Also update the star badge in nav
+    const starBadge = document.getElementById('index-star-count');
+    if (starBadge && stars) starBadge.textContent = stars.toLocaleString();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

@@ -613,7 +613,17 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Fetch GitHub stars for badge
+        try {
+            const res = await fetch('https://api.github.com/repos/hankbui/my-starred-AI-repos');
+            if (res.ok) {
+                const data = await res.json();
+                const starEl = document.getElementById('dr-star-count');
+                if (starEl) starEl.textContent = data.stargazers_count.toLocaleString();
+            }
+        } catch {}
+
         renderStats();
         renderTabCounts();
         renderFavorites();
