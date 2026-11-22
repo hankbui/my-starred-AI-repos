@@ -154,18 +154,13 @@
         const chips = $('as-chips');
         if (!chips) return;
         const ucs = d.use_cases || [];
-        const icons = {
-            ai: '🧠', coding: '💻', marketing: '📣', writing: '✍️', design: '🎨',
-            sales: '💰', research: '🔬', data: '📊', finance: '🏦', legal: '⚖️',
-            healthcare: '🏥', education: '📚', 'customer-support': '🎧', productivity: '⚡',
-        };
-        const pills = ucs.map(uc => `<button class="as-chip${uc === state.useCase ? ' active' : ''}" data-uc="${esc(uc)}" type="button">${icons[uc] || '📌'} ${esc(uc)}</button>`).join('');
+        const pills = ucs.map(uc => `<button class="as-chip${uc === state.useCase ? ' active' : ''}" data-uc="${esc(uc)}" type="button">${esc(uc)}</button>`).join('');
         const clearBtn = '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button"' + (state.useCase ? '' : ' hidden') + '>✕ Clear</button>';
 
         if (state.chipsCollapsed) {
             chips.innerHTML = `
                 <div class="as-chips-title" role="button" aria-expanded="${state.useCase ? 'true' : 'false'}" aria-label="Filter by use case" onclick="appToggleChips()">
-                    <span>🏷️ Filter by use case</span>
+                    <span>Filter by use case</span>
                     <span class="as-chips-arrow">▾</span>
                 </div>
                 <div class="as-chips-body${state.useCase ? '' : ' hidden'}">
@@ -189,7 +184,7 @@
         if (!board) return;
         board.innerHTML = BOARD_TABS.map(b => {
             const active = state.board === b.key;
-            return `<button class="as-board-tab${active ? ' active' : ''}" data-board="${esc(b.key)}" type="button" title="${esc(b.label)}">${b.icon} ${esc(b.label)}</button>`;
+            return `<button class="as-board-tab${active ? ' active' : ''}" data-board="${esc(b.key)}" type="button" title="${esc(b.label)}">${esc(b.label)}</button>`;
         }).join('');
     }
 
