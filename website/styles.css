@@ -2809,8 +2809,29 @@ a {
 }
 .as-chips-title:hover { border-color:var(--border-strong); }
 .as-chips-arrow { font-size:0.7rem; transition:transform 0.2s ease; }
-.as-chips-body { padding:0 14px 10px; display:flex; flex-wrap:wrap; gap:6px; }
+.as-chips-body { padding:0 14px 10px; display:flex; gap:6px; }
 .as-chips-body.hidden { display:none; }
+
+/* Mobile: chips swipe ngang, không rải xuống nhiều dòng */
+@media (max-width: 640px) {
+    .as-chips-body {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+    .as-chips-body::-webkit-scrollbar {
+        height: 6px;
+    }
+    .as-chips-body::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.12);
+        border-radius: 3px;
+    }
+    .as-chips-body::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.03);
+    }
+    .as-chip { white-space: nowrap; padding: 8px 12px; font-size: 0.82rem; }
+}
 
 /* View toggle */
 .as-view-toggle-wrap { display:inline-flex; gap:6px; margin-left:auto; }
