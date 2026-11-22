@@ -19,6 +19,7 @@
         data: null,
         type: SINGLE_TYPE ? INIT_TYPE : INIT_TYPE, // 'agents' | 'skills' | 'all'
         board: 'allTime',
+        view: 'grid', // 'grid' | 'list'
         search: INIT_UC || '',
         useCase: INIT_UC || '',
         abortCtrl: null,
@@ -97,7 +98,7 @@
     function toggleSelect(id, checked) {
         if (checked) state.selected.add(id); else state.selected.delete(id);
         saveSelected();
-        renderGrid();
+        renderItems();
         renderFab();
         renderStackBadge();
     }
@@ -230,6 +231,33 @@
         `;
     }
 
+    function renderSelectAllBar(items) {
+        const grid = $('as-grid');
+        if (!grid) return;
+        const old = $('as-select-all-bar');
+        if (old) old.remove();
+        if (!items.length) return;
+        const allSelected = items.every(it => isSelected(it.name));
+        const bar = document.createElement('div');
+        bar.id = 'as-select-all-bar';
+        bar.className = 'as-select-all-bar';
+        bar.innerHTML = `
+            <label class="as-select-all" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer">
+                <input type="checkbox" id="as-select-all-cb" ${allSelected ? 'checked' : ''}>
+                <span>Chọn tất cả (${items.length})</span>
+            </label>
+            <span class="as-select-all-info" style="font-size:0.78rem;color:var(--text-muted);margin-left:auto">${state.selected.size} đã chọn</span>
+        `;
+        grid.parentNode.insertBefore(bar, grid);
+        const cb = $('as-select-all-cb');
+        if (cb) {
+            cb.addEventListener('change', (e) => {
+                const check = e.target.checked;
+                items.forEach(it => toggleSelect(it.name, check));
+            });
+        }
+    }
+
     function renderCard(item) {
         const tags = (item.topics || []).slice(0, 4).map(t => `<span class="as-tag">${esc(t)}</span>`).join('');
         const ucs = (item.use_cases || []).map(uc => `<span class="as-uc-tag">${esc(uc)}</span>`).join('');
@@ -257,7 +285,7 @@
         `;
     }
 
-    function renderGrid() {
+    function renderItems() {
         const grid = $('as-grid');
         const empty = $('as-empty');
         if (!grid) return;
@@ -273,10 +301,16 @@
                 empty.hidden = false;
                 empty.innerHTML = `<div class="hf-empty">No items match your search. Try a different term or use case.</div>`;
             }
+            const bar = $('as-select-all-bar');
+            if (bar) bar.remove();
             return;
         }
         if (empty) empty.hidden = true;
+
+        const isList = state.view === 'list';
+        grid.classList.toggle('as-list', isList);
         grid.innerHTML = items.map(renderCard).join('');
+
         // event delegation for select ticks
         grid.querySelectorAll('.as-select-tick').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -284,6 +318,8 @@
                 toggleSelect(id, !isSelected(id));
             });
         });
+
+        renderSelectAllBar(items);
     }
 
     // ---------- LLM7 AI matching ----------
@@ -484,7 +520,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
     function appClearStack() {
         state.selected = new Set();
         saveSelected();
-        renderGrid();
+        renderItems();
         renderFab();
         renderStackBadge();
         appOpenStack(); // refresh sidebar
@@ -523,7 +559,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
                 btn.addEventListener('click', () => {
                     state.type = btn.dataset.tab;
                     document.querySelectorAll('.as-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === state.type));
-                    renderGrid();
+                    renderItems();
                 });
             });
         }
@@ -532,7 +568,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
             btn.addEventListener('click', () => {
                 state.board = btn.dataset.board;
                 renderBoardTabs();
-                renderGrid();
+                renderItems();
             });
         });
 
@@ -540,7 +576,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         if (searchEl) {
             searchEl.addEventListener('input', (e) => {
                 state.search = e.target.value;
-                renderGrid();
+                renderItems();
             });
         }
 
@@ -561,7 +597,31 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
                 });
                 const clearBtn = $('as-chip-clear');
                 if (clearBtn) clearBtn.hidden = !state.useCase;
-                renderGrid();
+                renderItems();
+            });
+        }
+
+        // View toggle (grid / list)
+        const aiBar = $('as-ai-bar');
+        if (aiBar && !$('as-view-toggle-wrap')) {
+            const wrap = document.createElement('div');
+            wrap.id = 'as-view-toggle-wrap';
+            wrap.className = 'as-view-toggle-wrap';
+            wrap.innerHTML = `
+                <button class="as-view-btn${state.view === 'grid' ? ' active' : ''}" data-view="grid" type="button" title="Grid view">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </button>
+                <button class="as-view-btn${state.view === 'list' ? ' active' : ''}" data-view="list" type="button" title="List view">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            `;
+            aiBar.appendChild(wrap);
+            wrap.querySelectorAll('.as-view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    state.view = btn.dataset.view;
+                    wrap.querySelectorAll('.as-view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === state.view));
+                    renderItems();
+                });
             });
         }
 
@@ -591,7 +651,7 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         renderStats(state.data);
         renderChips(state.data);
         renderBoardTabs();
-        renderGrid();
+        renderItems();
         renderFab();
         renderStackBadge();
     }

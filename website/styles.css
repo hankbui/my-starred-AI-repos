@@ -2783,7 +2783,30 @@ a {
 .as-board-tab:hover { border-color:var(--border-strong); color:var(--text-primary); }
 .as-board-tab.active { border-color:var(--accent-strong); background:rgba(99,207,255,0.1); color:var(--accent); }
 .as-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px; }
+.as-grid.as-list { display:flex; flex-direction:column; gap:8px; }
 @media (max-width:640px) { .as-grid { grid-template-columns:1fr; } }
+
+/* List view card */
+.as-card.as-list { flex-direction:row; align-items:center; gap:10px; padding:10px 12px; }
+.as-card.as-list .as-card-hd { flex-direction:row; align-items:center; justify-content:space-between; width:100%; }
+.as-card.as-list .as-card-hd > div:first-child { flex:1; min-width:0; }
+.as-card.as-list .as-card-name { font-size:0.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.as-card.as-list .as-card-desc { -webkit-line-clamp:1; font-size:0.78rem; color:var(--text-secondary); margin:2px 0 0; }
+.as-card.as-list .as-card-cat { font-size:0.68rem; margin-top:2px; }
+.as-card.as-list .as-card-tags { margin-top:4px; }
+
+/* Select all bar */
+.as-select-all-bar { display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); margin:0 0 10px; }
+.as-select-all-bar .as-select-all { color:var(--text-primary); font-weight:700; font-size:0.85rem; }
+.as-select-all-bar .as-select-all input { accent-color:var(--accent); }
+.as-select-all-bar .as-select-all-info { white-space:nowrap; }
+
+/* View toggle */
+.as-view-toggle-wrap { display:inline-flex; gap:6px; margin-left:auto; }
+.as-view-btn { width:32px; height:32px; border:1px solid var(--border); border-radius:8px; background:#0a0e13; color:var(--text-secondary); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:120ms ease; flex-shrink:0; }
+.as-view-btn:hover { border-color:var(--border-strong); color:var(--text-primary); }
+.as-view-btn.active { border-color:var(--accent-strong); background:rgba(99,207,255,0.1); color:var(--accent); }
+.as-view-btn svg { width:16px; height:16px; }
 .as-card { padding:14px 16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg-panel); display:flex; flex-direction:column; gap:5px; transition:140ms ease; }
 .as-card:hover { border-color:var(--border-strong); }
 .as-card-hd { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
