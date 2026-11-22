@@ -466,15 +466,19 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
                         <label class="stack-field-label">Lệnh cài đặt</label>
                         <div class="stack-field-wrap">
                             <input id="stack-install-cmd" readonly>
-                            <button id="stack-copy-cmd" type="button">Sao chép</button>
+                            <button id="stack-copy-cmd" type="button">Sao chép lệnh</button>
                         </div>
                     </div>
                     <div class="stack-field">
                         <label class="stack-field-label">Link stack (chia sẻ)</label>
                         <div class="stack-field-wrap">
                             <input id="stack-link" readonly>
-                            <button id="stack-copy-link" type="button">Sao chép</button>
+                            <button id="stack-copy-link" type="button">Sao chép link</button>
                         </div>
+                    </div>
+                    <div class="stack-copy-options" style="display:flex;gap:6px;margin-top:8px">
+                        <button id="stack-copy-github" type="button" style="flex:1">🔗 Copy GitHub links</button>
+                        <button id="stack-copy-desc" type="button" style="flex:1">📋 Copy link + mô tả</button>
                     </div>
                     <button id="stack-clear" type="button">Xóa tất cả</button>
                 </div>
@@ -488,6 +492,8 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         $('stack-overlay').addEventListener('click', appCloseStack);
         $('stack-copy-cmd').addEventListener('click', () => copyText('stack-install-cmd'));
         $('stack-copy-link').addEventListener('click', () => copyText('stack-link'));
+        $('stack-copy-github').addEventListener('click', copyGitHubLinks);
+        $('stack-copy-desc').addEventListener('click', copyLinkDesc);
         $('stack-clear').addEventListener('click', appClearStack);
     }
 
@@ -554,6 +560,37 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
         if (n === 0) { fab.style.display = 'none'; return; }
         fab.style.display = 'flex';
         $('stack-fab-count').textContent = n;
+    }
+
+    function showToast(msg, btn) {
+        const old = btn.textContent;
+        btn.textContent = msg;
+        setTimeout(() => { btn.textContent = old; }, 1500);
+    }
+
+    function copyGitHubLinks() {
+        const { skills } = buildStackData();
+        if (!skills.length) return;
+        const links = skills.map(s => s.url).filter(Boolean).join('\n');
+        if (!links) return;
+        navigator.clipboard.writeText(links).then(() => {
+            const btn = $('stack-copy-github');
+            if (btn) showToast('Đã sao chép ' + skills.length + ' link', btn);
+        });
+    }
+
+    function copyLinkDesc() {
+        const { skills } = buildStackData();
+        if (!skills.length) return;
+        const lines = skills.map(s => {
+            const url = s.url || '#';
+            const desc = (s.description || '').slice(0, 120);
+            return `${url} - ${desc}`;
+        }).join('\n');
+        navigator.clipboard.writeText(lines).then(() => {
+            const btn = $('stack-copy-desc');
+            if (btn) showToast('Đã sao chép ' + skills.length + ' mục', btn);
+        });
     }
 
     function copyText(id) {
