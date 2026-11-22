@@ -31,10 +31,11 @@
     const STORAGE_KEY = `stack_selected_${state.type}`;
 
     const BOARD_TABS = [
-        { key: 'allTime', label: 'All Time', icon: '⏱️' },
+        { key: 'allTime', label: 'All Time', icon: '📚' },
         { key: 'trending', label: 'Trending', icon: '📈' },
         { key: 'hot', label: 'Hot', icon: '🔥' },
         { key: 'allResource', label: 'All Resource', icon: '📦' },
+        { key: 'courses', label: 'Courses', icon: '🎓' },
     ];
 
     // ---------- helpers ----------
@@ -220,6 +221,20 @@
 
         if (uc) {
             items = items.filter(it => Array.isArray(it.use_cases) && it.use_cases.includes(uc));
+        }
+
+        // Filter Courses tab: khoá học, tutorial, bootcamp, certification, learn
+        if (state.board === 'courses') {
+            const courseKw = ['course', 'tutorial', 'bootcamp', 'certification', 'learn', 'learning path', 'school', 'academy', 'class', 'lesson'];
+            items = items.filter(it => {
+                const hay = [
+                    it.name || '',
+                    it.description || '',
+                    Array.isArray(it.topics) ? it.topics.join(' ') : '',
+                    Array.isArray(it.use_cases) ? it.use_cases.join(' ') : '',
+                ].join(' ').toLowerCase();
+                return courseKw.some(k => hay.includes(k));
+            });
         }
 
         const sorted = [...items];

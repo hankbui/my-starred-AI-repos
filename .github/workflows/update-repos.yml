@@ -41,7 +41,7 @@ jobs:
       - name: Generate AI landscape data (repos / devs / bots)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          AILIST_CONTRIB_REPOS: '300'
+          AILIST_CONTRIB_REPOS: '2000'
         run: |
           python scripts/generate_ailist.py || echo "AI landscape generation skipped/partial"
 
