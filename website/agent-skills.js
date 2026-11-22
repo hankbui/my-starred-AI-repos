@@ -23,6 +23,7 @@
         search: INIT_UC || '',
         useCase: INIT_UC || '',
         chipsCollapsed: window.innerWidth <= 640, // mobile mặc định collapse
+        verifiedIds: new Set(), // skill IDs đã verified
         abortCtrl: null,
         selected: new Set(), // stack: skill ids selected
     };
@@ -287,11 +288,16 @@
             item.is_skill ? '<span class="as-tag as-tag-skill">Skill</span>' : '';
         const popLabel = item.downloads ? '⬇' : '⭐';
         const popVal = item.downloads ? item.downloads : item.stars;
+        const skillId = item._skill_id || item.name;
+        const verifiedBadge = state.verifiedIds.has(skillId)
+            ? '<span class="as-tag as-tag-verified" title="Đã xác thực">✅ Verified</span>'
+            : '';
         return `
             <div class="as-card${isSelected(item.name) ? ' as-card-selected' : ''}">
                 <div class="as-card-hd">
                     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
                         <a class="as-card-name" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.name)}</a>
+                        ${verifiedBadge}
                         ${valueBadge(item)}
                     </div>
                     <div style="display:flex;align-items:center;gap:6px">
@@ -715,6 +721,16 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
             if (grid) grid.innerHTML = `<div class="hf-empty">Failed to load: ${esc(e.message)}</div>`;
             return;
         }
+
+        // Load danh sách verified IDs (hạ tầng cho app skills deck sau này)
+        try {
+            const vresp = await fetch('data/skills-verified.json');
+            if (vresp.ok) {
+                const vdata = await vresp.json();
+                (vdata.verified_ids || []).forEach(id => state.verifiedIds.add(id));
+            }
+        } catch { /* verified file chưa có — bỏ qua */ }
+
         renderStats(state.data);
         renderChips(state.data);
         renderBoardTabs();
