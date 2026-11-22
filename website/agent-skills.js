@@ -22,6 +22,7 @@
         view: 'grid', // 'grid' | 'list'
         search: INIT_UC || '',
         useCase: INIT_UC || '',
+        chipsCollapsed: window.innerWidth <= 640, // mobile mặc định collapse
         abortCtrl: null,
         selected: new Set(), // stack: skill ids selected
     };
@@ -157,10 +158,30 @@
             sales: '💰', research: '🔬', data: '📊', finance: '🏦', legal: '⚖️',
             healthcare: '🏥', education: '📚', 'customer-support': '🎧', productivity: '⚡',
         };
-        chips.innerHTML = '<span class="as-chips-label">Filter by use case:</span> ' +
-            ucs.map(uc => `<button class="as-chip${uc === state.useCase ? ' active' : ''}" data-uc="${esc(uc)}" type="button">${icons[uc] || '📌'} ${esc(uc)}</button>`).join('') +
-            '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button"' + (state.useCase ? '' : ' hidden') + '>✕ Clear</button>';
+        const pills = ucs.map(uc => `<button class="as-chip${uc === state.useCase ? ' active' : ''}" data-uc="${esc(uc)}" type="button">${icons[uc] || '📌'} ${esc(uc)}</button>`).join('');
+        const clearBtn = '<button class="as-chip as-chip-clear" id="as-chip-clear" type="button"' + (state.useCase ? '' : ' hidden') + '>✕ Clear</button>';
+
+        if (state.chipsCollapsed) {
+            chips.innerHTML = `
+                <div class="as-chips-title" role="button" aria-expanded="${state.useCase ? 'true' : 'false'}" aria-label="Filter by use case" onclick="appToggleChips()">
+                    <span>🏷️ Filter by use case</span>
+                    <span class="as-chips-arrow">▾</span>
+                </div>
+                <div class="as-chips-body${state.useCase ? '' : ' hidden'}">
+                    ${pills}${clearBtn}
+                </div>
+            `;
+        } else {
+            chips.innerHTML = '<span class="as-chips-label">Filter by use case:</span> ' +
+                pills +
+                clearBtn;
+        }
     }
+
+    window.appToggleChips = function () {
+        state.chipsCollapsed = !state.chipsCollapsed;
+        if (state.data) renderChips(state.data);
+    };
 
     function renderBoardTabs() {
         const board = $('as-board');
@@ -635,6 +656,15 @@ Return as: **Name** — why it fits (1-2 sentences). Focus on the query need: "$
             window.addEventListener('scroll', () => { backBtn.hidden = window.scrollY < 600; });
             backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         }
+
+        // Responsive: collapse/expand chips on window resize
+        window.addEventListener('resize', () => {
+            const collapsed = window.innerWidth <= 640;
+            if (state.chipsCollapsed !== collapsed) {
+                state.chipsCollapsed = collapsed;
+                if (state.data) renderChips(state.data);
+            }
+        });
     }
 
     // ---------- bootstrap ----------
