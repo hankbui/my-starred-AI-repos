@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-26",
+    "date": "2026-11-27",
     "papers_tracked": 15,
-    "technologies_discovered": 5,
+    "technologies_discovered": 6,
     "opportunities_identified": 0,
-    "last_update": "2026-11-26 15:34 UTC",
+    "last_update": "2026-11-27 15:27 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -13,17 +13,17 @@
     {
       "id": "new_technologies",
       "title": "New Technologies",
-      "value": "5",
+      "value": "6",
       "label": "discovered this scan",
-      "detail": "Multi-Agent, Multimodal, Vision-Language, Attention, Bayesian",
+      "detail": "Multimodal, Vision-Language, Multi-Agent, Attention, Bayesian, Transformer",
       "color": "accent"
     },
     {
       "id": "emerging_trends",
       "title": "Emerging Trends",
-      "value": "5",
+      "value": "6",
       "label": "active trend clusters",
-      "detail": "Multi-Agent, Multimodal, Vision-Language, Attention, Bayesian",
+      "detail": "Multimodal, Vision-Language, Multi-Agent, Attention, Bayesian",
       "color": "green"
     },
     {
@@ -53,32 +53,13 @@
     {
       "id": "most_innovative",
       "title": "Most Innovative",
-      "value": "5",
+      "value": "6",
       "label": "early-stage technologies",
       "detail": "",
       "color": "blue"
     }
   ],
   "papers": [
-    {
-      "id": "2511.21460",
-      "title": "MADRA: Multi-Agent Debate for Risk-Aware Embodied Planning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-25",
-      "updated": "2026-11-25",
-      "summary": "arXiv:2511.21460v2 Announce Type: replace Abstract: Large Language Models (LLMs) exhibit impressive reasoning capabilities but often suffer from \"Embodied Semantic Hallucinations\" - generating plans that are semantically fluent but physically unsafe due to a lack of grounded common sense. Existing safety alignment methods, such as RLHF or naive safety prompting, typically fall into a \"Safety-Utility Trade-off,\" resulting in severe over-rejection of benign household instructions. To address this, we propose MADRA (Multi-Agent Debate for Risk Awareness), a training-free cognitive architecture that mimics System-2 deliberation. MADRA introduces a meta-cognitive Critical Agent that evaluates peer debates using a structured argumentation framework derived from the Toulmin Model, effectively mitigating the \"herd mentality\" in multi-agent systems. We also introduce SafeAware-VH, a benchmark featuring adversarial safe instructions designed to probe agents' sensitivity to physical risks. Extensive experiments demonstrate that MADRA breaks the Pareto frontier, achieving over 90% rejection of unsafe tasks while maintaining high utility, significantly outperforming standard Chain-of-Thought and single-agent reflection baselines.",
-      "pdf_url": "https://arxiv.org/abs/2511.21460",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
     {
       "id": "2611.33751",
       "title": "VAPOR: Improving Multimodal Reasoning with Sparse Visual Updates",
@@ -95,30 +76,6 @@
       "maturity": "early",
       "confidence": 0.0,
       "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.34635",
-      "title": "ZeroHero: Training Small Language Agents from Scratch",
-      "authors": [
-        "Nikita Sorokin",
-        "Zoya Volovikova",
-        "Alexey Skrynnik",
-        "Aleksandr Panov"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-25",
-      "updated": "2026-11-25",
-      "summary": "Large pretrained language models provide capable policies for interactive tasks, but how much model capacity is necessary for a specialized language agent? We introduce ZeroHero, a framework for training small language agents (SLAs) from scratch. In each environment, a large language model acts as the expert, and we collect its successful trajectories. We pretrain each SLA, which has fewer than 50 million parameters, to predict the expert's responses given the interaction history. We then post-train the agent on its own interactions using proximal policy optimization (PPO). During post-training, reasoning alignment supplements environment rewards with expert supervision on the language the agent generates alongside its actions. We evaluate the agents in three multistep environments where acting requires both understanding and generating language. In Crafter, agents interpret textual observations and generate reasoning before acting. In WebShop, they translate shopping instructions into search queries. In Alfworld-Dialogue, they ask clarifying questions and use the answers to guide household actions. The agents approach expert performance on WebShop and surpass their respective demonstration experts on Crafter training rollouts and held-out Alfworld-Dialogue tasks. An interactive demo is available at https://zoyav.github.io/-ZoyaV-zerohero-demo.",
-      "pdf_url": "https://arxiv.org/pdf/2611.34635v1",
-      "comment": "18 pages, 6 figures, 2 tables. Interactive demo: https://zoyav.github.io/-ZoyaV-zerohero-demo",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
       "product_potential": [],
       "domain_applications": []
     },
@@ -176,162 +133,6 @@
       "maturity": "early",
       "confidence": 0.0,
       "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.34881",
-      "title": "Stranger Things: When Objects Appear Without Their Typical Neighbors",
-      "authors": [
-        "Siddhartha Gairola",
-        "Jiahao Xie",
-        "Anna Kukleva",
-        "Francesco Locatello",
-        "Bernt Schiele"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.LG"
-      ],
-      "published": "2026-11-25",
-      "updated": "2026-11-25",
-      "summary": "Visual context is a powerful cue for object recognition: scenes inform what, where, and at what scale objects are likely to appear. Yet over-reliance on context becomes a failure mode when models predict objects based on their typical neighbors rather than the objects' own visual features, which we call typicality bias. While extensively studied in the pre-Transformer era, it has often been assumed that architectural and scale improvements would naturally solve it, and a systematic diagnostic across the modern vision stack remains absent. We provide such a diagnostic framework. We measure typicality bias via normalized pointwise mutual information (NPMI) over object pairs, and introduce STRANGE-Bench (Synthetic Typicality-RANked Grounded Evaluation Benchmark): a photorealistic, layout-controlled benchmark spanning 17 sub-tiers from typical to never-co-occurring object pairs. Across five model families (specialist detectors, open-vocabulary detectors, self-supervised, vision-language, and multimodal large language models) and three recognition tasks (supervised detection, open-vocabulary detection, and classification), the bias is prevalent: gaps of 5-11 p.p. persist when objects appear outside their typical company, and do not consistently shrink with scale. To mitigate it, we turn to data augmentation: existing augmentations are designed for visual diversity, not for breaking co-occurrence shortcuts, and sample from the very distribution that produces typicality bias. We propose Anchor-Atypicality Sampling (AAS), a simple sampling rule for paste-based augmentations that uses the NPMI signal to tilt the training-time co-occurrence distribution toward atypical partners. AAS reduces the typicality gap by up to 1.6 p.p. on natural-image COCO splits and 23.0 p.p. on synthetic STRANGE-Bench across three model families, without sacrificing overall performance.",
-      "pdf_url": "https://arxiv.org/pdf/2611.34881v1",
-      "comment": "This paper was accepted to the 40th Conference on Neural Information Processing Systems (NeurIPS 2026). Track on Evaluations and Datasets. Dataset: huggingface.co/datasets/sidgairo18/strange-bench",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.34575",
-      "title": "Sage-Med: Scaling Medical Multimodal Intelligence",
-      "authors": [
-        "Sage-Med Team",
-        ":",
-        "Ming Hu",
-        "Cheng Tang",
-        "Wei Li",
-        "Rongbin Li",
-        "Feilong Tang",
-        "Junru Hu",
-        "Hongze Zhu",
-        "Qiujuan Yan",
-        "Huanze Tang",
-        "Shaocong Wei",
-        "Siyuan Yan",
-        "Min Cen",
-        "Zhongxing Xu",
-        "Zhonghua Wang",
-        "Lie Ju",
-        "Zhen Yu",
-        "Wenjie Li",
-        "Shiyan Su",
-        "Jing Hao",
-        "Jingyong Liang",
-        "Diping Song",
-        "Fang Yan",
-        "Chenglong Ma",
-        "Junzhi Ning",
-        "Haochen Xue",
-        "Zanting Ye",
-        "Chenrun Wang",
-        "Jinjie Wei",
-        "Yi Xin",
-        "Jianghan Shen",
-        "Siqi Luo",
-        "Jiyao Liu",
-        "Huidong Xie",
-        "Jun Zhao",
-        "Rulin Zhou",
-        "Longquan Jiang",
-        "Ziyan Huang",
-        "Ying Chen",
-        "Hanxiao Zhang",
-        "Junyang Wu",
-        "Mouxiao Bian",
-        "Jiashi Lin",
-        "Chenyu Wang",
-        "Qi Qin",
-        "Jie Huang",
-        "Yiling Zhou",
-        "Jiawei Chen",
-        "Kefan Wang",
-        "Jingjing Hua",
-        "Yaoyu Liu",
-        "Huihui Xu",
-        "Tianbin Li",
-        "Jin Ye",
-        "Ziyang Chen",
-        "Shujian Gao",
-        "Zilin Lu",
-        "Jiangtao Yan",
-        "Changkai Ji",
-        "Wenhao Tang",
-        "Xinyi Zeng",
-        "Yuxing Chen",
-        "Hongwei Yang",
-        "Rongzhao Zhang",
-        "Jinru Ding",
-        "Yingcheng Wu",
-        "Zhenfei Yin",
-        "Jinzhe Li",
-        "Lu Lu",
-        "Yun Zhong",
-        "Zhishan Lin",
-        "Bingli Wang",
-        "Xiaohan Ren",
-        "Jianmin Qian",
-        "Penghao Zhao",
-        "Zhongbo Tian",
-        "Zhenbang Zhou",
-        "Peiling Dai",
-        "Mengjing Zhao",
-        "Jingyu Zheng",
-        "Pinan Liu",
-        "Shiwei Li",
-        "Victoria Mar",
-        "Cristina Vico-Alonso",
-        "Qiang Wu",
-        "Xianming Liu",
-        "Lingtong Huang",
-        "Dili Song",
-        "Minghui Zhang",
-        "Wenlong Zhang",
-        "Qipeng Guo",
-        "Yuqiang Li",
-        "Nanqing Dong",
-        "Yun Gu",
-        "Qi Duan",
-        "Hongliang Ren",
-        "Hongming Shan",
-        "Yin Xie",
-        "Xiang An",
-        "Benyou Wang",
-        "Yueming Su",
-        "Yefeng Zheng",
-        "Zongyuan Ge",
-        "Chun-Mei Feng",
-        "Jie Xu",
-        "Yu Qiao",
-        "Junjun He",
-        "Yirong Chen"
-      ],
-      "categories": [
-        "cs.CV",
-        "cs.AI"
-      ],
-      "published": "2026-11-25",
-      "updated": "2026-11-25",
-      "summary": "Establishing effective scaling laws for medical multimodal large language models (MLLMs) remains a persistent and fundamental challenge. Our systematic evaluation shows that existing medical MLLMs tend to underperform frontier general-purpose MLLMs across a range of medical tasks, while scaling model size primarily improves text capabilities rather than multimodal perception, and enabling reasoning modes fails to close this visual gap. To investigate how medical multimodal intelligence scales in practice, we introduce Sage-Med-Preview, a 35B-parameter medical multimodal model with 3B activated parameters, built by combining stage-specific curation over 322.7 million candidate records with a progressive training curriculum spanning medical pretraining, staged supervised fine-tuning, and adaptive reinforcement learning. Across this curriculum, progressive supervised refinement and adaptive reinforcement learning yield consistent stage-wise gains, substantially advancing both specialized visual understanding and medical language capabilities. Evaluated against 77 competing models across 238 clinical tasks spanning 61 public and 13 private multi-center benchmarks in more than 40 modalities, Sage-Med-Preview achieves an average score of 58.26% on the 31 public multimodal benchmarks. It outperforms the state-of-the-art open-source medical model Hulu-Med-235B-A22B at 50.99% and the general scientific model Intern-S2-Preview at 52.24%, and approaches the advanced proprietary model GPT-6.2-Sol across multiple tasks such as comprehensive multimodal understanding, report generation, and visual grounding. Although substantial challenges remain in complex medical reasoning and multi-step clinical workflows, this report provides empirical evidence, actionable data and training recipes, and a rigorous benchmark toward scalable clinical multimodal intelligence.",
-      "pdf_url": "https://arxiv.org/pdf/2611.34575v1",
-      "comment": "101 pages",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
       "product_potential": [],
       "domain_applications": []
     },
@@ -467,19 +268,90 @@
       "curator_score": 5.6,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2603.21676",
+      "title": "Thinking Deeper, Not Longer: Memory-Efficient Latent Chain-of-Thought with Depth-Recurrent Transformers for Compositional Generalization",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-27",
+      "updated": "2026-11-27",
+      "summary": "arXiv:2603.21676v3 Announce Type: replace-cross Abstract: Standard Transformers have a fixed computational depth, limiting their ability to generalize to tasks that require variable-depth reasoning. The usual remedy, Chain-of-Thought (CoT), spends tokens to reason, inflating the key--value cache, so memory becomes the limiting cost when reasoning is served over large query batches. We study a depth-recurrent Transformer that decouples computational depth from parameter count by iterating a shared-weight block, so that adding reasoning steps leaves peak inference memory unchanged and grows latency only linearly, with no token generation. Three ingredients support the recurrence over 20+ thinking steps: a silent thinking objective that supervises only the final output, LayerScale initialization, and an identity-biased gate that opens a gradient highway across steps. We characterize it on three compositional domains with decreasing structural bias: graph reachability (adjacency masking), nested boolean logic (relative positioning), and unstructured relational text (no structural positional cue). We find a \\emph{computational frontier}: accuracy climbs once the thinking-step count meets the task's complexity, reaching near-perfect performance on the two structured tasks and a lower plateau on unstructured text. How it climbs depends on the structural bias---abruptly from chance on the graph task, gradually on the other two. Depth recurrence extrapolates beyond the training range: it succeeds on the graph task where fixed-depth models barely extrapolate, and on the two sequence tasks comes within two points of fixed-depth Transformers that use $4$--$6.4\\times$ more parameters. On the graph task, whose adjacency mask makes propagation depth verifiable, intermediate per-step supervision---a standard recipe for deep iterative models---consistently \\emph{harms} this extrapolation at widths $d \\geq 256$. We release the code for reproducibility.",
+      "pdf_url": "https://arxiv.org/abs/2603.21676",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.34303",
+      "title": "IRTIQA: Evolving in English, Evaluated in Urdu -- Does Agent Self-Evolution Transfer from English to Urdu and Code-Switched Input?",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-27",
+      "updated": "2026-11-27",
+      "summary": "arXiv:2611.34303v1 Announce Type: new Abstract: As LLM agents increasingly learn from their own experience, the tasks they learn from and are evaluated on are almost always in English. We ask whether self-evolution transfers from English to Urdu, and release IRTIQA, a benchmark of aligned English, Urdu-translated, and Urdu code-switched variants of DROP, SNIPS, AppWorld, and SkillsBench, built with a matrix-language code-switching pipeline and human verification. Using IRTIQA, we evaluate three self-evolving frameworks, Tool-R0 (self-play RL), AgentEvolver (experience-guided RL), and Autogenesis (protocol-level evolution), against their unevolved backbones. Self-evolution often raises capability: AgentEvolver lifts AppWorld goal completion from near zero to 20-36% across all conditions, and Autogenesis improves SkillsBench pass rate from 16.48% to 22.22%. But it rarely closes the language gap. Evolved systems remain stronger in English, by up to 0.26 DROP F1, the gap is largest on multi-step tasks, and code-switching behaves as a distinct condition rather than degraded translation. On a shared Gemma-4 31B backbone, the gap exists before evolution, and RL-based evolution can hurt Urdu reasoning more than English. Language parity must therefore be an explicit design target, as it does not emerge from self-improvement alone.",
+      "pdf_url": "https://arxiv.org/abs/2611.34303",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.6,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2511.21460",
+      "title": "MADRA: Multi-Agent Debate for Risk-Aware Embodied Planning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-25",
+      "updated": "2026-11-25",
+      "summary": "arXiv:2511.21460v2 Announce Type: replace Abstract: Large Language Models (LLMs) exhibit impressive reasoning capabilities but often suffer from \"Embodied Semantic Hallucinations\" - generating plans that are semantically fluent but physically unsafe due to a lack of grounded common sense. Existing safety alignment methods, such as RLHF or naive safety prompting, typically fall into a \"Safety-Utility Trade-off,\" resulting in severe over-rejection of benign household instructions. To address this, we propose MADRA (Multi-Agent Debate for Risk Awareness), a training-free cognitive architecture that mimics System-2 deliberation. MADRA introduces a meta-cognitive Critical Agent that evaluates peer debates using a structured argumentation framework derived from the Toulmin Model, effectively mitigating the \"herd mentality\" in multi-agent systems. We also introduce SafeAware-VH, a benchmark featuring adversarial safe instructions designed to probe agents' sensitivity to physical risks. Extensive experiments demonstrate that MADRA breaks the Pareto frontier, achieving over 90% rejection of unsafe tasks while maintaining high utility, significantly outperforming standard Chain-of-Thought and single-agent reflection baselines.",
+      "pdf_url": "https://arxiv.org/abs/2511.21460",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.34635",
+      "title": "ZeroHero: Training Small Language Agents from Scratch",
+      "authors": [
+        "Nikita Sorokin",
+        "Zoya Volovikova",
+        "Alexey Skrynnik",
+        "Aleksandr Panov"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-25",
+      "updated": "2026-11-25",
+      "summary": "Large pretrained language models provide capable policies for interactive tasks, but how much model capacity is necessary for a specialized language agent? We introduce ZeroHero, a framework for training small language agents (SLAs) from scratch. In each environment, a large language model acts as the expert, and we collect its successful trajectories. We pretrain each SLA, which has fewer than 50 million parameters, to predict the expert's responses given the interaction history. We then post-train the agent on its own interactions using proximal policy optimization (PPO). During post-training, reasoning alignment supplements environment rewards with expert supervision on the language the agent generates alongside its actions. We evaluate the agents in three multistep environments where acting requires both understanding and generating language. In Crafter, agents interpret textual observations and generate reasoning before acting. In WebShop, they translate shopping instructions into search queries. In Alfworld-Dialogue, they ask clarifying questions and use the answers to guide household actions. The agents approach expert performance on WebShop and surpass their respective demonstration experts on Crafter training rollouts and held-out Alfworld-Dialogue tasks. An interactive demo is available at https://zoyav.github.io/-ZoyaV-zerohero-demo.",
+      "pdf_url": "https://arxiv.org/pdf/2611.34635v1",
+      "comment": "18 pages, 6 figures, 2 tables. Interactive demo: https://zoyav.github.io/-ZoyaV-zerohero-demo",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
-    {
-      "name": "Multi-Agent",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "general AI"
-      ]
-    },
     {
       "name": "Multimodal",
       "papers": 1,
@@ -501,6 +373,16 @@
       ]
     },
     {
+      "name": "Multi-Agent",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5,
+      "trend": "emerging",
+      "applications": [
+        "general AI"
+      ]
+    },
+    {
       "name": "Attention",
       "papers": 1,
       "maturity": "early",
@@ -512,6 +394,16 @@
     },
     {
       "name": "Bayesian",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5,
+      "trend": "emerging",
+      "applications": [
+        "general AI"
+      ]
+    },
+    {
+      "name": "Transformer",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.5,
