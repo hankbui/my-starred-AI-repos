@@ -1,10 +1,10 @@
 {
   "meta": {
-    "date": "2026-11-27",
+    "date": "2026-11-28",
     "papers_tracked": 15,
     "technologies_discovered": 6,
     "opportunities_identified": 0,
-    "last_update": "2026-11-27 15:27 UTC",
+    "last_update": "2026-11-28 14:27 UTC",
     "backend": "llm7",
     "model": "Research Curator v1"
   },
@@ -15,7 +15,7 @@
       "title": "New Technologies",
       "value": "6",
       "label": "discovered this scan",
-      "detail": "Multimodal, Vision-Language, Multi-Agent, Attention, Bayesian, Transformer",
+      "detail": "Transformer, Multimodal, Multi-Agent, Vision-Language, Attention, Bayesian",
       "color": "accent"
     },
     {
@@ -23,7 +23,7 @@
       "title": "Emerging Trends",
       "value": "6",
       "label": "active trend clusters",
-      "detail": "Multimodal, Vision-Language, Multi-Agent, Attention, Bayesian",
+      "detail": "Transformer, Multimodal, Multi-Agent, Vision-Language, Attention",
       "color": "green"
     },
     {
@@ -60,215 +60,6 @@
     }
   ],
   "papers": [
-    {
-      "id": "2611.33751",
-      "title": "VAPOR: Improving Multimodal Reasoning with Sparse Visual Updates",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.33751v1 Announce Type: new Abstract: Multimodal large language models (MLLMs) have made substantial progress in visual reasoning, but extended generation over large visual contexts remains computationally expensive. During autoregressive decoding, visual attention is recomputed for every generated token, even when consecutive tokens rely on similar visual evidence. We introduce VAPOR (Visual Attention Persistence with On-demand Refresh), a training-free framework that reduces this redundancy by reusing visual attention outputs across decoding steps and refreshing them when needed. VAPOR caches the visual attention output while continuing to update textual attention at every step, helping reduce visual grounding drift during extended reasoning. To decide when to reuse cached outputs, VAPOR estimates visual attention mass using a low-rank approximation. It also uses prefill-based attention consistency and cache age to make independent Persist and Refresh decisions for each attention head. VAPOR retains the full visual key-value (KV) cache, so all visual tokens remain available when new evidence is needed. Experiments on eight image and four video reasoning benchmarks across two MLLM families show that VAPOR improves accuracy over dense attention on nearly all benchmarks while achieving 1.11-1.21x decoding speedups. Compared with the strongest state-of-the-art acceleration baseline in each setting, VAPOR further improves accuracy by 0.35-2.15 percentage points while achieving comparable or lower decoding latency. Our code is available at https://github.com/Su-my/VAPOR.",
-      "pdf_url": "https://arxiv.org/abs/2611.33751",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 6.0,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.34152",
-      "title": "Lost in the Grid: Where Multimodal LLMs Fail Between Seeing and Planning",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.34152v1 Announce Type: cross Abstract: Multimodal large language models (MLLMs) excel at static visual understanding and are increasingly applied to spatial planning, where a model interprets a visual layout and outputs an action sequence to reach a goal. Grid games are a common testbed for this ability because their rules are explicit and a solver can verify every move. Yet existing benchmarks mostly report end-to-end success rates, which hide whether a failure stems from visual perception, rule application, or multi-step planning. We introduce GridProbe, a diagnostic benchmark that 1) locates the failing stage between visual perception and planning and 2) verifies the diagnosis by targeted fine-tuning. On Sokoban, GridProbe pairs end-to-end solving with four probes (recognition, localization, single-step prediction, and state tracking) and gives every board both as an image and as an equivalent text grid. Evaluating seven MLLMs on Sokoban and a maze game reveals distinct bottlenecks behind similar success rates: proprietary models are limited by multi-step planning, whereas open-source models are limited by rule application or by visual grid indexing, i.e., counting rows and columns. Planning failures also hide perception failures: when planning is easier, the visual cost of the same model grows from 7.6 to 37.7 points. The diagnosis identifies what to train: fine-tuning only the vision module of the perception-limited model on board reading raises its interactive Sokoban success 3.5-fold (5.8% to 20.4%) and transfers zero-shot to the unseen maze game (single-turn success 13.8% to 67.1%), whereas the same data does not help a rule-limited model and training on solver solutions brings no gain. We will release the benchmark and code at https://github.com/suat-llm/GridProbe.",
-      "pdf_url": "https://arxiv.org/abs/2611.34152",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2608.12313",
-      "title": "AVA-Encoder: Learning to Represent Videos via Reconstruction-Driven Agentic Self-Evolution",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2608.12313v4 Announce Type: replace-cross Abstract: Agentic video creation systems remain far from cinematic-grade quality: their underlying models struggle to plan how story, characters, visuals, and sound fit together, and high-quality creation trajectories to learn such planning abilities are scarce. Finished human films embody this knowledge, but in a tightly coupled audiovisual form that agents cannot directly read or manipulate. We propose the Agentic Video \"Auto-Encoder\" (AVA-Encoder), which works backward from human films, turning them into agent-native video representations with reconstruction itself as the sole supervision. It encodes a film into a Film Knowledge Graph (Film KG) of structured-text nodes, typed dependency edges, and linked multimodal assets, then regenerates the film from this graph with a fixed decoder. Crucially, by distilling reconstruction residuals into textual gradients, AVA-Encoder drives a dual-loop self-evolution: an outer loop autonomously discovers a generalizable encoding strategy entirely from unlabeled videos, while an inner loop refines each video's Film KG at test time. AVA-Encoder improves reconstruction fidelity by 20.9 percentage points over the strongest baseline, and its autonomously learned strategy outperforms a human-tuned strategy using 70% fewer prompt tokens. Our representations drive three downstream breakthroughs: (1) Film KGs enable coordinated graph-based editing and (2) improve one-shot video generation across four open-source frameworks, while (3) fine-tuning agents on our reverse-engineered trajectories boosts video creation quality by 38.7%. We release the framework and a dataset of 500 Film KGs with over 27,000 creation trajectories.",
-      "pdf_url": "https://arxiv.org/abs/2608.12313",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2509.16476",
-      "title": "GazeVLM: Gaze-Guided Foveated Inference for Efficient Vision-Language Models",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2509.16476v2 Announce Type: replace Abstract: Vision-language models (VLMs) achieve remarkable multimodal performance but introduce substantial computational cost due to the large number of visual tokens. Existing approaches typically rely on token pruning, sparse attention, or additional control modules, often introducing accuracy-efficiency trade-offs. This paper presents GazeVLM, a training-free framework that leverages human gaze as a natural guidance signal for efficient inference. GazeVLM allocates computation to gaze-relevant regions through a gaze-guided region-of-interest (ROI) representation and an optional two-scale design that preserves global context. We also construct GazeVLM-VQA, to the best of our knowledge, the first real-world wearable-gaze visual question answering (VQA) dataset specifically constructed for VLM inference, containing reference images, human gaze traces, and gaze-aligned question-answer pairs. Experiments on the GazeVLM-VQA benchmark demonstrate that GazeVLM improves both answer quality and efficiency across Qwen2.5-VL-3B/7B and Qwen3-VL-8B models. It reduces visual tokens by up to 84.2%, prefill FLOPs by up to 92.8%, and achieves up to 11.6 times prefill speedup, while improving answer-match accuracy by up to 8.6 percentage points (pp). These results show that aligning VLM computation with human visual attention provides a promising path toward efficient VLM inference. We publicly release the GazeVLM-VQA dataset (https://drive.google.com/drive/folders/1mdi-GezeIkmege3segUQCnvnK6P-skaw?usp=sharing).",
-      "pdf_url": "https://arxiv.org/abs/2509.16476",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.9,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.33242",
-      "title": "CypherMAS: Benchmarking Routing Reliability in LLM-Based Multi-Agent Systems",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.33242v1 Announce Type: cross Abstract: Multi-agent systems (MAS) built on large language models (LLMs) distribute reasoning across specialized agents that must exchange messages and invoke tools reliably. Existing evaluations typically couple communication with open domain tasks, making it difficult to determine whether a failure arises from reasoning, malformed tool use, lost messages, or forgotten requests. Prior benchmarks do not isolate communication execution or measure routing redundancy against a known optimal path. We introduce CypherMAS, a synthetic benchmark that isolates communication and routing in fixed multi-agent graphs. Agents in chain, star, bipartite, or ring graphs route cyphered messages to remote peers holding the matching decoders; since the optimal route is known, redundant LLM calls can be measured and routing failures may be easily tracked. Across eleven open-weight models from 4B to 753B, small models fail at routing and tool use, dense models above 27B degrade with diameter, and successful runs exceed minimum LLM calls. These findings identify communication reliability as a distinct scaling bottleneck for multi-agent systems and provide a controlled diagnostic for complex multi-agent systems. The source code is freely available: https://github.com/Andoree/CypherMAS.",
-      "pdf_url": "https://arxiv.org/abs/2611.33242",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.34292",
-      "title": "WebVibe: Multimodal Interactive Website Generation via Reverse Synthesis and Visual Self-Distillation",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.34292v1 Announce Type: cross Abstract: Although multimodal large language models translate single screenshots into static HTML, generating interactive functional websites from design specifications still struggles with multi-page routing and stateful widget transitions. Examining existing training pipelines reveals two bottlenecks: (1) in forward data synthesis (X -> Y), writing the specification X before code execution leaves unimplemented or altered requirements in X as supervision noise; and (2) in reinforcement learning, scalar rewards discard the rich state transitions observed during replay. Based on these findings, we introduce WebVibe and Interactive-SDPO to train InteractiveCoder. WebVibe reverses synthesis into Y -> X by verifying cross-page and in-page interactions in the browser before deriving multimodal inputs from replay-confirmed states to build the 31,542-site WebVibe-32K corpus with reusable execution contracts. Interactive-SDPO then conditions a weight-sharing self-teacher on the replay trace and a 2x2 state-transition montage to provide token-level supervision at zero inference-time overhead. On the public Vision2Web L2, one-shot InteractiveCoder-9B nearly 3x its base model's functional score (20.2 to 55.2 FS) and matches a 1T-parameter coding agent in a single pass with 111x fewer total parameters and 78x fewer tokens. On our WebVibeBench, InteractiveCoder-4B and 9B further outperform all evaluated baselines by over 23 points.",
-      "pdf_url": "https://arxiv.org/abs/2611.34292",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2608.07437",
-      "title": "Fisher-R1: Training LLM Agents for Reliable Hypothesis Testing",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2608.07437v2 Announce Type: replace Abstract: Reliable hypothesis testing is the foundation of many empirical scientific claims. Large language model (LLM) agents are increasingly used to automate this process, as they can inspect datasets, generate code, and produce analyses end-to-end. However, we show that they frequently make subtle inferential errors that lead to incorrect conclusions despite correctly executed analyses. Existing benchmarks fail to capture this failure mode, as they rarely assess whether a reported p-value is statistically valid given the assumptions underlying the data. We address this gap by building P-Bench, a benchmark comprising 425 open-ended, realistic hypothesis-testing tasks spanning economics, biology, and medicine. Each task requires an agent to select a statistical method, compute a p-value, and draw a conclusion given only a scientific hypothesis and a dataset. We further introduce Fisher-R1, an open-weight LLM agent trained for rigorous hypothesis testing using synthetic tasks and reinforcement learning. On P-Bench, Fisher-R1-14B substantially improves over its backbone and outperforms strong proprietary and open-source baselines, including GPT-5.4 and DeepSeekV4-Pro, achieving a 21% average relative improvement in single-trial success over DeepSeek-V4-Pro, with gains up to 26% on the most challenging tasks. Our results demonstrate that current LLM agents lack reliable statistical reasoning for hypothesis testing and that reinforcement learning on tasks with verified statistical reward substantially improves reliability.",
-      "pdf_url": "https://arxiv.org/abs/2608.07437",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2606.04511",
-      "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
-      "authors": [],
-      "categories": [
-        "cs.CL"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2606.04511v2 Announce Type: replace Abstract: Sparse attention reduces compute and memory bandwidth for long-context LLM inference. However, two key challenges remain: (1) KV cache capacity still grows with sequence length, and offloading to CPU memory introduces a PCIe transfer bottleneck; (2) sparse selection during prefill retains $O(T^2)$ complexity and can dominate attention cost at long contexts. We propose SparDA, a decoupled sparse attention architecture that introduces a fourth per-layer projection, the Forecast, alongside Query, Key, and Value. The Forecast predicts the KV blocks needed by the next layer, enabling lookahead selection that overlaps CPU-to-GPU prefetch with current-layer execution. Because Forecast is decoupled from the attention query, our GQA implementation uses one Forecast head per GQA group, reducing selection overhead versus the original multi-head selector. On the evaluated 8B models, SparDA adds <0.5% parameters and trains only the Forecast projections using attention-derived supervision from the frozen backbone. On two sparse-pretrained 8B models, SparDA maintains accuracy comparable to the full-query sparse-attention baseline while delivering up to 1.25$\\times$ prefill speedup and 1.7$\\times$ decode speedup over the sparse-attention offload baseline. By enabling larger feasible batch sizes on a single GPU, SparDA further reaches up to 5.3$\\times$ higher decode throughput than the non-offload sparse baseline on MiniCPM4.1-8B. Our adaptation to GLM-5.1 (754B MoE) also achieves accuracy comparable to native token-level DSA, extending the accuracy evaluation beyond block-sparse 8B models. Our source code is available at https://github.com/NVlabs/SparDA.",
-      "pdf_url": "https://arxiv.org/abs/2606.04511",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.33935",
-      "title": "BayesPath: Reliability-Aware Bayesian Reasoning for Whole-Slide Pathology Agents",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.33935v1 Announce Type: new Abstract: Diagnosing whole-slide images (WSIs) requires hypothesis-driven reasoning: pathologists form a differential diagnosis, seek discriminative evidence, weigh its reliability, and stop once it suffices. However, existing training-free WSI agents lack an explicit framework for such reasoning. They typically use a large language model (LLM) to aggregate the region descriptions of a multimodal LLM (MLLM), without a belief over the candidates or regard for the descriptions' reliability. Consequently, a repeated model error counts as independent evidence for an incorrect diagnosis. We introduce BayesPath, a training-free WSI agent that casts the pathologist's Scan-Look-Weigh-Decide process as reliability-aware Bayesian reasoning. An explicit belief over the candidates is updated with each observation through a reliability-aware likelihood and guides where to look next and when to stop. This likelihood corrects for the models' answer bias, discounts correlated observations, and captures diagnostic confusions estimated without labels. The updates form an interpretable evidence trail of how each observation shapes the belief. On five MultiPathQA tasks spanning slide classification and slide VQA, BayesPath achieves the highest average accuracy among training-free agents, 58.6% against 34.1% for the next best, with large gains on slide classification. On identical observations, Bayesian updating outperforms LLM aggregation on average, even with a larger LLM. BayesPath's belief is also better calibrated than naive Bayes, so uncertain cases can be deferred to pathologists. Code is available at https://github.com/bryanwong17/BayesPath",
-      "pdf_url": "https://arxiv.org/abs/2611.33935",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.28010",
-      "title": "Beyond Code and Pixels: Co-Generating Editable and Visually Rich Presentations",
-      "authors": [],
-      "categories": [
-        "cs.CV"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.28010v2 Announce Type: replace-cross Abstract: Generating PPTX presentations is a structured task that requires semantic planning, visual composition, precise layout, and editability, motivating collaboration among specialized agents. However, programmatic methods offer editability but often produce rigid designs, while image-based methods provide visual richness but flatten content into difficult-to-edit pixels. A hybrid system can combine these strengths, but must coordinate interdependent decisions across content, layout, and appearance. To address this challenge, we propose SlidesWeaver, a hybrid multi-agent system that coordinates language and vision agents through shared deck- and slide-level states. Specifically, it uses staged multimodal commitment, diffusion-based composition planning, and two generation schedules for different priorities between composition freedom and accurate text preservation, while preserving native text and geometry. Across 1,728 generations spanning 24 system-model configurations, SlidesWeaver achieves consistently superior overall quality across all evaluated dimensions while maintaining structural control, editability, and practical generation efficiency.",
-      "pdf_url": "https://arxiv.org/abs/2611.28010",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.7,
-      "product_potential": [],
-      "domain_applications": []
-    },
-    {
-      "id": "2611.33791",
-      "title": "ExtractBench Pro: The Long Tail of Document Extraction",
-      "authors": [],
-      "categories": [
-        "cs.AI"
-      ],
-      "published": "2026-11-26",
-      "updated": "2026-11-26",
-      "summary": "arXiv:2611.33791v1 Announce Type: new Abstract: We present ExtractBench Pro, a schema-guided document extraction benchmark that tests six challenging modes of extraction underrepresented in existing datasets. It is created following a framework for synthetic document generation, in which deterministic document generators assemble challenging components into documents that are designed to be difficult at a level calibrated for frontier systems. We synthesize 100 realistic documents spanning a diverse range of styles. On this data, we evaluate ten coding agents and eight extraction API configurations for accuracy, grounding, and their ability to perfectly extract documents. No extraction system extracts more than 61% of documents error-free. The strongest general-purpose coding agents, Claude Code Opus 5.5 and Codex GPT-6 Astra, outperform specialized extraction APIs on both perfect-document rate and Value F1, but at a higher cost per page. Among specialized extraction APIs, LlamaExtract spans the lower-cost frontier, with Agentic Plus Max Effort approaching the strongest coding agent on both perfect-document rate and Value F1 at lower cost per page. Our analysis of coding agent traces identifies intelligent image processing and programmatic reasoning, but also failures in applying document-specific definitions and recovering relationships from diagrams. We release ExtractBench Pro and these evaluation results as resources for the future development of improved frontier extraction systems.",
-      "pdf_url": "https://arxiv.org/abs/2611.33791",
-      "comment": "",
-      "technologies": [],
-      "maturity": "early",
-      "confidence": 0.0,
-      "curator_score": 5.6,
-      "product_potential": [],
-      "domain_applications": []
-    },
     {
       "id": "2603.21676",
       "title": "Thinking Deeper, Not Longer: Memory-Efficient Latent Chain-of-Thought with Depth-Recurrent Transformers for Compositional Generalization",
@@ -308,6 +99,25 @@
       "domain_applications": []
     },
     {
+      "id": "2611.33751",
+      "title": "VAPOR: Improving Multimodal Reasoning with Sparse Visual Updates",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.33751v1 Announce Type: new Abstract: Multimodal large language models (MLLMs) have made substantial progress in visual reasoning, but extended generation over large visual contexts remains computationally expensive. During autoregressive decoding, visual attention is recomputed for every generated token, even when consecutive tokens rely on similar visual evidence. We introduce VAPOR (Visual Attention Persistence with On-demand Refresh), a training-free framework that reduces this redundancy by reusing visual attention outputs across decoding steps and refreshing them when needed. VAPOR caches the visual attention output while continuing to update textual attention at every step, helping reduce visual grounding drift during extended reasoning. To decide when to reuse cached outputs, VAPOR estimates visual attention mass using a low-rank approximation. It also uses prefill-based attention consistency and cache age to make independent Persist and Refresh decisions for each attention head. VAPOR retains the full visual key-value (KV) cache, so all visual tokens remain available when new evidence is needed. Experiments on eight image and four video reasoning benchmarks across two MLLM families show that VAPOR improves accuracy over dense attention on nearly all benchmarks while achieving 1.11-1.21x decoding speedups. Compared with the strongest state-of-the-art acceleration baseline in each setting, VAPOR further improves accuracy by 0.35-2.15 percentage points while achieving comparable or lower decoding latency. Our code is available at https://github.com/Su-my/VAPOR.",
+      "pdf_url": "https://arxiv.org/abs/2611.33751",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
       "id": "2511.21460",
       "title": "MADRA: Multi-Agent Debate for Risk-Aware Embodied Planning",
       "authors": [],
@@ -323,6 +133,63 @@
       "maturity": "early",
       "confidence": 0.0,
       "curator_score": 5.5,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.34152",
+      "title": "Lost in the Grid: Where Multimodal LLMs Fail Between Seeing and Planning",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.34152v1 Announce Type: cross Abstract: Multimodal large language models (MLLMs) excel at static visual understanding and are increasingly applied to spatial planning, where a model interprets a visual layout and outputs an action sequence to reach a goal. Grid games are a common testbed for this ability because their rules are explicit and a solver can verify every move. Yet existing benchmarks mostly report end-to-end success rates, which hide whether a failure stems from visual perception, rule application, or multi-step planning. We introduce GridProbe, a diagnostic benchmark that 1) locates the failing stage between visual perception and planning and 2) verifies the diagnosis by targeted fine-tuning. On Sokoban, GridProbe pairs end-to-end solving with four probes (recognition, localization, single-step prediction, and state tracking) and gives every board both as an image and as an equivalent text grid. Evaluating seven MLLMs on Sokoban and a maze game reveals distinct bottlenecks behind similar success rates: proprietary models are limited by multi-step planning, whereas open-source models are limited by rule application or by visual grid indexing, i.e., counting rows and columns. Planning failures also hide perception failures: when planning is easier, the visual cost of the same model grows from 7.6 to 37.7 points. The diagnosis identifies what to train: fine-tuning only the vision module of the perception-limited model on board reading raises its interactive Sokoban success 3.5-fold (5.8% to 20.4%) and transfers zero-shot to the unseen maze game (single-turn success 13.8% to 67.1%), whereas the same data does not help a rule-limited model and training on solver solutions brings no gain. We will release the benchmark and code at https://github.com/suat-llm/GridProbe.",
+      "pdf_url": "https://arxiv.org/abs/2611.34152",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2608.12313",
+      "title": "AVA-Encoder: Learning to Represent Videos via Reconstruction-Driven Agentic Self-Evolution",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2608.12313v4 Announce Type: replace-cross Abstract: Agentic video creation systems remain far from cinematic-grade quality: their underlying models struggle to plan how story, characters, visuals, and sound fit together, and high-quality creation trajectories to learn such planning abilities are scarce. Finished human films embody this knowledge, but in a tightly coupled audiovisual form that agents cannot directly read or manipulate. We propose the Agentic Video \"Auto-Encoder\" (AVA-Encoder), which works backward from human films, turning them into agent-native video representations with reconstruction itself as the sole supervision. It encodes a film into a Film Knowledge Graph (Film KG) of structured-text nodes, typed dependency edges, and linked multimodal assets, then regenerates the film from this graph with a fixed decoder. Crucially, by distilling reconstruction residuals into textual gradients, AVA-Encoder drives a dual-loop self-evolution: an outer loop autonomously discovers a generalizable encoding strategy entirely from unlabeled videos, while an inner loop refines each video's Film KG at test time. AVA-Encoder improves reconstruction fidelity by 20.9 percentage points over the strongest baseline, and its autonomously learned strategy outperforms a human-tuned strategy using 70% fewer prompt tokens. Our representations drive three downstream breakthroughs: (1) Film KGs enable coordinated graph-based editing and (2) improve one-shot video generation across four open-source frameworks, while (3) fine-tuning agents on our reverse-engineered trajectories boosts video creation quality by 38.7%. We release the framework and a dataset of 500 Film KGs with over 27,000 creation trajectories.",
+      "pdf_url": "https://arxiv.org/abs/2608.12313",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2509.16476",
+      "title": "GazeVLM: Gaze-Guided Foveated Inference for Efficient Vision-Language Models",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2509.16476v2 Announce Type: replace Abstract: Vision-language models (VLMs) achieve remarkable multimodal performance but introduce substantial computational cost due to the large number of visual tokens. Existing approaches typically rely on token pruning, sparse attention, or additional control modules, often introducing accuracy-efficiency trade-offs. This paper presents GazeVLM, a training-free framework that leverages human gaze as a natural guidance signal for efficient inference. GazeVLM allocates computation to gaze-relevant regions through a gaze-guided region-of-interest (ROI) representation and an optional two-scale design that preserves global context. We also construct GazeVLM-VQA, to the best of our knowledge, the first real-world wearable-gaze visual question answering (VQA) dataset specifically constructed for VLM inference, containing reference images, human gaze traces, and gaze-aligned question-answer pairs. Experiments on the GazeVLM-VQA benchmark demonstrate that GazeVLM improves both answer quality and efficiency across Qwen2.5-VL-3B/7B and Qwen3-VL-8B models. It reduces visual tokens by up to 84.2%, prefill FLOPs by up to 92.8%, and achieves up to 11.6 times prefill speedup, while improving answer-match accuracy by up to 8.6 percentage points (pp). These results show that aligning VLM computation with human visual attention provides a promising path toward efficient VLM inference. We publicly release the GazeVLM-VQA dataset (https://drive.google.com/drive/folders/1mdi-GezeIkmege3segUQCnvnK6P-skaw?usp=sharing).",
+      "pdf_url": "https://arxiv.org/abs/2509.16476",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
     },
@@ -349,9 +216,159 @@
       "curator_score": 5.4,
       "product_potential": [],
       "domain_applications": []
+    },
+    {
+      "id": "2611.33242",
+      "title": "CypherMAS: Benchmarking Routing Reliability in LLM-Based Multi-Agent Systems",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.33242v1 Announce Type: cross Abstract: Multi-agent systems (MAS) built on large language models (LLMs) distribute reasoning across specialized agents that must exchange messages and invoke tools reliably. Existing evaluations typically couple communication with open domain tasks, making it difficult to determine whether a failure arises from reasoning, malformed tool use, lost messages, or forgotten requests. Prior benchmarks do not isolate communication execution or measure routing redundancy against a known optimal path. We introduce CypherMAS, a synthetic benchmark that isolates communication and routing in fixed multi-agent graphs. Agents in chain, star, bipartite, or ring graphs route cyphered messages to remote peers holding the matching decoders; since the optimal route is known, redundant LLM calls can be measured and routing failures may be easily tracked. Across eleven open-weight models from 4B to 753B, small models fail at routing and tool use, dense models above 27B degrade with diameter, and successful runs exceed minimum LLM calls. These findings identify communication reliability as a distinct scaling bottleneck for multi-agent systems and provide a controlled diagnostic for complex multi-agent systems. The source code is freely available: https://github.com/Andoree/CypherMAS.",
+      "pdf_url": "https://arxiv.org/abs/2611.33242",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.34292",
+      "title": "WebVibe: Multimodal Interactive Website Generation via Reverse Synthesis and Visual Self-Distillation",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.34292v1 Announce Type: cross Abstract: Although multimodal large language models translate single screenshots into static HTML, generating interactive functional websites from design specifications still struggles with multi-page routing and stateful widget transitions. Examining existing training pipelines reveals two bottlenecks: (1) in forward data synthesis (X -> Y), writing the specification X before code execution leaves unimplemented or altered requirements in X as supervision noise; and (2) in reinforcement learning, scalar rewards discard the rich state transitions observed during replay. Based on these findings, we introduce WebVibe and Interactive-SDPO to train InteractiveCoder. WebVibe reverses synthesis into Y -> X by verifying cross-page and in-page interactions in the browser before deriving multimodal inputs from replay-confirmed states to build the 31,542-site WebVibe-32K corpus with reusable execution contracts. Interactive-SDPO then conditions a weight-sharing self-teacher on the replay trace and a 2x2 state-transition montage to provide token-level supervision at zero inference-time overhead. On the public Vision2Web L2, one-shot InteractiveCoder-9B nearly 3x its base model's functional score (20.2 to 55.2 FS) and matches a 1T-parameter coding agent in a single pass with 111x fewer total parameters and 78x fewer tokens. On our WebVibeBench, InteractiveCoder-4B and 9B further outperform all evaluated baselines by over 23 points.",
+      "pdf_url": "https://arxiv.org/abs/2611.34292",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2608.07437",
+      "title": "Fisher-R1: Training LLM Agents for Reliable Hypothesis Testing",
+      "authors": [],
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2608.07437v2 Announce Type: replace Abstract: Reliable hypothesis testing is the foundation of many empirical scientific claims. Large language model (LLM) agents are increasingly used to automate this process, as they can inspect datasets, generate code, and produce analyses end-to-end. However, we show that they frequently make subtle inferential errors that lead to incorrect conclusions despite correctly executed analyses. Existing benchmarks fail to capture this failure mode, as they rarely assess whether a reported p-value is statistically valid given the assumptions underlying the data. We address this gap by building P-Bench, a benchmark comprising 425 open-ended, realistic hypothesis-testing tasks spanning economics, biology, and medicine. Each task requires an agent to select a statistical method, compute a p-value, and draw a conclusion given only a scientific hypothesis and a dataset. We further introduce Fisher-R1, an open-weight LLM agent trained for rigorous hypothesis testing using synthetic tasks and reinforcement learning. On P-Bench, Fisher-R1-14B substantially improves over its backbone and outperforms strong proprietary and open-source baselines, including GPT-5.4 and DeepSeekV4-Pro, achieving a 21% average relative improvement in single-trial success over DeepSeek-V4-Pro, with gains up to 26% on the most challenging tasks. Our results demonstrate that current LLM agents lack reliable statistical reasoning for hypothesis testing and that reinforcement learning on tasks with verified statistical reward substantially improves reliability.",
+      "pdf_url": "https://arxiv.org/abs/2608.07437",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2606.04511",
+      "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+      "authors": [],
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2606.04511v2 Announce Type: replace Abstract: Sparse attention reduces compute and memory bandwidth for long-context LLM inference. However, two key challenges remain: (1) KV cache capacity still grows with sequence length, and offloading to CPU memory introduces a PCIe transfer bottleneck; (2) sparse selection during prefill retains $O(T^2)$ complexity and can dominate attention cost at long contexts. We propose SparDA, a decoupled sparse attention architecture that introduces a fourth per-layer projection, the Forecast, alongside Query, Key, and Value. The Forecast predicts the KV blocks needed by the next layer, enabling lookahead selection that overlaps CPU-to-GPU prefetch with current-layer execution. Because Forecast is decoupled from the attention query, our GQA implementation uses one Forecast head per GQA group, reducing selection overhead versus the original multi-head selector. On the evaluated 8B models, SparDA adds <0.5% parameters and trains only the Forecast projections using attention-derived supervision from the frozen backbone. On two sparse-pretrained 8B models, SparDA maintains accuracy comparable to the full-query sparse-attention baseline while delivering up to 1.25$\\times$ prefill speedup and 1.7$\\times$ decode speedup over the sparse-attention offload baseline. By enabling larger feasible batch sizes on a single GPU, SparDA further reaches up to 5.3$\\times$ higher decode throughput than the non-offload sparse baseline on MiniCPM4.1-8B. Our adaptation to GLM-5.1 (754B MoE) also achieves accuracy comparable to native token-level DSA, extending the accuracy evaluation beyond block-sparse 8B models. Our source code is available at https://github.com/NVlabs/SparDA.",
+      "pdf_url": "https://arxiv.org/abs/2606.04511",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.33935",
+      "title": "BayesPath: Reliability-Aware Bayesian Reasoning for Whole-Slide Pathology Agents",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.33935v1 Announce Type: new Abstract: Diagnosing whole-slide images (WSIs) requires hypothesis-driven reasoning: pathologists form a differential diagnosis, seek discriminative evidence, weigh its reliability, and stop once it suffices. However, existing training-free WSI agents lack an explicit framework for such reasoning. They typically use a large language model (LLM) to aggregate the region descriptions of a multimodal LLM (MLLM), without a belief over the candidates or regard for the descriptions' reliability. Consequently, a repeated model error counts as independent evidence for an incorrect diagnosis. We introduce BayesPath, a training-free WSI agent that casts the pathologist's Scan-Look-Weigh-Decide process as reliability-aware Bayesian reasoning. An explicit belief over the candidates is updated with each observation through a reliability-aware likelihood and guides where to look next and when to stop. This likelihood corrects for the models' answer bias, discounts correlated observations, and captures diagnostic confusions estimated without labels. The updates form an interpretable evidence trail of how each observation shapes the belief. On five MultiPathQA tasks spanning slide classification and slide VQA, BayesPath achieves the highest average accuracy among training-free agents, 58.6% against 34.1% for the next best, with large gains on slide classification. On identical observations, Bayesian updating outperforms LLM aggregation on average, even with a larger LLM. BayesPath's belief is also better calibrated than naive Bayes, so uncertain cases can be deferred to pathologists. Code is available at https://github.com/bryanwong17/BayesPath",
+      "pdf_url": "https://arxiv.org/abs/2611.33935",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.28010",
+      "title": "Beyond Code and Pixels: Co-Generating Editable and Visually Rich Presentations",
+      "authors": [],
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-11-26",
+      "updated": "2026-11-26",
+      "summary": "arXiv:2611.28010v2 Announce Type: replace-cross Abstract: Generating PPTX presentations is a structured task that requires semantic planning, visual composition, precise layout, and editability, motivating collaboration among specialized agents. However, programmatic methods offer editability but often produce rigid designs, while image-based methods provide visual richness but flatten content into difficult-to-edit pixels. A hybrid system can combine these strengths, but must coordinate interdependent decisions across content, layout, and appearance. To address this challenge, we propose SlidesWeaver, a hybrid multi-agent system that coordinates language and vision agents through shared deck- and slide-level states. Specifically, it uses staged multimodal commitment, diffusion-based composition planning, and two generation schedules for different priorities between composition freedom and accurate text preservation, while preserving native text and geometry. Across 1,728 generations spanning 24 system-model configurations, SlidesWeaver achieves consistently superior overall quality across all evaluated dimensions while maintaining structural control, editability, and practical generation efficiency.",
+      "pdf_url": "https://arxiv.org/abs/2611.28010",
+      "comment": "",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
+    },
+    {
+      "id": "2611.34881",
+      "title": "Stranger Things: When Objects Appear Without Their Typical Neighbors",
+      "authors": [
+        "Siddhartha Gairola",
+        "Jiahao Xie",
+        "Anna Kukleva",
+        "Francesco Locatello",
+        "Bernt Schiele"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-11-25",
+      "updated": "2026-11-25",
+      "summary": "Visual context is a powerful cue for object recognition: scenes inform what, where, and at what scale objects are likely to appear. Yet over-reliance on context becomes a failure mode when models predict objects based on their typical neighbors rather than the objects' own visual features, which we call typicality bias. While extensively studied in the pre-Transformer era, it has often been assumed that architectural and scale improvements would naturally solve it, and a systematic diagnostic across the modern vision stack remains absent. We provide such a diagnostic framework. We measure typicality bias via normalized pointwise mutual information (NPMI) over object pairs, and introduce STRANGE-Bench (Synthetic Typicality-RANked Grounded Evaluation Benchmark): a photorealistic, layout-controlled benchmark spanning 17 sub-tiers from typical to never-co-occurring object pairs. Across five model families (specialist detectors, open-vocabulary detectors, self-supervised, vision-language, and multimodal large language models) and three recognition tasks (supervised detection, open-vocabulary detection, and classification), the bias is prevalent: gaps of 5-11 p.p. persist when objects appear outside their typical company, and do not consistently shrink with scale. To mitigate it, we turn to data augmentation: existing augmentations are designed for visual diversity, not for breaking co-occurrence shortcuts, and sample from the very distribution that produces typicality bias. We propose Anchor-Atypicality Sampling (AAS), a simple sampling rule for paste-based augmentations that uses the NPMI signal to tilt the training-time co-occurrence distribution toward atypical partners. AAS reduces the typicality gap by up to 1.6 p.p. on natural-image COCO splits and 23.0 p.p. on synthetic STRANGE-Bench across three model families, without sacrificing overall performance.",
+      "pdf_url": "https://arxiv.org/pdf/2611.34881v1",
+      "comment": "This paper was accepted to the 40th Conference on Neural Information Processing Systems (NeurIPS 2026). Track on Evaluations and Datasets. Dataset: huggingface.co/datasets/sidgairo18/strange-bench",
+      "technologies": [],
+      "maturity": "early",
+      "confidence": 0.0,
+      "curator_score": 5.2,
+      "product_potential": [],
+      "domain_applications": []
     }
   ],
   "technologies": [
+    {
+      "name": "Transformer",
+      "papers": 1,
+      "maturity": "early",
+      "confidence": 0.5,
+      "trend": "emerging",
+      "applications": [
+        "general AI"
+      ]
+    },
     {
       "name": "Multimodal",
       "papers": 1,
@@ -363,7 +380,7 @@
       ]
     },
     {
-      "name": "Vision-Language",
+      "name": "Multi-Agent",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.5,
@@ -373,7 +390,7 @@
       ]
     },
     {
-      "name": "Multi-Agent",
+      "name": "Vision-Language",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.5,
@@ -394,16 +411,6 @@
     },
     {
       "name": "Bayesian",
-      "papers": 1,
-      "maturity": "early",
-      "confidence": 0.5,
-      "trend": "emerging",
-      "applications": [
-        "general AI"
-      ]
-    },
-    {
-      "name": "Transformer",
       "papers": 1,
       "maturity": "early",
       "confidence": 0.5,
